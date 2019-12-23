@@ -93,7 +93,7 @@ public class UserDAO {
 	}
 	
 	public static boolean insertNewUser(User u) { // SOLO PER STUDENTE
-		String query= "INSERT INTO EVIM.user(`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USERTYPE`,`tipoCorso`) VALUES(?,?,?,?,?,?,?)";
+		String query= "INSERT INTO EVIM.user(`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`) VALUES(?,?,?,?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(query);
 			

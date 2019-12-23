@@ -40,7 +40,7 @@
 			<div class="col-lg-9" id=""
 				style="border: 1px solid #d7d7d7; background-color: white;">
 				<br>
-
+				
 				<div id="carouselExampleControls" class="carousel slide"
 					data-ride="carousel">
 					<div class="carousel-inner">

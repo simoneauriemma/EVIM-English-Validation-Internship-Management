@@ -40,14 +40,14 @@
 								</div>
 								<hr />
 								<div id="main-content">
-									<form method="POST" id="form" onsubmit="return validate()">
+									<form method="POST" id="form" action="Registrazione" onsubmit="return validate()">
 										<input type="text" class="form-control" id="name" name="nome"
 											placeholder="Nome" autocomplete="off"> 
-												<p id='resultRegexNome'></p>
+												<p id="resultRegexNome"></p>
 											<br> <input
 											type="text" class="form-control" id="surname" name="cognome"
 											placeholder="Cognome" autocomplete="off">
-											<p id='resultRegexCognome'></p>
+											<p id="resultRegexCognome"></p>
 											 <br> <input name="email" onblur="hiddenandshow()"
 											type="email" class="form-control" id="email"
 											placeholder="Email" autocomplete="off">
@@ -77,7 +77,7 @@
 										</div>
 										
 										<br>
-										<button type="submit"  class="btn btn-success btn-block">Registrati</button>
+										<button type="submit"   class="btn btn-success btn-block">Registrati</button>
 									</form>
 								</div>
 							</div>
@@ -92,6 +92,7 @@
 		
 			
 		function validate(){
+			var r= true;
 			//password
 			var pass= $('#password');
 			var resultRegexPassword= $('#resultRegexPass');
@@ -100,12 +101,12 @@
 			var resultRegexCPass= $('#resultRegexCPass');
 			//nome
 			var nome= $('#name');
-			var regex_nome= new RegExp('^[A-Za-z]{8,}');
-			var resultRegexNome=$('resultRegexNome');
+			var regex_nome= new RegExp('^[A-Za-z]{2,}');
+			var resultRegexNome=$('#resultRegexNome');
 			//cognome
 			var cognome= $('#surname');
-			var regex_cognome= new RegExp('^[A-Za-z]{8,}');
-			var resultRegexCognome= $('resultRegexCognome');
+			var regex_cognome= new RegExp('^[A-Za-z]{2,}');
+			var resultRegexCognome= $('#resultRegexCognome');
 			
 			//email
 			var email= $('#email');
@@ -116,8 +117,8 @@
 			//corso
 			var corso1=$('#radio1');
 			var corso2=$('#corso2');
-			var resultRegexCorso= $('resultRegexCorso');
-			var divcorso=$('boxcorso');
+			var resultRegexCorso= $('#resultRegexCorso');
+			var divcorso=$('#boxcorso');
 			
 			
 		if(!regex_email.test(email.val())){
@@ -125,36 +126,36 @@
 				resultRegexEmail.text(email.val() + " non valida! Si accettano solo domini unisa");
 				resultRegexEmail.css("color", "red");
 				email.css("color", "red");
-				return false;
+				r= false;
 			}
 		
-			if(!regex_password.test(pass.val())){
+			if(!regex_password.test(pass.val()) || pass.val()==''){
 				
 				resultRegexPassword.text(pass.val() + " non valida");
 				resultRegexPassword.css("color", "red");
 				pass.css("color", "red");
 				
-				return false;
+				r= false;
 				
 			}
 			
-	if(!regex_cognome.test(cognome.val())){
+	if(!regex_cognome.test(cognome.val()) || cognome.val()==''){
 				
 				resultRegexCognome.text(cognome.val() + " non valida");
 				resultRegexCognome.css("color", "red");
-				nome.css("color", "red");
+				cognome.css("color", "red");
 				
-				return false;
+				r= false;
 				
 			}
 		
-		if(!regex_nome.test(nome.val())){
+		if(!regex_nome.test(nome.val()) || nome.val()==''){
 				
 				resultRegexNome.text(nome.val() + " non valida");
 				resultRegexNome.css("color", "red");
 				nome.css("color", "red");
 				
-				return false;
+				r= false;
 				
 			}
 			
@@ -163,19 +164,20 @@
 				resultRegexCPass.css("color","red");
 				confirm_password.css("color", "red");
 				
-				return false;
+				r= false;
 			}
 			
 			if(radio1.checked!=true && radio2.checked!=true && regex_email_studente.test(email.val()) ){
 				corso1.css("color", "red");
 				corso1.css("color", "red");
 				resultRegexCorso("Inserire un tipo di corso triennale o magistrale");
+				r= false;
 			}
 			
 		
 			
 			
-			return true;
+			return r;
 			
 		}
 		

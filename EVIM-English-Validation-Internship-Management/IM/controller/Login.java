@@ -26,26 +26,29 @@ public class Login extends BaseServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doPost(request, response);
+		doGet(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
+		System.out.println("test");
 		// controllo campi null
 
-		if (email == null && password == null) {
+		if (email == null || password == null) {
+			System.out.println("hey");
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
 			rd.forward(request, response);
+			
 		} else {
-
+			System.out.println("diocane");
 			// dominio utenza (controllo degli indirizzi email)
 
-			// controllo studente (@studenti.unisa.it)
+			// controllo studente 
 
 			if (email.endsWith("@studenti.unisa.it")) {
 				User studente = UserDAO.doRetrieveByLoginData(0, email, password);
