@@ -42,9 +42,13 @@
 								<div id="main-content">
 									<form method="POST" id="form" onsubmit="return validate()">
 										<input type="text" class="form-control" id="name" name="nome"
-											placeholder="Nome" autocomplete="off"> <br> <input
+											placeholder="Nome" autocomplete="off"> 
+												<p id='resultRegexNome'></p>
+											<br> <input
 											type="text" class="form-control" id="surname" name="cognome"
-											placeholder="Cognome" autocomplete="off"> <br> <input name="email"
+											placeholder="Cognome" autocomplete="off">
+											<p id='resultRegexCognome'></p>
+											 <br> <input name="email"
 											type="email" class="form-control" id="email"
 											placeholder="Email" autocomplete="off">
 											<p id='resultRegexEmail'></p>
@@ -64,10 +68,11 @@
 
 										</div>
 										
-										<div style="margin-left: 5px;">
-											Tipo corso : <input name="corso" type="radio" id="radio1" checked>
-											<label for="radio1">Triennale</label> <input name="corso"
+										<div style="margin-left: 5px;" onblur="hiddenandshow()">
+											Tipo corso : <input name="corso" type="radio" id="radio1" value="triennale">
+											<label for="radio1">Triennale</label> <input name="corso" value="magistrale"
 												type="radio" id="radio2"> <label for="radio2">Magistrale</label>
+												<p id="resultRegexCorso"> </p>
 
 										</div>
 										
@@ -87,21 +92,35 @@
 		
 			
 		function validate(){
-			
+			//password
 			var pass= $('#password');
 			var resultRegexPassword= $('#resultRegexPass');
 			var regex_password= new RegExp('^[A-Za-z0-9]{8,}');
-			var regex_nome= new RegExp('^[A-Za-z]{8,}');
-			var regex_email= new RegExp('[a-z0-9\.]+@studenti\.unisa\.it|[a-z0-9.]+@unisa.it');
+			var confirm_password=$('#confermaPassword');
 			var resultRegexCPass= $('#resultRegexCPass');
+			//nome
+			var nome= $('#name');
+			var regex_nome= new RegExp('^[A-Za-z]{8,}');
+			var resultRegexNome=$('resultRegexNome');
+			//cognome
+			var cognome= $('#surname');
+			var regex_cognome= new RegExp('^[A-Za-z]{8,}');
+			var resultRegexCognome= $('resultRegexCognome');
+			
+			//email
 			var email= $('#email');
 			var resultRegexEmail= $('#resultRegexEmail');
-			var confirm_password=$('#confermaPassword');
-			var uno= email.val().split("@");
+			var regex_email= new RegExp('[a-z0-9\.]+@studenti\.unisa\.it|[a-z0-9.]+@unisa.it');
+			var regex_email_studente=  new RegExp('[a-z0-9\.]+@studenti\.unisa\.it');
+			//corso
+			var corso1=$('#radio1');
+			var corso2=$('#corso2');
+			var resultRegexCorso= $('resultRegexCorso');
+			
 			
 		if(!regex_email.test(email.val())){
 			
-				resultRegexEmail.text(email.val() + " non valida");
+				resultRegexEmail.text(email.val() + " non valida! Si accettano solo domini unisa");
 				resultRegexEmail.css("color", "red");
 				email.css("color", "red");
 				return false;
@@ -112,11 +131,30 @@
 				resultRegexPassword.text(pass.val() + " non valida");
 				resultRegexPassword.css("color", "red");
 				pass.css("color", "red");
-				console.log("falsetipo");
+				
+				return false;
+				
+			}
+			
+	if(!regex_cognome.test(cognome.val())){
+				
+				resultRegexCognome.text(cognome.val() + " non valida");
+				resultRegexCognome.css("color", "red");
+				nome.css("color", "red");
+				
 				return false;
 				
 			}
 		
+		if(!regex_nome.test(nome.val())){
+				
+				resultRegexNome.text(nome.val() + " non valida");
+				resultRegexNome.css("color", "red");
+				nome.css("color", "red");
+				
+				return false;
+				
+			}
 			
 			if(confirm_password.val()!=pass.val()){
 				resultRegexCPass.text("Conferma password è diverso dal campo password");
@@ -126,11 +164,27 @@
 				return false;
 			}
 			
+			if(radio1.checked!=true && radio2.checked!=true && regex_email_studente.test(email.val()) ){
+				corso1.css("color", "red");
+				corso1.css("color", "red");
+				resultRegexCorso("Inserire un tipo di corso triennale o magistrale");
+			}
+			
+		
+			
 			
 			return true;
 			
 		}
 		
+		function hiddenandshow(){
+			if(regex_email_studente.test(email)){
+				this.show();
+			}
+			else{
+				this.hide();
+			}
+		}
 	</script>
 </body>
 
