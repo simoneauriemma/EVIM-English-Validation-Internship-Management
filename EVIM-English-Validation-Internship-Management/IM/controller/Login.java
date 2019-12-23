@@ -39,12 +39,12 @@ public class Login extends BaseServlet {
 		// controllo campi null
 
 		if (email == null) {
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
 			rd.forward(request, response);
 		}
 
 		if (password == null) {
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
 			rd.forward(request, response);
 		}
 
@@ -62,7 +62,7 @@ public class Login extends BaseServlet {
 				rd.forward(request, response);
 			} else {
 				request.setAttribute("logged", false);
-				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
 				rd.forward(request, response);
 			}
 		}
@@ -79,7 +79,7 @@ public class Login extends BaseServlet {
 				rd.forward(request, response);
 			} else {
 				request.setAttribute("logged", false);
-				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
 				rd.forward(request, response);
 			}
 		}
@@ -114,7 +114,7 @@ public class Login extends BaseServlet {
 				rd.forward(request, response);
 			} else {
 				request.setAttribute("logged", false);
-				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
 				rd.forward(request, response);
 			}
 		}
@@ -134,7 +134,7 @@ public class Login extends BaseServlet {
 				rd.forward(request, response);
 			} else {
 				request.setAttribute("logged", false);
-				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
 				rd.forward(request, response);
 			}
 		}
