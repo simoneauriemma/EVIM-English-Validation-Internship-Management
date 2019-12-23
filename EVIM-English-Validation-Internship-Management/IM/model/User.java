@@ -12,18 +12,18 @@ public class User {
 
 	// costruttore vuoto
 	public User() {
-		this.corso="";
+		
 	}
 
 	// costruttore pieno
-	public User(String email, String name, String surname, char sex, String password, int userType) {
+	public User(String email, String name, String surname, char sex, String password, int userType, String corso) {
 		this.email = email;
 		this.name = name;
 		this.surname = surname;
 		this.sex = sex;
 		this.password = password;
 		this.userType = userType;
-		this.corso=""; 
+		this.corso=corso; 
 	}
 
 	// tutti i getter e setter
