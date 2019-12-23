@@ -129,19 +129,19 @@
 						class="fas fa-angle-right "></i> Visualizza proposte </a></li>
 			</c:if>
 			<c:if test="${type=='tutoraccademico'}">
-				<li><a href="creazioneProposta.jsp"><i
+				<li><a href="visualizzaCreaProposta"><i
 						class="fas fa-angle-right "></i> Crea proposta tirocinio interno </a></li>
 				<li><a href="#"><i class="fas fa-angle-right "></i>
 						Modifica proposta tirocinio interno </a></li>
-				<li><a href="viewListaRichiesteTirocinioInterno.jsp"><i
+				<li><a href="VisualizzaProposte"><i
 						class="fas fa-angle-right "></i> Visualizza proposte </a></li>
 			</c:if>
 			<c:if test="${type=='azienda'}">
-				<li><a href="#"><i class="fas fa-angle-right "></i> Crea
+				<li><a href="visualizzaCreaProposta"><i class="fas fa-angle-right "></i> Crea
 						proposta tirocinio esterno </a></li>
 				<li><a href="#"><i class="fas fa-angle-right "></i>
 						Modifica proposta tirocinio esterno </a></li>
-				<li><a href="#"><i class="fas fa-angle-right "></i>
+				<li><a href="VisualizzaProposte"><i class="fas fa-angle-right "></i>
 						Visualizza proposte </a></li>
 			</c:if>
 

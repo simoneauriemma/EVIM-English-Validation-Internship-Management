@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author Simone Auriemma Classe che eseguirà le query per quanto riguarda
+ * @author Simone Auriemma Classe che eseguirï¿½ le query per quanto riguarda
  *         l'azienda
  */
 

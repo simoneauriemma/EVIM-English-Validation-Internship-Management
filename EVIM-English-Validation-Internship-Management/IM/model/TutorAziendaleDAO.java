@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class TutorAziendaleDAO {
 
@@ -44,7 +45,7 @@ public class TutorAziendaleDAO {
 	/**
 	 * @author Emilio Schiavo Questo metodo serve per trovare l'id del tutor
 	 *         aziendale associato ad una proposta di tirocinio
-	 * @return int IDTutAz, èl'id del tutor aziendale
+	 * @return int IDTutAz, ï¿½l'id del tutor aziendale
 	 */
 	public static int doRetriveByIDProposta(int IDProp) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
@@ -93,6 +94,42 @@ public class TutorAziendaleDAO {
 				return utente;
 			} else
 				return null;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
+	}
+	
+	
+	/**
+	 * @author Antonio Giano
+	 * @param idAzienda, prende il parametro id dell'azienda loggata
+	 * @return restituisce un elenco di tutor aziendali facenti parte dell'azienda loggata
+	 */
+	public static ArrayList<TutorAziendale> getElencoTutorAziendali(int idAzienda){
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement(
+					"select * from EVIM.tutoraziendale where ID_Azienda=?");
+			ps.setInt(1, idAzienda);
+			ArrayList<TutorAziendale> elencoTutorAziendali=new ArrayList<TutorAziendale>();
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				TutorAziendale tutorAziendale = new TutorAziendale();
+				tutorAziendale.setId(rs.getInt(1));
+				tutorAziendale.setIdAzienda(rs.getInt(2));
+				tutorAziendale.setNome(rs.getString(3));
+				tutorAziendale.setCognome(rs.getString(4));
+				tutorAziendale.setEmail(rs.getString(5));
+				tutorAziendale.setPassword(rs.getString(6));
+				tutorAziendale.setTelefono(rs.getString(7));
+				
+				elencoTutorAziendali.add(tutorAziendale);
+			}
+			return elencoTutorAziendali;
 
 		} catch (SQLException e) {
 			e.printStackTrace();

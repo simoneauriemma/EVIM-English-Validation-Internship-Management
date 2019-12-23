@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <jsp:include page="WEB-INF/navbarBlu.jsp"></jsp:include>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
@@ -20,7 +21,10 @@
 
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
-				<p id="titolo">Proposta di tirocinio curriculare interno</p>
+				<p id="titolo">Proposta di tirocinio curriculare 
+				<c:if test="${type eq 'tutoraccademico'}">interno</c:if>	
+				<c:if test="${type eq 'azienda'}">esterno</c:if>
+				</p>
 				<div class="input-group">
 					<span class="input-group-addon">Filtro</span><input id="filter"
 						type="text" class="form-control" placeholder="Cerca in base al nome del Tutor interno...">
@@ -28,39 +32,48 @@
 				<br>
 				
 				<table class="table table-striped" id="tabella">
+			
+				<c:forEach items="${proposte}" var="proposta">
 					<tbody>
 						<tr id="numero">
 							<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
 							<td class="">Numero proposta</td>
-							<td>1</td>
+							<td>
+							<c:out value="${proposta.ID_Proposta}" />
+							</td>
 						</tr>
+					<c:if test="${type eq 'azienda'}">	
 						<tr>
-							<td class="icon"><i class="fa fa-user"></i></td>
-							<td class="">Tutor Interno</td>
-							<td>nome cognome</td>
+							<td class="icon"><i class="fas fa-building"></i></td>
+							<td class="">Tutor Aziendale</td>
+							<td>
+							<c:out value="${proposta.nomeTutorAziendale}"/> <c:out value="${proposta.cognomeTutorAziendale}"/>
+							</td>
 						</tr>
+					</c:if>
 						<tr>
 							<td class="icon"><i class="fas fa-building"></i></td>
 							<td class="">Sede</td>
-							<td>#</td>
+							<td>
+							<c:out value="${proposta.sede}"/>
+							</td>
 						</tr>
 						<tr>
 							<td class="icon"><i class="fas fa-coins"></i></td>
 							<td class="">Tema/Ambito</td>
-							<td>#</td>
+							<td>
+							<c:out value="${proposta.temaAmbito}" />
+							</td>
 						</tr>
 						<tr>
 							<td class="icon"><i class="fas fa-box-open"></i></td>
 							<td class="">Materiale/Risorse</td>
-							<td>#</td>
+							<td>
+							<c:out value="${proposta.materialeRisorse}" />
+							</td>
 						</tr>
-						<tr>
-							<td class="icon"><i class="fas fa-info-circle"></i></td>
-							<td>Ulteriori informazioni</td>
-							<td>#</td>
-						</tr>
-
 					</tbody>
+				</c:forEach>
 				</table>
 			</div>
 		</div>

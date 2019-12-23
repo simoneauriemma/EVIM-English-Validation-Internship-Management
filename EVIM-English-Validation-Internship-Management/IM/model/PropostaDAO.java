@@ -148,8 +148,8 @@ public class PropostaDAO {
 	public static ArrayList<Proposta> getProposteAziendaWithIdAzienda(int idAzienda) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			
-			PreparedStatement ps = con.prepareStatement("select ID_Proposta,Obiettivi,Sede,Tema_Ambito,Materiale_Risorse,Proposta.ID_TutorAziendale,TutorAziendale.Nome,TutorAziendale.Cognome\r\n" + 
-					"from evim.Proposta join TutorAziendale on Proposta.ID_TutorAziendale=TutorAziendale.ID_TutorAziendale\r\n"+ 
+			PreparedStatement ps = con.prepareStatement("select ID_Proposta,Obiettivi,Sede,Tema_Ambito,Materiale_Risorse,Proposta.ID_Tutor,TutorAziendale.Nome,TutorAziendale.Cognome\r\n" + 
+					"from evim.Proposta join TutorAziendale on Proposta.ID_Tutor=TutorAziendale.ID_TutorAziendale\r\n"+ 
 					"where Proposta.ID_Azienda=?");
 			ps.setInt(1, idAzienda);
 
@@ -226,7 +226,7 @@ public class PropostaDAO {
 	 * @param temaAmbito
 	 * @param materialeRisorse
 	 * @param idTutorAccademico
-	 * @return inserisce una proposta di tirocinio interno
+	 * @return inserisce una proposta di tirocinio interno nel database
 	 */
 	public static boolean insertPropostaInterno(String obiettivi, String sede,String temaAmbito,String materialeRisorse,int idTutorAccademico) {
 		try(Connection con=DriverManagerConnectionPool.getConnection()){
@@ -258,7 +258,7 @@ public class PropostaDAO {
 	 * @param materialeRisorse
 	 * @param idAzienda
 	 * @param intTutorAziendale
-	 * @return inserisce una proposta di tircocinio esterno
+	 * @return inserisce una proposta di tircocinio esterno nel database
 	 */
 	public static boolean insertPropostaEsterno(String obiettivi, String sede,String temaAmbito,String materialeRisorse,int idAzienda,int intTutorAziendale) {
 		try(Connection con=DriverManagerConnectionPool.getConnection()){
