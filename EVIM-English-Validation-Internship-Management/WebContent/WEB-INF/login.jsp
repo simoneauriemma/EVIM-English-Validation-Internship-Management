@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<jsp:include page="WEB-INF/navbar.jsp" />
+<jsp:include page="navbar.jsp" />
 <head>
 <link rel="stylesheet" href="stiliCSS/stiliLogin.css">
 <meta charset="ISO-8859-1">

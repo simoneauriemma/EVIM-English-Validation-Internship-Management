@@ -42,7 +42,7 @@ public class VisualizzaRichieste extends BaseServlet {
 		// verifico prima se esiste un utente nella sessione, se non esiste lo
 		// reindirizzo nella pagina di login
 		if (sessione.getAttribute("utenteLoggato") == null) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			// prendo dalla sessione il nome dell'oggetto dell'utente loggato
