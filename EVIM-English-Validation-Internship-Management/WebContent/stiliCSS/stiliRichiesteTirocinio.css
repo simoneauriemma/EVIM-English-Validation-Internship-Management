@@ -1,0 +1,54 @@
+@charset "ISO-8859-1";
+
+#titolo{
+	font-size: 30px;
+	color: #595959;
+}
+
+#col-9{
+	border: 1px solid #d7d7d7; 
+	background-color: white;
+}
+
+#numero{
+	color: white;
+	padding-left: 10px;
+	border:none;
+	background-color: #2C5278;
+	outline: none;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+#tabella{
+	border: 1px solid #d7d7d7;
+}
+
+/*bottone che permette al tutor accademico di firmare */
+
+.bottone{
+	color:black;
+	border: none;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.bottone:hover{
+	color: white;
+	font-weight: bold;
+	background-color: #2C5278;
+}
+
+#nome-tutor, #nome-studente{
+	background-color: #2C5278;
+	border: none;
+	outline: none;
+	color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-left: 7px;
+}
+
+#nome-studente:hover{
+	text-decoration: underline;
+}

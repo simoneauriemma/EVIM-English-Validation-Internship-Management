@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+
+#titolo{
+	font-size: 30px;
+	color: #595959;
+}
+
+#id-prog{
+	color:white;
+	background-color: transparent;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	border: none;
+	outline: none;
+}
+
+#id-prog:hover{
+	text-decoration: underline;
+}
+
+#progetto{
+	background-color: transparent;
+	border: none;
+}
+
+.bottone{
+	border: none;
+	font-weight: bold;
+	font-size: 20px;
+	background-color: transparent;
+	
+}
+

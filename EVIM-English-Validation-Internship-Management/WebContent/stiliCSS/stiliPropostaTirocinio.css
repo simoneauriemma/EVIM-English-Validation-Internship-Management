@@ -1,0 +1,71 @@
+@charset "ISO-8859-1";
+
+/*Questo foglio di stile comprende gli stili delle seguenti pagine:
+1. propostaTirocinio
+2. elencoTutorAccademici
+3. elencoTutorAziendali
+4. viewRicheisteTirocinioStudente (da mettere)
+*/
+
+#titolo{
+	font-size: 30px;
+	color: #595959;
+}
+
+/* bottone "Filtro" */
+.input-group-addon {
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #383838;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 0;
+}
+
+#tabella{
+	border: 1px solid #d7d7d7;
+}
+
+#numero{
+	color: white;
+	padding-left: 10px;
+	border:none;
+	background-color: #2C5278;
+	outline: none;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+#col-9{
+	border: 1px solid #d7d7d7; 
+	background-color: white;
+}
+
+.icon-proposta{
+	background-color: #ccc;
+}
+
+#nome-tutor{ /*elenco tutor accademici */
+	background: none;
+	border: none;
+	color:white;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	outline: none;
+}
+
+#nome-tutor:hover{
+	text-decoration: underline;
+}
+
+#tabella-lista-proposte{
+	border: 1px solid #d7d7d7;
+}
+
+#usr, #sede {
+	width: 200px;
+}
+

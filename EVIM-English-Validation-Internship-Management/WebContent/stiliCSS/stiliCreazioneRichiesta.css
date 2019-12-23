@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+.scelte {
+	background-color: white;
+	text-align: left;
+	padding: 15px 0px 15px 15px;
+}
+
+.scelta-drop {
+	padding: 15px 0px 15px 15px;
+}
+
+#col-9 {
+	border: 1px solid #d7d7d7;
+	background-color: white;
+}
+
+#titolo{
+	font-size: 30px;
+	color: #595959;
+}
+
+#sel1,#sel2,#sel3,#sel4,#sel5{
+	width: 230px;
+}

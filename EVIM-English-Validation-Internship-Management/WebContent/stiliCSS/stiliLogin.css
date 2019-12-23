@@ -1,0 +1,46 @@
+@charset "ISO-8859-1";
+
+
+
+div{
+	display:block;
+}
+
+.container{
+	padding-right: 15px;
+	padding-left:15px;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+.card-container.card{
+	position:relative;
+	max-width: 400px;
+	height:530px;
+	padding:20px 30px;
+	margin-top:50px;
+}
+
+.card{
+	background-color: #F7F7F7;
+	background: rgba(255,255,255,0.9);
+	margin-top:50px;
+	margin:0 auto 25px;
+	border-radius: 2px;
+}
+
+.logo-img{
+	margin:0 auto 20px;
+	padding: 0 10px;
+	width:330px;
+	height:150px;
+}
+
+
+#username{
+	margin-bottom:20px;
+}
+
+#password{
+	margin-bottom:5px;
+}

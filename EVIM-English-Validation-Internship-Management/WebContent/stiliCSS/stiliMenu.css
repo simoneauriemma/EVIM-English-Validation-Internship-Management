@@ -1,0 +1,79 @@
+@charset "ISO-8859-1";
+
+#logoEvim{
+	height: 180px;
+	width: 180px;
+}
+
+a{
+  padding: 0px;
+  margin: 0px;
+  line-height: 34px; /* modificare la distanza fra i punti li */
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+
+#icon-max{
+	float: right; padding-top: 8px; padding-right: 5px;
+}
+
+#side-menu a.item, #foto{
+	border-left: 1px solid #d7d7d7;
+	border-right: 1px solid #d7d7d7;
+	border-top: 1px solid #d7d7d7; 
+	padding-left: 8px;
+}
+
+
+#side-menu a.item{
+	color: #333;
+	padding-left: 5px;
+	font-size: 14px;	
+}
+#side-menu ul li, #side-menu ul li a{
+	color: black;
+	font-size:14px;
+	padding-left: 5px;
+}
+
+#last-a{
+	border-bottom:  1px solid #d7d7d7;
+}
+
+
+/* si riferisce alla foto di evim */
+#foto{
+	background-color: white;
+}
+
+#side-menu a.item:hover {
+    background-color: #222;
+    text-decoration: none;
+    color:white;
+}
+
+#side-menu a.item{
+    padding-left: 18px;
+    background-color: #F9F9F9;
+    color: #333;
+}
+
+#side-menu ul, ul.collapse{
+	border-left: 1px solid #d7d7d7;
+	border-right: 1px solid #d7d7d7;
+	border-top: 1px solid #d7d7d7;
+	margin-bottom: 0px; 
+}
+#side-menu ul li{
+	list-style: none;
+}
+
+#side-menu ul li:hover{
+	font-weight: bold;
+}
+#side-menu ul, #side-menu ul a{
+	background-color: #f2f2f2;
+}
+
+
