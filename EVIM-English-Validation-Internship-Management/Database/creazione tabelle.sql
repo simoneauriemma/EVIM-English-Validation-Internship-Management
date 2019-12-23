@@ -9,6 +9,7 @@ SURNAME varchar(50) not null,
 SEX char not null,
 PASSWORD varchar(50) not null,
 USER_TYPE tinyint(1) not null,
+tipoCorso varchar(30),
 primary key (EMAIL)
 );
 
@@ -104,19 +105,18 @@ Descizione varchar(500) not null,
 primary key(ID_Azienda,CF) 
 );
 
-#id_Tutor pu√≤ essere SIA Tutor Aziendale che il Tutor Accademico
+#id_Tutor puÚ essere SIA Tutor Aziendale che il Tutor Accademico
 #Nel primo caso: viene inserito dall'azienda
-#Nel secondo caso: verr√† aggiunto automaticamente
-#Non pu√≤ essere referenziato in quando non si pu√≤ sapere a priori il tipo di tutor
+#Nel secondo caso: verr‡ aggiunto automaticamente
+#Non puÚ essere referenziato in quando non si puÚ sapere a priori il tipo di tutor
 create table Proposta(
 ID_Proposta int not null auto_increment, 
 Obiettivi varchar(200) not null,
-Sede varchar(100) not null,
-Tema_Ambito varchar(200) not null,
-Materiale_Risorse varchar(200) not null,
+Competenze varchar(200) not null,
+Attivit‡ varchar(200) not null,
+Modalit‡ varchar(400) not null,
 ID_Azienda int,
-ID_TutorAziendale int,
-ID_TutorAcc int,
+ID_Tutor int,
 primary key(ID_Proposta),
 foreign key(ID_Azienda) references Azienda(ID_Azienda)
 ON UPDATE cascade
@@ -127,7 +127,7 @@ ID_TutorAziendale int not null auto_increment,
 ID_Azienda int not null,
 Nome varchar(20) not null,
 Cognome varchar(20) not null,
-Email varchar(40) not null, 
+Email varchar(50) not null, 
 Password varchar(20),
 Sesso varchar(10) not null,
 PRIMARY KEY(ID_TutorAziendale),
@@ -147,7 +147,7 @@ primary key(ID_TutorAccademico)
 );
 create table TirocinioInterno(
 ID_TirocinioInterno int not null auto_increment,
-EMAIL varchar(30) not null,
+EMAIL varchar(50) not null,
 ID_tutorAccademico int not null,
 Data varchar(10),
 OreTotali int not null,
@@ -169,7 +169,7 @@ ON DELETE CASCADE
 );
 create table TirocinioEsterno(
 ID_TirocinioEsterno int not null auto_increment,
-EMAIL varchar(30) not null,
+EMAIL varchar(50) not null,
 ID_TutorAccademico int not null,
 ID_TutorAziendale int not null,
 Data varchar(10),
@@ -206,7 +206,7 @@ FOREIGN KEY(TirocinioEsterno) references TirocinioEsterno(ID_TirocinioEsterno)
 ON UPDATE cascade
 ON DELETE CASCADE
 );
-create table Attivit√†(
+create table Attivit‡(
 ID_Attivita int not null auto_increment,
 ID_Registro int not null,
 Descrizione varchar(200) not null,
@@ -234,7 +234,7 @@ ON DELETE cascade
 );
 create table Questionario_S(
 ID_Questionario int not null auto_increment,
-Email varchar(20) not null,
+Email varchar(50) not null,
 AssistenzaDisp tinyint not null,
 Informazioni tinyint not null,
 Servizi tinyint not null,
@@ -243,9 +243,9 @@ Logistica tinyint not null,
 Ambiente tinyint not null,
 Durata tinyint not null,
 Mansioni tinyint not null,
-Attivit√† tinyint not null,
+Attivit‡ tinyint not null,
 Formazione tinyint not null,
-Possibilit√† tinyint not null,
+Possibilit‡ tinyint not null,
 Valutazione tinyint not null,
 Competenze tinyint not null,
 primary key(ID_questionario),
@@ -255,13 +255,13 @@ ON DELETE cascade
 );
 create table Questionario_T(
 ID_Questionario int not null auto_increment,
-Email varchar(20) not null,
+Email varchar(50) not null,
 ID_TutorAziendale int not null,
 ComptenzeIngresso tinyint not null,
 CompetenzeAcquisite tinyint not null,
-Utilit√† tinyint not null,
+Utilit‡ tinyint not null,
 Motivazione tinyint not null,
-Capacit√† tinyint not null,
+Capacit‡ tinyint not null,
 Informazioni tinyint not null,
 Obiettivi tinyint not null,
 Servizi tinyint not null,
