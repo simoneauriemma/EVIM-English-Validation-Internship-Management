@@ -80,6 +80,7 @@ public class UserDAO {
 				utente.setSex(rs.getString(4).charAt(0));
 				utente.setPassword(rs.getString(5));
 				utente.setUserType(rs.getInt(6));
+				utente.setCorso(rs.getString(7));
 				return utente;
 			} else
 				return null;
@@ -92,7 +93,7 @@ public class UserDAO {
 	}
 	
 	public static boolean insertNewUser(User u) { // SOLO PER STUDENTE
-		String query= "INSERT INTO EVIM.user(`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USERTYPE`) VALUES(?,?,?,?,?,?)";
+		String query= "INSERT INTO EVIM.user(`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USERTYPE`,`tipoCorso`) VALUES(?,?,?,?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(query);
 			
@@ -102,6 +103,7 @@ public class UserDAO {
 			ps.setString(4, u.getSex()+ "");
 			ps.setString(5, u.getPassword());
 			ps.setInt(6, 0);
+			ps.setString(7, u.getCorso());
 			
 			if(ps.executeUpdate()==1) {
 				return true;

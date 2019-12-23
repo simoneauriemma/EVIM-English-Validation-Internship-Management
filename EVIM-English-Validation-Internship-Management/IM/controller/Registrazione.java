@@ -21,23 +21,36 @@ public class Registrazione extends BaseServlet {
        
  
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Servlet di registrazione come studente
+	 * @author Nicola Sisti
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String regexStudente="[a-z0-9\\.]+@studenti\\.unisa\\.it";
 		String email=request.getParameter("email");
 		String nome= request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String password= request.getParameter("password");
 		String cpassword= request.getParameter("cpassword");
 		String sesso= request.getParameter("sesso");
+		// se non sono loggato mi posso registrare altrimenti non ha senso
 		if(request.getParameter("utenteLoggato")==null) {
-			if(password.equals(cpassword)) {
+		
+			// controllo del formato e lunghezza caratteri
+			if( email.matches(regexStudente) && password.equals(cpassword) && nome!="" && cognome!="" && password!="" && sesso!="" &&nome.length()>7 && cognome.length()>7) {
 				User u= new User(email,nome,cognome,sesso.charAt(0),password,1);
 				UserDAO.insertNewUser(u);
+				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
+				rd.forward(request, response);
 			}
+			// se non rispetta i formati ritorna alla registrazione e invio un valore che conferma l'errato immissione dei dati
+			else {
+				request.setAttribute("errorReg", false);
+				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/registrazione.jsp");
+				rd.forward(request, response);
+			}
+			
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
-		rd.forward(request, response);
+
 		
 	}
 
