@@ -87,5 +87,34 @@ public class TutorAccademicoDAO {
 		}
 
 	}
+	
+	public static boolean insertNewTutorAccademico(String nome, String cognome,String password,String indirizzo,String email,String telefono) { 
+		String query= "INSERT INTO EVIM.tutoraccademico(`Nome`,`Cognome`,`Password`,`indirizzo`,`email`,`telefono`) VALUES(?,?,?,?,?,?)";
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement(query);
+			
+			ps.setString(1, nome);
+			ps.setString(2, cognome);
+			ps.setString(3, password);
+			ps.setString(4, indirizzo);
+			ps.setString(5, email);
+			ps.setString(6, telefono);
+			
+			
+			if(ps.executeUpdate()==1) {
+				return true;
+			}
+			else
+				return false;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			throw new RuntimeException(e);
+			
+		}
+
+		
+	}
 
 }

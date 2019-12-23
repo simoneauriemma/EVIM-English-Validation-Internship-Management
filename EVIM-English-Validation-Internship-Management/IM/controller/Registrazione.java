@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.TutorAccademico;
+import model.TutorAccademicoDAO;
 import model.User;
 import model.UserDAO;
 
@@ -36,37 +38,44 @@ public class Registrazione extends BaseServlet {
 		String sesso = request.getParameter("sesso");
 		String corso = request.getParameter("corso");
 		String telefono = "";
-		// se non sono loggato mi posso registrare altrimenti non ha senso
-		if (request.getParameter("utenteLoggato") == null) {
-
+		boolean result = false;
+// se non sono loggato mi posso registrare altrimenti non ha senso
+		if (request.getParameter("utenteLoggato") == null && email!=null) {
+// controllo se sono un docente
 			if (email.matches(regexDocente)) { // controllo del formato e lunghezza caratteri
-				if (password.equals(cpassword) && nome != "" && cognome != "" && password != "" && nome.length() > 7
-						&& cognome.length() > 7) {
-					// TurorAccademico u= new
-					// TutorAccademico(nome,cognome,sesso.charAt(0),password,1,corso);
-					// TutorAccademico.DAO // da fare
+				// controllo la bontà dei dati
+				if (password.equals(cpassword) && nome != "" && cognome != "" && password != "" && nome.length() > 2
+						&& cognome.length() > 2) {
+					result = TutorAccademicoDAO.insertNewTutorAccademico(nome, cognome, cpassword, "", email, telefono);
+
 				}
 
 			}
-		}
-
-		else if (email.matches(regexStudente)) {
-
-			if (password.equals(cpassword) && nome != "" && cognome != "" && password != "" && sesso != ""
-					&& nome.length() > 7 && cognome.length() > 7) {
-				User u = new User(email, nome, cognome, sesso.charAt(0), password, 1, corso);
-				UserDAO.insertNewUser(u);
-				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
-				rd.forward(request, response);
+// controllo se sono uno studente
+			else if (email.matches(regexStudente)) {
+				// controllo la bontà dei dati
+				if (password.equals(cpassword) && nome != "" && cognome != "" && password != "" && sesso != ""
+						&& nome.length() > 2 && cognome.length() > 2) {
+					User u = new User(email, nome, cognome, sesso.charAt(0), password, 1, corso);
+					result = UserDAO.insertNewUser(u);
+				}
 			}
 		}
+		// se l'operazione è andata buon fine invio un bool a true per dire che è andato a buon fine
+		if (result) {
+			request.setAttribute("result", true);
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
+			rd.forward(request, response);
+		}
+		// altrimenti il bool lo mando a false
+		else {
+			request.setAttribute("result", false);
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
+			rd.forward(request, response);
+		}
+	
 
-		// se non rispetta i formati ritorna alla registrazione e invio un valore che
-		// conferma l'errato immissione dei dati
-
-		request.setAttribute("errorReg", false);
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/registrazione.jsp");
-		rd.forward(request, response);
+		
 	}
 
 	/**
