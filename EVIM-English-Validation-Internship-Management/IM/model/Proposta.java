@@ -16,10 +16,50 @@ package model;
 
 public class Proposta {
 	int ID_Proposta, ID_Azienda, ID_Tutor;
-	String obiettivi, competenze, attivita, modalita;
+	String obiettivi, sede,temaAmbito,materialeRisorse,nomeTutorAziendale,cognomeTutorAziendale;
+
+	public String getNomeTutorAziendale() {
+		return nomeTutorAziendale;
+	}
+
+	public void setNomeTutorAziendale(String nomeTutorAziendale) {
+		this.nomeTutorAziendale = nomeTutorAziendale;
+	}
+
+	public String getCognomeTutorAziendale() {
+		return cognomeTutorAziendale;
+	}
+
+	public void setCognomeTutorAziendale(String cognomeTutorAziendale) {
+		this.cognomeTutorAziendale = cognomeTutorAziendale;
+	}
 
 	public int getID_Proposta() {
 		return ID_Proposta;
+	}
+
+	public String getSede() {
+		return sede;
+	}
+
+	public void setSede(String sede) {
+		this.sede = sede;
+	}
+
+	public String getTemaAmbito() {
+		return temaAmbito;
+	}
+
+	public void setTemaAmbito(String temaAmbito) {
+		this.temaAmbito = temaAmbito;
+	}
+
+	public String getMaterialeRisorse() {
+		return materialeRisorse;
+	}
+
+	public void setMaterialeRisorse(String materialeRisorse) {
+		this.materialeRisorse = materialeRisorse;
 	}
 
 	public void setID_Proposta(int iD_Proposta) {
@@ -48,30 +88,6 @@ public class Proposta {
 
 	public void setObiettivi(String obiettivi) {
 		this.obiettivi = obiettivi;
-	}
-
-	public String getCompetenze() {
-		return competenze;
-	}
-
-	public void setCompetenze(String competenze) {
-		this.competenze = competenze;
-	}
-
-	public String getAttivita() {
-		return attivita;
-	}
-
-	public void setAttivita(String attivita) {
-		this.attivita = attivita;
-	}
-
-	public String getModalita() {
-		return modalita;
-	}
-
-	public void setModalita(String modalita) {
-		this.modalita = modalita;
 	}
 
 }
