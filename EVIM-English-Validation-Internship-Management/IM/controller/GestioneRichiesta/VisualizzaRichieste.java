@@ -91,7 +91,7 @@ public class VisualizzaRichieste extends BaseServlet {
 					RequestDispatcher dispatcher = request.getRequestDispatcher("PermessionDeniend.jsp");
 					dispatcher.forward(request, response);
 				}
-			} else if (tipoUtente.equalsIgnoreCase("tutoraccademico")) {
+			} else if (tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
 				// viewListaRichiesteTirocinioInterno
 				// 2 arraylist
 				ArrayList<TirocinioInterno> tirociniInterno = new TirocinioInternoDAO().doRetriveAll();
@@ -102,7 +102,7 @@ public class VisualizzaRichieste extends BaseServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("viewListaRichiesteTirocinioInterno.jsp");
 				dispatcher.forward(request, response);
 
-			} else if (tipoUtente.equalsIgnoreCase("tutoraziendale")) {
+			} else if (tipoUtente.equalsIgnoreCase("model.tutoraziendale")) {
 				// viewListaRichiesteTirocinioEsterno
 				// solo 1 arraylist
 				ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO().doRetriveAll();
