@@ -15,7 +15,7 @@ text-align: center;
 </style>
 <jsp:include page="WEB-INF/navbarBlu.jsp"></jsp:include>
 <meta charset="ISO-8859-1">
-<title>Registro tirocinio</title>
+<title>Registro tirocinioooo</title>
 </head>
 <body>
 	<div class="container">
