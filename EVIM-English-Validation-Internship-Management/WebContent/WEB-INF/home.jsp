@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="navbarBlu.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
 <style>
-#foto1,#foto2,#foto3 {
+#foto1, #foto2, #foto3 {
 	width: 800px;
 	height: 400px;
 }
@@ -40,7 +41,21 @@
 			<div class="col-lg-9" id=""
 				style="border: 1px solid #d7d7d7; background-color: white;">
 				<br>
-				
+				<c:choose>
+
+					<c:when test="${empty result}">
+
+					</c:when>
+
+					<c:when test="${result == true}">
+						<div class="alert alert-success" role="alert">Registrazione
+							avvenuta con successo</div>
+					</c:when>
+
+					<c:otherwise>
+						
+					</c:otherwise>
+				</c:choose>
 				<div id="carouselExampleControls" class="carousel slide"
 					data-ride="carousel">
 					<div class="carousel-inner">
@@ -71,26 +86,27 @@
 				<p>
 					Il Sistema <span style="color: #2C5278; font-style: italic;">Internship
 						Management</span> nasce come estensione della piattaforma <span
-						style="color: #2C5278; font-style: italic;"> English Validation</span>. Si pone come
-					obiettivo principale la digitalizzazione di tutte le pratiche
-					necessarie per lo svolgimento del Tirocinio formativo o il
-					riconoscimento di attività lavorativa svolta, in modo da superare
-					definitivamente i costi e le inefficienze della gestione cartacea
-					del processo, garantendo una gestione decentralizzataed efficace,
-					così da avere ogni documento disponibile in rete ed accessibile
-					alle parti interessate da qualsiasi luogo ed in qualsiasi momento.
-				</p> <br>
+						style="color: #2C5278; font-style: italic;"> English
+						Validation</span>. Si pone come obiettivo principale la digitalizzazione
+					di tutte le pratiche necessarie per lo svolgimento del Tirocinio
+					formativo o il riconoscimento di attività lavorativa svolta, in
+					modo da superare definitivamente i costi e le inefficienze della
+					gestione cartacea del processo, garantendo una gestione
+					decentralizzataed efficace, così da avere ogni documento
+					disponibile in rete ed accessibile alle parti interessate da
+					qualsiasi luogo ed in qualsiasi momento.
+				</p>
+				<br>
 			</div>
 		</div>
 	</div>
 
 </body>
-<br> 
+<br>
 <script>
-$('.carousel').carousel({
-  interval: 3000
-})
-
+	$('.carousel').carousel({
+		interval : 3000
+	})
 </script>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>

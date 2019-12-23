@@ -108,13 +108,14 @@ public class UserDAO {
 			if(ps.executeUpdate()==1) {
 				return true;
 			}
-			else
-				return false;
+			
+				
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException(e);
+			
 		}
+		return false;
 
 		
 	}
