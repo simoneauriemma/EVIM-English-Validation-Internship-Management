@@ -36,16 +36,16 @@ public class Login extends BaseServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
-		System.out.println("test");
+		
 		// controllo campi null
 
 		if (email == null || password == null) {
-			System.out.println("hey");
+			
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
 			rd.forward(request, response);
 			
 		} else {
-			System.out.println("diocane");
+			
 			// dominio utenza (controllo degli indirizzi email)
 
 			// controllo studente 
