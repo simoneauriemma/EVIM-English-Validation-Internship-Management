@@ -111,11 +111,12 @@ primary key(ID_Azienda,CF)
 create table Proposta(
 ID_Proposta int not null auto_increment, 
 Obiettivi varchar(200) not null,
-Competenze varchar(200) not null,
-Attività varchar(200) not null,
-Modalità varchar(400) not null,
+Sede varchar(100) not null,
+Tema_Ambito varchar(200) not null,
+Materiale_Risorse varchar(200) not null,
 ID_Azienda int,
-ID_Tutor int,
+ID_TutorAziendale int,
+ID_TutorAcc int,
 primary key(ID_Proposta),
 foreign key(ID_Azienda) references Azienda(ID_Azienda)
 ON UPDATE cascade
