@@ -11,14 +11,14 @@ import java.util.ArrayList;
 public class TutorAccademico {
 
 	public TutorAccademico(int idTutorAccademico, String nome, String cognome, String password, String indirizzo,
-			String email, String sesso) {
+			String email, String telefono) {
 
 		this.idTutorAccademico = idTutorAccademico;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.password = password;
 		this.indirizzo = indirizzo;
-		this.sesso = sesso;
+		this.telefono = telefono;
 		this.email = email;
 	}
 
@@ -73,16 +73,20 @@ public class TutorAccademico {
 		this.indirizzo = indirizzo;
 	}
 
-	public String getSesso() {
-		return sesso;
+	
+
+	public String getTelefono() {
+		return telefono;
 	}
 
-	public void setSesso(String sesso) {
-		this.sesso = sesso;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
+
+
 
 	private int idTutorAccademico;
-	private String nome, cognome, password, indirizzo, email, sesso;
+	private String nome, cognome, password, indirizzo, email, telefono;
 	private ArrayList<Proposta> listeProposte;
 
 	public String getEmail() {

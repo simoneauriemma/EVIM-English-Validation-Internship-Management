@@ -3,7 +3,7 @@ package model;
 public class TutorAziendale {
 
 	public TutorAziendale(int id, int idazienda, String nome, String cognome, String email, String password,
-			String sesso) {
+			String telefono) {
 
 		this.id = id;
 		this.idazienda = idazienda;
@@ -11,7 +11,7 @@ public class TutorAziendale {
 		this.cognome = cognome;
 		this.email = email;
 		this.password = password;
-		this.sesso = sesso;
+		this.telefono= telefono;
 	}
 
 	public TutorAziendale() {
@@ -65,16 +65,25 @@ public class TutorAziendale {
 		this.password = password;
 	}
 
-	public String getSesso() {
-		return sesso;
+
+	public int getIdazienda() {
+		return idazienda;
 	}
 
-	public void setSesso(String sesso) {
-		this.sesso = sesso;
+	public void setIdazienda(int idazienda) {
+		this.idazienda = idazienda;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
 	private int id;
 	private int idazienda;
-	private String nome, cognome, email, password, sesso;
+	private String nome, cognome, email, password, telefono;
 
 }

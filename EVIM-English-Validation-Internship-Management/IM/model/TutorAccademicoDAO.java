@@ -36,8 +36,8 @@ public class TutorAccademicoDAO {
 				String password = risultato.getString(4);
 				String indirizzo = risultato.getString(5);
 				String email = risultato.getString(6);
-				String sesso = risultato.getString(7);
-				listeTutor.add(new TutorAccademico(id, nome, cognome, password, indirizzo, email, sesso));
+				String telefono = risultato.getString(7);
+				listeTutor.add(new TutorAccademico(id, nome, cognome, password, indirizzo, email, telefono));
 
 			}
 			return listeTutor;
@@ -76,7 +76,7 @@ public class TutorAccademicoDAO {
 				utente.setPassword(rs.getString(4));
 				utente.setIndirizzo(rs.getString(5));
 				utente.setEmail(rs.getString(6));
-				utente.setSesso(rs.getString(7));
+				utente.setTelefono(rs.getString(7));
 				return utente;
 			} else
 				return null;

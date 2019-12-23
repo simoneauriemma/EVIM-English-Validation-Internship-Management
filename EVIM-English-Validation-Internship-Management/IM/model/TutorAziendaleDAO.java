@@ -27,8 +27,8 @@ public class TutorAziendaleDAO {
 				String cognome = risultato.getString(4);
 				String email = risultato.getString(5);
 				String password = risultato.getString(6);
-				String sesso = risultato.getString(7);
-				A = new TutorAziendale(id, idazienda, nome, cognome, email, password, sesso);
+				String telefono = risultato.getString(7);
+				A = new TutorAziendale(id, idazienda, nome, cognome, email, password, telefono);
 
 			}
 
@@ -89,7 +89,7 @@ public class TutorAziendaleDAO {
 				utente.setCognome(rs.getString(4));
 				utente.setEmail(rs.getString(5));
 				utente.setPassword(rs.getString(6));
-				utente.setSesso(rs.getString(7));
+				utente.setTelefono(rs.getString(7));
 				return utente;
 			} else
 				return null;
