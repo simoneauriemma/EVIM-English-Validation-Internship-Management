@@ -61,7 +61,7 @@ public class Registrazione extends BaseServlet {
 				}
 			}
 		}
-		// se l'operazione è andata buon fine invio un bool a true per dire che è andato a buon fine
+		//! se l'operazione è andata buon fine invio un bool a true per dire che è andato a buon fine
 		if (result) {
 			request.setAttribute("result", true);
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
@@ -70,7 +70,7 @@ public class Registrazione extends BaseServlet {
 		// altrimenti il bool lo mando a false
 		else {
 			request.setAttribute("result", false);
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("registrazione.jsp");
 			rd.forward(request, response);
 		}
 	
