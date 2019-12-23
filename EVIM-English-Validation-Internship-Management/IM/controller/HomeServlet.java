@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 
  * @author simon Questa servlet sarà la servlet iniziale che indirizzerà alla
- *         pagina inziale del sistema
+ *         pagina inziale del sistema ok
  */
 
 @SuppressWarnings("serial")
