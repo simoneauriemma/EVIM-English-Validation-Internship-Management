@@ -63,7 +63,14 @@
 												type="radio" id="radio2"> <label for="radio2">F</label>
 
 										</div>
+										
+										<div style="margin-left: 5px;">
+											Tipo corso : <input name="corso" type="radio" id="radio1" checked>
+											<label for="radio1">Triennale</label> <input name="corso"
+												type="radio" id="radio2"> <label for="radio2">Magistrale</label>
 
+										</div>
+										
 										<br>
 										<button type="submit"  class="btn btn-success btn-block">Registrati</button>
 									</form>
