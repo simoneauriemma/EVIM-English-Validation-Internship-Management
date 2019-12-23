@@ -67,15 +67,23 @@ public class ValutareRichieste extends BaseServlet {
 				// tirocinio interno
 				if (conferma.equalsIgnoreCase("si")) {
 					// tirocinio interno
-					// 
 					TutorAccademico tutor = (TutorAccademico) session.getAttribute("utenteLoggato");
 					risposta = new TirocinioInternoDAO().updateFirmaTrue(true, idTirocinio,
 							tutor.getIdTutorAccademico());
+					request.setAttribute("esito", risposta);
+					RequestDispatcher dispatcher = request
+							.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinioInterno.jsp");
+					dispatcher.forward(request, response);
+
 				} else if (conferma.equalsIgnoreCase("no")) {
 					// cambia status in rifiutato
 					TutorAccademico tutor = (TutorAccademico) session.getAttribute("utenteLoggato");
 					risposta = new TirocinioInternoDAO().updateFirmaFalse(false, idTirocinio,
 							tutor.getIdTutorAccademico());
+					request.setAttribute("esito", risposta);
+					RequestDispatcher dispatcher = request
+							.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinioInterno.jsp");
+					dispatcher.forward(request, response);
 				}
 			} else if (request.getParameter("azienda").equalsIgnoreCase("azienda")) {
 				// tirocinio esterno
@@ -86,20 +94,38 @@ public class ValutareRichieste extends BaseServlet {
 					TutorAccademico tutor = (TutorAccademico) session.getAttribute("utenteLoggato");
 					risposta = new TirocinioEsternoDAO().updateFirmaTrueTutorAccademico(true, idTirocinio,
 							tutor.getIdTutorAccademico());
+					request.setAttribute("esito", risposta);
+					RequestDispatcher dispatcher = request
+							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinioEsterno.jsp");
+					dispatcher.forward(request, response);
+
 				} else if (conferma.equalsIgnoreCase("no")) {
 					// cambia status in rifiutato
 					TutorAccademico tutor = (TutorAccademico) session.getAttribute("utenteLoggato");
 					risposta = new TirocinioEsternoDAO().updateFirmaFalseTutorAccademico(false, idTirocinio,
 							tutor.getIdTutorAccademico());
+					request.setAttribute("esito", risposta);
+					RequestDispatcher dispatcher = request
+							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinioEsterno.jsp");
+					dispatcher.forward(request, response);
 
 				} else if (session.getAttribute("utenteLoggato").equals(TutorAziendale.class.getName())) {
 					// loggato un tutor aziendale
 					TutorAziendale tutor = (TutorAziendale) session.getAttribute("utenteLoggato");
 					risposta = new TirocinioEsternoDAO().updateFirmaTrueAziendale(true, idTirocinio, tutor.getId());
+					request.setAttribute("esito", risposta);
+					RequestDispatcher dispatcher = request
+							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinioEsterno.jsp");
+					dispatcher.forward(request, response);
+
 				} else if (conferma.equalsIgnoreCase("no")) {
 					// cambia status in rifiutato
 					TutorAziendale tutor = (TutorAziendale) session.getAttribute("utenteLoggato");
 					risposta = new TirocinioEsternoDAO().updateFirmaFalseAziendale(false, idTirocinio, tutor.getId());
+					request.setAttribute("esito", risposta);
+					RequestDispatcher dispatcher = request
+							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinioEsterno.jsp");
+					dispatcher.forward(request, response);
 
 				}
 
