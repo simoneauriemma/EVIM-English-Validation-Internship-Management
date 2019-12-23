@@ -129,20 +129,20 @@ Nome varchar(20) not null,
 Cognome varchar(20) not null,
 Email varchar(50) not null, 
 Password varchar(20),
-Sesso varchar(10) not null,
+Telefono varchar(30),
 PRIMARY KEY(ID_TutorAziendale),
 FOREIGN KEY(ID_Azienda) REFERENCES Azienda(ID_Azienda)
 ON UPDATE CASCADE
 ON DELETE CASCADE
 );
 create table TutorAccademico(
-ID_TutorAccademico int not null,
+ID_TutorAccademico int not null auto_increment,
 Nome varchar(20) not null,
 Cognome varchar(20) not null, 
 Password varchar(20),
 indirizzo varchar(40) not null,
 email varchar(50) not null,
-sesso varchar(10) not null,
+Telefono varchar(30),
 primary key(ID_TutorAccademico)
 );
 create table TirocinioInterno(

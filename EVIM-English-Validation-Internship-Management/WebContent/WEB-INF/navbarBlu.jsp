@@ -59,7 +59,7 @@
 
 			<c:choose>
 				<c:when test="${empty utenteLoggato}">
-					<a href="loginIM.jsp">
+					<a href="Login">
 						<button id="bott" style="border: 3px solid #2a4d71; outline: none;">LOGIN</button>
 					</a>
 				</c:when>
