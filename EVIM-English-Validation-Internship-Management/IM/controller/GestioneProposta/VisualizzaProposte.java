@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
+import model.Azienda;
 import model.Proposta;
 import model.PropostaDAO;
 import model.TutorAccademico;
@@ -51,27 +52,24 @@ public class VisualizzaProposte extends HttpServlet {
 			
 			// tirocinio interno
 			else if(tipoUtente.equalsIgnoreCase("model.Tutoraccademico")) {
-				System.out.println("sono dentro");
+				
 				TutorAccademico tutor=(TutorAccademico) sessione.getAttribute("utenteLoggato");
-				System.out.println("ID-->"+tutor.getIdTutorAccademico());
+				
 				ArrayList<Proposta> proposteInterne=PropostaDAO.findByIdTutorAccademico(tutor.getIdTutorAccademico());
-				System.out.println("finito");
-				
-				for(int i=0;i<proposteInterne.size();i++) {
-					System.out.println("proposta-->"+proposteInterne.get(i).getID_Proposta());
-				}
-				
+
 				request.setAttribute("proposte", proposteInterne);
+				request.setAttribute("type", "tutoraccademico");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("propostaTirocinio.jsp");
 				dispatcher.forward(request, response);
 				
 			}
 			//tirocinio esterno
-			else if(tipoUtente.equalsIgnoreCase("model.Tutoraziendale")) {
-				TutorAziendale tutor=(TutorAziendale) sessione.getAttribute("utenteLoggato");
-				ArrayList<Proposta> proposteEsterne=PropostaDAO.getProposteAziendaWithIdAzienda(tutor.getIdAzienda());
+			else if(tipoUtente.equalsIgnoreCase("model.Azienda")) {
+				Azienda tutor=(Azienda) sessione.getAttribute("utenteLoggato");
+				ArrayList<Proposta> proposteEsterne=PropostaDAO.getProposteAziendaWithIdAzienda(tutor.getID_Azinda());
 				
 				request.setAttribute("proposte", proposteEsterne);
+				request.setAttribute("type", "azienda");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("propostaTirocinio.jsp");
 				dispatcher.forward(request, response);
 				

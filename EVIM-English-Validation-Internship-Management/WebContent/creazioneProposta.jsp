@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,10 +25,29 @@
 
 
 				<div>
-				<i class="fa fa-user" style="margin-right: 5px;"></i>Tutor
+				
+			<!--  	<i class="fa fa-user" style="margin-right: 5px;"></i>Tutor
 					accademico
 				 <input type="text"
-							class="form-control" id="usr"> <br>
+							class="form-control" id="usr"> <br>-->
+				<c:if test="${type eq 'azienda'}">
+					<div class="scelta-drop">
+						<div class="form-group">
+							<label for="sel1"><i class="fas fa-briefcase"></i>
+								Tutor Aziendale</label> 
+								<select class="form-control"
+								id="tutoraccademico" name="tutoraccademico">
+								<c:forEach items="${elencoTutorAziendali}" var="tutor">
+									<option value='<c:out value="${tutor.id}"/>'>
+									<c:out value="${tutor.nome}"/> <c:out value="${tutor.cognome}"></c:out>
+									</option>
+								</c:forEach>
+								
+							</select>
+						</div>
+					</div>
+				</c:if>
+				
 					
 					<i class="fas fa-building" style="margin-right: 5px;"></i> Sede <input type="text"
 							class="form-control" id="sede"> 

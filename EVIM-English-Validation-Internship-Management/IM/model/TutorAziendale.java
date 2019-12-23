@@ -4,9 +4,8 @@ public class TutorAziendale {
 
 	public TutorAziendale(int id, int idazienda, String nome, String cognome, String email, String password,
 			String telefono) {
-
 		this.id = id;
-		this.idazienda = idazienda;
+		this.idAzienda = idazienda;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
@@ -26,11 +25,11 @@ public class TutorAziendale {
 	}
 
 	public int getIdAzienda() {
-		return idazienda;
+		return idAzienda;
 	}
 
-	public void setIdAzienda(int idazienda) {
-		this.idazienda = idazienda;
+	public void setIdAzienda(int idAzienda) {
+		this.idAzienda = idAzienda;
 	}
 
 	public String getNome() {
@@ -65,15 +64,6 @@ public class TutorAziendale {
 		this.password = password;
 	}
 
-
-	public int getIdazienda() {
-		return idazienda;
-	}
-
-	public void setIdazienda(int idazienda) {
-		this.idazienda = idazienda;
-	}
-
 	public String getTelefono() {
 		return telefono;
 	}
@@ -81,9 +71,9 @@ public class TutorAziendale {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-
 	private int id;
-	private int idazienda;
-	private String nome, cognome, email, password, telefono;
+	private int idAzienda;
+	private String nome, cognome, email, password, telefono,sesso;
+
 
 }
