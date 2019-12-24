@@ -88,7 +88,7 @@ public class TirocinioEsternoDAO {
 	public ArrayList<TirocinioEsterno> doRetriveAllValutazionePdCD() {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			String inValutazione = "in approvazione";
-			PreparedStatement ps = con.prepareStatement(" select * from EVIM.TirocinioInterno where status=? AND FirmaTutorAccademico=true AND FirmaAzienda=true AND FirmaTutorAziendale=true");
+			PreparedStatement ps = con.prepareStatement(" select * from EVIM.TirocinioEsterno where status=? AND FirmaTutorAccademico=true AND FirmaAzienda=true AND FirmaTutorAziendale=true");
 			ps.setString(1, inValutazione);
 			ArrayList<TirocinioEsterno> richieste = new ArrayList<TirocinioEsterno>();
 			ResultSet rs = ps.executeQuery();
