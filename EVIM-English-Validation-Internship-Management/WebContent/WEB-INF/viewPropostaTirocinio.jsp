@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<jsp:include page="WEB-INF/navbarBlu.jsp"></jsp:include>
+<jsp:include page="navbarBlu.jsp"></jsp:include>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
@@ -16,7 +16,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
-				<jsp:include page="WEB-INF/menu.jsp"></jsp:include>
+				<jsp:include page="menu.jsp"></jsp:include>
 			</div>
 
 			<div class="col-lg-9"
@@ -77,6 +77,12 @@
 							<c:out value="${proposta.materialeRisorse}" />
 							</td>
 						</tr>
+						<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a href="modificaProposta.jsp"><button class="btn btn-secondary">Modifica</button></a><button class="btn btn-secondary">Rimuovi</button></td>
+						</tr>
 					</tbody>
 				</c:forEach>
 				</table>
@@ -86,7 +92,7 @@
 	
 	<br>
 	<br>
-	<jsp:include page="WEB-INF/footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 </html>
