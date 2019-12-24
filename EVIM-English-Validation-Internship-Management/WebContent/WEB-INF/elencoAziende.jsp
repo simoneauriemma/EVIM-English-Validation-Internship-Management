@@ -83,7 +83,7 @@
 												<td><a href="${azienda.email}"><c:out
 															value="${azienda.email}" /></a></td>
 											</tr>
-
+ 
 											<tr>
 												<td class="icon"><i class="fas fa-arrow-circle-right"></i></td>
 												<td class=""><button type="button" data-toggle="modal"

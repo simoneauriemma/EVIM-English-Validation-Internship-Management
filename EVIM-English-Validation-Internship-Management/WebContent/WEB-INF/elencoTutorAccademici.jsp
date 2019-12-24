@@ -59,58 +59,78 @@
 										<h4>
 											<c:out value="${tutor.nome}" />
 										</h4>
-										<h6>ID Tutor accademico: <c:out value="${tutor.idTutorAccademico}" /></h6>
+										<h6>
+											ID Tutor accademico:
+											<c:out value="${tutor.idTutorAccademico}" />
+										</h6>
 										<br>
 										<h6>E-Mail:</h6>
 										<c:out value="${tutor.email}" />
-										 <br>
+										<br>
 									</div>
 									<br>
-									<h6>Lista proposte</h6>
-									<table class="table table-striped" id="tabella-lista-proposte">
-									<c:forEach items="${tutor.listeProposte}" var="proposta">
-										<tbody>
-											<tr style="background-color: #ccc; font-weight: bold;">
-												<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
-												<td class="">Numero proposta</td>
-												<td>
-												<c:out value="${proposta.ID_Proposta}" />
-												</td>
-											</tr>
-											<tr>
-												<td class="icon"><i class="fas fa-bullseye"></i></td>
-												<td class="">Obiettivi</td>
-												<td>
-												<c:out value="${proposta.obiettivi}" />
-												</td>
-											</tr>
-											<tr>
-												<td class="icon"><i class="fas fa-briefcase"></i></td>
-												<td class="">Sede</td>
-												<td><c:out value="${proposta.sede}" /></td>
-											</tr>
-											<tr>
-												<td class="icon"><i class="fas fa-chart-line"></i></td>
-												<td class="">Tema/Ambito</td>
-												<td><c:out value="${proposta.temaAmbito}" /></td>
-											</tr>
-											<tr>
-												<td class="icon"><i class="fas fa-chalkboard-teacher"></i></td>
-												<td class="">Materiale/Risorse</td>
-												<td><c:out value="${proposta.materialeRisorse}" /></td>
-											</tr>
-											<tr>
-												
-											</tr>
+									<button type="button" data-toggle="modal" id="proposte"
+										data-target="#exampleModalLong<%=n%>">Proposte</button>
 
-										</tbody>
+								</div>
+							</div>
+						</div>
+					
+					<div class="modal fade" id="exampleModalLong<%=n%>" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLongTitle"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLongTitle">
+										Lista proposte di <c:out value="${tutor.nome}" /> <c:out value="${tutor.cognome}" />
+									</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										id="chiudere" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<table class="table table-striped" id="tabella-lista-proposte">
+										<c:forEach items="${tutor.listeProposte}" var="proposta">
+											<tbody>
+												<tr style="background-color: #ccc; font-weight: bold;">
+													<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
+													<td class="">Numero proposta</td>
+													<td><c:out value="${proposta.ID_Proposta}" /></td>
+												</tr>
+												<tr>
+													<td class="icon"><i class="fas fa-bullseye"></i></td>
+													<td class="">Obiettivi</td>
+													<td><c:out value="${proposta.obiettivi}" /></td>
+												</tr>
+												<tr>
+													<td class="icon"><i class="fas fa-briefcase"></i></td>
+													<td class="">Sede</td>
+													<td><c:out value="${proposta.sede}" /></td>
+												</tr>
+												<tr>
+													<td class="icon"><i class="fas fa-chart-line"></i></td>
+													<td class="">Tema/Ambito</td>
+													<td><c:out value="${proposta.temaAmbito}" /></td>
+												</tr>
+												<tr>
+													<td class="icon"><i class="fas fa-chalkboard-teacher"></i></td>
+													<td class="">Materiale/Risorse</td>
+													<td><c:out value="${proposta.materialeRisorse}" /></td>
+												</tr>
+												<tr>
+
+												</tr>
+
+											</tbody>
 										</c:forEach>
 									</table>
 								</div>
 							</div>
 						</div>
+					</div>
 					</c:forEach>
-					
 				</div>
 
 
