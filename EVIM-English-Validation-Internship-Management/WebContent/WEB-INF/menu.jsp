@@ -125,7 +125,7 @@
 			
 
 			<c:if test="${type=='tutoraziendale'}">
-				<li><a href="viewRichiesteTirocinioEsterno.jsp"><i
+				<li><a href="VisualizzaProposte"><i
 						class="fas fa-angle-right "></i> Visualizza proposte </a></li>
 			</c:if>
 			<c:if test="${type=='tutoraccademico'}">

@@ -51,11 +51,26 @@
 						<div class="alert alert-success" role="alert">Registrazione
 							avvenuta con successo</div>
 					</c:when>
-
+					
+					
 					<c:otherwise>
 						
 					</c:otherwise>
 				</c:choose>
+				
+				<c:if test="${risultatoInserimentoProposta == true}">
+						<div class="alert alert-success" role="alert">
+						  Inserimento effettuato con successo
+						</div>
+					</c:if>
+					
+					<c:if test="${risultatoInserimentoProposta == false}">
+						<div class="alert alert-danger" role="alert">
+						  Inserimento non effettuato con successo
+						</div>
+					</c:if>
+				
+				
 				<div id="carouselExampleControls" class="carousel slide"
 					data-ride="carousel">
 					<div class="carousel-inner">
@@ -107,6 +122,12 @@
 	$('.carousel').carousel({
 		interval : 3000
 	})
+	
+	window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 2000);
 </script>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>
