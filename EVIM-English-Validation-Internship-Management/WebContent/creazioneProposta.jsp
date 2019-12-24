@@ -4,6 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+#button-container{
+text-align: center;
+}
+</style>
 <link rel="stylesheet" href="stiliCSS/stiliMenu.css">
 <link rel="stylesheet" href="stiliCSS/stiliPropostaTirocinio.css">
 <jsp:include page="WEB-INF/navbarBlu.jsp"></jsp:include>
@@ -20,7 +25,7 @@
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
 				<p id="titolo" style="font-size: 30px; color: #595959;">Crea
-					proposta di tirocinio curriculare</p>
+					proposta di tirocinio curriculare</p> <hr>
 
 
 <form action="creaProposta">
@@ -33,7 +38,7 @@
 			
 				<c:if test="${type eq 'azienda'}">
 					<div class="scelta-drop">
-						<div class="form-group">
+						<div class="form-group" style="width: 200px;">
 							<label for="sel1"><i class="fas fa-briefcase"></i>
 								Tutor Aziendale</label> 
 								<select class="form-control"
@@ -78,7 +83,10 @@
 						placeholder="Descrivi materiale/risorse..." rows="3" name="materiale_risorse"></textarea>
 				</div>
 				
-				<input type="submit" value="Conferma"/>
+				<div id="button-container">
+					<button type="submit" class="btn btn-secondary" id="button">CONFERMA
+					</button>
+				</div> <br>
 			</form>
 
 			</div>
