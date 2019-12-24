@@ -58,7 +58,7 @@ public class VisualizzaProposte extends HttpServlet {
 
 				request.setAttribute("proposte", proposteInterne);
 				request.setAttribute("type", "tutoraccademico");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("propostaTirocinio.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/viewPropostaTirocinio.jsp");
 				dispatcher.forward(request, response);
 				
 			}
@@ -69,7 +69,7 @@ public class VisualizzaProposte extends HttpServlet {
 				
 				request.setAttribute("proposte", proposteEsterne);
 				request.setAttribute("type", "azienda");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("propostaTirocinio.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/viewPropostaTirocinio.jsp");
 				dispatcher.forward(request, response);
 			}
 			else if(tipoUtente.equalsIgnoreCase("model.tutoraziendale")) {
@@ -78,7 +78,7 @@ public class VisualizzaProposte extends HttpServlet {
 				
 				request.setAttribute("proposte", proposteEsterne);
 				request.setAttribute("type", "tutoraziendale");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("propostaTirocinio.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/viewPropostaTirocinio.jsp");
 				dispatcher.forward(request, response);
 			}
 		}
