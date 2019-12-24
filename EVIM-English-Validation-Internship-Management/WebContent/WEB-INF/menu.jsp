@@ -258,7 +258,7 @@
 
 
 		<!-- INIZIO Gestione riconoscimento attività -->
-
+	<c:if test="${type=='studente' && type=='pdcd' }">
 		<a data-toggle="collapse" href="#collapse-1" class="item"
 			class="folder collapsed" aria-expanded="false">Gestione
 			riconoscimento attività <i id="icon-max"
@@ -280,7 +280,7 @@
 						Visulizza e valuta lista richieste riconoscimento </a></li>
 			</c:if>
 		</ul>
-		
+	</c:if>	
 		
 		<!-- INIZIO gestione account tutor -->
 	<c:if test="${type == 'azienda' }">

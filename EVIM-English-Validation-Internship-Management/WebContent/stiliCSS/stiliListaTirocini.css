@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+
+#titolo{
+	font-size: 30px;
+	color: #595959;
+}
+
+#col-9{
+	border: 1px solid #d7d7d7; 
+	background-color: white;
+}
+
+#tabella{
+	border: 1px solid #d7d7d7;
+	font-size: 14px;
+}
+
+#colonne{
+	color: white;
+	background-color: #2C5278;
+}
+
+#registro, #accettare{
+	font-size: 16px;
+	margin-left:20px;
+}
+
+
+#select{
+	font-size: 15px;
+}
+
+

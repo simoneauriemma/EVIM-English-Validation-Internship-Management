@@ -3,6 +3,7 @@ package controller.GestioneTirocinio;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +34,11 @@ public class ListaTirocini extends HttpServlet {
 		ArrayList<TirocinioInterno> interno= new ArrayList<TirocinioInterno>();
 		ArrayList<TirocinioEsterno> esterno= new ArrayList<TirocinioEsterno>();
 		HttpSession session= request.getSession();
+		if (session.getAttribute("utenteLoggato") == null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
+			dispatcher.forward(request, response);
+		}
+		
 		//
 		if(session.getAttribute("utenteLoggato")!=null) {
 			
