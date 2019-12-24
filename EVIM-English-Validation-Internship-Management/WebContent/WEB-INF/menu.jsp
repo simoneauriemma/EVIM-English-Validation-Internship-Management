@@ -215,7 +215,7 @@
 		
 		
 		
-		<!-- INIZIO Gestione rigistro tirocinio -->
+		<!-- INIZIO Gestione rigistro tirociniooo -->
 		
 		<a data-toggle="collapse" href="#collapse-5" class="item"
 			class="folder collapsed" aria-expanded="false">Gestione
