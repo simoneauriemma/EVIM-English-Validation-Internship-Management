@@ -107,9 +107,9 @@ public class PropostaDAO {
 
 	/**
 	 * @author Antonio Giano
-	 * @author Nicola Sisti Metodo che prende tutte le proposte relative ad un tutor
+	 * @author Nicola Sisti Metodo che prende tutte le proposte relative ad un tutor accademico
 	 *         specifico
-	 * @param idTutorAccademico
+	 * @param idTutor
 	 * @return Arralist<Proposta>
 	 */
 	public static ArrayList<Proposta> findByIdTutorAccademico(int idTutorAccademico) {
@@ -141,9 +141,42 @@ public class PropostaDAO {
 	
 	
 	/**
+	 * @author Antonio Giano
+	 * @param idTutorAziendale
+	 * @return restuisce un elenco di proposte di un tutor aziendale 
+	 */
+	public static ArrayList<Proposta> findByIdTutorAziendale(int idTutorAziendale) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement("select * from EVIM.proposta where ID_Tutor=?");
+			ps.setInt(1, idTutorAziendale);
+
+			ArrayList<Proposta> proposte = new ArrayList<Proposta>();
+			ResultSet risultato = ps.executeQuery();
+
+			while (risultato.next()) {
+				Proposta proposta = new Proposta();
+				proposta.setID_Proposta(risultato.getInt(1));
+				proposta.setObiettivi(risultato.getString(2));
+				proposta.setSede(risultato.getString(3));
+				proposta.setTemaAmbito(risultato.getString(4));
+				proposta.setMaterialeRisorse(risultato.getString(5));
+				proposta.setID_Azienda(risultato.getInt(6));
+				proposte.add(proposta);
+			}
+
+			return proposte;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
+	}
+	
+	
+	/**
 	 * 
 	 * @param idAzienda
-	 * @return restituisce un array di proposte con delle informazioni come nome e cognome di un tutor aziendale
+	 * @return restituisce un array di proposte con delle informazioni includenti IDProposta,Obiettivi,Sede,Tema/Ambito,Materiale/Risorse,IDTutorAziendale,il nome e il cognome di un tutor aziendale
 	 */
 	public static ArrayList<Proposta> getProposteAziendaWithIdAzienda(int idAzienda) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
@@ -180,43 +213,6 @@ public class PropostaDAO {
 	}
 	
 	
-	/**
-	 * 
-	 * @param idAzienda
-	 * @return restituisce un array di proposte di un tutor accademico con delle informazion come nome e cognome del TutorAccademioc
-	 */
-	/*
-	public static ArrayList<Proposta> getProposteAziendaWithIdTutorAccademico(int idAzienda) {
-		try (Connection con = DriverManagerConnectionPool.getConnection()) {
-			System.out.println("Eseguo la query");
-			PreparedStatement ps = con.prepareStatement("select ID_Proposta,Obiettivi,Sede,Tema_Ambito,Materiale_Risorse, Proposta.ID_TutorAcc,TutorAccademico.Nome,TutorAccademico.Cognome\r\n" + 
-					"from evim.Proposta join TutorAccademico on Proposta.ID_TutorAcc=TutorAccademico.ID_TutorAccademico\r\n" + 
-					"where Proposta.ID_TutorAcc=?;");
-			ps.setInt(1, idAzienda);
-
-			ArrayList<Proposta> proposte = new ArrayList<Proposta>();
-			ResultSet risultato = ps.executeQuery();
-
-			while (risultato.next()) {
-				System.out.println("Query");
-				Proposta proposta = new Proposta();
-				proposta.setID_Proposta(risultato.getInt(1));
-				proposta.setObiettivi(risultato.getString(2));
-				proposta.setSede(risultato.getString(3));
-				proposta.setTemaAmbito(risultato.getString(4));
-				proposta.setMaterialeRisorse(risultato.getString(5));
-				proposta.setID_TutorAcc(risultato.getInt(6));
-				proposte.add(proposta);
-				
-			}
-
-			return proposte;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-
-	}*/
 	
 	
 	/**

@@ -22,8 +22,6 @@
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
 				<p id="titolo">Proposta di tirocinio curriculare 
-				<c:if test="${type eq 'tutoraccademico'}">interno</c:if>	
-				<c:if test="${type eq 'azienda'}">esterno</c:if>
 				</p>
 				<div class="input-group">
 					<span class="input-group-addon">Filtro</span><input id="filter"
@@ -51,6 +49,13 @@
 							</td>
 						</tr>
 					</c:if>
+						<tr>
+							<td class="icon"><i class="fas fa-building"></i></td>
+							<td class="">Obiettivi</td>
+							<td>
+							<c:out value="${proposta.obiettivi}"/>
+							</td>
+						</tr>
 						<tr>
 							<td class="icon"><i class="fas fa-building"></i></td>
 							<td class="">Sede</td>

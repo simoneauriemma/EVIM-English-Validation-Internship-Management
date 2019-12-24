@@ -23,20 +23,21 @@
 					proposta di tirocinio curriculare</p>
 
 
-
+<form action="creaProposta">
 				<div>
 				
 			<!--  	<i class="fa fa-user" style="margin-right: 5px;"></i>Tutor
 					accademico
 				 <input type="text"
 							class="form-control" id="usr"> <br>-->
+			
 				<c:if test="${type eq 'azienda'}">
 					<div class="scelta-drop">
 						<div class="form-group">
 							<label for="sel1"><i class="fas fa-briefcase"></i>
 								Tutor Aziendale</label> 
 								<select class="form-control"
-								id="tutoraccademico" name="tutoraccademico">
+								id="tutoraccademico" name="tutorAziendale">
 								<c:forEach items="${elencoTutorAziendali}" var="tutor">
 									<option value='<c:out value="${tutor.id}"/>'>
 									<c:out value="${tutor.nome}"/> <c:out value="${tutor.cognome}"></c:out>
@@ -50,7 +51,7 @@
 				
 					
 					<i class="fas fa-building" style="margin-right: 5px;"></i> Sede <input type="text"
-							class="form-control" id="sede"> 
+							class="form-control" id="sede" name="sede"> 
 					</div>		
 				
 				<br>
@@ -59,7 +60,7 @@
 					<label for="exampleFormControlTextarea1"><i
 						class="fas fa-coins" style="margin-right: 5px;"></i>Tema/Ambito</label>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi tema/ambito..." rows="3"></textarea>
+						placeholder="Descrivi tema/ambito..." rows="3" name="tema_ambito"></textarea>
 				</div>
 
 				<div class="form-group">
@@ -67,15 +68,18 @@
 						class="fas fa-info-circle" style="margin-right: 5px;"></i>Obiettivo
 						formativo</label>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi obiettivo formativo..." rows="3"></textarea>
+						placeholder="Descrivi obiettivo formativo..." rows="3" name="obiettivo"></textarea>
 				</div>
 
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1"><i
 						class="fas fa-box-open" style="margin-right: 5px;"></i>Materiale/Risorse</label>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi materiale/risorse..." rows="3"></textarea>
+						placeholder="Descrivi materiale/risorse..." rows="3" name="materiale_risorse"></textarea>
 				</div>
+				
+				<input type="submit" value="Conferma"/>
+			</form>
 
 			</div>
 		</div>

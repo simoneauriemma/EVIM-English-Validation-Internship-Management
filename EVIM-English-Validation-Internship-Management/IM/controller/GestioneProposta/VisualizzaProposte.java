@@ -43,7 +43,6 @@ public class VisualizzaProposte extends HttpServlet {
 		}
 		else {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
-			System.out.println("tipo utente-->"+tipoUtente);
 			if(tipoUtente.equalsIgnoreCase("model.User")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissiondenied.jsp");
 				dispatcher.forward(request, response);
@@ -72,7 +71,15 @@ public class VisualizzaProposte extends HttpServlet {
 				request.setAttribute("type", "azienda");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("propostaTirocinio.jsp");
 				dispatcher.forward(request, response);
+			}
+			else if(tipoUtente.equalsIgnoreCase("model.tutoraziendale")) {
+				TutorAziendale tutoraziendale=(TutorAziendale) sessione.getAttribute("utenteLoggato");
+				ArrayList<Proposta> proposteEsterne=PropostaDAO.findByIdTutorAziendale(tutoraziendale.getId());
 				
+				request.setAttribute("proposte", proposteEsterne);
+				request.setAttribute("type", "tutoraziendale");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("propostaTirocinio.jsp");
+				dispatcher.forward(request, response);
 			}
 		}
 		

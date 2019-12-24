@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Azienda;
 import model.PropostaDAO;
 import model.TutorAccademico;
-import model.TutorAziendale;
 
 /**
  * @author Antonio Giano
@@ -31,11 +31,12 @@ public class creaProposta extends HttpServlet {
 		HttpSession sessione=request.getSession();
 		// controllo se è loggato l'utente altrimenti reindirizzo alla pagina login
 		if (sessione.getAttribute("utenteLoggato") == null) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/login.jsp");
 			dispatcher.forward(request, response);
 		}
 		else {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
+			System.out.println("tipoUtente-->"+tipoUtente);
 			// non adatto per lo studente,pdcd,ufficio carriere
 			if(tipoUtente.equalsIgnoreCase("model.User")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
@@ -43,14 +44,17 @@ public class creaProposta extends HttpServlet {
 			}
 			
 			// tirocinio interno
-			else if(tipoUtente.equalsIgnoreCase("tutoraccademico")) {
+			else if(tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
 				TutorAccademico tutor=(TutorAccademico) sessione.getAttribute("utenteLoggato");
 				String sede=request.getParameter("sede");
-				String temaAmbito=request.getParameter("tema/ambito");
-				String obiettivo=request.getParameter("Obiettivo");
-				String materialeRisorse=request.getParameter("materiale/risorse");
+				String temaAmbito=request.getParameter("tema_ambito");
+				String obiettivo=request.getParameter("obiettivo");
+				String materialeRisorse=request.getParameter("materiale_risorse");
+				
+				
 				
 				if(PropostaDAO.insertPropostaInterno(obiettivo, sede, temaAmbito, materialeRisorse, tutor.getIdTutorAccademico())) {
+					request.setAttribute("risultatoInserimentoProposta",true);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
 					dispatcher.forward(request, response);
 				}
@@ -60,20 +64,30 @@ public class creaProposta extends HttpServlet {
 				
 			}
 			//tirocinio esterno
-			else if(tipoUtente.equalsIgnoreCase("tutoraziendale")) {
-				TutorAziendale tutor= (TutorAziendale) sessione.getAttribute("utenteLoggato");
+			else if(tipoUtente.equalsIgnoreCase("model.azienda")) {
+				Azienda tutor= (Azienda) sessione.getAttribute("utenteLoggato");
 				int idTutorAziendale=Integer.parseInt(request.getParameter("tutorAziendale"));
 				String sede=request.getParameter("sede");
-				String temaAmbito=request.getParameter("tema/ambito");
-				String obiettivo=request.getParameter("Obiettivo");
-				String materialeRisorse=request.getParameter("materiale/risorse");
+				String temaAmbito=request.getParameter("tema_ambito");
+				String obiettivo=request.getParameter("obiettivo");
+				String materialeRisorse=request.getParameter("materiale_risorse");
 				
-				if(PropostaDAO.insertPropostaEsterno(obiettivo, sede, temaAmbito, materialeRisorse, tutor.getIdAzienda(),idTutorAziendale));
-				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
-				dispatcher.forward(request, response);
+				System.out.println("IDTutorAziendale-->"+idTutorAziendale);
+				System.out.println("sede-->"+sede);
+				System.out.println("temaAmbito-->"+temaAmbito);
+				System.out.println("obiettivo-->"+obiettivo);
+				System.out.println("materialeRisorse-->"+materialeRisorse);
+				
+				if(PropostaDAO.insertPropostaEsterno(obiettivo, sede, temaAmbito, materialeRisorse, tutor.getID_Azinda(),idTutorAziendale)) {
+					request.setAttribute("risultatoInserimentoProposta",true);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
+					dispatcher.forward(request, response);
+				}
 			}
 			else {
-				System.out.println("insert non andato a buon fine");
+				request.setAttribute("risultatoInserimentoProposta",false);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
+				dispatcher.forward(request, response);
 			}
 		}
 	}
