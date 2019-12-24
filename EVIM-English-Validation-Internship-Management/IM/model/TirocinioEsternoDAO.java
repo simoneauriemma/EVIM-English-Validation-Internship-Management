@@ -238,4 +238,40 @@ public class TirocinioEsternoDAO {
 		}
 
 	}
+	
+	public ArrayList<TirocinioEsterno> doRetriveTirocinioInSvolgimentoStudente(String EMAIL) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			// query per la visualizzazione della pagina da parte dello studente
+			// query per visualizzare le richieste in valutazione
+			String inSvolgimento= "in svolgimento";
+			PreparedStatement ps = con
+					.prepareStatement(" select * from EVIM.TirocinioEsterno where EMAIL=? AND status=?");
+			ps.setString(1, EMAIL);
+			ps.setString(2, inSvolgimento);
+			ArrayList<TirocinioEsterno> richieste = new ArrayList<TirocinioEsterno>();
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				TirocinioEsterno a = new TirocinioEsterno();
+				a.setID_TirocinioEsterno(rs.getInt("ID_TirocinioEsterno"));
+				a.setEMAIL(rs.getString("EMAIL"));
+				a.setID_TutorAccademico(rs.getInt("ID_TutorAccademico"));
+				a.setID_TutorAziendale(rs.getInt("ID_TutorAziendale"));
+				a.setData(rs.getString("Data"));
+				a.setOreTotali(rs.getInt("OreTotali"));
+				a.setStatus(rs.getString("status"));
+				a.setCFU(rs.getInt("CFU"));
+				a.setFirmaAzienda(rs.getBoolean("FirmaAzienda"));
+				a.setFirmaTutorAziendale(rs.getBoolean("FirmaTutorAziendale"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
+				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
+				a.setID_Proposta(rs.getInt("ID_Proposta"));
+			}
+			return richieste;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
+	}
 }
