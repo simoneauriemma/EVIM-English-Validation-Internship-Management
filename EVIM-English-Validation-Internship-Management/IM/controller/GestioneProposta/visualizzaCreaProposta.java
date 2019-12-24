@@ -52,15 +52,12 @@ public class visualizzaCreaProposta extends HttpServlet {
 			}
 			//tirocinio esterno
 			else if(tipoUtente.equalsIgnoreCase("model.azienda")) {
-				System.out.println("Eseguo");
+				
 				Azienda azienda=(Azienda) sessione.getAttribute("utenteLoggato");
 				
 				ArrayList<TutorAziendale> elencoTutorAziendali=TutorAziendaleDAO.getElencoTutorAziendali(azienda.getID_Azinda());
 				
-				for(int i=0;i<elencoTutorAziendali.size();i++) {
-					System.out.println("ID-->"+elencoTutorAziendali.get(i).getId());
-					System.out.println("Nome-->"+ elencoTutorAziendali.get(i).getNome());
-				}
+				
 				
 				request.setAttribute("elencoTutorAziendali", elencoTutorAziendali);
 				request.setAttribute("type", "azienda");
