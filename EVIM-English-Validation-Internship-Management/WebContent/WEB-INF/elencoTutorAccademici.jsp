@@ -7,7 +7,7 @@
 
 <html>
 <head>
-<!-- Collegamenti esterni -->
+<!-- Collegamenti esterniii -->
 
 <link rel="stylesheet" href="stiliCSS/stiliPropostaTirocinio.css">
 <!-- hanno gli stessi stili -->
