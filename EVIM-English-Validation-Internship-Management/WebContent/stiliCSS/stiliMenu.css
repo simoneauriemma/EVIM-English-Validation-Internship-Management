@@ -64,9 +64,14 @@ a{
 	border-right: 1px solid #d7d7d7;
 	border-top: 1px solid #d7d7d7;
 	margin-bottom: 0px; 
+	padding-left: 12px;
 }
 #side-menu ul li{
 	list-style: none;
+}
+
+#side-menu ul li a{ /* la grandezza del font dei figli di ogni gestione*/
+	font-size: 13px;
 }
 
 #side-menu ul li:hover{
