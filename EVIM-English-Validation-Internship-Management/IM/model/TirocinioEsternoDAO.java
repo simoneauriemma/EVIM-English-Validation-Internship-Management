@@ -80,6 +80,35 @@ public class TirocinioEsternoDAO {
 		}
 
 	}
+	
+	/**
+	 * @author Simone Auriemma
+	 * @return
+	 */
+	public ArrayList<TirocinioEsterno> doRetriveAllValutazionePdCD() {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			String inValutazione = "in approvazione";
+			PreparedStatement ps = con.prepareStatement(" select * from EVIM.TirocinioInterno where status=? AND FirmaTutorAccademico=true AND FirmaAzienda=true AND FirmaTutorAziendale=true");
+			ps.setString(1, inValutazione);
+			ArrayList<TirocinioEsterno> richieste = new ArrayList<TirocinioEsterno>();
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				TirocinioEsterno a = new TirocinioEsterno();
+				a.setID_TirocinioEsterno(rs.getInt("ID_tirocinioInterno"));
+				a.setID_TutorAccademico(rs.getInt("ID_tutorAccademico"));
+				a.setData(rs.getString("Data"));
+				a.setStatus(rs.getString("status"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
+				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
+				richieste.add(a);
+			}
+			return richieste;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 
 	/**
 	 * Query per restituire TUTTI i tirocini esterni in fase di valutazione

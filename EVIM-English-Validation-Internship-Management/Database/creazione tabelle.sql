@@ -105,16 +105,16 @@ Descizione varchar(500) not null,
 primary key(ID_Azienda,CF) 
 );
 
-#id_Tutor puï¿½ essere SIA Tutor Aziendale che il Tutor Accademico
+#id_Tutor può essere SIA Tutor Aziendale che il Tutor Accademico
 #Nel primo caso: viene inserito dall'azienda
-#Nel secondo caso: verrï¿½ aggiunto automaticamente
-#Non puï¿½ essere referenziato in quando non si puï¿½ sapere a priori il tipo di tutor
+#Nel secondo caso: verrà aggiunto automaticamente
+#Non può essere referenziato in quando non si può sapere a priori il tipo di tutor
 create table Proposta(
 ID_Proposta int not null auto_increment, 
 Obiettivi varchar(200) not null,
-Sede varchar(100) not null,
-Tema_Ambito varchar(200) not null,
-Materiale_Risorse varchar(400) not null,
+Competenze varchar(200) not null,
+Attività varchar(200) not null,
+Modalità varchar(400) not null,
 ID_Azienda int,
 ID_Tutor int,
 primary key(ID_Proposta),
@@ -154,7 +154,7 @@ OreTotali int not null,
 status varchar(20) not null,
 NumeroCFU int not null,
 FirmaPdCD boolean not null DEFAULT false,
-FirmaTutorAccademco boolean not null DEFAULT false,
+FirmaTutorAccademico boolean not null DEFAULT false,
 ID_Proposta int not null,
 primary key(ID_TirocinioInterno),
 foreign key(EMAIL) references User(EMAIL)
@@ -206,7 +206,7 @@ FOREIGN KEY(TirocinioEsterno) references TirocinioEsterno(ID_TirocinioEsterno)
 ON UPDATE cascade
 ON DELETE CASCADE
 );
-create table Attivitï¿½(
+create table Attività(
 ID_Attivita int not null auto_increment,
 ID_Registro int not null,
 Descrizione varchar(200) not null,
@@ -243,9 +243,9 @@ Logistica tinyint not null,
 Ambiente tinyint not null,
 Durata tinyint not null,
 Mansioni tinyint not null,
-Attivitï¿½ tinyint not null,
+Attività tinyint not null,
 Formazione tinyint not null,
-Possibilitï¿½ tinyint not null,
+Possibilità tinyint not null,
 Valutazione tinyint not null,
 Competenze tinyint not null,
 primary key(ID_questionario),
@@ -259,9 +259,9 @@ Email varchar(50) not null,
 ID_TutorAziendale int not null,
 ComptenzeIngresso tinyint not null,
 CompetenzeAcquisite tinyint not null,
-Utilitï¿½ tinyint not null,
+Utilità tinyint not null,
 Motivazione tinyint not null,
-Capacitï¿½ tinyint not null,
+Capacità tinyint not null,
 Informazioni tinyint not null,
 Obiettivi tinyint not null,
 Servizi tinyint not null,
