@@ -176,7 +176,7 @@
 				<c:if test="${type == 'studente'}">
 					<li><a href="creazioneRichiesta.jsp"><i
 							class="fas fa-angle-right "></i> Crea richiesta tirocinio </a></li>
-					<li><a href="VisualizzaRichieste"><i
+					<li><a href="visualizzaRichieste"><i
 							class="fas fa-angle-right "></i> Visualizza richieste di
 							tirocinio </a></li>
 					<li><a href="#"><i class="fas fa-angle-right "></i>
@@ -192,11 +192,8 @@
 				<!-- da vedere se queste cose sono vere -->
 				<c:if test="${type =='tutoraccademico'}">
 					<li><a href="viewListaRichiesteTirocinioInterno.jsp"><i
-							class="fas fa-angle-right "></i> Visualizza richieste
-							tirocinio interno</a></li>
-						<li><a href="viewListaRichiesteTirocinioEsterno.jsp"><i
-							class="fas fa-angle-right "></i> Visualizza richieste di
-							tirocinio esterno</a></li>
+							class="fas fa-angle-right "></i> Visualizza e valuta richieste
+							tirocinio</a></li>
 
 				</c:if>
 				<c:if test="${type =='tutoraziendale'}">
@@ -300,7 +297,7 @@
 				<ul id="collapse-7" class="collapse" aria-expanded="false"
 					style="height: 0px;">
 					<c:if test="${type =='azienda'}">
-						<li><a href="#"><i class="fas fa-angle-right"></i> Crea
+						<li><a href="gestioneAccount.jsp"><i class="fas fa-angle-right"></i> Crea
 								account tutor aziendale </a></li>
 						<li><a href="#"><i class="fas fa-angle-right"></i>
 								Modifica dati personali </a></li>

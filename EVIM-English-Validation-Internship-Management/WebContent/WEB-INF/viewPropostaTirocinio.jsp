@@ -5,7 +5,7 @@
 
 <html>
 <head>
-<!-- collegamenti esterniii -->
+<!-- collegamenti esterni -->
 <link rel="stylesheet" href="stiliCSS/stiliPropostaTirocinio.css">
 
 <meta charset="ISO-8859-1">
@@ -22,11 +22,25 @@
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
 				<p id="titolo">Proposta di tirocinio curriculare</p>
+				<c:if test="${type == 'azienda'}">
 				<div class="input-group">
+				
+					<span class="input-group-addon">Filtro</span><input id="filter"
+						type="text" class="form-control"
+						placeholder="Cerca in base al nome del Tutor aziendale...">
+				
+				</div>
+				</c:if>
+				
+				<c:if test="${type == 'tutoraccademico'}">
+				<div class="input-group">
+				
 					<span class="input-group-addon">Filtro</span><input id="filter"
 						type="text" class="form-control"
 						placeholder="Cerca in base al nome del Tutor interno...">
+				
 				</div>
+				</c:if>
 				<br>
 
 				<table class="table table-striped" id="tabella">
@@ -47,7 +61,7 @@
 								</tr>
 							</c:if>
 							<tr>
-								<td class="icon"><i class="fas fa-building"></i></td>
+								<td class="icon"><i class="fas fa-info-circle"></i></td>
 								<td class="">Obiettivi</td>
 								<td><c:out value="${proposta.obiettivi}" /></td>
 							</tr>
@@ -66,16 +80,17 @@
 								<td class="">Materiale/Risorse</td>
 								<td><c:out value="${proposta.materialeRisorse}" /></td>
 							</tr>
-							
+							<tr>
+								<td></td>
+								<td></td>
+
+								<td style="text-align: right;"><a href="modificaProposta.jsp"><button
+											class="btn btn-secondary">Modifica</button></a>
+									<button class="btn btn-secondary" style="margin-left: 10px;">Rimuovi</button></td>
+							</tr>
 						</tbody>
-						
 					</c:forEach>
 				</table>
-				<div class="text-center">
-					<a href="modificaProposta.jsp"><button
-											class="btn btn-secondary">Modifica</button></a>
-								<button class="btn btn-secondary">Rimuovi</button>
-				</div>
 			</div>
 		</div>
 	</div>

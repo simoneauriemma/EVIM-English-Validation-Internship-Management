@@ -84,7 +84,7 @@ text-align: center;
 				</div>
 				
 				<div id="button-container">
-					<button type="submit" class="btn btn-secondary" id="button">CONFERMA
+					<button type="submit" class="btn btn-secondary" id="button" style="background-color: #2C5278;">CONFERMA
 					</button>
 				</div> <br>
 			</form>
