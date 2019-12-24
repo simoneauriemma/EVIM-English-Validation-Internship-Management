@@ -21,75 +21,65 @@
 
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
-				<p id="titolo">Proposta di tirocinio curriculare 
-				</p>
+				<p id="titolo">Proposta di tirocinio curriculare</p>
 				<div class="input-group">
 					<span class="input-group-addon">Filtro</span><input id="filter"
-						type="text" class="form-control" placeholder="Cerca in base al nome del Tutor interno...">
+						type="text" class="form-control"
+						placeholder="Cerca in base al nome del Tutor interno...">
 				</div>
 				<br>
-				
+
 				<table class="table table-striped" id="tabella">
-			
-				<c:forEach items="${proposte}" var="proposta">
-					<tbody>
-						<tr id="numero">
-							<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
-							<td class="">Numero proposta</td>
-							<td>
-							<c:out value="${proposta.ID_Proposta}" />
-							</td>
-						</tr>
-					<c:if test="${type eq 'azienda'}">	
-						<tr>
-							<td class="icon"><i class="fas fa-building"></i></td>
-							<td class="">Tutor Aziendale</td>
-							<td>
-							<c:out value="${proposta.nomeTutorAziendale}"/> <c:out value="${proposta.cognomeTutorAziendale}"/>
-							</td>
-						</tr>
-					</c:if>
-						<tr>
-							<td class="icon"><i class="fas fa-building"></i></td>
-							<td class="">Obiettivi</td>
-							<td>
-							<c:out value="${proposta.obiettivi}"/>
-							</td>
-						</tr>
-						<tr>
-							<td class="icon"><i class="fas fa-building"></i></td>
-							<td class="">Sede</td>
-							<td>
-							<c:out value="${proposta.sede}"/>
-							</td>
-						</tr>
-						<tr>
-							<td class="icon"><i class="fas fa-coins"></i></td>
-							<td class="">Tema/Ambito</td>
-							<td>
-							<c:out value="${proposta.temaAmbito}" />
-							</td>
-						</tr>
-						<tr>
-							<td class="icon"><i class="fas fa-box-open"></i></td>
-							<td class="">Materiale/Risorse</td>
-							<td>
-							<c:out value="${proposta.materialeRisorse}" />
-							</td>
-						</tr>
-						<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td><a href="modificaProposta.jsp"><button class="btn btn-secondary">Modifica</button></a><button class="btn btn-secondary">Rimuovi</button></td>
-						</tr>
-					</tbody>
-				</c:forEach>
+
+					<c:forEach items="${proposte}" var="proposta">
+						<tbody>
+							<tr id="numero">
+								<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
+								<td class="">Numero proposta</td>
+								<td><c:out value="${proposta.ID_Proposta}" /></td>
+							</tr>
+							<c:if test="${type eq 'azienda'}">
+								<tr>
+									<td class="icon"><i class="fas fa-building"></i></td>
+									<td class="">Tutor Aziendale</td>
+									<td><c:out value="${proposta.nomeTutorAziendale}" /> <c:out
+											value="${proposta.cognomeTutorAziendale}" /></td>
+								</tr>
+							</c:if>
+							<tr>
+								<td class="icon"><i class="fas fa-building"></i></td>
+								<td class="">Obiettivi</td>
+								<td><c:out value="${proposta.obiettivi}" /></td>
+							</tr>
+							<tr>
+								<td class="icon"><i class="fas fa-building"></i></td>
+								<td class="">Sede</td>
+								<td><c:out value="${proposta.sede}" /></td>
+							</tr>
+							<tr>
+								<td class="icon"><i class="fas fa-coins"></i></td>
+								<td class="">Tema/Ambito</td>
+								<td><c:out value="${proposta.temaAmbito}" /></td>
+							</tr>
+							<tr>
+								<td class="icon"><i class="fas fa-box-open"></i></td>
+								<td class="">Materiale/Risorse</td>
+								<td><c:out value="${proposta.materialeRisorse}" /></td>
+							</tr>
+							
+						</tbody>
+						
+					</c:forEach>
 				</table>
+				<div class="text-center">
+					<a href="modificaProposta.jsp"><button
+											class="btn btn-secondary">Modifica</button></a>
+								<button class="btn btn-secondary">Rimuovi</button>
+				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<br>
 	<br>
 	<jsp:include page="footer.jsp"></jsp:include>
