@@ -86,7 +86,7 @@
 
 										<div style="margin-left: 5px;" id="boxcorso">
 											Tipo corso : <input name="corso" type="radio" id="radio1"
-												value="triennale"> <label for="radio1">Triennale</label>
+												value="triennale" checked> <label for="radio1">Triennale</label>
 											<input name="corso" value="magistrale" type="radio"
 												id="radio2"> <label for="radio2">Magistrale</label>
 											<p id="resultRegexCorso"></p>
@@ -133,7 +133,7 @@
 
 			//corso
 			var corso1 = $('#radio1');
-			var corso2 = $('#corso2');
+			var corso2 = $('#radio2');
 			var resultRegexCorso = $('#resultRegexCorso');
 			var divcorso = $('#boxcorso');
 
