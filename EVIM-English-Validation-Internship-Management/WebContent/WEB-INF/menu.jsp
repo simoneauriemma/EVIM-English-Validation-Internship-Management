@@ -287,7 +287,7 @@
 				</ul>
 			</c:if>
 
-			<!-- INIZIO gestione account tutor -->
+			<!-- INIZIO gestione account tutorrr -->
 			<c:if test="${type == 'azienda' }">
 				<a data-toggle="collapse" href="#collapse-7" class="item"
 					class="folder collapsed" aria-expanded="false">Gestione account
