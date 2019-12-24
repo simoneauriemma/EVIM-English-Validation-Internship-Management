@@ -75,7 +75,7 @@ public class VisualizzaRichieste extends BaseServlet {
 					
 						ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO()
 								.doRetriveAllByStudent(studente.getEmail());
-						System.out.println(tirocinioEsterno);
+						//System.out.println(tirocinioEsterno);
 						request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 						request.setAttribute("arrayTirocinioInterno", tirocinioInterno);
 					
@@ -85,10 +85,16 @@ public class VisualizzaRichieste extends BaseServlet {
 
 					}
 
-				} else {
-					// è loggato il PdCD o ufficio carriere
-					// pagina da fare permession denied
-					RequestDispatcher dispatcher = request.getRequestDispatcher("PermessionDeniend.jsp");
+				} else if(studente.getUserType()==1) {
+					// è loggato il PdCD
+					
+					ArrayList<TirocinioInterno> tirocinioInterno = new TirocinioInternoDAO().doRetriveAllValutazionePdCD();
+					ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO().doRetriveAllValutazionePdCD();
+					
+					request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
+					request.setAttribute("arrayTirocinioInterno", tirocinioInterno);
+					
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewRichiestaTiricinioStudente.jsp");
 					dispatcher.forward(request, response);
 				}
 			} else if (tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
