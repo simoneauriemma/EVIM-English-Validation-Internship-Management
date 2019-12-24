@@ -5,7 +5,7 @@
 
 <html>
 <head>
-<!-- collegamenti esterni -->
+<!-- collegamenti esterniii -->
 <link rel="stylesheet" href="stiliCSS/stiliPropostaTirocinio.css">
 
 <meta charset="ISO-8859-1">
