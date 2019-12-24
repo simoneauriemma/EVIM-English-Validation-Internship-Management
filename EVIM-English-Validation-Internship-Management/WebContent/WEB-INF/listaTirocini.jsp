@@ -31,11 +31,11 @@
 			<c:if test="${type == 'studente' }">
 			
 			<!-- Se la lista di tirocini esterni è vuota esce che non c'è nulla -->
-			<c:if test="${tirocinioEsterno.size() == 0}"> 
+			<c:if test="${arrayTirocinioEsterno.size() == 0}"> 
 				<p>Nessuna richieste di tirocinio esterno è stata effettuata!</p>
 			</c:if>
 			
-				<c:if test="${tirocinioEsterno.size() > 0}">
+				<c:if test="${arrayTirocinioEsterno.size() > 0}">
 					<c:forEach items="${arrayTirocinioEsterno}" var="esterno">
 
 						<table class="table table-striped" id="tabella">
@@ -84,103 +84,7 @@
 					</c:forEach>
 				</c:if>
 			</c:if>
-
-
-
-
-
-
-			<!-- SE L'UTENTE LOGGATO E' UNO TUTOR AZIENZALE  
-			<c:if test="${type == 'tutoraziendale' }">
-				<table class="table table-striped" id="tabella">
-					<thead>
-						<tr id="colonne">
-							<th scope="col">ID Tirocinio</th>
-							<th scope="col">Responsabile</th>
-							<th scope="col">CFU</th>
-							<th scope="col">Ore Max</th>
-							<th scope="col">Registro tirocinio</th>
-							<th scope="col">Operazioni</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mario</td>
-							<td>Verdi</td>
-							<td>mario.verdi</td>
-							<td>mario.verdi</td>
-							<td class="form-inline text-center">
-								<form>
-									<i id="registro" class="fas fa-book"></i>
-								</form>
-								<form id="accettare">
-									<i class="fas fa-check-square"></i>
-								</form>
-							</td>
-							<td>
-								<div class="form-group">
-									<select class="form-control" id="select"
-										onchange="getTutors(this.value)" name="sel1">
-										<option selected>--select an option--</option>
-										<option value="">Visualizza progetto</option>
-										<option value="">Compila questionario</option>
-									</select>
-								</div>
-							</td>
-
-						</tr>
-
-					</tbody>
-				</table>
-
-			</c:if> -->
-
-			<!-- SE L'UTENTE LOGGATTO E' IL TUTOR ACCADEMICO 
-			<c:if test="${type == 'tutoraccademico' }">
-				<table class="table table-striped" id="tabella">
-					<thead>
-						<tr id="colonne">
-							<th scope="col">ID Tirocinio</th>
-							<th scope="col">Responsabile</th>
-							<th scope="col">CFU</th>
-							<th scope="col">Ore Max</th>
-							<th scope="col">Tipo tirocinio</th>
-							<th scope="col">Registro tirocinio</th>
-							<th scope="col">Operazioni</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mario</td>
-							<td>Verdi</td>
-							<td>mario.verdi</td>
-							<td>mario.verdi</td>
-							<td class="form-inline text-center">
-								<form>
-									<i id="registro" class="fas fa-book"></i>
-								</form>
-								<form id="accettare">
-									<i class="fas fa-check-square"></i>
-								</form>
-							</td>
-							<td>
-								<div class="form-group">
-									<select class="form-control" id="select"
-										onchange="getTutors(this.value)" name="sel1">
-										<option selected>--select an option--</option>
-										<option value="">Visualizza progetto</option>
-										<option value="">Compila questionario</option>
-									</select>
-								</div>
-							</td>
-
-						</tr>
-
-					</tbody>
-				</table>
-			</c:if> -->
+<!-- file -->
 		</div>
 
 	</div>
