@@ -40,7 +40,7 @@ public class VisualizzaRichieste extends BaseServlet {
 		// verifico prima se esiste un utente nella sessione, se non esiste lo
 		// reindirizzo nella pagina di login
 		if (sessione.getAttribute("utenteLoggato") == null) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			// prendo dalla sessione il nome dell'oggetto dell'utente loggato
@@ -64,7 +64,7 @@ public class VisualizzaRichieste extends BaseServlet {
 								.doRetriveAllByStudent(studente.getEmail());
 						request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 						RequestDispatcher dispatcher = request
-								.getRequestDispatcher("WEB-INF/viewRichiestaTiricinioStudente.jsp");
+								.getRequestDispatcher("./WEB-INF/viewRichiestaTiricinioStudente.jsp");
 						dispatcher.forward(request, response);
 					} else {
 						// studenti triennali, quindi i tirocini possono essere sia interni che esterni
@@ -78,7 +78,7 @@ public class VisualizzaRichieste extends BaseServlet {
 						request.setAttribute("arrayTirocinioInterno", tirocinioInterno);
 					
 						RequestDispatcher dispatcher = request
-								.getRequestDispatcher("WEB-INF/viewRichiestaTiricinioStudente.jsp");
+								.getRequestDispatcher("./WEB-INF/viewRichiestaTiricinioStudente.jsp");
 						dispatcher.forward(request, response);
 
 					}
@@ -92,7 +92,7 @@ public class VisualizzaRichieste extends BaseServlet {
 					request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 					request.setAttribute("arrayTirocinioInterno", tirocinioInterno);
 					
-					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewRichiestaTiricinioStudente.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/viewRichiestaTiricinioStudente.jsp");
 					dispatcher.forward(request, response);
 				}
 			} else if (tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
@@ -103,7 +103,7 @@ public class VisualizzaRichieste extends BaseServlet {
 
 				request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 				request.setAttribute("arrayTirocinioInterno", tirociniInterno);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("viewListaRichiesteTirocinioInterno.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/viewListaRichiesteTirocinioInterno.jsp");
 				dispatcher.forward(request, response);
 
 			} else if (tipoUtente.equalsIgnoreCase("model.tutoraziendale")) {
@@ -111,7 +111,7 @@ public class VisualizzaRichieste extends BaseServlet {
 				// solo 1 arraylist
 				ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO().doRetriveAll();
 				request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("viewListaRichiesteTirocinioEsterno.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/viewListaRichiesteTirocinioEsterno.jsp");
 				dispatcher.forward(request, response);
 			}
 
