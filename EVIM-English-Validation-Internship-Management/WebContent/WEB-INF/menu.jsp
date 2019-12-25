@@ -176,7 +176,7 @@
 				<c:if test="${type == 'studente'}">
 					<li><a href="creazioneRichiesta.jsp"><i
 							class="fas fa-angle-right "></i> Crea richiesta tirocinio </a></li>
-					<li><a href="visualizzaRichieste"><i
+					<li><a href="VisualizzaRichieste"><i
 							class="fas fa-angle-right "></i> Visualizza richieste di
 							tirocinio </a></li>
 					<li><a href="#"><i class="fas fa-angle-right "></i>
@@ -184,8 +184,10 @@
 				</c:if>
 
 				<c:if test="${type == 'pdcd'}">
-					<li><a href="#"><i class="fas fa-angle-right "></i>
-							Visualizza richieste tirocine interni e esterni</a></li>
+					<li><a href="viewListaRichiesteTirocinioInterno.jsp"><i class="fas fa-angle-right "></i>
+							Visualizza richieste tirocinio interno</a></li>
+					<li><a href="viewListaRichiesteTirocinioEsterno.jsp"><i class="fas fa-angle-right "></i>
+							Visualizza richieste tirocinio esterno</a></li>
 				</c:if>
 
 

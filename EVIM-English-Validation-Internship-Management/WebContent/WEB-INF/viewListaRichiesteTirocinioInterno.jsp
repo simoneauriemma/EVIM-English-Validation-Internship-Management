@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<jsp:include page="WEB-INF/navbarBlu.jsp"></jsp:include>
+<jsp:include page="navbarBlu.jsp"></jsp:include>
 
 <head>
 <link rel="stylesheet" href="stiliCSS/stiliRichiesteTirocinio.css">
@@ -16,13 +16,13 @@
 
 		<div class="col-lg-3">
 
-			<jsp:include page="WEB-INF/menu.jsp"></jsp:include>
+			<jsp:include page="menu.jsp"></jsp:include>
 
 		</div>
 
 		<div class="col-lg-9" id="col-9">
 
-			<p id="titolo">Visualizza lista richieste tirocinio interno</p>
+			<p id="titolo">Richieste tirocinio interno</p>
 			<div class="accordion">
 				<div class="card">
 
@@ -87,7 +87,7 @@
 	</div>
 </div>
 <br>
-<jsp:include page="WEB-INF/footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"></jsp:include>
 
 <script>
 	$(document).ready(function() {
