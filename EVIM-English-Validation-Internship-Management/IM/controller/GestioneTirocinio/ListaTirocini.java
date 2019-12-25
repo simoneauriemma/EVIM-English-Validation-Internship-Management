@@ -19,74 +19,149 @@ import model.UserDAO;
 
 /**
  * Servlet implementation class ListaTirocini
+ * 
+ * Questa lista può essere visualizzata dal tutor accademico, aziendale e
+ * studente
+ * 
+ * @author Simone Auriemma
  */
+@SuppressWarnings("serial")
 @WebServlet("/ListaTirocini")
 public class ListaTirocini extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-  
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<TirocinioInterno> interno= new ArrayList<TirocinioInterno>();
-		ArrayList<TirocinioEsterno> esterno= new ArrayList<TirocinioEsterno>();
-		HttpSession session= request.getSession();
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
 		if (session.getAttribute("utenteLoggato") == null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
 			dispatcher.forward(request, response);
-		}
-		
-		//
-		if(session.getAttribute("utenteLoggato")!=null) {
-			
-			//studente
-			if(session.getAttribute("type").equals("studente")) {
-				
-				User studente=(User) session.getAttribute("utenteLoggato");
-				interno= new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoStudente(studente.getEmail());
-				esterno= new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoStudente(studente.getEmail());
-				if(!interno.isEmpty()&& interno!=null) {
-					session.setAttribute("interno", interno);
-					
+		} else {
+
+			ArrayList<TirocinioInterno> interno = new ArrayList<TirocinioInterno>();
+			ArrayList<TirocinioEsterno> esterno = new ArrayList<TirocinioEsterno>();
+			// studente
+			if (session.getAttribute("type").equals("studente")) {
+
+				User studente = (User) session.getAttribute("utenteLoggato");
+				interno = new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoStudente(studente.getEmail());
+				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoStudente(studente.getEmail());
+
+				if (!(interno.isEmpty())) {
+					// significa che ha fatto il tirocinio interno
+					ArrayList<RegistroQuery> listaTirocini = new TirocinioInternoDAO()
+							.doRetriveTirocinioInSvolgimentoStudenteRegistro();
+
+					request.setAttribute("registroQuery", studente);
+
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
+					dispatcher.forward(request, response);
+
+				} else if (!(esterno.isEmpty())) {
+					//esterno
+					ArrayList<RegistroQuery> listaTirocini = new TirocinioEsternoDAO()
+							.doRetriveTirocinioInSvolgimentoStudenteRegistro();
+
+					request.setAttribute("registroQuery", listaTirocini);
+
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
+					dispatcher.forward(request, response);
 				}
-				if(!esterno.isEmpty()&& esterno!=null) {
-					session.setAttribute("esterno", esterno);
-					
-				}
-				
 			}
-			
-			//Tutor Accademico
-			
+
+			// Tutor Accademico
+
 			else if (session.getAttribute("type").equals("tutoraccademico")) {
-				
+
 			}
-			
+
 			// Tutor Aziendale
-			else if(session.getAttribute("type").equals("tutoraaziendale")) {
-				
+			else if (session.getAttribute("type").equals("tutoraaziendale")) {
+
 			}
-			
-			//Pdcd
-			else if(session.getAttribute("type").equals("pdcd")) {
-				
+
+			// Pdcd
+			else if (session.getAttribute("type").equals("pdcd")) {
+
 			}
-			
-			
-			
-			
+
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+
+	// classe interna per la restituzione dell'oggetto per una specifica query
+	public static class RegistroQuery {
+		private int ID_Tirocinio, NumeroCFU, OreTotali, ID_Registro;
+		boolean FirmaResponsabile;
+		String status;
+
+		public RegistroQuery() {
+		}
+
+		public RegistroQuery(int iD_Tirocinio, int numeroCFU, int oreTotali, int iD_Registro, boolean firmaResponsabile,
+				String status) {
+			super();
+			ID_Tirocinio = iD_Tirocinio;
+			NumeroCFU = numeroCFU;
+			OreTotali = oreTotali;
+			ID_Registro = iD_Registro;
+			FirmaResponsabile = firmaResponsabile;
+			this.status = status;
+		}
+
+		public int getID_Tirocinio() {
+			return ID_Tirocinio;
+		}
+
+		public void setID_Tirocinio(int iD_Tirocinio) {
+			ID_Tirocinio = iD_Tirocinio;
+		}
+
+		public int getNumeroCFU() {
+			return NumeroCFU;
+		}
+
+		public void setNumeroCFU(int numeroCFU) {
+			NumeroCFU = numeroCFU;
+		}
+
+		public int getOreTotali() {
+			return OreTotali;
+		}
+
+		public void setOreTotali(int oreTotali) {
+			OreTotali = oreTotali;
+		}
+
+		public int getID_Registro() {
+			return ID_Registro;
+		}
+
+		public void setID_Registro(int iD_Registro) {
+			ID_Registro = iD_Registro;
+		}
+
+		public boolean isFirmaResponsabile() {
+			return FirmaResponsabile;
+		}
+
+		public void setFirmaResponsabile(boolean firmaResponsabile) {
+			FirmaResponsabile = firmaResponsabile;
+		}
+
+		public String getStatus() {
+			return status;
+		}
+
+		public void setStatus(String status) {
+			this.status = status;
+		}
+
 	}
 
 }
