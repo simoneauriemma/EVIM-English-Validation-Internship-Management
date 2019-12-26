@@ -69,6 +69,18 @@
 						  Inserimento non effettuato con successo
 						</div>
 					</c:if>
+					
+				<c:if test="${modifica==true}">
+				 <div class="alert alert-success" role="alert">
+						  Modifica effettuato con successo
+						</div>
+				</c:if>
+				
+				<c:if test="${modifica == false}">
+						<div class="alert alert-danger" role="alert">
+						  Modifica non effettuato con successo
+						</div>
+					</c:if>
 				
 				
 				<div id="carouselExampleControls" class="carousel slide"

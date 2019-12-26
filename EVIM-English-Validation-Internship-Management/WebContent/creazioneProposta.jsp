@@ -42,7 +42,7 @@ text-align: center;
 							<label for="sel1"><i class="fas fa-briefcase"></i>
 								Tutor Aziendale</label> 
 								<select class="form-control"
-								id="tutoraccademico" name="tutorAziendale">
+								id="tutoraziendale" name="tutorAziendale">
 								<c:forEach items="${elencoTutorAziendali}" var="tutor">
 									<option value='<c:out value="${tutor.id}"/>'>
 									<c:out value="${tutor.nome}"/> <c:out value="${tutor.cognome}"></c:out>

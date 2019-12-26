@@ -28,7 +28,7 @@ text-align: center;
 					proposta di tirocinio curriculare</p> <hr>
 
 
-<form action="modificaProposta">
+<form action="ModificaProposta">
 				<div>
 				
 			<!--  	<i class="fa fa-user" style="margin-right: 5px;"></i>Tutor
@@ -42,11 +42,14 @@ text-align: center;
 							<label for="sel1"><i class="fas fa-briefcase"></i>
 								Tutor Aziendale</label> 
 								<select class="form-control"
-								id="tutoraccademico" name="tutorAziendale">
+								id="tutorAziendale" name="tutorAziendale">
+								<option value="${tutorSelezionato.id}" selected> <c:out value="${tutorSelezionato.nome} ${tutorSelezionato.cognome}"/> </option>
 								<c:forEach items="${elencoTutorAziendali}" var="tutor">
-									<option value='<c:out value="${tutor.id}"/>'>
-									<c:out value="${tutor.nome}"/> <c:out value="${tutor.cognome}"></c:out>
-									</option>
+								 	<c:if test="${tutorSelezionato.id!=tutor.id}">								
+										<option  value='<c:out value="${tutor.id}"/>'>
+										  	<c:out value="${tutor.nome} ${tutor.cognome}"/>
+										</option>
+									</c:if>
 								</c:forEach>
 								
 							</select>
@@ -55,8 +58,8 @@ text-align: center;
 				</c:if>
 				
 					
-					<i class="fas fa-building" style="margin-right: 5px;"></i> Sede <input type="text"
-							class="form-control" id="sede" name="sede"> 
+					<i class="fas fa-building" style="margin-right: 5px;"></i> Sede 
+					<input type="text" class="form-control" id="sede" name="sede" value="${proposta.sede}"> 
 					</div>		
 				
 				<br>
@@ -65,7 +68,7 @@ text-align: center;
 					<label for="exampleFormControlTextarea1"><i
 						class="fas fa-coins" style="margin-right: 5px;"></i>Tema/Ambito</label>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi tema/ambito..." rows="3" name="tema_ambito"></textarea>
+						placeholder="Descrivi tema/ambito..." rows="3" name="tema_ambito"><c:out value="${proposta.temaAmbito}"/></textarea>
 				</div>
 
 				<div class="form-group">
@@ -73,20 +76,21 @@ text-align: center;
 						class="fas fa-info-circle" style="margin-right: 5px;"></i>Obiettivo
 						formativo</label>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi obiettivo formativo..." rows="3" name="obiettivo"></textarea>
+						placeholder="Descrivi obiettivo formativo..." rows="3" name="obiettivo"><c:out value="${proposta.obiettivi}"/></textarea>
 				</div>
 
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1"><i
 						class="fas fa-box-open" style="margin-right: 5px;"></i>Materiale/Risorse</label>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi materiale/risorse..." rows="3" name="materiale_risorse"></textarea>
+						placeholder="Descrivi materiale/risorse..." rows="3" name="materiale_risorse"><c:out value="${proposta.materialeRisorse}"/></textarea>
 				</div>
 				
 				<div id="button-container">
 					<button type="submit" class="btn btn-secondary" id="button" style="background-color: #2C5278;">CONFERMA
 					</button>
 				</div> <br>
+				<input type="hidden" name="idProposta" value="${proposta.ID_Proposta}"/>
 			</form>
 
 			</div>
