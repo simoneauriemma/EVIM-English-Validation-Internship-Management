@@ -4,10 +4,10 @@ in qualsiasi momento.
 La piattaforma a servizio degli studenti di informatica dell’Università degli Studi di Salerno fornisce uno strumento atto a digitalizzare il processo standard necessario per lo svolgimento del tirocinio formativo per il riconoscimento di attività lavorativa e della lingua inglese, in maniera semplice, efficiente e veloce, snellendo il processo burocratico attuale.
 
 
-## Autori: 
+## Autori - Team Member: 
 Simone Auriemma - Michele Duraccio – Antonio Giano – Simona Grieco – Emilio Schiavo – Maria Concetta Schiavone – Nicola Sisti – Vincenzo Colacicco
 
-## PM:
+## Project Manager:
 Edoardo Carpentiero, Attilio Della Greca.
 
 ## Customer/Sponsor:
