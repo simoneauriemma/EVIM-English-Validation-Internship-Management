@@ -184,27 +184,27 @@
 				</c:if>
 
 				<c:if test="${type == 'pdcd'}">
-					<li><a href="viewListaRichiesteTirocinioInterno.jsp"><i class="fas fa-angle-right "></i>
+					<li><a href="VisualizzaRichieste"><i class="fas fa-angle-right "></i>
 							Visualizza richieste tirocinio interno</a></li>
-					<li><a href="viewListaRichiesteTirocinioEsterno.jsp"><i class="fas fa-angle-right "></i>
+					<li><a href="VisualizzaRichieste"><i class="fas fa-angle-right "></i>
 							Visualizza richieste tirocinio esterno</a></li>
 				</c:if>
 
 
 				<!-- da vedere se queste cose sono vere -->
 				<c:if test="${type =='tutoraccademico'}">
-					<li><a href="viewListaRichiesteTirocinioInterno.jsp"><i
+					<li><a href="VisualizzaRichieste"><i
 							class="fas fa-angle-right "></i> Visualizza e valuta richieste
 							tirocinio</a></li>
 
 				</c:if>
 				<c:if test="${type =='tutoraziendale'}">
-					<li><a href="viewListaRichiesteTirocinioInterno.jsp"><i
+					<li><a href="VisualizzaRichieste"><i
 							class="fas fa-angle-right "></i> Visualizza richieste tirocinio</a></li>
 
 				</c:if>
 				<c:if test="${type =='azienda'}">
-					<li><a href="viewListaRichiesteTirocinioInterno.jsp"><i
+					<li><a href="VisualizzaRichieste"><i
 							class="fas fa-angle-right "></i> Valuta richiesta tirocinio</a></li>
 
 				</c:if>
@@ -238,12 +238,12 @@
 				</c:if>
 				<c:if test="${type=='pdcd'}">
 					<li><a href="#"><i class="fas fa-angle-right"></i>
-							Visulizza e valuta registro tirocinio </a></li>
+							Visualizza e valuta registro tirocinio </a></li>
 				</c:if>
 
 				<c:if test="${type=='tutoraccademico'}">
 					<li><a href="#"><i class="fas fa-angle-right"></i>
-							Visulizza e valuta registro tirocinio </a></li>
+							Visualizza e valuta registro tirocinio </a></li>
 					<li><a href="#"><i class="fas fa-angle-right"></i> Valuta
 							attività registro tirocinio</a></li>
 				</c:if>
@@ -253,7 +253,7 @@
 				</c:if>
 				<c:if test="${type=='azienda'}">
 					<li><a href="#"><i class="fas fa-angle-right"></i>
-							Visulizza e valuta registro tirocinio </a></li>
+							Visualizza e valuta registro tirocinio </a></li>
 				</c:if>
 			</ul>
 			<!-- FINE Gestione rigistro tirocinio -->
@@ -278,13 +278,13 @@
 						<li><a href="#"><i class="fas fa-angle-right"></i>
 								Compila modulo riconoscimento </a></li>
 						<li><a href="#"><i class="fas fa-angle-right"></i>
-								Visulizza richieste riconoscimento </a></li>
+								Visualizza richieste riconoscimento </a></li>
 						<li><a href="#"><i class="fas fa-angle-right"></i>
 								Modifica richieste riconoscimento</a></li>
 					</c:if>
 					<c:if test="${type=='pdcd'}">
 						<li><a href="#"><i class="fas fa-angle-right"></i>
-								Visulizza e valuta lista richieste riconoscimento </a></li>
+								Visualizza e valuta lista richieste riconoscimento </a></li>
 					</c:if>
 				</ul>
 			</c:if>
