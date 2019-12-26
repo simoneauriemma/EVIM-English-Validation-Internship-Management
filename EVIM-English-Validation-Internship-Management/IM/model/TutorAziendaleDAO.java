@@ -137,5 +137,32 @@ public class TutorAziendaleDAO {
 		}
 
 	}
+	
+	public static TutorAziendale getInformationTutorAziendale(int idTutorAziendale) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement(
+					"select * from EVIM.tutoraziendale where ID_TutorAziendale=?");
+			ps.setInt(1, idTutorAziendale);
+
+			ResultSet rs = ps.executeQuery();
+
+			rs.next();
+			
+			TutorAziendale tutorAziendale = new TutorAziendale();
+			tutorAziendale.setId(rs.getInt(1));
+			tutorAziendale.setIdAzienda(rs.getInt(2));
+			tutorAziendale.setNome(rs.getString(3));
+			tutorAziendale.setCognome(rs.getString(4));
+			tutorAziendale.setEmail(rs.getString(5));
+			tutorAziendale.setPassword(rs.getString(6));
+			tutorAziendale.setTelefono(rs.getString(7));
+				
+			return tutorAziendale;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 
 }

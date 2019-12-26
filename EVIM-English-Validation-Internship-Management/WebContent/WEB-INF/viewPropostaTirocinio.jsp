@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
@@ -42,9 +43,9 @@
 				</div>
 				</c:if>
 				<br>
-
+		<form>
 				<table class="table table-striped" id="tabella">
-
+				
 					<c:forEach items="${proposte}" var="proposta">
 						<tbody>
 							<tr id="numero">
@@ -80,17 +81,30 @@
 								<td class="">Materiale/Risorse</td>
 								<td><c:out value="${proposta.materialeRisorse}" /></td>
 							</tr>
+							
+							<c:if test="${type ne 'tutoraziendale'}">
 							<tr>
 								<td></td>
 								<td></td>
-
-								<td style="text-align: right;"><a href="modificaProposta.jsp"><button
-											class="btn btn-secondary">Modifica</button></a>
-									<button class="btn btn-secondary" style="margin-left: 10px;">Rimuovi</button></td>
+								<td style="text-align: right;">
+									
+									
+									<a href="VisualizzaModificaProposta?idProposta=<c:out value="${proposta.ID_Proposta}"/>" role="button" class="btn btn-secondary">
+										Modifica
+									</a>
+									
+									<a href="RimuoviProposta?idProposta=<c:out value="${proposta.ID_Proposta}"/>" role="button" class="btn btn-secondary">
+										Rimuovi
+									</a>
+									
+								</td>
 							</tr>
+							</c:if>
 						</tbody>
 					</c:forEach>
+					
 				</table>
+			</form>
 			</div>
 		</div>
 	</div>
@@ -98,6 +112,23 @@
 	<br>
 	<br>
 	<jsp:include page="footer.jsp"></jsp:include>
+	
 </body>
 
+<script>
+/* da vedere
+	$(document).ready(function(){
+		$(".hrefTMP").click(function(){
+			alert("ciao");
+			var url=$(this).attr("href")
+			var idProposta=$("#tutoraziendale").text();
+			var tutorAziendale=$("#nomeCognomeTutor").text();
+			alert("tutorAziendale-->"+tutorAziendale);
+			if(tutorAziendale){
+				alert(url+"&idProposta="+idProposta+"&tutorAziendale"+tutorAziendale);
+				window.location.href=url+"&idProposta="+idProposta+"&tutorAziendale"+tutorAziendale;
+		}
+	});	
+});*/
+</script>
 </html>

@@ -16,6 +16,7 @@ import model.Proposta;
 import model.PropostaDAO;
 import model.TutorAccademico;
 import model.TutorAziendale;
+import model.TutorAziendaleDAO;
 
 /**
  * @author antonio
@@ -31,6 +32,7 @@ public class ModificaProposta extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sessione=request.getSession();
+		int idProposta=Integer.parseInt(request.getParameter("idProposta"));
 		// controllo se è loggato l'utente altrimenti reindirizzo alla pagina login
 		if (sessione.getAttribute("utenteLoggato") == null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
@@ -38,43 +40,35 @@ public class ModificaProposta extends HttpServlet {
 		}
 		else {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
+			String obiettivo=request.getParameter("obiettivo");
+			String sede=request.getParameter("sede");
+			String temaAmbito=request.getParameter("tema_ambito");
+			String materialeRisorse=request.getParameter("materiale_risorse");
+			// non adatto per lo studente,pdcd,ufficio carriere
 			if(tipoUtente.equalsIgnoreCase("model.User")) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("permissiondenied.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/permissiondenied.jsp");
 				dispatcher.forward(request, response);
-			
 			}
-			
-			// tirocinio interno
-			else if(tipoUtente.equalsIgnoreCase("model.Tutoraccademico")) {
-				
-				TutorAccademico tutor=(TutorAccademico) sessione.getAttribute("utenteLoggato");
-				
-				ArrayList<Proposta> proposteInterne=PropostaDAO.findByIdTutorAccademico(tutor.getIdTutorAccademico());
 
-				request.setAttribute("proposte", proposteInterne);
-				request.setAttribute("type", "tutoraccademico");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("propostaTirocinio.jsp");
+			// tirocinio interno
+			else if(tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
+				PropostaDAO.modificationPropostaInterno(obiettivo, sede, temaAmbito, materialeRisorse, idProposta);
+				
+				request.setAttribute("modifica", true);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
 				dispatcher.forward(request, response);
 				
 			}
 			//tirocinio esterno
-			else if(tipoUtente.equalsIgnoreCase("model.Azienda")) {
-				Azienda tutor=(Azienda) sessione.getAttribute("utenteLoggato");
-				ArrayList<Proposta> proposteEsterne=PropostaDAO.getProposteAziendaWithIdAzienda(tutor.getID_Azinda());
+			else if(tipoUtente.equalsIgnoreCase("model.azienda")) {
+				int idTutorAziendale=Integer.parseInt(request.getParameter("tutorAziendale"));
+					
+				PropostaDAO.modificationPropostaEsterno(obiettivo, sede, temaAmbito, materialeRisorse, idTutorAziendale, idProposta);
 				
-				request.setAttribute("proposte", proposteEsterne);
-				request.setAttribute("type", "azienda");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("propostaTirocinio.jsp");
+				request.setAttribute("modifica", true);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
 				dispatcher.forward(request, response);
-			}
-			else if(tipoUtente.equalsIgnoreCase("model.tutoraziendale")) {
-				TutorAziendale tutoraziendale=(TutorAziendale) sessione.getAttribute("utenteLoggato");
-				ArrayList<Proposta> proposteEsterne=PropostaDAO.findByIdTutorAziendale(tutoraziendale.getId());
 				
-				request.setAttribute("proposte", proposteEsterne);
-				request.setAttribute("type", "tutoraziendale");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("propostaTirocinio.jsp");
-				dispatcher.forward(request, response);
 			}
 		}
 	}

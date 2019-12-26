@@ -12,26 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Azienda;
-import model.AziendaDAO;
+import model.Proposta;
 import model.PropostaDAO;
-import model.TutorAccademico;
+import model.TutorAccademicoDAO;
 import model.TutorAziendale;
 import model.TutorAziendaleDAO;
 
 /**
- * @author Antonio Giano
- * Questa servlet prende i tutor aziendali facenti parti di un'azienda in modo da elencare tra i tanti tutor aziendali disponibili per il tirocinio esterno 
+ * Servlet implementation class modificaModificaProposta
  */
-@WebServlet("/visualizzaCreaProposta")
-public class visualizzaCreaProposta extends HttpServlet {
+@WebServlet("/VisualizzaModificaProposta")
+public class VisualizzaModificaProposta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession sessione=request.getSession();
+		int idProposta=Integer.parseInt(request.getParameter("idProposta"));
 		// controllo se è loggato l'utente altrimenti reindirizzo alla pagina login
 		if (sessione.getAttribute("utenteLoggato") == null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
@@ -41,33 +38,41 @@ public class visualizzaCreaProposta extends HttpServlet {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
 			// non adatto per lo studente,pdcd,ufficio carriere
 			if(tipoUtente.equalsIgnoreCase("model.User")) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/permissiondenied.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/permissiondenied.jsp");
 				dispatcher.forward(request, response);
 			}
-			
 			// tirocinio interno
 			else if(tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("creazioneProposta.jsp");
+				Proposta proposta=PropostaDAO.getPropostaInterno(idProposta);
+				
+				request.setAttribute("proposta", proposta);
+				request.setAttribute("type", "tutoraccademico");
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("modificaProposta.jsp");
 				dispatcher.forward(request, response);
+				
 			}
 			//tirocinio esterno
 			else if(tipoUtente.equalsIgnoreCase("model.azienda")) {
+				Proposta proposta=PropostaDAO.getPropostaEsterno(idProposta);
+				
 				
 				Azienda azienda=(Azienda) sessione.getAttribute("utenteLoggato");
 				
 				ArrayList<TutorAziendale> elencoTutorAziendali=TutorAziendaleDAO.getElencoTutorAziendali(azienda.getID_Azinda());
+				int idTutorAziendale=proposta.getID_Tutor();
+				TutorAziendale tutorAziendale=TutorAziendaleDAO.getInformationTutorAziendale(idTutorAziendale);
 				
-				
-				
+				request.setAttribute("tutorSelezionato", tutorAziendale);
+				request.setAttribute("proposta", proposta);
 				request.setAttribute("elencoTutorAziendali", elencoTutorAziendali);
 				request.setAttribute("type", "azienda");
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("creazioneProposta.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("modificaProposta.jsp");
 				dispatcher.forward(request, response);
 				
 			}
 		}
-		
 	}
 
 	/**

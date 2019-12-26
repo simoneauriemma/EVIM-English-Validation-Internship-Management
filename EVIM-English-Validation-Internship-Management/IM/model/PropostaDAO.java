@@ -277,4 +277,92 @@ public class PropostaDAO {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public static Proposta getPropostaInterno(int idProposta) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement("select * from evim.Proposta where ID_Proposta=?");
+			ps.setInt(1, idProposta);
+			ResultSet risultato = ps.executeQuery();
+			risultato.next();
+				
+			Proposta proposta = new Proposta();
+			proposta.setID_Proposta(risultato.getInt(1));
+			proposta.setObiettivi(risultato.getString(2));
+			proposta.setSede(risultato.getString(3));
+			proposta.setTemaAmbito(risultato.getString(4));
+			proposta.setMaterialeRisorse(risultato.getString(5));
+			proposta.setID_Tutor(risultato.getInt(6));
+
+			return proposta;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public static Proposta getPropostaEsterno(int idProposta) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement("select * from evim.Proposta where ID_Proposta=?");
+			ps.setInt(1, idProposta);
+			ResultSet risultato = ps.executeQuery();
+			risultato.next();
+				
+			Proposta proposta = new Proposta();
+			proposta.setID_Proposta(risultato.getInt(1));
+			proposta.setObiettivi(risultato.getString(2));
+			proposta.setSede(risultato.getString(3));
+			proposta.setTemaAmbito(risultato.getString(4));
+			proposta.setMaterialeRisorse(risultato.getString(5));
+			proposta.setID_Azienda(risultato.getInt(6));
+			proposta.setID_Tutor(risultato.getInt(7));
+			
+			
+
+			return proposta;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public static void modificationPropostaEsterno(String obiettivo,String sede,String temaAmbito,String materialeRisorse, int tutorAziendale,int idProposta) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement("UPDATE `evim`.`Proposta` SET `Obiettivi` =?, `Sede` = ?, `Tema_Ambito` = ?, `Materiale_Risorse` = ?,`ID_Tutor`=?  WHERE (`ID_Proposta` = ?)");
+			ps.setString(1,obiettivo);
+			ps.setString(2, sede);
+			ps.setString(3, temaAmbito);
+			ps.setString(4, materialeRisorse);
+			ps.setInt(5, tutorAziendale);
+			ps.setInt(6, idProposta);
+			
+			if(ps.executeUpdate()!=1)
+				throw new RuntimeException("Errore nel modificare un prodotto");
+		}catch (SQLException e) {
+				e.printStackTrace();
+				throw new RuntimeException(e);
+			}
+	}
+	
+	public static void modificationPropostaInterno(String obiettivo,String sede,String temaAmbito,String materialeRisorse,int idProposta) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement("UPDATE `evim`.`Proposta` SET `Obiettivi` =?, `Sede` = ?, `Tema_Ambito` = ?, `Materiale_Risorse` = ? WHERE (`ID_Proposta` = ?)");
+			ps.setString(1,obiettivo);
+			ps.setString(2, sede);
+			ps.setString(3, temaAmbito);
+			ps.setString(4, materialeRisorse);
+			ps.setInt(5, idProposta);
+			
+			if(ps.executeUpdate()!=1)
+				throw new RuntimeException("Errore nel modificare un prodotto");
+		}catch (SQLException e) {
+				e.printStackTrace();
+				throw new RuntimeException(e);
+			}
+	}
+	
+	
 }
