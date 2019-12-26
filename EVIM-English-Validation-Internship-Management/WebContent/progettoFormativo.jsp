@@ -56,7 +56,7 @@
 										</tr>
 										<tr>
 											<td class="icon"><i class="fas fa-signature"></i></td>
-											<td class="">Valutazione richiesta</td>
+											<td class="">Valuta progetto formativo</td>
 											<td class="text-center">
 
 												<form action="valutaRichiesta" method="post">
