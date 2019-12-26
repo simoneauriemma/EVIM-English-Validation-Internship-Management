@@ -1,19 +1,17 @@
-# English Validation:
-Questo progetto nasce con l'idea di snellire il processo burocratico legato alla convalida dell'esame di lingua inglese.
-Il dipartimento di Informatica dell'Università di Salerno vuole migliorare quelle che sono le modalità di convalida
-di tale esame.
-Attualmente il processo non è automatizzato, ogni studente deve inviare tramite Email il certificato per la richiesta
-di esonero.
-L'obiettivo che ci poniamo è quello di creare una piattaforma web per automatizzare tale processo.
+# English Validation & Internship Management:
+Il Sistema Internship Management, come estensione della piattaforma English Validation, si pone come obiettivo principale la digitalizzazione di tutte le pratiche necessarie per lo svolgimento del Tirocinio formativo o il riconoscimento di attività lavorativa svolta, in modo da superare definitivamente i costi e le inefficienze della gestione cartacea del processo, garantendo una gestione decentralizzata ed efficace, così da avere ogni documento disponibile in rete ed accessibile alle parti interessate da qualsiasi luogo ed
+in qualsiasi momento.
+La piattaforma a servizio degli studenti di informatica dell’Università degli Studi di Salerno fornisce uno strumento atto a digitalizzare il processo standard necessario per lo svolgimento del tirocinio formativo per il riconoscimento di attività lavorativa e della lingua inglese, in maniera semplice, efficiente e veloce, snellendo il processo burocratico attuale.
 
 
 ## Autori: 
-Alessandro Bacco, Ivan Buccella, Giuseppe Cirino, Alfonso Ingenito, Angelomaria Macellaro, Luigi Melchionno, Vincenzo Passariello.
+Simone Auriemma - Michele Duraccio – Antonio Giano – Simona Grieco – Emilio Schiavo – Maria Concetta Schiavone – Nicola Sisti – Vincenzo Colacicco
 
 ## PM:
-Giammaria Giordano, Valeria Pontillo.
+Edoardo Carpentiero, Attilio Della Greca.
+
 ## Customer/Sponsor:
 Dipartimento di Informatica dell'Università di Salerno, Prof.ssa Filomena Ferrucci.
 
-## Come si installa
-Aprire il file "Progetto Avvio.txt" e il manuale di installazione presente nella cartella Documentazione progetto.
+## Istruzioni installazione sistema
+Consultare il file EVIM_MI_Vers.1.0.pdf presente nella cartella Documentazione progetto.
