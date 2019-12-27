@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import model.Azienda;
 import model.Proposta;
 import model.PropostaDAO;
-import model.TutorAccademicoDAO;
 import model.TutorAziendale;
 import model.TutorAziendaleDAO;
 
@@ -48,7 +47,7 @@ public class VisualizzaModificaProposta extends HttpServlet {
 				request.setAttribute("proposta", proposta);
 				request.setAttribute("type", "tutoraccademico");
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("modificaProposta.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/modificaProposta.jsp");
 				dispatcher.forward(request, response);
 				
 			}
@@ -68,7 +67,7 @@ public class VisualizzaModificaProposta extends HttpServlet {
 				request.setAttribute("elencoTutorAziendali", elencoTutorAziendali);
 				request.setAttribute("type", "azienda");
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("modificaProposta.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/modificaProposta.jsp");
 				dispatcher.forward(request, response);
 				
 			}

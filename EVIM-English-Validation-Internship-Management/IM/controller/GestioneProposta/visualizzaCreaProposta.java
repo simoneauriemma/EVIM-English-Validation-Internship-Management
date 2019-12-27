@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Azienda;
-import model.AziendaDAO;
-import model.PropostaDAO;
-import model.TutorAccademico;
 import model.TutorAziendale;
 import model.TutorAziendaleDAO;
 
@@ -47,7 +44,7 @@ public class visualizzaCreaProposta extends HttpServlet {
 			
 			// tirocinio interno
 			else if(tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("creazioneProposta.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/creazioneProposta.jsp");
 				dispatcher.forward(request, response);
 			}
 			//tirocinio esterno
@@ -62,7 +59,7 @@ public class visualizzaCreaProposta extends HttpServlet {
 				request.setAttribute("elencoTutorAziendali", elencoTutorAziendali);
 				request.setAttribute("type", "azienda");
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("creazioneProposta.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/creazioneProposta.jsp");
 				dispatcher.forward(request, response);
 				
 			}
