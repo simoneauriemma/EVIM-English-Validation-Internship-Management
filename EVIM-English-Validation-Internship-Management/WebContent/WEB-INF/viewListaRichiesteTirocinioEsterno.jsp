@@ -24,7 +24,7 @@
 
 		<div class="col-lg-9" id="col-9">
 
-			<p id="titolo" class="text-center">Richieste tirocinio esterno</p>
+			<p id="titolo" class="text-center">Richieste tirocinio esterno\</p>
 			<hr>
 			<%
 				int n = 0;

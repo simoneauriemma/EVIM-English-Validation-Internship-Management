@@ -35,3 +35,14 @@ INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azien
 VALUES ('Sviluppo di servizi di intelligenza territoriale','Laboratorio di Sistemi Informativi Geografici','Sistemi Informativi Geografici e applicazioni per Mobile GIS','http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807',NULL,1);
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
 VALUES ('Realizzazione di un ecosistema digitale di rappresentazione e gestione della conoscenza territoriale','Laboratorio di Sistemi Informativi Geografici','Sistemi Informativi Geografici e applicazioni per Mobile GIS','http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807',NULL,2);
+INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
+VALUES ('Realizzazione di sistemi domotici (IOT)','Reti di calcolaroei','Sistemi Informativi Geografici e applicazioni IOT', 'stringaAcasoPoiSiVede', NULL, 2);
+
+#Inserimenti TIROCINI ESTERNI
+INSERT INTO `TirocinioEsterno` (`EMAIL`,`ID_TutorAccademico`,`ID_TutorAziendale`,`data`,`OreTotali`,`status`,`CFU`,`FirmaAzienda`,`FirmaTutorAccademico`,`FirmaTutorAziendale`,`FirmaPdCD`,`ID_Proposta`)
+VALUES ('simonagrieco@studenti.unisa.it','1','1','24/11/2019',150,"in approvazione",6, false, false, false, false,1);
+
+
+#Inserimenti TIROCINIO INTERNO
+INSERT INTO `TirocinioInterno` (`EMAIL`,`ID_tutorAccademico`,`Data`,`OreTotali`,`status`,`numeroCFU`,`FirmaTutorAccademico`,`FirmaPdCD`,`ID_Proposta`)
+VALUES ('mconcetta@studenti.unisa.it','2','02/04/2019',150,"in approvazione",6, false, false,4);
