@@ -366,7 +366,7 @@ public class TirocinioEsternoDAO {
 							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro "
 							+ "from TirocinioEsterno, Registro, USER "
 							+ "where TirocinioEsterno.ID_TirocinioEsterno = Registro.ID_Tirocinio AND "
-							+ "TirocinioEsterno.EMAIL = ? AND status='in svolgimento'" );
+							+ "TirocinioEsterno.EMAIL = ? AND TirocinioEsterno.status='in svolgimento'" );
 			ps.setString(1, email);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
@@ -398,7 +398,7 @@ public class TirocinioEsternoDAO {
 							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro "
 							+ "from TirocinioEsterno, Registro, turoraccademico "
 							+ "where TirocinioEsterno.ID_TirocinioEsterno = Registro.ID_Tirocinio AND "
-							+ "TirocinioEsterno.ID_TutorAccademico = ? AND status='in svolgimento'" );
+							+ "TirocinioEsterno.ID_TutorAccademico = ? AND TirocinioEsterno.status='in svolgimento'" );
 			ps.setInt(1, id);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
@@ -429,7 +429,7 @@ public class TirocinioEsternoDAO {
 							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro "
 							+ "from TirocinioEsterno, Registro, turoraziendale "
 							+ "where TirocinioEsterno.ID_TirocinioEsterno = Registro.ID_Tirocinio AND "
-							+ "TirocinioEsterno.ID_TutorAziendale = ? AND status='in svolgimento'" );
+							+ "TirocinioEsterno.ID_TutorAziendale = ? AND TirocinioEsterno.status='in svolgimento'" );
 			ps.setInt(1, id);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
