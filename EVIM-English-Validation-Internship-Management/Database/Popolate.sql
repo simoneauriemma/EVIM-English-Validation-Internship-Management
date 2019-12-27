@@ -2,9 +2,9 @@
 INSERT INTO `user` (`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`) 
 VALUES ('fferrucci@unisa.it','Filomena','Ferrucci','F','Ferrucci11',1, null);
 INSERT INTO `user` (`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`) 
-VALUES ('mconcetta@studenti.unisa.it','Maria Concetta','Schiavone','F','mconcetta1998',0, "magistrale");
+VALUES ('mconcetta@studenti.unisa.it','Maria Concetta','Schiavone','F','mconcetta1998',0,'triennale');
 INSERT INTO `user` (`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`) 
-VALUES ('simonagrieco@studenti.unisa.it','Simona','Grieco','F','grieco1998',0,"triennale");
+VALUES ('simonagrieco@studenti.unisa.it','Simona','Grieco','F','grieco1998',0,'triennale');
 
 #Inserimento aziende
 INSERT INTO `azienda` (`CF`,`Telefono`,`Nome`,`Password`,`Email`,`SitoWeb`,`Indirizzo`,`Descizione`) 
@@ -20,7 +20,7 @@ VALUES ('1', 'anna', 'aster', 'aaster@turor.unisa.it', 'ciaociao1', '3331333111'
 INSERT INTO `evim`.`tutorAZIENDALE` (`ID_Azienda`, `Nome`, `Cognome`, `Email`, `Password`, `Telefono`)
 VALUES ('2', 'ada', 'ino', 'aino@turor.unisa.it', 'ciaociao1', '3332333222');
 INSERT INTO `evim`.`tutorAZIENDALE` (`ID_Azienda`, `Nome`, `Cognome`, `Email`, `Password`, `Telefono`) 
-VALUES ('2', 'imma', 'bobbo', 'ibobbo@turor.unisa.itt', 'ciaociao1', '3333333333');
+VALUES ('2', 'imma', 'bobbo', 'ibobbo@turor.unisa.it', 'ciaociao1', '3333333333');
 
 #Inserimento tutor accademici
 INSERT INTO `tutoraccademico` (`ID_TutorAccademico`,`Nome`,`Cognome`,`Password`,`indirizzo`,`email`,`Telefono`) 
