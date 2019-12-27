@@ -196,17 +196,18 @@ foreign key(ID_Proposta) references Proposta(ID_Proposta)
 ON UPDATE cascade
 ON DELETE CASCADE
 );
+
+#ID_Tirocino può essere l'ID del tirocinio sia ESTERNO che INTERNO, quindi il tirocinio verrà identificato con una stringa "tipo" che indicherà il tipo di tirocinio(interno esterno)
 create table Registro(
 ID_Registro int not null auto_increment,
-TirocinioEsterno int not null,
+ID_Tirocinio int not null,
 Status varchar(20) not null,
 FirmaResponsabile boolean not null DEFAULT false,
 FirmaTutorAccamico boolean not null DEFAULT false,
-primary key(ID_Registro),
-FOREIGN KEY(TirocinioEsterno) references TirocinioEsterno(ID_TirocinioEsterno)
-ON UPDATE cascade
-ON DELETE CASCADE
+Tipo varchar(20) not null,
+primary key(ID_Registro)
 );
+
 create table Attivita(
 ID_Attivita int not null auto_increment,
 ID_Registro int not null,
