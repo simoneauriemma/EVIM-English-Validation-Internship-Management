@@ -391,15 +391,15 @@ public class TirocinioEsternoDAO {
 	}
 	
 	
-	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAccRegistro(String email) { //corregere query
+	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAccRegistro(int id) { //corregere query
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
 					"select TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,"
 							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro "
 							+ "from TirocinioEsterno, Registro, turoraccademico "
 							+ "where TirocinioEsterno.ID_TirocinioEsterno = Registro.ID_Tirocinio AND "
-							+ "TirocinioEsterno.EMAIL = ? AND status='in svolgimento'" );
-			ps.setString(1, email);
+							+ "TirocinioEsterno.ID_TutorAccademico = ? AND status='in svolgimento'" );
+			ps.setInt(1, id);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
@@ -422,15 +422,15 @@ public class TirocinioEsternoDAO {
 
 	}
 	
-	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAzRegistro(String email) { //corregere query
+	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAzRegistro(int id) { //corregere query
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
 					"select TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,"
 							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro "
 							+ "from TirocinioEsterno, Registro, turoraziendale "
 							+ "where TirocinioEsterno.ID_TirocinioEsterno = Registro.ID_Tirocinio AND "
-							+ "TirocinioEsterno.EMAIL = ? AND status='in svolgimento'" );
-			ps.setString(1, email);
+							+ "TirocinioEsterno.ID_TutorAziendale = ? AND status='in svolgimento'" );
+			ps.setInt(1, id);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
