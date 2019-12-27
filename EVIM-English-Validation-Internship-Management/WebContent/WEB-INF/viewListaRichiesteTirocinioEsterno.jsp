@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="navbarBlu.jsp"></jsp:include>
 
@@ -22,7 +23,12 @@
 
 		<div class="col-lg-9" id="col-9">
 
-			<p id="titolo">Richieste tirocinio esterno</p>
+			<p id="titolo" class="text-center">Richieste tirocinio esterno</p>
+			<hr>
+			
+			<c:if test="${type== 'azienda' || type=='tutoraziendale'}">
+			<c:forEach items="${arrayTirocinioEsterno}" var="esterno">
+			
 			<div class="accordion">
 				<div class="card">
 
@@ -30,7 +36,7 @@
 						<h6 class="mb-0">
 							<button data-toggle="collapse" id="nome-studente"
 								data-target="#collapseOne" aria-expanded="true"
-								aria-controls="collapseOne">Nome cognome</button>
+								aria-controls="collapseOne"><c:out value="${esterno.email}"></c:out></button>
 						</h6>
 					</div>
 
@@ -120,6 +126,8 @@
 					</div>
 				</div>
 			</div>
+			</c:forEach>
+			</c:if>
 		</div>
 	</div>
 </div>

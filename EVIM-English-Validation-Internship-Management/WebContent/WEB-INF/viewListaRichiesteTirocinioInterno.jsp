@@ -23,24 +23,24 @@
 		<div class="col-lg-9" id="col-9">
 
 			<p id="titolo">Richieste tirocinio interno</p>
-			<div class="accordion">
-				<div class="card">
+			<c:if test="${arrayTirocinioInterno.size() > 0}">
 
-					<div id="headingOne" style="background-color: #2C5278">
-						<h6 class="mb-0">
-							<button data-toggle="collapse" id="nome-studente"
-								data-target="#collapseOne" aria-expanded="true"
-								aria-controls="collapseOne">Nome cognome</button>
-						</h6>
-					</div>
+				<c:forEach items="${arrayTirocinioInterno}" var="tirocinioin">
+					<div class="accordion">
+						<div class="card">
 
-					<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-						data-parent="#accordion">
-						<div class="card-body">
-							<table class="table table-striped">
-								<c:if test="${arrayTirocinioInterno.size() > 0}">
+							<div id="headingOne" style="background-color: #2C5278">
+								<h6 class="mb-0">
+									<button data-toggle="collapse" id="nome-studente"
+										data-target="#collapseOne" aria-expanded="true"
+										aria-controls="collapseOne"><c:out value="${tirocinioin.email}"></c:out></button>
+								</h6>
+							</div>
 
-									<c:forEach items="${arrayTirocinioInterno}" var="tirocinioin">
+							<div id="collapseOne" class="collapse"
+								aria-labelledby="headingOne" data-parent="#accordion">
+								<div class="card-body">
+									<table class="table table-striped">
 										<tbody>
 											<tr>
 												<td class="icon"><i class="fa fa-user"></i></td>
@@ -88,13 +88,13 @@
 												</td>
 											</tr>
 										</tbody>
-									</c:forEach>
-								</c:if>
-							</table>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
+				</c:forEach>
+			</c:if>
 		</div>
 	</div>
 </div>

@@ -33,25 +33,26 @@
 				<c:choose>
 					<c:when test="${type eq 'studente'}">
 					 <i class="fas fa-user-circle"></i>
-						Welcome <c:out value="${utenteLoggato.name}"></c:out>!
+						Welcome <c:out value="${utenteLoggato.name}"></c:out>! 
 					</c:when>
 					<c:when test="${type eq 'pdcd'}">
 					<i class="fas fa-user-circle"></i>
-						Welcome <c:out value="${utenteLoggato.name}"></c:out>!
+						Welcome <c:out value="${utenteLoggato.name}"></c:out>! (PdCD)
 					</c:when>
 					<c:when test="${type eq 'tutoraziendale'}">
 					<i class="fas fa-user-circle"></i>
-						Welcome <c:out value="${utenteLoggato.nome}"></c:out>!
+						Welcome <c:out value="${utenteLoggato.nome}"></c:out>! (Tutor aziendale)
 					</c:when>
 					<c:when test="${type eq 'tutoraccademico'}">
 					<i class="fas fa-user-circle"></i>
-						Welcome <c:out value="${utenteLoggato.nome}"></c:out>!
+						Welcome <c:out value="${utenteLoggato.nome}"></c:out>! (Tutor accademico)
 					</c:when>
 					<c:when test="${type eq 'azienda'}">
 					<i class="fas fa-user-circle"></i>
-						Welcome <c:out value="${utenteLoggato.nome}"></c:out>!
+						Welcome <c:out value="${utenteLoggato.nome}"></c:out>! (Aziende)
 					</c:when>
 					<c:otherwise>
+						Welcome! (utente ospite)
 					</c:otherwise>
 				</c:choose>
 			</div>

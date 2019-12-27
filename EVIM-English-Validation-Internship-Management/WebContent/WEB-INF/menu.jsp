@@ -78,30 +78,32 @@
 
 				<c:if test="${type == 'tutoraccademico'}">
 					<!-- Tutor accademico -->
-					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i> Elenco
-							tirocinanti attivi </a></li>
-					<li><a href="compilaRelazione.jsp"><i class="fas fa-angle-right "></i>
-							Compila relazione tirocinio </a></li>
+					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
+							Elenco tirocinanti attivi </a></li>
+					<li><a href="compilaRelazione.jsp"><i
+							class="fas fa-angle-right "></i> Compila relazione tirocinio </a></li>
 					<li><a href="#"><i class="fas fa-angle-right "></i>
 							Annulla svolgimento tirocinio </a></li>
 
 				</c:if>
 				<c:if test="${type == 'tutoraziendale'}">
 					<!-- Tutor aziendale -->
-					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i> Elenco
-							tirocinanti </a></li>
-					<li><a href="questionarioValutativo.jsp"><i class="fas fa-angle-right "></i>
-							Compila questionario valutativo </a></li>
-					<li><a href="compilaRelazione.jsp"><i class="fas fa-angle-right "></i>
-							Compila relazione tirocinio </a></li>
+					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
+							Elenco tirocinanti </a></li>
+					<li><a href="questionarioValutativo.jsp"><i
+							class="fas fa-angle-right "></i> Compila questionario valutativo
+					</a></li>
+					<li><a href="compilaRelazione.jsp"><i
+							class="fas fa-angle-right "></i> Compila relazione tirocinio </a></li>
 
 				</c:if>
 				<c:if test="${type == 'azienda'}">
 					<!-- Azienda -->
-					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i> Elenco
-							tirocinanti </a></li>
-					<li><a href="questionarioValutativo.jsp"><i class="fas fa-angle-right "></i>
-							Compila questionario valutativo </a></li>
+					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
+							Elenco tirocinanti </a></li>
+					<li><a href="questionarioValutativo.jsp"><i
+							class="fas fa-angle-right "></i> Compila questionario valutativo
+					</a></li>
 
 				</c:if>
 			</ul>
@@ -162,8 +164,6 @@
 
 
 
-
-
 			<!-- INIZIO Gestione richiesta tirocinio -->
 			<a data-toggle="collapse" href="#collapse-0" class="item"
 				class="folder collapsed" aria-expanded="false">Gestione
@@ -179,44 +179,27 @@
 					<li><a href="VisualizzaRichieste"><i
 							class="fas fa-angle-right "></i> Visualizza richieste di
 							tirocinio </a></li>
-					<li><a href="progettoFormativo.jsp"><i class="fas fa-angle-right "></i>
-							Visualizza progetto formativo </a></li>
+					<li><a href="progettoFormativo.jsp"><i
+							class="fas fa-angle-right "></i> Visualizza progetto formativo </a></li>
+					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
+							Elenco tirocini in corso</a></li>
 				</c:if>
 
 				<c:if test="${type == 'pdcd'}">
-					<li><a href="VisualizzaRichieste"><i class="fas fa-angle-right "></i>
-							Visualizza richieste tirocinio interno</a></li>
-					<li><a href="VisualizzaRichieste"><i class="fas fa-angle-right "></i>
-							Visualizza richieste tirocinio esterno</a></li>
-				</c:if>
-
-
-				<!-- da vedere se queste cose sono vere -->
-				<c:if test="${type =='tutoraccademico'}">
 					<li><a href="VisualizzaRichieste"><i
-							class="fas fa-angle-right "></i> Visualizza e valuta richieste
-							tirocinio</a></li>
-
+							class="fas fa-angle-right "></i> Visualizza richieste tirocinio </a></li>
 				</c:if>
-				<c:if test="${type =='tutoraziendale'}">
-					<li><a href="VisualizzaRichieste"><i
-							class="fas fa-angle-right "></i> Visualizza richieste tirocinio</a></li>
-
-				</c:if>
-				<c:if test="${type =='azienda'}">
-					<li><a href="VisualizzaRichieste"><i
-							class="fas fa-angle-right "></i> Valuta richiesta tirocinio</a></li>
-
-				</c:if>
-
+				
 				<c:if
 					test="${type =='azienda' || type =='tutoraziendale' || type =='tutoraccademico'}">
-					<li><a href="progettoFormativo.jsp"><i class="fas fa-angle-right "></i> Valuta
-							progetto formativo </a></li>
+					<li><a href="progettoFormativo.jsp"><i
+							class="fas fa-angle-right "></i> Valuta progetto formativo </a></li>
+					<li><a href="VisualizzaRichieste"><i
+							class="fas fa-angle-right "></i> Visualizza richieste tirocinio </a></li>
+					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
+							Elenco tirocini in corso</a></li>
 				</c:if>
 			</ul>
-
-
 
 
 
@@ -299,8 +282,8 @@
 				<ul id="collapse-7" class="collapse" aria-expanded="false"
 					style="height: 0px;">
 					<c:if test="${type =='azienda'}">
-						<li><a href="gestioneAccount.jsp"><i class="fas fa-angle-right"></i> Crea
-								account tutor aziendale </a></li>
+						<li><a href="gestioneAccount.jsp"><i
+								class="fas fa-angle-right"></i> Crea account tutor aziendale </a></li>
 						<li><a href="#"><i class="fas fa-angle-right"></i>
 								Modifica dati personali </a></li>
 
