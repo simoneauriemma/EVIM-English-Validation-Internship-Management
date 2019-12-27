@@ -36,7 +36,6 @@ public class creaProposta extends HttpServlet {
 		}
 		else {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
-			System.out.println("tipoUtente-->"+tipoUtente);
 			// non adatto per lo studente,pdcd,ufficio carriere
 			if(tipoUtente.equalsIgnoreCase("model.User")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
@@ -46,14 +45,14 @@ public class creaProposta extends HttpServlet {
 			// tirocinio interno
 			else if(tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
 				TutorAccademico tutor=(TutorAccademico) sessione.getAttribute("utenteLoggato");
-				String sede=request.getParameter("sede");
-				String temaAmbito=request.getParameter("tema_ambito");
+				String competenze=request.getParameter("competenze");
+				String attivita=request.getParameter("attivita");
 				String obiettivo=request.getParameter("obiettivo");
-				String materialeRisorse=request.getParameter("materiale_risorse");
+				String modalita=request.getParameter("modalita");
 				
 				
 				
-				if(PropostaDAO.insertPropostaInterno(obiettivo, sede, temaAmbito, materialeRisorse, tutor.getIdTutorAccademico())) {
+				if(PropostaDAO.insertPropostaInterno(obiettivo, competenze, attivita, modalita, tutor.getIdTutorAccademico())) {
 					request.setAttribute("risultatoInserimentoProposta",true);
 					
 				}
@@ -69,10 +68,10 @@ public class creaProposta extends HttpServlet {
 			else if(tipoUtente.equalsIgnoreCase("model.azienda")) {
 				Azienda tutor= (Azienda) sessione.getAttribute("utenteLoggato");
 				int idTutorAziendale=Integer.parseInt(request.getParameter("tutorAziendale"));
-				String competenze=request.getParameter("sede");
-				String attivita=request.getParameter("tema_ambito");
+				String competenze=request.getParameter("competenze");
+				String attivita=request.getParameter("attivita");
 				String obiettivo=request.getParameter("obiettivo");
-				String modalita=request.getParameter("materiale_risorse");
+				String modalita=request.getParameter("modalita");
 				
 			if(idTutorAziendale!=-1 && competenze.length()<=200 && attivita.length()<=200 && obiettivo.length()<=200 && modalita.length()<=200)
 					if(PropostaDAO.insertPropostaEsterno(obiettivo, competenze, attivita, modalita, tutor.getID_Azinda(),idTutorAziendale)) {
