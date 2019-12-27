@@ -14,13 +14,13 @@ VALUES ('0854334056C','3335678903','Samsung','SamsungUnisa','samsungitalia@gmail
 
 #Inserimento tutor aziendali
 INSERT INTO `evim`.`tutorAZIENDALE` (`ID_Azienda`, `Nome`, `Cognome`, `Email`, `Password`, `Telefono`) 
-VALUES ('1', 'ugo', 'ughi', 'uughi@microsoft.it', 'ciaociao1', '3330333000');
+VALUES ('1', 'ugo', 'ughi', 'uughi@tutor.unisa.it', 'ciaociao1', '3330333000');
 INSERT INTO `evim`.`tutorAZIENDALE` (`ID_Azienda`, `Nome`, `Cognome`, `Email`, `Password`, `Telefono`) 
-VALUES ('1', 'anna', 'aster', 'aaster@microsoft.it', 'ciaociao1', '3331333111');
+VALUES ('1', 'anna', 'aster', 'aaster@turor.unisa.it', 'ciaociao1', '3331333111');
 INSERT INTO `evim`.`tutorAZIENDALE` (`ID_Azienda`, `Nome`, `Cognome`, `Email`, `Password`, `Telefono`)
-VALUES ('2', 'ada', 'ino', 'aino@samsung.it', 'ciaociao1', '3332333222');
+VALUES ('2', 'ada', 'ino', 'aino@turor.unisa.it', 'ciaociao1', '3332333222');
 INSERT INTO `evim`.`tutorAZIENDALE` (`ID_Azienda`, `Nome`, `Cognome`, `Email`, `Password`, `Telefono`) 
-VALUES ('2', 'imma', 'bobbo', 'ibobbo@samsung.it', 'ciaociao1', '3333333333');
+VALUES ('2', 'imma', 'bobbo', 'ibobbo@turor.unisa.itt', 'ciaociao1', '3333333333');
 
 #Inserimento tutor accademici
 INSERT INTO `tutoraccademico` (`ID_TutorAccademico`,`Nome`,`Cognome`,`Password`,`indirizzo`,`email`,`Telefono`) 
