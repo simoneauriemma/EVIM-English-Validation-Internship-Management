@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import controller.BaseServlet;
 import model.TirocinioInternoDAO;
+import model.TutorAccademico;
+import model.TutorAziendale;
 import model.TirocinioEsterno;
 import model.TirocinioEsternoDAO;
 import model.TirocinioInterno;
@@ -39,15 +41,19 @@ public class ListaTirocini extends BaseServlet {
 			
 			System.out.println();
 
-			ArrayList<TirocinioInterno> interno = new ArrayList<TirocinioInterno>();
-			ArrayList<TirocinioEsterno> esterno = new ArrayList<TirocinioEsterno>();
+			ArrayList<RegistroQuery> interno = new ArrayList<RegistroQuery>();
+			ArrayList<RegistroQuery> esterno = new ArrayList<RegistroQuery>();
 			// studente
 			if (session.getAttribute("type").equals("studente")) {
 				
 
 				User studente = (User) session.getAttribute("utenteLoggato");
-				interno = new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoStudente(studente.getEmail());
-				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoStudente(studente.getEmail());
+				interno = new TirocinioInternoDAO()
+						.doRetriveTirocinioInSvolgimentoStudenteRegistro(studente.getEmail());
+				
+				
+				esterno = new TirocinioInternoDAO()
+						.doRetriveTirocinioInSvolgimentoStudenteRegistro(studente.getEmail());
 				
 				System.out.println(interno.toString());
 				System.out.println(esterno.toString());
@@ -57,10 +63,9 @@ public class ListaTirocini extends BaseServlet {
 				if ((interno.isEmpty())) {
 					System.out.println("interno non è empty");
 					// significa che ha fatto il tirocinio interno
-					ArrayList<RegistroQuery> listaTirociniInterno = new TirocinioInternoDAO()
-							.doRetriveTirocinioInSvolgimentoStudenteRegistro();
+				
 
-					request.setAttribute("registroQueryInterno", listaTirociniInterno);
+					request.setAttribute("registroQueryInterno", interno);
 					System.out.println("prima del disp");
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
@@ -70,10 +75,9 @@ public class ListaTirocini extends BaseServlet {
 					//esterno
 					System.out.println("esterno non è empty");
 
-					ArrayList<RegistroQuery> listaTirociniEsterno = new TirocinioEsternoDAO()
-							.doRetriveTirocinioInSvolgimentoStudenteRegistro();
+				
 
-					request.setAttribute("registroQueryEsterno", listaTirociniEsterno);
+					request.setAttribute("registroQueryEsterno", esterno);
 					
 					System.out.println("prima del disp");
 
@@ -83,13 +87,44 @@ public class ListaTirocini extends BaseServlet {
 				}
 			}
 			
-			
-			
-			
-
 			// Tutor Accademico
 
 			else if (session.getAttribute("type").equals("tutoraccademico")) {
+				
+				TutorAccademico tutora = (TutorAccademico) session.getAttribute("utenteLoggato");
+				interno = new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoTutorAccRegistro(tutora.getEmail());
+				
+				
+				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoTutorAccRegistro(tutora.getEmail());
+								
+				System.out.println(interno.toString());
+				System.out.println(esterno.toString());
+
+				//TO DO: DA MODIFICARE IN
+				// if (!(interno.isEmpty())) {
+				if ((interno.isEmpty())) {
+					System.out.println("interno non è empty");
+					// significa che ha fatto il tirocinio interno
+				
+
+					request.setAttribute("registroQueryInterno", interno);
+					System.out.println("prima del disp");
+
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
+					dispatcher.forward(request, response);
+
+				} else if (!(esterno.isEmpty())) {
+					//esterno
+					System.out.println("esterno non è empty");
+
+					request.setAttribute("registroQueryEsterno", esterno);
+					
+					System.out.println("prima del disp");
+
+					
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
+					dispatcher.forward(request, response);
+				}
 				
 				
 
@@ -99,11 +134,49 @@ public class ListaTirocini extends BaseServlet {
 			else if (session.getAttribute("type").equals("tutoraaziendale")) {
 				
 				
+				TutorAziendale tutoraz = (TutorAziendale) session.getAttribute("utenteLoggato");
+				interno = new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoTutorAzRegistro(tutoraz.getEmail());
+				
+				
+				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoTutorAzRegistro(tutoraz.getEmail());
+								
+				System.out.println(interno.toString());
+				System.out.println(esterno.toString());
+
+				//TO DO: DA MODIFICARE IN
+				// if (!(interno.isEmpty())) {
+				if ((interno.isEmpty())) {
+					System.out.println("interno non è empty");
+					// significa che ha fatto il tirocinio interno
+				
+
+					request.setAttribute("registroQueryInterno", interno);
+					System.out.println("prima del disp");
+
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
+					dispatcher.forward(request, response);
+
+				} else if (!(esterno.isEmpty())) {
+					//esterno
+					System.out.println("esterno non è empty");
+
+					request.setAttribute("registroQueryEsterno", esterno);
+					
+					System.out.println("prima del disp");
+
+					
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
+					dispatcher.forward(request, response);
+				}
+				
+				
 
 			}
 
 			// Pdcd
 			else if (session.getAttribute("type").equals("pdcd")) {
+				
+				
 
 			}
 

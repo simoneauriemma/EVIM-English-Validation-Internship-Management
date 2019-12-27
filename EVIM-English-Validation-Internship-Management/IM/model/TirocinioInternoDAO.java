@@ -266,14 +266,76 @@ public class TirocinioInternoDAO {
 
 	}
 
-	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro() {
+	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro(String email) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
 					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.NumeroCFU,"
 							+ "TirocinioInterno.OreTotali, Registro.ID_Registro "
 							+ "from TirocinioInterno, Registro, USER "
 							+ "where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio AND "
-							+ "TirocinioInterno.EMAIL = USER.EMAIL");
+							+ "TirocinioInterno.EMAIL = ? AND status='in svolgimento'");
+			ps.setString(1, email);
+			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				RegistroQuery a = new RegistroQuery();
+				a.setID_Tirocinio(rs.getInt("ID_TirocinioInterno"));
+				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
+				a.setStatus(rs.getString("status"));
+				a.setNumeroCFU(rs.getInt("CFU"));
+				a.setOreTotali(rs.getInt("OreTotali"));
+				a.setID_Registro(rs.getInt("ID_Registro"));
+				lista.add(a);
+			}
+			return lista;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
+	}
+	
+	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAccRegistro(String email) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement(
+					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.NumeroCFU,"
+							+ "TirocinioInterno.OreTotali, Registro.ID_Registro "
+							+ "from TirocinioInterno, Registro, tutoraccademico "
+							+ "where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio AND "
+							+ "TirocinioInterno.EMAIL = ? AND status='in svolgimento'");
+			ps.setString(1, email);
+
+			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				RegistroQuery a = new RegistroQuery();
+				a.setID_Tirocinio(rs.getInt("ID_TirocinioInterno"));
+				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
+				a.setStatus(rs.getString("status"));
+				a.setNumeroCFU(rs.getInt("CFU"));
+				a.setOreTotali(rs.getInt("OreTotali"));
+				a.setID_Registro(rs.getInt("ID_Registro"));
+				lista.add(a);
+			}
+			return lista;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
+	}
+	
+	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAzRegistro(String email) { //corregere query
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement(
+					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,"
+							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro "
+							+ "from TirocinioInterno, Registro, turoraziendale "
+							+ "where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio AND "
+							+ "TirocinioInterno.EMAIL = ? AND status='in svolgimento'" );
+			ps.setString(1, email);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
