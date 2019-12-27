@@ -1,7 +1,7 @@
 package controller.GestioneProposta;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,12 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Azienda;
-import model.Proposta;
 import model.PropostaDAO;
-import model.TutorAccademico;
-import model.TutorAziendale;
-import model.TutorAziendaleDAO;
+
+
+
 
 /**
  * @author antonio
@@ -41,9 +39,10 @@ public class ModificaProposta extends HttpServlet {
 		else {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
 			String obiettivo=request.getParameter("obiettivo");
-			String sede=request.getParameter("sede");
-			String temaAmbito=request.getParameter("tema_ambito");
-			String materialeRisorse=request.getParameter("materiale_risorse");
+			String competenze=request.getParameter("competenze");
+			String attivita=request.getParameter("attivita");
+			String modalita=request.getParameter("modalita");
+			
 			// non adatto per lo studente,pdcd,ufficio carriere
 			if(tipoUtente.equalsIgnoreCase("model.User")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
@@ -52,7 +51,7 @@ public class ModificaProposta extends HttpServlet {
 
 			// tirocinio interno
 			else if(tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
-				if(PropostaDAO.modificationPropostaInterno(obiettivo, sede, temaAmbito, materialeRisorse, idProposta)==true)
+				if(PropostaDAO.modificationPropostaInterno(obiettivo, competenze, attivita, modalita, idProposta)==true)
 					request.setAttribute("modifica", true);
 				else
 					request.setAttribute("modifica", false);
@@ -64,7 +63,7 @@ public class ModificaProposta extends HttpServlet {
 			else if(tipoUtente.equalsIgnoreCase("model.azienda")) {
 				int idTutorAziendale=Integer.parseInt(request.getParameter("tutorAziendale"));
 					
-				if(PropostaDAO.modificationPropostaEsterno(obiettivo, sede, temaAmbito, materialeRisorse, idTutorAziendale, idProposta)==true)
+				if(PropostaDAO.modificationPropostaEsterno(obiettivo, competenze, attivita, modalita, idTutorAziendale, idProposta)==true)
 					request.setAttribute("modifica", true);
 				else
 					request.setAttribute("modifica", false);
