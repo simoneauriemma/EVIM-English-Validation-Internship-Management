@@ -1,7 +1,6 @@
 package controller.GestioneProposta;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,11 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Azienda;
-import model.Proposta;
 import model.PropostaDAO;
-import model.TutorAziendale;
-import model.TutorAziendaleDAO;
+
 
 /**
  * Servlet implementation class RimuoviProposta

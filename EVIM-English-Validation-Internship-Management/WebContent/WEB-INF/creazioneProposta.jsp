@@ -8,10 +8,17 @@
 #button-container{
 text-align: center;
 }
+textarea.er{
+	border:1px solid red;
+	}
+	
+.error{
+	color:red;
+}
 </style>
 <link rel="stylesheet" href="stiliCSS/stiliMenu.css">
 <link rel="stylesheet" href="stiliCSS/stiliPropostaTirocinio.css">
-<jsp:include page="WEB-INF/navbarBlu.jsp"></jsp:include>
+<jsp:include page="navbarBlu.jsp"></jsp:include>
 <meta charset="ISO-8859-1">
 <title>Crea proposta</title>
 </head>
@@ -19,7 +26,7 @@ text-align: center;
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
-				<jsp:include page="WEB-INF/menu.jsp"></jsp:include>
+				<jsp:include page="menu.jsp"></jsp:include>
 			</div>
 
 			<div class="col-lg-9"
@@ -36,12 +43,15 @@ text-align: center;
 							class="form-control" id="usr"> <br>-->
 			
 				<c:if test="${type eq 'azienda'}">
+				
 					<div class="scelta-drop">
 						<div class="form-group" style="width: 200px;">
 							<label for="sel1"><i class="fas fa-briefcase"></i>
-								Tutor Aziendale</label> 
+								Tutor Aziendale</label>
+								<span class="error" id="spanTutor">Seleziona un tutor</span> 
 								<select class="form-control"
 								id="tutoraziendale" name="tutorAziendale">
+								<option disabled selected value>Seleziona un'opzione</option>
 								<c:forEach items="${elencoTutorAziendali}" var="tutor">
 									<option value='<c:out value="${tutor.id}"/>'>
 									<c:out value="${tutor.nome}"/> <c:out value="${tutor.cognome}"></c:out>
@@ -56,8 +66,10 @@ text-align: center;
 					<div class="form-group">
 					<label for="exampleFormControlTextarea1"><i
 						class="fas fa-coins" style="margin-right: 5px;"></i>Indicare le competenze da acquisire</label>
+						<br>
+						<span class="error">I caratteri devono essere tra 10 e 200</span>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi le competenze da acquisire.." rows="3" name="sede"></textarea>
+						placeholder="Descrivi le competenze da acquisire.." rows="3" name="competenze"></textarea>
 				</div>
 					
 					
@@ -67,22 +79,28 @@ text-align: center;
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1"><i
 						class="fas fa-coins" style="margin-right: 5px;"></i>Indicare le attivita formative previste</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi le attivita formative previste.." rows="3" name="tema_ambito"></textarea>
+						<br>
+						<span class="error">I caratteri devono essere tra 10 e 200</span>
+					<textarea class="form-control" id="exampleFormControlTextarea2"
+						placeholder="Descrivi le attivita formative previste.." rows="3" name="attivita"></textarea>
 				</div>
 
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1"><i
 						class="fas fa-info-circle" style="margin-right: 5px;"></i>Indicare gli obiettivi</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1"
+						<br>
+						<span class="error">I caratteri devono essere tra 10 e 200</span>
+					<textarea class="form-control" id="exampleFormControlTextarea3"
 						placeholder="Descrivi gli obiettivi.." rows="3" name="obiettivo"></textarea>
 				</div>
 
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1"><i
 						class="fas fa-box-open" style="margin-right: 5px;"></i>Indicare la modalita di svolgimento del tirocinio</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi la modalita di svolgimento del tirocinio.." rows="3" name="materiale_risorse"></textarea>
+						<br>
+						<span class="error">I caratteri devono essere tra 10 e 400</span>
+					<textarea class="form-control" id="exampleFormControlTextarea4"
+						placeholder="Descrivi la modalita di svolgimento del tirocinio.." rows="3" name="modalita"></textarea>
 				</div>
 				
 				<div id="button-container">
@@ -96,31 +114,54 @@ text-align: center;
 	</div>
 	<br>
 	<br>
-	<jsp:include page="WEB-INF/footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 <script>
+
 	$(document).ready(function(){
-		alert("nascondo");
-		$(".error".hide();
+		$(".error").hide();
 		
-		$("formCreaProposta").find("textarea").each(function(){
-			if(!validate($(this).attr("id"))){
-				$(this).addClass("er").next().show();
+		
+		$("#formCreaProposta").submit(function(){
+			var res=true;
+			$("#formCreaProposta").find("textarea").each(function(){
+				if(!validate($(this).attr("id"))){
+					$(this).addClass("er").prev().show();
+					res=false;
+				}
+				else if($(this).hasClass("er")){
+					$(this).removeClass("er").prev().hide();
+				}
+				
+			});
+			if($("#tutoraziendale option:selected").text()=="Seleziona un'opzione"){
+				$("#tutoraziendale").css("border","1px solid red");
+				$("#spanTutor").show();
 				res=false;
 			}
-			else if($(this).hasClass("er"))
-				$(this).removeClass("er").next().hide();
+			else{
+				$("#tutoraziendale").css("border","");
+				$("#spanTutor").hide();
+			}
+			return res;
 		});
-		return res;
-	});
+	
 		
 		function validate(fieldId){
-			alert("id"+fieldId);
-			var lunghezzaStringa=document.getElementById(fieldId).val().length;
-			if(lunghezzaStringa>200)
-				return false;
-			return true;
+			var lunghezzaStringa=document.getElementById(fieldId).value.length;
+			if(fieldId!="exampleFormControlTextarea4"){
+				if(lunghezzaStringa<10 || lunghezzaStringa>200)
+						return false;
+				return true;
+			}
+			else{
+				if(lunghezzaStringa<10 || lunghezzaStringa>400)
+					return false;
+				return true;
+			}
+			
 		}
+	});
 </script>
 
 </html>
