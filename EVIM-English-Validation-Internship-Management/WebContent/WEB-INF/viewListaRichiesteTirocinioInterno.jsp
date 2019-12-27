@@ -22,23 +22,33 @@
 
 		<div class="col-lg-9" id="col-9">
 
-			<p id="titolo">Richieste tirocinio interno</p>
+			<p id="titolo" class="text-center">Richieste tirocinio interne ed
+				esterne</p>
+			<hr>
+			<%
+				int n = 0;
+			%>
 			<c:if test="${arrayTirocinioInterno.size() > 0}">
 
-				<c:forEach items="${arrayTirocinioInterno}" var="tirocinioin">
+				<c:forEach items="${arrayTirocinioInterno}" var="interno">
+					<%
+						n = n + 1;
+					%>
 					<div class="accordion">
 						<div class="card">
 
-							<div id="headingOne" style="background-color: #2C5278">
+							<div id="heading<%=n%>" style="background-color: #2C5278">
 								<h6 class="mb-0">
 									<button data-toggle="collapse" id="nome-studente"
-										data-target="#collapseOne" aria-expanded="true"
-										aria-controls="collapseOne"><c:out value="${tirocinioin.email}"></c:out></button>
+										data-target="#collapse<%=n%>" aria-expanded="true"
+										aria-controls="collapse<%=n%>" style="color: white;">
+										<c:out value="${interno.EMAIL}" />
+									</button>
 								</h6>
 							</div>
 
-							<div id="collapseOne" class="collapse"
-								aria-labelledby="headingOne" data-parent="#accordion">
+							<div id="collapse<%=n%>" class="collapse"
+								aria-labelledby="heading<%=n%>" data-parent="#accordion">
 								<div class="card-body">
 									<table class="table table-striped">
 										<tbody>
@@ -46,42 +56,45 @@
 												<td class="icon"><i class="fa fa-user"></i></td>
 												<td class="">Numero proposta</td>
 												<td class="text-center"><c:out
-														value="${tirocinioin.ID_Proposta}"></c:out></td>
-											</tr>
-											<tr>
-												<td class="icon"><i class="fas fa-at"></i></td>
-												<td class="">E-mail</td>
-												<td class="text-center">#</td>
+														value="${interno.ID_Proposta}" /></td>
 											</tr>
 											<tr>
 												<td class="icon"><i class="fas fa-toggle-on"></i></td>
 												<td class="">Status</td>
 												<td class="text-center"><c:out
-														value="${tirocinioin.status}"></c:out><i id="status"
+														value="${interno.status}" /><i id="status"
 													class="far fa-circle"></i></td>
 											</tr>
 											<tr>
 												<td class="icon"><i class="fas fa-circle"></i></td>
 												<td class="">Num. CFU</td>
 												<td class="text-center"><c:out
-														value="${tirocinioin.CFU}"></c:out></td>
+														value="${interno.numeroCFU}" /></td>
 											</tr>
 											<tr>
 												<td class="icon"><i class="fas fa-file-signature"></i></td>
 												<td class="">Firma Tutor Accademico</td>
-												<td class="text-center">#</td>
+												<td class="text-center"><c:out
+														value="${interno.firmaTutorAccademico}" /></td>
+											</tr>
+											<tr>
+												<td class="icon"><i class="fas fa-file-signature"></i></td>
+												<td class="">Firma PdCD</td>
+												<td class="text-center"><c:out
+														value="${interno.firmaPdCD}" /></td>
 											</tr>
 											<tr>
 												<td class="icon"><i class="fas fa-signature"></i></td>
 												<td class="">Valutazione richiesta</td>
+
 												<td class="text-center">
 													<button class="bottone"
-														onclick="ValuatareRichiesta?confermato=si&id="
+														onclick="ValuatareRichiesta?confermato=si&id=<>"
 														id="accetta">
 														<i class="fas fa-check-square"></i>
 													</button>
 													<button class="bottone"
-														onclick="ValuatareRichiesta?confermato=no&id="
+														onclick="ValuatareRichiesta?confermato=no&id=<>"
 														id="rifiuta">
 														<i class="far fa-times-circle"></i>
 													</button>

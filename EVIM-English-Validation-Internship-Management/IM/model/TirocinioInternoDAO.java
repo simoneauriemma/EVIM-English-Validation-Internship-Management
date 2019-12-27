@@ -99,7 +99,7 @@ public class TirocinioInternoDAO {
 				a.setID_tutorAccademico(rs.getInt("ID_tutorAccademico"));
 				a.setData(rs.getString("Data"));
 				a.setStatus(rs.getString("status"));
-				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademco"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
 				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
 				richieste.add(a);
 			}

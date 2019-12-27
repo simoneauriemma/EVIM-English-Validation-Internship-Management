@@ -182,15 +182,15 @@ public class TirocinioEsternoDAO {
 				TirocinioEsterno a = new TirocinioEsterno();
 				a.setID_TirocinioEsterno(rs.getInt("ID_TirocinioEsterno"));
 				a.setEMAIL(rs.getString("EMAIL"));
-				a.setID_TutorAccademico(rs.getInt("ID_tutorAccademico"));
-				a.setID_TutorAziendale(rs.getInt("ID_TurorAziendale"));
+				a.setID_TutorAccademico(rs.getInt("ID_TutorAccademico"));
+				a.setID_TutorAziendale(rs.getInt("ID_TutorAziendale"));
 				a.setData(rs.getString("Data"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setStatus(rs.getString("status"));
 				a.setCFU(rs.getInt("CFU"));
 				a.setFirmaAzienda(rs.getBoolean("FirmaAzienda"));
 				a.setFirmaTutorAziendale(rs.getBoolean("FirmaTutorAziendale"));
-				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademco"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademIco"));
 				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
 				a.setID_Proposta(rs.getInt("ID_Proposta"));
 				richieste.add(a);
