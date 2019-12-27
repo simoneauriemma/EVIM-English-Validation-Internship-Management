@@ -100,7 +100,7 @@ public class Login extends BaseServlet {
 
 			}
 
-			// controllo tutor aziendale (@tutor.azienda.it)
+			// controllo tutor aziendale (@tutor.unisa.it)
 
 			else if (email.contains("tutor")) {
 				TutorAziendale tutoraz = TutorAziendaleDAO.doRetrieveByLoginData(email, password);

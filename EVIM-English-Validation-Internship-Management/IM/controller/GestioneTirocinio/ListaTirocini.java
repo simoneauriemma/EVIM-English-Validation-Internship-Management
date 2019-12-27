@@ -92,10 +92,10 @@ public class ListaTirocini extends BaseServlet {
 			else if (session.getAttribute("type").equals("tutoraccademico")) {
 				
 				TutorAccademico tutora = (TutorAccademico) session.getAttribute("utenteLoggato");
-				interno = new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoTutorAccRegistro(tutora.getEmail());
+				interno = new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoTutorAccRegistro(tutora.getIdTutorAccademico());
 				
 				
-				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoTutorAccRegistro(tutora.getEmail());
+				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoTutorAccRegistro(tutora.getIdTutorAccademico());
 								
 				System.out.println(interno.toString());
 				System.out.println(esterno.toString());
@@ -135,10 +135,10 @@ public class ListaTirocini extends BaseServlet {
 				
 				
 				TutorAziendale tutoraz = (TutorAziendale) session.getAttribute("utenteLoggato");
-				interno = new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoTutorAzRegistro(tutoraz.getEmail());
+				interno = new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoTutorAzRegistro(tutoraz.getId());
 				
 				
-				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoTutorAzRegistro(tutoraz.getEmail());
+				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoTutorAzRegistro(tutoraz.getId());
 								
 				System.out.println(interno.toString());
 				System.out.println(esterno.toString());
