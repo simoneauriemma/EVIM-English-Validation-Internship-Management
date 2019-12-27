@@ -135,28 +135,17 @@ public class ListaTirocini extends BaseServlet {
 				
 				
 				TutorAziendale tutoraz = (TutorAziendale) session.getAttribute("utenteLoggato");
-				interno = new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoTutorAzRegistro(tutoraz.getId());
+			
 				
 				
 				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoTutorAzRegistro(tutoraz.getId());
 								
-				System.out.println(interno.toString());
+				
 				System.out.println(esterno.toString());
 
-				//TO DO: DA MODIFICARE IN
-				// if (!(interno.isEmpty())) {
-				if ((interno.isEmpty())) {
-					System.out.println("interno non è empty");
-					// significa che ha fatto il tirocinio interno
 				
 
-					request.setAttribute("registroQueryInterno", interno);
-					System.out.println("prima del disp");
-
-					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
-					dispatcher.forward(request, response);
-
-				} else if (!(esterno.isEmpty())) {
+				 if (!(esterno.isEmpty())) {
 					//esterno
 					System.out.println("esterno non è empty");
 
