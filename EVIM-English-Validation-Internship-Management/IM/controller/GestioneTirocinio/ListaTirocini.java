@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,7 +16,6 @@ import model.TirocinioEsterno;
 import model.TirocinioEsternoDAO;
 import model.TirocinioInterno;
 import model.User;
-import model.UserDAO;
 
 /**
  * Servlet implementation class ListaTirocini
@@ -38,33 +36,48 @@ public class ListaTirocini extends BaseServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
 			dispatcher.forward(request, response);
 		} else {
+			
+			System.out.println();
 
 			ArrayList<TirocinioInterno> interno = new ArrayList<TirocinioInterno>();
 			ArrayList<TirocinioEsterno> esterno = new ArrayList<TirocinioEsterno>();
 			// studente
 			if (session.getAttribute("type").equals("studente")) {
+				
 
 				User studente = (User) session.getAttribute("utenteLoggato");
 				interno = new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoStudente(studente.getEmail());
 				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoStudente(studente.getEmail());
+				
+				System.out.println(interno.toString());
+				System.out.println(esterno.toString());
 
-				if (!(interno.isEmpty())) {
+				//TO DO: DA MODIFICARE IN
+				// if (!(interno.isEmpty())) {
+				if ((interno.isEmpty())) {
+					System.out.println("interno non è empty");
 					// significa che ha fatto il tirocinio interno
 					ArrayList<RegistroQuery> listaTirociniInterno = new TirocinioInternoDAO()
 							.doRetriveTirocinioInSvolgimentoStudenteRegistro();
 
 					request.setAttribute("registroQueryInterno", listaTirociniInterno);
+					System.out.println("prima del disp");
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
 					dispatcher.forward(request, response);
 
 				} else if (!(esterno.isEmpty())) {
 					//esterno
+					System.out.println("esterno non è empty");
+
 					ArrayList<RegistroQuery> listaTirociniEsterno = new TirocinioEsternoDAO()
 							.doRetriveTirocinioInSvolgimentoStudenteRegistro();
 
 					request.setAttribute("registroQueryEsterno", listaTirociniEsterno);
+					
+					System.out.println("prima del disp");
 
+					
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
 					dispatcher.forward(request, response);
 				}

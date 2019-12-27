@@ -269,7 +269,7 @@ public class TirocinioInternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro() {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"sselect TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.NumeroCFU,"
+					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.NumeroCFU,"
 							+ "TirocinioInterno.OreTotali, Registro.ID_Registro "
 							+ "from TirocinioInterno, Registro, USER "
 							+ "where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio AND "
