@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="navbarBlu.jsp"></jsp:include>
 
 <head>
@@ -38,46 +38,58 @@
 						data-parent="#accordion">
 						<div class="card-body">
 							<table class="table table-striped">
-								<tbody>
-									<tr>
-										<td class="icon"><i class="fa fa-user"></i></td>
-										<td class="">Numero proposta</td>
-										<td class="text-center"># #</td>
-									</tr>
-									<tr>
-										<td class="icon"><i class="fas fa-at"></i></td>
-										<td class="">E-mail</td>
-										<td class="text-center">#</td>
-									</tr>
-									<tr>
-										<td class="icon"><i class="fas fa-toggle-on"></i></td>
-										<td class="">Status</td>
-										<td class="text-center"><i id="status"
-											class="far fa-circle"></i></td>
-									</tr>
-									<tr>
-										<td class="icon"><i class="fas fa-circle"></i></td>
-										<td class="">Num. CFU</td>
-										<td class="text-center">#</td>
-									</tr>
-									<tr>
-										<td class="icon"><i class="fas fa-file-signature"></i></td>
-										<td class="">Firma Tutor Accademico</td>
-										<td class="text-center">#</td>
-									</tr>
-									<tr>
-										<td class="icon"><i class="fas fa-signature"></i></td>
-										<td class="">Valutazione richiesta</td>
-										<td class="text-center">											
-												<button class="bottone" onclick="ValuatareRichiesta?confermato=si&id=" id="accetta">									
-													<i class="fas fa-check-square"></i>
-												</button>
-												<button class="bottone" onclick="ValuatareRichiesta?confermato=no&id=" id="rifiuta">
-													<i class="far fa-times-circle"></i>
-												</button>
-										</td>
-									</tr>
-								</tbody>
+								<c:if test="${arrayTirocinioInterno.size() > 0}">
+
+									<c:forEach items="${arrayTirocinioInterno}" var="tirocinioin">
+										<tbody>
+											<tr>
+												<td class="icon"><i class="fa fa-user"></i></td>
+												<td class="">Numero proposta</td>
+												<td class="text-center"><c:out
+														value="${tirocinioin.ID_Proposta}"></c:out></td>
+											</tr>
+											<tr>
+												<td class="icon"><i class="fas fa-at"></i></td>
+												<td class="">E-mail</td>
+												<td class="text-center">#</td>
+											</tr>
+											<tr>
+												<td class="icon"><i class="fas fa-toggle-on"></i></td>
+												<td class="">Status</td>
+												<td class="text-center"><c:out
+														value="${tirocinioin.status}"></c:out><i id="status"
+													class="far fa-circle"></i></td>
+											</tr>
+											<tr>
+												<td class="icon"><i class="fas fa-circle"></i></td>
+												<td class="">Num. CFU</td>
+												<td class="text-center"><c:out
+														value="${tirocinioin.CFU}"></c:out></td>
+											</tr>
+											<tr>
+												<td class="icon"><i class="fas fa-file-signature"></i></td>
+												<td class="">Firma Tutor Accademico</td>
+												<td class="text-center">#</td>
+											</tr>
+											<tr>
+												<td class="icon"><i class="fas fa-signature"></i></td>
+												<td class="">Valutazione richiesta</td>
+												<td class="text-center">
+													<button class="bottone"
+														onclick="ValuatareRichiesta?confermato=si&id="
+														id="accetta">
+														<i class="fas fa-check-square"></i>
+													</button>
+													<button class="bottone"
+														onclick="ValuatareRichiesta?confermato=no&id="
+														id="rifiuta">
+														<i class="far fa-times-circle"></i>
+													</button>
+												</td>
+											</tr>
+										</tbody>
+									</c:forEach>
+								</c:if>
 							</table>
 						</div>
 					</div>
