@@ -26,15 +26,15 @@
 				tirocinio interno</p>
 			<hr>
 			<br> <br>
-			
+
 			<!-- SE L'UTENTE LOGGATO E' UNO STUDENTE ed è tirocinio ESTERNO  -->
 			<c:if test="${type == 'studente' }">
-			
-			<!-- Se la lista di tirocini esterni è vuota esce che non c'è nulla -->
-			<c:if test="${registroQueryEsterno.size() == 0}"> 
-				<p>Nessuna richieste di tirocinio esterno è stata effettuata!</p>
-			</c:if>
-			
+
+				<!-- Se la lista di tirocini esterni è vuota esce che non c'è nulla -->
+				<c:if test="${registroQueryEsterno.size() == 0}">
+					<p>Nessuna richieste di tirocinio esterno è stata effettuata!</p>
+				</c:if>
+
 				<c:if test="${registroQueryEsterno.size() > 0}">
 					<c:forEach items="${registroQueryEsterno}" var="esterno">
 
@@ -53,19 +53,19 @@
 							</thead>
 							<tbody>
 								<tr>
-									<th scope="row"><c:out value="${esterno.ID_Proposta}" /></th>
+									<th scope="row"><c:out value="${esterno.ID_Tirocinio}" /></th>
 									<td>#</td>
 									<td><c:out value="${utenteLoggato.status}" /></td>
-									<td><c:out value="${esterno.CFU}" /></td>
-									<td><c:out value="${esterno.oreTotali}" /></td>
+									<td><c:out value="${esterno.NumeroCFU}"/></td>
+									<td><c:out value="${esterno.OreTotali}" /></td>
 									<td>Esterno</td>
 									<td class="form-inline">
-										<form class="text-center">
+										<a href="#">
 											<i id="registro" class="fas fa-book"></i>
-										</form>
-										<form>
+										</a>
+										<a href="#">
 											<i id="accettare" class="fas fa-check-square"></i>
-										</form>
+										</a>
 									</td>
 									<td>
 										<div class="form-group">
@@ -84,7 +84,104 @@
 					</c:forEach>
 				</c:if>
 			</c:if>
-<!-- file -->
+
+			<!-- SE L'UTENTE LOGGATO E' UNO TUTOR AZIENZALE  -->
+			<c:if test="${type == 'tutoraziendale' }">
+				<c:if test="${registroQueryEsterno.size() == 0}">
+					<p>Nessuna richieste di tirocinio è stata effettuata!</p>
+				</c:if>
+
+				<c:forEach items="registroQueryEsterno" var="esterno">
+				<table class="table table-striped" id="tabella">
+					<thead>
+						<tr id="colonne">
+							<th scope="col">ID Tirocinio</th>
+							<th scope="col">Responsabile</th>
+							<th scope="col">CFU</th>
+							<th scope="col">Ore Max</th>
+							<th scope="col">Registro tirocinio</th>
+							<th scope="col">Operazioni</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>Mario</td>
+							<td>Verdi</td>
+							<td>mario.verdi</td>
+							<td>mario.verdi</td>
+							<td class="form-inline text-center">
+								<form>
+									<i id="registro" class="fas fa-book"></i>
+								</form>
+								<form id="accettare">
+									<i class="fas fa-check-square"></i>
+								</form>
+							</td>
+							<td>
+								<div class="form-group">
+									<select class="form-control" id="select"
+										onchange="getTutors(this.value)" name="sel1">
+										<option selected>--select an option--</option>
+										<option value="">Visualizza progetto</option>
+										<option value="">Compila questionario</option>
+									</select>
+								</div>
+							</td>
+
+						</tr>
+
+					</tbody>
+				</table>
+				</c:forEach>
+			</c:if>
+
+			<!-- SE L'UTENTE LOGGATTO E' IL TUTOR ACCADEMICO -->
+			<c:if test="${type == 'tutoraccademico' }">
+				<table class="table table-striped" id="tabella">
+					<thead>
+						<tr id="colonne">
+							<th scope="col">ID Tirocinio</th>
+							<th scope="col">Responsabile</th>
+							<th scope="col">CFU</th>
+							<th scope="col">Ore Max</th>
+							<th scope="col">Tipo tirocinio</th>
+							<th scope="col">Registro tirocinio</th>
+							<th scope="col">Operazioni</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>Mario</td>
+							<td>Verdi</td>
+							<td>mario.verdi</td>
+							<td>mario.verdi</td>
+							<td class="form-inline text-center">
+								<form>
+									<i id="registro" class="fas fa-book"></i>
+								</form>
+								<form id="accettare">
+									<i class="fas fa-check-square"></i>
+								</form>
+							</td>
+							<td>
+								<div class="form-group">
+									<select class="form-control" id="select"
+										onchange="getTutors(this.value)" name="sel1">
+										<option selected>--select an option--</option>
+										<option value="">Visualizza progetto</option>
+										<option value="">Compila questionario</option>
+									</select>
+								</div>
+							</td>
+
+						</tr>
+
+					</tbody>
+				</table>
+			</c:if>
+
 		</div>
 
 	</div>
