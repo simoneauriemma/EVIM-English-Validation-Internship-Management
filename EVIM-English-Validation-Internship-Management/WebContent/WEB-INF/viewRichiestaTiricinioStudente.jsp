@@ -24,7 +24,7 @@
 				style="border: 1px solid #d7d7d7; background-color: white;">
 				<p id="titolo" style="font-size: 30px; color: #595959;">
 					Richiesta di tirocinio curriculare</p>
-					
+
 				<c:if
 					test="${arrayTirocinioEsterno.size() == 0 || arrayTirocinioIntero.size() == 0 }">
 					<p>Non ci sono richieste!</p>
@@ -60,8 +60,12 @@
 								<tr>
 									<td class="icon"><i class="fas fa-toggle-on"></i></td>
 									<td class="">Status</td>
-									<td class="text-center"><c:out
-											value="${tirocinioe.status}"></c:out><i class="far fa-circle"></i></td>
+									<td class="text-center"><i class="far fa-circle"></i>
+									 <c:out
+											value="${tirocinioe.status}"></c:out></td>
+
+
+
 								</tr>
 								<tr>
 									<td class="icon"><i class="fas fa-circle"></i></td>
