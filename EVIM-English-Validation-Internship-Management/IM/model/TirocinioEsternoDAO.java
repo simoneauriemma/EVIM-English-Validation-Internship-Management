@@ -366,7 +366,7 @@ public class TirocinioEsternoDAO {
 							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro "
 							+ "from TirocinioEsterno, Registro, USER "
 							+ "where TirocinioEsterno.ID_TirocinioEsterno = Registro.ID_Tirocinio AND "
-							+ "TirocinioEsterno.EMAIL = USER.EMAIL");
+							+ "TirocinioEsterno.EMAIL = USER.EMAIL AND status='in svolgimento'" );
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();

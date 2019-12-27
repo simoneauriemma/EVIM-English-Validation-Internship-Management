@@ -90,11 +90,15 @@ public class ListaTirocini extends BaseServlet {
 			// Tutor Accademico
 
 			else if (session.getAttribute("type").equals("tutoraccademico")) {
+				
+				
 
 			}
 
 			// Tutor Aziendale
 			else if (session.getAttribute("type").equals("tutoraaziendale")) {
+				
+				
 
 			}
 
