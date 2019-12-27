@@ -28,7 +28,7 @@ VALUES ('1','Mario','Giorgio','umpalumpa2','via dalle cicogne Salerno 22344 64',
 INSERT INTO `tutoraccademico` (`ID_TutorAccademico`,`Nome`,`Cognome`,`Password`,`indirizzo`,`email`,`Telefono`) 
 VALUES ('2','Antonio','Sultani','radiomaria11','via roma 82933 Salerno 81','antoniosultani@unisa.it','3335333555');
 
-#Inserimento proposte
+#Inserimento proposteee
 INSERT INTO `proposta` (`ID_Proposta`,`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
 VALUES (1,'Sviluppare nuove metodologie. Integrare metodologie esistenti.','Laboratorio di Verifica di Correttezza e Sintesi Automatica di Sistemi Digitali','Verifica automatica di correttezza dei programmi',' Per avere un’idea dell’area di riferimento consultare il materiale del corso di Tecniche Automatiche per La Correttezza del Software (http://www.di- srv.unisa.it/professori/latorre/didattica/TACS/)',1,1);
 INSERT INTO `proposta` (`ID_Proposta`,`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
