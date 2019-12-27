@@ -24,6 +24,7 @@
 	border: 1px solid #d7d7d7;
 }
 
+
 /*bottone che permette al tutor accademico di firmare */
 
 .bottone{
@@ -49,6 +50,11 @@
 	margin-left: 7px;
 }
 
+#nome-studente{
+	color: white;
+}
+
 #nome-studente:hover{
 	text-decoration: underline;
+	color:white
 }
