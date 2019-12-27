@@ -81,6 +81,18 @@
 						  Modifica non effettuato con successo
 						</div>
 					</c:if>
+					
+				<c:if test="${rimuovi==true}">
+					<div class="alert alert-success" role="alert">
+						  Rimosso con successo
+						</div>
+				</c:if>
+				
+				<c:if test="${rimuovi==false}">
+					<div class="alert alert-danger" role="alert">
+						  Non rimosso con successo
+						</div>
+				</c:if>
 				
 				
 				<div id="carouselExampleControls" class="carousel slide"

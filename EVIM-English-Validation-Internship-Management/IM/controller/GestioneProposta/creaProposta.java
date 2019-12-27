@@ -39,7 +39,7 @@ public class creaProposta extends HttpServlet {
 			System.out.println("tipoUtente-->"+tipoUtente);
 			// non adatto per lo studente,pdcd,ufficio carriere
 			if(tipoUtente.equalsIgnoreCase("model.User")) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
 				dispatcher.forward(request, response);
 			}
 			
@@ -55,40 +55,43 @@ public class creaProposta extends HttpServlet {
 				
 				if(PropostaDAO.insertPropostaInterno(obiettivo, sede, temaAmbito, materialeRisorse, tutor.getIdTutorAccademico())) {
 					request.setAttribute("risultatoInserimentoProposta",true);
-					RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
-					dispatcher.forward(request, response);
+					
 				}
 				else {
-					System.out.println("insert non andato a buon fine");
+					request.setAttribute("risultatoInserimentoProposta", false);
 				}
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
+				dispatcher.forward(request, response);
 				
 			}
 			//tirocinio esterno
 			else if(tipoUtente.equalsIgnoreCase("model.azienda")) {
 				Azienda tutor= (Azienda) sessione.getAttribute("utenteLoggato");
 				int idTutorAziendale=Integer.parseInt(request.getParameter("tutorAziendale"));
-				String sede=request.getParameter("sede");
-				String temaAmbito=request.getParameter("tema_ambito");
+				String competenze=request.getParameter("sede");
+				String attivita=request.getParameter("tema_ambito");
 				String obiettivo=request.getParameter("obiettivo");
-				String materialeRisorse=request.getParameter("materiale_risorse");
+				String modalita=request.getParameter("materiale_risorse");
 				
-				System.out.println("IDTutorAziendale-->"+idTutorAziendale);
-				System.out.println("sede-->"+sede);
-				System.out.println("temaAmbito-->"+temaAmbito);
-				System.out.println("obiettivo-->"+obiettivo);
-				System.out.println("materialeRisorse-->"+materialeRisorse);
-				
-				if(PropostaDAO.insertPropostaEsterno(obiettivo, sede, temaAmbito, materialeRisorse, tutor.getID_Azinda(),idTutorAziendale)) {
-					request.setAttribute("risultatoInserimentoProposta",true);
-					RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
-					dispatcher.forward(request, response);
+			if(idTutorAziendale!=-1 && competenze.length()<=200 && attivita.length()<=200 && obiettivo.length()<=200 && modalita.length()<=200)
+					if(PropostaDAO.insertPropostaEsterno(obiettivo, competenze, attivita, modalita, tutor.getID_Azinda(),idTutorAziendale)) {
+						request.setAttribute("risultatoInserimentoProposta",true);
+						RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
+						dispatcher.forward(request, response);
+					}
+					else {
+						RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
+						request.setAttribute("risultatoInserimentoProposta",false);
+						dispatcher.forward(request, response);
+					}
 				}
-			}
 			else {
-				request.setAttribute("risultatoInserimentoProposta",false);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
+				request.setAttribute("risultatoInserimentoProposta",false);
 				dispatcher.forward(request, response);
 			}
+				
 		}
 	}
 

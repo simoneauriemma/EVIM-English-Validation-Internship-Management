@@ -58,17 +58,20 @@ text-align: center;
 				</c:if>
 				
 					
-					<i class="fas fa-building" style="margin-right: 5px;"></i> Sede 
-					<input type="text" class="form-control" id="sede" name="sede" value="${proposta.sede}"> 
-					</div>		
+					<div class="form-group">
+					<label for="exampleFormControlTextarea1"><i
+						class="fas fa-coins" style="margin-right: 5px;"></i>Competenze</label>
+					<textarea class="form-control" id="exampleFormControlTextarea1"
+						placeholder="Descrivi tema/ambito..." rows="3" name="sede"><c:out value="${proposta.competenze}"/></textarea>
+				</div>	
 				
 				<br>
 
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1"><i
-						class="fas fa-coins" style="margin-right: 5px;"></i>Tema/Ambito</label>
+						class="fas fa-coins" style="margin-right: 5px;"></i>Attivita</label>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi tema/ambito..." rows="3" name="tema_ambito"><c:out value="${proposta.temaAmbito}"/></textarea>
+						placeholder="Descrivi tema/ambito..." rows="3" name="tema_ambito"><c:out value="${proposta.attivita}"/></textarea>
 				</div>
 
 				<div class="form-group">
@@ -81,9 +84,9 @@ text-align: center;
 
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1"><i
-						class="fas fa-box-open" style="margin-right: 5px;"></i>Materiale/Risorse</label>
+						class="fas fa-box-open" style="margin-right: 5px;"></i>Modalita</label>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi materiale/risorse..." rows="3" name="materiale_risorse"><c:out value="${proposta.materialeRisorse}"/></textarea>
+						placeholder="Descrivi materiale/risorse..." rows="3" name="materiale_risorse"><c:out value="${proposta.modalita}"/></textarea>
 				</div>
 				
 				<div id="button-container">
