@@ -31,12 +31,12 @@
 			<c:if test="${type == 'studente' }">
 			
 			<!-- Se la lista di tirocini esterni è vuota esce che non c'è nulla -->
-			<c:if test="${arrayTirocinioEsterno.size() == 0}"> 
+			<c:if test="${registroQueryEsterno.size() == 0}"> 
 				<p>Nessuna richieste di tirocinio esterno è stata effettuata!</p>
 			</c:if>
 			
-				<c:if test="${arrayTirocinioEsterno.size() > 0}">
-					<c:forEach items="${arrayTirocinioEsterno}" var="esterno">
+				<c:if test="${registroQueryEsterno.size() > 0}">
+					<c:forEach items="${registroQueryEsterno}" var="esterno">
 
 						<table class="table table-striped" id="tabella">
 							<thead>
@@ -54,10 +54,10 @@
 							<tbody>
 								<tr>
 									<th scope="row"><c:out value="${esterno.ID_Proposta}" /></th>
-									<td>Mario</td>
+									<td>#</td>
 									<td><c:out value="${utenteLoggato.status}" /></td>
 									<td><c:out value="${esterno.CFU}" /></td>
-									<td>Esterno</td>
+									<td><c:out value="${esterno.oreTotali}" /></td>
 									<td>Esterno</td>
 									<td class="form-inline">
 										<form class="text-center">

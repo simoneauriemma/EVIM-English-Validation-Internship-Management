@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import controller.BaseServlet;
 import model.TirocinioInternoDAO;
 import model.TirocinioEsterno;
 import model.TirocinioEsternoDAO;
@@ -23,11 +25,10 @@ import model.UserDAO;
  * Questa lista può essere visualizzata dal tutor accademico, aziendale e
  * studente
  * 
- * @author Simone Auriemma
  */
 @SuppressWarnings("serial")
 @WebServlet("/ListaTirocini")
-public class ListaTirocini extends HttpServlet {
+public class ListaTirocini extends BaseServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -49,25 +50,29 @@ public class ListaTirocini extends HttpServlet {
 
 				if (!(interno.isEmpty())) {
 					// significa che ha fatto il tirocinio interno
-					ArrayList<RegistroQuery> listaTirocini = new TirocinioInternoDAO()
+					ArrayList<RegistroQuery> listaTirociniInterno = new TirocinioInternoDAO()
 							.doRetriveTirocinioInSvolgimentoStudenteRegistro();
 
-					request.setAttribute("registroQuery", studente);
+					request.setAttribute("registroQueryInterno", listaTirociniInterno);
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
 					dispatcher.forward(request, response);
 
 				} else if (!(esterno.isEmpty())) {
 					//esterno
-					ArrayList<RegistroQuery> listaTirocini = new TirocinioEsternoDAO()
+					ArrayList<RegistroQuery> listaTirociniEsterno = new TirocinioEsternoDAO()
 							.doRetriveTirocinioInSvolgimentoStudenteRegistro();
 
-					request.setAttribute("registroQuery", listaTirocini);
+					request.setAttribute("registroQueryEsterno", listaTirociniEsterno);
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
 					dispatcher.forward(request, response);
 				}
 			}
+			
+			
+			
+			
 
 			// Tutor Accademico
 
