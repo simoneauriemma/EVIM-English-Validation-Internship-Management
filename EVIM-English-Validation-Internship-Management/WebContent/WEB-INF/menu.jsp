@@ -58,7 +58,7 @@
 		<c:if
 			test="${ type== 'studente' || type== 'azienda' || type=='tutoraccademico' || type=='tutoraziendale' || type=='pdcd'}">
 
-			<!--INIZIO GESTIONE TIROCINIOoo -->
+			<!--INIZIO GESTIONE TIROCINIO -->
 
 			<a data-toggle="collapse" href="#collapse-3" class="item"
 				class="folder collapsed" aria-expanded="false">Gestione
@@ -78,34 +78,34 @@
 
 				<c:if test="${type == 'tutoraccademico'}">
 					<!-- Tutor accademico -->
-					<li><a href="#"><i class="fas fa-angle-right "></i> Elenco
+					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i> Elenco
 							tirocinanti attivi </a></li>
+					<li><a href="compilaRelazione.jsp"><i class="fas fa-angle-right "></i>
+							Compila relazione tirocinio </a></li>
 					<li><a href="#"><i class="fas fa-angle-right "></i>
-							Valutare relazioni tirocinio </a></li>
-					<li><a href="#"><i class="fas fa-angle-right "></i>
-							Annullare svolgimento tirocinio </a></li>
+							Annulla svolgimento tirocinio </a></li>
 
 				</c:if>
 				<c:if test="${type == 'tutoraziendale'}">
 					<!-- Tutor aziendale -->
-					<li><a href="#"><i class="fas fa-angle-right "></i> Elenco
+					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i> Elenco
 							tirocinanti </a></li>
-					<li><a href="#"><i class="fas fa-angle-right "></i>
-							Compilare questionario valutativo </a></li>
-					<li><a href="#"><i class="fas fa-angle-right "></i>
-							Compilare relazione su tirocinante </a></li>
+					<li><a href="questionarioValutativo.jsp"><i class="fas fa-angle-right "></i>
+							Compila questionario valutativo </a></li>
+					<li><a href="compilaRelazione.jsp"><i class="fas fa-angle-right "></i>
+							Compila relazione tirocinio </a></li>
 
 				</c:if>
 				<c:if test="${type == 'azienda'}">
 					<!-- Azienda -->
-					<li><a href="#"><i class="fas fa-angle-right "></i> Elenco
-							tirocinante </a></li>
-					<li><a href="#"><i class="fas fa-angle-right "></i>
-							Approvare questionario valutativo </a></li>
+					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i> Elenco
+							tirocinanti </a></li>
+					<li><a href="questionarioValutativo.jsp"><i class="fas fa-angle-right "></i>
+							Compila questionario valutativo </a></li>
 
 				</c:if>
 			</ul>
-			<!-- FINE GESTIONE TIROCINIOooo -->
+			<!-- FINE GESTIONE TIROCINIO -->
 
 
 
