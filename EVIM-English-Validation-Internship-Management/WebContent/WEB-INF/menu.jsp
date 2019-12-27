@@ -179,8 +179,8 @@
 					<li><a href="VisualizzaRichieste"><i
 							class="fas fa-angle-right "></i> Visualizza richieste di
 							tirocinio </a></li>
-					<li><a href="#"><i class="fas fa-angle-right "></i>
-							Valutare progetto formativo </a></li>
+					<li><a href="progettoFormativo.jsp"><i class="fas fa-angle-right "></i>
+							Visualizza progetto formativo </a></li>
 				</c:if>
 
 				<c:if test="${type == 'pdcd'}">
@@ -211,7 +211,7 @@
 
 				<c:if
 					test="${type =='azienda' || type =='tutoraziendale' || type =='tutoraccademico'}">
-					<li><a href="#"><i class="fas fa-angle-right "></i> Valuta
+					<li><a href="progettoFormativo.jsp"><i class="fas fa-angle-right "></i> Valuta
 							progetto formativo </a></li>
 				</c:if>
 			</ul>
@@ -289,7 +289,7 @@
 				</ul>
 			</c:if>
 
-			<!-- INIZIO gestione account tutorrr -->
+			<!-- INIZIO gestione account tutor -->
 			<c:if test="${type == 'azienda' }">
 				<a data-toggle="collapse" href="#collapse-7" class="item"
 					class="folder collapsed" aria-expanded="false">Gestione account
