@@ -14,19 +14,15 @@ import javax.servlet.http.HttpSession;
 import model.Azienda;
 import model.Proposta;
 import model.PropostaDAO;
-import model.TutorAccademico;
 import model.TutorAziendale;
 import model.TutorAziendaleDAO;
 
 /**
- * @author antonio
- * Questa servlet permette di modificare campi specifici di una proposta selezionata. 
+ * Servlet implementation class RimuoviProposta
  */
-@WebServlet("/ModificaProposta")
-public class ModificaProposta extends HttpServlet {
+@WebServlet("/RimuoviProposta")
+public class RimuoviProposta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -40,38 +36,24 @@ public class ModificaProposta extends HttpServlet {
 		}
 		else {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
-			String obiettivo=request.getParameter("obiettivo");
-			String sede=request.getParameter("sede");
-			String temaAmbito=request.getParameter("tema_ambito");
-			String materialeRisorse=request.getParameter("materiale_risorse");
 			// non adatto per lo studente,pdcd,ufficio carriere
 			if(tipoUtente.equalsIgnoreCase("model.User")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
 				dispatcher.forward(request, response);
 			}
-
 			// tirocinio interno
-			else if(tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
-				if(PropostaDAO.modificationPropostaInterno(obiettivo, sede, temaAmbito, materialeRisorse, idProposta)==true)
-					request.setAttribute("modifica", true);
+			else if(tipoUtente.equalsIgnoreCase("model.tutoraccademico") || tipoUtente.equalsIgnoreCase("model.azienda")) {	
+				if(PropostaDAO.removeProposta(idProposta)==true)
+					request.setAttribute("rimuovi", true);
 				else
-					request.setAttribute("modifica", false);
+					request.setAttribute("rimuovi", false);
+				
+				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
 				dispatcher.forward(request, response);
 				
 			}
 			//tirocinio esterno
-			else if(tipoUtente.equalsIgnoreCase("model.azienda")) {
-				int idTutorAziendale=Integer.parseInt(request.getParameter("tutorAziendale"));
-					
-				if(PropostaDAO.modificationPropostaEsterno(obiettivo, sede, temaAmbito, materialeRisorse, idTutorAziendale, idProposta)==true)
-					request.setAttribute("modifica", true);
-				else
-					request.setAttribute("modifica", false);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
-				dispatcher.forward(request, response);
-				
-			}
 		}
 	}
 

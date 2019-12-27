@@ -68,18 +68,18 @@
 							</tr>
 							<tr>
 								<td class="icon"><i class="fas fa-building"></i></td>
-								<td class="">Sede</td>
-								<td><c:out value="${proposta.sede}" /></td>
+								<td class="">Competenze</td>
+								<td><c:out value="${proposta.competenze}" /></td>
 							</tr>
 							<tr>
 								<td class="icon"><i class="fas fa-coins"></i></td>
-								<td class="">Tema/Ambito</td>
-								<td><c:out value="${proposta.temaAmbito}" /></td>
+								<td class="">Attività</td>
+								<td><c:out value="${proposta.attivita}" /></td>
 							</tr>
 							<tr>
 								<td class="icon"><i class="fas fa-box-open"></i></td>
-								<td class="">Materiale/Risorse</td>
-								<td><c:out value="${proposta.materialeRisorse}" /></td>
+								<td class="">Modalità</td>
+								<td><c:out value="${proposta.modalita}" /></td>
 							</tr>
 							
 							<c:if test="${type ne 'tutoraziendale'}">

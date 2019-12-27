@@ -28,8 +28,7 @@ text-align: center;
 					proposta di tirocinio curriculare</p> <hr>
 
 
-<form action="creaProposta">
-				<div>
+<form action="creaProposta" id="formCreaProposta">
 				
 			<!--  	<i class="fa fa-user" style="margin-right: 5px;"></i>Tutor
 					accademico
@@ -54,33 +53,36 @@ text-align: center;
 					</div>
 				</c:if>
 				
+					<div class="form-group">
+					<label for="exampleFormControlTextarea1"><i
+						class="fas fa-coins" style="margin-right: 5px;"></i>Indicare le competenze da acquisire</label>
+					<textarea class="form-control" id="exampleFormControlTextarea1"
+						placeholder="Descrivi le competenze da acquisire.." rows="3" name="sede"></textarea>
+				</div>
 					
-					<i class="fas fa-building" style="margin-right: 5px;"></i> Sede <input type="text"
-							class="form-control" id="sede" name="sede"> 
-					</div>		
+					
 				
 				<br>
 
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1"><i
-						class="fas fa-coins" style="margin-right: 5px;"></i>Tema/Ambito</label>
+						class="fas fa-coins" style="margin-right: 5px;"></i>Indicare le attivita formative previste</label>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi tema/ambito..." rows="3" name="tema_ambito"></textarea>
+						placeholder="Descrivi le attivita formative previste.." rows="3" name="tema_ambito"></textarea>
 				</div>
 
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1"><i
-						class="fas fa-info-circle" style="margin-right: 5px;"></i>Obiettivo
-						formativo</label>
+						class="fas fa-info-circle" style="margin-right: 5px;"></i>Indicare gli obiettivi</label>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi obiettivo formativo..." rows="3" name="obiettivo"></textarea>
+						placeholder="Descrivi gli obiettivi.." rows="3" name="obiettivo"></textarea>
 				</div>
 
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1"><i
-						class="fas fa-box-open" style="margin-right: 5px;"></i>Materiale/Risorse</label>
+						class="fas fa-box-open" style="margin-right: 5px;"></i>Indicare la modalita di svolgimento del tirocinio</label>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Descrivi materiale/risorse..." rows="3" name="materiale_risorse"></textarea>
+						placeholder="Descrivi la modalita di svolgimento del tirocinio.." rows="3" name="materiale_risorse"></textarea>
 				</div>
 				
 				<div id="button-container">
@@ -96,4 +98,29 @@ text-align: center;
 	<br>
 	<jsp:include page="WEB-INF/footer.jsp"></jsp:include>
 </body>
+<script>
+	$(document).ready(function(){
+		alert("nascondo");
+		$(".error".hide();
+		
+		$("formCreaProposta").find("textarea").each(function(){
+			if(!validate($(this).attr("id"))){
+				$(this).addClass("er").next().show();
+				res=false;
+			}
+			else if($(this).hasClass("er"))
+				$(this).removeClass("er").next().hide();
+		});
+		return res;
+	});
+		
+		function validate(fieldId){
+			alert("id"+fieldId);
+			var lunghezzaStringa=document.getElementById(fieldId).val().length;
+			if(lunghezzaStringa>200)
+				return false;
+			return true;
+		}
+</script>
+
 </html>

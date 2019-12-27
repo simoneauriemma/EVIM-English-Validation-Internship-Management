@@ -29,9 +29,9 @@ INSERT INTO `tutoraccademico` (`ID_TutorAccademico`,`Nome`,`Cognome`,`Password`,
 VALUES ('2','Antonio','Sultani','radiomaria11','via roma 82933 Salerno 81','antoniosultani@unisa.it','3335333555');
 
 #Inserimento proposte
-INSERT INTO `proposta` (`ID_Proposta`,`Obiettivi`,`Sede`,`Tema_Ambito`,`Materiale_Risorse`,`ID_Azienda`,`ID_Tutor`) 
+INSERT INTO `proposta` (`ID_Proposta`,`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
 VALUES (1,'Sviluppare nuove metodologie. Integrare metodologie esistenti.','Laboratorio di Verifica di Correttezza e Sintesi Automatica di Sistemi Digitali','Verifica automatica di correttezza dei programmi',' Per avere un’idea dell’area di riferimento consultare il materiale del corso di Tecniche Automatiche per La Correttezza del Software (http://www.di- srv.unisa.it/professori/latorre/didattica/TACS/)',1,1);
-INSERT INTO `proposta` (`ID_Proposta`,`Obiettivi`,`Sede`,`Tema_Ambito`,`Materiale_Risorse`,`ID_Azienda`,`ID_Tutor`)
+INSERT INTO `proposta` (`ID_Proposta`,`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
 VALUES (2,'Sviluppo di servizi di intelligenza territoriale','Laboratorio di Sistemi Informativi Geografici','Sistemi Informativi Geografici e applicazioni per Mobile GIS','http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807',NULL,1);
-INSERT INTO `proposta` (`ID_Proposta`,`Obiettivi`,`Sede`,`Tema_Ambito`,`Materiale_Risorse`,`ID_Azienda`,`ID_Tutor`) 
+INSERT INTO `proposta` (`ID_Proposta`,`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
 VALUES (3,'Realizzazione di un ecosistema digitale di rappresentazione e gestione della conoscenza territoriale','Laboratorio di Sistemi Informativi Geografici','Sistemi Informativi Geografici e applicazioni per Mobile GIS','http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807',NULL,2);
