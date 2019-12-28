@@ -364,17 +364,18 @@ public class TirocinioEsternoDAO {
 
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro(String email) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			System.out.println("prequery");
 			PreparedStatement ps = con.prepareStatement(
 					"select TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,"
 							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro "
-							+ "from TirocinioEsterno, Registro, USER "
+							+ "from TirocinioEsterno, Registro "
 							+ "where TirocinioEsterno.ID_TirocinioEsterno = Registro.ID_Tirocinio AND "
 							+ "TirocinioEsterno.EMAIL = ? AND TirocinioEsterno.status='in svolgimento'" );
 			ps.setString(1, email);
-
+			
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
-
+			System.out.println("querty lista tirocini studente eseguita--> esterno");
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioEsterno"));
@@ -406,7 +407,7 @@ public class TirocinioEsternoDAO {
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
-
+			
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioEsterno"));
