@@ -327,5 +327,36 @@ public class TirocinioInternoDAO {
 
 	}
 	
+	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoPdcdRegistro() { 
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement(
+					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,"
+							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro "
+							+ "from TirocinioInterno, Registro"
+							+ "where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio"
+							+ "AND TirocinioInterno.status='in svolgimento'" );
+			
+
+			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				RegistroQuery a = new RegistroQuery();
+				a.setID_Tirocinio(rs.getInt("ID_TirocinioEsterno"));
+				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
+				a.setStatus(rs.getString("status"));
+				a.setNumeroCFU(rs.getInt("CFU"));
+				a.setOreTotali(rs.getInt("OreTotali"));
+				a.setID_Registro(rs.getInt("ID_Registro"));
+				lista.add(a);
+			}
+			return lista;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
+	}
+	
 	
 }
