@@ -72,7 +72,7 @@ public class ValutareRichieste extends BaseServlet {
 							tutor.getIdTutorAccademico());
 					request.setAttribute("esito", risposta);
 					RequestDispatcher dispatcher = request
-							.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinioInterno.jsp");
+							.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
 					dispatcher.forward(request, response);
 
 				} else if (conferma.equalsIgnoreCase("no")) {
@@ -82,7 +82,7 @@ public class ValutareRichieste extends BaseServlet {
 							tutor.getIdTutorAccademico());
 					request.setAttribute("esito", risposta);
 					RequestDispatcher dispatcher = request
-							.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinioInterno.jsp");
+							.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
 					dispatcher.forward(request, response);
 				}
 			} else if (request.getParameter("azienda").equalsIgnoreCase("azienda")) {
@@ -96,7 +96,7 @@ public class ValutareRichieste extends BaseServlet {
 							tutor.getIdTutorAccademico());
 					request.setAttribute("esito", risposta);
 					RequestDispatcher dispatcher = request
-							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinioEsterno.jsp");
+							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinio.jsp");
 					dispatcher.forward(request, response);
 
 				} else if (conferma.equalsIgnoreCase("no")) {
@@ -106,7 +106,7 @@ public class ValutareRichieste extends BaseServlet {
 							tutor.getIdTutorAccademico());
 					request.setAttribute("esito", risposta);
 					RequestDispatcher dispatcher = request
-							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinioEsterno.jsp");
+							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinio.jsp");
 					dispatcher.forward(request, response);
 
 				} else if (session.getAttribute("utenteLoggato").equals(TutorAziendale.class.getName())) {
@@ -115,7 +115,7 @@ public class ValutareRichieste extends BaseServlet {
 					risposta = new TirocinioEsternoDAO().updateFirmaTrueAziendale(true, idTirocinio, tutor.getId());
 					request.setAttribute("esito", risposta);
 					RequestDispatcher dispatcher = request
-							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinioEsterno.jsp");
+							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinio.jsp");
 					dispatcher.forward(request, response);
 
 				} else if (conferma.equalsIgnoreCase("no")) {

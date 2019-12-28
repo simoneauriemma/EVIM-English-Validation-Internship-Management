@@ -27,7 +27,7 @@
 
 				<c:if
 					test="${arrayTirocinioEsterno.size() == 0 || arrayTirocinioIntero.size() == 0 }">
-					<p>Non ci sono richieste!</p>
+					<p>Non ci sono richieste di tirocinio!</p>
 				</c:if>
 
 				<table class="table table-striped" id="tabella">
@@ -73,7 +73,7 @@
 									<td class="text-center"><c:out value="${tirocinioe.CFU}"></c:out></td>
 								</tr>
 								<tr>
-									<td class="icon"><i class="fas fa-circle"></i></td>
+									<td class="icon"><i class="fas fa-clipboard-list"></i></td>
 									<td class="">Tipo di tirocinio</td>
 									<td class="text-center">Esterno</td>
 								</tr>
@@ -116,7 +116,7 @@
 											value="${tirocinioi.NumeroCFU}"></c:out></td>
 								</tr>
 								<tr>
-									<td class="icon"><i class="fas fa-circle"></i></td>
+									<td class="icon"><i class="fas fa-clipboard-list"></i></td>
 									<td class="">Tipo di tirocinio</td>
 									<td class="text-center">Interno</td>
 								</tr>
