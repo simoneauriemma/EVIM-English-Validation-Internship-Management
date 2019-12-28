@@ -104,7 +104,7 @@ public class ListaTirocini extends BaseServlet {
 				// if (!(interno.isEmpty())) {
 				if ((interno.isEmpty())) {
 					System.out.println("interno non è empty");
-					// significa che ha fatto il tirocinio interno
+					
 				
 
 					request.setAttribute("registroQueryInterno", interno);
@@ -164,6 +164,34 @@ public class ListaTirocini extends BaseServlet {
 
 			// Pdcd
 			else if (session.getAttribute("type").equals("pdcd")) {
+				User pdcd= (User) session.getAttribute("utenteLoggato");
+				
+				interno= new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoPdcdRegistro();
+				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoPdcdRegistro();
+				
+				if ((interno.isEmpty())) {
+					System.out.println("interno non è empty");
+					
+				
+
+					request.setAttribute("registroQueryInterno", interno);
+					System.out.println("prima del disp");
+
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
+					dispatcher.forward(request, response);
+
+				} else if (!(esterno.isEmpty())) {
+					//esterno
+					System.out.println("esterno non è empty");
+
+					request.setAttribute("registroQueryEsterno", esterno);
+					
+					System.out.println("prima del disp");
+
+					
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
+					dispatcher.forward(request, response);
+				}
 				
 				
 
