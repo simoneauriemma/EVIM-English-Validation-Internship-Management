@@ -14,6 +14,8 @@ import model.TirocinioEsterno;
 import model.TirocinioEsternoDAO;
 import model.TirocinioInterno;
 import model.TirocinioInternoDAO;
+import model.TutorAccademico;
+import model.TutorAziendale;
 import model.User;
 
 /**
@@ -50,7 +52,6 @@ public class VisualizzaRichieste extends BaseServlet {
 			// l'utente visualizza una pagina differente dal tutor accademico ed aziendale,
 			// quindi in base all'oggetto nella sessione , controllo se l'utente è abilitato
 			if (tipoUtente.equalsIgnoreCase("model.User")) {
-				System.out.println("funziona?");
 				// è loggato un tipo "user"
 				// a causa dello usertype, devo verificare se è loggato esattamente uno studente
 				User studente = (User) sessione.getAttribute("utenteLoggato");
@@ -92,26 +93,34 @@ public class VisualizzaRichieste extends BaseServlet {
 					request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 					request.setAttribute("arrayTirocinioInterno", tirocinioInterno);
 					
+					
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewRichiestaTiricinioStudente.jsp");
 					dispatcher.forward(request, response);
 				}
 			} else if (tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
 				// viewListaRichiesteTirocinioInterno
 				// 2 arraylist
-				ArrayList<TirocinioInterno> tirociniInterno = new TirocinioInternoDAO().doRetriveAll();
-				ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO().doRetriveAll();
+				
+				TutorAccademico accademico= (TutorAccademico) sessione.getAttribute("utenteLoggato");
+
+				ArrayList<TirocinioInterno> tirocinioInterno = new TirocinioInternoDAO().doRetriveAllByTutor(accademico.getIdTutorAccademico());
+				ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO().doRetriveAllByTutor(accademico.getIdTutorAccademico());
+				
+				
 
 				request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
-				request.setAttribute("arrayTirocinioInterno", tirociniInterno);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinioInterno.jsp");
+				request.setAttribute("arrayTirocinioInterno", tirocinioInterno);
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
 				dispatcher.forward(request, response);
 
 			} else if (tipoUtente.equalsIgnoreCase("model.tutoraziendale")) {
 				// viewListaRichiesteTirocinioEsterno
 				// solo 1 arraylist
-				ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO().doRetriveAll();
+				TutorAziendale aziendale= (TutorAziendale) sessione.getAttribute("utenteLoggato");
+				ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO().doRetriveAllByTutor(aziendale.getId());
 				request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinioEsterno.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
 				dispatcher.forward(request, response);
 			}
 

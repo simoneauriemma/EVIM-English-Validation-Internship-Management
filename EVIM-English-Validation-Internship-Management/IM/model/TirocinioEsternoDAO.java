@@ -168,13 +168,14 @@ public class TirocinioEsternoDAO {
 	 * @author Simone Auriemma
 	 * @return ArrayList<TirocinioEsterno>
 	 */
-	public ArrayList<TirocinioEsterno> doRetriveAll() {
+	public ArrayList<TirocinioEsterno> doRetriveAllByTutor(int IDTutor) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			// query per la visualizzazione della pagina da parte dello studente
 			// query per visualizzare le richieste in valutazione
 			String inValutazione = "in approvazione";
-			PreparedStatement ps = con.prepareStatement("select * from EVIM.TirocinioEsterno where status=?");
+			PreparedStatement ps = con.prepareStatement("select * from EVIM.TirocinioEsterno where status=? AND ID_TutorAccademico=?");
 			ps.setString(1, inValutazione);
+			ps.setInt(2, IDTutor);
 			ArrayList<TirocinioEsterno> richieste = new ArrayList<TirocinioEsterno>();
 			ResultSet rs = ps.executeQuery();
 
