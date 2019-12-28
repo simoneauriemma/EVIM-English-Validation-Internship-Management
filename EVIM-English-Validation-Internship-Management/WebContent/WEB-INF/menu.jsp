@@ -80,8 +80,8 @@
 					<!-- Tutor accademico -->
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
 							Elenco tirocinanti attivi </a></li>
-					<li><a href="compilaRelazione.jsp"><i
-							class="fas fa-angle-right "></i> Compila relazione tirocinio </a></li>
+					<li><a href="valutaRelazione.jsp"><i
+							class="fas fa-angle-right "></i> Valuta relazione tirocinio </a></li>
 					<li><a href="#"><i class="fas fa-angle-right "></i>
 							Annulla svolgimento tirocinio </a></li>
 
