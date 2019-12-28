@@ -93,9 +93,51 @@ public String getNomeStudente() {
 	}
 	
 
-public void setEmailTutorAziendale(String emailTutorAziendale) {
-	this.emailTutorAziendale = emailTutorAziendale;
-}
+	public void setEmailTutorAziendale(String emailTutorAziendale) {
+		this.emailTutorAziendale = emailTutorAziendale;
+	}
+	
+	public String getCompetenze() {
+		return competenze;
+	}
+	
+	public void setCompetenze(String competenze) {
+		this.competenze = competenze;
+	}
+	
+	
+	public int getTotCFU() {
+			return totCFU;
+		}
+
+
+
+	public void setTotCFU(int totCFU) {
+		this.totCFU = totCFU;
+	}
+
+	public int getTotOre() {
+		return totOre;
+	}
+
+
+
+	public void setTotOre(int totOre) {
+		this.totOre = totOre;
+	}
+
+
+
+	public String getData() {
+		return data;
+	}
+
+
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
 
 private String nomeStudente;
 private String cognomeStudente;
@@ -106,7 +148,11 @@ private String emailTutorAccademico;
 private String nomeTutorAziendale;
 private String cognomeTutorAziendale;
 private String emailTutorAziendale;
+private String competenze;
 private String obiettivi;
 private String attivita;
 private String modalita;
+private int totCFU;
+private int totOre;
+private String data;
 }

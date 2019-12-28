@@ -211,12 +211,12 @@ public class TirocinioEsternoDAO {
 	public static PDFProgettoFormativo getProgettoFormativoEsterno(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,TutorAccademico.Nome as NomeTutor,TutorAccademico.Cognome as CognomeTutor,TutorAccademico.email as EmailTutor,TutorAziendale.nome as NomeTutorAz,TutorAziendale.cognome as CognomeAz,TutorAziendale.email as EmailTutorAz,Proposta.Obiettivi as Obiettivi,Proposta.Attività as Attività,Proposta.Modalità as Modalita\r\n"
-							+ "from TirocinioEsterno join evim.USER on TirocinioEsterno.EMAIL=USER.EMAIL\r\n"
-							+ "join Proposta on TirocinioEsterno.ID_Proposta=Proposta.ID_Proposta\r\n"
-							+ "join TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioEsterno.ID_tutorAccademico\r\n"
-							+ "join TutorAziendale on TutorAziendale.ID_TutorAziendale=TirocinioEsterno.ID_TirocinioEsterno\r\n"
-							+ "where ID_TirocinioEsterno=?");
+					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,TutorAccademico.Nome as NomeTutor,TutorAccademico.Cognome as CognomeTutor,TutorAccademico.email as EmailTutor,TutorAziendale.nome as NomeTutorAz,TutorAziendale.cognome as CognomeAz,TutorAziendale.email as EmailTutorAz,Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita,Proposta.Competenze as Competenze,TirocinioEsterno.OreTotali as Oretotal,TirocinioEsterno.CFU as CFU \n" + 
+					"from TirocinioEsterno join evim.USER on TirocinioEsterno.EMAIL=USER.EMAIL\n" + 
+					"join Proposta on TirocinioEsterno.ID_Proposta=Proposta.ID_Proposta\n" + 
+					"join TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioEsterno.ID_tutorAccademico\n" + 
+					"join TutorAziendale on TutorAziendale.ID_TutorAziendale=TirocinioEsterno.ID_TirocinioEsterno\n" + 
+					"where ID_TirocinioEsterno=?;");
 			ps.setInt(1, id);
 			PDFProgettoFormativo pdf = null;
 			ResultSet rs = ps.executeQuery();
@@ -234,6 +234,9 @@ public class TirocinioEsternoDAO {
 				pdf.setObiettivi(rs.getString(10));
 				pdf.setAttivita(rs.getString(11));
 				pdf.setModalita(rs.getString(12));
+				pdf.setCompetenze(rs.getString(13));
+				pdf.setTotOre(rs.getInt(14));
+				pdf.setTotCFU(rs.getInt(15));
 			}
 
 			return pdf;
