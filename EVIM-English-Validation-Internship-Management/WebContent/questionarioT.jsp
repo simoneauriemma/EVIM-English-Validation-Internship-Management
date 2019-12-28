@@ -1,17 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<jsp:include page="WEB-INF/navbarBlu.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
-#button-container {
-	text-align: center;
-}
-</style>
+
 <link rel="stylesheet" href="stiliCSS/stiliMenu.css">
 <link rel="stylesheet" href="stiliCSS/stiliPropostaTirocinio.css">
-<jsp:include page="WEB-INF/navbarBlu.jsp"></jsp:include>
+
 <meta charset="ISO-8859-1">
 <title>Questionario valutativo</title>
 </head>
@@ -28,18 +26,39 @@
 					questionario valutativo</p>
 				<hr>
 
+				<div id="accordion">
 
 
 
+					<div id="collapseDiv1" class="collapse-div" role="tablist">
+						<div class="collapse-header" id="heading1"
+							style="background-color: #2C5278">
+							<button data-toggle="collapse" data-target="#collapse1"
+								aria-expanded="true" aria-controls="collapse1" id="nome-tutor">
+								Nome e cognome(studente)</button>
+						</div>
+
+						<div id="collapse1" class="collapse" role="tabpanel"
+							aria-labelledby="heading1">
+							<div class="collapse-body">
+
+								
+								
+
+							
+
+							</div>
+						</div>
+
+					</div>
 
 
-
-
-
-
+				</div>
 			</div>
 		</div>
+
 	</div>
+
 	<br>
 	<br>
 	<jsp:include page="WEB-INF/footer.jsp"></jsp:include>

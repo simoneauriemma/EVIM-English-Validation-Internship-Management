@@ -72,7 +72,7 @@
 							class="fas fa-angle-right "></i> Lista Aziende convenzionate </a></li>
 					<li><a href="VisualizzaTutorAccademici"><i
 							class="fas fa-angle-right "></i> Elenco Tutor accademici </a></li>
-					<li><a href="#"><i class="fas fa-angle-right "></i>
+					<li><a href="questionarioS.jsp"><i class="fas fa-angle-right "></i>
 							Compila questionario valutativo </a></li>
 				</c:if>
 
@@ -90,7 +90,7 @@
 					<!-- Tutor aziendale -->
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
 							Elenco tirocinanti </a></li>
-					<li><a href="questionarioValutativo.jsp"><i
+					<li><a href="questionarioT.jsp"><i
 							class="fas fa-angle-right "></i> Compila questionario valutativo
 					</a></li>
 					<li><a href="compilaRelazione.jsp"><i
@@ -101,7 +101,7 @@
 					<!-- Azienda -->
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
 							Elenco tirocinanti </a></li>
-					<li><a href="questionarioValutativo.jsp"><i
+					<li><a href="questionarioT.jsp"><i
 							class="fas fa-angle-right "></i> Compila questionario valutativo
 					</a></li>
 
