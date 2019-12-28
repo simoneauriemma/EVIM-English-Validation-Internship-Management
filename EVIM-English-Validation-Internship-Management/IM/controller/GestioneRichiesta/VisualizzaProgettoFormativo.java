@@ -126,13 +126,6 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		String stringaTutorDesignatoAccademico=pdfProgetto.getNomeTutorAccademico()+ " " + pdfProgetto.getCognomeTutorAccademico()+"\n";
 		//fine sezione tutor designato dal soggetto ospitante
 		
-		//inizio sezione tutor desginato dal soggetto ospitante
-		String stringaTutorTitleDesignatoAziendale="\nTUTOR DESIGNATO DAL SOGGETTO OSPITANTE: ";
-		String stringaTutorDesignatoAziendale=pdfProgetto.getNomeTutorAziendale()+" "+ pdfProgetto.getCognomeTutorAziendale();
-		String stringaTelefonoTutorAziendale="Tel:_______\n";
-		String stringaEmailTutorAziendale="Email:_______\n";
-		//fine sezione tutor designato dal soggetto ospitante
-		
 		// inizio sezione n.totale di crediti
 		int totCFU=pdfProgetto.getTotCFU();
 		String stringaEsterno1;
