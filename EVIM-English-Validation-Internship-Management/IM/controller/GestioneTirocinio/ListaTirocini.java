@@ -60,7 +60,7 @@ public class ListaTirocini extends BaseServlet {
 
 				//TO DO: DA MODIFICARE IN
 				// if (!(interno.isEmpty())) {
-				if ((interno.isEmpty())) {
+				if (!(interno.isEmpty())) {
 					System.out.println("interno non è empty");
 					// significa che ha fatto il tirocinio interno
 				
@@ -102,7 +102,7 @@ public class ListaTirocini extends BaseServlet {
 
 				//TO DO: DA MODIFICARE IN
 				// if (!(interno.isEmpty())) {
-				if ((interno.isEmpty())) {
+				if (!(interno.isEmpty())) {
 					System.out.println("interno non è empty");
 					
 				
@@ -169,7 +169,7 @@ public class ListaTirocini extends BaseServlet {
 				interno= new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoPdcdRegistro();
 				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoPdcdRegistro();
 				
-				if ((interno.isEmpty())) {
+				if (!(interno.isEmpty())) {
 					System.out.println("interno non è empty");
 					
 				
