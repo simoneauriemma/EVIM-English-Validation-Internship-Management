@@ -119,7 +119,7 @@ public class TirocinioInternoDAO {
 	public static PDFProgettoFormativo getProgettoFormativoInterno(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,TutorAccademico.Nome as NomeTutor,TutorAccademico.Cognome as CognomeTutor,TutorAccademico.email as EmailTutor, Proposta.Obiettivi as Obiettivi,Proposta.Attività as Attività,Proposta.Modalità as Modalita\r\n"
+					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,TutorAccademico.Nome as NomeTutor,TutorAccademico.Cognome as CognomeTutor,TutorAccademico.email as EmailTutor, Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita\r\n"
 							+ "from TirocinioInterno join evim.USER on TirocinioInterno.EMAIL=USER.EMAIL\r\n"
 							+ "join Proposta on TirocinioInterno.ID_Proposta=Proposta.ID_Proposta\r\n"
 							+ "join TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioInterno.ID_tutorAccademico\r\n"
@@ -128,8 +128,10 @@ public class TirocinioInternoDAO {
 			PDFProgettoFormativo pdf = null;
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
+				System.out.println("okay");
 				pdf = new PDFProgettoFormativo();
 				pdf.setNomeStudente(rs.getString(1));
+				System.out.println("rs.getString(1)-->"+rs.getString(1));
 				pdf.setCognomeStudente(rs.getString(2));
 				pdf.setEmailStudente(rs.getString(3));
 				pdf.setNomeTutorAccademico(rs.getString(4));
@@ -139,7 +141,8 @@ public class TirocinioInternoDAO {
 				pdf.setAttivita(rs.getString(8));
 				pdf.setModalita(rs.getString(9));
 			}
-
+			System.out.println("Nome-->"+pdf.getNomeStudente());
+			System.out.println("Cognome-->"+pdf.getCognomeStudente());
 			return pdf;
 		} catch (SQLException e) {
 			e.printStackTrace();
