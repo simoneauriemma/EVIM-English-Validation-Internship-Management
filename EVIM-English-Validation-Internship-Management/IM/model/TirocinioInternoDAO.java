@@ -274,8 +274,8 @@ public class TirocinioInternoDAO {
 			PreparedStatement ps = con.prepareStatement(
 					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.NumeroCFU,"
 							+ "TirocinioInterno.OreTotali, Registro.ID_Registro "
-							+ "from TirocinioInterno, Registro, USER "
-							+ "where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio AND "
+							+ "from TirocinioInterno, Registro "
+							+ " where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio AND "
 							+ "TirocinioInterno.EMAIL = ? AND TirocinioInterno.status='in svolgimento'" );
 			ps.setString(1, email);
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();

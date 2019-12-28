@@ -52,11 +52,11 @@ public class ListaTirocini extends BaseServlet {
 						.doRetriveTirocinioInSvolgimentoStudenteRegistro(studente.getEmail());
 				
 				
-				esterno = new TirocinioInternoDAO()
+				esterno = new TirocinioEsternoDAO()
 						.doRetriveTirocinioInSvolgimentoStudenteRegistro(studente.getEmail());
 				
-				System.out.println(interno.toString());
-				System.out.println(esterno.toString());
+				System.out.println(interno);
+				System.out.println(esterno);
 
 				//TO DO: DA MODIFICARE IN
 				// if (!(interno.isEmpty())) {
