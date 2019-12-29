@@ -10,6 +10,12 @@ SEX char not null,
 PASSWORD varchar(50) not null,
 USER_TYPE tinyint(1) not null,
 tipoCorso varchar(30),
+Luogo_Nascita char(10) not null,
+Data_Nascita varchar(100) not null,
+Residente varchar(100) not null,
+Via varchar(100),
+Telefono int not null,
+Matricola int not null,
 primary key (EMAIL)
 );
 
@@ -81,11 +87,16 @@ ON DELETE CASCADE
 create table Riconoscimento(
 ID_Riconoscimento int not null auto_increment,
 Email_User varchar(50) not null,
-CFU_TirocinioObbligatorio int not null,
-CFU_TirocinioEsterno int,
-CFU_AccompagnamentoLavoro int not null,
+Ente_Azienda varchar(200) not null,
+Profilo varchar(200) not null,
+Indirizzo_Sede varchar(200) not null,
+Tipo_Contratto varchar(200) not null,
+Periodo varchar(200) not null,
 Ore_Svolte int not null,
-Profilo varchar(20) not null,
+CFU_TirocinioObbligatorio int not null,
+CFU_TirocinioEsterno int not null,
+CFU_AccompagnamentoLavoro int not null,
+
 primary key(ID_Riconoscimento),
 foreign key(Email_User) references User(EMAIL)
 ON UPDATE CASCADE
@@ -197,7 +208,8 @@ ON UPDATE cascade
 ON DELETE CASCADE
 );
 
-#ID_Tirocino può essere l'ID del tirocinio sia ESTERNO che INTERNO, quindi il tirocinio verrà identificato con una stringa "tipo" che indicherà il tipo di tirocinio(interno esterno)
+#ID_Tirocino può essere l ID del tirocinio sia ESTERNO che INTERNO, quindi il tirocinio verrà identificato con una stringa "tipo" che indicherà il tipo di tirocinio(interno esterno)
+
 create table Registro(
 ID_Registro int not null auto_increment,
 ID_Tirocinio int not null,

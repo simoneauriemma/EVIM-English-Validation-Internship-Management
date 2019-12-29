@@ -9,7 +9,12 @@ public class User {
 	private String password;
 	private int userType;
 	private String corso;
-
+	private String luogoDiNascita;
+	private String dataDiNascita;
+	private String residente;
+	private String via;
+	private int telefono;
+	private int matricola;
 	// costruttore vuoto
 	public User() {
 		
@@ -84,4 +89,54 @@ public class User {
 		this.corso = corso;
 	}
 
+	public String getLuogoDiNascita() {
+		return luogoDiNascita;
+	}
+
+	public void setLuogoDiNascita(String luogoDiNascita) {
+		this.luogoDiNascita = luogoDiNascita;
+	}
+
+	public String getDataDiNascita() {
+		return dataDiNascita;
+	}
+
+	public void setDataDiNascita(String dataDiNascita) {
+		this.dataDiNascita = dataDiNascita;
+	}
+
+	public String getResidente() {
+		return residente;
+	}
+
+	public void setResidente(String residente) {
+		this.residente = residente;
+	}
+
+	public String getVia() {
+		return via;
+	}
+
+	public void setVia(String via) {
+		this.via = via;
+	}
+
+	public int getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+
+	public int getMatricola() {
+		return matricola;
+	}
+
+	public void setMatricola(int matricola) {
+		this.matricola = matricola;
+	}
+	
+	
+	
 }
