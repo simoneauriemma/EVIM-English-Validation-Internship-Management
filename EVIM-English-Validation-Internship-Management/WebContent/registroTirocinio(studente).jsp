@@ -125,27 +125,27 @@
 							<div class="modal-body">
 							<table>
 							<tr>
-							<td>Attività svolta</td>
-							<td></td>
+							<td>Attività svolta:</td>
+							<td><textarea rows="1" cols="30"></textarea></td>
 							</tr>
 							<tr>
-							<td>Data</td>
-							<td></td>
+							<td>Data:</td>
+							<td><input type="date"></td>
 							</tr>
 							<tr>
-							<td>Ora ingresso</td>
-							<td></td>
+							<td>Ora ingresso:</td>
+							<td><input type="time"></td>
 							</tr>
 							<tr>
-							<td>Ora uscita</td>
-							<td></td>
+							<td>Ora uscita:</td>
+							<td><input type="time"></td>
 							</tr>
 							<tr>
-							<td>Ore totali :</td>
-							<td></td>
+							<td>Ore totali:</td>
+							<td><input type="number" style="width: 77px;"></td>
 							</tr>
 							</table>
-							<div id="button-container1">
+							<div id="button-container1"> <br> <br>
 							<button type="submit" class="btn btn-secondary" id="button1">APPROVA</button>
 							</div>
 							</div>
