@@ -216,26 +216,26 @@
 			<ul id="collapse-5" class="collapse" aria-expanded="false"
 				style="height: 0px;">
 				<c:if test="${type =='studente'}">
-					<li><a href="#"><i class="fas fa-angle-right"></i> Compila
+					<li><a href="registroTirocinio(studente).jsp"><i class="fas fa-angle-right"></i> Compila
 							registro tirocinio </a></li>
 				</c:if>
 				<c:if test="${type=='pdcd'}">
-					<li><a href="#"><i class="fas fa-angle-right"></i>
+					<li><a href="registroTirocinio(tutor).jsp"><i class="fas fa-angle-right"></i>
 							Visualizza e valuta registro tirocinio </a></li>
 				</c:if>
 
 				<c:if test="${type=='tutoraccademico'}">
-					<li><a href="#"><i class="fas fa-angle-right"></i>
+					<li><a href="registroTirocinio(tutor).jsp"><i class="fas fa-angle-right"></i>
 							Visualizza e valuta registro tirocinio </a></li>
-					<li><a href="#"><i class="fas fa-angle-right"></i> Valuta
+					<li><a href="registroTirocinio(tutor).jsp"><i class="fas fa-angle-right"></i> Valuta
 							attività registro tirocinio</a></li>
 				</c:if>
 				<c:if test="${type=='tutoraziendale'}">
-					<li><a href="#"><i class="fas fa-angle-right"></i> Valuta
+					<li><a href="registroTirocinio(tutor).jsp"><i class="fas fa-angle-right"></i> Valuta
 							attività registro tirocinio </a></li>
 				</c:if>
 				<c:if test="${type=='azienda'}">
-					<li><a href="#"><i class="fas fa-angle-right"></i>
+					<li><a href="registroTirocinio(tutor).jsp"><i class="fas fa-angle-right"></i>
 							Visualizza e valuta registro tirocinio </a></li>
 				</c:if>
 			</ul>
