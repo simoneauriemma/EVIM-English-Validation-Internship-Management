@@ -46,8 +46,8 @@ public class CompilaRegistro extends BaseServlet {
 					String descrizione = request.getParameter("attivita");
 					String data = request.getParameter("data");
 					// parameter degli orari
-					int orarioIngresso = Integer.parseInt("orarioIngresso");
-					int orarioUscita = Integer.parseInt("orarioUscita");
+					int orarioIngresso = Integer.parseInt(request.getParameter("orarioIngresso"));
+					int orarioUscita = Integer.parseInt(request.getParameter("orarioUscita"));
 					int ID_Registro = Integer.parseInt(request.getParameter("IDRegistro"));
 
 					// errore nei prarametri
