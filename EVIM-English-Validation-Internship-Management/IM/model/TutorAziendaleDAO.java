@@ -164,5 +164,24 @@ public class TutorAziendaleDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public int doSave(int ID_Azienda, String nome, String cognome, String email, String password, String telefono) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement("insert into TutorAziendale(ID_Azienda,Nome,Cognome,Email,Password,Telefono) VALUES (?,?,?,?,?,?)");
+			ps.setInt(1, ID_Azienda);
+			ps.setString(2, nome);
+			ps.setString(3, cognome);
+			ps.setString(4, email);
+			ps.setString(5, password);
+			ps.setString(6, telefono);
+			return ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
 
 }
