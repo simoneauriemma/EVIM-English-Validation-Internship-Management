@@ -62,11 +62,15 @@ public class TirocinioInternoDAO {
 			while (rs.next()) {
 				TirocinioInterno a = new TirocinioInterno();
 				a.setID_TirocinioInterno(rs.getInt("ID_tirocinioInterno"));
+				a.setEMAIL(rs.getString(2));
 				a.setID_tutorAccademico(rs.getInt("ID_tutorAccademico"));
 				a.setData(rs.getString("Data"));
+				a.setOreTotali(rs.getInt(5));
 				a.setStatus(rs.getString("status"));
-				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
+				a.setNumeroCFU(rs.getInt(7));
 				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
+				a.setID_Proposta(rs.getInt(10));
 				richieste.add(a);
 			}
 			return richieste;

@@ -83,44 +83,41 @@
 												<td><a href="${azienda.email}"><c:out
 															value="${azienda.email}" /></a></td>
 											</tr>
-											
+
 											<tr>
-												<td class="icon"><i class="fa fa-envelope"></i></td>
-												<td class="">Nome e cognome referente aziendale</td>
+												<td class="icon"><i class="fas fa-user"></i></td>
+												<td class="">Referente aziendale</td>
 												<td>#</td>
 											</tr>
 											<tr>
-												<td class="icon"><i class="fa fa-envelope"></i></td>
+												<td class="icon"><i class="fas fa-mobile-alt"></i></td>
 												<td class="">Numero cellulare</td>
-												<td> #</td>
+												<td>#</td>
 											</tr>
 
 											<tr>
-												<td class="icon"><i class="fas fa-arrow-circle-right"></i></td>
+												<td class="icon"><i class="fas fa-paperclip"></i></td>
 												<td class=""><button type="button" data-toggle="modal"
-														id="proposte" data-target="#exampleModalLong<%=n%>">Proposte</button></td>
+														data-target="#exampleModal<%=n%>">Proposte</button></td>
 												<td></td>
 											</tr>
 										</tbody>
 									</table>
-									<div class="modal fade" id="exampleModalLong<%=n%>"
-										tabindex="-1" role="dialog"
-										aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+									<div class="modal fade" id="exampleModal<%=n%>" tabindex="-1"
+										role="dialog" aria-labelledby="exampleModalLabel"
+										aria-hidden="true">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLongTitle">
-														Proposte di
-														<c:out value="${azienda.nome}" />
-													</h5>
+													<h5 class="modal-title" id="exampleModalLabel">
+														Proposte di</h5>
 													<button type="button" class="close" data-dismiss="modal"
-														id="chiudere" aria-label="Close">
+														aria-label="Close">
 														<span aria-hidden="true">&times;</span>
 													</button>
 												</div>
 												<div class="modal-body">
-													<table class="table table-striped"
-														style="border: 1px solid #ddd;">
+													<table class="table table-striped">
 														<c:forEach items="${azienda.proposte}" var="proposta">
 															<tbody>
 																<tr style="background-color: #ccc; font-weight: bold;">
@@ -158,10 +155,28 @@
 														</c:forEach>
 													</table>
 
+
+
+
+
+
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary"
+														data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-primary">Save
+														changes</button>
 												</div>
 											</div>
 										</div>
 									</div>
+
+
+
+
+
+
+
 								</div>
 							</div>
 						</div>

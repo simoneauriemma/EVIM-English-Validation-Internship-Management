@@ -61,7 +61,7 @@ public class TirocinioInterno {
 	}
 
 	public void setNumeroCFU(int numeroCFU) {
-		numeroCFU = numeroCFU;
+		this.numeroCFU = numeroCFU;
 	}
 
 	public int getID_Proposta() {
