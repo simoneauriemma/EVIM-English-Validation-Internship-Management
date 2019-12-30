@@ -1,10 +1,10 @@
 #Inserimento utenti
-INSERT INTO `user` (`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`,`Luogo_Nascita`,`Data_Nascita`,`Residente`,`Via`,`Telefono`,`Matricola`) 
-VALUES ('fferrucci@unisa.it','Filomena','Ferrucci','F','Ferrucci11',1, null,'Salerno','12/02/1998','Salerno','Antonio Gramsci',085937,0510000);
-INSERT INTO `user` (`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`,`Luogo_Nascita`,`Data_Nascita`,`Residente`,`Via`,`Telefono`,`Matricola`)
-VALUES ('mconcetta@studenti.unisa.it','Maria Concetta','Schiavone','F','mconcetta1998',0,'triennale','Milano','09/08/2000','Salerno','Montebello',081237,0510021);
-INSERT INTO `user` (`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`,`Luogo_Nascita`,`Data_Nascita`,`Residente`,`Via`,`Telefono`,`Matricola`)
-VALUES ('simonagrieco@studenti.unisa.it','Simona','Grieco','F','grieco1998',0,'triennale','Avellino','06/05/1999','Fisciano','roma',1812324,0510075);
+INSERT INTO `user` (`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`) 
+VALUES ('fferrucci@unisa.it','Filomena','Ferrucci','F','Ferrucci11',1, null);
+INSERT INTO `user` (`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`) 
+VALUES ('mconcetta@studenti.unisa.it','Maria Concetta','Schiavone','F','mconcetta1998',0,'triennale');
+INSERT INTO `user` (`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`) 
+VALUES ('simonagrieco@studenti.unisa.it','Simona','Grieco','F','grieco1998',0,'triennale');
 
 #Inserimento aziende
 INSERT INTO `azienda` (`CF`,`Telefono`,`Nome`,`Password`,`Email`,`SitoWeb`,`Indirizzo`,`Descizione`) 
@@ -27,6 +27,7 @@ INSERT INTO `tutoraccademico` (`Nome`,`Cognome`,`Password`,`indirizzo`,`email`,`
 VALUES ('Mario','Giorgio','umpalumpa2','via dalle cicogne Salerno 22344 64','mariogiorgio@unisa.it','3334333444');
 INSERT INTO `tutoraccademico` (`Nome`,`Cognome`,`Password`,`indirizzo`,`email`,`Telefono`) 
 VALUES ('Antonio','Sultani','radiomaria11','via roma 82933 Salerno 81','antoniosultani@unisa.it','3335333555');
+select * from tutorAccademico;
 
 #Inserimento proposteee
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 

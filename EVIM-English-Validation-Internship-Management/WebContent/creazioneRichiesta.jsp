@@ -127,7 +127,7 @@
 	/* se il radio button "11" è selezionato allora fa scegliere 
 	           tra tirocinio interno ed esterno */
 	$(document).ready(function() {
-		/*	$("#radio2").click(function() {
+			$("#radio2").click(function() {
 				$("#sel1").prop('disabled', false);
 			});
 
@@ -149,7 +149,7 @@
 				else if($(this).val()=='tirocinio1'){
 					$("#sel2").prop('disabled', false);
 				}
-			});	*/
+			});	
 
 		/* se il tirocinio non è interno, allora automaticamente mi mette 
 		"tirocinio esterno" e mi abilita la section "seleziona azienda" */

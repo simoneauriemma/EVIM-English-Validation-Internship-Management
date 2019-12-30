@@ -32,7 +32,8 @@
 			%>
 
 			<!-- tutor accademico e tutor aziendale possono vedere le proprie richieste di tirocinio esterno -->
-			<c:if test="${type== 'tutoraziendale' || type=='tutoraccademico'}">
+			<c:if
+				test="${type== 'tutoraziendale' || type=='tutoraccademico' || type== 'pdcd' || type=='azienda'}">
 				<c:forEach items="${arrayTirocinioEsterno}" var="esterno">
 					<%
 						n = n + 1;
@@ -62,7 +63,9 @@
 												<td class="text-center"><c:out
 														value="${esterno.ID_TirocinioEsterno}" /></td>
 											</tr>
-											<c:if test="${type=='tutoraccademico'}">
+
+											<!-- solo il tutor accademico e il pdcd sono interessati a sapere che questo è un tirocinio esterno. Per tutor aziendale e azienda è scontato  -->
+											<c:if test="${type=='tutoraccademico' || type=='pdcd'}">
 												<tr>
 													<td class="icon"><i class="fas fa-book"></i></td>
 													<td class="">Tipo tirocinio</td>
@@ -115,30 +118,50 @@
 												<td class="text-center"><c:out
 														value="${esterno.ID_TutorAziendale}" /></td>
 											</tr>
-											<tr>
-												<td class="icon"><i class="fas fa-file-signature"></i></td>
-												<td class="">Accettazione PdCD</td>
-												<td class="text-center"><c:out
-														value="${esterno.firmaPdCD}" /></td>
-											</tr>
-											<tr>
-												<td class="icon"><i class="fas fa-file-signature"></i></td>
-												<td class="">Accettazione Azienda</td>
-												<td class="text-center"><c:out
-														value="${esterno.firmaAzienda}" /></td>
-											</tr>
-											<tr>
-												<td class="icon"><i class="fas fa-file-signature"></i></td>
-												<td class="">Accettazione Tutor Aziendale</td>
-												<td class="text-center"><c:out
-														value="${esterno.firmaTutorAziendale}" /></td>
-											</tr>
-											<tr>
-												<td class="icon"><i class="fas fa-file-signature"></i></td>
-												<td class="">Accettazione Tutor Accademico</td>
-												<td class="text-center"><c:out
-														value="${esterno.firmaTutorAccademico}" /></td>
-											</tr>
+
+											<!-- se è loggato il pdcd non vede questa riga -->
+											<c:if
+												test="${type== 'tutoraziendale' || type=='tutoraccademico' || type=='azienda'}">
+												<tr>
+													<td class="icon"><i class="fas fa-file-signature"></i></td>
+													<td class="">Accettazione PdCD</td>
+													<td class="text-center"><c:out
+															value="${esterno.firmaPdCD}" /></td>
+												</tr>
+											</c:if>
+
+											<!-- se è loggato l'azienda non vede questa riga -->
+											<c:if
+												test="${type== 'tutoraziendale' || type=='tutoraccademico' || type== 'pdcd'}">
+												<tr>
+													<td class="icon"><i class="fas fa-file-signature"></i></td>
+													<td class="">Accettazione Azienda</td>
+													<td class="text-center"><c:out
+															value="${esterno.firmaAzienda}" /></td>
+												</tr>
+											</c:if>
+
+											<!-- se è loggato il tutor aziendale non vede questa riga -->
+											<c:if
+												test="${type=='tutoraccademico' || type== 'pdcd' || type=='azienda'}">
+												<tr>
+													<td class="icon"><i class="fas fa-file-signature"></i></td>
+													<td class="">Accettazione Tutor Aziendale</td>
+													<td class="text-center"><c:out
+															value="${esterno.firmaTutorAziendale}" /></td>
+												</tr>
+											</c:if>
+
+											<!-- se è loggato il tutor accademico non vede questa riga -->
+											<c:if
+												test="${type== 'tutoraziendale' || type== 'pdcd' || type=='azienda'}">
+												<tr>
+													<td class="icon"><i class="fas fa-file-signature"></i></td>
+													<td class="">Accettazione Tutor Accademico</td>
+													<td class="text-center"><c:out
+															value="${esterno.firmaTutorAccademico}" /></td>
+												</tr>
+											</c:if>
 
 											<tr>
 												<td class="icon"><i class="fas fa-signature"></i></td>
@@ -169,7 +192,7 @@
 
 
 
-			<c:if test="${type=='tutoraccademico' }">
+			<c:if test="${type=='tutoraccademico' || type=='pdcd' }">
 				<c:if
 					test="${arrayTirocinioInterno.size()==0 && arrayTirocinioEsterno.size()==0 }">
 					<p>Non ci sono richieste di tirocinio</p>
@@ -221,18 +244,22 @@
 												<td class="text-center"><c:out
 														value="${interno.numeroCFU}" /></td>
 											</tr>
-											<tr>
-												<td class="icon"><i class="fas fa-file-signature"></i></td>
-												<td class="">Firma Tutor Accademico</td>
-												<td class="text-center"><c:out
-														value="${interno.firmaTutorAccademico}" /></td>
-											</tr>
-											<tr>
-												<td class="icon"><i class="fas fa-file-signature"></i></td>
-												<td class="">Firma PdCD</td>
-												<td class="text-center"><c:out
-														value="${interno.firmaPdCD}" /></td>
-											</tr>
+											<c:if test="${type == 'pdcd' }">
+												<tr>
+													<td class="icon"><i class="fas fa-file-signature"></i></td>
+													<td class="">Firma Tutor Accademico</td>
+													<td class="text-center"><c:out
+															value="${interno.firmaTutorAccademico}" /></td>
+												</tr>
+											</c:if>
+											<c:if test="${type == 'tutoraccademico' }">
+												<tr>
+													<td class="icon"><i class="fas fa-file-signature"></i></td>
+													<td class="">Firma PdCD</td>
+													<td class="text-center"><c:out
+															value="${interno.firmaPdCD}" /></td>
+												</tr>
+											</c:if>
 											<tr>
 												<td class="icon"><i class="fas fa-signature"></i></td>
 												<td class="">Valutazione richiesta</td>
@@ -261,23 +288,30 @@
 
 		</div>
 	</div>
+</div>
+<br>
+<jsp:include page="footer.jsp"></jsp:include>
 
-	<br>
-	<jsp:include page="footer.jsp"></jsp:include>
-
-	<script>
+<script>
  	$(document).ready(function() {
  		if($('i:contains(in approvazione)')) {
   			$("#status").css("background-color","yellow");	
-  			$("#status").css("color","yellow");	
+  			$("#status").css("color","black");	
   			$("#status").css("border-radius","22px");	
  		}
  		else if($('i:contains(approvato)')) {
-  			$("#status").css("background-color","green");		
+  			$("#status").css("background-color","green");
+  			$("#status").css("color","black");
   			$("#status").css("border-radius","22px");	
  		}
  		else if($('i:contains(non approvato)')) {
-  			$("#status").css("background-color","red");		
+  			$("#status").css("background-color","red");	
+  			$("#status").css("color","black");
+  			$("#status").css("border-radius","22px");	
+ 		}
+ 		else if($('i:contains(proposto)')) {
+  			$("#status").css("background-color","blue");
+  			$("#status").css("color","black");
   			$("#status").css("border-radius","22px");	
  		}
  		 		
