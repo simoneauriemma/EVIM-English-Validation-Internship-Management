@@ -26,22 +26,25 @@ public class Login extends BaseServlet {
 		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
+		
+		
 		
 		// controllo campi null
 
 		if (email == null || password == null) {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
+			request.setAttribute("logged", false);
 			rd.forward(request, response);
 			
 		} else {
