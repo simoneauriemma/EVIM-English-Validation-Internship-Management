@@ -17,7 +17,7 @@
 			<jsp:include page="menu.jsp"></jsp:include>
 		</div>
 
-		<div class="col-lg-9" id=""
+		<div class="col-lg-9"
 			style="border: 1px solid #d7d7d7; background-color: white;">
 			<p id="titolo" class="text-center">Richiesta di tirocinio
 				curriculare</p>
@@ -29,7 +29,8 @@
 			</c:if>
 
 			<table class="table table-striped" id="tabella">
-
+			
+				<!-- richieste di tirocinio esterno di tale studente  -->
 				<c:if test="${arrayTirocinioEsterno.size() > 0}">
 
 					<c:forEach items="${arrayTirocinioEsterno}" var="esterno">
@@ -62,8 +63,9 @@
 							<tr>
 								<td class="icon"><i class="fas fa-toggle-on"></i></td>
 								<td class="">Status</td>
-								<td class="text-center"><i id="status" class="far fa-circle" title="<c:out value="${esterno.status}"/>"></i>
-							</td>
+								<td class="text-center"><i id="status"
+									class="far fa-circle"
+									title="<c:out value="${esterno.status}"/>"></i></td>
 							</tr>
 							<tr>
 								<td class="icon"><i class="fas fa-circle"></i></td>
@@ -71,9 +73,14 @@
 								<td class="text-center"><c:out value="${esterno.CFU}"></c:out></td>
 							</tr>
 							<tr>
+								<td class="icon"><i class="fas fa-clock"></i></td>
+								<td class="">Ore totali</td>
+								<td class="text-center"><c:out value="${esterno.oreTotali}" /></td>
+							</tr>
+							<tr>
 								<td class="icon"><i class="fas fa-paperclip"></i></td>
-								<td><a href="#"><button
-											type="button">Progetto formativo</button></a></td>
+								<td><a href="#"><button type="button">Progetto
+											formativo</button></a></td>
 								<td></td>
 							</tr>
 						</tbody>
@@ -106,20 +113,25 @@
 								<td class="icon"><i class="fas fa-toggle-on"></i></td>
 								<td class="">Status</td>
 								<td class="text-center"><i id="status"
-									class="far fa-circle" title="<c:out value="${interno.status}"/>">></i>
-								</td>
+									class="far fa-circle"
+									title="<c:out value="${interno.status}"/>">></i></td>
 							</tr>
 							<tr>
 								<td class="icon"><i class="fas fa-circle"></i></td>
 								<td class="">Num. CFU</td>
 								<td class="text-center"><c:out value="${interno.numeroCFU}"></c:out></td>
 							</tr>
+							<tr>
+								<td class="icon"><i class="fas fa-clock"></i></td>
+								<td class="">Ore totali</td>
+								<td class="text-center"><c:out value="${interno.oreTotali}" /></td>
+							</tr>
 
 							<tr>
 								<td class="icon"><i class="far fa-paperclip"></i></td>
-								<td><a href="#"><button id="progettoForm"
-											type="button">Progetto formativo</button></a></td>
-								<td> </td>
+								<td><a href="#"><button id="progettoForm" type="button">Progetto
+											formativo</button></a></td>
+								<td></td>
 							</tr>
 						</tbody>
 					</c:forEach>
