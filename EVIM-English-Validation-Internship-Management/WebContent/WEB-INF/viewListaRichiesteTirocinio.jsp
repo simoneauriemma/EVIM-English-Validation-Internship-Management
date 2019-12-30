@@ -31,10 +31,16 @@
 				int y = 0;
 			%>
 
-			<!-- tutor accademico e tutor aziendale possono vedere le proprie richieste di tirocinio esterno -->
+			<!-- tutor accademico, tutor aziendale, azieda e presidente del consiglio didattico possono vedere le proprie richieste di tirocinio esterno -->
 			<c:if
 				test="${type== 'tutoraziendale' || type=='tutoraccademico' || type== 'pdcd' || type=='azienda'}">
+
 				<c:forEach items="${arrayTirocinioEsterno}" var="esterno">
+				
+				<!-- se l'array di tirocini esterno è vuoto allora informa l'uetnte che non ci sono richieste -->
+					<c:if test="${arrayTirocinioEsterno.size()==0 }">
+						<p>Non ci sono richieste di tirocinio</p>
+					</c:if>
 					<%
 						n = n + 1;
 					%>
@@ -191,14 +197,16 @@
 			</c:if>
 
 
-
+			<!-- solo il presidente del consiglio didattico e il tutor accademico possono vedere le richieste di tirocnio interno -->
 			<c:if test="${type=='tutoraccademico' || type=='pdcd' }">
+				<c:forEach items="${arrayTirocinioInterno}" var="interno">
+				
+				<!-- se l'array gli array sono vuoti informa l'utente -->
 				<c:if
 					test="${arrayTirocinioInterno.size()==0 && arrayTirocinioEsterno.size()==0 }">
 					<p>Non ci sono richieste di tirocinio</p>
 				</c:if>
-
-				<c:forEach items="${arrayTirocinioInterno}" var="interno">
+				
 					<%
 						y = y + n + 1;
 					%>
