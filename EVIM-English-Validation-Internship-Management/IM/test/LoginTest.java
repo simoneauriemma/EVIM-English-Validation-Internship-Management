@@ -88,6 +88,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 	  
 	  @Test
 	  public void tc_ga1_6() throws ServletException, IOException  {
+		   request.addParameter("email","segreteria@unisa.it");
+		   request.addParameter("password", "Segreteria");
+		   servlet.doPost(request, response);
+		   String type=request.getSession().getAttribute("type").toString();
+		   boolean log=(boolean) request.getAttribute("logged");
+		   assertTrue(log);
+		   assertEquals("segreteria", type);
+	  }
+	  
+	  @Test
+	  public void tc_ga1_7() throws ServletException, IOException  {
 		   request.addParameter("email","aamicrosoftofficial@tiscali.it");
 		   request.addParameter("password", "Xboxthebest");
 		   servlet.doPost(request, response);
@@ -97,7 +108,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 	  }
 
 	  @Test
-	  public void tc_ga1_7() throws ServletException, IOException  {
+	  public void tc_ga1_8() throws ServletException, IOException  {
 		   request.addParameter("email","aaaino@tutor.unisa.it");
 		   request.addParameter("password", "ciaociao1");
 		   servlet.doPost(request, response);
@@ -106,7 +117,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 	  }
 	  
 	  @Test
-	  public void tc_ga1_8() throws ServletException, IOException  {
+	  public void tc_ga1_9() throws ServletException, IOException  {
 		   request.addParameter("email","afferrucci@unisa.it");
 		   request.addParameter("password", "Ferrucci11");
 		   servlet.doPost(request, response);
@@ -115,7 +126,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 	  }
 	  
 	  @Test
-	  public void tc_ga1_9() throws ServletException, IOException  {
+	  public void tc_ga1_10() throws ServletException, IOException  {
 		   request.addParameter("email","amariogiorgio@unisa.it");
 		   request.addParameter("password", "umpalumpa2");
 		   servlet.doPost(request, response);
@@ -124,7 +135,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 	  }
 	  
 	  @Test
-	  public void tc_ga1_10() throws ServletException, IOException  {
+	  public void tc_ga1_11() throws ServletException, IOException  {
 		   request.addParameter("email");
 		   request.addParameter("password", "mconcetta1998");
 		   servlet.doPost(request, response);
@@ -133,9 +144,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 	  }
 	  
 	  @Test
-	  public void tc_ga1_11() throws ServletException, IOException  {
-		  request.addParameter("email","mmconcetta@studenti.unisa.it");
+	  public void tc_ga1_12() throws ServletException, IOException  {
+		  	request.addParameter("email","mmconcetta@studenti.unisa.it");
 		   request.addParameter("password", "umpalumpa2");
+		   servlet.doPost(request, response);
+		   boolean type=(boolean) request.getAttribute("logged");
+		   assertFalse(type);
+	  }
+	  
+	  @Test
+	  public void tc_ga1_13() throws ServletException, IOException  {
+		   request.addParameter("email","segreteria@unisa.it");
+		   request.addParameter("password", "Segreteriaaa");
 		   servlet.doPost(request, response);
 		   boolean type=(boolean) request.getAttribute("logged");
 		   assertFalse(type);
