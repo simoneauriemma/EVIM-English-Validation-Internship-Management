@@ -71,7 +71,7 @@ public class Login extends BaseServlet {
 			// controllo pdcd (fferrucci@unisa.it)
 
 			else if (email.contains("fferrucci@unisa.it")) {
-				User pdcd = UserDAO.doRetrieveByLoginData(1, email, password);
+				User pdcd = UserDAO.doRetrieveByLoginData(2, email, password);
 				if (pdcd != null) {
 					session.setAttribute("utenteLoggato", pdcd);
 					session.setAttribute("type", "pdcd");
@@ -85,17 +85,25 @@ public class Login extends BaseServlet {
 				}
 			}
 
-			// controllo tutor accademico (@unisa.it)
+			// controllo tutor accademico e segreteria(@unisa.it)
 
 			else if (email.endsWith("@unisa.it")) {
 				TutorAccademico tutoracc = TutorAccademicoDAO.doRetrieveByLoginData(email, password);
+				User segreteria = UserDAO.doRetrieveByLoginData(1, email, password);
 				if (tutoracc != null) {
 					session.setAttribute("utenteLoggato", tutoracc);
 					session.setAttribute("type", "tutoraccademico");
 					request.setAttribute("logged", true);
 					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
 					rd.forward(request, response);
-				} else {
+				} else if(segreteria!=null) {
+					session.setAttribute("utenteLoggato", segreteria);
+					session.setAttribute("type", "segreteria");
+					request.setAttribute("logged", true);
+					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
+					rd.forward(request, response);
+				}else{
+					
 					request.setAttribute("logged", false);
 					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
 					rd.forward(request, response);
