@@ -191,7 +191,7 @@ public class TirocinioEsternoDAO {
 				a.setCFU(rs.getInt("CFU"));
 				a.setFirmaAzienda(rs.getBoolean("FirmaAzienda"));
 				a.setFirmaTutorAziendale(rs.getBoolean("FirmaTutorAziendale"));
-				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademIco"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
 				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
 				a.setID_Proposta(rs.getInt("ID_Proposta"));
 				richieste.add(a);
@@ -401,7 +401,7 @@ public class TirocinioEsternoDAO {
 			PreparedStatement ps = con.prepareStatement(
 					"select TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,"
 							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro "
-							+ "from TirocinioEsterno, Registro, turoraccademico "
+							+ "from TirocinioEsterno, Registro, tutoraccademico "
 							+ "where TirocinioEsterno.ID_TirocinioEsterno = Registro.ID_Tirocinio AND "
 							+ "TirocinioEsterno.ID_TutorAccademico = ? AND TirocinioEsterno.status='in svolgimento'" );
 			ps.setInt(1, id);

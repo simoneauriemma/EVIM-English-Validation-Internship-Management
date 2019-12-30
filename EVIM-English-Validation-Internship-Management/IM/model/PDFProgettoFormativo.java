@@ -137,6 +137,21 @@ public String getNomeStudente() {
 	public void setData(String data) {
 		this.data = data;
 	}
+	
+	
+
+
+	public String getCorsoLaurea() {
+		return corsoLaurea;
+	}
+
+
+
+	public void setCorsoLaurea(String corsoLaurea) {
+		this.corsoLaurea = corsoLaurea;
+	}
+
+
 
 
 private String nomeStudente;
@@ -152,6 +167,7 @@ private String competenze;
 private String obiettivi;
 private String attivita;
 private String modalita;
+private String corsoLaurea;
 private int totCFU;
 private int totOre;
 private String data;

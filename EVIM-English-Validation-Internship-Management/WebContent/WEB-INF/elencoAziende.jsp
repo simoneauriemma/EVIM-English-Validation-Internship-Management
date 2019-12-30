@@ -127,19 +127,19 @@
 																</tr>
 																<tr>
 																	<td class="icon"><i class="fas fa-briefcase"></i></td>
-																	<td class="">Sede</td>
-																	<td><c:out value="${proposta.sede}" /></td>
+																	<td class="">Competenze</td>
+																	<td><c:out value="${proposta.competenze}" /></td>
 																</tr>
 																<tr>
 																	<td class="icon"><i class="fas fa-chart-line"></i></td>
-																	<td class="">Tema/Ambito</td>
-																	<td><c:out value="${proposta.temaAmbito}" /></td>
+																	<td class="">Attività</td>
+																	<td><c:out value="${proposta.attivita}" /></td>
 																</tr>
 																<tr>
 																	<td class="icon"><i
 																		class="fas fa-chalkboard-teacher"></i></td>
-																	<td class="">Materiale/Risorse</td>
-																	<td><c:out value="${proposta.materialeRisorse}" /></td>
+																	<td class="">Modalità</td>
+																	<td><c:out value="${proposta.modalita}" /></td>
 																</tr>
 																<tr>
 

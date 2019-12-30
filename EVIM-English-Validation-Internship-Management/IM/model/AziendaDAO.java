@@ -51,6 +51,10 @@ public class AziendaDAO {
 				a.setSitoWeb(rs.getString(7));
 				a.setIndirizzo(rs.getString(8));
 				a.setDescrizione(rs.getString(9));
+				a.setNumeroDipendenti(rs.getString(10));
+				a.setCodiceAteco(rs.getString(11));
+				a.setIdReferente(rs.getString(12));
+				a.setIdConvenzione(rs.getString(13));
 				aziende.add(a);
 			}
 			return aziende;
@@ -92,23 +96,27 @@ public class AziendaDAO {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
 					"select * from EVIM.azienda where Email= ? AND Password= ?");
-			Azienda utente = new Azienda();
+			Azienda azienda = new Azienda();
 			ps.setString(1, email);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
 
-				utente.setID_Azinda(rs.getInt(1));
-				utente.setCF(rs.getString(2));
-				utente.setTelefono(rs.getString(3));
-				utente.setNome(rs.getString(4));
-				utente.setPassword(rs.getString(5));
-				utente.setEmail(rs.getString(6));
-				utente.setSitoWeb(rs.getString(7));
-				utente.setIndirizzo(rs.getString(8));
-				utente.setDescrizione(rs.getString(9));
-				return utente;
+				azienda.setID_Azinda(rs.getInt(1));
+				azienda.setCF(rs.getString(2));
+				azienda.setTelefono(rs.getString(3));
+				azienda.setNome(rs.getString(4));
+				azienda.setPassword(rs.getString(5));
+				azienda.setEmail(rs.getString(6));
+				azienda.setSitoWeb(rs.getString(7));
+				azienda.setIndirizzo(rs.getString(8));
+				azienda.setDescrizione(rs.getString(9));
+				azienda.setNumeroDipendenti(rs.getString(10));
+				azienda.setCodiceAteco(rs.getString(11));
+				azienda.setIdReferente(rs.getString(12));
+				azienda.setIdConvenzione(rs.getString(13));
+				return azienda;
 			} else
 				return null;
 
