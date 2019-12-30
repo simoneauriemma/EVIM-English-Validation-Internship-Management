@@ -33,9 +33,11 @@
 <body>
 
 	<div class="text-center" style="padding: 0 8px" id="foto">
+	<a href=".">
 		<img id="logoEvim" src="foto/icone/EVIM-LOGO.png"
 			class="img-responsive lazy  hidden-xs" alt="Logo Evim"
 			style="display: inline;">
+	</a>
 	</div>
 
 
@@ -80,11 +82,11 @@
 				<c:if test="${type == 'tutoraccademico'}">
 					<!-- Tutor accademico -->
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
-							Elenco tirocini</a></li>
+							Elenco tirocini </a></li>
 					<li><a href="valutaRelazione.jsp"><i
 							class="fas fa-angle-right "></i> Valuta relazione tirocinio </a></li>
 					<li><a href="#"><i class="fas fa-angle-right "></i>
-							Annulla svolgimento tirocinio </a></li>
+							Annulla svolgimento tirocinio (da vedere)</a></li>
 
 				</c:if>
 				<c:if test="${type == 'tutoraziendale'}">
@@ -171,9 +173,6 @@
 					<li><a href="VisualizzaRichieste"><i
 							class="fas fa-angle-right "></i> Visualizza richieste di
 							tirocinio </a></li>
-					<li><a href="progettoFormativo.jsp"><i
-							class="fas fa-angle-right "></i> Visualizza progetto formativo </a></li>
-					
 				</c:if>
 
 				<c:if test="${type == 'pdcd'}">

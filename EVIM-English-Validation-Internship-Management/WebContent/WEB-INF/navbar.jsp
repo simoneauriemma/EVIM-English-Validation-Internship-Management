@@ -34,7 +34,7 @@
     <a href="." class="navbar-brand"><img id="logoUnisa"
       class="img-responsive" src="foto/icone/logoUnisa.png" alt="Icona">
     </a>
-    <a href="https://www.unisa.it" class="navbar-brand"><img id="scrittaUnisa"
+    <a href="." class="navbar-brand"><img id="scrittaUnisa"
       class="img-responsive" src="foto/icone/scrittaUnisa.png" alt="Icona">
     </a>
     <button type="button" class="navbar-toggler" data-toggle="collapse"
