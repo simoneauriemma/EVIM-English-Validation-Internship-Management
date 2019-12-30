@@ -39,7 +39,7 @@ public class ListaTirocini extends BaseServlet {
 			dispatcher.forward(request, response);
 		} else {
 			
-			System.out.println();
+			System.out.println("sto nella servlet");
 
 			ArrayList<RegistroQuery> interno = new ArrayList<RegistroQuery>();
 			ArrayList<RegistroQuery> esterno = new ArrayList<RegistroQuery>();

@@ -14,8 +14,11 @@
 #tabella1, #tabella2, #tabella3 {
 	margin-left: 50px;
 }
+
+p{
+	font-weight: bold;
+}
 </style>
-<link rel="stylesheet" href="stiliCSS/stiliMenu.css">
 <link rel="stylesheet" href="stiliCSS/stiliPropostaTirocinio.css">
 
 <meta charset="ISO-8859-1">
@@ -28,9 +31,8 @@
 				<jsp:include page="WEB-INF/menu.jsp"></jsp:include>
 			</div>
 
-			<div class="col-lg-9"
-				style="border: 1px solid #d7d7d7; background-color: white;">
-				<p id="titolo" style="font-size: 30px; color: #595959;">Compila
+			<div class="col-lg-9"  style="border: 1px solid #d7d7d7; background-color: white;">
+				<p id="titolo" class="text-center" style="font-size: 30px; color: #595959;">Compila
 					questionario valutativo</p>
 				<hr>
 
@@ -40,8 +42,6 @@
 						<td>A) Le attività svolte sono coerenti con le conoscenze
 							possedute?</td>
 						<td style="padding-left: 50px;">
-							<div>
-								<div class="row">
 									<div class="form-check form-check-inline">
 										<input name="gruppo1" type="radio" id="radio1" checked>
 										<label for="radio4">1</label>
@@ -62,8 +62,6 @@
 										<input name="gruppo1" type="radio" id="radio4"> <label
 											for="radio5">5</label>
 									</div>
-								</div>
-							</div>
 						</td>
 
 					</tr>
@@ -72,8 +70,6 @@
 						<td>B) Il tirocinio ha migliorato la formazione
 							tecnico-sperimentale?</td>
 						<td style="padding-left: 50px;">
-							<div>
-								<div class="row">
 									<div class="form-check form-check-inline">
 										<input name="gruppo2" type="radio" id="radio1" checked>
 										<label for="radio4">1</label>
@@ -94,8 +90,6 @@
 										<input name="gruppo2" type="radio" id="radio4"> <label
 											for="radio5">5</label>
 									</div>
-								</div>
-							</div>
 						</td>
 					</tr>
 
@@ -103,8 +97,6 @@
 						<td>C) La durata del tirocinio è adeguato agli obiettivi del
 							progetto?</td>
 						<td style="padding-left: 50px;">
-							<div>
-								<div class="row">
 									<div class="form-check form-check-inline">
 										<input name="gruppo3" type="radio" id="radio1" checked>
 										<label for="radio4">1</label>
@@ -125,16 +117,12 @@
 										<input name="gruppo3" type="radio" id="radio4"> <label
 											for="radio5">5</label>
 									</div>
-								</div>
-							</div>
 						</td>
 					</tr>
 
 					<tr>
 						<td>D) Valutazione complessiva dell'esperienza</td>
 						<td style="padding-left: 50px;">
-							<div>
-								<div class="row">
 									<div class="form-check form-check-inline">
 										<input name="gruppo4" type="radio" id="radio1" checked>
 										<label for="radio4">1</label>
@@ -155,8 +143,6 @@
 										<input name="gruppo4" type="radio" id="radio4"> <label
 											for="radio5">5</label>
 									</div>
-								</div>
-							</div>
 						</td>
 					</tr>
 				</table>
@@ -167,8 +153,7 @@
 					<tr>
 						<td>A) Mansioni assegnate:</td>
 						<td style="padding-left: 50px;">
-							<div>
-								<div class="row">
+					
 									<div class="form-check form-check-inline">
 										<input name="gruppo5" type="radio" id="radio1" checked>
 										<label for="radio4">1</label>
@@ -189,8 +174,7 @@
 										<input name="gruppo5" type="radio" id="radio4"> <label
 											for="radio5">5</label>
 									</div>
-								</div>
-							</div>
+								
 						</td>
 
 					</tr>
@@ -198,8 +182,7 @@
 					<tr>
 						<td>B) Ambiente di lavoro:</td>
 						<td style="padding-left: 50px;">
-							<div>
-								<div class="row">
+							
 									<div class="form-check form-check-inline">
 										<input name="gruppo6" type="radio" id="radio1" checked>
 										<label for="radio4">1</label>
@@ -220,16 +203,13 @@
 										<input name="gruppo6" type="radio" id="radio4"> <label
 											for="radio5">5</label>
 									</div>
-								</div>
-							</div>
 						</td>
 					</tr>
 
 					<tr>
 						<td>C) Competenze tecniche presenti:</td>
 						<td style="padding-left: 50px;">
-							<div>
-								<div class="row">
+							
 									<div class="form-check form-check-inline">
 										<input name="gruppo7" type="radio" id="radio1" checked>
 										<label for="radio4">1</label>
@@ -250,16 +230,15 @@
 										<input name="gruppo7" type="radio" id="radio4"> <label
 											for="radio5">5</label>
 									</div>
-								</div>
-							</div>
+								
 						</td>
 					</tr>
 
 					<tr>
 						<td>D) Assistenza del tutor Ente ospitante:</td>
 						<td style="padding-left: 50px;">
-							<div>
-								<div class="row">
+							
+
 									<div class="form-check form-check-inline">
 										<input name="gruppo8" type="radio" id="radio1" checked>
 										<label for="radio4">1</label>
@@ -280,8 +259,7 @@
 										<input name="gruppo8" type="radio" id="radio4"> <label
 											for="radio5">5</label>
 									</div>
-								</div>
-							</div>
+							
 						</td>
 					</tr>
 				</table>
