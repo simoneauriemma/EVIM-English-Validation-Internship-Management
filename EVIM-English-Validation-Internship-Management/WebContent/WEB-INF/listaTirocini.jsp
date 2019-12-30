@@ -72,8 +72,8 @@
 											<select class="form-control" id="select"
 												onchange="getTutors(this.value)" name="sel1">
 												<option selected>--select an option--</option>
-												<option value="">Visualizza progetto</option>
-												<option value="">Compila questionario</option>
+												<option value="#">Visualizza progetto</option>
+												<option value="questionarioS.jsp">Compila questionario</option>
 											</select>
 										</div>
 									</td>
@@ -124,7 +124,7 @@
 										onchange="getTutors(this.value)" name="sel1">
 										<option selected>--select an option--</option>
 										<option value="">Visualizza progetto</option>
-										<option value="">Compila questionario</option>
+										<option value="questionarioT.jsp">Compila questionario</option>
 									</select>
 								</div>
 							</td>
@@ -171,7 +171,7 @@
 										onchange="getTutors(this.value)" name="sel1">
 										<option selected>--select an option--</option>
 										<option value="">Visualizza progetto</option>
-										<option value="">Compila questionario</option>
+										<option value="questionarioT.jsp">Compila questionario</option>
 									</select>
 								</div>
 							</td>

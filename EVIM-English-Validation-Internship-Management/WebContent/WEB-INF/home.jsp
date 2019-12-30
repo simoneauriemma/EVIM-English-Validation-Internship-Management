@@ -124,7 +124,7 @@
 				<br> <br>
 				<p>
 					Il Sistema <span style="color: #2C5278; font-style: italic;">Internship
-						Management</span> nasce come estensione della piattaforma <span
+						Management</span> è integrato con la piattaforma <span
 						style="color: #2C5278; font-style: italic;"> English
 						Validation</span>. Si pone come obiettivo principale la digitalizzazione
 					di tutte le pratiche necessarie per lo svolgimento del Tirocinio

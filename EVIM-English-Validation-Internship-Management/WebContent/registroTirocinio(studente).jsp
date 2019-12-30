@@ -86,19 +86,7 @@
 							<td>#</td>
 							<td>#</td>
 						</tr>
-						<tr>
-							<td></td>
-							<td>Attività4</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-
-						</tr>
-
-
+						
 					</tbody>
 				</table>
 				<br>

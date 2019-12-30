@@ -72,14 +72,13 @@
 							class="fas fa-angle-right "></i> Lista Aziende convenzionate </a></li>
 					<li><a href="VisualizzaTutorAccademici"><i
 							class="fas fa-angle-right "></i> Elenco Tutor accademici </a></li>
-					<li><a href="questionarioS.jsp"><i class="fas fa-angle-right "></i>
-							Compila questionario valutativo </a></li>
+							
 				</c:if>
 
 				<c:if test="${type == 'tutoraccademico'}">
 					<!-- Tutor accademico -->
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
-							Elenco tirocinanti attivi </a></li>
+							Elenco tirocini</a></li>
 					<li><a href="valutaRelazione.jsp"><i
 							class="fas fa-angle-right "></i> Valuta relazione tirocinio </a></li>
 					<li><a href="#"><i class="fas fa-angle-right "></i>
@@ -89,10 +88,7 @@
 				<c:if test="${type == 'tutoraziendale'}">
 					<!-- Tutor aziendale -->
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
-							Elenco tirocinanti </a></li>
-					<li><a href="questionarioT.jsp"><i
-							class="fas fa-angle-right "></i> Compila questionario valutativo
-					</a></li>
+							Elenco tirocini</a></li>
 					<li><a href="compilaRelazione.jsp"><i
 							class="fas fa-angle-right "></i> Compila relazione tirocinio </a></li>
 
@@ -100,11 +96,7 @@
 				<c:if test="${type == 'azienda'}">
 					<!-- Azienda -->
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
-							Elenco tirocinanti </a></li>
-					<li><a href="questionarioT.jsp"><i
-							class="fas fa-angle-right "></i> Compila questionario valutativo
-					</a></li>
-
+							Elenco tirocini</a></li>
 				</c:if>
 			</ul>
 			<!-- FINE GESTIONE TIROCINIO -->
@@ -181,8 +173,7 @@
 							tirocinio </a></li>
 					<li><a href="progettoFormativo.jsp"><i
 							class="fas fa-angle-right "></i> Visualizza progetto formativo </a></li>
-					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
-							Elenco tirocini in corso</a></li>
+					
 				</c:if>
 
 				<c:if test="${type == 'pdcd'}">
@@ -196,8 +187,7 @@
 							class="fas fa-angle-right "></i> Valuta progetto formativo </a></li>
 					<li><a href="VisualizzaRichieste"><i
 							class="fas fa-angle-right "></i> Visualizza richieste tirocinio </a></li>
-					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
-							Elenco tirocini in corso</a></li>
+					
 				</c:if>
 			</ul>
 
