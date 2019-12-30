@@ -95,20 +95,7 @@ text-align: center;
 								<option value="rifiuta">Rifiuta</option>
 							</select></td>
 						</tr>
-						<tr>
-							<td></td>
-							<td>Attività4</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-							<td><select class="form-control"
-								id="sel1" onchange="" name="sel1">
-								<option value="approva" selected>Approva</option>
-								<option value="rifiuta">Rifiuta</option>
-							</select></td>
-						</tr>
+						
 
 
 					</tbody>
