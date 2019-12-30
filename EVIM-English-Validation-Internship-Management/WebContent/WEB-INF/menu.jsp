@@ -47,7 +47,7 @@
 		<!-- nel caso in cui è l'utente ospite -->
 		<c:if
 			test="${type!= 'studente' && type!= 'azienda' && type!='tutoraccademico' && type!='tutoraziendale' && type!='pdcd'}">
-			<a class="item" href="VisualizzaAziende"> Lista Aziende
+			<a class="item" href="VisualizzaAziende"> Lista aziende
 				convenzionate </a>
 			<a class="item" href="VisualizzaTutorAccademici"> Elenco Tutor
 				accademici </a>
@@ -69,9 +69,11 @@
 				style="height: 0px;">
 				<c:if test="${type == 'studente'}">
 					<li><a href="VisualizzaAziende"><i
-							class="fas fa-angle-right "></i> Lista Aziende convenzionate </a></li>
+							class="fas fa-angle-right "></i> Lista aziende convenzionate </a></li>
 					<li><a href="VisualizzaTutorAccademici"><i
-							class="fas fa-angle-right "></i> Elenco Tutor accademici </a></li>
+							class="fas fa-angle-right "></i> Elenco tutor accademici </a></li>
+					<li><a href="ListaTirocini"><i
+							class="fas fa-angle-right"></i> Elenco tirocini </a></li>
 							
 				</c:if>
 
@@ -139,8 +141,6 @@
 								class="fas fa-angle-right "></i> Crea proposta tirocinio esterno
 						</a></li>
 
-						<li><a href="VisualizzaProposte"><i
-								class="fas fa-angle-right "></i> Visualizza proposte </a></li>
 					</c:if>
 
 
