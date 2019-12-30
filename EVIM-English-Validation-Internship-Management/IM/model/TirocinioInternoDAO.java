@@ -65,7 +65,7 @@ public class TirocinioInternoDAO {
 				a.setID_tutorAccademico(rs.getInt("ID_tutorAccademico"));
 				a.setData(rs.getString("Data"));
 				a.setStatus(rs.getString("status"));
-				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademco"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
 				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
 				richieste.add(a);
 			}
@@ -124,7 +124,7 @@ public class TirocinioInternoDAO {
 	public static PDFProgettoFormativo getProgettoFormativoInterno(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,TutorAccademico.Nome as NomeTutor,TutorAccademico.Cognome as CognomeTutor,TutorAccademico.email as EmailTutor, Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita\r\n"
+					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,TutorAccademico.Nome as NomeTutor,TutorAccademico.Cognome as CognomeTutor,TutorAccademico.email as EmailTutor, Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita, USER.tipoCorso as corsoLaurea\r\n"
 							+ "from TirocinioInterno join evim.USER on TirocinioInterno.EMAIL=USER.EMAIL\r\n"
 							+ "join Proposta on TirocinioInterno.ID_Proposta=Proposta.ID_Proposta\r\n"
 							+ "join TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioInterno.ID_tutorAccademico\r\n"
@@ -145,6 +145,7 @@ public class TirocinioInternoDAO {
 				pdf.setObiettivi(rs.getString(7));
 				pdf.setAttivita(rs.getString(8));
 				pdf.setModalita(rs.getString(9));
+				pdf.setCorsoLaurea(rs.getString(10));
 			}
 			System.out.println("Nome-->"+pdf.getNomeStudente());
 			System.out.println("Cognome-->"+pdf.getCognomeStudente());
@@ -174,7 +175,7 @@ public class TirocinioInternoDAO {
 				a.setID_tutorAccademico(rs.getInt("ID_tutorAccademico"));
 				a.setData(rs.getString("Data"));
 				a.setStatus(rs.getString("status"));
-				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademco"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
 				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
 				richieste.add(a);
 			}
@@ -262,7 +263,7 @@ public class TirocinioInternoDAO {
 				a.setID_tutorAccademico(rs.getInt("ID_tutorAccademico"));
 				a.setData(rs.getString("Data"));
 				a.setStatus(rs.getString("status"));
-				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademco"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
 				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
 				richieste.add(a);
 			}

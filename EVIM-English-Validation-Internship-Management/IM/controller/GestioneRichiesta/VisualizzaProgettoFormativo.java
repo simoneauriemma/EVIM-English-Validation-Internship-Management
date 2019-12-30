@@ -119,7 +119,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		
 		String stringaTirocinanteTitle = "\nTirocinante";
 		String stringaTirocinante = "Cognome: " + pdfProgetto.getCognomeStudente()+ " Nome: "+pdfProgetto.getNomeStudente()+"\n" + "Data e luogo di nascita:______ "
-				+ "\nResidenza:______\n"+ "Codice Fiscale:______\n"+"Telefono:______\n"+"Email: "+pdfProgetto.getEmailStudente()+"\nIscritto al Corso di Laurea Triennale in Informatica\n";
+				+ "\nResidenza:______\n"+ "Codice Fiscale:______\n"+"Telefono:______\n"+"Email: "+pdfProgetto.getEmailStudente()+"\nIscritto al Corso di Laurea "+pdfProgetto.getCognomeStudente()+" in Informatica\n";
 		
 		//inizio sezione tutor designato dal dipartimento
 		String stringaTutorTitleDesignatoAccademico="\nTUTOR DESIGNATO DAL DIPARTIMENTO: ";
@@ -454,7 +454,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		
 		String stringaTirocinanteTitle = "\nTirocinante";
 		String stringaTirocinante = "Cognome: " + pdfProgetto.getCognomeStudente()+ " Nome: "+pdfProgetto.getNomeStudente()+"\n" + "Data e luogo di nascita:______ "
-				+ "\nResidenza:______\n"+ "Codice Fiscale:______\n"+"Telefono:______\n"+"Email: "+pdfProgetto.getEmailStudente()+"\nIscritto al Corso di Laurea Triennale in Informatica\n";
+				+ "\nResidenza:______\n"+ "Codice Fiscale:______\n"+"Telefono:______\n"+"Email: "+pdfProgetto.getEmailStudente()+"\nIscritto al Corso di Laurea "+pdfProgetto.getCognomeStudente()+" in Informatica\n";
 		
 		//inizio sezione tutor designato dal dipartimento
 		String stringaTutorTitleDesignatoAccademico="\nTUTOR DESIGNATO DAL DIPARTIMENTO: ";

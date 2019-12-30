@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class Azienda {
 	int ID_Azinda;
-	String CF, Telefono, Nome, Password, Email, SitoWeb, Indirizzo, Descrizione;
+	String CF, Telefono, Nome, Password, Email, SitoWeb, Indirizzo, Descrizione, numeroDipendenti, codiceAteco, idReferente,idConvenzione;
 	ArrayList<Proposta> proposte; // inserito questa variabile così che posso inserire ad ogni azienda le proprie
 									// proposte di tirocinio da servlet
 
@@ -99,5 +99,39 @@ public class Azienda {
 	public void setDescrizione(String descrizione) {
 		Descrizione = descrizione;
 	}
+
+	public String getNumeroDipendenti() {
+		return numeroDipendenti;
+	}
+
+	public void setNumeroDipendenti(String numeroDipendenti) {
+		this.numeroDipendenti = numeroDipendenti;
+	}
+
+	public String getCodiceAteco() {
+		return codiceAteco;
+	}
+
+	public void setCodiceAteco(String codiceAteco) {
+		this.codiceAteco = codiceAteco;
+	}
+
+	public String getIdReferente() {
+		return idReferente;
+	}
+
+	public void setIdReferente(String idReferente) {
+		this.idReferente = idReferente;
+	}
+
+	public String getIdConvenzione() {
+		return idConvenzione;
+	}
+
+	public void setIdConvenzione(String idConvenzione) {
+		this.idConvenzione = idConvenzione;
+	}
+	
+	
 
 }

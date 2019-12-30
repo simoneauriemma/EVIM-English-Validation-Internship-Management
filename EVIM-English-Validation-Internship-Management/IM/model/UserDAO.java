@@ -81,6 +81,12 @@ public class UserDAO {
 				utente.setPassword(rs.getString(5));
 				utente.setUserType(rs.getInt(6));
 				utente.setCorso(rs.getString(7));
+				utente.setLuogoDiNascita(rs.getString(8));
+				utente.setDataDiNascita(rs.getString(9));
+				utente.setResidente(rs.getString(10));
+				utente.setVia(rs.getString(11));
+				utente.setTelefono(rs.getString(12));
+				utente.setMatricola(rs.getString(13));
 				return utente;
 			} else
 				return null;
@@ -93,7 +99,7 @@ public class UserDAO {
 	}
 	
 	public static boolean insertNewUser(User u) { // SOLO PER STUDENTE
-		String query= "INSERT INTO EVIM.user(`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`) VALUES(?,?,?,?,?,?,?)";
+		String query= "INSERT INTO EVIM.user(`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`,`Luogo_Nascita`,`Data_Nascita`,`Residente`,`Via`,`Telefono`,`Matricola`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(query);
 			
@@ -104,7 +110,12 @@ public class UserDAO {
 			ps.setString(5, u.getPassword());
 			ps.setInt(6, 0);
 			ps.setString(7, u.getCorso());
-			
+			ps.setString(8,u.getLuogoDiNascita());//luogonascita
+			ps.setString(9,u.getDataDiNascita());//data nascita
+			ps.setString(10,u.getResidente());//residente
+			ps.setString(11,u.getVia());//via
+			ps.setString(12,u.getTelefono());//telefono
+			ps.setString(13,u.getMatricola());//matricola
 			if(ps.executeUpdate()==1) {
 				return true;
 			}

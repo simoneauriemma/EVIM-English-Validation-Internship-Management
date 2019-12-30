@@ -63,9 +63,6 @@
 									<td class="text-center"><i class="far fa-circle"></i>
 									 <c:out
 											value="${tirocinioe.status}"></c:out></td>
-
-
-
 								</tr>
 								<tr>
 									<td class="icon"><i class="fas fa-circle"></i></td>
@@ -113,7 +110,7 @@
 									<td class="icon"><i class="fas fa-circle"></i></td>
 									<td class="">Num. CFU</td>
 									<td class="text-center"><c:out
-											value="${tirocinioi.NumeroCFU}"></c:out></td>
+											value="${tirocinioi.numeroCFU}"></c:out></td>
 								</tr>
 								<tr>
 									<td class="icon"><i class="fas fa-clipboard-list"></i></td>

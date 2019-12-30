@@ -56,7 +56,7 @@ public class Registrazione extends BaseServlet {
 				// controllo la bontà dei dati
 				if (password.equals(cpassword) && nome != "" && cognome != "" && password != "" && sesso != ""
 						&& nome.length() > 2 && cognome.length() > 2) {
-					User u = new User(email, nome, cognome, sesso.charAt(0), password, 1, corso);
+					User u = new User(email, nome, cognome, sesso.charAt(0), password, 1, corso,"Napoli (NA)","gg/mm/aaaa","ab","ba","ab","ab");//MODIFICARE CAMPI I CAMPI STATICI -> `Luogo_Nascita`,`Data_Nascita`,`Residenza citta`,`Via`,`Telefono`,`Matricola`
 					result = UserDAO.insertNewUser(u);
 				}
 			}

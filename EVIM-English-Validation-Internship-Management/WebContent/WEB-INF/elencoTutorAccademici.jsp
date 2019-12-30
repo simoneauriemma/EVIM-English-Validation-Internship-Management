@@ -100,25 +100,26 @@
 													<td><c:out value="${proposta.ID_Proposta}" /></td>
 												</tr>
 												<tr>
-													<td class="icon"><i class="fas fa-bullseye"></i></td>
-													<td class="">Obiettivi</td>
-													<td><c:out value="${proposta.obiettivi}" /></td>
-												</tr>
-												<tr>
-													<td class="icon"><i class="fas fa-briefcase"></i></td>
-													<td class="">Sede</td>
-													<td><c:out value="${proposta.sede}" /></td>
-												</tr>
-												<tr>
-													<td class="icon"><i class="fas fa-chart-line"></i></td>
-													<td class="">Tema/Ambito</td>
-													<td><c:out value="${proposta.temaAmbito}" /></td>
-												</tr>
-												<tr>
-													<td class="icon"><i class="fas fa-chalkboard-teacher"></i></td>
-													<td class="">Materiale/Risorse</td>
-													<td><c:out value="${proposta.materialeRisorse}" /></td>
-												</tr>
+																	<td class="icon"><i class="fas fa-bullseye"></i></td>
+																	<td class="">Obiettivi</td>
+																	<td><c:out value="${proposta.obiettivi}" /></td>
+																</tr>
+																<tr>
+																	<td class="icon"><i class="fas fa-briefcase"></i></td>
+																	<td class="">Competenze</td>
+																	<td><c:out value="${proposta.competenze}" /></td>
+																</tr>
+																<tr>
+																	<td class="icon"><i class="fas fa-chart-line"></i></td>
+																	<td class="">Attività</td>
+																	<td><c:out value="${proposta.attivita}" /></td>
+																</tr>
+																<tr>
+																	<td class="icon"><i
+																		class="fas fa-chalkboard-teacher"></i></td>
+																	<td class="">Modalità</td>
+																	<td><c:out value="${proposta.modalita}" /></td>
+																</tr>
 												<tr>
 
 												</tr>

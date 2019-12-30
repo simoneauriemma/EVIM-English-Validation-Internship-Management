@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class TirocinioInterno {
-	int ID_TirocinioInterno, ID_tutorAccademico, OreTotali, NumeroCFU, ID_Proposta;
+	int ID_TirocinioInterno, ID_tutorAccademico, OreTotali, numeroCFU, ID_Proposta;
 	String EMAIL, status;
 	Boolean FirmaPdCD, FirmaTutorAccademico;
 	String data;
@@ -17,7 +17,7 @@ public class TirocinioInterno {
 		ID_TirocinioInterno = iD_TirocinioInterno;
 		ID_tutorAccademico = iD_tutorAccademico;
 		OreTotali = oreTotali;
-		NumeroCFU = numeroCFU;
+		this.numeroCFU = numeroCFU;
 		ID_Proposta = iD_Proposta;
 		EMAIL = eMAIL;
 		this.status = status;
@@ -57,11 +57,11 @@ public class TirocinioInterno {
 	}
 
 	public int getNumeroCFU() {
-		return NumeroCFU;
+		return numeroCFU;
 	}
 
 	public void setNumeroCFU(int numeroCFU) {
-		NumeroCFU = numeroCFU;
+		numeroCFU = numeroCFU;
 	}
 
 	public int getID_Proposta() {
