@@ -33,6 +33,7 @@ public class ServletCommonTest extends Mockito {
     request.addParameter("password", "password");
     request.addParameter("flag", "1");
     servlet.doPost(request, response);
+    
     assertEquals("json", response.getContentType());
   }
   
@@ -120,7 +121,7 @@ public class ServletCommonTest extends Mockito {
   @Test
   public void testLoginErrorFlag() throws ServletException, IOException {
     request.addParameter("email", "loginerror@studenti.unisa.it");
-    request.addParameter("password", "password");
+    request.addParameter("password", "passworad");
     request.addParameter("flag", "133");
     servlet.doPost(request, response);
     assertEquals("json", response.getContentType());
