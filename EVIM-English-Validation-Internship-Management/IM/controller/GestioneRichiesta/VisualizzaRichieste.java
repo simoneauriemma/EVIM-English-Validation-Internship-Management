@@ -69,6 +69,7 @@ public class VisualizzaRichieste extends BaseServlet {
 						dispatcher.forward(request, response);
 					} else {
 						// studenti triennali, quindi i tirocini possono essere sia interni che esterni
+						
 						ArrayList<TirocinioInterno> tirocinioInterno = new TirocinioInternoDAO()
 								.doRetriveAllByStudent(studente.getEmail());
 					

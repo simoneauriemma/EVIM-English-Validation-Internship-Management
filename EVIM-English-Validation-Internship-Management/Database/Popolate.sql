@@ -47,6 +47,11 @@ VALUES ('simonagrieco@studenti.unisa.it','1','1','24/11/2019',150,"in approvazio
 #Inserimenti TIROCINIO INTERNO
 INSERT INTO `TirocinioInterno` (`EMAIL`,`ID_tutorAccademico`,`Data`,`OreTotali`,`status`,`numeroCFU`,`FirmaTutorAccademico`,`FirmaPdCD`,`ID_Proposta`)
 VALUES ('mconcetta@studenti.unisa.it','2','02/04/2019',150,"in approvazione",6, false, false,4);
+INSERT INTO `TirocinioInterno` (`EMAIL`,`ID_tutorAccademico`,`Data`,`OreTotali`,`status`,`numeroCFU`,`FirmaTutorAccademico`,`FirmaPdCD`,`ID_Proposta`)
+VALUES ('simonagrieco@studenti.unisa.it','1','08/04/2019',150,"in approvazione",6, false, false,4);
 
 select * from EVIM.TirocinioInterno where status="in approvazione";
 select * from EVIM.TirocinioEsterno where status="in approvazione";
+
+
+select * from EVIM.TirocinioInterno where EMAIL="simonagrieco@studenti.unisa.it" AND status="in approvazione";
