@@ -8,7 +8,7 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="stiliCSS/stiliRichiesteTirocinio.css">
 
-<title>View richiesta studente</title>
+<title>Viesualizza richiesta</title>
 </head>
 <div class="container">
 	<div class="row">
