@@ -28,16 +28,31 @@ public class Registrazione extends BaseServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//regex utenti
+		
 		String regexStudente = "[a-z0-9\\.]+@studenti\\.unisa\\.it";
 		String regexDocente = "[a-z0-9\\.]+@unisa\\.it";
+		
+		
+		//campi comuni
 		String email = request.getParameter("email");
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String password = request.getParameter("password");
 		String cpassword = request.getParameter("cpassword");
+		String luogoresidenza= ""+ request.getParameter("comuner")+"("+request.getParameter("provinciar")+")";
+		String indirizzo= request.getParameter("indirizzo");
+		String telefono = request.getParameter("telefono");
+		
+		//campi solo studente
 		String sesso = request.getParameter("sesso");
 		String corso = request.getParameter("corso");
-		String telefono = "";
+		String matricola= request.getParameter("matricola");
+		String data = request.getParameter("data");
+		String luogonascita= ""+ request.getParameter("comunen")+"("+request.getParameter("provincian")+")";
+		
+		
+		
 		boolean result = false;
 // se non sono loggato mi posso registrare altrimenti non ha senso
 		if (request.getParameter("utenteLoggato") == null && email!=null) {
@@ -46,7 +61,7 @@ public class Registrazione extends BaseServlet {
 				// controllo la bontà dei dati
 				if (password.equals(cpassword) && nome != "" && cognome != "" && password != "" && nome.length() > 2
 						&& cognome.length() > 2) {
-					result = TutorAccademicoDAO.insertNewTutorAccademico(nome, cognome, cpassword, "", email, telefono);
+					result = TutorAccademicoDAO.insertNewTutorAccademico(nome, cognome, cpassword, indirizzo+luogoresidenza, email, telefono);
 
 				}
 
@@ -56,7 +71,8 @@ public class Registrazione extends BaseServlet {
 				// controllo la bontà dei dati
 				if (password.equals(cpassword) && nome != "" && cognome != "" && password != "" && sesso != ""
 						&& nome.length() > 2 && cognome.length() > 2) {
-					User u = new User(email, nome, cognome, sesso.charAt(0), password, 1, corso,"Napoli (NA)","gg/mm/aaaa","ab","ba","ab","ab");//MODIFICARE CAMPI I CAMPI STATICI -> `Luogo_Nascita`,`Data_Nascita`,`Residenza citta`,`Via`,`Telefono`,`Matricola`
+					User u = new User(email, nome, cognome, sesso.charAt(0), password, 1, corso,luogonascita,data,luogoresidenza,indirizzo,telefono,matricola);//MODIFICARE CAMPI I CAMPI STATICI -> `Luogo_Nascita`,`Data_Nascita`,`Residenza citta`,`Via`,`Telefono`,`Matricola`
+					
 					result = UserDAO.insertNewUser(u);
 				}
 			}

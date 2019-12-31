@@ -87,6 +87,7 @@ public class UserDAO {
 				utente.setVia(rs.getString(11));
 				utente.setTelefono(rs.getString(12));
 				utente.setMatricola(rs.getString(13));
+				
 				return utente;
 			} else
 				return null;

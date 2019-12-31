@@ -135,7 +135,7 @@ margin-left: 38px;
 												id="radio2"> <label for="radio2">Magistrale</label>
 											<p id="resultRegexCorso"></p>
 
-										</div>
+										
 											<table>
 											<tr>
 												
@@ -158,7 +158,7 @@ margin-left: 38px;
 												</td>
 												<td>
 													<div>
-														<input class="form-control it-date-datepicker" id="date2"
+														<input name="data" class="form-control it-date-datepicker" id="date2"
 															type="date">
 													</div>
 
@@ -176,7 +176,7 @@ margin-left: 38px;
 
 
 													<div class="form-group">
-														<label for="comune">Comune </label> <select
+														<label for="comune">Comune </label> <select name="comunen"
 															class="form-control" id="comune">
 															<option>C1</option>
 															<option>C2</option>
@@ -189,7 +189,7 @@ margin-left: 38px;
 												<td></td>
 												<td>
 													<div class="form-group">
-														<label for="prov">Provincia </label> <select
+														<label for="prov">Provincia </label> <select name="provincian"
 															class="form-control" id="prov">
 															<option>P1</option>
 															<option>P2</option>
@@ -208,7 +208,7 @@ margin-left: 38px;
 												</td>
 												<td>
 													<div class="form-group">
-														<label for="comune1">Comune </label> <select
+														<label for="comune1">Comune </label> <select name="comuner"
 															class="form-control" id="comune1">
 															<option>C1</option>
 															<option>C2</option>
@@ -221,7 +221,7 @@ margin-left: 38px;
 												<td></td>
 												<td>
 													<div class="form-group">
-														<label for="prov1">Provincia </label> <select
+														<label for="prov1">Provincia </label> <select name="provinciar"
 															class="form-control" id="prov1">
 															<option>P1</option>
 															<option>P2</option>
@@ -232,7 +232,7 @@ margin-left: 38px;
 													</div>
 												</td>
 											</tr>
-										</table>
+										</table></div>
 										<br>
 										<table>
 
