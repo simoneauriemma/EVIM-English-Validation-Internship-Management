@@ -100,7 +100,7 @@
 				<c:if test="${type == 'azienda'}">
 					<!-- Azienda -->
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
-							Elenco tirocini</a></li>
+							Elenco tirocini </a></li>
 				</c:if>
 			</ul>
 			<!-- FINE GESTIONE TIROCINIO -->

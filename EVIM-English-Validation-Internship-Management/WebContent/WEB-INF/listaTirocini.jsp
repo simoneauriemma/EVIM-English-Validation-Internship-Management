@@ -9,7 +9,7 @@
 <meta charset="ISO-8859-1">
 
 <script src="jquery-3.4.1.min.js"></script>
-<title>Visualizza richieste tirocinio interno</title>
+<title>Visualizza richieste tirocinio</title>
 </head>
 
 <div class="container">
@@ -23,19 +23,26 @@
 		<div class="col-lg-9" id="col-9">
 
 			<p id="titolo" class="text-center">Visualizza lista richieste
-				tirocinio interno</p>
+				tirocinio</p>
 			<hr>
-			<br> <br>
 
-			<!-- SE L'UTENTE LOGGATO E' UNO STUDENTE ed è tirocinio ESTERNO  -->
-			<c:if test="${type == 'studente' }">
+			<!-- se entrambi gli array di tirocini sono vuoti esce che non c'è nulla -->
+			<c:if
+				test="${registroQueryEsterno.size() || registroQueryInterno.size()}">
+				<p>Nessuna richieste di tirocinio esterno è stata effettuata!</p>
+			</c:if>
 
-				<!-- Se la lista di tirocini esterni è vuota esce che non c'è nulla -->
-				<c:if test="${registroQueryEsterno.size() == 0}">
+
+			<!-- inizio TIROCINIO ESTERNO -->
+			<c:if
+				test="${type == 'tutoraziendale' || type== 'tutoraccademico' || type=='azienda' || type=='pdcd'}">
+
+				<c:if test="${registroQueryEsterno.size()}">
 					<p>Nessuna richieste di tirocinio esterno è stata effettuata!</p>
 				</c:if>
 
 				<c:if test="${registroQueryEsterno.size() > 0}">
+
 					<c:forEach items="${registroQueryEsterno}" var="esterno">
 
 						<table class="table table-striped" id="tabella">
@@ -55,133 +62,124 @@
 								<tr>
 									<th scope="row"><c:out value="${esterno.ID_Tirocinio}" /></th>
 									<td>#</td>
-									<td><c:out value="${utenteLoggato.status}" /></td>
-									<td><c:out value="${esterno.NumeroCFU}"/></td>
+									<td><c:out value="${esterno.status}" /></td>
+									<td><c:out value="${esterno.NumeroCFU}" /></td>
 									<td><c:out value="${esterno.OreTotali}" /></td>
 									<td>Esterno</td>
-									<td class="form-inline">
-										<a href="#">
-											<i id="registro" class="fas fa-book"></i>
-										</a>
-										<a href="#">
-											<i id="accettare" class="fas fa-check-square"></i>
-										</a>
+									
+									<!-- REGISTRO -->
+									<td class="form-inline"><a href="#"> <i id="registro"
+											class="fas fa-book"></i>
+									</a> <a href="#"> <i id="accettare" class="fas fa-check-square"></i>
+									</a>
 									</td>
+									<!-- ...... -->
+									
+									
+									<!-- OPERAZIONI -->
 									<td>
 										<div class="form-group">
 											<select class="form-control" id="select"
 												onchange="getTutors(this.value)" name="sel1">
 												<option selected>--select an option--</option>
-												<option value="#">Visualizza progetto</option>
-												<option value="questionarioS.jsp">Compila questionario</option>
+												
+												<c:if test="${type=='tutoraziendale' }">
+													<option value="#">Visualizza progetto</option>
+													<option value="#">Compila
+														relazione</option>
+													<option value="#">Visualizza
+														relazione</option>
+													<option value="questionarioT.jsp">Compila
+														questionario</option>
+													<option value="#">Approva registro</option>
+												</c:if>
+												
+												
+												<c:if test="${type=='tutoraccademico' || type=='pdcd'}">
+													<option value="#">Visualizza progetto</option>
+													<option value="#">Compila
+														relazione</option>
+												</c:if>
 											</select>
 										</div>
 									</td>
+									<!-- ...... -->
+									
 								</tr>
 							</tbody>
 						</table>
-
 					</c:forEach>
 				</c:if>
 			</c:if>
+			<!-- fine TIROCINIO ESTERNO -->
 
-			<!-- SE L'UTENTE LOGGATO E' UNO TUTOR AZIENZALE  -->
-			<c:if test="${type == 'tutoraziendale' }">
-				<c:if test="${registroQueryEsterno.size() == 0}">
+
+
+
+			<!-- fine TIROCINIO INTERNO -->
+			<!-- SE L'UTENTE LOGGATO E' UNO TUTOR ACCADEMICO O IL PDCD  -->
+			<c:if test="${type == 'tutoraccademico' || type == 'pdcd'}">
+				<c:if test="${registroQueryInterno.size()}">
 					<p>Nessuna richieste di tirocinio è stata effettuata!</p>
 				</c:if>
 
-				<c:forEach items="registroQueryEsterno" var="esterno">
-				<table class="table table-striped" id="tabella">
-					<thead>
-						<tr id="colonne">
-							<th scope="col">ID Tirocinio</th>
-							<th scope="col">Responsabile</th>
-							<th scope="col">CFU</th>
-							<th scope="col">Ore Max</th>
-							<th scope="col">Registro tirocinio</th>
-							<th scope="col">Operazioni</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mario</td>
-							<td>Verdi</td>
-							<td>mario.verdi</td>
-							<td>mario.verdi</td>
-							<td class="form-inline text-center">
-								<form>
-									<i id="registro" class="fas fa-book"></i>
-								</form>
-								<form id="accettare">
-									<i class="fas fa-check-square"></i>
-								</form>
-							</td>
-							<td>
-								<div class="form-group">
-									<select class="form-control" id="select"
-										onchange="getTutors(this.value)" name="sel1">
-										<option selected>--select an option--</option>
-										<option value="">Visualizza progetto</option>
-										<option value="questionarioT.jsp">Compila questionario</option>
-									</select>
-								</div>
-							</td>
 
-						</tr>
+				<c:forEach items="registroQueryInterno" var="interno">
 
-					</tbody>
-				</table>
+					<table class="table table-striped" id="tabella">
+						<thead>
+							<tr id="colonne">
+								<th scope="col">ID Tirocinio</th>
+								<th scope="col">Responsabile</th>
+								<th scope="col">Status</th>
+								<th scope="col">CFU</th>
+								<th scope="col">Ore Max</th>
+								<th scope="col">Tipo tirocinio</th>
+								<th scope="col">Registro tirocinio</th>
+								<th scope="col">Operazioni</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row"><c:out value="${interno.ID_Tirocinio}" /></th>
+								<td>#</td>
+								<td><c:out value="${interno.status}" /></td>
+								<td><c:out value="${interno.NumeroCFU}" /></td>
+								<td><c:out value="${interno.OreTotali}" /></td>
+								<td>Interno</td>
+
+								<!-- REGISTRO -->
+								<td class="form-inline text-center">
+									<form><a href="#">
+										<i id="registro" class="fas fa-book"></i>
+									</a></form>
+								
+									<form id="accettare">
+										<i class="fas fa-check-square"></i>
+									</form>
+								</td>
+								<!-- ...... -->
+
+								<!-- OPERAZIONI -->
+								<td>
+									<div class="form-group">
+										<select class="form-control" id="select"
+											onchange="getTutors(this.value)" name="sel1">
+											<option selected>--select an option--</option>
+											<option value="">Visualizza progetto</option>
+											<option value="questionarioT.jsp">Compila
+												questionario</option>
+										</select>
+									</div>
+								</td>
+								<!-- ........ -->
+
+							</tr>
+
+						</tbody>
+					</table>
 				</c:forEach>
 			</c:if>
-
-			<!-- SE L'UTENTE LOGGATTO E' IL TUTOR ACCADEMICO -->
-			<c:if test="${type == 'tutoraccademico' }">
-				<table class="table table-striped" id="tabella">
-					<thead>
-						<tr id="colonne">
-							<th scope="col">ID Tirocinio</th>
-							<th scope="col">Responsabile</th>
-							<th scope="col">CFU</th>
-							<th scope="col">Ore Max</th>
-							<th scope="col">Tipo tirocinio</th>
-							<th scope="col">Registro tirocinio</th>
-							<th scope="col">Operazioni</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mario</td>
-							<td>Verdi</td>
-							<td>mario.verdi</td>
-							<td>mario.verdi</td>
-							<td class="form-inline text-center">
-								<form>
-									<i id="registro" class="fas fa-book"></i>
-								</form>
-								<form id="accettare">
-									<i class="fas fa-check-square"></i>
-								</form>
-							</td>
-							<td>
-								<div class="form-group">
-									<select class="form-control" id="select"
-										onchange="getTutors(this.value)" name="sel1">
-										<option selected>--select an option--</option>
-										<option value="">Visualizza progetto</option>
-										<option value="questionarioT.jsp">Compila questionario</option>
-									</select>
-								</div>
-							</td>
-
-						</tr>
-
-					</tbody>
-				</table>
-			</c:if>
-
 		</div>
 
 	</div>

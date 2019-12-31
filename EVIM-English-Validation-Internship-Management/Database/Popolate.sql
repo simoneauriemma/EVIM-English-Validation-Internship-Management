@@ -54,4 +54,10 @@ select * from EVIM.TirocinioInterno where status="in approvazione";
 select * from EVIM.TirocinioEsterno where status="in approvazione";
 
 
+select TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,
+							TirocinioEsterno.OreTotali, Registro.ID_Registro 
+							from TirocinioEsterno, Registro 
+							where TirocinioEsterno.ID_TirocinioEsterno = Registro.ID_Tirocinio AND 
+							TirocinioEsterno.EMAIL = 'simonagrieco@studenti.unisa.it' AND TirocinioEsterno.status='in svolgimento';
+
 select * from EVIM.TirocinioInterno where EMAIL="simonagrieco@studenti.unisa.it" AND status="in approvazione";
