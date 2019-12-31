@@ -7,10 +7,9 @@
 <style>
 #button {
 	width: 200px;
-	
 }
 
-#button-container,#button-container1 {
+#button-container, #button-container1 {
 	text-align: center;
 }
 </style>
@@ -86,7 +85,7 @@
 							<td>#</td>
 							<td>#</td>
 						</tr>
-						
+
 					</tbody>
 				</table>
 				<br>
@@ -111,31 +110,32 @@
 								</button>
 							</div>
 							<div class="modal-body">
-							<table>
-							<tr>
-							<td>Attività svolta:</td>
-							<td><textarea rows="1" cols="30"></textarea></td>
-							</tr>
-							<tr>
-							<td>Data:</td>
-							<td><input type="date"></td>
-							</tr>
-							<tr>
-							<td>Ora ingresso:</td>
-							<td><input type="time"></td>
-							</tr>
-							<tr>
-							<td>Ora uscita:</td>
-							<td><input type="time"></td>
-							</tr>
-							<tr>
-							<td>Ore totali:</td>
-							<td><input type="number" style="width: 77px;"></td>
-							</tr>
-							</table>
-							<div id="button-container1"> <br> <br>
-							<button type="submit" class="btn btn-secondary" id="button1">APPROVA</button>
-							</div>
+								<table>
+									<tr>
+										<td>Attività svolta:</td>
+										<td><textarea rows="1" cols="30"></textarea></td>
+									</tr>
+									<tr>
+										<td>Data:</td>
+										<td><input type="date"></td>
+									</tr>
+									<tr>
+										<td>Ora ingresso:</td>
+										<td><input type="time"></td>
+									</tr>
+									<tr>
+										<td>Ora uscita:</td>
+										<td><input type="time"></td>
+									</tr>
+									<tr>
+										<td>Ore totali:</td>
+										<td><input type="number" style="width: 77px;"></td>
+									</tr>
+								</table>
+								<div id="button-container1">
+									<br> <br>
+									<button type="submit" class="btn btn-secondary" id="button1">APPROVA</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -149,8 +149,8 @@
 <jsp:include page="WEB-INF/footer.jsp"></jsp:include>
 
 <script>
-function myFunction() {
-  alert("I am an alert box!");
-}
+	function myFunction() {
+		alert("I am an alert box!");
+	}
 </script>
 </html>

@@ -29,8 +29,7 @@
 			</c:if>
 
 			<table class="table table-striped" id="tabella">
-
-				<!-- richieste di tirocinio esterno di tale studente  -->
+				<!-- richieste di tirocinio ESTERNO di tale studente  -->
 				<c:if test="${arrayTirocinioEsterno.size() > 0}">
 					<c:forEach items="${arrayTirocinioEsterno}" var="esterno">
 						<tbody>
@@ -90,8 +89,8 @@
 					</c:forEach>
 				</c:if>
 
-				<!-- richieste di tirocinio interno di tale studente  -->
 
+				<!-- richieste di tirocinio INTERNO di tale studente  -->
 				<c:if test="${arrayTirocinioInterno.size() > 0}">
 					<c:forEach items="${arrayTirocinioInterno}" var="interno">
 						<tbody>

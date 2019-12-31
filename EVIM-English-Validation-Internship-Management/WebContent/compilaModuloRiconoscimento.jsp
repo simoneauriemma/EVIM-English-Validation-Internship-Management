@@ -56,7 +56,7 @@
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
 							aria-describedby="inputGroup-sizing-default" name="ndataome"
-							required>
+							disabled>
 					</div>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
@@ -64,7 +64,7 @@
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
 							aria-describedby="inputGroup-sizing-default" name="luogo"
-							required>
+							disabled>
 					</div>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
@@ -72,14 +72,14 @@
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
 							aria-describedby="inputGroup-sizing-default" name="residenza"
-							required>
+							disabled>
 					</div>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
 							<span class="input-group-text">Via</span>
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
-							aria-describedby="inputGroup-sizing-default" name="via" required>
+							aria-describedby="inputGroup-sizing-default" name="via" disabled>
 					</div>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
@@ -87,7 +87,7 @@
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
 							aria-describedby="inputGroup-sizing-default" name="laurea"
-							required>
+							disabled>
 					</div>
 					<br> <br>
 					<!-- INIZIO gestione cfu -->

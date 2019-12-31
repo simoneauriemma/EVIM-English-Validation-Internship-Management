@@ -68,7 +68,7 @@ public class ListaTirocini extends BaseServlet {
 					request.setAttribute("registroQueryInterno", interno);
 					System.out.println("prima del disp");
 
-					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirociniStudente.jsp");
 					dispatcher.forward(request, response);
 
 				} else if (!(esterno.isEmpty())) {
@@ -82,7 +82,7 @@ public class ListaTirocini extends BaseServlet {
 					System.out.println("prima del disp");
 
 					
-					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirociniStudente.jsp");
 					dispatcher.forward(request, response);
 				}
 			}
