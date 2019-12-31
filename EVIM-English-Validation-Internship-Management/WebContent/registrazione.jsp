@@ -141,6 +141,7 @@ margin-left: 38px;
 												
 												<td><p style="margin-right: 50px; margin-left: 30px;">Matricola
 													</p>
+													<p id="resultRegexMatricola"> </p>
 													</td>
 													<td>
 													<input type="text" class="form-control"
@@ -241,11 +242,13 @@ margin-left: 38px;
 												<td><p style="margin-right: 50px; margin-left: 30px;">Indirizzo
 													</p> <input type="text" class="form-control" id="indirizzo"
 													name="indirizzo" placeholder="Via, n° civico"
-													autocomplete="off"></td>
+													autocomplete="off"><p id="resultRegexIndirizzo"></p></td>
 												<td><p style="margin-right: 50px; margin-left: 30px;">Numero
 														di telefono</p> <input type="tel" class="form-control"
 													id="telefono" name="telefono"
-													placeholder="Inserisci numero"></td>
+													placeholder="Inserisci numero">
+													<p id="resultRegexTelefono"> </p>
+													</td>
 											</tr>
 											</table> <br>
 										
@@ -270,6 +273,7 @@ margin-left: 38px;
 	<script>
 		function validate() {
 			var r = true;
+			var isStudent;
 			//password
 			var pass = $('#password');
 			var resultRegexPassword = $('#resultRegexPass');
@@ -298,6 +302,22 @@ margin-left: 38px;
 			var corso2 = $('#radio2');
 			var resultRegexCorso = $('#resultRegexCorso');
 			var divcorso = $('#boxcorso');
+			
+			//matricola
+			
+			var matricola= $('#matricola');
+			var resultRegexMatricola = $('#resultRegexMatricola');
+			
+			//telefono
+			var telefono =$('#telefono');
+			var resultRegexTelefono = $('#resultRegexTelefono');
+			var regex_telefono= new RegExp('^[0-9]{8,16}');
+			//indirizzo
+			var indirizzo=$('#indirizzo');
+			var resultRegexIndirizzo = $('#resultRegexIndirizzo');
+			var regex_indirizzo= new RegExp('^[A-Za-z0-9]{2,}');
+				
+
 
 			if (!regex_email.test(email.val())) {
 
@@ -351,9 +371,33 @@ margin-left: 38px;
 					&& regex_email_studente.test(email.val())) {
 				corso1.css("color", "red");
 				corso1.css("color", "red");
-				resultRegexCorso("Inserire un tipo di corso triennale o magistrale");
+				resultRegexCorso.text("Inserire un tipo di corso triennale o magistrale");
+				resultRegexCorso.css("color", "red");
 				r = false;
 			}
+			
+			if(matricola.val().lenght!=10 && regex_email_studente.test(email.val())){
+				matricola.css("color", "red");
+				resultRegexMatricola.text("Inserire una matricola valida");
+				resultRegexMatricola.css("color", "red");
+				r=false;
+				
+			}
+			
+			if(!regex_telefono.test(telefono.val())&& regex_email_studente.test(email.val())){
+				telefono.css("color", "red");
+				resultRegexTelefono.text("inserire un numero di telefono valido");
+				resultRegexIndirizzo.css("color", "red");
+				r=false;
+			}
+			
+			if(!regex_indirizzo.test(indirizzo.val())&& regex_email_studente.test(email.val())){
+				telefono.css("color", "red");
+				resultRegexTelefono.text("inserire un numero di indirizzo valido");
+				resultRegexTelefono.css("color", "red");
+				r=false;
+			}
+			
 
 			return r;
 
