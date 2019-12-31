@@ -39,17 +39,14 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 		}
 		else {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
+			User utente=(User) sessione.getAttribute("utenteLoggato");
 			// non adatto per lo studente,pdcd,ufficio carriere
 			if(!tipoUtente.equalsIgnoreCase("model.User")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
 				dispatcher.forward(request, response);
 			}
-			else {
-				User studente=(User) sessione.getAttribute("utenteLoggato");
-				
-				
-				int idModulo=Integer.parseInt(request.getParameter("idRiconoscimento"));
-				String emailStudente=studente.getEmail();
+			else if(utente.getUserType()==0){
+				String emailStudente=utente.getEmail();
 				String enteAzienda=request.getParameter("enteAzienda");
 				String indirizzoSede=request.getParameter("indirizzoSede");
 				String profilo=request.getParameter("profilo");
@@ -64,15 +61,11 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 				if(!RiconoscimentoDao.insertRiconoscimenot(emailStudente, enteAzienda, indirizzoSede, profilo, tipoContratto, periodo, oreSvolte, CFUTirocinioObbligatorio, CFUTirocinioEsterno, CFUAccompagnamento)) {
 					System.out.println("inserimento riconoscimento non successo");
 				}
-				
-				// prendo i file allegati dallo studente salvando i file nella directory di tale web application
-				Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(1);
-				uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento());
-				
-				
-				
-				
-				
+				else {
+					// prendo i file allegati dallo studente salvando i file nella directory di tale web application
+					Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(1);
+					uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento());
+				}
 			}
 		}
 	}
