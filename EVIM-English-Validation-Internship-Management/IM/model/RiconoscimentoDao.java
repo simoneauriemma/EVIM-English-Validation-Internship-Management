@@ -52,9 +52,48 @@ public class RiconoscimentoDao {
 		}
 	}
 
+	/**
+	 * @author Antonio Giano
+	 * @param idModuloRiconoscimento, id del campo chiave dell'entity Riconoscimento per fare una ricerca univoca nel Database.
+	 * @return un modulo di riconoscimento di attività lavorativa 
+	 */
 	public static  Riconoscimento getModuloRiconoscimento(int idModuloRiconoscimento) {
 		try(Connection con=DriverManagerConnectionPool.getConnection()){
 			PreparedStatement ps=con.prepareStatement("SELECT * FROM evim.Riconoscimento WHERE ID_Riconoscimento=?;");
+			ps.setInt(1, idModuloRiconoscimento);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			Riconoscimento moduloRiconoscimento=new Riconoscimento();
+			moduloRiconoscimento.setIdRiconoscimento(rs.getInt(1));
+			moduloRiconoscimento.setEmailUser(rs.getString(2));
+			moduloRiconoscimento.setEnteAzienda(rs.getString(3));
+			moduloRiconoscimento.setProfilo(rs.getString(4));
+			moduloRiconoscimento.setIndirizzoSede(rs.getString(5));
+			moduloRiconoscimento.setTipoContratto(rs.getString(6));
+			moduloRiconoscimento.setPeriodo(rs.getString(7));
+			moduloRiconoscimento.setOreSvolte(rs.getInt(8));
+			moduloRiconoscimento.setCFUTirocinioObbligatorio(rs.getInt(9));
+			moduloRiconoscimento.setCFUTirocinioEsterno(rs.getInt(10));
+			moduloRiconoscimento.setCFUAccompagnamentoLavoro(rs.getInt(11));
+			
+			return moduloRiconoscimento;
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @return un elenco di moduli dei riconoscimenti di attività lavorativa, associato ad ognuno di questi moduli lo studente che ha fatto la richiesta. 
+	 */
+	public static  Riconoscimento getModuliRiconoscimentiWithStudenti() {
+		try(Connection con=DriverManagerConnectionPool.getConnection()){
+			PreparedStatement ps=con.prepareStatement("SELECT * FROM evim.Riconoscimento;");
 			ps.setInt(1, idModuloRiconoscimento);
 			ResultSet rs=ps.executeQuery();
 			rs.next();

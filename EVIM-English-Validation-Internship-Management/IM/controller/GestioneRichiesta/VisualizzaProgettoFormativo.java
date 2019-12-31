@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+// import riguardanti alla creazione del PDF, grazie ad itext5
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -20,6 +21,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+
 import model.PDFProgettoFormativo;
 
 import model.TirocinioEsternoDAO;
@@ -771,8 +773,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		for (int i = 0; i < listeParagrafi.size(); i++) {
 			document.add(listeParagrafi.get(i));
 		}
-		// document.add(image1);
-		// step 5
+		
 		document.close();
 		
 		return document;
