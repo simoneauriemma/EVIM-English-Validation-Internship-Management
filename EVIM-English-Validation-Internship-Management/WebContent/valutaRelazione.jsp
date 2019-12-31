@@ -61,9 +61,6 @@
 
 		</div>
 	</div>
-	</div>
-
-	</div>
 
 	<br>
 	<br>

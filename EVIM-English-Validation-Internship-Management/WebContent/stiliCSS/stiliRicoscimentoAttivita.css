@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+
+#titolo{
+	font-size: 22px;
+	color: #595959;
+}
+
+.input-group-text{
+	width: 132px;	
+}
+
+h6{
+	color:#595959;
+}
+
+#cfu-totali{
+	width:178px;
+}
+
+#text-cfu-tot{
+	width: 30px;
+}
+
+select#sel1.form-control{
+	width: 50px;
+}
+
+li{
+	list-style: none;
+}

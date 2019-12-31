@@ -247,7 +247,7 @@
 				<ul id="collapse-1" class="collapse" aria-expanded="false"
 					style="height: 0px;">
 					<c:if test="${type =='studente'}">
-						<li><a href="#"><i class="fas fa-angle-right"></i>
+						<li><a href="compilaModuloRiconoscimento.jsp"><i class="fas fa-angle-right"></i>
 								Compila modulo riconoscimento </a></li>
 						<li><a href="#"><i class="fas fa-angle-right"></i>
 								Visualizza richieste riconoscimento </a></li>
