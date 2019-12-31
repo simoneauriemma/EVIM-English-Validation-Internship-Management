@@ -44,7 +44,7 @@ public class Login extends BaseServlet {
 		if (email == null || password == null) {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
-			request.setAttribute("logged", false);
+			//request.setAttribute("logged", false);
 			rd.forward(request, response);
 			
 		} else {
