@@ -58,33 +58,23 @@ public class ListaTirocini extends BaseServlet {
 				System.out.println(interno);
 				System.out.println(esterno);
 
-				//TO DO: DA MODIFICARE IN
-				// if (!(interno.isEmpty())) {
-				if (!(interno.isEmpty())) {
-					System.out.println("interno non è empty");
+				
+					
 					// significa che ha fatto il tirocinio interno
 				
-
+					//interno
 					request.setAttribute("registroQueryInterno", interno);
-					System.out.println("prima del disp");
-
-					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirociniStudente.jsp");
-					dispatcher.forward(request, response);
-
-				} else if (!(esterno.isEmpty())) {
+					
 					//esterno
-					System.out.println("esterno non è empty");
-
-				
 
 					request.setAttribute("registroQueryEsterno", esterno);
-					
-					System.out.println("prima del disp");
 
 					
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirociniStudente.jsp");
 					dispatcher.forward(request, response);
-				}
+				
+				
+			
 			}
 			
 			// Tutor Accademico
@@ -100,35 +90,22 @@ public class ListaTirocini extends BaseServlet {
 				System.out.println(interno.toString());
 				System.out.println(esterno.toString());
 
-				//TO DO: DA MODIFICARE IN
-				// if (!(interno.isEmpty())) {
-				if (!(interno.isEmpty())) {
-					System.out.println("interno non è empty");
-					
-				
-
+			
+		
 					request.setAttribute("registroQueryInterno", interno);
 					System.out.println("prima del disp");
-
-					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
-					dispatcher.forward(request, response);
-
-				} else if (!(esterno.isEmpty())) {
+		
 					//esterno
-					System.out.println("esterno non è empty");
-
+				
 					request.setAttribute("registroQueryEsterno", esterno);
-					
-					System.out.println("prima del disp");
 
-					
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
 					dispatcher.forward(request, response);
 				}
 				
 				
 
-			}
+			
 
 			// Tutor Aziendale
 			else if (session.getAttribute("type").equals("tutoraaziendale")) {
@@ -145,7 +122,7 @@ public class ListaTirocini extends BaseServlet {
 
 				
 
-				 if (!(esterno.isEmpty())) {
+			
 					//esterno
 					System.out.println("esterno non è empty");
 
@@ -156,7 +133,7 @@ public class ListaTirocini extends BaseServlet {
 					
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
 					dispatcher.forward(request, response);
-				}
+				
 				
 				
 
@@ -168,30 +145,16 @@ public class ListaTirocini extends BaseServlet {
 				
 				interno= new TirocinioInternoDAO().doRetriveTirocinioInSvolgimentoPdcdRegistro();
 				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoPdcdRegistro();
-				
-				if (!(interno.isEmpty())) {
-					System.out.println("interno non è empty");
-					
-				
 
 					request.setAttribute("registroQueryInterno", interno);
-					System.out.println("prima del disp");
-
-					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
-					dispatcher.forward(request, response);
-
-				} else if (!(esterno.isEmpty())) {
+					
 					//esterno
-					System.out.println("esterno non è empty");
-
+					
 					request.setAttribute("registroQueryEsterno", esterno);
-					
-					System.out.println("prima del disp");
 
-					
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
 					dispatcher.forward(request, response);
-				}
+				
 				
 				
 
