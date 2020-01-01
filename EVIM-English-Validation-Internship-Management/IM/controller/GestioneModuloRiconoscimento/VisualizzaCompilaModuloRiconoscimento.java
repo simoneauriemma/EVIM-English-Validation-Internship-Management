@@ -2,6 +2,7 @@ package controller.GestioneModuloRiconoscimento;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,20 +31,20 @@ public class VisualizzaCompilaModuloRiconoscimento extends HttpServlet {
 		else {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
 			User utente=(User) sessione.getAttribute("utenteLoggato");
-			// non adatto per lo studente,pdcd,ufficio carriere
+			// servlet non adatta per i tutor accademici, per le aziende e per i tutor aziendali
 			if(!tipoUtente.equalsIgnoreCase("model.User")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
 				dispatcher.forward(request, response);
 			}
-			// studente
+			// studente--> in questo modo nel momento in cui lo studente compila il modulo, troverò i dati anagrafici già precompilati
 			else if(utente.getUserType()==0){
 				request.setAttribute("studente", utente);
-				request.getRequestDispatcher("compilamodulo.jsp").forward(request, response);
+				request.getRequestDispatcher("compilaModuloRiconoscimento.jsp").forward(request, response);
 			}
-			//ufficio carriera e PdCD
+			//non adatto ufficio carriera e PdCD
 			else if(utente.getUserType()==1 || utente.getUserType()==2) {
-				
-			}
+				request.getRequestDispatcher("permissionDenied.jsp").forward(request, response);
+ 			}		
 		}
 	}
 
