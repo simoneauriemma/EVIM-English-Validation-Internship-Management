@@ -156,4 +156,20 @@ public class RiconoscimentoDao {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public static boolean changeStatoModulo(int idRiconoscimento, String modifica) {
+		try(Connection con=DriverManagerConnectionPool.getConnection()){
+			PreparedStatement ps=con.prepareStatement("UPDATE `evim`.`riconoscimento` SET `Stato` = 'R' WHERE (`ID_Riconoscimento` = ?)");
+			ps.setString(1, modifica);
+			ps.setInt(2, idRiconoscimento);
+			
+			if(ps.executeUpdate() > 0) 
+				return true;
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+	}
 }

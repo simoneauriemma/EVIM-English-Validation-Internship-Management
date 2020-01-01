@@ -45,28 +45,32 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
 				dispatcher.forward(request, response);
 			}
-			else if(utente.getUserType()==0){
-				String emailStudente=utente.getEmail();
-				String enteAzienda=request.getParameter("enteAzienda");
-				String indirizzoSede=request.getParameter("indirizzoSede");
-				String profilo=request.getParameter("profilo");
-				String tipoContratto=request.getParameter("tipoContratto");
-				String periodo=request.getParameter("periodo");
-				int oreSvolte=Integer.parseInt(request.getParameter("oreSvolte"));
-				int CFUTirocinioObbligatorio=Integer.parseInt(request.getParameter("CFUObbligatorio"));
-				int CFUTirocinioEsterno=Integer.parseInt(request.getParameter("CFUEsterno"));
-				int CFUAccompagnamento=Integer.parseInt(request.getParameter("CFUAccompagnamento"));
-				
-				// prendo tutti i campi dal form e inserisco nei rispettivi campi nel Database
-				if(!RiconoscimentoDao.insertRiconoscimenot(emailStudente, enteAzienda, indirizzoSede, profilo, tipoContratto, periodo, oreSvolte, CFUTirocinioObbligatorio, CFUTirocinioEsterno, CFUAccompagnamento)) {
-					System.out.println("inserimento riconoscimento non successo");
-				}
-				else {
-					// prendo i file allegati dallo studente salvando i file nella directory di tale web application
-					Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(1);
-					uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento());
-					request.getRequestDispatcher("./WEB-INF/home.jsp").forward(request, response);
-				}
+			//inserisco tali controlli per una maggiore sicurezza. Il PdCD e l'ufficio carriera non possono aver a che fare con tale pagina di compila modulo.
+			else if(utente.getUserType()!=0){
+				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
+				dispatcher.forward(request, response);
+			}
+			String emailStudente=utente.getEmail();
+			String enteAzienda=request.getParameter("enteAzienda");
+			String indirizzoSede=request.getParameter("indirizzoSede");
+			String profilo=request.getParameter("profilo");
+			String tipoContratto=request.getParameter("tipoContratto");
+			String periodo=request.getParameter("periodo");
+			int oreSvolte=Integer.parseInt(request.getParameter("oreSvolte"));
+			int CFUTirocinioObbligatorio=Integer.parseInt(request.getParameter("CFUObbligatorio"));
+			int CFUTirocinioEsterno=Integer.parseInt(request.getParameter("CFUEsterno"));
+			int CFUAccompagnamento=Integer.parseInt(request.getParameter("CFUAccompagnamento"));
+			
+			// prendo tutti i campi dal form e inserisco nei rispettivi campi nel Database
+			if(!RiconoscimentoDao.insertRiconoscimenot(emailStudente, enteAzienda, indirizzoSede, profilo, tipoContratto, periodo, oreSvolte, CFUTirocinioObbligatorio, CFUTirocinioEsterno, CFUAccompagnamento)) {
+				request.setAttribute("compilaModulo", false);
+			}
+			else {
+				// prendo i file allegati dallo studente salvando i file nella directory di tale web application
+				Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(1);
+				uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento());
+				request.setAttribute("compilaModulo", true);
+				request.getRequestDispatcher("./WEB-INF/home.jsp").forward(request, response);
 			}
 		}
 	}
