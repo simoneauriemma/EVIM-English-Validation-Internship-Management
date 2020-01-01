@@ -15,6 +15,29 @@ private int CFUTirocinioEsterno;
 private int CFUTirocinioObbligatorio;
 private int CFUAccompagnamentoLavoro;
 
+private String nomeStudente;
+private String cognomeStudente;
+private String matricolaStudente;
+
+	
+	public String getNomeStudente() {
+		return nomeStudente;
+	}
+	public void setNomeStudente(String nomeStudente) {
+		this.nomeStudente = nomeStudente;
+	}
+	public String getCognomeStudente() {
+		return cognomeStudente;
+	}
+	public void setCognomeStudente(String cognomeStudente) {
+		this.cognomeStudente = cognomeStudente;
+	}
+	public String getMatricolaStudente() {
+		return matricolaStudente;
+	}
+	public void setMatricolaStudente(String matricolaStudente) {
+		this.matricolaStudente = matricolaStudente;
+	}
 	public int getIdRiconoscimento() {
 		return idRiconoscimento;
 	}

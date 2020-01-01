@@ -65,6 +65,7 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 					// prendo i file allegati dallo studente salvando i file nella directory di tale web application
 					Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(1);
 					uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento());
+					request.getRequestDispatcher("./WEB-INF/home.jsp").forward(request, response);
 				}
 			}
 		}
@@ -85,7 +86,7 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 	}
 	System.out.println("Upload File Directory="+directoryPadre.getAbsolutePath());
 	
-	//Poiche nel form l'enctype è multipart, prendiamo tutte le parti di cui è costituito nella request. Quindi se uno studente manda due file, con questo pezzo di codice inseriamo tali due file nella directory giusta.
+	//Poiche nel form l'enctype è multipart, prendiamo tutte le parti nella request. Quindi se uno studente manda due file, con questo pezzo di codice inseriamo tali due file nella directory giusta.
 	for(Part part: request.getParts()) {
 		String fileName= getFileName(part);
 		if(!fileName.equals(""))

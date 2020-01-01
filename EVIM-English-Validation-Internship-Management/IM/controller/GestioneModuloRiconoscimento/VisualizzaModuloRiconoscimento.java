@@ -36,7 +36,7 @@ import model.User;
 
 /**
  * @author Antonio Giano
- * Questa servlet permette la visualizzazione del modulo di riconoscimento di attivita lavorativa. 
+ * Questa servlet permette la visualizzazione del modulo di riconoscimento di attivita lavorativa e i file allegati. 
  */
 @WebServlet("/VisualizzaModuloRiconoscimento")
 public class VisualizzaModuloRiconoscimento extends HttpServlet {
