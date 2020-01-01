@@ -31,7 +31,7 @@
 			<c:if test="${type == 'studente' }">
 				<!-- Se la lista di tirocini esterni è vuota esce che non c'è nulla -->
 				<c:if
-					test="${registroQueryEsterno.size() == 0 && registroQueryInterno.size()}">
+					test="${registroQueryEsterno.size() == 0 && registroQueryInterno.size() == 0}">
 					<p>Nessuna richieste di tirocinio è stata effettuata!</p>
 				</c:if>
 
