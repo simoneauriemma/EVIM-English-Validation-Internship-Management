@@ -195,42 +195,7 @@
 
 
 
-			<!-- INIZIO Gestione rigistro tirociniooo -->
-
-			<a data-toggle="collapse" href="#collapse-5" class="item"
-				class="folder collapsed" aria-expanded="false">Gestione registro
-				tirocinio <i id="icon-max" class="fa pull-right fa-plus-square"></i>
-			</a>
-
-			<ul id="collapse-5" class="collapse" aria-expanded="false"
-				style="height: 0px;">
-				<c:if test="${type =='studente'}">
-					<li><a href="registroTirocinio(studente).jsp"><i class="fas fa-angle-right"></i> Compila
-							registro tirocinio </a></li>
-				</c:if>
-				<c:if test="${type=='pdcd'}">
-					<li><a href="registroTirocinio(tutor).jsp"><i class="fas fa-angle-right"></i>
-							Visualizza e valuta registro tirocinio </a></li>
-				</c:if>
-
-				<c:if test="${type=='tutoraccademico'}">
-					<li><a href="registroTirocinio(tutor).jsp"><i class="fas fa-angle-right"></i>
-							Visualizza e valuta registro tirocinio </a></li>
-					<li><a href="registroTirocinio(tutor).jsp"><i class="fas fa-angle-right"></i> Valuta
-							attività registro tirocinio</a></li>
-				</c:if>
-				<c:if test="${type=='tutoraziendale'}">
-					<li><a href="registroTirocinio(tutor).jsp"><i class="fas fa-angle-right"></i> Valuta
-							attività registro tirocinio </a></li>
-				</c:if>
-				<c:if test="${type=='azienda'}">
-					<li><a href="registroTirocinio(tutor).jsp"><i class="fas fa-angle-right"></i>
-							Visualizza e valuta registro tirocinio </a></li>
-				</c:if>
-			</ul>
-			<!-- FINE Gestione rigistro tirocinio -->
-
-
+			
 
 
 
