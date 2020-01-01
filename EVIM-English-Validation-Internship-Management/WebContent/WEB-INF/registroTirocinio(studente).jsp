@@ -14,7 +14,7 @@
 	text-align: center;
 }
 </style>
-<jsp:include page="WEB-INF/navbarBlu.jsp"></jsp:include>
+<jsp:include page="navbarBlu.jsp"></jsp:include>
 <meta charset="ISO-8859-1">
 <title>Registro tirocinio</title>
 </head>
@@ -23,7 +23,7 @@
 		<div class="row">
 
 			<div class="col-lg-3">
-				<jsp:include page="WEB-INF/menu.jsp"></jsp:include>
+				<jsp:include page="menu.jsp"></jsp:include>
 			</div>
 			<!-- SE L'UTENTE LOGGATO E' UNO STUDENTE-->
 			<c:if test="${utenteLoggato == 'studente' }">
@@ -32,6 +32,7 @@
 					test="${listaAttivitaEsterno.size() == 0 && listaAttivitaInterno.size()==0}">
 					<p>Non è stato effettuato nessun Tirocinio!</p>
 				</c:if>
+				
 			<div class="col-lg-9" 
 				style="border: 1px solid #d7d7d7; background-color: white;">
 				<p id="titolo" style="font-size: 30px; color: #595959;">
@@ -89,7 +90,7 @@
 						</c:forEach>
 					
 						</c:if>
-						
+						<c:if test="${listaAttivitaInterno.size() > 0}">
 						<c:forEach items="${listaAttivitaInterno}" var="interno">
 						<tr style="background-color: #2C5278; color: white;">
 							<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
@@ -123,6 +124,7 @@
 						</tr>
 						
 						</c:forEach>
+						</c:if>
 					</tbody>
 				</table>
 				<br>
@@ -183,7 +185,7 @@
 	<br>
 
 </body>
-<jsp:include page="WEB-INF/footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"></jsp:include>
 
 <script>
 function myFunction() {

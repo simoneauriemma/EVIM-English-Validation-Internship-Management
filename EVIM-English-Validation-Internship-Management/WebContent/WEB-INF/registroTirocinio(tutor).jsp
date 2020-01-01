@@ -13,7 +13,7 @@
 text-align: center;
 }
 </style>
-<jsp:include page="WEB-INF/navbarBlu.jsp"></jsp:include>
+<jsp:include page="navbarBlu.jsp"></jsp:include>
 <meta charset="ISO-8859-1">
 <title>Registro tirocinio</title>
 </head>
@@ -22,7 +22,7 @@ text-align: center;
 		<div class="row">
 
 			<div class="col-lg-3">
-				<jsp:include page="WEB-INF/menu.jsp"></jsp:include>
+				<jsp:include page="menu.jsp"></jsp:include>
 			</div>
 
 			<div class="col-lg-9" id=""
@@ -108,5 +108,5 @@ text-align: center;
 	<br>
 
 </body>
-<jsp:include page="WEB-INF/footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"></jsp:include>
 </html>
