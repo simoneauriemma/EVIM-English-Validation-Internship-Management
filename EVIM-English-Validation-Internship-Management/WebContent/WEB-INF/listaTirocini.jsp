@@ -37,7 +37,7 @@
 			<c:if
 				test="${type == 'tutoraziendale' || type== 'tutoraccademico' || type=='azienda' || type=='pdcd'}">
 
-				<c:if test="${registroQueryEsterno.size()}">
+				<c:if test="${registroQueryEsterno.size() ==0 }">
 					<p>Nessuna richieste di tirocinio esterno è stata effettuata!</p>
 				</c:if>
 
