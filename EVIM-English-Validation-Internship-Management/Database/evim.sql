@@ -71,6 +71,7 @@ CREATE TABLE `attivita` (
 
 LOCK TABLES `attivita` WRITE;
 /*!40000 ALTER TABLE `attivita` DISABLE KEYS */;
+INSERT INTO `attivita` VALUES (1,1,'Descrizione attività',15,19,0);
 /*!40000 ALTER TABLE `attivita` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +110,7 @@ CREATE TABLE `azienda` (
 
 LOCK TABLES `azienda` WRITE;
 /*!40000 ALTER TABLE `azienda` DISABLE KEYS */;
-INSERT INTO `azienda` VALUES (1,'0764352056C','3214565780','Microsoft','Xboxthebest','microsoftofficial@tiscali.it','https://www.microsoft.com/it-it','Viale Pasubio, 21, 20154 Milano MI','I suoi prodotti principali sono il sistema operativo desktop Microsoft Windows e la suite di produttivit� personale Microsoft Office, per i quali � al primo posto nel rispettivo mercato. Altre linee di produzione comprendono: sistemi di sviluppo software (IDE e compilatori), DBMS, periferiche di input (tastiere e mouse), console di gioco (Xbox, Xbox 360 e Xbox One), periferiche di gioco (joystick e cloche per il pilotaggio di velivoli, volanti e altro).','da 10 a 40 dipendenti','70.22.01','ASDRFTASDFERTASDE',1),(2,'0854334056C','3335678903','Samsung','SamsungUnisa','samsungitalia@gmail.com','https://www.samsung.com/it/',' Via Mike Bongiorno, 9, 20124 Milano MI','Ci dedichiamo costantemente allo sviluppo e all�ampliamento della gamma di prodotti strategici nella nostra divisione dell�elettronica di consumo.','','',NULL,NULL);
+INSERT INTO `azienda` VALUES (1,'0764352056C','3214565780','Microsoft','Xboxthebest','microsoftofficial@tiscali.it','https://www.microsoft.com/it-it','Viale Pasubio, 21, 20154 Milano MI','I suoi prodotti principali sono il sistema operativo desktop Microsoft Windows e la suite di produttivitï¿½ personale Microsoft Office, per i quali ï¿½ al primo posto nel rispettivo mercato. Altre linee di produzione comprendono: sistemi di sviluppo software (IDE e compilatori), DBMS, periferiche di input (tastiere e mouse), console di gioco (Xbox, Xbox 360 e Xbox One), periferiche di gioco (joystick e cloche per il pilotaggio di velivoli, volanti e altro).','da 10 a 40 dipendenti','70.22.01','ASDRFTASDFERTASDE',1),(2,'0854334056C','3335678903','Samsung','SamsungUnisa','samsungitalia@gmail.com','https://www.samsung.com/it/',' Via Mike Bongiorno, 9, 20124 Milano MI','Ci dedichiamo costantemente allo sviluppo e allï¿½ampliamento della gamma di prodotti strategici nella nostra divisione dellï¿½elettronica di consumo.','','',NULL,NULL);
 /*!40000 ALTER TABLE `azienda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +193,7 @@ CREATE TABLE `proposta` (
 
 LOCK TABLES `proposta` WRITE;
 /*!40000 ALTER TABLE `proposta` DISABLE KEYS */;
-INSERT INTO `proposta` VALUES (1,'Sviluppare nuove metodologie. Integrare metodologie esistenti.','Laboratorio di Verifica di Correttezza e Sintesi Automatica di Sistemi Digitali','Verifica automatica di correttezza dei programmi',' Per avere un’idea dell’area di riferimento consultare il materiale del corso di Tecniche Automatiche per La Correttezza del Software (http://www.di- srv.unisa.it/professori/latorre/didattica/TACS/)',1,1),(2,'Sviluppo di servizi di intelligenza territoriale','Laboratorio di Sistemi Informativi Geografici','Sistemi Informativi Geografici e applicazioni per Mobile GIS','http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807',NULL,1),(3,'Realizzazione di un ecosistema digitale di rappresentazione e gestione della conoscenza territoriale','Laboratorio di Sistemi Informativi Geografici','Sistemi Informativi Geografici e applicazioni per Mobile GIS','http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807',NULL,2),(4,'Realizzazione di sistemi domotici (IOT)','Reti di calcolaroei','Sistemi Informativi Geografici e applicazioni IOT','stringaAcasoPoiSiVede',NULL,2);
+INSERT INTO `proposta` VALUES (1,'Sviluppare nuove metodologie. Integrare metodologie esistenti.','Laboratorio di Verifica di Correttezza e Sintesi Automatica di Sistemi Digitali','Verifica automatica di correttezza dei programmi',' Per avere unâidea dellâarea di riferimento consultare il materiale del corso di Tecniche Automatiche per La Correttezza del Software (http://www.di- srv.unisa.it/professori/latorre/didattica/TACS/)',1,1),(2,'Sviluppo di servizi di intelligenza territoriale','Laboratorio di Sistemi Informativi Geografici','Sistemi Informativi Geografici e applicazioni per Mobile GIS','http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807',NULL,1),(3,'Realizzazione di un ecosistema digitale di rappresentazione e gestione della conoscenza territoriale','Laboratorio di Sistemi Informativi Geografici','Sistemi Informativi Geografici e applicazioni per Mobile GIS','http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807',NULL,2),(4,'Realizzazione di sistemi domotici (IOT)','Reti di calcolaroei','Sistemi Informativi Geografici e applicazioni IOT','stringaAcasoPoiSiVede',NULL,2);
 /*!40000 ALTER TABLE `proposta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,7 +325,9 @@ CREATE TABLE `registro` (
 
 LOCK TABLES `registro` WRITE;
 /*!40000 ALTER TABLE `registro` DISABLE KEYS */;
+INSERT INTO `registro` VALUES (1,1,'in approvazione',0,0,'esterno');
 /*!40000 ALTER TABLE `registro` ENABLE KEYS */;
+
 UNLOCK TABLES;
 
 --

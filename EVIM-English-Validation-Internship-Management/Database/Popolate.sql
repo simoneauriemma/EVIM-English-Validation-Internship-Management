@@ -29,7 +29,7 @@ INSERT INTO `tutoraccademico` (`Nome`,`Cognome`,`Password`,`indirizzo`,`email`,`
 VALUES ('Antonio','Sultani','radiomaria11','via roma 82933 Salerno 81','antoniosultani@unisa.it','3335333555');
 select * from tutorAccademico;
 
-#Inserimento proposteee
+#Inserimento proposte
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
 VALUES ('Sviluppare nuove metodologie. Integrare metodologie esistenti.','Laboratorio di Verifica di Correttezza e Sintesi Automatica di Sistemi Digitali','Verifica automatica di correttezza dei programmi',' Per avere un’idea dell’area di riferimento consultare il materiale del corso di Tecniche Automatiche per La Correttezza del Software (http://www.di- srv.unisa.it/professori/latorre/didattica/TACS/)',1,1);
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
@@ -49,6 +49,12 @@ INSERT INTO `TirocinioInterno` (`EMAIL`,`ID_tutorAccademico`,`Data`,`OreTotali`,
 VALUES ('mconcetta@studenti.unisa.it','2','02/04/2019',150,"in approvazione",6, false, false,4);
 INSERT INTO `TirocinioInterno` (`EMAIL`,`ID_tutorAccademico`,`Data`,`OreTotali`,`status`,`numeroCFU`,`FirmaTutorAccademico`,`FirmaPdCD`,`ID_Proposta`)
 VALUES ('simonagrieco@studenti.unisa.it','1','08/04/2019',150,"in approvazione",6, false, false,4);
+
+#Inserimenti Attivit�
+
+
+#Inserimenti Registro
+
 
 select * from EVIM.TirocinioInterno where status="in approvazione";
 select * from EVIM.TirocinioEsterno where status="in approvazione";
