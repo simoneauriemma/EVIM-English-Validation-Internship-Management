@@ -72,7 +72,7 @@ public class Registrazione extends BaseServlet {
 			else if (email.matches(regexStudente)) {
 				// controllo la bontà dei dati
 				if (password.equals(cpassword) && nome.length()>1 && cognome.length()>1 && password.length()>1 && sesso != ""
-						&& nome.length() <21 && cognome.length() < 21 && corso!="" && email.length()<51 &&data.length()>7 &&data.length()<11 &&
+						&& nome.length() <21 && cognome.length() < 21 && corso!="" && email.length()<51 &&data.length()>7 &&data.length()<12 &&
 						luogonascita.length()>4 && luogonascita.length()<51 &&luogoresidenza.length()>4 && luogoresidenza.length()<51 && indirizzo.length()
 						>4 && indirizzo.length()<101 && telefono.length()>5 && telefono.length()<16 && matricola.length()==10
 					

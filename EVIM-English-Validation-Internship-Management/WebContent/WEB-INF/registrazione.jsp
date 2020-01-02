@@ -196,6 +196,7 @@ margin-right: 5px;
 															<option><c:out value="${sigla}"></c:out></option>
 															</c:forEach>
 														</select>
+														<p id="resultRegexLuogoNascita"> </p>
 													</div>
 												</td>
 											</tr>
@@ -221,6 +222,7 @@ margin-right: 5px;
 															<option><c:out value="${sigla}"></c:out></option>
 															</c:forEach>
 														</select>
+														<p id="resultRegexLuogoResidenza"> </p>
 													</div>
 												</td>
 											</tr>
@@ -268,16 +270,16 @@ margin-right: 5px;
 			//password
 			var pass = $('#password');
 			var resultRegexPassword = $('#resultRegexPass');
-			var regex_password = new RegExp('^[A-Za-z0-9]{8,}');
+			var regex_password = new RegExp('^[A-Za-z0-9]{8,50}');
 			var confirm_password = $('#confermaPassword');
 			var resultRegexCPass = $('#resultRegexCPass');
 			//nome
 			var nome = $('#name');
-			var regex_nome = new RegExp('^[A-Za-z]{2,}');
+			var regex_nome = new RegExp('^[A-Za-z]{2,50}');
 			var resultRegexNome = $('#resultRegexNome');
 			//cognome
 			var cognome = $('#surname');
-			var regex_cognome = new RegExp('^[A-Za-z]{2,}');
+			var regex_cognome = new RegExp('^[A-Za-z]{2,50}');
 			var resultRegexCognome = $('#resultRegexCognome');
 
 			//email
@@ -298,6 +300,7 @@ margin-right: 5px;
 			
 			var matricola= $('#matricola');
 			var resultRegexMatricola = $('#resultRegexMatricola');
+			var regex_matricola = new RegExp('^[0-9]{10,10}');
 			
 			//telefono
 			var telefono =$('#telefono');
@@ -307,9 +310,18 @@ margin-right: 5px;
 			var indirizzo=$('#indirizzo');
 			var resultRegexIndirizzo = $('#resultRegexIndirizzo');
 			var regex_indirizzo= new RegExp('^[A-Za-z0-9]{2,}');
-				
-
-
+			//luogonascita
+			var luogonascita= $('#luogonascita');
+			var regex_luogonascita=  new RegExp('^[A-Za-z0-9]{2,50}');
+			var resultRegexLuogoNascita= ${'resultRegexLuogoNascita'};
+			//luogoresidenza
+				var luogoresidenza= $('#luogoresidenza');
+			var regex_luogoresidenza=  new RegExp('^[A-Za-z0-9]{2,50}');
+			var resultRegexLuogoResidenza= ${'resultRegexLuogoResidenza'};
+	
+			
+			
+			
 			if (!regex_email.test(email.val())) {
 
 				resultRegexEmail.text(email.val()
@@ -367,7 +379,7 @@ margin-right: 5px;
 				r = false;
 			}
 			
-			if(matricola.val().lenght!=10 && regex_email_studente.test(email.val())){
+			if(regex_matricola.test(matricola.value()) && regex_email_studente.test(email.val())){
 				matricola.css("color", "red");
 				resultRegexMatricola.text("Inserire una matricola valida");
 				resultRegexMatricola.css("color", "red");
@@ -388,6 +400,22 @@ margin-right: 5px;
 				resultRegexTelefono.css("color", "red");
 				r=false;
 			}
+			
+			if(!regex_luogonascita.test(luogonascita.val())&& regex_email_studente.test(email.val())){
+				luogonascita.css("color", "red");
+				resultRegexLuogoNascita.text("inserire un comune valido");
+				resultRegexLuogoNascita.css("color", "red");
+				r=false;
+			}
+			
+			if(!regex_luogoresidenza.test(luogoresidenza.val())&& regex_email_studente.test(email.val())){
+				luogoresidenza.css("color", "red");
+				resultRegexLuogoResidenza.text("inserire un comune valido");
+				resultRegexLuogoResidenza.css("color", "red");
+				r=false;
+			}
+			
+		
 			
 
 			return r;
