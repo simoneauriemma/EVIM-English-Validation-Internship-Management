@@ -94,6 +94,19 @@
 						</div>
 				</c:if>
 				
+				<c:if test="${compilaModulo==true}">
+					<div class="alert alert-success" role="alert">
+						  Mandato con successo
+						</div>
+				</c:if>
+				
+				<c:if test="${compilaModulo==false}">
+					<div class="alert alert-success" role="alert">
+						  Errore nel mandare la richiesta.
+						</div>
+				</c:if>
+				
+				
 				
 				<div id="carouselExampleControls" class="carousel slide"
 					data-ride="carousel">
