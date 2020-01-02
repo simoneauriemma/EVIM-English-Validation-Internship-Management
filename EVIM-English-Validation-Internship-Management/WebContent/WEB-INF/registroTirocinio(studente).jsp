@@ -77,16 +77,7 @@
 							
 							<td>#</td>
 						</tr>
-						<tr>
-							<td></td>
-							<td>Attività2</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-						</tr>
+						
 						</c:forEach>
 					
 						</c:if>
@@ -112,16 +103,7 @@
 							<td>#</td>
 							<td>#</td>
 						</tr>
-						<tr>
-							<td></td>
-							<td>Attività2</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-							<td>#</td>
-						</tr>
+				
 						
 						</c:forEach>
 						</c:if>
