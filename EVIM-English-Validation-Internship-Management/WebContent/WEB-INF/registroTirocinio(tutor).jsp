@@ -27,7 +27,7 @@
 			</div>
 			<!-- SE L'UTENTE LOGGATO E' UN TUTOR AZIENDALEe-->
 			<c:if
-				test="${utenteLoggato == 'TutorAziendale'}">
+				test="${type == 'tutoraziendale'}">
 				<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
 				<c:if
 					test="${listaAttivitaEsterno.size() == 0">
@@ -92,7 +92,7 @@
 			
 				<!-- SE L'UTENTE LOGGATO E' UN TUTOR ACCADEMICO-->
 			<c:if
-				test="${utenteLoggato == 'TutorAccademico'}">
+				test="${type == 'tutoraccademico'}">
 				<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
 				<c:if
 					test="${listaAttivitaInterno.size() == 0">
