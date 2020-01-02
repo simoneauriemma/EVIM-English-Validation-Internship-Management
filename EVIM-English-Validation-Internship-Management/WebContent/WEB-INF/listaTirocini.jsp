@@ -28,7 +28,7 @@
 
 			<!-- se entrambi gli array di tirocini sono vuoti esce che non c'è nulla -->
 			<c:if
-				test="${registroQueryEsterno.size() || registroQueryInterno.size()}">
+				test="${registroQueryEsterno.size() || registroQueryInterno.size()==0}">
 				<p>Nessuna richieste di tirocinio esterno è stata effettuata!</p>
 			</c:if>
 

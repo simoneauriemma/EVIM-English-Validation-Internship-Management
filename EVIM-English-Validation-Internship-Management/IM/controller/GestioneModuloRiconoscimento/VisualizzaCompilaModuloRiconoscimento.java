@@ -19,7 +19,6 @@ import java.sql.SQLException;
 
 import model.DriverManagerConnectionPool;
 import model.User;
-import net.bytebuddy.dynamic.scaffold.MethodRegistry.Prepared;
 
 /**
  * Questa servlet permette di reindirizzare alla pagina compila modulo di riconoscimento attività lavorativa con dei campi gia precompilati.
@@ -33,7 +32,7 @@ public class VisualizzaCompilaModuloRiconoscimento extends HttpServlet {
 		HttpSession sessione=request.getSession();
 		// controllo se è loggato l'utente altrimenti reindirizzo alla pagina login
 		if (sessione.getAttribute("utenteLoggato") == null) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
 			dispatcher.forward(request, response);
 		}
 		else {

@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <head>
-<jsp:include page="WEB-INF/navbarBlu.jsp"></jsp:include>
+<jsp:include page="navbarBlu.jsp"></jsp:include>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="stiliCSS/stiliRicoscimentoAttivita.css">
 
@@ -13,7 +13,7 @@
 	<div class="row">
 
 		<div class="col-lg-3">
-			<jsp:include page="WEB-INF/menu.jsp"></jsp:include>
+			<jsp:include page="menu.jsp"></jsp:include>
 		</div>
 
 		<div class="col-lg-9">
@@ -29,8 +29,7 @@
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
 							aria-describedby="inputGroup-sizing-default" name="nome"
-							value="<c:out
-						value="${sessione.nome}"/>" disabled>
+							value="<c:out value="${studente.name}"/>" disabled>
 					</div>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
@@ -38,8 +37,7 @@
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
 							aria-describedby="inputGroup-sizing-default" name="cognome"
-							value="<c:out
-						value="${sessione.cognome}"/>" disabled>
+							value="<c:out value="${studente.surname}"/>"  disabled>
 					</div>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
@@ -47,8 +45,7 @@
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
 							aria-describedby="inputGroup-sizing-default" name="matricola"
-							value="<c:out
-						value="${sessione.matricola}"/>" disabled>
+							value="<c:out value="${studente.matricola}"/>"  disabled>
 					</div>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
@@ -189,53 +186,10 @@
 					</div>
 					<br> <br> <br>
 					<!-- inserimento file -->
-					<p>
-						<strong>Default</strong>
-					</p>
-
-					<form class="upload-dragdrop" method="post" action=""
-						enctype="multipart/form-data">
-						<div class="upload-dragdrop-image">
-							<img
-								src="foto-file.png"
-								alt="imagealt" aria-hidden="true">
-							<div class="upload-dragdrop-loading">
-								<div id="divProgress0" class="upload-progress"></div>
-							</div>
-							<div class="upload-dragdrop-success">
-								<svg class="icon" aria-hidden="true">
-									<use
-										xlink:href="/bootstrap-italia/dist/svg/sprite.svg#it-check"></use></svg>
-							</div>
-						</div>
-						<div class="upload-dragdrop-text">
-							<p class="upload-dragdrop-weight">
-								<svg class="icon icon-xs" aria-hidden="true">
-									<use xlink:href="/bootstrap-italia/dist/svg/sprite.svg#it-file"></use></svg>
-								PDF (3.7MB)
-							</p>
-							<h5>Trascina il file per caricarlo</h5>
-							<p>
-								oppure <input type="file" name="upload7" id="upload7"
-									class="upload-dragdrop-input" /><label for="upload7">selezionalo
-									dal dispositivo</label>
-							</p>
-						</div>
-						<input value="Submit" type="submit" class="d-none" />
-					</form>
-
+					
 				</div>
 			</div>
 			<br>
-
-
-
-
-
-
-
-
-
 
 			<div class="text-center">
 				<button type="button" class="btn btn-outline-secondary">APPROVA</button>
@@ -245,7 +199,7 @@
 </div>
 <br>
 <br>
-<jsp:include page="WEB-INF/footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"></jsp:include>
 
 
 <script>

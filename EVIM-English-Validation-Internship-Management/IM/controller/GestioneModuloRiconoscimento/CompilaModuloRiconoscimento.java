@@ -34,7 +34,7 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 		HttpSession sessione=request.getSession();
 		// controllo se è loggato l'utente altrimenti reindirizzo alla pagina login
 		if (sessione.getAttribute("utenteLoggato") == null) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
 			dispatcher.forward(request, response);
 		}
 		else {
@@ -70,7 +70,7 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 				Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(1);
 				uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento());
 				request.setAttribute("compilaModulo", true);
-				request.getRequestDispatcher("./WEB-INF/home.jsp").forward(request, response);
+				request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
 			}
 		}
 	}
@@ -98,7 +98,7 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 	}
 	
 	request.setAttribute("message", "File uploaded successo");
-	request.getRequestDispatcher("./WEB-INF/home.jsp").forward(request, response);
+	request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
 	
 	}
 	

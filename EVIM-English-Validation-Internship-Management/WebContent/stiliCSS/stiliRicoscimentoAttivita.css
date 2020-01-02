@@ -1,30 +1,47 @@
 @charset "ISO-8859-1";
 
-#titolo{
+/* pagina COMPILA MODULO RICONOSCIMENTO  */
+#titolo {
 	font-size: 22px;
 	color: #595959;
 }
 
-.input-group-text{
-	width: 132px;	
+.input-group-text {
+	width: 132px;
 }
 
-h6{
-	color:#595959;
+h6 {
+	color: #595959;
 }
 
-#cfu-totali{
-	width:178px;
+#cfu-totali {
+	width: 178px;
 }
 
-#text-cfu-tot{
+#text-cfu-tot {
 	width: 30px;
 }
 
-select#sel1.form-control{
+select#sel1.form-control {
 	width: 50px;
 }
 
-li{
+li {
 	list-style: none;
+}
+
+/* pagina ELENCO RICONOSCIMENTI ATTIVITA'  */
+
+#titolo1{
+	font-size: 30px;
+	color: #595959;
+}
+
+#colonne {
+	color: white;
+	background-color: #2C5278;
+}
+
+#tabella {
+	border: 1px solid #d7d7d7;
 }

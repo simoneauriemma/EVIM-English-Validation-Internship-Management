@@ -24,7 +24,7 @@
 			<hr>
 
 			<c:if
-				test="${arrayTirocinioEsterno.size() == 0 || arrayTirocinioIntero.size() == 0 }">
+				test="${arrayTirocinioEsterno.size() == 0 && arrayTirocinioIntero.size() == 0 }">
 				<p>Non ci sono richieste di tirocinio!</p>
 			</c:if>
 

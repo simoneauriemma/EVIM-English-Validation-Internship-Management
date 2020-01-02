@@ -28,7 +28,7 @@ public class VisualizzaElencoModuliRiconoscimento extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sessione=request.getSession();
 		if (sessione.getAttribute("utenteLoggato") == null) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
 			dispatcher.forward(request, response);
 			}
 		else {
@@ -44,14 +44,14 @@ public class VisualizzaElencoModuliRiconoscimento extends HttpServlet {
 				ArrayList<Riconoscimento> elencoRiconoscimenti=RiconoscimentoDao.getModuliRiconoscimentiWithEmailStudente(utente.getEmail());
 				
 				request.setAttribute("elencoRiconoscimento", elencoRiconoscimenti);
-				request.getRequestDispatcher("visualizzaElencoRiconoscimenti.jsp").forward(request, response);
+				request.getRequestDispatcher("viewElencoRiconoscimentiAttivita.jsp").forward(request, response);
 			}
 			//PdCD e Ufficio Carriera--> visualizzano i moduli di riconoscimento di attività lavorativa di tutti gli studenti. 
 			else if(utente.getUserType()==2 || utente.getUserType()==0){
 				ArrayList<Riconoscimento> elencoRiconoscimenti=RiconoscimentoDao.getModuliRiconoscimentiWithStudenti();
 				
 				request.setAttribute("elencoRiconoscimento", elencoRiconoscimenti);
-				request.getRequestDispatcher("visualizzaElencoRiconoscimenti.jsp").forward(request, response);
+				request.getRequestDispatcher("viewElencoRiconoscimentiAttivita.jsp").forward(request, response);
 			}
 		}
 	}
