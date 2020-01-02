@@ -575,9 +575,9 @@ CREATE TABLE `tutoraccademico` (
   `Nome` varchar(20) NOT NULL,
   `Cognome` varchar(20) NOT NULL,
   `Password` varchar(20) DEFAULT NULL,
-  `indirizzo` varchar(40) NOT NULL,
+  `sex` char(1) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `Telefono` varchar(30) DEFAULT NULL,
+
   PRIMARY KEY (`ID_TutorAccademico`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
