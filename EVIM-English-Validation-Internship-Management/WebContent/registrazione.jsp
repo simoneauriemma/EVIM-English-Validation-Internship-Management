@@ -177,20 +177,16 @@ margin-left: 38px;
 
 
 													<div class="form-group">
-														<label for="comune">Comune </label> <select name="comunen"
-															class="form-control" id="comune">
-															<option>C1</option>
-															<option>C2</option>
-															<option>C3</option>
-															<option>C4</option>
-															<option>C5</option>
-														</select>
+														<input type="text" class="form-control"
+													id="comune" name="comune"
+													placeholder="Inserisci comune" autocomplete="off">
+															
 													</div>
 												</td>
 												<td></td>
 												<td>
 													<div class="form-group">
-														<label for="prov">Provincia </label> <select name="provincian"
+														 <select name="provincian"
 															class="form-control" id="prov">
 															<option>P1</option>
 															<option>P2</option>
@@ -209,20 +205,15 @@ margin-left: 38px;
 												</td>
 												<td>
 													<div class="form-group">
-														<label for="comune1">Comune </label> <select name="comuner"
-															class="form-control" id="comune1">
-															<option>C1</option>
-															<option>C2</option>
-															<option>C3</option>
-															<option>C4</option>
-															<option>C5</option>
-														</select>
+														<input type="text" class="form-control"
+													id="comune" name="comune"
+													placeholder="Inserisci comune" autocomplete="off">
 													</div>
 												</td>
 												<td></td>
 												<td>
 													<div class="form-group">
-														<label for="prov1">Provincia </label> <select name="provinciar"
+														 <select name="provinciar"
 															class="form-control" id="prov1">
 															<option>P1</option>
 															<option>P2</option>
