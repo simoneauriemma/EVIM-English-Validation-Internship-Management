@@ -242,7 +242,7 @@
 											<tr>
 												<td class="icon"><i class="fas fa-toggle-on"></i></td>
 												<td class="">Status</td>
-												<td class="text-center"><i id="status"
+												<td class="text-center"><i id="status1"
 													class="far fa-circle"
 													title="<c:out value="${interno.status}"/>"></i></td>
 											</tr>
@@ -251,6 +251,12 @@
 												<td class="">Num. CFU</td>
 												<td class="text-center"><c:out
 														value="${interno.numeroCFU}" /></td>
+											</tr>
+											<tr>
+												<td class="icon"><i class="fas fa-clock"></i></td>
+												<td class="">Ore totali</td>
+												<td class="text-center"><c:out
+														value="${interno.oreTotali}" /></td>
 											</tr>
 											<c:if test="${type == 'pdcd' }">
 												<tr>
@@ -303,24 +309,24 @@
 <script>
  	$(document).ready(function() {
  		if($('i:contains(in approvazione)')) {
-  			$("#status").css("background-color","yellow");	
-  			$("#status").css("color","black");	
-  			$("#status").css("border-radius","22px");	
+  			$("#status","#status1").css("background-color","yellow");	
+  			$("#status","#status1").css("color","black");	
+  			$("#status","#status1").css("border-radius","22px");	
  		}
  		else if($('i:contains(approvato)')) {
-  			$("#status").css("background-color","green");
-  			$("#status").css("color","black");
-  			$("#status").css("border-radius","22px");	
+  			$("#status","#status1").css("background-color","green");
+  			$("#status","#status1").css("color","black");
+  			$("#status","#status1").css("border-radius","22px");	
  		}
  		else if($('i:contains(non approvato)')) {
-  			$("#status").css("background-color","red");	
+  			$("#status","#status1").css("background-color","red");	
   			$("#status").css("color","black");
   			$("#status").css("border-radius","22px");	
  		}
  		else if($('i:contains(proposto)')) {
-  			$("#status").css("background-color","blue");
-  			$("#status").css("color","black");
-  			$("#status").css("border-radius","22px");	
+  			$("#status","#status1").css("background-color","blue");
+  			$("#status","#status1").css("color","black");
+  			$("#status","#status1").css("border-radius","22px");	
  		}
  		 		
  	});
