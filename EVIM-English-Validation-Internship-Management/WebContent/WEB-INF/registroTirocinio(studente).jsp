@@ -26,7 +26,7 @@
 				<jsp:include page="menu.jsp"></jsp:include>
 			</div>
 			<!-- SE L'UTENTE LOGGATO E' UNO STUDENTE-->
-			<c:if test="${utenteLoggato == 'studente' }">
+			<c:if test="${type == 'studente' }">
 				<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
 				<c:if
 					test="${listaAttivitaEsterno.size() == 0 && listaAttivitaInterno.size()==0}">

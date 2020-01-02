@@ -217,7 +217,7 @@
 						<li><a href="#"><i class="fas fa-angle-right"></i>
 								Visualizza richieste riconoscimento </a></li>
 						<li><a href="#"><i class="fas fa-angle-right"></i>
-								Modifica richieste riconoscimento</a></li>
+								Modifica modulo riconoscimento</a></li>
 					</c:if>
 					<c:if test="${type=='pdcd'}">
 						<li><a href="#"><i class="fas fa-angle-right"></i>

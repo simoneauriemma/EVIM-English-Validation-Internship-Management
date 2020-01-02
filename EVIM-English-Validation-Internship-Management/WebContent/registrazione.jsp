@@ -50,6 +50,10 @@
 #matricola{
 margin-left: 38px;
 }
+
+#comune{
+margin-right: 5px;
+}
 </style>
 
 <title>Registrazione</title>
@@ -186,7 +190,7 @@ margin-left: 38px;
 												<td></td>
 												<td>
 													<div class="form-group">
-														 <select name="provincian"
+														 <select name="provinciaN"
 															class="form-control" id="prov">
 															<option>P1</option>
 															<option>P2</option>
@@ -213,7 +217,7 @@ margin-left: 38px;
 												<td></td>
 												<td>
 													<div class="form-group">
-														 <select name="provinciar"
+														 <select name="provinciaR"
 															class="form-control" id="prov1">
 															<option>P1</option>
 															<option>P2</option>
@@ -224,7 +228,7 @@ margin-left: 38px;
 													</div>
 												</td>
 											</tr>
-										</table></div>
+										</table>
 										<br>
 										<table>
 
@@ -241,7 +245,7 @@ margin-left: 38px;
 													<p id="resultRegexTelefono"> </p>
 													</td>
 											</tr>
-											</table> <br>
+											</table></div> <br>
 										
 										
 										<br>
