@@ -40,9 +40,9 @@ public class Registrazione extends BaseServlet {
 		String cognome = request.getParameter("cognome");
 		String password = request.getParameter("password");
 		String cpassword = request.getParameter("cpassword");
-		String luogoresidenza= ""+ request.getParameter("comuner")+"("+request.getParameter("provinciar")+")";
-		String indirizzo= request.getParameter("indirizzo");
-		String telefono = request.getParameter("telefono");
+		
+		
+		
 		
 		//campi solo studente
 		String sesso = request.getParameter("sesso");
@@ -50,7 +50,9 @@ public class Registrazione extends BaseServlet {
 		String matricola= request.getParameter("matricola");
 		String data = request.getParameter("data");
 		String luogonascita= ""+ request.getParameter("comunen")+"("+request.getParameter("provincian")+")";
-		
+		String indirizzo= request.getParameter("indirizzo");
+		String telefono = request.getParameter("telefono");
+		String luogoresidenza= ""+ request.getParameter("comuner")+"("+request.getParameter("provinciar")+")";
 		
 		
 		boolean result = false;
@@ -59,9 +61,9 @@ public class Registrazione extends BaseServlet {
 // controllo se sono un docente
 			if (email.matches(regexDocente)) { // controllo del formato e lunghezza caratteri
 				// controllo la bontà dei dati
-				if (password.equals(cpassword) && nome != "" && cognome != "" && password != "" && nome.length() > 2
-						&& cognome.length() > 2) {
-					result = TutorAccademicoDAO.insertNewTutorAccademico(nome, cognome, cpassword, indirizzo+luogoresidenza, email, telefono);
+				if (password.equals(cpassword) && nome.length()>1 && cognome.length()>1 && password.length()>7 && nome.length() < 21
+						&& cognome.length() <21 && sesso != "" && email.length()<51) {
+					result = TutorAccademicoDAO.insertNewTutorAccademico(nome, cognome, cpassword, sesso, email);
 
 				}
 
@@ -69,8 +71,12 @@ public class Registrazione extends BaseServlet {
 // controllo se sono uno studente
 			else if (email.matches(regexStudente)) {
 				// controllo la bontà dei dati
-				if (password.equals(cpassword) && nome != "" && cognome != "" && password != "" && sesso != ""
-						&& nome.length() > 2 && cognome.length() > 2) {
+				if (password.equals(cpassword) && nome.length()>1 && cognome.length()>1 && password.length()>1 && sesso != ""
+						&& nome.length() <21 && cognome.length() < 21 && corso!="" && email.length()<51 &&data.length()>7 &&data.length()<11 &&
+						luogonascita.length()>4 && luogonascita.length()<51 &&luogoresidenza.length()>4 && luogoresidenza.length()<51 && indirizzo.length()
+						>4 && indirizzo.length()<101 && telefono.length()>5 && telefono.length()<16 && matricola.length()==10
+					
+						) {
 					User u = new User(email, nome, cognome, sesso.charAt(0), password, 1, corso,luogonascita,data,luogoresidenza,indirizzo,telefono,matricola);
 					
 					result = UserDAO.insertNewUser(u);
@@ -86,7 +92,7 @@ public class Registrazione extends BaseServlet {
 		// altrimenti il bool lo mando a false
 		else {
 			request.setAttribute("result", false);
-			RequestDispatcher rd = request.getRequestDispatcher("registrazione.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/registrazione.jsp");
 			rd.forward(request, response);
 		}
 	
@@ -103,5 +109,11 @@ public class Registrazione extends BaseServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	
+	
+	
+	
+	
+	
+	
 }

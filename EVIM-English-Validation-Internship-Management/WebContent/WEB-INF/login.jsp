@@ -35,7 +35,7 @@
 			</form>
 			<div class="help">
 				<p class="text-center">
-					Non sei registrato? <a href="registrazione.jsp">Registrati</a><br />
+					Non sei registrato? <a href="RedirectToRegistration">Registrati</a><br />
 					Password dimenticata? <a href="recuperaPassword.jsp">Recupera
 						password</a>
 				</p>
