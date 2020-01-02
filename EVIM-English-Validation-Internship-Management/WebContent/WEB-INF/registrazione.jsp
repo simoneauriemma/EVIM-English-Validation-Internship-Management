@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<jsp:include page="WEB-INF/navbar.jsp"></jsp:include>
+<jsp:include page="navbar.jsp"></jsp:include>
 <head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -192,11 +192,9 @@ margin-right: 5px;
 													<div class="form-group">
 														 <select name="provinciaN"
 															class="form-control" id="prov">
-															<option>P1</option>
-															<option>P2</option>
-															<option>P3</option>
-															<option>P4</option>
-															<option>P5</option>
+															<c:forEach items="${sigle}" var="sigla">
+															<option><c:out value="${sigla}"></c:out></option>
+															</c:forEach>
 														</select>
 													</div>
 												</td>
@@ -219,11 +217,9 @@ margin-right: 5px;
 													<div class="form-group">
 														 <select name="provinciaR"
 															class="form-control" id="prov1">
-															<option>P1</option>
-															<option>P2</option>
-															<option>P3</option>
-															<option>P4</option>
-															<option>P5</option>
+															<c:forEach items="${sigle}" var="sigla">
+															<option><c:out value="${sigla}"></c:out></option>
+															</c:forEach>
 														</select>
 													</div>
 												</td>
