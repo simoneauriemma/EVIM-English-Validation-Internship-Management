@@ -34,10 +34,10 @@ public class TutorAccademicoDAO {
 				String nome = risultato.getString(2);
 				String cognome = risultato.getString(3);
 				String password = risultato.getString(4);
-				String indirizzo = risultato.getString(5);
+				String sesso = risultato.getString(5);
 				String email = risultato.getString(6);
-				String telefono = risultato.getString(7);
-				listeTutor.add(new TutorAccademico(id, nome, cognome, password, indirizzo, email, telefono));
+				
+				listeTutor.add(new TutorAccademico(id, nome, cognome, password, sesso, email));
 
 			}
 			return listeTutor;
@@ -74,9 +74,9 @@ public class TutorAccademicoDAO {
 				utente.setNome(rs.getString(2));
 				utente.setCognome(rs.getString(3));
 				utente.setPassword(rs.getString(4));
-				utente.setIndirizzo(rs.getString(5));
+				utente.setSesso(rs.getString(5));
 				utente.setEmail(rs.getString(6));
-				utente.setTelefono(rs.getString(7));
+				
 				return utente;
 			} else
 				return null;
@@ -88,7 +88,7 @@ public class TutorAccademicoDAO {
 
 	}
 	
-	public static boolean insertNewTutorAccademico(String nome, String cognome,String password,String indirizzo,String email,String telefono) { 
+	public static boolean insertNewTutorAccademico(String nome, String cognome,String password,String sesso,String email) { 
 		String query= "INSERT INTO EVIM.tutoraccademico(`Nome`,`Cognome`,`Password`,`indirizzo`,`email`,`telefono`) VALUES(?,?,?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -96,9 +96,9 @@ public class TutorAccademicoDAO {
 			ps.setString(1, nome);
 			ps.setString(2, cognome);
 			ps.setString(3, password);
-			ps.setString(4, indirizzo);
+			ps.setString(4, sesso);
 			ps.setString(5, email);
-			ps.setString(6, telefono);
+			
 			
 			
 			if(ps.executeUpdate()==1) {
