@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mysql.jdbc.PreparedStatement;
-
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+
 
 import model.DriverManagerConnectionPool;
 import model.User;
@@ -49,7 +50,7 @@ public class VisualizzaCompilaModuloRiconoscimento extends HttpServlet {
 				int CFUInglese=getCFUinglese(utente.getEmail());
 				request.setAttribute("CFUInglese", CFUInglese);
 				request.setAttribute("studente", utente);
-				request.getRequestDispatcher("compilaModuloRiconoscimento.jsp").forward(request, response);
+				request.getRequestDispatcher("WEB-INF/compilaModuloRiconoscimento.jsp").forward(request, response);
 			}
 			//non adatto ufficio carriera e PdCD
 			else if(utente.getUserType()==1 || utente.getUserType()==2) {
