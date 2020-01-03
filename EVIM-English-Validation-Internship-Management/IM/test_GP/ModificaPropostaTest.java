@@ -39,7 +39,7 @@ public class ModificaPropostaTest extends Mockito{
 		request.addParameter("email");
 		request.addParameter("password", "");
 		servletLogin.doPost(request, response);
-		boolean log=(boolean) request.getAttribute("logged");
+		boolean log=(boolean) request.getAttribute("loggedTest");
 		request.getSession().setAttribute("utenteLoggato", null);
 		assertFalse(log);
 		assertEquals("tutoraccademico","tutoraccademico");
@@ -146,20 +146,5 @@ public class ModificaPropostaTest extends Mockito{
 		boolean esito=(boolean) request.getAttribute("modifica");
 		assertFalse(esito);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

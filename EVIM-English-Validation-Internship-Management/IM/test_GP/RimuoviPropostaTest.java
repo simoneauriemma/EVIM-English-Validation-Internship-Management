@@ -5,11 +5,10 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import controller.GestioneProposta.RimuoviProposta;
-import model.Proposta;
 import controller.Login;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 import javax.servlet.ServletException;
 
@@ -42,7 +41,7 @@ public class RimuoviPropostaTest extends Mockito{
 		request.addParameter("email");
 		request.addParameter("password", "");
 		servletLogin.doPost(request, response);
-		boolean log=(boolean) request.getAttribute("logged");
+		boolean log=(boolean) request.getAttribute("loggedTest");
 		request.getSession().setAttribute("utenteLoggato", null);
 		assertFalse(log);
 		assertEquals("tutoraccademico","tutoraccademico");
