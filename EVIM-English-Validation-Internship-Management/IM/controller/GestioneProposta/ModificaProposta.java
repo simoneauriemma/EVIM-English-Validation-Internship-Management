@@ -28,7 +28,7 @@ public class ModificaProposta extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sessione=request.getSession();
 		int idProposta=Integer.parseInt(request.getParameter("idProposta"));
 		// controllo se è loggato l'utente altrimenti reindirizzo alla pagina login
@@ -46,6 +46,7 @@ public class ModificaProposta extends HttpServlet {
 			// non adatto per lo studente,pdcd,ufficio carriere
 			if(tipoUtente.equalsIgnoreCase("model.User")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
+				request.setAttribute("modifica", false);
 				dispatcher.forward(request, response);
 			}
 
@@ -77,7 +78,7 @@ public class ModificaProposta extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

@@ -27,7 +27,7 @@ public class creaProposta extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sessione=request.getSession();
 		// controllo se è loggato l'utente altrimenti reindirizzo alla pagina login
 		if (sessione.getAttribute("utenteLoggato") == null) {
@@ -39,9 +39,10 @@ public class creaProposta extends HttpServlet {
 			// non adatto per lo studente,pdcd,ufficio carriere
 			if(tipoUtente.equalsIgnoreCase("model.User")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
+				request.setAttribute("risultatoInserimentoProposta",false);
 				dispatcher.forward(request, response);
 			}
-			
+
 			// tirocinio interno
 			else if(tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
 				TutorAccademico tutor=(TutorAccademico) sessione.getAttribute("utenteLoggato");
@@ -52,17 +53,26 @@ public class creaProposta extends HttpServlet {
 				
 				
 				
-				if(PropostaDAO.insertPropostaInterno(obiettivo, competenze, attivita, modalita, tutor.getIdTutorAccademico())) {
-					request.setAttribute("risultatoInserimentoProposta",true);
-					
-				}
-				else {
-					request.setAttribute("risultatoInserimentoProposta", false);
-				}
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
-				dispatcher.forward(request, response);
-				
+				if((competenze.length()<=200 && competenze.length()>=10) && (attivita.length()<=200 && attivita.length()>=10) && (obiettivo.length()<=200 && obiettivo.length() >=10)  &&  (modalita.length()<=200 && modalita.length()>=10))  {
+					if(PropostaDAO.insertPropostaInterno(obiettivo, competenze, attivita, modalita, tutor.getIdTutorAccademico())) {
+						request.setAttribute("risultatoInserimentoProposta",true);
+						RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
+						dispatcher.forward(request, response);
+					}
+					else {
+						RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
+						request.setAttribute("risultatoInserimentoProposta",false);
+						dispatcher.forward(request, response);
+
+					}
+				}else
+				{
+					RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
+					request.setAttribute("risultatoInserimentoProposta",false);
+					dispatcher.forward(request, response);
+				}
+
 			}
 			//tirocinio esterno
 			else if(tipoUtente.equalsIgnoreCase("model.azienda")) {
@@ -70,10 +80,13 @@ public class creaProposta extends HttpServlet {
 				int idTutorAziendale=Integer.parseInt(request.getParameter("tutorAziendale"));
 				String competenze=request.getParameter("competenze");
 				String attivita=request.getParameter("attivita");
-				String obiettivo=request.getParameter("obiettivo");
+				String obiettivo=request.getParameter("obiettivo"); 
 				String modalita=request.getParameter("modalita");
-				
-			if(idTutorAziendale!=-1 && competenze.length()<=200 && attivita.length()<=200 && obiettivo.length()<=200 && modalita.length()<=200)
+
+
+
+
+				if(idTutorAziendale>=0 && (competenze.length()<=200 && competenze.length()>=10) && (attivita.length()<=200 && attivita.length()>=10) && (obiettivo.length()<=200 && obiettivo.length() >=10)  &&  (modalita.length()<=200 && modalita.length()>=10))  {
 					if(PropostaDAO.insertPropostaEsterno(obiettivo, competenze, attivita, modalita, tutor.getID_Azinda(),idTutorAziendale)) {
 						request.setAttribute("risultatoInserimentoProposta",true);
 						RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
@@ -83,21 +96,27 @@ public class creaProposta extends HttpServlet {
 						RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
 						request.setAttribute("risultatoInserimentoProposta",false);
 						dispatcher.forward(request, response);
-					}
+
+					} 
+				}else
+				{
+					RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
+					request.setAttribute("risultatoInserimentoProposta",false);
+					dispatcher.forward(request, response);
 				}
-			else {
+			}else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
 				request.setAttribute("risultatoInserimentoProposta",false);
 				dispatcher.forward(request, response);
 			}
-				
+
 		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

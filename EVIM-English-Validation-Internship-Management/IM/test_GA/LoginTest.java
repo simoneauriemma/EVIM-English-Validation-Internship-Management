@@ -1,4 +1,4 @@
-package test;
+package test_GA;
 
 	import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 	import org.springframework.mock.web.MockHttpServletRequest;
 	import org.springframework.mock.web.MockHttpServletResponse;
 
-	public class LoginTest extends Mockito{
+	public class LoginTest extends Mockito{ 
 	
 	  private Login servlet;
 	  private MockHttpServletRequest request;
