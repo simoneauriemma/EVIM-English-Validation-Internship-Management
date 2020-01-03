@@ -7,10 +7,9 @@
 <style>
 #button {
 	width: 200px;
-	
 }
 
-#button-container,#button-container1 {
+#button-container, #button-container1 {
 	text-align: center;
 }
 </style>
@@ -32,135 +31,150 @@
 					test="${listaAttivitaEsterno.size() == 0 && listaAttivitaInterno.size()==0}">
 					<p>Non è stato effettuato nessun Tirocinio!</p>
 				</c:if>
-				
-			<div class="col-lg-9" 
-				style="border: 1px solid #d7d7d7; background-color: white;">
-				<p id="titolo" style="font-size: 30px; color: #595959;">
-					Registro di tirocinio</p>
-				<hr>
-				<%
-					int n = 0;
-				%>
-				<div>
-					<p>Tirocinio presso: #</p>
-					<p>Ore svolte: #</p>
-				</div>
-				<div>
-					<p>Tutor ospitante: #</p>
-					<p>Numero attività svolte: #</p>
-				</div>
-				<br>
 
-				<table class="table table-striped" style="border: 1px solid #ddd;">
-					<tbody>
+				<div class="col-lg-9"
+					style="border: 1px solid #d7d7d7; background-color: white;">
+					<p id="titolo" style="font-size: 30px; color: #595959;">
+						Registro di tirocinio</p>
+					<hr>
+					<%
+						int n = 0;
+					%>
 					<c:if test="${listaAttivitaEsterno.size() > 0}">
-					<c:forEach items="${listaAttivitaEsterno}" var="esterno">
-						
-						<tr style="background-color: #2C5278; color: white;">
-							<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
-							<td class="">Attività svolta</td>
-							<td>Data</td>
-							<td>Ora ingresso</td>
-							<td>Ora uscita</td>
-							<td>Ore tot.</td>
-							<td>Firma Tirocinante</td>
-							<td>Firma responsabile</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><c:out value="${esterno.attivita}" /></td>
-							<td><c:out value="${esterno.data}" /></td>
-							<td><c:out value="${esterno.orarioIngresso}" /></td>
-							<td><c:out value="${esterno.orarioUscita}" /></td>
-							<td>#</td>
-							<td><c:out value="#"/></td>
-							
-							<td>#</td>
-						</tr>
-						
-						</c:forEach>
-					
-						</c:if>
-						<c:if test="${listaAttivitaInterno.size() > 0}">
-						<c:forEach items="${listaAttivitaInterno}" var="interno">
-						<tr style="background-color: #2C5278; color: white;">
-							<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
-							<td class="">Attività svolta</td>
-							<td>Data</td>
-							<td>Ora ingresso</td>
-							<td>Ora uscita</td>
-							<td>Ore tot.</td>
-							<td>Firma Tirocinante</td>
-							<td>Firma responsabile</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><c:out value="${interno.attivita}" /></td>
-							<td><c:out value="${interno.data}" /></td>
-							<td><c:out value="${interno.orarioIngresso}" /></td>
-							<td><c:out value="${interno.orarioUscita}" /></td>
-							<td><c:out value="${interno.OreTotali}"/></td>
-							<td>#</td>
-							<td>#</td>
-						</tr>
-				
-						
-						</c:forEach>
-						</c:if>
-					</tbody>
-				</table>
-				<br>
-				<div id="button-container">
-					<button type="submit" class="btn btn-secondary" id="button"
-						data-toggle="modal" data-target="#exampleModalLong<%=n%>">Aggiungi
-						attività</button>
-				</div>
-				<br>
+						<div>
 
-				<div class="modal fade" id="exampleModalLong<%=n%>" tabindex="-1"
-					role="dialog" aria-labelledby="exampleModalLongTitle"
-					aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLongTitle">Nuova
-									attività</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									id="chiudere" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-							<table>
-							<tr>
-							<td>Attività svolta:</td>
-							<td><textarea rows="1" cols="30"></textarea></td>
-							</tr>
-							<tr>
-							<td>Data:</td>
-							<td><input type="date"></td>
-							</tr>
-							<tr>
-							<td>Ora ingresso:</td>
-							<td><input type="time"></td>
-							</tr>
-							<tr>
-							<td>Ora uscita:</td>
-							<td><input type="time"></td>
-							</tr>
-							<tr>
-							<td>Ore totali:</td>
-							<td><input type="number" style="width: 77px;"></td>
-							</tr>
-							</table>
-							<div id="button-container1"> <br> <br>
-							<button type="submit" class="btn btn-secondary" id="button1">APPROVA</button>
-							</div>
+							<p>Tirocinio presso: #</p>
+
+							<p>Ore svolte: #</p>
+						</div>
+
+					</c:if>
+
+					<c:if test="${listaAttivitaInterno.size() > 0}">
+						<div>
+							<p>Tutor ospitante: #</p>
+
+							<p>Ore svolte: #</p>
+						</div>
+
+					</c:if>
+					<br>
+
+					<table class="table table-striped" style="border: 1px solid #ddd;">
+						<tbody>
+							<c:if test="${listaAttivitaEsterno.size() > 0}">
+								<c:forEach items="${listaAttivitaEsterno}" var="esterno">
+
+									<tr style="background-color: #2C5278; color: white;">
+										<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
+										<td class="">Attività svolta</td>
+										<td>Data</td>
+										<td>Ora ingresso</td>
+										<td>Ora uscita</td>
+										<td>Ore tot.</td>
+										<td>Firma Tirocinante</td>
+										<td>Firma responsabile</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td><c:out value="${esterno.attivita}" /></td>
+										<td><c:out value="${esterno.data}" /></td>
+										<td id="ingresso"><c:out
+												value="${esterno.orarioIngresso}" /></td>
+										<td id="uscita"><c:out value="${esterno.orarioUscita}" /></td>
+										<td><c:out value="${esterno.orarioUscita}" />
+											- <c:out value="${esterno.orarioIngresso}" /></td>
+										<td>#</td>
+
+										<td>#</td>
+									</tr>
+
+								</c:forEach>
+
+							</c:if>
+							<c:if test="${listaAttivitaInterno.size() > 0}">
+								<c:forEach items="${listaAttivitaInterno}" var="interno">
+									<tr style="background-color: #2C5278; color: white;">
+										<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
+										<td class="">Attività svolta</td>
+										<td>Data</td>
+										<td>Ora ingresso</td>
+										<td>Ora uscita</td>
+										<td>Ore tot.</td>
+										<td>Firma Tirocinante</td>
+										<td>Firma responsabile</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td><c:out value="${interno.attivita}" /></td>
+										<td><c:out value="${interno.data}" /></td>
+										<td id="ingresso"><c:out
+												value="${interno.orarioIngresso}" /></td>
+										<td id="uscita"><c:out value="${interno.orarioUscita}" /></td>
+										<td id="tdOre"><c:out value="${interno.orarioUscita}" />
+											- <c:out value="${interno.orarioIngresso}" /></td>
+										<td>#</td>
+										<td>#</td>
+									</tr>
+
+
+								</c:forEach>
+							</c:if>
+						</tbody>
+					</table>
+					<br>
+					<div id="button-container">
+						<button type="submit" class="btn btn-secondary" id="button"
+							data-toggle="modal" data-target="#exampleModalLong<%=n%>">Aggiungi
+							attività</button>
+					</div>
+					<br>
+
+					<div class="modal fade" id="exampleModalLong<%=n%>" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLongTitle"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLongTitle">Nuova
+										attività</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										id="chiudere" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<table>
+										<tr>
+											<td>Attività svolta:</td>
+											<td><textarea rows="1" cols="30"></textarea></td>
+										</tr>
+										<tr>
+											<td>Data:</td>
+											<td><input type="date"></td>
+										</tr>
+										<tr>
+											<td>Ora ingresso:</td>
+											<td><input type="time"></td>
+										</tr>
+										<tr>
+											<td>Ora uscita:</td>
+											<td><input type="time"></td>
+										</tr>
+										<tr>
+											<td>Ore totali:</td>
+											<td><input type="number" style="width: 77px;"></td>
+										</tr>
+									</table>
+									<div id="button-container1">
+										<br> <br>
+										<button type="submit" class="btn btn-secondary" id="button1">APPROVA</button>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 			</c:if>
 		</div>
 	</div>
@@ -170,8 +184,21 @@
 <jsp:include page="footer.jsp"></jsp:include>
 
 <script>
-function myFunction() {
-  alert("I am an alert box!");
-}
+	function myFunction() {
+		alert("I am an alert box!");
+	}
+	
+	
+	
+	
+	
+ <!-- function calculateHours() {
+		var start = $('#ingresso').html();
+		var end = $('#uscita').html();
+		var total = end - start;
+		var result = $('#tdOre');
+		result.val(total);
+		
+	} -->
 </script>
 </html>
