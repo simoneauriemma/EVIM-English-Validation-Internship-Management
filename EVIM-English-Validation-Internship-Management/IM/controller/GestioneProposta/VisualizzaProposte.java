@@ -63,7 +63,7 @@ public class VisualizzaProposte extends HttpServlet {
 			//tirocinio esterno
 			else if(tipoUtente.equalsIgnoreCase("model.Azienda")) {
 				Azienda tutor=(Azienda) sessione.getAttribute("utenteLoggato");
-				ArrayList<Proposta> proposteEsterne=PropostaDAO.getProposteAziendaWithIdAzienda(tutor.getID_Azinda());
+				ArrayList<Proposta> proposteEsterne=PropostaDAO.getProposteAziendaWithIdAzienda(tutor.getID_Azienda());
 				
 				request.setAttribute("proposte", proposteEsterne);
 				request.setAttribute("type", "azienda");
