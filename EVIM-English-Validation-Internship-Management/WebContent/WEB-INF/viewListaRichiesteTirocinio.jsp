@@ -36,8 +36,8 @@
 				test="${type== 'tutoraziendale' || type=='tutoraccademico' || type== 'pdcd' || type=='azienda'}">
 
 				<c:forEach items="${arrayTirocinioEsterno}" var="esterno">
-				
-				<!-- se l'array di tirocini esterno è vuoto allora informa l'uetnte che non ci sono richieste -->
+
+					<!-- se l'array di tirocini esterno è vuoto allora informa l'uetnte che non ci sono richieste -->
 					<c:if test="${arrayTirocinioEsterno.size()==0 }">
 						<p>Non ci sono richieste di tirocinio</p>
 					</c:if>
@@ -102,15 +102,15 @@
 												<td class="text-center"><c:out value="${esterno.data}" /></td>
 											</tr>
 											<tr>
+												<td class="icon"><i class="fas fa-circle"></i></td>
+												<td class="">Num. CFU</td>
+												<td class="text-center"><c:out value="${esterno.CFU}" /></td>
+											</tr>
+											<tr>
 												<td class="icon"><i class="fas fa-clock"></i></td>
 												<td class="">Ore totali</td>
 												<td class="text-center"><c:out
 														value="${esterno.oreTotali}" /></td>
-											</tr>
-											<tr>
-												<td class="icon"><i class="fas fa-circle"></i></td>
-												<td class="">Num. CFU</td>
-												<td class="text-center"><c:out value="${esterno.CFU}" /></td>
 											</tr>
 											<tr>
 												<td class="icon"><i class="far fa-user"></i></td>
@@ -200,13 +200,13 @@
 			<!-- solo il presidente del consiglio didattico e il tutor accademico possono vedere le richieste di tirocnio interno -->
 			<c:if test="${type=='tutoraccademico' || type=='pdcd' }">
 				<c:forEach items="${arrayTirocinioInterno}" var="interno">
-				
-				<!-- se l'array gli array sono vuoti informa l'utente -->
-				<c:if
-					test="${arrayTirocinioInterno.size()==0 && arrayTirocinioEsterno.size()==0 }">
-					<p>Non ci sono richieste di tirocinio</p>
-				</c:if>
-				
+
+					<!-- se l'array gli array sono vuoti informa l'utente -->
+					<c:if
+						test="${arrayTirocinioInterno.size()==0 && arrayTirocinioEsterno.size()==0 }">
+						<p>Non ci sono richieste di tirocinio</p>
+					</c:if>
+
 					<%
 						y = y + n + 1;
 					%>
@@ -306,48 +306,27 @@
 <br>
 <jsp:include page="footer.jsp"></jsp:include>
 
-<script>
- 	$(document).ready(function() {
- 		if($('i:contains(in approvazione)')) {
-  			$("#status","#status1").css("background-color","yellow");	
-  			$("#status","#status1").css("color","black");	
-  			$("#status","#status1").css("border-radius","22px");	
- 		}
- 		else if($('i:contains(approvato)')) {
-  			$("#status","#status1").css("background-color","green");
-  			$("#status","#status1").css("color","black");
-  			$("#status","#status1").css("border-radius","22px");	
- 		}
- 		else if($('i:contains(non approvato)')) {
-  			$("#status","#status1").css("background-color","red");	
-  			$("#status").css("color","black");
-  			$("#status").css("border-radius","22px");	
- 		}
- 		else if($('i:contains(proposto)')) {
-  			$("#status","#status1").css("background-color","blue");
-  			$("#status","#status1").css("color","black");
-  			$("#status","#status1").css("border-radius","22px");	
- 		}
- 		 		
- 	});
- 	
+<script> 
+	/* status: riferito allo status di tirocinio esterno
+	   status1: riferito allo status di tirocinio interno */
 	$(document).ready(function() {
-		$("#accetta").click(function() {
-			$(this).css("background-color", "green");
-			$(this).css("color", "white");
-			$(this).css("outline", "none");
-			$(this).val("selezionato");
-			$("#rifiuta").attr("disabled", "true");
+		if ($('i:contains(in approvazione)')) {
+			$("#status, #status1").css("background-color", "yellow");
+			$("#status, #status1").css("color", "black");
+			$("#status, #status1").css("border-radius", "22px");
+		} else if ($('i:contains(approvato)')) {
+			$("#status, #status1").css("background-color", "green");
+			$("#status, #status1").css("color", "black");
+			$("#status, #status1").css("border-radius", "22px");
+		} else if ($('i:contains(non approvato)')) {
+			$("#status, #status1").css("background-color", "red");
+			$("#status, #status1").css("color", "black");
+			$("#status, #status1").css("border-radius", "22px");
+		} else if ($('i:contains(proposto)')) {
+			$("#status, #status1").css("background-color", "blue");
+			$("#status, #status1").css("color", "black");
+			$("#status, #status1").css("border-radius", "22px");
+		}
 
-		});
-		$("#rifiuta").click(function() {
-			$(this).css("background-color", "red");
-			$(this).css("color", "white");
-			$(this).css("outline", "none");
-			$(this).val("selezionato")
-			$("#accetta").attr("disabled", "true");
-		});
 	});
-		 
-		
 </script>

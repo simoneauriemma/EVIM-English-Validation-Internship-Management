@@ -49,10 +49,20 @@
 					</div>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
+							<span class="input-group-text">Corso di laurea</span>
+						</div>
+						<input type="text" class="form-control" aria-label="Default"
+							aria-describedby="inputGroup-sizing-default" name="corso"
+							value="<c:out value="${studente.corso}"/>"
+							disabled>
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
 							<span class="input-group-text">Data di nascita</span>
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
 							aria-describedby="inputGroup-sizing-default" name="ndataome"
+							value="<c:out value="${studente.dataDiNascita}"/>"
 							disabled>
 					</div>
 					<div class="input-group mb-3">
@@ -61,6 +71,7 @@
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
 							aria-describedby="inputGroup-sizing-default" name="luogo"
+							value="<c:out value="${studente.luogoDiNascita}"/>"
 							disabled>
 					</div>
 					<div class="input-group mb-3">
@@ -69,6 +80,7 @@
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
 							aria-describedby="inputGroup-sizing-default" name="residenza"
+							value="<c:out value="${studente.residente}"/>"
 							disabled>
 					</div>
 					<div class="input-group mb-3">
@@ -76,14 +88,18 @@
 							<span class="input-group-text">Via</span>
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
-							aria-describedby="inputGroup-sizing-default" name="via" disabled>
+							aria-describedby="inputGroup-sizing-default" name="via" 
+							value="<c:out value="${studente.via}"/>"
+							disabled>
 					</div>
+					
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
-							<span class="input-group-text">Corso di laurea</span>
+							<span class="input-group-text">Telefono</span>
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
-							aria-describedby="inputGroup-sizing-default" name="laurea"
+							aria-describedby="inputGroup-sizing-default" name="telefono"
+							value="<c:out value="${studente.telefono}"/>"
 							disabled>
 					</div>
 					<br> <br>
