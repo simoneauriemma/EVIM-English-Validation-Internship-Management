@@ -49,13 +49,15 @@
 								<td class="icon"><i class="far fa-user"></i></td>
 								<td class="">Tutor accademico</td>
 								<td class="text-center"><c:out
-										value="${esterno.ID_TutorAccademico}" /></td>
+										value="${esterno.nomeTutorAcc}" /> <c:out
+										value="${esterno.cognomeTutorAcc}"/></td>
 							</tr>
 							<tr>
 								<td class="icon"><i class="fa fa-user"></i></td>
 								<td class="">Tutor aziendale</td>
 								<td class="text-center"><c:out
-										value="${esterno.ID_TutorAziendale}" /></td>
+										value="${esterno.nomeTutorAz}" /> <c:out
+										value="${esterno.cognomeTutorAz}"/></td>
 							</tr>
 							<tr>
 								<td class="icon"><i class="fas fa-toggle-on"></i></td>
@@ -109,7 +111,8 @@
 								<td class="icon"><i class="fa fa-user"></i></td>
 								<td class="">Tutor accademico</td>
 								<td class="text-center"><c:out
-										value="${interno.ID_tutorAccademico}" /></td>
+										value="${interno.nomeTutorAcc}"/> <c:out
+										value="${interno.cognomeTutorAcc}"/></td>
 							</tr>
 							<tr>
 								<td class="icon"><i class="fas fa-toggle-on"></i></td>

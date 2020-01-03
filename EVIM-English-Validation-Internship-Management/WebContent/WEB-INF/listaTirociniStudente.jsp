@@ -9,7 +9,7 @@
 <meta charset="ISO-8859-1">
 
 <script src="jquery-3.4.1.min.js"></script>
-<title>Visualizza richieste tirocinio interno</title>
+<title>Visualizza richieste tirocinio </title>
 </head>
 
 <div class="container">
@@ -23,7 +23,7 @@
 		<div class="col-lg-9" id="col-9">
 
 			<p id="titolo" class="text-center">Visualizza lista richieste
-				tirocinio interno</p>
+				tirocinio </p>
 			<hr>
 			<br> <br>
 
