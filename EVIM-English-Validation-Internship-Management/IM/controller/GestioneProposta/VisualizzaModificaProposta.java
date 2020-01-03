@@ -58,7 +58,7 @@ public class VisualizzaModificaProposta extends HttpServlet {
 				
 				Azienda azienda=(Azienda) sessione.getAttribute("utenteLoggato");
 				
-				ArrayList<TutorAziendale> elencoTutorAziendali=TutorAziendaleDAO.getElencoTutorAziendali(azienda.getID_Azinda());
+				ArrayList<TutorAziendale> elencoTutorAziendali=TutorAziendaleDAO.getElencoTutorAziendali(azienda.getID_Azienda());
 				int idTutorAziendale=proposta.getID_Tutor();
 				TutorAziendale tutorAziendale=TutorAziendaleDAO.getInformationTutorAziendale(idTutorAziendale);
 				
