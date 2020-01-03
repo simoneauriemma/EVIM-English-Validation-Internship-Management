@@ -379,7 +379,7 @@ margin-right: 5px;
 				r = false;
 			}
 			
-			if(regex_matricola.test(matricola.value()) && regex_email_studente.test(email.val())){
+			if(regex_matricola.test(matricola.val()) && regex_email_studente.test(email.val())){
 				matricola.css("color", "red");
 				resultRegexMatricola.text("Inserire una matricola valida");
 				resultRegexMatricola.css("color", "red");
