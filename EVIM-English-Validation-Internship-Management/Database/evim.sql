@@ -588,7 +588,7 @@ CREATE TABLE `tutoraccademico` (
 
 LOCK TABLES `tutoraccademico` WRITE;
 /*!40000 ALTER TABLE `tutoraccademico` DISABLE KEYS */;
-INSERT INTO `tutoraccademico` VALUES (1,'Mario','Giorgio','umpalumpa2','via dalle cicogne Salerno 22344 64','mariogiorgio@unisa.it','3334333444'),(2,'Antonio','Sultani','radiomaria11','via roma 82933 Salerno 81','antoniosultani@unisa.it','3335333555'),(3,'Edoardo','Carpentiero','edoardo93@','','edoardo93av@unisa.it','');
+INSERT INTO `tutoraccademico` VALUES (1,'Mario','Giorgio','umpalumpa2','M','mariogiorgio@unisa.it'),(2,'Antonio','Sultani','radiomaria11','M','antoniosultani@unisa.it'),(3,'Edoardo','Carpentiero','edoardo93@','M','edoardo93av@unisa.it');
 /*!40000 ALTER TABLE `tutoraccademico` ENABLE KEYS */;
 UNLOCK TABLES;
 
