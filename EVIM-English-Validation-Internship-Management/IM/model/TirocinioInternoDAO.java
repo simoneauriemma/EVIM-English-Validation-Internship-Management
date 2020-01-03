@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryInternoStudente;
+import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryInternoTutorAcc;
 import controller.GestioneTirocinio.ListaTirocini.RegistroQuery;
 
 public class TirocinioInternoDAO {
@@ -47,30 +49,31 @@ public class TirocinioInternoDAO {
 	 * @author Simone Auriemma
 	 * @return ArrayList<TirocinioInterno>
 	 */
-	public ArrayList<TirocinioInterno> doRetriveAllByStudent(String EMAIL) {
+	public ArrayList<TirocinioQueryInternoStudente> doRetriveAllByStudent(String EMAIL) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			// query per la visualizzazione della pagina da parte dello studente
 			// query per visualizzare le richieste in valutazione
 			String inValutazione = "in approvazione";
 			PreparedStatement ps = con
-					.prepareStatement(" select * from EVIM.TirocinioInterno where EMAIL=? AND status=?");
+					.prepareStatement("select ID_TirocinioInterno,tiro.EMAIL, tutor.Nome,tutor.Cognome, Data, OreTotali, status, NumeroCFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta from TirocinioInterno AS tiro JOIN TutorAccademico as tutor ON tiro.ID_tutorAccademico = tutor.ID_TutorAccademico where tiro.EMAIL=? AND status=?");
 			ps.setString(1, EMAIL);
 			ps.setString(2, inValutazione);
-			ArrayList<TirocinioInterno> richieste = new ArrayList<TirocinioInterno>();
+			ArrayList<TirocinioQueryInternoStudente> richieste = new ArrayList<TirocinioQueryInternoStudente>();
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				TirocinioInterno a = new TirocinioInterno();
-				a.setID_TirocinioInterno(rs.getInt("ID_tirocinioInterno"));
+				TirocinioQueryInternoStudente a = new TirocinioQueryInternoStudente();
+				a.setID_TirocinioInterno(rs.getInt(1));
 				a.setEMAIL(rs.getString(2));
-				a.setID_tutorAccademico(rs.getInt("ID_tutorAccademico"));
+				a.setNomeTutorAcc(rs.getString(3));
+				a.setCognomeTutorAcc(rs.getString(4));
 				a.setData(rs.getString("Data"));
-				a.setOreTotali(rs.getInt(5));
+				a.setOreTotali(rs.getInt(6));
 				a.setStatus(rs.getString("status"));
-				a.setNumeroCFU(rs.getInt(7));
+				a.setNumeroCFU(rs.getInt(8));
 				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
 				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
-				a.setID_Proposta(rs.getInt(10));
+				a.setID_Proposta(rs.getInt(11));
 				richieste.add(a);
 			}
 			return richieste;
@@ -85,30 +88,33 @@ public class TirocinioInternoDAO {
 	 * Query che restituisce tutti i tirocini in fase di valutazione
 	 * 
 	 * @author Simone Auriemma
-	 * @return ArrayList<TirocinioInterno>
+	 * @return ArrayList<TirocinioQueryInternoTutorAcc>
 	 */
-	public ArrayList<TirocinioInterno> doRetriveAllByTutor(int IDTutor) {
+	public ArrayList<TirocinioQueryInternoTutorAcc> doRetriveAllByTutorAcc(int IDTutor) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			// query per la visualizzazione della pagina da parte dello studente
 			// query per visualizzare le richieste in valutazione
 			String inValutazione = "in approvazione";
-			PreparedStatement ps = con.prepareStatement("select * from EVIM.TirocinioInterno where status=? AND ID_tutorAccademico=?");
+			PreparedStatement ps = con.prepareStatement("select ID_TirocinioEsterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud, Data, OreTotali, status, CFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta from TirocinioEsterno AS tiro \r\n" + 
+					"JOIN User ON tiro.EMAIL = User.EMAIL JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale" + 
+					"where status=? AND tiro.ID_TutorAccademico=?");
 			ps.setString(1, inValutazione);
 			ps.setInt(2, IDTutor);
-			ArrayList<TirocinioInterno> richieste = new ArrayList<TirocinioInterno>();
+			ArrayList<TirocinioQueryInternoTutorAcc> richieste = new ArrayList<TirocinioQueryInternoTutorAcc>();
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				TirocinioInterno a = new TirocinioInterno();
-				a.setEMAIL(rs.getString("EMAIL"));
+				TirocinioQueryInternoTutorAcc a = new TirocinioQueryInternoTutorAcc();
 				a.setID_TirocinioInterno(rs.getInt("ID_tirocinioInterno"));
-				a.setID_tutorAccademico(rs.getInt("ID_tutorAccademico"));
+				a.setEMAIL(rs.getString("EMAIL"));
+				a.setNomeStud(rs.getString(3));
+				a.setCognomeStud(rs.getString(4));
 				a.setData(rs.getString("Data"));
-				a.setStatus(rs.getString("status"));
 				a.setOreTotali(rs.getInt("OreTotali"));
+				a.setStatus(rs.getString("status"));
 				a.setNumeroCFU(rs.getInt("numeroCFU"));
-				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
 				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
 				a.setID_Proposta(rs.getInt("ID_Proposta"));
 				richieste.add(a);
 			}
