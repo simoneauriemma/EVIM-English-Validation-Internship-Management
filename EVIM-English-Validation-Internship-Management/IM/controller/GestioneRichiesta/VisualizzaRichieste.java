@@ -251,14 +251,14 @@ public class VisualizzaRichieste extends BaseServlet {
 	}
 
 	public static class TirocinioQueryEsternoStudente {
-		int ID_TirocinioEsterno, oreTotali, CFU;
+		int ID_TirocinioEsterno, oreTotali, CFU, ID_Proposta;
 		String nomeTutorAcc, cognomeTutorAcc, nomeTutorAz, cognomeTutorAz, data, status, email;
 		boolean firmaAzienda, firmaTutorAziendale, firmaTutorAccademico, firmaPdCD;
 
 		public TirocinioQueryEsternoStudente(int iD_TirocinioEsterno, int oreTotali, int cFU, String nomeTutorAcc,
 				String cognomeTutorAcc, String nomeTutorAz, String cognomeTutorAz, String data, String status,
 				String email, boolean firmaAzienda, boolean firmaTutorAziendale, boolean firmaTutorAccademico,
-				boolean firmaPdCD) {
+				boolean firmaPdCD, int IDproposta) {
 			ID_TirocinioEsterno = iD_TirocinioEsterno;
 			this.oreTotali = oreTotali;
 			CFU = cFU;
@@ -273,6 +273,7 @@ public class VisualizzaRichieste extends BaseServlet {
 			this.firmaTutorAziendale = firmaTutorAziendale;
 			this.firmaTutorAccademico = firmaTutorAccademico;
 			this.firmaPdCD = firmaPdCD;
+			this.ID_Proposta = IDproposta;
 		}
 
 		public TirocinioQueryEsternoStudente() {
@@ -388,6 +389,14 @@ public class VisualizzaRichieste extends BaseServlet {
 
 		public void setFirmaPdCD(boolean firmaPdCD) {
 			this.firmaPdCD = firmaPdCD;
+		}
+
+		public int getID_Proposta() {
+			return ID_Proposta;
+		}
+
+		public void setID_Proposta(int iD_Proposta) {
+			ID_Proposta = iD_Proposta;
 		}
 
 	}

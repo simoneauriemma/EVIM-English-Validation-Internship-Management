@@ -55,8 +55,12 @@ public class TirocinioEsternoDAO {
 			// query per visualizzare le richieste in valutazione
 			String inValutazione = "in approvazione";
 			PreparedStatement ps = con.prepareStatement(
-					"select ID_TirocinioEsterno,tiro.EMAIL, tutorAcc.Nome as nomeTutorAcc,tutorAcc.Cognome as cognomeTutorAcc,tutorAz.Nome as nomeTutorAz,tutorAz.Cognome as cognomeTutorAz, Data, OreTotali, status, CFU, FirmaPdCD from TirocinioEsterno AS tiro JOIN TutorAccademico as tutorAcc ON tiro.ID_tutorAccademico = tutorAcc.ID_TutorAccademico JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale where tiro.EMAIL=? AND status=?");
-
+					"select ID_TirocinioEsterno,tiro.EMAIL, tutorAcc.Nome as nomeTutorAcc,tutorAcc.Cognome as cognomeTutorAcc,tutorAz.Nome as nomeTutorAz, "+
+					"tutorAz.Cognome as cognomeTutorAz, Data, OreTotali, status, CFU, FirmaAzienda, FirmaTutorAziendale, FirmaTutorAccademico, FirmaPdCD, ID_Proposta "+
+					"from TirocinioEsterno AS tiro "+
+					"JOIN TutorAccademico as tutorAcc ON tiro.ID_tutorAccademico = tutorAcc.ID_TutorAccademico "+
+					"JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale "+
+					"where tiro.EMAIL=? AND status=?");
 			ps.setString(1, EMAIL);
 			ps.setString(2, inValutazione);
 
@@ -79,7 +83,8 @@ public class TirocinioEsternoDAO {
 				a.setFirmaTutorAziendale(rs.getBoolean(12));
 				a.setFirmaTutorAccademico(rs.getBoolean(13));
 				a.setFirmaPdCD(rs.getBoolean(14));
-
+				a.setID_Proposta(rs.getInt(15));
+				
 				richieste.add(a);
 			}
 			return richieste;
