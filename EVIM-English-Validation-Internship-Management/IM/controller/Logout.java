@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Logouttttt
+ * Servlet implementation class Logout
  */
 @WebServlet("/Logout")
 public class Logout extends BaseServlet {
@@ -24,12 +24,13 @@ public class Logout extends BaseServlet {
 
 	/**
 	 * @see logout dell'utente loggato
-	 * @author Nicola Sisti 
+	 * @author Nicola Sisti  
 	 *
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session= request.getSession();
 		session.invalidate();
+		request.setAttribute("logged",request.getSession().getAttribute("logged"));
 		RequestDispatcher rd=request.getRequestDispatcher("WEB-INF/home.jsp");	
 		rd.forward(request, response);
 	}
