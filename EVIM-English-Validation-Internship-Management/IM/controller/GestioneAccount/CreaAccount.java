@@ -57,7 +57,7 @@ public class CreaAccount extends HttpServlet {
 					// ID_Azienda,Nome,Cognome,Email,Password,Telefono
 					String email = nome + "@tutor.unisa.it";
 					int rs;
-					if ((rs = new TutorAziendaleDAO().doSave(azienda.getID_Azinda(), nome, cognome, email, password,
+					if ((rs = new TutorAziendaleDAO().doSave(azienda.getID_Azienda(), nome, cognome, email, password,
 							telefono)) == 1) {
 						RequestDispatcher dispatcher = request.getRequestDispatcher("gestioneAccount.jsp");
 						dispatcher.forward(request, response);

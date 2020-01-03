@@ -32,7 +32,7 @@ public class VisualizzaAziende extends BaseServlet {
 		ArrayList<Azienda> aziende = AziendaDAO.doRetriveAll();
 
 		for (Azienda az : aziende) {
-			az.setProposte(PropostaDAO.findByIdAzienda(az.getID_Azinda()));
+			az.setProposte(PropostaDAO.findByIdAzienda(az.getID_Azienda()));
 		}
 
 		request.setAttribute("aziende", aziende);

@@ -43,7 +43,7 @@ public class RicercaTutorAJAX extends HttpServlet {
 				for(int i=0;i<elencoTutorAziendali.size();i++){
 					JSONObject objectTMP=new JSONObject();
 					objectTMP.put("Nome", elencoTutorAziendali.get(i).getNome());
-					objectTMP.put("ID", elencoTutorAziendali.get(i).getID_Azinda());
+					objectTMP.put("ID", elencoTutorAziendali.get(i).getID_Azienda());
 					jsonTutorAziendali.put(objectTMP);
 				}
 				JSONObject objectTutorAziendali=new JSONObject();

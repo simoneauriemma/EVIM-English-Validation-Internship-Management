@@ -52,7 +52,7 @@ public class visualizzaCreaProposta extends HttpServlet {
 				
 				Azienda azienda=(Azienda) sessione.getAttribute("utenteLoggato");
 				
-				ArrayList<TutorAziendale> elencoTutorAziendali=TutorAziendaleDAO.getElencoTutorAziendali(azienda.getID_Azinda());
+				ArrayList<TutorAziendale> elencoTutorAziendali=TutorAziendaleDAO.getElencoTutorAziendali(azienda.getID_Azienda());
 				
 				
 				
