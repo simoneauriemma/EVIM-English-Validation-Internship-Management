@@ -92,7 +92,7 @@ public class Registrazione extends BaseServlet {
 		// altrimenti il bool lo mando a false
 		else {
 			request.setAttribute("result", false);
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/registrazione.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("RedirectToRegistration");
 			rd.forward(request, response);
 		}
 	
