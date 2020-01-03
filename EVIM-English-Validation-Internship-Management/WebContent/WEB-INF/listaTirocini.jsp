@@ -28,18 +28,14 @@
 
 			<!-- se entrambi gli array di tirocini sono vuoti esce che non c'è nulla -->
 			<c:if
-				test="${registroQueryEsterno.size() || registroQueryInterno.size()==0}">
-				<p>Nessuna richieste di tirocinio esterno è stata effettuata!</p>
+				test="${registroQueryEsterno.size()==0 || registroQueryInterno.size()==0}">
+				<p>Nessun tirocinio in corso!</p>
 			</c:if>
 
 
 			<!-- inizio TIROCINIO ESTERNO -->
 			<c:if
 				test="${type == 'tutoraziendale' || type== 'tutoraccademico' || type=='azienda' || type=='pdcd'}">
-
-				<c:if test="${registroQueryEsterno.size() ==0 }">
-					<p>Nessuna richieste di tirocinio esterno è stata effettuata!</p>
-				</c:if>
 
 				<c:if test="${registroQueryEsterno.size() > 0}">
 
@@ -119,11 +115,6 @@
 			<!-- fine TIROCINIO INTERNO -->
 			<!-- SE L'UTENTE LOGGATO E' UNO TUTOR ACCADEMICO O IL PDCD  -->
 			<c:if test="${type == 'tutoraccademico' || type == 'pdcd'}">
-				<c:if test="${registroQueryInterno.size()}">
-					<p>Nessuna richieste di tirocinio è stata effettuata!</p>
-				</c:if>
-
-
 				<c:forEach items="registroQueryInterno" var="interno">
 
 					<table class="table table-striped" id="tabella">

@@ -53,7 +53,7 @@
 									<button data-toggle="collapse" id="nome-studente"
 										data-target="#collapse<%=n%>" aria-expanded="true"
 										aria-controls="collapse<%=n%>">
-										<c:out value="${esterno.EMAIL}" />
+										<c:out value="${esterno.email}" />
 									</button>
 								</h6>
 							</div>
@@ -87,7 +87,7 @@
 											<tr>
 												<td class="icon"><i class="fas fa-at"></i></td>
 												<td class="">E-mail</td>
-												<td class="text-center"><c:out value="${esterno.EMAIL}" /></td>
+												<td class="text-center"><c:out value="${esterno.email}" /></td>
 											</tr>
 											<tr>
 												<td class="icon"><i class="fas fa-toggle-on"></i></td>
@@ -112,18 +112,30 @@
 												<td class="text-center"><c:out
 														value="${esterno.oreTotali}" /></td>
 											</tr>
-											<tr>
-												<td class="icon"><i class="far fa-user"></i></td>
-												<td class="">Tutor Accademico</td>
-												<td class="text-center"><c:out
-														value="${esterno.ID_TutorAccademico}" /></td>
-											</tr>
+											
+											<!-- il tutor accademico quando vede la lista richieste non vede il suo nome -->
+											<c:if
+												test="${type== 'tutoraziendale' || type== 'pdcd' || type=='azienda'}">
+												<tr>
+													<td class="icon"><i class="far fa-user"></i></td>
+													<td class="">Tutor Accademico</td>
+													<td class="text-center"><c:out
+															value="${esterno.nomeTutorAcc}" /> <c:out
+															value="${esterno.cognomeTutorAcc}" /></td>
+												</tr>
+											</c:if>
+											
+											<!-- il tutor aziendale quando vede la lista richieste non vede il suo nome -->
+											<c:if
+												test="${type=='tutoraccademico' || type== 'pdcd' || type=='azienda'}">
 											<tr>
 												<td class="icon"><i class="fas fa-user"></i></td>
 												<td class="">Tutor Aziendale</td>
 												<td class="text-center"><c:out
-														value="${esterno.ID_TutorAziendale}" /></td>
+														value="${esterno.nomeTutorAz}" /> <c:out
+														value="${esterno.cognomeTutorAz}" /></td>
 											</tr>
+											</c:if>
 
 											<!-- se è loggato il pdcd non vede questa riga -->
 											<c:if
@@ -195,6 +207,11 @@
 					</div>
 				</c:forEach>
 			</c:if>
+
+
+
+			<!-- INTERNO! -->
+
 
 
 			<!-- solo il presidente del consiglio didattico e il tutor accademico possono vedere le richieste di tirocnio interno -->
