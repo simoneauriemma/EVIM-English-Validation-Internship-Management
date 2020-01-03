@@ -40,18 +40,18 @@ public class VisualizzaElencoModuliRiconoscimento extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 			// studente--> visualizza i propri moduli di riconoscimento di attività lavorativa
-			else if(utente.getUserType()==1) {
+			else if(utente.getUserType()==0) {
 				ArrayList<Riconoscimento> elencoRiconoscimenti=RiconoscimentoDao.getModuliRiconoscimentiWithEmailStudente(utente.getEmail());
 				
 				request.setAttribute("elencoRiconoscimento", elencoRiconoscimenti);
-				request.getRequestDispatcher("viewElencoRiconoscimentiAttivita.jsp").forward(request, response);
+				request.getRequestDispatcher("WEB-INF/viewElencoRiconoscimentiAttivita.jsp").forward(request, response);
 			}
 			//PdCD e Ufficio Carriera--> visualizzano i moduli di riconoscimento di attività lavorativa di tutti gli studenti. 
-			else if(utente.getUserType()==2 || utente.getUserType()==0){
+			else if(utente.getUserType()==2 || utente.getUserType()==1){
 				ArrayList<Riconoscimento> elencoRiconoscimenti=RiconoscimentoDao.getModuliRiconoscimentiWithStudenti();
 				
 				request.setAttribute("elencoRiconoscimento", elencoRiconoscimenti);
-				request.getRequestDispatcher("viewElencoRiconoscimentiAttivita.jsp").forward(request, response);
+				request.getRequestDispatcher("WEB-INF/viewElencoRiconoscimentiAttivita.jsp").forward(request, response);
 			}
 		}
 	}

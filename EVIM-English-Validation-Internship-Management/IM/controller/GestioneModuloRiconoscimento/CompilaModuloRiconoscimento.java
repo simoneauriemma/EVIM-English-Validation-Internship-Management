@@ -25,7 +25,7 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("permissionDenied.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/permissionDenied.jsp").forward(request, response);
 		
 	}
 
@@ -42,12 +42,13 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 			User utente=(User) sessione.getAttribute("utenteLoggato");
 			// non adatto per lo studente,pdcd,ufficio carriere
 			if(!tipoUtente.equalsIgnoreCase("model.User")) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/permissionDenied.jsp");
 				dispatcher.forward(request, response);
 			}
 			//inserisco tali controlli per una maggiore sicurezza. Il PdCD e l'ufficio carriera non possono aver a che fare con tale pagina di compila modulo.
 			else if(utente.getUserType()!=0){
-				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
+				System.out.println("diverso");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/permissionDenied.jsp");
 				dispatcher.forward(request, response);
 			}
 			String emailStudente=utente.getEmail();
@@ -67,8 +68,8 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 			}
 			else {
 				// prendo i file allegati dallo studente salvando i file nella directory di tale web application
-				Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(1);
-				uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento());
+				//Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(1);
+				//uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento());
 				request.setAttribute("compilaModulo", true);
 				request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
 			}

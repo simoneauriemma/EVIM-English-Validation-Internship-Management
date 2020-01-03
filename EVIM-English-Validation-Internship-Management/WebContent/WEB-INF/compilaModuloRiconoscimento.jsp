@@ -20,6 +20,7 @@
 			<p id="titolo" class="text-center">Modulo domanda di
 				riconoscimento dei crediti formativi previsti per il tirocinio</p>
 			<hr>
+			<form action="CompilaModuloRiconoscimento" method="post">
 			<div class="row">
 				<div class="col-lg-6">
 					<h6 class="text-center">Dati dello studente</h6>
@@ -117,10 +118,13 @@
 					<div class="scelta-drop">
 						<div class="form-group">
 							<label for="sel2"><i class="fas fa-briefcase"></i> N°CFU
-								tirocinio interno</label> <select class="form-control" id="sel2"
-								name="cfuInterno">
-								<option value="sei" selected>6</option>
-								<option value="undici">11</option>
+								tirocinio interno</label> 
+								<select class="form-control" id="sel2"
+								name="CFUObbligatorio">
+								<option value="0" selected>0</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="11">11</option>
 							</select>
 						</div>
 					</div>
@@ -129,11 +133,10 @@
 						<div class="form-group">
 							<label for="sel3"><i class="fas fa-briefcase"></i> N°CFU
 								tirocinio esterno</label> <select class="form-control" id="sel3"
-								name="cfuEsterno">
-								<option value="sei" selected>6</option>
-								<option value="undici">11</option>
-								<option value="diciasette">17</option>
-								<option value="ventitre">23</option>
+								name="CFUEsterno">
+								<option value="0" selected>0</option>
+								<option value="6">6</option>
+								<option value="12">12</option>
 							</select>
 						</div>
 					</div>
@@ -142,9 +145,9 @@
 						<div class="form-group">
 							<label for="sel3"><i class="fas fa-briefcase"></i> N°CFU
 								accompagnamento al lavoro </label> <select class="form-control"
-								id="sel3" name="cfuEsterno">
-								<option value="zero" selected>0</option>
-								<option value="uno">1</option>
+								id="sel3" name="CFUAccompagnamento">
+								<option value="0" selected>0</option>
+								<option value="1">1</option>
 							</select>
 						</div>
 					</div>
@@ -161,7 +164,7 @@
 							<span class="input-group-text">Ente/Azienda</span>
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
-							aria-describedby="inputGroup-sizing-default" name="azienda"
+							aria-describedby="inputGroup-sizing-default" name="enteAzienda"
 							required>
 					</div>
 					<br>
@@ -171,7 +174,7 @@
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
 							aria-describedby="inputGroup-sizing-default"
-							name="indirizzoAzienda" required>
+							name="indirizzoSede" required>
 					</div>
 					<br>
 					<div class="input-group mb-3">
@@ -180,6 +183,15 @@
 						</div>
 						<input type="text" class="form-control" aria-label="Default"
 							aria-describedby="inputGroup-sizing-default" name="profilo"
+							required>
+					</div>
+					<br>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Tipo Contratto</span>
+						</div>
+						<input type="text" class="form-control" aria-label="Default"
+							aria-describedby="inputGroup-sizing-default" name="tipoContratto"
 							required>
 					</div>
 					<br>
@@ -205,11 +217,13 @@
 					
 				</div>
 			</div>
+		
 			<br>
 
 			<div class="text-center">
-				<button type="button" class="btn btn-outline-secondary">APPROVA</button>
+				<button type="submit" class="btn btn-outline-secondary">APPROVA</button>
 			</div>
+		</form>	
 		</div>
 	</div>
 </div>

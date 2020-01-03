@@ -222,7 +222,7 @@
 					</c:if>
 					
 					<c:if test="${type=='pdcd'}">
-						<li><a href="#"><i class="fas fa-angle-right"></i>
+						<li><a href="VisualizzaElencoModuliRiconoscimento"><i class="fas fa-angle-right"></i>
 								Visualizza e valuta lista richieste riconoscimento </a></li>
 					</c:if>
 				</ul>
