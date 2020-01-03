@@ -15,26 +15,29 @@ public class User {
 	private String via;
 	private String telefono;
 	private String matricola;
+
 	// costruttore vuoto
 	public User() {
-		
+
 	}
 
 	// costruttore pieno
-	public User(String email, String name, String surname, char sex, String password, int userType, String corso,String luogoNascita,String dataDiNascita, String residente, String via, String telefono, String matricola) {
+	public User(String email, String name, String surname, char sex, String password, int userType, String corso,
+			String luogoNascita, String dataDiNascita, String residente, String via, String telefono,
+			String matricola) {
 		this.email = email;
 		this.name = name;
 		this.surname = surname;
 		this.sex = sex;
 		this.password = password;
 		this.userType = userType;
-		this.corso=corso;
-		this.luogoDiNascita=luogoNascita;
-		this.dataDiNascita=dataDiNascita;
-		this.residente=residente;
-		this.via=via;
-		this.telefono=telefono;
-		this.matricola=matricola;
+		this.corso = corso;
+		this.luogoDiNascita = luogoNascita;
+		this.dataDiNascita = dataDiNascita;
+		this.residente = residente;
+		this.via = via;
+		this.telefono = telefono;
+		this.matricola = matricola;
 	}
 
 	// tutti i getter e setter
@@ -142,7 +145,5 @@ public class User {
 	public void setMatricola(String matricola) {
 		this.matricola = matricola;
 	}
-	
-	
-	
+
 }
