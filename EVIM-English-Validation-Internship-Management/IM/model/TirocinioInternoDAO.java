@@ -95,8 +95,8 @@ public class TirocinioInternoDAO {
 			// query per la visualizzazione della pagina da parte dello studente
 			// query per visualizzare le richieste in valutazione
 			String inValutazione = "in approvazione";
-			PreparedStatement ps = con.prepareStatement("select ID_TirocinioEsterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud, Data, OreTotali, status, CFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta from TirocinioEsterno AS tiro \r\n" + 
-					"JOIN User ON tiro.EMAIL = User.EMAIL JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale" + 
+			PreparedStatement ps = con.prepareStatement("select ID_TirocinioEsterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud, Data, OreTotali, status, CFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta from TirocinioEsterno AS tiro " + 
+					"JOIN User ON tiro.EMAIL = User.EMAIL JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale " + 
 					"where status=? AND tiro.ID_TutorAccademico=?");
 			ps.setString(1, inValutazione);
 			ps.setInt(2, IDTutor);
@@ -105,14 +105,14 @@ public class TirocinioInternoDAO {
 
 			while (rs.next()) {
 				TirocinioQueryInternoTutorAcc a = new TirocinioQueryInternoTutorAcc();
-				a.setID_TirocinioInterno(rs.getInt("ID_tirocinioInterno"));
+				a.setID_TirocinioInterno(rs.getInt(1));
 				a.setEMAIL(rs.getString("EMAIL"));
 				a.setNomeStud(rs.getString(3));
 				a.setCognomeStud(rs.getString(4));
 				a.setData(rs.getString("Data"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setStatus(rs.getString("status"));
-				a.setNumeroCFU(rs.getInt("numeroCFU"));
+				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
 				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
 				a.setID_Proposta(rs.getInt("ID_Proposta"));
