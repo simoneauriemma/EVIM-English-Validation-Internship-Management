@@ -16,7 +16,10 @@ public class AttivitaDAO {
 	public ArrayList<Attività> doRetriveAllEsterno(String email) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select ID_Attivita, Attivita.ID_Registro, Descrizione, OrarioIngresso, OrarioUscita, Attivita.FirmaResponsabile from Attivita JOIN Registro on Attivita.ID_Registro=Registro.ID_Registro JOIN TirocinioEsterno ON Registro.ID_Registro=TirocinioEsterno.ID_TirocinioEsterno where TirocinioEsterno.EMAIL=?");
+					"select ID_Attivita, Attivita.ID_Registro, Descrizione, OrarioIngresso, OrarioUscita, Attivita.FirmaResponsabile from Attivita "
+					+ "JOIN Registro on Attivita.ID_Registro=Registro.ID_Registro "
+					+ "JOIN TirocinioEsterno ON Registro.ID_Registro=TirocinioEsterno.ID_TirocinioEsterno"
+					+ " where TirocinioEsterno.EMAIL=?");
 			ps.setString(1, email);
 			ArrayList<Attività> listaAttività = new ArrayList<Attività>();
 			ResultSet rs = ps.executeQuery();

@@ -153,10 +153,7 @@ public class ListaTirocini extends BaseServlet {
 					request.setAttribute("registroQueryEsterno", esterno);
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
-					dispatcher.forward(request, response);
-				
-				
-				
+					dispatcher.forward(request, response);			
 
 			}
 

@@ -139,7 +139,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 		   request.addParameter("email");
 		   request.addParameter("password", "mconcetta1998");
 		   servlet.doPost(request, response);
-		   boolean type=(boolean) request.getAttribute("logged");
+		   boolean type=(boolean) request.getAttribute("loggedTest");
 		   assertFalse(type);
 	  }
 	  
