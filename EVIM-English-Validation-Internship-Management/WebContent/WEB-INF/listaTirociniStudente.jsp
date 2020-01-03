@@ -22,8 +22,8 @@
 		</div>
 		<div class="col-lg-9" id="col-9">
 
-			<p id="titolo" class="text-center">Visualizza lista richieste
-				tirocinio </p>
+			<p id="titolo" class="text-center">Visualizza lista
+				tirocini </p>
 			<hr>
 			<br> <br>
 
@@ -32,7 +32,7 @@
 				<!-- Se la lista di tirocini esterni è vuota esce che non c'è nulla -->
 				<c:if
 					test="${registroQueryEsterno.size() == 0 && registroQueryInterno.size() == 0}">
-					<p>Nessuna richieste di tirocinio è stata effettuata!</p>
+					<p>Nessun tirocinio in corso!</p>
 				</c:if>
 
 

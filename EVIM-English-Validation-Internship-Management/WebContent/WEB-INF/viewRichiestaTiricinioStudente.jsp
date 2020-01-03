@@ -8,7 +8,7 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="stiliCSS/stiliRichiesteTirocinio.css">
 
-<title>Viesualizza richiesta</title>
+<title>Visualizza richieste</title>
 </head>
 <div class="container">
 	<div class="row">
@@ -19,7 +19,7 @@
 
 		<div class="col-lg-9"
 			style="border: 1px solid #d7d7d7; background-color: white;">
-			<p id="titolo" class="text-center">Richiesta di tirocinio
+			<p id="titolo" class="text-center">Richieste di tirocinio
 				curriculare</p>
 			<hr>
 

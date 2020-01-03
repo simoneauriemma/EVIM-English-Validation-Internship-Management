@@ -36,8 +36,8 @@
 						<tr id="colonne" class="text-center">
 							<th scope="col">Numero richiesta</th>
 							<th scope="col">CFU totali</th>
+							<th scope="col">PDF</th>
 							<!-- 	<th scope="col">Status</th> -->
-							<!-- 	<th scope="col">PDF</th> -->
 						</tr>
 					</thead>
 					<c:if test="${elencoRiconoscimento.size() > 0 }">
@@ -47,8 +47,9 @@
 									<th scope="row"><c:out value="${ricon.idRiconoscimento}" /></th>
 									<td><c:out
 											value="${ricon.CFUTirocinioEsterno + ricon.CFUAccompagnamentoLavoro + ricon.CFUTirocinioObbligatorio}" /></td>
-									<td><c:out value="${ricon.idRiconoscimento}" /></td>
-									<td>#</td>
+									<td><button>
+										<i class="fas fa-file-pdf"></i>
+									</button></td>
 								</tr>
 							</tbody>
 						</c:forEach>
@@ -80,7 +81,9 @@
 							<tr class="text-center">
 								<th scope="row">#</th>
 								<td>#</td>
-								<td>#</td>
+								<td><button>
+										<i class="fas fa-file-pdf"></i>
+									</button></td>
 								<td>#</td>
 								<td>
 									<button class="bottone" onclick="#" id="accetta">
