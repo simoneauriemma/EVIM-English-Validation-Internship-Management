@@ -69,7 +69,8 @@
 										<td><c:out value="${esterno.data}" /></td>
 										<td><c:out value="${esterno.orarioIngresso}" /></td>
 										<td><c:out value="${esterno.orarioUscita}" /></td>
-										<td>#</td>
+										<td><c:out value="${esterno.orarioUscita}" />
+											- <c:out value="${esterno.orarioIngresso}" /></td>
 										<td>#</td>
 										<td><select class="form-control" id="sel1" onchange=""
 											name="sel1">
@@ -134,7 +135,8 @@
 										<td><c:out value="${interno.data}" /></td>
 										<td><c:out value="${interno.orarioIngresso}" /></td>
 										<td><c:out value="${interno.orarioUscita}" /></td>
-										<td>#</td>
+										<td><c:out value="${interno.orarioUscita}" />
+											- <c:out value="${interno.orarioIngresso}" /></td>
 										<td>#</td>
 										<td><select class="form-control" id="sel1" onchange=""
 											name="sel1">
