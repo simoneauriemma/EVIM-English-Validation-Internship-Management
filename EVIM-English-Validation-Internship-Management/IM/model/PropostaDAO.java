@@ -169,7 +169,7 @@ public class PropostaDAO {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-
+ 
 	}
 	
 	
@@ -226,7 +226,7 @@ public class PropostaDAO {
 	 */
 	public static boolean insertPropostaInterno(String obiettivi, String competenze,String attivita,String modalita,int idTutorAccademico) {
 		try(Connection con=DriverManagerConnectionPool.getConnection()){
-			PreparedStatement ps=con.prepareStatement("INSERT INTO `evim`.`Proposta` (`Obiettivi`, `Competenze`, `Attivita`, `Modalita`, `ID_Tutor`) VALUES (?, ?, ?, ?,?)");
+			PreparedStatement ps=con.prepareStatement("INSERT INTO `evim`.`Proposta` (`Obiettivi`, `Competenze`, `Attivita`, `Modalita`,`ID_Tutor`) VALUES (?, ?, ?, ?,?)");
 			ps.setString(1, obiettivi);
 			ps.setString(2, competenze );
 			ps.setString(3,attivita);
