@@ -61,10 +61,9 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 			dispatcher.forward(request, response);
 			}
 		else {
-			//int idRiconoscimento=Integer.parseInt(request.getParameter("idRiconoscimento"));
+			int idRiconoscimento=Integer.parseInt(request.getParameter("idRiconoscimento"));
 			String tipoUtente=(String) sessione.getAttribute("utenteLoggato").getClass().getName();
 			if(tipoUtente.equalsIgnoreCase("model.user")) {
-				int idRiconoscimento=1;
 				User studente=(User) sessione.getAttribute("utenteLoggato");
 				File fileRiconoscimento=null;
 				try {
@@ -75,7 +74,8 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 				}
 				
 				String applicazionePath=request.getServletContext().getRealPath("");
-				String downloadFilePath=applicazionePath+File.separator+"moduliRiconoscimenti"+File.separator+idRiconoscimento;
+				System.out.println("applicazione path-->"+applicazionePath);
+				String downloadFilePath=applicazionePath+"moduliRiconoscimenti"+File.separator+idRiconoscimento;
 				
 				System.out.println("Path assoluto del web application-->"+downloadFilePath);
 				File directory= new File(downloadFilePath);

@@ -14,6 +14,7 @@ private int oreSvolte;
 private int CFUTirocinioEsterno;
 private int CFUTirocinioObbligatorio;
 private int CFUAccompagnamentoLavoro;
+private String stato;
 
 private String nomeStudente;
 private String cognomeStudente;
@@ -104,4 +105,12 @@ private String matricolaStudente;
 	public void setCFUAccompagnamentoLavoro(int cFUAccompagnamentoLavoro) {
 		CFUAccompagnamentoLavoro = cFUAccompagnamentoLavoro;
 	}
+	public String getStato() {
+		return stato;
+	}
+	public void setStato(String stato) {
+		this.stato = stato;
+	}
+	
+	
 }

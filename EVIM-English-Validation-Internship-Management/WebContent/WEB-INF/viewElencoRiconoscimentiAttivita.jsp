@@ -44,10 +44,10 @@
 						<c:forEach items="${elencoRiconoscimento}" var="ricon">
 							<tbody>
 								<tr class="text-center">
-									<th scope="row"><c:out value="${ricon.idRiconoscimento}" /></th>
+									<th scope="row"><c:out value="${ricon.idRiconoscimento}"/></th>
 									<td><c:out
 											value="${ricon.CFUTirocinioEsterno + ricon.CFUAccompagnamentoLavoro + ricon.CFUTirocinioObbligatorio}" /></td>
-									<td><button>
+									<td><button onclick="location.href='VisualizzaModuloRiconoscimento?idRiconoscimento=${ricon.idRiconoscimento}'">
 										<i class="fas fa-file-pdf"></i>
 									</button></td>
 								</tr>

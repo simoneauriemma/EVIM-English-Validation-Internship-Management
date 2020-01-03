@@ -31,7 +31,7 @@ public class RiconoscimentoDao {
 	 */
 	public static boolean insertRiconoscimenot(String emailUser,String enteAzienda, String indirizzoSede,String profilo,String tipoContratto,String periodo,int oreSvolte,int CFUTirocinioObbligatorio,int CFUTirocinioEsterno, int CFUAccompagnmento) {
 		try(Connection con=DriverManagerConnectionPool.getConnection()){
-			PreparedStatement ps=con.prepareStatement("INSERT INTO `evim`.`Riconoscimento` (`Email_User`, `Ente_Azienda`, `Profilo`, `Indirizzo_Sede`, `Tipo_Contratto`, `Periodo`, `Ore_Svolte`, `CFU_TirocinioObbligatorio`, `CFU_TirocinioEsterno`,`CFU_AccompagnamentoLavoro`) VALUES (?,?,?, ?, ?, ?, ?, ?, ?,?)");
+			PreparedStatement ps=con.prepareStatement("INSERT INTO `evim`.`Riconoscimento` (`Email_User`, `Ente_Azienda`, `Profilo`, `Indirizzo_Sede`, `Tipo_Contratto`, `Periodo`, `Ore_Svolte`, `CFU_TirocinioObbligatorio`, `CFU_TirocinioEsterno`,`CFU_AccompagnamentoLavoro`,`Stato`) VALUES (?,?,?, ?, ?, ?, ?, ?, ?,?,'V')");
 			ps.setString(1, emailUser);
 			ps.setString(2, enteAzienda);
 			ps.setString(3,profilo);
@@ -76,6 +76,7 @@ public class RiconoscimentoDao {
 			moduloRiconoscimento.setCFUTirocinioObbligatorio(rs.getInt(9));
 			moduloRiconoscimento.setCFUTirocinioEsterno(rs.getInt(10));
 			moduloRiconoscimento.setCFUAccompagnamentoLavoro(rs.getInt(11));
+			moduloRiconoscimento.setStato(rs.getString(12));
 			
 			return moduloRiconoscimento;
 			
@@ -159,7 +160,7 @@ public class RiconoscimentoDao {
 
 	public static boolean changeStatoModulo(int idRiconoscimento, String modifica) {
 		try(Connection con=DriverManagerConnectionPool.getConnection()){
-			PreparedStatement ps=con.prepareStatement("UPDATE `evim`.`riconoscimento` SET `Stato` = 'R' WHERE (`ID_Riconoscimento` = ?)");
+			PreparedStatement ps=con.prepareStatement("UPDATE `evim`.`riconoscimento` SET `Stato` = ? WHERE (`ID_Riconoscimento` = ?)");
 			ps.setString(1, modifica);
 			ps.setInt(2, idRiconoscimento);
 			
