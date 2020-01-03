@@ -211,20 +211,24 @@
 
 				<ul id="collapse-1" class="collapse" aria-expanded="false"
 					style="height: 0px;">
+					
 					<c:if test="${type =='studente'}">
 						<li><a href="VisualizzaCompilaModuloRiconoscimento"><i class="fas fa-angle-right"></i>
 								Compila modulo riconoscimento </a></li>
-						<li><a href="#"><i class="fas fa-angle-right"></i>
+						<li><a href="VisualizzaElencoModuliRiconoscimento"><i class="fas fa-angle-right"></i>
 								Visualizza richieste riconoscimento </a></li>
 						<li><a href="#"><i class="fas fa-angle-right"></i>
 								Modifica modulo riconoscimento</a></li>
 					</c:if>
+					
 					<c:if test="${type=='pdcd'}">
 						<li><a href="#"><i class="fas fa-angle-right"></i>
 								Visualizza e valuta lista richieste riconoscimento </a></li>
 					</c:if>
 				</ul>
 			</c:if>
+			<!-- FINE Gestione riconoscimento attività -->
+
 
 			<!-- INIZIO gestione account tutor -->
 			<c:if test="${type == 'azienda' }">

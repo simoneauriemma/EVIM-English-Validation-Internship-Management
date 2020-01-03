@@ -22,7 +22,7 @@
 		</div>
 		<div class="col-lg-9" id="col-9">
 
-			<p id="titolo" class="text-center">Visualizza lista richieste
+			<p id="titolo" class="text-center">Visualizza lista
 				tirocinio</p>
 			<hr>
 
