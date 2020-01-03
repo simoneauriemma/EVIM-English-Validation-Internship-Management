@@ -14,8 +14,8 @@ Luogo_Nascita char(100) not null,
 Data_Nascita varchar(100) not null,
 Residente varchar(100) not null,
 Via varchar(100),
-Telefono int not null,
-Matricola int not null,
+Telefono varchar(15) NOT NULL,
+Matricola varchar(11) NOT NULL,
 primary key (EMAIL)
 );
 
@@ -96,11 +96,20 @@ Ore_Svolte int not null,
 CFU_TirocinioObbligatorio int not null,
 CFU_TirocinioEsterno int not null,
 CFU_AccompagnamentoLavoro int not null,
-
 primary key(ID_Riconoscimento),
 foreign key(Email_User) references User(EMAIL)
 ON UPDATE CASCADE
 ON DELETE CASCADE
+);
+
+CREATE TABLE referente_aziendale (
+  `CF` varchar(17) NOT NULL,
+  `nome` varchar(20) NOT NULL,
+  `cognome` varchar(20) NOT NULL,
+  `luogo_nascita` varchar(50) NOT NULL,
+  `data_nascita` varchar(10) NOT NULL,
+  `ruolo` varchar(50) NOT NULL,
+  PRIMARY KEY (`CF`)
 );
 
 create table Azienda(
@@ -113,6 +122,12 @@ Email varchar(50),
 SitoWeb varchar(40),
 Indirizzo varchar(100) not null,
 Descizione varchar(500) not null,
+Numero_Dipendenti varchar(30) not null,
+Codice_Ateco varchar(10) not null,
+CF_Referente varchar(17) not null, 
+foreign key(CF_Referente) references referente_aziendale(CF)
+ON UPDATE cascade
+ON DELETE CASCADE,
 primary key(ID_Azienda,CF) 
 );
 
@@ -147,6 +162,7 @@ FOREIGN KEY(ID_Azienda) REFERENCES Azienda(ID_Azienda)
 ON UPDATE CASCADE
 ON DELETE CASCADE
 );
+
 create table TutorAccademico(
 ID_TutorAccademico int not null auto_increment,
 Nome varchar(20) not null,
@@ -157,6 +173,7 @@ email varchar(50) not null,
 Telefono varchar(30),
 primary key(ID_TutorAccademico)
 );
+
 create table TirocinioInterno(
 ID_TirocinioInterno int not null auto_increment,
 EMAIL varchar(50) not null,
@@ -217,6 +234,7 @@ Status varchar(20) not null,
 FirmaResponsabile boolean not null DEFAULT false,
 FirmaTutorAccamico boolean not null DEFAULT false,
 Tipo varchar(20) not null,
+OreRaggiunte int not null default 0,
 primary key(ID_Registro)
 );
 
@@ -226,7 +244,9 @@ ID_Registro int not null,
 Descrizione varchar(200) not null,
 OrarioIngresso int not null,
 OrarioUscita int not null,
+OreSvolte int not null,
 FirmaResponsabile boolean not null DEFAULT false,
+data varchar(20) not null,
 primary key(ID_Attivita),
 foreign key(ID_Registro) references Registro(ID_registro)
 ON UPDATE cascade
