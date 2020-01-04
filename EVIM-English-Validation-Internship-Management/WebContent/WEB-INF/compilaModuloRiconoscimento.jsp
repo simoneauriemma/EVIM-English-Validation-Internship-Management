@@ -110,8 +110,8 @@
 							<label for="sel1"><i class="fas fa-briefcase"></i> N°CFU
 								totali da riconoscere </label> <input type="text" class="form-control"
 								aria-label="Default"
-								aria-describedby="inputGroup-sizing-default" name="oreSvolte"
-								required>
+								aria-describedby="inputGroup-sizing-default" id="oreSvolte" name="oreSvolte"
+								required disabled value=0>
 						</div>
 					</div>
 
@@ -120,7 +120,7 @@
 							<label for="sel2"><i class="fas fa-briefcase"></i> N°CFU
 								tirocinio interno</label> 
 								<select class="form-control" id="sel2"
-								name="CFUObbligatorio">
+								name="CFUObbligatorio" onchange="aggiornoCFUObbligatorio(this.value)">
 								<option value="0" selected>0</option>
 								<option value="5">5</option>
 								<option value="6">6</option>
@@ -133,7 +133,7 @@
 						<div class="form-group">
 							<label for="sel3"><i class="fas fa-briefcase"></i> N°CFU
 								tirocinio esterno</label> <select class="form-control" id="sel3"
-								name="CFUEsterno">
+								name="CFUEsterno" onchange="aggiornoCFUEsterno(this.value)">
 								<option value="0" selected>0</option>
 								<option value="6">6</option>
 								<option value="12">12</option>
@@ -145,7 +145,7 @@
 						<div class="form-group">
 							<label for="sel3"><i class="fas fa-briefcase"></i> N°CFU
 								accompagnamento al lavoro </label> <select class="form-control"
-								id="sel3" name="CFUAccompagnamento">
+								id="sel3" name="CFUAccompagnamento" onchange="aggiornoCFUAccompagnamento(this.value)" >
 								<option value="0" selected>0</option>
 								<option value="1">1</option>
 							</select>
@@ -233,5 +233,40 @@
 
 
 <script>
+var cfuEsterno=0;
+var cfuObbligatorio=0;
+var cfuAccompagnamento=0;
+var totCFUdisponibili=12;6
+	function aggiornoCFUObbligatorio(numeroCFU){
+		var nodoCFU=document.getElementById("oreSvolte");
+		
+		var numeroCFUObbligatorio=parseInt(nodoCFU.value);
+		var numeroCFUTMP=parseInt(numeroCFU);
+		
+		nodoCFU.value=numeroCFUTMP+cfuEsterno+cfuAccompagnamento;
+		cfuObbligatorio=parseInt(numeroCFU);
+	}
+	
+	function aggiornoCFUEsterno(numeroCFU){
+		var nodoCFU=document.getElementById("oreSvolte");
+		
+		var numeroCFUEsterno=parseInt(nodoCFU.value);
+		var numeroCFUTMP=parseInt(numeroCFU);
+		
+		nodoCFU.value=cfuObbligatorio+numeroCFUTMP+cfuAccompagnamento;
+		cfuEsterno=parseInt(numeroCFU);
+	}
+	
+	function aggiornoCFUAccompagnamento(numeroCFU){
+		var nodoCFU=document.getElementById("oreSvolte");
+		
+		var numeroCFUOAccompagnamento=parseInt(nodoCFU.value);
+		var numeroCFUTMP=parseInt(numeroCFU);
+		
+		nodoCFU.value=cfuObbligatorio+cfuEsterno+parseInt(numeroCFU);
+		
+		cfuAccompagnamento=parseInt(numeroCFU);
+	}
+	
 	
 </script>

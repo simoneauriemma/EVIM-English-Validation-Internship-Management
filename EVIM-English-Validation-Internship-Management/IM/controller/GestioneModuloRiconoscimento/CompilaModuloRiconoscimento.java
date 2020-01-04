@@ -68,8 +68,8 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 			}
 			else {
 				// prendo i file allegati dallo studente salvando i file nella directory di tale web application
-				//Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(1);
-				//uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento());
+				Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(1);
+				uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento());
 				request.setAttribute("compilaModulo", true);
 				request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
 			}
