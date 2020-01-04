@@ -14,11 +14,6 @@ import model.TutorAccademicoDAO;
 import model.User;
 import model.UserDAO;
 
-// aggiungere controllo provincie ==2
-// comune di residenza e di nascita... pattern di soli caratteri min e maiusc
-// regex password
-// controllo sul sesso
-// password tutor accademico aumentare a 50;
 
 /**
  * Servlet implementation class Registrazione
@@ -79,12 +74,11 @@ public class Registrazione extends BaseServlet {
 			if (email.matches(regexDocente)) { // controllo del formato e lunghezza caratteri
 				// controllo la bontà dei dati
 				if (password.equals(cpassword) 
-						&& nome.length() > 1 
-						&& cognome.length() > 1 
-						&& password.length() > 7
-						&& nome.length() < 21
-						&& cognome.length() < 21 
-						&& sesso != "" 
+						&& nome.matches(regexNome)
+						&& cognome.matches(regexCognome)
+						&& password.matches(regexPassword)
+					
+						&& sesso.matches(regexSesso)
 						&& email.length() < 51) {
 
 					result = TutorAccademicoDAO.insertNewTutorAccademico(nome, cognome, cpassword, sesso, email);
