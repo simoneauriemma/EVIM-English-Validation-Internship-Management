@@ -79,12 +79,12 @@
 					<c:forEach items="${elencoRiconoscimento}" var="ricon">
 						<tbody>
 							<tr class="text-center">
-								<th scope="row">#</th>
-								<td>#</td>
+								<th scope="row"><c:out value="${ricon.idRiconoscimento}"/></th>
+								<td><c:out value="${ricon.CFUTirocinioEsterno + ricon.CFUAccompagnamentoLavoro + ricon.CFUTirocinioObbligatorio}"/></td>
 								<td><button>
 										<i class="fas fa-file-pdf"></i>
 									</button></td>
-								<td>#</td>
+								<td><c:out value="${ricon.stato}"></c:out></td>
 								<td>
 									<button class="bottone" onclick="#" id="accetta">
 										<i class="fas fa-info-circle"></i>
@@ -92,14 +92,16 @@
 								</td>
 
 								<c:if test="${type=='pdcd'}">
+								<c:if test="${ricon.stato eq 'V'}">
 									<td>
-										<button class="bottone" onclick="#" id="accetta">
+										<button class="bottone" onclick="windows.location='ApprovaRifiutoModuloRiconoscimento?modifica=approva'" id="accetta">
 											<i class="fas fa-check-square"></i>
 										</button>
-										<button class="bottone" onclick="#" id="rifiuta">
+										<button class="bottone" onclick="windows.location='ApprovaRifiutoModuloRiconoscimento?modifica=rifiuta'" id="rifiuta">
 											<i class="far fa-times-circle"></i>
 										</button>
 									</td>
+									</c:if>
 								</c:if>
 							</tr>
 						</tbody>
