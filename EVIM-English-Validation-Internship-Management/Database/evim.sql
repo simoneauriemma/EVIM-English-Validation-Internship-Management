@@ -572,9 +572,9 @@ DROP TABLE IF EXISTS `tutoraccademico`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tutoraccademico` (
   `ID_TutorAccademico` int(11) NOT NULL AUTO_INCREMENT,
-  `Nome` varchar(20) NOT NULL,
-  `Cognome` varchar(20) NOT NULL,
-  `Password` varchar(20) DEFAULT NULL,
+  `Nome` varchar(50) NOT NULL,
+  `Cognome` varchar(50) NOT NULL,
+  `Password` varchar(50) DEFAULT NULL,
   `sex` char(1) NOT NULL,
   `email` varchar(50) NOT NULL,
 
