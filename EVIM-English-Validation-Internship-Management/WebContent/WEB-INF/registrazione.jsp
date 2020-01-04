@@ -275,11 +275,11 @@ margin-right: 5px;
 			var resultRegexCPass = $('#resultRegexCPass');
 			//nome
 			var nome = $('#name');
-			var regex_nome = new RegExp('^[A-Za-z]{2,50}');
+			var regex_nome = new RegExp('^[A-Za-z]{1,50}');
 			var resultRegexNome = $('#resultRegexNome');
 			//cognome
 			var cognome = $('#surname');
-			var regex_cognome = new RegExp('^[A-Za-z]{2,50}');
+			var regex_cognome = new RegExp('^[A-Za-z]{1,50}');
 			var resultRegexCognome = $('#resultRegexCognome');
 
 			//email
@@ -309,14 +309,14 @@ margin-right: 5px;
 			//indirizzo
 			var indirizzo=$('#indirizzo');
 			var resultRegexIndirizzo = $('#resultRegexIndirizzo');
-			var regex_indirizzo= new RegExp('^[A-Za-z0-9]{2,}');
+			var regex_indirizzo= new RegExp('^[a-z A-Z]+.[1-9]+{1,100}');
 			//luogonascita
 			var luogonascita= $('#luogonascita');
-			var regex_luogonascita=  new RegExp('^[A-Za-z0-9]{2,50}');
+			var regex_luogonascita=  new RegExp('^[A-Za-z]{1,50}');
 			var resultRegexLuogoNascita= ${'resultRegexLuogoNascita'};
 			//luogoresidenza
 				var luogoresidenza= $('#luogoresidenza');
-			var regex_luogoresidenza=  new RegExp('^[A-Za-z0-9]{2,50}');
+			var regex_luogoresidenza=  new RegExp('^[A-Za-z]{1,50}');
 			var resultRegexLuogoResidenza= ${'resultRegexLuogoResidenza'};
 	
 			
