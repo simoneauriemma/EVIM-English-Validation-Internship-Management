@@ -58,10 +58,13 @@ public class RiconoscimentoDao {
 	 * @param idModuloRiconoscimento, id del campo chiave dell'entity Riconoscimento per fare una ricerca univoca nel Database.
 	 * @return un modulo di riconoscimento di attività lavorativa 
 	 */
-	public static  Riconoscimento getModuloRiconoscimento(int idModuloRiconoscimento) {
+	public static  Riconoscimento getModuloRiconoscimento(String emailUser) {
 		try(Connection con=DriverManagerConnectionPool.getConnection()){
-			PreparedStatement ps=con.prepareStatement("SELECT * FROM evim.Riconoscimento WHERE ID_Riconoscimento=?;");
-			ps.setInt(1, idModuloRiconoscimento);
+			PreparedStatement ps=con.prepareStatement("SELECT * \n" + 
+					"FROM evim.riconoscimento\n" + 
+					"WHERE Email_User=?\n" + 
+					"order by ID_Riconoscimento DESC LIMIT 1;");
+			ps.setString(1, emailUser);
 			ResultSet rs=ps.executeQuery();
 			rs.next();
 			Riconoscimento moduloRiconoscimento=new Riconoscimento();

@@ -2,9 +2,14 @@ package controller.GestioneModuloRiconoscimento;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
 
 import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,9 +26,12 @@ import model.User;
  * Questa servlet crea il modulo dsi riconoscimento prendendo dei parametri dal form ricevutosi.
  */
 @WebServlet("/CompilaModuloRiconoscimento")
+@MultipartConfig(fileSizeThreshold = 1024*1024*10,
+					maxFileSize = 1024*1024*50,
+					maxRequestSize = 1024*1024*100)
 public class CompilaModuloRiconoscimento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+ 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		getServletContext().getRequestDispatcher("/permissionDenied.jsp").forward(request, response);
 		
@@ -51,39 +59,99 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/permissionDenied.jsp");
 				dispatcher.forward(request, response);
 			}
-			String emailStudente=utente.getEmail();
-			String enteAzienda=request.getParameter("enteAzienda");
-			String indirizzoSede=request.getParameter("indirizzoSede");
-			String profilo=request.getParameter("profilo");
-			String tipoContratto=request.getParameter("tipoContratto");
-			String periodo=request.getParameter("periodo");
-			int oreSvolte=Integer.parseInt(request.getParameter("oreSvolte"));
-			int CFUTirocinioObbligatorio=Integer.parseInt(request.getParameter("CFUObbligatorio"));
-			int CFUTirocinioEsterno=Integer.parseInt(request.getParameter("CFUEsterno"));
-			int CFUAccompagnamento=Integer.parseInt(request.getParameter("CFUAccompagnamento"));
-			
-			// prendo tutti i campi dal form e inserisco nei rispettivi campi nel Database
-			if(!RiconoscimentoDao.insertRiconoscimenot(emailStudente, enteAzienda, indirizzoSede, profilo, tipoContratto, periodo, oreSvolte, CFUTirocinioObbligatorio, CFUTirocinioEsterno, CFUAccompagnamento)) {
-				request.setAttribute("compilaModulo", false);
-			}
 			else {
-				// prendo i file allegati dallo studente salvando i file nella directory di tale web application
-				Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(1);
-				uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento());
-				request.setAttribute("compilaModulo", true);
-				request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
+				String emailStudente=utente.getEmail();
+				String enteAzienda = null;
+				String indirizzoSede=null;
+				
+				String profilo=null;
+				String tipoContratto=null;
+				String periodo=null;
+				int oreSvolte=-1;
+				
+				int cfuTirocinioObbligatorio=-1;
+				int cfuTirocinioEsterno=-1;
+				int cfuAccompagnamento=-1;
+				
+				ArrayList<filesNamesWithPart> filePartNames= new ArrayList<filesNamesWithPart>();
+				
+				InputStream inputStream;
+				for(Part part: request.getParts()) {
+						String nome=part.getName();
+						System.out.println("Nome-->"+nome);
+						
+						inputStream = request.getPart(part.getName()).getInputStream();
+						int i=inputStream.available();
+						byte[] stringhe= new byte[i];
+						inputStream.read(stringhe);
+						String valore=new String(stringhe);
+						System.out.println("il valore-->"+valore);
+						
+						if(nome.equalsIgnoreCase("file1[]")) {
+							String nomeFile=getFileName(part);
+							filePartNames.add(new filesNamesWithPart(part, nomeFile));
+						}
+						
+						switch (nome) {
+							case "enteAzienda":
+								 enteAzienda=valore;
+								break;
+							case "indirizzoSede":
+								 indirizzoSede=valore;
+								break;
+							case "profilo":
+								 profilo=valore;
+								break;
+							case "tipoContratto":
+								 tipoContratto=valore;
+								break;
+							case "periodo":
+								 periodo=valore;
+								break;
+							case "oreSvolte":
+								 oreSvolte=Integer.parseInt(valore);
+								break;
+							case "CFUObbligatorio":
+								 cfuTirocinioObbligatorio=Integer.parseInt(valore);
+								break;
+							case "CFUEsterno":
+								 cfuTirocinioEsterno=Integer.parseInt(valore);
+								break;
+							case "CFUAccompagnamento":
+								 cfuAccompagnamento=Integer.parseInt(valore);
+								break;
+							default: 
+								break;
+						}
+				}
+				
+			
+				// prendo tutti i campi dal form e inserisco nei rispettivi campi nel Database
+				if(!RiconoscimentoDao.insertRiconoscimenot(emailStudente, enteAzienda, indirizzoSede, profilo, tipoContratto, periodo, oreSvolte, cfuTirocinioObbligatorio, cfuTirocinioEsterno, cfuAccompagnamento)) {
+					request.setAttribute("compilaModulo", false);
+					request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
+				}
+				else {
+					// prendo i file allegati dallo studente salvando i file nella directory di tale web application
+					Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(utente.getEmail());
+					uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento(),filePartNames);
+					request.setAttribute("compilaModulo", true);
+					request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
+				}
 			}
-		}
+		}	
 	}
 
 
-	private void uploadFile(HttpServletRequest request, HttpServletResponse response,int idRiconoscimento) throws IOException, ServletException {
+
+
+	private void uploadFile(HttpServletRequest request, HttpServletResponse response,int idRiconoscimento,ArrayList<filesNamesWithPart> files) throws IOException, ServletException {
 	// prendiamo il path solluto di tale web application
 	String applicazionePath=request.getServletContext().getRealPath("");
 	// costruiamo la directory la quale viene salvato il file
 	String uploadFilePath=applicazionePath+File.separator+"moduliRiconoscimenti"+File.separator+idRiconoscimento;
 	
-	// creiamo la directory se non esiste 
+	// creiamo la directory se non esiste
 	File directoryPadre=new File(uploadFilePath);
 	if(!directoryPadre.exists()) {
 		directoryPadre.mkdirs();
@@ -91,15 +159,27 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 	}
 	System.out.println("Upload File Directory="+directoryPadre.getAbsolutePath());
 	
-	//Poiche nel form l'enctype è multipart, prendiamo tutte le parti nella request. Quindi se uno studente manda due file, con questo pezzo di codice inseriamo tali due file nella directory giusta.
-	for(Part part: request.getParts()) {
-		String fileName= getFileName(part);
-		if(!fileName.equals(""))
-				part.write(uploadFilePath+File.separator+fileName);
+	for(filesNamesWithPart file: files) {
+		System.out.println("nome-->"+file.getFileName());
+		System.out.println("part nome-->"+file.getPartFile().getName());
 	}
 	
-	request.setAttribute("message", "File uploaded successo");
-	request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
+	for(filesNamesWithPart file: files) {
+		if(!file.getFileName().equals("")) {
+			file.getPartFile().write(uploadFilePath+File.separator+file.getFileName());
+		}
+	}
+	
+	//Poiche nel form l'enctype è multipart, prendiamo tutte le parti nella request. Quindi se uno studente manda due file, con questo pezzo di codice inseriamo tali due file nella directory giusta.
+	/*for(Part part: request.getParts()) {
+		String fileName= getFileName(part);
+		System.out.println("prendo i file"+fileName);
+		if(!fileName.equals(""))
+				part.write(uploadFilePath+File.separator+fileName);
+	}*/
+	
+	
+	
 	
 	}
 	
@@ -117,4 +197,23 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 		return "";
 	}
 
+	class filesNamesWithPart{
+		Part partFile;
+		String fileName;
+		
+		filesNamesWithPart(Part part, String fileName){
+			this.partFile=part;
+			this.fileName=fileName;
+		}
+
+		public Part getPartFile() {
+			return partFile;
+		}
+
+		public String getFileName() {
+			return fileName;
+		}
+		
+		
+	}
 }
