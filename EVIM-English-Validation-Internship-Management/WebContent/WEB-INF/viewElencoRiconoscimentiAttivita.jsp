@@ -29,84 +29,95 @@
 				<p>Non ci sono richieste di riconoscimento attività!</p>
 			</c:if>
 
-			<!-- inizio lista richieste riconoscimento da parte dello STUDENTE -->
-			<c:if test="${type== 'studente' }">
-				<table class="table table-striped" id="tabella">
-					<thead>
-						<tr id="colonne" class="text-center">
-							<th scope="col">Numero richiesta</th>
-							<th scope="col">CFU totali</th>
-							<th scope="col">PDF</th>
-							<!-- 	<th scope="col">Status</th> -->
-						</tr>
-					</thead>
-					<c:if test="${elencoRiconoscimento.size() > 0 }">
-						<c:forEach items="${elencoRiconoscimento}" var="ricon">
-							<tbody>
-								<tr class="text-center">
-									<th scope="row"><c:out value="${ricon.idRiconoscimento}"/></th>
-									<td><c:out
-											value="${ricon.CFUTirocinioEsterno + ricon.CFUAccompagnamentoLavoro + ricon.CFUTirocinioObbligatorio}" /></td>
-									<td><button onclick="location.href='VisualizzaModuloRiconoscimento?idRiconoscimento=${ricon.idRiconoscimento}'">
-										<i class="fas fa-file-pdf"></i>
-									</button></td>
-								</tr>
-							</tbody>
-						</c:forEach>
-					</c:if>
-				</table>
+
+			<c:if test="${elencoRiconoscimento.size() > 0 }">
+				<!-- inizio lista richieste riconoscimento da parte dello STUDENTE -->
+				<c:if test="${type== 'studente' }">
+					<table class="table table-striped" id="tabella">
+						<thead>
+							<tr id="colonne" class="text-center">
+								<th scope="col">Numero richiesta</th>
+								<th scope="col">CFU totali</th>
+								<th scope="col">PDF</th>
+								<!-- 	<th scope="col">Status</th> -->
+							</tr>
+						</thead>
+						<c:if test="${elencoRiconoscimento.size() > 0 }">
+							<c:forEach items="${elencoRiconoscimento}" var="ricon">
+								<tbody>
+									<tr class="text-center">
+										<th scope="row"><c:out value="${ricon.idRiconoscimento}" /></th>
+										<td><c:out
+												value="${ricon.CFUTirocinioEsterno + ricon.CFUAccompagnamentoLavoro + ricon.CFUTirocinioObbligatorio}" /></td>
+										<td><button
+												onclick="location.href='VisualizzaModuloRiconoscimento?idRiconoscimento=${ricon.idRiconoscimento}'">
+												<i class="fas fa-file-pdf"></i>
+											</button></td>
+									</tr>
+								</tbody>
+							</c:forEach>
+						</c:if>
+					</table>
+				</c:if>
 			</c:if>
 			<!-- fine parte STUDENTEeee -->
 
 
 
 			<!--  inizio lista richieste riconoscimento da parte dello PDCD e UFF-CARR -->
-			<c:if test="${type=='pdcd'}">
-				<!-- da agiungere l'uff carr -->
-				<table class="table table-striped" id="tabella">
-					<thead>
-						<tr id="colonne" class="text-center">
-							<th scope="col">Numero richiesta</th>
-							<th scope="col">CFU totali</th>
-							<th scope="col">PDF</th>
-							<th scope="col">Status</th>
+			<c:if test="${elencoRiconoscimento.size() > 0 }">
+				<c:if test="${type=='pdcd'}">
+					<!-- da agiungere l'uff carr -->
+					<table class="table table-striped" id="tabella">
+						<thead>
+							<tr id="colonne" class="text-center">
+								<th scope="col">Numero richiesta</th>
+								<th scope="col">CFU totali</th>
+								<th scope="col">PDF</th>
+								<th scope="col">Status</th>
 
-							<th scope="col">Info richiesta</th>
-							<th scope="col">Valuta</th>
-						</tr>
-					</thead>
-					<!-- PARTIRE DA QUI CON IN C:FOR -->
-					<c:forEach items="${elencoRiconoscimento}" var="ricon">
-						<tbody>
-							<tr class="text-center">
-								<th scope="row"><c:out value="${ricon.idRiconoscimento}"/></th>
-								<td><c:out value="${ricon.CFUTirocinioEsterno + ricon.CFUAccompagnamentoLavoro + ricon.CFUTirocinioObbligatorio}"/></td>
-								<td><button>
-										<i class="fas fa-file-pdf"></i>
-									</button></td>
-								<td><c:out value="${ricon.stato}"></c:out></td>
-								<td>
-									<button class="bottone" onclick="#" id="accetta">
-										<i class="fas fa-info-circle"></i>
-									</button>
-								</td>
-
-								<c:if test="${type=='pdcd'}">
-								<c:if test="${ricon.stato eq 'V'}">
+								<th scope="col">Info richiesta</th>
+								<th scope="col">Valuta</th>
+							</tr>
+						</thead>
+						<!-- PARTIRE DA QUI CON IN C:FOR -->
+						<c:forEach items="${elencoRiconoscimento}" var="ricon">
+							<tbody>
+								<tr class="text-center">
+									<th scope="row"><c:out value="${ricon.idRiconoscimento}" /></th>
+									<td><c:out
+											value="${ricon.CFUTirocinioEsterno + ricon.CFUAccompagnamentoLavoro + ricon.CFUTirocinioObbligatorio}" /></td>
+									<td><button>
+											<i class="fas fa-file-pdf"></i>
+										</button></td>
+									<td><c:out value="${ricon.stato}"></c:out></td>
 									<td>
-										<button class="bottone" onclick="windows.location='ApprovaRifiutoModuloRiconoscimento?modifica=approva'" id="accetta">
-											<i class="fas fa-check-square"></i>
-										</button>
-										<button class="bottone" onclick="windows.location='ApprovaRifiutoModuloRiconoscimento?modifica=rifiuta'" id="rifiuta">
-											<i class="far fa-times-circle"></i>
+										<button class="bottone" onclick="#" id="accetta">
+											<i class="fas fa-info-circle"></i>
 										</button>
 									</td>
+
+									<c:if test="${type=='pdcd'}">
+										<c:if test="${ricon.stato eq 'V'}">
+											<td>
+												<button class="bottone"
+													onclick="windows.location='ApprovaRifiutoModuloRiconoscimento?modifica=approva'"
+													id="accetta">
+													<i class="fas fa-check-square"></i>
+												</button>
+												<button class="bottone"
+													onclick="windows.location='ApprovaRifiutoModuloRiconoscimento?modifica=rifiuta'"
+													id="rifiuta">
+													<i class="far fa-times-circle"></i>
+												</button>
+											</td>
+										</c:if>
 									</c:if>
-								</c:if>
-							</tr>
-						</tbody>
-					</c:forEach>
-				</table>
+								</tr>
+							</tbody>
+						</c:forEach>
+					</table>
+				</c:if>
 			</c:if>
 
 
