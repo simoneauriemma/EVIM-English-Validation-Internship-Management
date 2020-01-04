@@ -20,7 +20,7 @@
 			<p id="titolo" class="text-center">Modulo domanda di
 				riconoscimento dei crediti formativi previsti per il tirocinio</p>
 			<hr>
-			<form action="CompilaModuloRiconoscimento" method="post">
+			<form action="CompilaModuloRiconoscimento" method="post" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-lg-6">
 						<h6 class="text-center">Dati dello studente</h6>
