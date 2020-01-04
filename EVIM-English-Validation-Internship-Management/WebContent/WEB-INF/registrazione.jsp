@@ -111,9 +111,9 @@ margin-right: 5px;
 													placeholder="Email" autocomplete="off">
 													<p id='resultRegexEmail'></p></td>
 												<td><div style="margin-left: 29px;">
-														Sesso : <input name="sesso" type="radio" id="radio1"
+														Sesso : <input name="sesso" type="radio" id="radio1" value="m"
 															checked> <label for="radio1">M</label> <input
-															name="sesso" type="radio" id="radio2"> <label
+															name="sesso" type="radio" value="f" id="radio2"> <label
 															for="radio2">F</label>
 
 													</div></td>
@@ -182,7 +182,7 @@ margin-right: 5px;
 
 													<div class="form-group">
 														<input type="text" class="form-control"
-													id="comune" name="comune"
+													id="comune" name="comuneN"
 													placeholder="Inserisci comune" autocomplete="off">
 															
 													</div>
@@ -193,7 +193,7 @@ margin-right: 5px;
 														 <select name="provinciaN"
 															class="form-control" id="prov">
 															<c:forEach items="${sigle}" var="sigla">
-															<option><c:out value="${sigla}"></c:out></option>
+															<option value="${sigla}"><c:out value="${sigla}"></c:out></option>
 															</c:forEach>
 														</select>
 														<p id="resultRegexLuogoNascita"> </p>
@@ -209,7 +209,7 @@ margin-right: 5px;
 												<td>
 													<div class="form-group">
 														<input type="text" class="form-control"
-													id="comune" name="comune"
+													id="comune" name="comuneR"
 													placeholder="Inserisci comune" autocomplete="off">
 													</div>
 												</td>
@@ -309,7 +309,7 @@ margin-right: 5px;
 			//indirizzo
 			var indirizzo=$('#indirizzo');
 			var resultRegexIndirizzo = $('#resultRegexIndirizzo');
-			var regex_indirizzo= new RegExp('^[a-z A-Z]+.[1-9]+{1,100}');
+			var regex_indirizzo= new RegExp('^[a-z A-Z]+.[1-9]{1,100}');
 			//luogonascita
 			var luogonascita= $('#luogonascita');
 			var regex_luogonascita=  new RegExp('^[A-Za-z]{1,50}');
@@ -379,7 +379,7 @@ margin-right: 5px;
 				r = false;
 			}
 			
-			if(regex_matricola.test(matricola.val()) && regex_email_studente.test(email.val())){
+			if(!regex_matricola.test(matricola.val()) && regex_email_studente.test(email.val())){
 				matricola.css("color", "red");
 				resultRegexMatricola.text("Inserire una matricola valida");
 				resultRegexMatricola.css("color", "red");
@@ -390,14 +390,14 @@ margin-right: 5px;
 			if(!regex_telefono.test(telefono.val())&& regex_email_studente.test(email.val())){
 				telefono.css("color", "red");
 				resultRegexTelefono.text("inserire un numero di telefono valido");
-				resultRegexIndirizzo.css("color", "red");
+				resultRegexTelefono.css("color", "red");
 				r=false;
 			}
 			
 			if(!regex_indirizzo.test(indirizzo.val())&& regex_email_studente.test(email.val())){
-				telefono.css("color", "red");
-				resultRegexTelefono.text("inserire un numero di indirizzo valido");
-				resultRegexTelefono.css("color", "red");
+				indirizzo.css("color", "red");
+				resultRegexIndirizzo.text("inserire un numero di indirizzo valido");
+				resultRegexIndirizzo.css("color", "red");
 				r=false;
 			}
 			

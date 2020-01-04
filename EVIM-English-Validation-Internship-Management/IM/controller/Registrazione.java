@@ -38,9 +38,9 @@ public class Registrazione extends BaseServlet {
 		String regexNome="^[A-Za-z]{1,50}";
 		String regexCognome="^[A-Za-z]{1,50}";
 		String regexPassword="^[A-Za-z0-9]{8,50}";
-		String regexData="^([0-2][0-9]|(3)[0-1])(\\/|-)(((0)[0-9])|((1)[0-2]))(\\/|-)\\d{4}$";
+		String regexData="([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))";
 		String regexLuogoNascita="^[A-Za-z]{1,46}";
-		String regexIndirizzo="'^[a-z A-Z]+.[1-9]+{1,100}";
+		String regexIndirizzo="^[a-z A-Z]+.[1-9]{1,100}";
 		String regexTelefono="^[0-9]{8,16}";
 		String regexLuogoResidenza="^[A-Za-z]{1,46}";
 		String regexSesso="^[m f M F]";
@@ -59,14 +59,30 @@ public class Registrazione extends BaseServlet {
 		String corso = request.getParameter("corso");
 		String matricola = request.getParameter("matricola");
 		String data = request.getParameter("data");
-		String luogonascita = "" + request.getParameter("comunen") + "(" + request.getParameter("provincian") + ")";
-		String provincian = request.getParameter("provincian");
+		String luogonascita = request.getParameter("comuneN") ;
+		String provincian = request.getParameter("provinciaN");
 		String indirizzo = request.getParameter("indirizzo");
 		String telefono = request.getParameter("telefono");
-		String luogoresidenza = "" + request.getParameter("comuner") + "(" + request.getParameter("provinciar") + ")";
-		String provinciar = request.getParameter("provinciar"); 
+		String luogoresidenza = request.getParameter("comuneR") ;
+		String provinciar = request.getParameter("provinciaR"); 
 		String regexProvincia= "^[A-Z]{2,2}";
-
+		
+		
+		System.out.println(corso);
+		System.out.println(data);
+		System.out.println(provinciar);
+		System.out.println(provincian);
+		System.out.println(luogonascita);
+		System.out.println(luogoresidenza);
+		System.out.println(nome);
+		System.out.println(cognome);
+		System.out.println(telefono);
+		System.out.println(sesso);
+		System.out.println(matricola);
+		System.out.println(email);
+		System.out.println(password);
+		System.out.println(indirizzo);
+		
 		boolean result = false;
 // se non sono loggato mi posso registrare altrimenti non ha senso
 		if (request.getParameter("utenteLoggato") == null && email != null) {
