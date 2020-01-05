@@ -22,8 +22,9 @@
 		</div>
 		<div class="col-lg-9" id="col-9">
 
-			<p id="titolo1" class="text-center"> Richieste di
-				riconoscimento attività lavorative</p>
+			<p id="titolo1" class="text-center">Richieste di riconoscimento
+				attività lavorative</p>
+			
 			<hr>
 			<c:if test="${elencoRiconoscimento.size() == 0 }">
 				<p>Non ci sono richieste di riconoscimento attività!</p>
@@ -47,9 +48,11 @@
 							<c:forEach items="${elencoRiconoscimento}" var="ricon">
 								<tbody>
 									<tr class="text-center">
-										<th scope="row"><c:out value="${ricon.idRiconoscimento}" /></th>
+										<th><c:out value="${ricon.idRiconoscimento}" /></th>
+
 										<th><i id="status" class="far fa-circle"
 											title="<c:out value="${ricon.stato}"/>"></i></th>
+
 										<td><c:out
 												value="${ricon.CFUTirocinioEsterno + ricon.CFUAccompagnamentoLavoro + ricon.CFUTirocinioObbligatorio}" /></td>
 										<td><button
@@ -75,8 +78,10 @@
 						<thead>
 							<tr id="colonne" class="text-center">
 								<th scope="col">Numero richiesta</th>
+								<th scope="col">Studente</th>
+								<th scope="col">Matricola</th>
 								<th scope="col">Status</th>
-								<th scope="col">CFU totali</th>
+								<!-- 	<th scope="col">CFU totali</th> -->
 								<th scope="col">PDF</th>
 								<th scope="col">Info richiesta</th>
 								<th scope="col">Valuta</th>
@@ -86,31 +91,35 @@
 						<c:forEach items="${elencoRiconoscimento}" var="ricon">
 							<tbody>
 								<tr class="text-center">
-									<th scope="row"><c:out value="${ricon.idRiconoscimento}" /></th>
-									<td><i id="status" class="far fa-circle"
-											title="<c:out value="${ricon.stato}"></c:out>"></i></td>
-									<td><c:out
-											value="${ricon.CFUTirocinioEsterno + ricon.CFUAccompagnamentoLavoro + ricon.CFUTirocinioObbligatorio}" /></td>
+									<th><c:out value="${ricon.idRiconoscimento}" /></th>
+									<th></th>
+									<th></th>
+									<th><i id="status" class="far fa-circle"
+										title="<c:out value="${ricon.stato}"/>"></i></th>
+
 									<td><button>
 											<i class="fas fa-file-pdf"></i>
 										</button></td>
-								
-									<c:if test="${type=='pdcd'}">
-										<c:if test="${ricon.stato eq 'V'}">
-											<td>
-												<button class="bottone"
-													onclick="windows.location='ApprovaRifiutoModuloRiconoscimento?modifica=approva'"
-													id="accetta">
-													<i class="fas fa-check-square"></i>
-												</button>
-												<button class="bottone"
-													onclick="windows.location='ApprovaRifiutoModuloRiconoscimento?modifica=rifiuta'"
-													id="rifiuta">
-													<i class="far fa-times-circle"></i>
-												</button>
-											</td>
-										</c:if>
-									</c:if>
+									<td>#</td>
+
+
+									<!-- c:if test="${ricon.stato eq 'V'}"> -->
+									<!-- è sttao messo nel commento in quanto se ci fosse non fa apparire i bottoni, nonostatnte 
+									lo status fosse V  -->
+									<td>
+										<button class="bottone"
+											onclick="windows.location='ApprovaRifiutoModuloRiconoscimento?modifica=approva'"
+											id="accetta">
+											<i class="fas fa-check-square"></i>
+										</button>
+
+										<button class="bottone"
+											onclick="windows.location='ApprovaRifiutoModuloRiconoscimento?modifica=rifiuta'"
+											id="rifiuta">
+											<i class="far fa-times-circle"></i>
+										</button>
+									</td>
+
 								</tr>
 							</tbody>
 						</c:forEach>
@@ -128,18 +137,18 @@
 <script>
 	/* status: riferito allo status di riconoscimento attività */
 	$(document).ready(function() {
-		if ($('i:contains(valutazione)')) {
-			$("#status, #status1").css("background-color", "yellow");
-			$("#status, #status1").css("color", "black");
-			$("#status, #status1").css("border-radius", "22px");
-		} else if ($('i:contains(approvato)')) {
-			$("#status, #status1").css("background-color", "green");
-			$("#status, #status1").css("color", "black");
-			$("#status, #status1").css("border-radius", "22px");
-		} else if ($('i:contains(rifiutato)')) {
-			$("#status, #status1").css("background-color", "red");
-			$("#status, #status1").css("color", "black");
-			$("#status, #status1").css("border-radius", "22px");
+		if ($('i:contains(V)')) {
+			$("#status").css("background-color", "yellow");
+			$("#status").css("color", "black");
+			$("#status").css("border-radius", "22px");
+		} else if ($('i:contains(A)')) {
+			$("#status").css("background-color", "green");
+			$("#status").css("color", "black");
+			$("#status").css("border-radius", "22px");
+		} else if ($('i:contains(R)')) {
+			$("#status").css("background-color", "red");
+			$("#status").css("color", "black");
+			$("#status").css("border-radius", "22px");
 		}
 
 	});
