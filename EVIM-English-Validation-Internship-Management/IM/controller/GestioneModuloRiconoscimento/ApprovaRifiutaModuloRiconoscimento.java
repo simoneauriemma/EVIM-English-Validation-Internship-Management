@@ -51,7 +51,7 @@ public class ApprovaRifiutaModuloRiconoscimento extends HttpServlet {
 					else
 						request.setAttribute("modificaModulo", false);
 					
-					request.getRequestDispatcher("visualizzaElencoModuliRiconoscimento.jsp").forward(request, response);
+					request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
 				}
 			}
 		}

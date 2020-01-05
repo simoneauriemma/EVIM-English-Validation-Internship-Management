@@ -45,12 +45,12 @@
 							</tr>
 						</thead>
 						<c:if test="${elencoRiconoscimento.size() > 0 }">
-							<c:forEach items="${elencoRiconoscimento}" var="ricon">
+							<c:forEach items="${elencoRiconoscimento}" var="ricon" varStatus="conto">
 								<tbody>
 									<tr class="text-center">
-										<th><c:out value="${ricon.idRiconoscimento}" /></th>
+										<th ><c:out value="${ricon.idRiconoscimento}" /></th>
 
-										<th><i id="status" class="far fa-circle"
+										<th><i id="${conto.count}" class="far fa-circle"
 											title="<c:out value="${ricon.stato}"/>"></i></th>
 
 										<td><c:out
@@ -88,13 +88,13 @@
 							</tr>
 						</thead>
 						<!-- PARTIRE DA QUI CON IN C:FOR -->
-						<c:forEach items="${elencoRiconoscimento}" var="ricon">
+						<c:forEach items="${elencoRiconoscimento}" var="ricon" varStatus="conto">
 							<tbody>
 								<tr class="text-center">
 									<th><c:out value="${ricon.idRiconoscimento}" /></th>
-									<th></th>
-									<th></th>
-									<th><i id="status" class="far fa-circle"
+									<th><c:out value="${ricon.nomeStudente} ${ricon.cognomeStudente}"/></th>
+									<th><c:out value="${ricon.matricolaStudente}"></c:out></th>
+									<th><i id="${conto.count}" class="far fa-circle"
 										title="<c:out value="${ricon.stato}"/>"></i></th>
 
 									<td><button>
@@ -107,14 +107,14 @@
 									<!-- è sttao messo nel commento in quanto se ci fosse non fa apparire i bottoni, nonostatnte 
 									lo status fosse V  -->
 									<td>
-										<button class="bottone"
-											onclick="windows.location='ApprovaRifiutoModuloRiconoscimento?modifica=approva'"
+										<button class="bottone" 
+											onclick=approvaModulo(<c:out value="${ricon.idRiconoscimento}"/>,<c:out value="${conto.count}"/>)
 											id="accetta">
 											<i class="fas fa-check-square"></i>
 										</button>
 
-										<button class="bottone"
-											onclick="windows.location='ApprovaRifiutoModuloRiconoscimento?modifica=rifiuta'"
+										<button class="bottone" 
+											onclick=rifiutaModulo(<c:out value="${ricon.idRiconoscimento}"/>,<c:out value="${conto.count}"/>)
 											id="rifiuta">
 											<i class="far fa-times-circle"></i>
 										</button>
@@ -137,21 +137,61 @@
 <script>
 	/* status: riferito allo status di riconoscimento attività */
 	$(document).ready(function() {
-		if ($('i:contains(V)')) {
-			$("#status").css("background-color", "yellow");
-			$("#status").css("color", "black");
-			$("#status").css("border-radius", "22px");
-		} else if ($('i:contains(A)')) {
-			$("#status").css("background-color", "green");
-			$("#status").css("color", "black");
-			$("#status").css("border-radius", "22px");
-		} else if ($('i:contains(R)')) {
-			$("#status").css("background-color", "red");
-			$("#status").css("color", "black");
-			$("#status").css("border-radius", "22px");
+		$(".far").each(function(){
+		if ($(this).attr("title")=="V") {
+			$(this).css("background-color", "yellow");
+			$(this).css("color", "black");
+			$(this).css("border-radius", "22px");
+		} else if ($(this).attr("title")=="A") {
+			$(this).css("background-color", "green");
+			$(this).css("color", "black");
+			$(this).css("border-radius", "22px");
+		} else if ($(this).attr("title")=="R") {
+			$(this).css("background-color", "red");
+			$(this).css("color", "black");
+			$(this).css("border-radius", "22px");
 		}
-
+		});
 	});
+	
+	function approvaModulo(id,idStatus){
+		var xmlHttp=new XMLHttpRequest();
+  		xmlHttp.responseType="json";
+  		xmlHttp.onreadystatechange=function(){
+  			if(xmlHttp.readyState==4 && xmlHttp.status==200)
+  				{
+  					
+  					$("#"+idStatus).css("background-color", "");
+					$("#"+idStatus).css("color", "");
+					$("#"+idStatus).css("border-radius", "");	
+  				
+  					$("#"+idStatus).css("background-color", "green");
+  					$("#"+idStatus).css("color", "black");
+  					$("#"+idStatus).css("border-radius", "22px");
+  				}
+  		}
+  		xmlHttp.open("GET","ApprovaRifiutaModuloRiconoscimento?modifica=approva&idRiconoscimento="+id,true);
+  		xmlHttp.send();
+	}
+	
+	function rifiutaModulo(id,idStatus){
+		var xmlHttp=new XMLHttpRequest();
+  		xmlHttp.responseType="json";
+  		xmlHttp.onreadystatechange=function(){
+  			if(xmlHttp.readyState==4 && xmlHttp.status==200)
+  				{
+  					$("#"+idStatus).css("background-color", "");
+					$("#"+idStatus).css("color", "");
+					$("#"+idStatus).css("border-radius", "");	
+  				
+					$("#"+idStatus).css("background-color", "red");
+					$("#"+idStatus).css("color", "black");
+					$("#"+idStatus).css("border-radius", "22px");
+  				}
+  		}
+  		xmlHttp.open("GET","ApprovaRifiutaModuloRiconoscimento?modifica=approva&idRiconoscimento="+id,true);
+  		xmlHttp.send();
+	}
 </script>
 
 
