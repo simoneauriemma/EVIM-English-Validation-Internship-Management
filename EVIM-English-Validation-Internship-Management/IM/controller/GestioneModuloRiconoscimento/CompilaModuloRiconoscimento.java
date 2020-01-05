@@ -85,9 +85,8 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 						byte[] stringhe= new byte[i];
 						inputStream.read(stringhe);
 						String valore=new String(stringhe);
-						System.out.println("il valore-->"+valore);
 						
-						if(nome.equalsIgnoreCase("file1[]")) {
+						if(nome.equalsIgnoreCase("file1[]") || nome.equalsIgnoreCase("file2[]") || nome.equalsIgnoreCase("file3[]")) {
 							String nomeFile=getFileName(part);
 							filePartNames.add(new filesNamesWithPart(part, nomeFile));
 						}

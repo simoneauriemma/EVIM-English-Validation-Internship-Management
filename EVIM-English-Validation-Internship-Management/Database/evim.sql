@@ -418,6 +418,7 @@ CREATE TABLE `riconoscimento` (
   `CFU_TirocinioObbligatorio` int(11) NOT NULL,
   `CFU_TirocinioEsterno` int(11) NOT NULL,
   `CFU_AccompagnamentoLavoro` int(11) NOT NULL,
+  `Stato` char NOT NULL,
   PRIMARY KEY (`ID_Riconoscimento`),
   KEY `Email_User` (`Email_User`),
   CONSTRAINT `riconoscimento_ibfk_1` FOREIGN KEY (`Email_User`) REFERENCES `user` (`EMAIL`) ON DELETE CASCADE ON UPDATE CASCADE

@@ -96,6 +96,7 @@ Ore_Svolte int not null,
 CFU_TirocinioObbligatorio int not null,
 CFU_TirocinioEsterno int not null,
 CFU_AccompagnamentoLavoro int not null,
+Stato char not null,
 primary key(ID_Riconoscimento),
 foreign key(Email_User) references User(EMAIL)
 ON UPDATE CASCADE
