@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -81,12 +82,19 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 				File directory= new File(downloadFilePath);
 				
 				// prendiamo tutti i file allegati, salvati nel momento in cui lo studente ha consengato tali file.
+				
 				File[] listFile= directory.listFiles();
+				ArrayList<File> arrayFile=new ArrayList<File>();
+				
+				for(File file:listFile) {
+					arrayFile.add(file);
+				}
 				
 				// oltre ai file allegati, inseriamo nella lista anche il file del modulo di riconoscimento di attività lavorativa.
-				listFile[listFile.length+1]=fileRiconoscimento;
+			
+				arrayFile.add(fileRiconoscimento);
 				
-				for(File file: listFile) {
+				for(File file: arrayFile) {
 					System.out.println("file preso-->"+file.getAbsolutePath());
 				}
 				
@@ -95,9 +103,9 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		        
 		        ServletOutputStream out=response.getOutputStream();
 		        ZipOutputStream zos=new ZipOutputStream(new BufferedOutputStream(out));
-		        for(int i=0;i<listFile.length;i++) {
+		        for(int i=0;i<arrayFile.size();i++) {
 			        System.out.println("\n\nsetto\n\n");
-			        File downloadFile = listFile[i];
+			        File downloadFile = arrayFile.get(i);
 			        
 			        
 			        System.out.println("aggiungiamo il file-->"+downloadFile.getName());
@@ -128,10 +136,15 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 
 	private File createModuloRiconoscimento(int idRiconoscimento,User studente) throws FileNotFoundException, DocumentException {
 		Document documento=new Document();
-		File fileRiconoscimento=new File("moduloRiconoscimento");
+		File fileRiconoscimento=new File("moduloRiconoscimento.pdf");
 		
-		PdfWriter.getInstance(documento, new FileOutputStream(fileRiconoscimento));
-		Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(idRiconoscimento);
+		PdfWriter writer=PdfWriter.getInstance(documento, new FileOutputStream(fileRiconoscimento));
+		writer.setPdfVersion(PdfWriter.PDF_VERSION_1_7);
+		writer.setTagged();
+		writer.setViewerPreferences(PdfWriter.DisplayDocTitle);
+		writer.createXmpMetadata();
+		System.out.println("path assoluta"+fileRiconoscimento.getAbsolutePath());
+		Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(studente.getEmail());
 		
 		documento.open();
 		
@@ -139,18 +152,18 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		String sezioneDatiAnagrafici="";
 		// per scrivere i paragrafi in base al sesso dello studente del modulo corrispondete. 
 		if(studente.getSex()=='M'){
-			 sezioneDatiAnagrafici="Io sottoscritto"+ studente.getName()+" "+ studente.getSurname()+" nato a "+ studente.getLuogoDiNascita()+
+			 sezioneDatiAnagrafici="Io sottoscritto "+ studente.getName()+" "+ studente.getSurname()+" nato a "+ studente.getLuogoDiNascita()+
 					" il "+ studente.getDataDiNascita()+" residente a "+ studente.getResidente()+" via "+ studente.getVia()+" telefono "+ studente.getTelefono()+
 					",email "+ studente.getEmail() + "iscritto al corso di laurea "+ studente.getCorso()+ "matricola n° "+ studente.getMatricola();
 		}
 		else if(studente.getSex()=='F'){
-			sezioneDatiAnagrafici="Io sottoscritta"+ studente.getName()+" "+ studente.getSurname()+" nata a "+ studente.getLuogoDiNascita()+
+			sezioneDatiAnagrafici="Io sottoscritta "+ studente.getName()+" "+ studente.getSurname()+" nata a "+ studente.getLuogoDiNascita()+
 					" il "+ studente.getDataDiNascita()+" residente a "+ studente.getResidente()+" via "+ studente.getVia()+" telefono "+ studente.getTelefono()+
-					",email "+ studente.getEmail() + "iscritta al corso di laurea "+ studente.getCorso()+ "matricola n° "+ studente.getMatricola();
+					",email "+ studente.getEmail() + "iscritta al corso di laurea "+ studente.getCorso()+ " matricola n° "+ studente.getMatricola();
 		}
 		String stringaChiedo="CHIEDO";
 		
-		String stringaValutata="Che venga valutata l’esperienza professionale da me maturata e così caratterizzata:";
+		String stringaValutata="Che venga valutata l’esperienza professionale da me maturata e così caratterizzata:\n";
 		
 		String stringaPrimaEnteAzienda="ENTE/AZIENDA\n Presso cui è stata svolta l'attività";
 		String stringaCampoEnteAzienda=moduloRiconoscimento.getEnteAzienda();
@@ -174,9 +187,9 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		int CFUTirocinioObbligatorio=moduloRiconoscimento.getCFUTirocinioObbligatorio();
 		int CFUAccompagnamento=moduloRiconoscimento.getCFUAccompagnamentoLavoro();
 		
-		String stringaNTotaleCFU="ai fini del riconoscimento di N°"+CFUTirocinioEsterno+CFUTirocinioObbligatorio+"CFU relativi al tirocinio previsti"
+		String stringaNTotaleCFU="ai fini del riconoscimento di N°"+CFUTirocinioEsterno+CFUTirocinioObbligatorio+" CFU relativi al tirocinio previsti"
 				+ "nel mio piano di studi, di cui N°"+CFUTirocinioObbligatorio+"CFU di Tirocinio Obbligatorio e "+ CFUTirocinioEsterno+" CFU di tirocinio Esterno come scelta libera"
-						+ "e di "+ CFUAccompagnamento+" CFU di Accompagnamento al mondo del Lavoro, previsto nel mio piano di studi.";
+						+ " e di "+ CFUAccompagnamento+" CFU di Accompagnamento al mondo del Lavoro, previsto nel mio piano di studi.";
 		
 		
 		
@@ -227,7 +240,7 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		documento.add(table);
 		documento.add(paragrafoNTotaleCFU);
 		
-		
+		documento.close();
 		
 		return fileRiconoscimento;
 	}
