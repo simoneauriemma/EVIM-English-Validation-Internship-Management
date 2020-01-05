@@ -98,7 +98,7 @@ public class RiconoscimentoDao {
 	 */
 	public static  ArrayList<Riconoscimento> getModuliRiconoscimentiWithStudenti() {
 		try(Connection con=DriverManagerConnectionPool.getConnection()){
-			PreparedStatement ps=con.prepareStatement("select ID_Riconoscimento,Email_User,Ente_Azienda,Profilo,Indirizzo_Sede,Tipo_Contratto,Periodo,Ore_Svolte,CFU_TirocinioObbligatorio,CFU_TirocinioEsterno,CFU_AccompagnamentoLAvoro,NAME,SURNAME,Matricola\n" + 
+			PreparedStatement ps=con.prepareStatement("select ID_Riconoscimento,Email_User,Ente_Azienda,Profilo,Indirizzo_Sede,Tipo_Contratto,Periodo,Ore_Svolte,CFU_TirocinioObbligatorio,CFU_TirocinioEsterno,CFU_AccompagnamentoLAvoro,NAME,SURNAME,Matricola,Stato\n" + 
 					"from evim.riconoscimento JOIN evim.User on riconoscimento.Email_User=User.Email;");
 			ArrayList<Riconoscimento> elencoRiconoscimenti=new ArrayList<Riconoscimento>();
 			ResultSet rs=ps.executeQuery();
@@ -118,6 +118,7 @@ public class RiconoscimentoDao {
 				moduloRiconoscimento.setNomeStudente(rs.getString(12));
 				moduloRiconoscimento.setCognomeStudente(rs.getString(13));
 				moduloRiconoscimento.setMatricolaStudente(rs.getString(14));
+				moduloRiconoscimento.setStato(rs.getString(15));
 				
 				elencoRiconoscimenti.add(moduloRiconoscimento);
 			}
@@ -152,6 +153,7 @@ public class RiconoscimentoDao {
 				moduloRiconoscimento.setCFUTirocinioObbligatorio(rs.getInt(9));
 				moduloRiconoscimento.setCFUTirocinioEsterno(rs.getInt(10));
 				moduloRiconoscimento.setCFUAccompagnamentoLavoro(rs.getInt(11));
+				moduloRiconoscimento.setStato(rs.getString(12));
 				elencoRiconoscimenti.add(moduloRiconoscimento);
 			}
 			return elencoRiconoscimenti;

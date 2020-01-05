@@ -55,7 +55,6 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 			}
 			//inserisco tali controlli per una maggiore sicurezza. Il PdCD e l'ufficio carriera non possono aver a che fare con tale pagina di compila modulo.
 			else if(utente.getUserType()!=0){
-				System.out.println("diverso");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/permissionDenied.jsp");
 				dispatcher.forward(request, response);
 			}
@@ -78,7 +77,6 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 				InputStream inputStream;
 				for(Part part: request.getParts()) {
 						String nome=part.getName();
-						System.out.println("Nome-->"+nome);
 						
 						inputStream = request.getPart(part.getName()).getInputStream();
 						int i=inputStream.available();
@@ -145,40 +143,24 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 
 
 	private void uploadFile(HttpServletRequest request, HttpServletResponse response,int idRiconoscimento,ArrayList<filesNamesWithPart> files) throws IOException, ServletException {
-	// prendiamo il path solluto di tale web application
-	String applicazionePath=request.getServletContext().getRealPath("");
-	// costruiamo la directory la quale viene salvato il file
-	String uploadFilePath=applicazionePath+File.separator+"moduliRiconoscimenti"+File.separator+idRiconoscimento;
-	
-	// creiamo la directory se non esiste
-	File directoryPadre=new File(uploadFilePath);
-	if(!directoryPadre.exists()) {
-		directoryPadre.mkdirs();
+		// prendiamo il path solluto di tale web application
+		String applicazionePath=request.getServletContext().getRealPath("");
+		// costruiamo la directory la quale viene salvato il file
+		String uploadFilePath=applicazionePath+File.separator+"moduliRiconoscimenti"+File.separator+idRiconoscimento;
 		
-	}
-	System.out.println("Upload File Directory="+directoryPadre.getAbsolutePath());
-	
-	for(filesNamesWithPart file: files) {
-		System.out.println("nome-->"+file.getFileName());
-		System.out.println("part nome-->"+file.getPartFile().getName());
-	}
-	
-	for(filesNamesWithPart file: files) {
-		if(!file.getFileName().equals("")) {
-			file.getPartFile().write(uploadFilePath+File.separator+file.getFileName());
+		// creiamo la directory se non esiste
+		File directoryPadre=new File(uploadFilePath);
+		if(!directoryPadre.exists()) {
+			directoryPadre.mkdirs();
+			
 		}
-	}
-	
-	//Poiche nel form l'enctype è multipart, prendiamo tutte le parti nella request. Quindi se uno studente manda due file, con questo pezzo di codice inseriamo tali due file nella directory giusta.
-	/*for(Part part: request.getParts()) {
-		String fileName= getFileName(part);
-		System.out.println("prendo i file"+fileName);
-		if(!fileName.equals(""))
-				part.write(uploadFilePath+File.separator+fileName);
-	}*/
-	
-	
-	
+		
+		//Poiche nel form l'enctype è multipart, prendiamo tutte le parti nella request. Quindi se uno studente manda due file, con questo pezzo di codice inseriamo tali due file nella directory giusta.
+		for(filesNamesWithPart file: files) {
+			if(!file.getFileName().equals("")) {
+				file.getPartFile().write(uploadFilePath+File.separator+file.getFileName());
+			}
+		}
 	
 	}
 	
@@ -196,6 +178,8 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 		return "";
 	}
 
+	
+	// classe per modellare un array di coppia formata da part e nome del file. 
 	class filesNamesWithPart{
 		Part partFile;
 		String fileName;
