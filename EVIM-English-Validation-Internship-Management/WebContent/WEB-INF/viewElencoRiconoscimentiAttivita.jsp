@@ -22,7 +22,7 @@
 		</div>
 		<div class="col-lg-9" id="col-9">
 
-			<p id="titolo1" class="text-center">Visualizza lista richieste
+			<p id="titolo1" class="text-center"> Richieste di
 				riconoscimento attività lavorative</p>
 			<hr>
 			<c:if test="${elencoRiconoscimento.size() == 0 }">
@@ -37,6 +37,7 @@
 						<thead>
 							<tr id="colonne" class="text-center">
 								<th scope="col">Numero richiesta</th>
+								<th scope="col">Status</th>
 								<th scope="col">CFU totali</th>
 								<th scope="col">PDF</th>
 								<!-- 	<th scope="col">Status</th> -->
@@ -47,6 +48,8 @@
 								<tbody>
 									<tr class="text-center">
 										<th scope="row"><c:out value="${ricon.idRiconoscimento}" /></th>
+										<th><i id="status" class="far fa-circle"
+											title="<c:out value="${ricon.stato}"/>"></i></th>
 										<td><c:out
 												value="${ricon.CFUTirocinioEsterno + ricon.CFUAccompagnamentoLavoro + ricon.CFUTirocinioObbligatorio}" /></td>
 										<td><button
@@ -72,10 +75,9 @@
 						<thead>
 							<tr id="colonne" class="text-center">
 								<th scope="col">Numero richiesta</th>
+								<th scope="col">Status</th>
 								<th scope="col">CFU totali</th>
 								<th scope="col">PDF</th>
-								<th scope="col">Status</th>
-
 								<th scope="col">Info richiesta</th>
 								<th scope="col">Valuta</th>
 							</tr>
@@ -85,18 +87,14 @@
 							<tbody>
 								<tr class="text-center">
 									<th scope="row"><c:out value="${ricon.idRiconoscimento}" /></th>
+									<td><i id="status" class="far fa-circle"
+											title="<c:out value="${ricon.stato}"></c:out>"></i></td>
 									<td><c:out
 											value="${ricon.CFUTirocinioEsterno + ricon.CFUAccompagnamentoLavoro + ricon.CFUTirocinioObbligatorio}" /></td>
 									<td><button>
 											<i class="fas fa-file-pdf"></i>
 										</button></td>
-									<td><c:out value="${ricon.stato}"></c:out></td>
-									<td>
-										<button class="bottone" onclick="#" id="accetta">
-											<i class="fas fa-info-circle"></i>
-										</button>
-									</td>
-
+								
 									<c:if test="${type=='pdcd'}">
 										<c:if test="${ricon.stato eq 'V'}">
 											<td>
@@ -127,6 +125,25 @@
 <br>
 <jsp:include page="footer.jsp"></jsp:include>
 
+<script>
+	/* status: riferito allo status di riconoscimento attività */
+	$(document).ready(function() {
+		if ($('i:contains(valutazione)')) {
+			$("#status, #status1").css("background-color", "yellow");
+			$("#status, #status1").css("color", "black");
+			$("#status, #status1").css("border-radius", "22px");
+		} else if ($('i:contains(approvato)')) {
+			$("#status, #status1").css("background-color", "green");
+			$("#status, #status1").css("color", "black");
+			$("#status, #status1").css("border-radius", "22px");
+		} else if ($('i:contains(rifiutato)')) {
+			$("#status, #status1").css("background-color", "red");
+			$("#status, #status1").css("color", "black");
+			$("#status, #status1").css("border-radius", "22px");
+		}
+
+	});
+</script>
 
 
 

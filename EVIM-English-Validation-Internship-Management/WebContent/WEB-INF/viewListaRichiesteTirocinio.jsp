@@ -24,7 +24,7 @@
 
 		<!-- se l'utente è il tutor aziendale allora vede solo le richiete esterne -->
 		<div class="col-lg-9" id="col-9">
-			<p id="titolo" class="text-center">Elenco richieste di tirocinio</p>
+			<p id="titolo" class="text-center">Elenco richieste di tirocinio </p>
 			<hr>
 			<%
 				int n = 0;
