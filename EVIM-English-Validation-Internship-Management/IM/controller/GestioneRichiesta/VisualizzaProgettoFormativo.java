@@ -58,6 +58,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 			
 			String tirocinio=(String) request.getAttribute("tirocinio");
 			
+			
 			response.setContentType("application/pdf");
 			try {
 				if(tirocinio.equalsIgnoreCase("interno"))
