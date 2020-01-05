@@ -5,6 +5,8 @@
 <head>
 <jsp:include page="navbarBlu.jsp"></jsp:include>
 <meta charset="ISO-8859-1">
+<script src="http://getbootstrap.com/assets/js/docs.min.js"></script>
+<script src="jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="stiliCSS/stiliRicoscimentoAttivita.css">
 
 <title>Compilazione modulo riconoscimento attività</title>
@@ -104,8 +106,15 @@
 								value="<c:out value="${studente.telefono}"/>" disabled>
 						</div>
 						<br>
+						
+						
 						<!-- INIZIO gestione cfu -->
 						<h6 class="text-center">Inserisci i CFU da convalidare</h6>
+
+				<!-- 		<button type="button" class="btn btn-lg btn-danger" id="pop"
+							data-toggle="popover" title="Popover title"
+							data-content="And here's some amazing content. It's very engaging. Right?"> * </button> -->
+
 						<br>
 						<div class="scelta-drop">
 							<div class="form-group">
@@ -326,6 +335,8 @@
 
 
 <script>
+	$('[data-toggle="popover"]').popover();
+
 	var cfuEsterno = 0;
 	var cfuObbligatorio = 0;
 	var cfuAccompagnamento = 0;
@@ -370,11 +381,10 @@
 
 			reader.onload = function(e) {
 				$('.image-upload-wrap1').hide(); //nasconde la sezione per inserire i file
-				
-				$('.file-upload-image1').attr('src', e.target.result);
-			
-				$('.file-upload-content1').show();
 
+				$('.file-upload-image1').attr('src', e.target.result);
+
+				$('.file-upload-content1').show();
 
 			};
 
@@ -384,77 +394,69 @@
 			removeUpload();
 		}
 	}
-	
+
 	function readURL2(input) { //seconda sezione per inserire il file
 		if (input.files && input.files[0]) {
-			
-		var reader = new FileReader();
-		
-		reader.onload = function(e) {
-			
-			$('.image-upload-wrap2').hide();
-				
-			$('.file-upload-image2').attr('src', e.target.result);
-		
-			$('.file-upload-content2').show();
-		
-	
-		};
-		
-		reader.readAsDataURL(input.files[0]);
-		
+
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+
+				$('.image-upload-wrap2').hide();
+
+				$('.file-upload-image2').attr('src', e.target.result);
+
+				$('.file-upload-content2').show();
+
+			};
+
+			reader.readAsDataURL(input.files[0]);
+
 		} else {
 			removeUpload();
 		}
-		
+
 	}
-	
+
 	function readURL3(input) { //terza sezione per inserire il file
 		if (input.files && input.files[0]) {
-			
-		var reader = new FileReader();
-		
-		reader.onload = function(e) {
-			
-			$('.image-upload-wrap3').hide();
-				
-			$('.file-upload-image3').attr('src', e.target.result);
-		
-			$('.file-upload-content3').show();
-		
-		};
-		
-		reader.readAsDataURL(input.files[0]);
-		
+
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+
+				$('.image-upload-wrap3').hide();
+
+				$('.file-upload-image3').attr('src', e.target.result);
+
+				$('.file-upload-content3').show();
+
+			};
+
+			reader.readAsDataURL(input.files[0]);
+
 		} else {
 			removeUpload();
 		}
-		
-		
-	}
-	
-	
-	
-	
 
-function removeUpload1() {
+	}
+
+	function removeUpload1() {
 		$('.file-upload-input1').replaceWith($('.file-upload-input1').clone());
 		$('.file-upload-content1').hide();
 		$('.image-upload-wrap1').show();
-}
-function removeUpload2() {
-	$('.file-upload-input2').replaceWith($('.file-upload-input2').clone());
-	$('.file-upload-content2').hide();
-	$('.image-upload-wrap2').show();
-}
-function removeUpload3() {
-	$('.file-upload-input3').replaceWith($('.file-upload-input3').clone());
-	$('.file-upload-content3').hide();
-	$('.image-upload-wrap3').show();
-}
+	}
+	function removeUpload2() {
+		$('.file-upload-input2').replaceWith($('.file-upload-input2').clone());
+		$('.file-upload-content2').hide();
+		$('.image-upload-wrap2').show();
+	}
+	function removeUpload3() {
+		$('.file-upload-input3').replaceWith($('.file-upload-input3').clone());
+		$('.file-upload-content3').hide();
+		$('.image-upload-wrap3').show();
+	}
 
-
-	
 	$('.image-upload-wrap1').bind('dragover', function() {
 		$('.image-upload-wrap1').addClass('image-dropping1');
 	});
@@ -464,8 +466,7 @@ function removeUpload3() {
 	$('.image-upload-wrap3').bind('dragover', function() {
 		$('.image-upload-wrap3').addClass('image-dropping3');
 	});
-	
-	
+
 	$('.image-upload-wrap1').bind('dragleave', function() {
 		$('.image-upload-wrap1').removeClass('image-dropping1');
 	});
