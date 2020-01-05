@@ -33,9 +33,12 @@
 					<input type="text" class="form-control" id="surname"
 						placeholder="Cognome" autocomplete="off"> <br>
 					<p></p>
-					<input type="text" class="form-control" id="nome-utente"
-						placeholder="Nome Utente" autocomplete="off">
-					<p id='resultRegexNomeUtente'></p>
+					<input type="email" class="form-control" id="email"
+						placeholder="Email" autocomplete="off">
+					<p id='resultRegexEmail'></p>
+					<br> <input type="tel" class="form-control" id="telefono"
+						name="telefono" placeholder="Numero di telefono">
+					<p id="resultRegexTelefono"></p>
 					<br> <input type="password" class="form-control" id="password"
 						name="password" placeholder="Password">
 					<p id='resultRegexPass'></p>
@@ -63,21 +66,33 @@
 		function validate() {
 
 			var pass = $('#password');
-			var nome_utente = $('#nome-utente');
+			var email = $('#email');
+			var telefono = $('#telefono');
+			
 			var resultRegexPassword = $('#resultRegexPass');
-			var resultRegexNomeUtente = $('#resultRegexNomeUtente');
-			var regex_nome_utente = new RegExp('^[A-Za-z0-9]');
+			var resultRegexEmail = $('#resultRegexEmail');
+			var resultRegexTelefono = $('#resultRegexTelefono');
+			
+			var regex_email = new RegExp(
+					'^[a-z A-Z 0-9\._-]+@[a-z\.-]+\.([a-z]{2-6})');
+			var regex_telefono = new RegExp('^[0-9]{8,16}');
 			var regex_password = new RegExp('^[A-Za-z0-9]{8,}');
-
 			var resultRegexCPass = $('#resultRegexCPass');
 			var confirm_password = $('#confermaPassword');
 
-			if (!regex_nome_utente.test(nome_utente.val())) {
-				resultRegexNomeUtente.text(nome_utente.val()
-						+ "non rispetta il formato!");
-				resultRegexNomeUtente.css("color", "red");
-				nome_utente.css("color", "red");
+			if (!regex_email.test(email.val())) {
+				resultRegexEmail.text(email.val() + "non rispetta il formato!");
+				resultRegexEmail.css("color", "red");
+				email.css("color", "red");
 				return false;
+			}
+
+			if (!regex_telefono.test(telefono.val())) {
+				telefono.css("color", "red");
+				resultRegexTelefono
+						.text("inserire un numero di telefono valido");
+				resultRegexTelefono.css("color", "red");
+
 			}
 
 			if (!regex_password.test(pass.val())) {
