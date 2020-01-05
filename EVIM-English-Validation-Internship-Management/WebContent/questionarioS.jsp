@@ -43,23 +43,23 @@ p{
 							possedute?</td>
 						<td style="padding-left: 50px;">
 									<div class="form-check form-check-inline">
-										<input name="gruppo1" type="radio" id="radio1" checked>
+										<input name="gruppo1" type="radio" id="radio1" value="1" checked>
 										<label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo1" type="radio" id="radio2"> <label
+										<input name="gruppo1" type="radio" id="radio2" value="2"> <label
 											for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo1" type="radio" id="radio3"> <label
+										<input name="gruppo1" type="radio" id="radio3" value="3"> <label
 											for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo1" type="radio" id="radio4"> <label
+										<input name="gruppo1" type="radio" id="radio4" value="4"> <label
 											for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo1" type="radio" id="radio4"> <label
+										<input name="gruppo1" type="radio" id="radio4" value="5"> <label
 											for="radio5">5</label>
 									</div>
 						</td>
@@ -71,23 +71,23 @@ p{
 							tecnico-sperimentale?</td>
 						<td style="padding-left: 50px;">
 									<div class="form-check form-check-inline">
-										<input name="gruppo2" type="radio" id="radio1" checked>
+										<input name="gruppo2" type="radio" id="radio1" value="1" checked>
 										<label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo2" type="radio" id="radio2"> <label
+										<input name="gruppo2" type="radio" id="radio2" value="2"> <label
 											for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo2" type="radio" id="radio3"> <label
+										<input name="gruppo2" type="radio" id="radio3" value="3"> <label
 											for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo2" type="radio" id="radio4"> <label
+										<input name="gruppo2" type="radio" id="radio4" value="4"> <label
 											for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo2" type="radio" id="radio4"> <label
+										<input name="gruppo2" type="radio" id="radio4" value="5"> <label
 											for="radio5">5</label>
 									</div>
 						</td>
@@ -98,23 +98,23 @@ p{
 							progetto?</td>
 						<td style="padding-left: 50px;">
 									<div class="form-check form-check-inline">
-										<input name="gruppo3" type="radio" id="radio1" checked>
+										<input name="gruppo3" type="radio" id="radio1" value="1" checked>
 										<label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo3" type="radio" id="radio2"> <label
+										<input name="gruppo3" type="radio" id="radio2" value="2"> <label
 											for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo3" type="radio" id="radio3"> <label
+										<input name="gruppo3" type="radio" id="radio3" value="3"> <label
 											for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo3" type="radio" id="radio4"> <label
+										<input name="gruppo3" type="radio" id="radio4" value="4"> <label
 											for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo3" type="radio" id="radio4"> <label
+										<input name="gruppo3" type="radio" id="radio4" value="5"> <label
 											for="radio5">5</label>
 									</div>
 						</td>
@@ -124,23 +124,23 @@ p{
 						<td>D) Valutazione complessiva dell'esperienza</td>
 						<td style="padding-left: 50px;">
 									<div class="form-check form-check-inline">
-										<input name="gruppo4" type="radio" id="radio1" checked>
+										<input name="gruppo4" type="radio" id="radio1" value="1" checked>
 										<label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo4" type="radio" id="radio2"> <label
+										<input name="gruppo4" type="radio" id="radio2" value="2"> <label
 											for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo4" type="radio" id="radio3"> <label
+										<input name="gruppo4" type="radio" id="radio3" value="3"> <label
 											for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo4" type="radio" id="radio4"> <label
+										<input name="gruppo4" type="radio" id="radio4" value="4"> <label
 											for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo4" type="radio" id="radio4"> <label
+										<input name="gruppo4" type="radio" id="radio4" value="5"> <label
 											for="radio5">5</label>
 									</div>
 						</td>
@@ -155,23 +155,23 @@ p{
 						<td style="padding-left: 50px;">
 					
 									<div class="form-check form-check-inline">
-										<input name="gruppo5" type="radio" id="radio1" checked>
+										<input name="gruppo5" type="radio" id="radio1" value="1" checked>
 										<label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo5" type="radio" id="radio2"> <label
+										<input name="gruppo5" type="radio" id="radio2" value="2"> <label
 											for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo5" type="radio" id="radio3"> <label
+										<input name="gruppo5" type="radio" id="radio3" value="3"> <label
 											for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo5" type="radio" id="radio4"> <label
+										<input name="gruppo5" type="radio" id="radio4" value="4"> <label
 											for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo5" type="radio" id="radio4"> <label
+										<input name="gruppo5" type="radio" id="radio4" value="5"> <label
 											for="radio5">5</label>
 									</div>
 								
@@ -184,23 +184,23 @@ p{
 						<td style="padding-left: 50px;">
 							
 									<div class="form-check form-check-inline">
-										<input name="gruppo6" type="radio" id="radio1" checked>
+										<input name="gruppo6" type="radio" id="radio1" value="1" checked>
 										<label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo6" type="radio" id="radio2"> <label
+										<input name="gruppo6" type="radio" id="radio2" value="2"> <label
 											for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo6" type="radio" id="radio3"> <label
+										<input name="gruppo6" type="radio" id="radio3" value="3"> <label
 											for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo6" type="radio" id="radio4"> <label
+										<input name="gruppo6" type="radio" id="radio4" value="4"> <label
 											for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo6" type="radio" id="radio4"> <label
+										<input name="gruppo6" type="radio" id="radio4" value="5"> <label
 											for="radio5">5</label>
 									</div>
 						</td>
@@ -211,23 +211,23 @@ p{
 						<td style="padding-left: 50px;">
 							
 									<div class="form-check form-check-inline">
-										<input name="gruppo7" type="radio" id="radio1" checked>
+										<input name="gruppo7" type="radio" id="radio1" value="1" checked>
 										<label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo7" type="radio" id="radio2"> <label
+										<input name="gruppo7" type="radio" id="radio2" value="2"> <label
 											for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo7" type="radio" id="radio3"> <label
+										<input name="gruppo7" type="radio" id="radio3" value="3"> <label
 											for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo7" type="radio" id="radio4"> <label
+										<input name="gruppo7" type="radio" id="radio4" value="4"> <label
 											for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo7" type="radio" id="radio4"> <label
+										<input name="gruppo7" type="radio" id="radio4" value="5"> <label
 											for="radio5">5</label>
 									</div>
 								
@@ -240,23 +240,23 @@ p{
 							
 
 									<div class="form-check form-check-inline">
-										<input name="gruppo8" type="radio" id="radio1" checked>
+										<input name="gruppo8" type="radio" id="radio1" value="1" checked>
 										<label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo8" type="radio" id="radio2"> <label
+										<input name="gruppo8" type="radio" id="radio2" value="2"> <label
 											for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo8" type="radio" id="radio3"> <label
+										<input name="gruppo8" type="radio" id="radio3" value="3"> <label
 											for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo8" type="radio" id="radio4"> <label
+										<input name="gruppo8" type="radio" id="radio4" value="4"> <label
 											for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo8" type="radio" id="radio4"> <label
+										<input name="gruppo8" type="radio" id="radio4" value="5"> <label
 											for="radio5">5</label>
 									</div>
 							
@@ -275,23 +275,23 @@ p{
 							<div>
 								<div class="row">
 									<div class="form-check form-check-inline">
-										<input name="gruppo9" type="radio" id="radio1" checked>
+										<input name="gruppo9" type="radio" id="radio1" value="1" checked>
 										<label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo9" type="radio" id="radio2"> <label
+										<input name="gruppo9" type="radio" id="radio2" value="2"> <label
 											for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo9" type="radio" id="radio3"> <label
+										<input name="gruppo9" type="radio" id="radio3" value="3"> <label
 											for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo9" type="radio" id="radio4"> <label
+										<input name="gruppo9" type="radio" id="radio4" value="4"> <label
 											for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo9" type="radio" id="radio4"> <label
+										<input name="gruppo9" type="radio" id="radio4" value="5"> <label
 											for="radio5">5</label>
 									</div>
 								</div>
@@ -306,23 +306,23 @@ p{
 							<div>
 								<div class="row">
 									<div class="form-check form-check-inline">
-										<input name="gruppo10" type="radio" id="radio1" checked>
+										<input name="gruppo10" type="radio" id="radio1" value="1" checked>
 										<label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo10" type="radio" id="radio2"> <label
+										<input name="gruppo10" type="radio" id="radio2" value="2"> <label
 											for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo10" type="radio" id="radio3"> <label
+										<input name="gruppo10" type="radio" id="radio3" value="3"> <label
 											for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo10" type="radio" id="radio4"> <label
+										<input name="gruppo10" type="radio" id="radio4" value="4"> <label
 											for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo10" type="radio" id="radio4"> <label
+										<input name="gruppo10" type="radio" id="radio4" value="5"> <label
 											for="radio5">5</label>
 									</div>
 								</div>
@@ -336,23 +336,23 @@ p{
 							<div>
 								<div class="row">
 									<div class="form-check form-check-inline">
-										<input name="gruppo11" type="radio" id="radio1" checked>
+										<input name="gruppo11" type="radio" id="radio1" value="1" checked>
 										<label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo11" type="radio" id="radio2"> <label
+										<input name="gruppo11" type="radio" id="radio2" value="2"> <label
 											for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo11" type="radio" id="radio3"> <label
+										<input name="gruppo11" type="radio" id="radio3" value="3"> <label
 											for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo11" type="radio" id="radio4"> <label
+										<input name="gruppo11" type="radio" id="radio4" value="4"> <label
 											for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo11" type="radio" id="radio4"> <label
+										<input name="gruppo11" type="radio" id="radio4" value="5"> <label
 											for="radio5">5</label>
 									</div>
 								</div>

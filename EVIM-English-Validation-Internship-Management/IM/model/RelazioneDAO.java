@@ -38,13 +38,14 @@ public class RelazioneDAO {
 	public static ArrayList<User> doRetriveStudenti(int idTutor) {
 		ArrayList<User> studenti= new ArrayList<User>();
 		String query= "select USER.EMAIL,NAME,SURNAME,MATRICOLA from USER join tirocinioesterno on tirocinioesterno.EMAIL=USER.EMAIL join tutoraziendale on tutoraziendale.ID_TutorAziendale = tirocinioesterno.ID_TutorAziendale\r\n" + 
-				"where tirocinioesterno.status= 'in approvazione' and tirocinioesterno.ID_TutorAziendale=? ;";
+				"where tirocinioesterno.status= 'in approvazione' and tirocinioesterno.ID_TutorAziendale=? AND USER.EMAIL NOT IN(SELECT relazione.Email from relazione where relazione.ID_TutorAziendale= ?);";
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(query);
 			
 			
 			
 			ps.setInt(1, idTutor);
+			ps.setInt(2, idTutor);
 			User u;
 			ResultSet rs = ps.executeQuery();
 			
