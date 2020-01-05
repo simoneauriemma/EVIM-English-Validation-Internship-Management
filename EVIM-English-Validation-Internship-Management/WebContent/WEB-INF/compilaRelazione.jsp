@@ -41,7 +41,7 @@
 							style="background-color: #2C5278">
 							<button data-toggle="collapse" data-target="#collapse${counter}"
 								aria-expanded="true" aria-controls="collapse${counter}" id="nome-tutor">
-								Nome e cognome(studente)</button>
+								<c:out value="${studente.name} ${studente.surname}"></c:out></button>
 						</div>
 
 						<div id="collapse${counter}" class="collapse" role="tabpanel"
@@ -50,7 +50,7 @@
 
 								<form action="CreaRelazione">
 								<div class="form-group">
-									<input name="emailstudente" type="hidden" value="">
+									<input name="emailstudente" type="hidden" value="${studente.email}">
 									<textarea name="descrizione" class="form-control" id="exampleFormControlTextarea${counter}"
 										placeholder="Compila verbale tirocinio..." rows="3"></textarea>
 										

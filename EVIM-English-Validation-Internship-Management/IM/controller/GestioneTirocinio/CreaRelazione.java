@@ -40,10 +40,10 @@ public class CreaRelazione extends BaseServlet {
 		TutorAziendale utente= (TutorAziendale) session.getAttribute("utenteLoggato");
 
 		//se l'utente loggato è il tutor aziendale
-		if(nomeutente.contentEquals("tutoraziendale")) {
+		if(nomeutente!=null&&nomeutente.contentEquals("tutoraziendale")) {
 			
 			//controllo se devo inviare la relazione o se devo reindirizzare alla giusta pagina per compilare la relazione
-			if(nomeutente!=null&&descrizione!=null&&emailstudente!=null) {
+			if(descrizione!=null&&emailstudente!=null) {
 				
 				result=RelazioneDAO.insertRelezione(utente.getId(), emailstudente, descrizione, status);
 				request.setAttribute("resultrelazione", result);
@@ -52,6 +52,7 @@ public class CreaRelazione extends BaseServlet {
 			}
 			else { 			//reindirizzo a compila relazione
 				studenti=RelazioneDAO.doRetriveStudenti(utente.getId());
+				session.setAttribute("studenti", studenti);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/compilaRelazione.jsp");
 				dispatcher.forward(request, response);
 			}
