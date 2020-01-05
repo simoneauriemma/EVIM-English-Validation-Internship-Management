@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class RelazioneDAO {
 	
 	public static boolean insertRelezione(int idTutor,String email, String descrizione, String status) {
-		String query= "INSERT INTO EVIM.releazione(`Descrizione`,`Email`,`status`,`ID_TutorAziendale`) VALUES(?,?,?,?)";
+		String query= "INSERT INTO EVIM.relazione(`Descrizione`,`Email`,`status`,`ID_TutorAziendale`) VALUES(?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(query);
 			
@@ -38,7 +38,7 @@ public class RelazioneDAO {
 	public static ArrayList<User> doRetriveStudenti(int idTutor) {
 		ArrayList<User> studenti= new ArrayList<User>();
 		String query= "select USER.EMAIL,NAME,SURNAME,MATRICOLA from USER join tirocinioesterno on tirocinioesterno.EMAIL=USER.EMAIL join tutoraziendale on tutoraziendale.ID_TutorAziendale = tirocinioesterno.ID_TutorAziendale\r\n" + 
-				"where tirocinioesterno.status= 'in approvazione' and tirocinioesterno.ID_TutorAziendale='?' ;";
+				"where tirocinioesterno.status= 'in approvazione' and tirocinioesterno.ID_TutorAziendale=? ;";
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(query);
 			
