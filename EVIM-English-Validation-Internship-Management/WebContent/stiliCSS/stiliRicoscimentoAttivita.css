@@ -55,14 +55,15 @@ body {
   background-color: #eeeeee;
 }
 
-.file-upload {
+.file-upload1, .file-upload2, .file-upload3 {
   background-color: #ffffff;
-  width: 300px;
+  width: 150px;
+  heigh: 150px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.file-upload-btn {
+.file-upload-btn1, .file-upload-btn2, .file-upload-btn3 {
   width: 100%;
   margin: 0;
   color: #555555;
@@ -73,28 +74,28 @@ body {
   transition: all .2s ease;
   outline: none;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 
-.file-upload-btn:hover {
+.file-upload-btn1:hover, .file-upload-btn2:hover, .file-upload-btn3:hover {
   background: #2C5278;
   color: #ffffff;
   transition: all .2s ease;
   cursor: pointer;
 }
 
-.file-upload-btn:active {
+.file-upload-btn1:active, .file-upload-btn2:active, .file-upload-btn3:active {
   border: 0;
   transition: all .2s ease;
 }
 
-.file-upload-content {
+.file-upload-content1, .file-upload-content2, .file-upload-content3 {
   display: none;
   text-align: center;
 }
 
-.file-upload-input {
+.file-upload-input1, .file-upload-input2, .file-upload-input3 {
   position: absolute;
   margin: 0;
   padding: 0;
@@ -105,28 +106,29 @@ body {
   cursor: pointer;
 }
 
-.image-upload-wrap {
+.image-upload-wrap1, .image-upload-wrap2, .image-upload-wrap3 {
   margin-top: 20px;
   border: 4px dashed #dddddd;
   position: relative;
 }
 
-.image-dropping,
-.image-upload-wrap:hover {
+.image-dropping1, .image-dropping2, .image-dropping3, 
+.image-upload-wrap1:hover, .image-upload-wrap2:hover, .image-upload-wrap3:hover   {
   background-color: #eaeaea;
   border: 4px dashed #2C5278;
 }
 
-.image-title-wrap {
+.image-title-wrap1,.image-title-wrap2, .image-title-wrap3 {
   padding: 0 15px 15px 15px;
   color: #222;
 }
 
-.drag-text {
+.drag-text1,.drag-text2,.drag-text3 {
   text-align: center;
 }
 
-.drag-text h5 {
+.drag-text1 h5, .drag-text2 h5, .drag-text3 h5 {
+  font-size: 32px;
   font-weight: 100;
   text-transform: uppercase;
   color: #2C5278;
@@ -134,15 +136,15 @@ body {
   padding: 60px 0;
 }
 
-.file-upload-image {
+.file-upload-image1, .file-upload-image2, .file-upload-image3  {
   max-height: 200px;
   max-width: 200px;
   margin: auto;
   padding: 20px;
 }
 
-.remove-image {
-  width: 200px;
+.remove-image1, .remove-image2, .remove-image3 {
+  width: 70px;
   margin: 0;
   color: #fff;
   background: #cd4535;
@@ -155,14 +157,14 @@ body {
   font-weight: 100;
 }
 
-.remove-image:hover {
+.remove-image1:hover, .remove-image2:hover, .remove-image3:hover {
   background: #c13b2a;
   color: #ffffff;
   transition: all .2s ease;
   cursor: pointer;
 }
 
-.remove-image:active {
+.remove-image1:active, .remove-image2:active, .remove-image3:active {
   border: 0;
   transition: all .2s ease;
 }
