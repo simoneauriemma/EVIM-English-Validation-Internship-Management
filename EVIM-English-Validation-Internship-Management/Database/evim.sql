@@ -655,7 +655,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('edoardo93av@studenti.unisa.it','Edoardo','Carpentiero','o','edoardo93@',0,'triennale','ba','ab','ab','ba','ab','ab'),('fferrucci@unisa.it','Filomena','Ferrucci','F','Ferrucci11',1,NULL,'Salerno','12/02/1998','Salerno','Antonio Gramsci','85937','5100001118'),('mconcetta@studenti.unisa.it','Maria Concetta','Schiavone','F','mconcetta1998',0,'triennale','Milano','09/08/2000','Salerno','Montebello','81237','0147852369'),('simonagrieco@studenti.unisa.it','Simona','Grieco','F','grieco1998',0,'triennale','Avellino','06/05/1999','Fisciano','roma','1812324','510075');
+INSERT INTO `user` VALUES ('edoardo93av@studenti.unisa.it','Edoardo','Carpentiero','o','edoardo93@',0,'triennale','ba','ab','ab','ba','ab','ab'),('fferrucci@unisa.it','Filomena','Ferrucci','F','Ferrucci11',2,NULL,'Salerno','12/02/1998','Salerno','Antonio Gramsci','85937','5100001118'),('mconcetta@studenti.unisa.it','Maria Concetta','Schiavone','F','mconcetta1998',0,'triennale','Milano','09/08/2000','Salerno','Montebello','81237','0147852369'),('simonagrieco@studenti.unisa.it','Simona','Grieco','F','grieco1998',0,'triennale','Avellino','06/05/1999','Fisciano','roma','1812324','510075');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

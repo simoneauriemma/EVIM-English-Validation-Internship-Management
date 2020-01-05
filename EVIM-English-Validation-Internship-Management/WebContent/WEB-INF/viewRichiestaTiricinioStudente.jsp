@@ -20,7 +20,7 @@
 		<div class="col-lg-9"
 			style="border: 1px solid #d7d7d7; background-color: white;">
 			<p id="titolo" class="text-center">Richieste di tirocinio
-				curriculare</p>
+				curriculare </p>
 			<hr>
 
 			<c:if
