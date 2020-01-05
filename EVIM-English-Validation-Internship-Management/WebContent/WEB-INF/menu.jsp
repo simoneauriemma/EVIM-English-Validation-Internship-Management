@@ -93,7 +93,7 @@
 					<!-- Tutor aziendale -->
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
 							Elenco tirocini</a></li>
-					<li><a href="compilaRelazione.jsp"><i
+					<li><a href="CreaRelazione"><i
 							class="fas fa-angle-right "></i> Compila relazione tirocinio </a></li>
 
 				</c:if>
