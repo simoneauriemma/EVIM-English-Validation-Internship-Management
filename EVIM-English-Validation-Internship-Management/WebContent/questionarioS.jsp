@@ -125,7 +125,7 @@ p {
 
 
 					<tr>
-						<td>Il tirocinio ha aumentato le possibilità di trovare
+						<td>D) Il tirocinio ha aumentato le possibilità di trovare
 							lavoro</td>
 						<td style="padding-left: 50px;">
 							<div class="form-check form-check-inline">
@@ -152,7 +152,7 @@ p {
 					</tr>
 
 					<tr>
-						<td>D) Valutazione complessiva dell'esperienza</td>
+						<td>E) Valutazione complessiva dell'esperienza</td>
 						<td style="padding-left: 50px;">
 							<div class="form-check form-check-inline">
 								<input name="gruppo4" type="radio" id="radio1" value="1" checked>
@@ -267,7 +267,7 @@ p {
 
 
 					<tr>
-						<td>Logistica e supporto strumentale:</td>
+						<td>D) Logistica e supporto strumentale:</td>
 						<td style="padding-left: 50px;">
 
 
@@ -297,7 +297,7 @@ p {
 
 
 					<tr>
-						<td>D) Assistenza del tutor Ente ospitante:</td>
+						<td>E) Assistenza del tutor Ente ospitante:</td>
 						<td style="padding-left: 50px;">
 
 
@@ -429,27 +429,7 @@ p {
 						data-target="#exampleModalCenter"
 						style="background-color: #2C5278;">CONFERMA</button> </span>
 
-				<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-					role="dialog" aria-labelledby="exampleModalCenterTitle"
-					aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">Questionario effettuato con
-								successo!</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Close</button>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 
 				<br> <br>
 			</div>
