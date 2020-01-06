@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-
+import javax.management.InvalidAttributeValueException;
+import javax.management.RuntimeErrorException;
 import javax.servlet.RequestDispatcher;
 
 import javax.servlet.ServletException;
@@ -123,17 +124,22 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 				}
 				
 			
+				if(enteAzienda.length()<=200 && enteAzienda.length()>=10 && indirizzoSede.length()<=200 && indirizzoSede.length()>=10 && profilo.length()<=200 && profilo.length()>=10 && oreSvolte<12 && oreSvolte>=0 && cfuTirocinioObbligatorio>=0 && cfuTirocinioEsterno>=0 && cfuAccompagnamento>=0) {
 				// prendo tutti i campi dal form e inserisco nei rispettivi campi nel Database
-				if(!RiconoscimentoDao.insertRiconoscimenot(emailStudente, enteAzienda, indirizzoSede, profilo, tipoContratto, periodo, oreSvolte, cfuTirocinioObbligatorio, cfuTirocinioEsterno, cfuAccompagnamento)) {
-					request.setAttribute("compilaModulo", false);
-					request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
+					if(!RiconoscimentoDao.insertRiconoscimenot(emailStudente, enteAzienda, indirizzoSede, profilo, tipoContratto, periodo, oreSvolte, cfuTirocinioObbligatorio, cfuTirocinioEsterno, cfuAccompagnamento)) {
+						request.setAttribute("compilaModulo", false);
+						request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
+					}
+					else {
+						// prendo i file allegati dallo studente salvando i file nella directory di tale web application
+						Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(utente.getEmail());
+						uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento(),filePartNames);
+						request.setAttribute("compilaModulo", true);
+						request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
+					}
 				}
 				else {
-					// prendo i file allegati dallo studente salvando i file nella directory di tale web application
-					Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(utente.getEmail());
-					uploadFile(request,response,moduloRiconoscimento.getIdRiconoscimento(),filePartNames);
-					request.setAttribute("compilaModulo", true);
-					request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
+					throw new IllegalArgumentException("Campi fuori dal range della lunghezza");
 				}
 			}
 		}	
