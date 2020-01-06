@@ -15,7 +15,7 @@
 	margin-left: 50px;
 }
 
-p{
+p {
 	font-weight: bold;
 }
 </style>
@@ -31,9 +31,11 @@ p{
 				<jsp:include page="WEB-INF/menu.jsp"></jsp:include>
 			</div>
 
-			<div class="col-lg-9"  style="border: 1px solid #d7d7d7; background-color: white;">
-				<p id="titolo" class="text-center" style="font-size: 30px; color: #595959;">Compila
-					questionario valutativo</p>
+			<div class="col-lg-9"
+				style="border: 1px solid #d7d7d7; background-color: white;">
+				<p id="titolo" class="text-center"
+					style="font-size: 30px; color: #595959;">Compila questionario
+					valutativo</p>
 				<hr>
 
 				<p>1. Valuta le attività di tirocinio svolte</p>
@@ -42,26 +44,26 @@ p{
 						<td>A) Le attività svolte sono coerenti con le conoscenze
 							possedute?</td>
 						<td style="padding-left: 50px;">
-									<div class="form-check form-check-inline">
-										<input name="gruppo1" type="radio" id="radio1" value="1" checked>
-										<label for="radio4">1</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo1" type="radio" id="radio2" value="2"> <label
-											for="radio5">2</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo1" type="radio" id="radio3" value="3"> <label
-											for="radio5">3</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo1" type="radio" id="radio4" value="4"> <label
-											for="radio5">4</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo1" type="radio" id="radio4" value="5"> <label
-											for="radio5">5</label>
-									</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo1" type="radio" id="radio1" value="1" checked>
+								<label for="radio4">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo1" type="radio" id="radio2" value="2">
+								<label for="radio5">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo1" type="radio" id="radio3" value="3">
+								<label for="radio5">3</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo1" type="radio" id="radio4" value="4">
+								<label for="radio5">4</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo1" type="radio" id="radio4" value="5">
+								<label for="radio5">5</label>
+							</div>
 						</td>
 
 					</tr>
@@ -70,26 +72,26 @@ p{
 						<td>B) Il tirocinio ha migliorato la formazione
 							tecnico-sperimentale?</td>
 						<td style="padding-left: 50px;">
-									<div class="form-check form-check-inline">
-										<input name="gruppo2" type="radio" id="radio1" value="1" checked>
-										<label for="radio4">1</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo2" type="radio" id="radio2" value="2"> <label
-											for="radio5">2</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo2" type="radio" id="radio3" value="3"> <label
-											for="radio5">3</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo2" type="radio" id="radio4" value="4"> <label
-											for="radio5">4</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo2" type="radio" id="radio4" value="5"> <label
-											for="radio5">5</label>
-									</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo2" type="radio" id="radio1" value="1" checked>
+								<label for="radio4">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo2" type="radio" id="radio2" value="2">
+								<label for="radio5">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo2" type="radio" id="radio3" value="3">
+								<label for="radio5">3</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo2" type="radio" id="radio4" value="4">
+								<label for="radio5">4</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo2" type="radio" id="radio4" value="5">
+								<label for="radio5">5</label>
+							</div>
 						</td>
 					</tr>
 
@@ -97,52 +99,81 @@ p{
 						<td>C) La durata del tirocinio è adeguato agli obiettivi del
 							progetto?</td>
 						<td style="padding-left: 50px;">
-									<div class="form-check form-check-inline">
-										<input name="gruppo3" type="radio" id="radio1" value="1" checked>
-										<label for="radio4">1</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo3" type="radio" id="radio2" value="2"> <label
-											for="radio5">2</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo3" type="radio" id="radio3" value="3"> <label
-											for="radio5">3</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo3" type="radio" id="radio4" value="4"> <label
-											for="radio5">4</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo3" type="radio" id="radio4" value="5"> <label
-											for="radio5">5</label>
-									</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo3" type="radio" id="radio1" value="1" checked>
+								<label for="radio4">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo3" type="radio" id="radio2" value="2">
+								<label for="radio5">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo3" type="radio" id="radio3" value="3">
+								<label for="radio5">3</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo3" type="radio" id="radio4" value="4">
+								<label for="radio5">4</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo3" type="radio" id="radio4" value="5">
+								<label for="radio5">5</label>
+							</div>
+						</td>
+					</tr>
+
+
+
+					<tr>
+						<td>Il tirocinio ha aumentato le possibilità di trovare
+							lavoro</td>
+						<td style="padding-left: 50px;">
+							<div class="form-check form-check-inline">
+								<input name="gruppo12" type="radio" id="radio1" value="1"
+									checked> <label for="radio4">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo12" type="radio" id="radio2" value="2">
+								<label for="radio5">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo12" type="radio" id="radio3" value="3">
+								<label for="radio5">3</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo12" type="radio" id="radio4" value="4">
+								<label for="radio5">4</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo12" type="radio" id="radio4" value="5">
+								<label for="radio5">5</label>
+							</div>
 						</td>
 					</tr>
 
 					<tr>
 						<td>D) Valutazione complessiva dell'esperienza</td>
 						<td style="padding-left: 50px;">
-									<div class="form-check form-check-inline">
-										<input name="gruppo4" type="radio" id="radio1" value="1" checked>
-										<label for="radio4">1</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo4" type="radio" id="radio2" value="2"> <label
-											for="radio5">2</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo4" type="radio" id="radio3" value="3"> <label
-											for="radio5">3</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo4" type="radio" id="radio4" value="4"> <label
-											for="radio5">4</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo4" type="radio" id="radio4" value="5"> <label
-											for="radio5">5</label>
-									</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo4" type="radio" id="radio1" value="1" checked>
+								<label for="radio4">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo4" type="radio" id="radio2" value="2">
+								<label for="radio5">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo4" type="radio" id="radio3" value="3">
+								<label for="radio5">3</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo4" type="radio" id="radio4" value="4">
+								<label for="radio5">4</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo4" type="radio" id="radio4" value="5">
+								<label for="radio5">5</label>
+							</div>
 						</td>
 					</tr>
 				</table>
@@ -153,28 +184,28 @@ p{
 					<tr>
 						<td>A) Mansioni assegnate:</td>
 						<td style="padding-left: 50px;">
-					
-									<div class="form-check form-check-inline">
-										<input name="gruppo5" type="radio" id="radio1" value="1" checked>
-										<label for="radio4">1</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo5" type="radio" id="radio2" value="2"> <label
-											for="radio5">2</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo5" type="radio" id="radio3" value="3"> <label
-											for="radio5">3</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo5" type="radio" id="radio4" value="4"> <label
-											for="radio5">4</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo5" type="radio" id="radio4" value="5"> <label
-											for="radio5">5</label>
-									</div>
-								
+
+							<div class="form-check form-check-inline">
+								<input name="gruppo5" type="radio" id="radio1" value="1" checked>
+								<label for="radio4">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo5" type="radio" id="radio2" value="2">
+								<label for="radio5">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo5" type="radio" id="radio3" value="3">
+								<label for="radio5">3</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo5" type="radio" id="radio4" value="4">
+								<label for="radio5">4</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo5" type="radio" id="radio4" value="5">
+								<label for="radio5">5</label>
+							</div>
+
 						</td>
 
 					</tr>
@@ -182,84 +213,115 @@ p{
 					<tr>
 						<td>B) Ambiente di lavoro:</td>
 						<td style="padding-left: 50px;">
-							
-									<div class="form-check form-check-inline">
-										<input name="gruppo6" type="radio" id="radio1" value="1" checked>
-										<label for="radio4">1</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo6" type="radio" id="radio2" value="2"> <label
-											for="radio5">2</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo6" type="radio" id="radio3" value="3"> <label
-											for="radio5">3</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo6" type="radio" id="radio4" value="4"> <label
-											for="radio5">4</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo6" type="radio" id="radio4" value="5"> <label
-											for="radio5">5</label>
-									</div>
+
+							<div class="form-check form-check-inline">
+								<input name="gruppo6" type="radio" id="radio1" value="1" checked>
+								<label for="radio4">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo6" type="radio" id="radio2" value="2">
+								<label for="radio5">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo6" type="radio" id="radio3" value="3">
+								<label for="radio5">3</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo6" type="radio" id="radio4" value="4">
+								<label for="radio5">4</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo6" type="radio" id="radio4" value="5">
+								<label for="radio5">5</label>
+							</div>
 						</td>
 					</tr>
 
 					<tr>
 						<td>C) Competenze tecniche presenti:</td>
 						<td style="padding-left: 50px;">
-							
-									<div class="form-check form-check-inline">
-										<input name="gruppo7" type="radio" id="radio1" value="1" checked>
-										<label for="radio4">1</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo7" type="radio" id="radio2" value="2"> <label
-											for="radio5">2</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo7" type="radio" id="radio3" value="3"> <label
-											for="radio5">3</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo7" type="radio" id="radio4" value="4"> <label
-											for="radio5">4</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo7" type="radio" id="radio4" value="5"> <label
-											for="radio5">5</label>
-									</div>
-								
+
+							<div class="form-check form-check-inline">
+								<input name="gruppo7" type="radio" id="radio1" value="1" checked>
+								<label for="radio4">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo7" type="radio" id="radio2" value="2">
+								<label for="radio5">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo7" type="radio" id="radio3" value="3">
+								<label for="radio5">3</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo7" type="radio" id="radio4" value="4">
+								<label for="radio5">4</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo7" type="radio" id="radio4" value="5">
+								<label for="radio5">5</label>
+							</div>
+
 						</td>
 					</tr>
+
+
+					<tr>
+						<td>Logistica e supporto strumentale:</td>
+						<td style="padding-left: 50px;">
+
+
+							<div class="form-check form-check-inline">
+								<input name="gruppo13" type="radio" id="radio1" value="1"
+									checked> <label for="radio4">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo13" type="radio" id="radio2" value="2">
+								<label for="radio5">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo13" type="radio" id="radio3" value="3">
+								<label for="radio5">3</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo13" type="radio" id="radio4" value="4">
+								<label for="radio5">4</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo13" type="radio" id="radio4" value="5">
+								<label for="radio5">5</label>
+							</div>
+
+						</td>
+					</tr>
+
 
 					<tr>
 						<td>D) Assistenza del tutor Ente ospitante:</td>
 						<td style="padding-left: 50px;">
-							
 
-									<div class="form-check form-check-inline">
-										<input name="gruppo8" type="radio" id="radio1" value="1" checked>
-										<label for="radio4">1</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo8" type="radio" id="radio2" value="2"> <label
-											for="radio5">2</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo8" type="radio" id="radio3" value="3"> <label
-											for="radio5">3</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo8" type="radio" id="radio4" value="4"> <label
-											for="radio5">4</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input name="gruppo8" type="radio" id="radio4" value="5"> <label
-											for="radio5">5</label>
-									</div>
-							
+
+							<div class="form-check form-check-inline">
+								<input name="gruppo8" type="radio" id="radio1" value="1" checked>
+								<label for="radio4">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo8" type="radio" id="radio2" value="2">
+								<label for="radio5">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo8" type="radio" id="radio3" value="3">
+								<label for="radio5">3</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo8" type="radio" id="radio4" value="4">
+								<label for="radio5">4</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input name="gruppo8" type="radio" id="radio4" value="5">
+								<label for="radio5">5</label>
+							</div>
+
 						</td>
 					</tr>
 				</table>
@@ -275,24 +337,24 @@ p{
 							<div>
 								<div class="row">
 									<div class="form-check form-check-inline">
-										<input name="gruppo9" type="radio" id="radio1" value="1" checked>
-										<label for="radio4">1</label>
+										<input name="gruppo9" type="radio" id="radio1" value="1"
+											checked> <label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo9" type="radio" id="radio2" value="2"> <label
-											for="radio5">2</label>
+										<input name="gruppo9" type="radio" id="radio2" value="2">
+										<label for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo9" type="radio" id="radio3" value="3"> <label
-											for="radio5">3</label>
+										<input name="gruppo9" type="radio" id="radio3" value="3">
+										<label for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo9" type="radio" id="radio4" value="4"> <label
-											for="radio5">4</label>
+										<input name="gruppo9" type="radio" id="radio4" value="4">
+										<label for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo9" type="radio" id="radio4" value="5"> <label
-											for="radio5">5</label>
+										<input name="gruppo9" type="radio" id="radio4" value="5">
+										<label for="radio5">5</label>
 									</div>
 								</div>
 							</div>
@@ -306,24 +368,24 @@ p{
 							<div>
 								<div class="row">
 									<div class="form-check form-check-inline">
-										<input name="gruppo10" type="radio" id="radio1" value="1" checked>
-										<label for="radio4">1</label>
+										<input name="gruppo10" type="radio" id="radio1" value="1"
+											checked> <label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo10" type="radio" id="radio2" value="2"> <label
-											for="radio5">2</label>
+										<input name="gruppo10" type="radio" id="radio2" value="2">
+										<label for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo10" type="radio" id="radio3" value="3"> <label
-											for="radio5">3</label>
+										<input name="gruppo10" type="radio" id="radio3" value="3">
+										<label for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo10" type="radio" id="radio4" value="4"> <label
-											for="radio5">4</label>
+										<input name="gruppo10" type="radio" id="radio4" value="4">
+										<label for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo10" type="radio" id="radio4" value="5"> <label
-											for="radio5">5</label>
+										<input name="gruppo10" type="radio" id="radio4" value="5">
+										<label for="radio5">5</label>
 									</div>
 								</div>
 							</div>
@@ -336,24 +398,24 @@ p{
 							<div>
 								<div class="row">
 									<div class="form-check form-check-inline">
-										<input name="gruppo11" type="radio" id="radio1" value="1" checked>
-										<label for="radio4">1</label>
+										<input name="gruppo11" type="radio" id="radio1" value="1"
+											checked> <label for="radio4">1</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo11" type="radio" id="radio2" value="2"> <label
-											for="radio5">2</label>
+										<input name="gruppo11" type="radio" id="radio2" value="2">
+										<label for="radio5">2</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo11" type="radio" id="radio3" value="3"> <label
-											for="radio5">3</label>
+										<input name="gruppo11" type="radio" id="radio3" value="3">
+										<label for="radio5">3</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo11" type="radio" id="radio4" value="4"> <label
-											for="radio5">4</label>
+										<input name="gruppo11" type="radio" id="radio4" value="4">
+										<label for="radio5">4</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input name="gruppo11" type="radio" id="radio4" value="5"> <label
-											for="radio5">5</label>
+										<input name="gruppo11" type="radio" id="radio4" value="5">
+										<label for="radio5">5</label>
 									</div>
 								</div>
 							</div>
@@ -366,20 +428,21 @@ p{
 						class="btn btn-primary" data-toggle="modal"
 						data-target="#exampleModalCenter"
 						style="background-color: #2C5278;">CONFERMA</button> </span>
-						
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+
+				<div class="modal fade" id="exampleModalCenter" tabindex="-1"
 					role="dialog" aria-labelledby="exampleModalCenterTitle"
 					aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								
+
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<div class="modal-body">Questionario effettuato con successo!</div>
+							<div class="modal-body">Questionario effettuato con
+								successo!</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Close</button>
@@ -387,8 +450,8 @@ p{
 						</div>
 					</div>
 				</div>
-						
-						<br> <br>
+
+				<br> <br>
 			</div>
 		</div>
 
