@@ -25,6 +25,8 @@ import javax.servlet.http.HttpSession;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -154,12 +156,12 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		if(studente.getSex()=='M'){
 			 sezioneDatiAnagrafici="Io sottoscritto "+ studente.getName()+" "+ studente.getSurname()+" nato a "+ studente.getLuogoDiNascita()+
 					" il "+ studente.getDataDiNascita()+" residente a "+ studente.getResidente()+" via "+ studente.getVia()+" telefono "+ studente.getTelefono()+
-					",email "+ studente.getEmail() + "iscritto al corso di laurea "+ studente.getCorso()+ "matricola n° "+ studente.getMatricola();
+					",email "+ studente.getEmail() + " iscritto al corso di laurea "+ studente.getCorso()+ "matricola n° "+ studente.getMatricola();
 		}
 		else if(studente.getSex()=='F'){
 			sezioneDatiAnagrafici="Io sottoscritta "+ studente.getName()+" "+ studente.getSurname()+" nata a "+ studente.getLuogoDiNascita()+
 					" il "+ studente.getDataDiNascita()+" residente a "+ studente.getResidente()+" via "+ studente.getVia()+" telefono "+ studente.getTelefono()+
-					",email "+ studente.getEmail() + "iscritta al corso di laurea "+ studente.getCorso()+ " matricola n° "+ studente.getMatricola();
+					", email "+ studente.getEmail() + " iscritta al corso di laurea "+ studente.getCorso()+ " matricola n° "+ studente.getMatricola();
 		}
 		String stringaChiedo="CHIEDO";
 		
@@ -200,13 +202,20 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		Paragraph paragrafoValutata=new Paragraph(stringaValutata,FontFactory.getFont(FontFactory.HELVETICA, 8, BaseColor.BLACK));
 		
 		PdfPTable table= new PdfPTable(6);
-		 
-		PdfPCell campo1=new PdfPCell(new Paragraph(stringaPrimaEnteAzienda));
-		PdfPCell campo2=new PdfPCell(new Paragraph(stringaSecondaIndirizzoSede));
-		PdfPCell campo3=new PdfPCell(new Paragraph(stringaTerzaProfilo));
-		PdfPCell campo4=new PdfPCell(new Paragraph(stringaQuartaTipo));
-		PdfPCell campo5=new PdfPCell(new Paragraph(stringaQuintaPeriodo));
-		PdfPCell campo6=new PdfPCell(new Paragraph(stringaSestaOre));
+		Font fontCampi=FontFactory.getFont(FontFactory.TIMES_BOLD,8,BaseColor.BLACK);
+		Paragraph campoPrimaEnteAzienda=new Paragraph(stringaPrimaEnteAzienda,fontCampi);
+		
+		PdfPCell campo1=new PdfPCell(campoPrimaEnteAzienda);
+		campo1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+		
+		campo1.setUseAscender(true);
+		campo1.setUseDescender(true);
+		campo1.setPadding(14);
+		PdfPCell campo2=new PdfPCell(new Paragraph(stringaSecondaIndirizzoSede,fontCampi));
+		PdfPCell campo3=new PdfPCell(new Paragraph(stringaTerzaProfilo,fontCampi));
+		PdfPCell campo4=new PdfPCell(new Paragraph(stringaQuartaTipo,fontCampi));
+		PdfPCell campo5=new PdfPCell(new Paragraph(stringaQuintaPeriodo,fontCampi));
+		PdfPCell campo6=new PdfPCell(new Paragraph(stringaSestaOre,fontCampi));
 		
 		table.addCell(campo1);
 		table.addCell(campo2);
@@ -231,6 +240,9 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		table.addCell(valore6);
 		
 		Paragraph paragrafoNTotaleCFU=new Paragraph(stringaNTotaleCFU,FontFactory.getFont(FontFactory.HELVETICA, 8, BaseColor.BLACK));
+		
+		paragrafoTitleDomanda.setAlignment(Element.ALIGN_CENTER);
+		paragrafoChiedo.setAlignment(Element.ALIGN_CENTER);
 		
 		
 		documento.add(paragrafoTitleDomanda);
