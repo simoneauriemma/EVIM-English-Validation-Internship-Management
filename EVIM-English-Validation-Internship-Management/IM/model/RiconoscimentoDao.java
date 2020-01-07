@@ -67,6 +67,7 @@ public class RiconoscimentoDao {
 			ps.setString(1, emailUser);
 			ResultSet rs=ps.executeQuery();
 			rs.next();
+			System.out.println("email-->"+emailUser);
 			Riconoscimento moduloRiconoscimento=new Riconoscimento();
 			moduloRiconoscimento.setIdRiconoscimento(rs.getInt(1));
 			moduloRiconoscimento.setEmailUser(rs.getString(2));

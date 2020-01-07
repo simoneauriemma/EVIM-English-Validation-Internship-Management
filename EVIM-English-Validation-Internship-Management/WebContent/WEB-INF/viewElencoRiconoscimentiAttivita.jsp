@@ -99,7 +99,7 @@
 									<th><c:out value="${ricon.matricolaStudente}"></c:out></th>
 									<th><i id="${conto.count}" class="far fa-circle"
 										title="<c:out value="${ricon.stato}"/>"></i></th>
-									<td><button>
+									<td><button onclick=visualizzaRiconoscimento(${ricon.idRiconoscimento},"${ricon.emailUser}")>
 											<i class="fas fa-file-pdf"></i>
 										</button></td>
 
@@ -107,15 +107,11 @@
 									<c:if test="${ricon.stato eq 'V'}">
 
 										<td>
-											<button class="bottone" onclick=approvaModulo(
-												<c:out value="${ricon.idRiconoscimento}"/>,<c:out value="${conto.count}"/>
-												) id="accetta">
+											<button class="bottone" onclick=approvaModulo(<c:out value="${ricon.idRiconoscimento}"/>,<c:out value="${conto.count}"/>) id="accetta">
 												<i class="fas fa-check-square"></i>
 											</button>
 
-											<button class="bottone" onclick=rifiutaModulo(
-												<c:out value="${ricon.idRiconoscimento}"/>,<c:out value="${conto.count}"/>
-												) id="rifiuta">
+											<button class="bottone" onclick=rifiutaModulo(<c:out value="${ricon.idRiconoscimento}"/>,<c:out value="${conto.count}"/>) id="rifiuta">
 												<i class="far fa-times-circle"></i>
 											</button>
 										</td>
@@ -221,6 +217,11 @@
   		}
   		xmlHttp.open("GET","ApprovaRifiutaModuloRiconoscimento?modifica=approva&idRiconoscimento="+id,true);
   		xmlHttp.send();
+	}
+	
+	function visualizzaRiconoscimento(idRiconoscimento,emailStudente){
+		alert("eseguo");
+		window.location.href="VisualizzaModuloRiconoscimento?idRiconoscimento="+idRiconoscimento+"&emailUser="+emailStudente;
 	}
 </script>
 
