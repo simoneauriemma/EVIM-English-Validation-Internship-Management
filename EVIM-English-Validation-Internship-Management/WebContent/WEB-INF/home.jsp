@@ -116,11 +116,11 @@
 								alt="First slide" id="foto1">
 						</div>
 						<div class="carousel-item">
-							<img class="d-block w-100" src="foto/images_1.jpg"
+							<img class="d-block w-100" src="foto/image_1.png"
 								alt="Second slide" id="foto2">
 						</div>
 						<div class="carousel-item">
-							<img class="d-block w-100" src="foto/images_2.png"
+							<img class="d-block w-100" src="foto/images_2.jpg"
 								alt="Third slide" id="foto3">
 						</div>
 					</div>
