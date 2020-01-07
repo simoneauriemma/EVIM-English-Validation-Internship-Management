@@ -11,6 +11,17 @@
 
 <title>Compilazione modulo riconoscimento attività</title>
 
+<!-- <script>
+	$(function() {
+		$('[data-toggle="popover"]').popover()
+	})
+	
+	$(function () {
+  $('[data-toggle="popover"]').popover({
+    container: 'body'
+  })
+})
+</script> -->
 </head>
 
 <div class="container">
@@ -106,16 +117,27 @@
 								value="<c:out value="${studente.telefono}"/>" disabled>
 						</div>
 						<br>
-						
-						
+
+
 						<!-- INIZIO gestione cfu -->
 						<h6 class="text-center">Inserisci i CFU da convalidare</h6>
+						<br>
 
-				<!-- 		<button type="button" class="btn btn-lg btn-danger" id="pop"
+						<!-- 		<button type="button" class="btn btn-lg btn-danger" id="pop"
 							data-toggle="popover" title="Popover title"
 							data-content="And here's some amazing content. It's very engaging. Right?"> * </button> -->
-
-						<br>
+						<p>
+							Hai da poter convalidare ancora: <b> # CFU</b>
+							
+							<!-- popover  -->
+							<button type="button" id="asterisco"
+								data-container="body" data-toggle="popover"
+								data-placement="right"
+								data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+								<i class="fas fa-asterisk"></i></button>
+							<br> <br>
+							
+							
 						<div class="scelta-drop">
 							<div class="form-group">
 								<label for="sel2"><i class="fas fa-briefcase"></i> N°CFU
@@ -476,5 +498,4 @@
 	$('.image-upload-wrap3').bind('dragleave', function() {
 		$('.image-upload-wrap3').removeClass('image-dropping3');
 	});
-
 </script>
