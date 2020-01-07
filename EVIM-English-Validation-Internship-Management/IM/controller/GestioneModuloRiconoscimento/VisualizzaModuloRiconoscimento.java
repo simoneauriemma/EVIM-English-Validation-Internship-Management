@@ -167,10 +167,10 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		
 		String stringaValutata="Che venga valutata l’esperienza professionale da me maturata e così caratterizzata:\n";
 		
-		String stringaPrimaEnteAzienda="ENTE/AZIENDA\n Presso cui è stata svolta l'attività";
+		String stringaPrimaEnteAzienda="ENTE/AZIENDA\nPresso cui è stata svolta l'attività";
 		String stringaCampoEnteAzienda=moduloRiconoscimento.getEnteAzienda();
 		
-		String stringaSecondaIndirizzoSede="INDIRIZZO SEDE\n Presso cui è stata svolta l'attività";
+		String stringaSecondaIndirizzoSede="INDIRIZZO SEDE\nPresso cui è stata svolta l'attività";
 		String stringaCampoIndirizzoSede=moduloRiconoscimento.getIndirizzoSede();
 		
 		String stringaTerzaProfilo="PROFILO";
@@ -182,15 +182,15 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		String stringaQuintaPeriodo="PERIODO\n(data inizio-data fine)";
 		String stringaCampoPeriodo=moduloRiconoscimento.getPeriodo();
 		
-		String stringaSestaOre="Orie svolte alla data della certificazione dell'azienda";
+		String stringaSestaOre="Ore svolte alla data della certificazione dell'azienda";
 		String stringaCampoOre=""+moduloRiconoscimento.getOreSvolte();
 		
 		int CFUTirocinioEsterno=moduloRiconoscimento.getCFUTirocinioEsterno();
 		int CFUTirocinioObbligatorio=moduloRiconoscimento.getCFUTirocinioObbligatorio();
 		int CFUAccompagnamento=moduloRiconoscimento.getCFUAccompagnamentoLavoro();
 		
-		String stringaNTotaleCFU="ai fini del riconoscimento di N°"+CFUTirocinioEsterno+CFUTirocinioObbligatorio+" CFU relativi al tirocinio previsti"
-				+ "nel mio piano di studi, di cui N°"+CFUTirocinioObbligatorio+"CFU di Tirocinio Obbligatorio e "+ CFUTirocinioEsterno+" CFU di tirocinio Esterno come scelta libera"
+		String stringaNTotaleCFU="ai fini del riconoscimento di N° "+CFUTirocinioEsterno+CFUTirocinioObbligatorio+" CFU relativi al tirocinio previsti"
+				+ "nel mio piano di studi, di cui N° "+CFUTirocinioObbligatorio+" CFU di Tirocinio Obbligatorio e "+ CFUTirocinioEsterno+" CFU di tirocinio Esterno come scelta libera"
 						+ " e di "+ CFUAccompagnamento+" CFU di Accompagnamento al mondo del Lavoro, previsto nel mio piano di studi.";
 		
 		
@@ -202,20 +202,54 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		Paragraph paragrafoValutata=new Paragraph(stringaValutata,FontFactory.getFont(FontFactory.HELVETICA, 8, BaseColor.BLACK));
 		
 		PdfPTable table= new PdfPTable(6);
+		table.setWidths(new int[] {1,1,1,1,2,1});
 		Font fontCampi=FontFactory.getFont(FontFactory.TIMES_BOLD,8,BaseColor.BLACK);
+		
 		Paragraph campoPrimaEnteAzienda=new Paragraph(stringaPrimaEnteAzienda,fontCampi);
+		Paragraph campoSecondaIndirizzo=new Paragraph(stringaSecondaIndirizzoSede,fontCampi);
+		Paragraph campoTerzoProfilo=new Paragraph(stringaTerzaProfilo,fontCampi);
+		Paragraph campoQuartoTipo= new Paragraph(stringaQuartaTipo,fontCampi);
+		Paragraph campoQuintoPeriodo= new Paragraph(stringaQuintaPeriodo,fontCampi);
+		Paragraph campoSestoOre=new Paragraph(stringaSestaOre,fontCampi);
+		
 		
 		PdfPCell campo1=new PdfPCell(campoPrimaEnteAzienda);
+		PdfPCell campo2=new PdfPCell(campoSecondaIndirizzo);
+		PdfPCell campo3=new PdfPCell(campoTerzoProfilo);
+		PdfPCell campo4=new PdfPCell(campoQuartoTipo);
+		PdfPCell campo5=new PdfPCell(campoQuintoPeriodo);
+		PdfPCell campo6=new PdfPCell(campoSestoOre);
+	
 		campo1.setVerticalAlignment(Element.ALIGN_MIDDLE);
-		
 		campo1.setUseAscender(true);
 		campo1.setUseDescender(true);
-		campo1.setPadding(14);
-		PdfPCell campo2=new PdfPCell(new Paragraph(stringaSecondaIndirizzoSede,fontCampi));
-		PdfPCell campo3=new PdfPCell(new Paragraph(stringaTerzaProfilo,fontCampi));
-		PdfPCell campo4=new PdfPCell(new Paragraph(stringaQuartaTipo,fontCampi));
-		PdfPCell campo5=new PdfPCell(new Paragraph(stringaQuintaPeriodo,fontCampi));
-		PdfPCell campo6=new PdfPCell(new Paragraph(stringaSestaOre,fontCampi));
+		campo1.setPadding(10);
+		
+		campo2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+		campo2.setUseAscender(true);
+		campo2.setUseDescender(true);
+		campo2.setPadding(10);
+		
+		campo3.setVerticalAlignment(Element.ALIGN_MIDDLE);
+		campo3.setUseAscender(true);
+		campo3.setUseDescender(true);
+		campo3.setPadding(10);
+		
+		campo4.setVerticalAlignment(Element.ALIGN_MIDDLE);
+		campo4.setUseAscender(true);
+		campo4.setUseDescender(true);
+		campo4.setPadding(10);
+		
+		campo5.setVerticalAlignment(Element.ALIGN_MIDDLE);
+		campo5.setUseAscender(true);
+		campo5.setUseDescender(true);
+		campo5.setPadding(10);
+		
+		campo6.setVerticalAlignment(Element.ALIGN_MIDDLE);
+		campo6.setUseAscender(true);
+		campo6.setUseDescender(true);
+		campo6.setPadding(10);
+		
 		
 		table.addCell(campo1);
 		table.addCell(campo2);
@@ -223,6 +257,9 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		table.addCell(campo4);
 		table.addCell(campo5);
 		table.addCell(campo6);
+		
+		table.setSpacingBefore(10);
+		table.setSpacingAfter(10);
 		
 		
 		PdfPCell valore1=new PdfPCell(new Paragraph(stringaCampoEnteAzienda));
