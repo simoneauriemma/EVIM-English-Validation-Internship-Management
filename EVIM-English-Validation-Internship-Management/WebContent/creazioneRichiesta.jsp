@@ -26,9 +26,9 @@
 						<div class="scelte">
 							<div class="scelta-drop">
 								<i class="fas fa-edit"></i> Selezionare il numero di CFU <br>
-								<br> <input name="cfu" type="radio" id="radio1" value="6"
-									checked> <label id="radio1" for="radio1">6 CFU</label>
-								<br> <input name="cfu" type="radio" id="radio2" value="11">
+								<br> <input name="cfu" type="radio" id="radio1" value="6"> 
+								<label id="radio1" for="radio1">6 CFU</label>
+								<br> <input name="cfu" type="radio" id="radio2" value="11" checked>
 								<label for="radio2" id="radio2">11 CFU</label> <br> <input
 									name="cfu" type="radio" id="radio3" value="17"> <label
 									for="radio3" id="radio3">17 CFU</label> <br> <input
@@ -61,15 +61,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="scelta-drop">
-							<div class="form-group">
-								<label for="sel3"><i class="fas fa-edit"></i> Seleziona
-									proposta </label> <select class="form-control" id="sel3" name="sel3">
-									<!-- <option value="proposta1">x</option>
-								<option value="proposta2">y</option> -->
-								</select>
-							</div>
-						</div>
+						
 						<div class="scelta-drop">
 							<div class="form-group">
 								<label for="sel4"><i class="fas fa-user"></i> Seleziona
@@ -82,7 +74,15 @@
 								</select>
 							</div>
 						</div>
-
+						<div class="scelta-drop">
+							<div class="form-group">
+								<label for="sel3"><i class="fas fa-edit"></i> Seleziona
+									proposta </label> <select class="form-control" id="sel3" name="sel3">
+									<!-- <option value="proposta1">x</option>
+								<option value="proposta2">y</option> -->
+								</select>
+							</div>
+						</div>
 
 						<br>
 					</div>

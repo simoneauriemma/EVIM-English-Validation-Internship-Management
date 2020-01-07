@@ -71,7 +71,7 @@ a{
 }
 
 #side-menu ul li a{ /* la grandezza del font dei figli di ogni gestione*/
-	font-size: 13px;
+	font-size: 12px;
 }
 
 #side-menu ul li:hover{
