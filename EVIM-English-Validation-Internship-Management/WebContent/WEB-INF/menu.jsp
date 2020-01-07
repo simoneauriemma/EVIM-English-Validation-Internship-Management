@@ -227,7 +227,7 @@
 					</c:if>
 				</ul>
 			</c:if>
-			<!-- FINE Gestione riconoscimento attività -->
+			<!-- FINE Gestione riconoscimeto attivtà -->
 
 
 			<!-- INIZIO gestione account tutor -->

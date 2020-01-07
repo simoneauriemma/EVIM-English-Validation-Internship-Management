@@ -24,6 +24,7 @@
 				<p id="titolo" style="font-size: 30px; color: #595959;">Crea
 					account Tutor Aziendale</p>
 
+<!-- FORM -->
 
 
 				<form method="POST" id="form" onsubmit="return validate()">

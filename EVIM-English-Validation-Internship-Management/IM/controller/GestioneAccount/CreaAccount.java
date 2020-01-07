@@ -38,7 +38,7 @@ public class CreaAccount extends HttpServlet {
 
 			String tipoUtente = sessione.getAttribute("utenteLoggato").getClass().getName();
 
-			// in base all'oggetto nella sessione , controllo se l'utente è abilitato
+			// in base all'oggetto nella sessione , controllo se l'utente è abilitat
 			if (tipoUtente.equalsIgnoreCase("model.Azienda")) {
 				// è loggato un tipo "azienda"
 				//

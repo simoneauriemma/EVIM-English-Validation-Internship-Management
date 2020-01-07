@@ -49,7 +49,7 @@ public class Login extends BaseServlet {
 			
 		} else {
 			
-			// dominio utenza (controllo degli indirizzi email)
+			// domiNio utenza (controllo degli indirizzi emaIl)
 
 			// controllo studente 
 
