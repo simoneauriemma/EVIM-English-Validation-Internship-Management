@@ -34,13 +34,13 @@
 					<input type="text" class="form-control" id="surname" name="cognome"
 						placeholder="Cognome" autocomplete="off"> <br>
 					<p></p>
-					<input type="email" class="form-control" id="email" name="email"
+					<input type="email" class="form-control" id="email" name="emaila"
 						placeholder="Email" autocomplete="off">
 					<p id='resultRegexEmail'></p>
 					<br> <input type="tel" class="form-control" id="telefono" name="telefono"
 						name="telefono" placeholder="Numero di telefono">
 					<p id="resultRegexTelefono"></p>
-					<br> <input type="password" class="form-control" id="password" name="password"
+					<br> <input type="password" class="form-control" id="password" name="passworda"
 						name="password" placeholder="Password">
 					<p id='resultRegexPass'></p>
 					<br> <input type="password" class="form-control" name="confermaPassword"
@@ -75,9 +75,9 @@
 			var resultRegexTelefono = $('#resultRegexTelefono');
 			
 			var regex_email = new RegExp(
-					'^[a-z A-Z 0-9\._-]+@[a-z\.-]+\.([a-z]{2-6})');
+					'[A-z0-9\.\+_-]+@[A-z0-9\._-]+\.[A-z]{2,6}');
 			var regex_telefono = new RegExp('^[0-9]{8,16}');
-			var regex_password = new RegExp('^[A-Za-z0-9]{8,}');
+			var regex_password = new RegExp('^[A-Za-z0-9]{8,50}');
 			var resultRegexCPass = $('#resultRegexCPass');
 			var confirm_password = $('#confermaPassword');
 

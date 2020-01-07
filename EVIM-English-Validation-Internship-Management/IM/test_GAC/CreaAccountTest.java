@@ -42,8 +42,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 	    response = new MockHttpServletResponse();
 	  }
 	  
-
-	//l'azienda prova a creare un nuovo account per un proprio tutor ma il campo "nome" non è valido
+	//l'azienda prova a creare un nuovo account per un proprio tutor ma il campo "nome" è vuoto
       @Test
 	  public void tc_gac_1_1() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
@@ -53,17 +52,18 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("azienda", type);
-    	   request.addParameter("nome","M");
+    	   request.addParameter("nome");
 		   request.addParameter("cognome","Ambrosio");
-		   request.addParameter("email", "ambrosiomario");
-		   request.addParameter("password","bellaciao");
+		   request.addParameter("telefono", "3332233444");
+		   request.addParameter("emaila", "ambrosiomario@hotmail.it");
+		   request.addParameter("passworda","bellaciao");
 		   request.addParameter("confermaPassword","bellaciao");
 		   servletCreaAccount.doPost(request, response);
 		   boolean esito = (boolean) request.getAttribute("utenteCreato");
 		   assertFalse(esito);
 	  }
       
-    //l'azienda prova a creare un nuovo account per un proprio tutor ma il campo "nome" non è valido
+    //l'azienda prova a creare un nuovo account per un proprio tutor ma il campo "cognome" è vuoto
       @Test
 	  public void tc_gac_1_2() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
@@ -73,17 +73,18 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("azienda", type);
-    	   request.addParameter("nome","Mario&");
-		   request.addParameter("cognome","Ambrosio");
-		   request.addParameter("email", "ambrosiomario");
-		   request.addParameter("password","bellaciao");
+    	   request.addParameter("nome","Mario");
+		   request.addParameter("cognome");
+		   request.addParameter("telefono", "3332233444");
+		   request.addParameter("emaila", "ambrosiomario@hotmail.it");
+		   request.addParameter("passworda","bellaciao");
 		   request.addParameter("confermaPassword","bellaciao");
 		   servletCreaAccount.doPost(request, response);
 		   boolean esito = (boolean) request.getAttribute("utenteCreato");
 		   assertFalse(esito);
 	  }
       
-    //l'azienda prova a creare un nuovo account per un proprio tutor ma il campo "cognome" non è valido
+    //l'azienda prova a creare un nuovo account per un proprio tutor ma il campo "email" è vuoto
       @Test
 	  public void tc_gac_1_3() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
@@ -94,16 +95,17 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   assertTrue(log);
     	   assertEquals("azienda", type);
     	   request.addParameter("nome","Mario");
-		   request.addParameter("cognome","A");
-		   request.addParameter("email", "ambrosiomario");
-		   request.addParameter("password","bellaciao");
+		   request.addParameter("cognome","Ambrosio");
+		   request.addParameter("telefono", "3332233444");
+		   request.addParameter("emaila");
+		   request.addParameter("passworda","bellaciao");
 		   request.addParameter("confermaPassword","bellaciao");
 		   servletCreaAccount.doPost(request, response);
 		   boolean esito = (boolean) request.getAttribute("utenteCreato");
 		   assertFalse(esito);
 	  }
       
-    //l'azienda prova a creare un nuovo account per un proprio tutor ma il campo "cognome" non è valido
+    //l'azienda prova a creare un nuovo account per un proprio tutor ma il campo "conferma password" è vuoto
       @Test
 	  public void tc_gac_1_4() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
@@ -114,16 +116,17 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   assertTrue(log);
     	   assertEquals("azienda", type);
     	   request.addParameter("nome","Mario");
-		   request.addParameter("cognome","Ambrosio&");
-		   request.addParameter("email", "ambrosiomario");
-		   request.addParameter("password","bellaciao");
-		   request.addParameter("confermaPassword","bellaciao");
+		   request.addParameter("cognome","Ambrosio");
+		   request.addParameter("telefono", "3332233444");
+		   request.addParameter("emaila", "ambrosiomario@hotmail.it");
+		   request.addParameter("passworda","bellaciao");
+		   request.addParameter("confermaPassword");
 		   servletCreaAccount.doPost(request, response);
 		   boolean esito = (boolean) request.getAttribute("utenteCreato");
 		   assertFalse(esito);
 	  }
       
-    //l'azienda prova a creare un nuovo account per un proprio tutor ma il campo "nome utente" non è valido
+    //l'azienda prova a creare un nuovo account per un proprio tutor ma le password non coincidono
       @Test
 	  public void tc_gac_1_5() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
@@ -135,15 +138,16 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   assertEquals("azienda", type);
     	   request.addParameter("nome","Mario");
 		   request.addParameter("cognome","Ambrosio");
-		   request.addParameter("email", "a");
-		   request.addParameter("password","bellaciao");
-		   request.addParameter("confermaPassword","bellaciao");
+		   request.addParameter("telefono", "3332233444");
+		   request.addParameter("emaila", "ambrosiomario@hotmail.it");
+		   request.addParameter("passworda","bellaciao");
+		   request.addParameter("confermaPassword","bellacaio");
 		   servletCreaAccount.doPost(request, response);
 		   boolean esito = (boolean) request.getAttribute("utenteCreato");
 		   assertFalse(esito);
 	  }
       
-    //l'azienda prova a creare un nuovo account per un proprio tutor ma il campo "nome utente" non è valido
+      //l'azienda prova a creare un nuovo account ma il campo "telefono" è vuoto
       @Test
 	  public void tc_gac_1_6() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
@@ -155,15 +159,16 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   assertEquals("azienda", type);
     	   request.addParameter("nome","Mario");
 		   request.addParameter("cognome","Ambrosio");
-		   request.addParameter("email", "ambrosiomario%%%%");
-		   request.addParameter("password","bellaciao");
+		   request.addParameter("telefono");
+		   request.addParameter("emaila", "ambrosiomario@hotmail.it");
+		   request.addParameter("passworda","bellaciao");
 		   request.addParameter("confermaPassword","bellaciao");
 		   servletCreaAccount.doPost(request, response);
 		   boolean esito = (boolean) request.getAttribute("utenteCreato");
 		   assertFalse(esito);
 	  }
       
-    //l'azienda prova a creare un nuovo account per un proprio tutor ma il campo "password" non è valido
+    //l'azienda prova a creare un nuovo account ma il campo "password" è vuoto
       @Test
 	  public void tc_gac_1_7() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
@@ -175,15 +180,17 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   assertEquals("azienda", type);
     	   request.addParameter("nome","Mario");
 		   request.addParameter("cognome","Ambrosio");
-		   request.addParameter("email", "ambrosiomario");
-		   request.addParameter("password","bellacaio");
+		   request.addParameter("telefono", "3332233444");
+		   request.addParameter("emaila", "ambrosiomario@hotmail.it");
+		   request.addParameter("passworda");
 		   request.addParameter("confermaPassword","bellaciao");
 		   servletCreaAccount.doPost(request, response);
 		   boolean esito = (boolean) request.getAttribute("utenteCreato");
 		   assertFalse(esito);
+
 	  }
       
-    //l'azienda prova a creare un nuovo account per un proprio tutor ma il campo "conferma password" non è valido
+    //l'azienda prova a creare un nuovo account per un proprio tutor inserendo correttamente tutti i dati
       @Test
 	  public void tc_gac_1_8() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
@@ -195,15 +202,16 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   assertEquals("azienda", type);
     	   request.addParameter("nome","Mario");
 		   request.addParameter("cognome","Ambrosio");
-		   request.addParameter("email", "ambrosiomario");
-		   request.addParameter("password","bellaciao");
-		   request.addParameter("confermaPassword","bellacaio");
+		   request.addParameter("telefono", "3332233444");
+		   request.addParameter("emaila", "ambrosiomario@hotmail.it");
+		   request.addParameter("passworda","bellaciao");
+		   request.addParameter("confermaPassword","bellaciao");
 		   servletCreaAccount.doPost(request, response);
 		   boolean esito = (boolean) request.getAttribute("utenteCreato");
-		   assertFalse(esito);
+		   assertTrue(esito);
+
 	  }
-      
-    //l'azienda prova a creare un nuovo account per un proprio tutor inserendo correttamente tutti i dati
+      //tutor aziendale gia esiste
       @Test
 	  public void tc_gac_1_9() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
@@ -215,12 +223,30 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   assertEquals("azienda", type);
     	   request.addParameter("nome","Mario");
 		   request.addParameter("cognome","Ambrosio");
-		   request.addParameter("email", "ambrosiomario");
-		   request.addParameter("password","bellaciao");
+		   request.addParameter("telefono", "3332233444");
+		   request.addParameter("emaila", "ambrosiomario@hotmail.it");
+		   request.addParameter("passworda","bellaciao");
 		   request.addParameter("confermaPassword","bellaciao");
 		   servletCreaAccount.doPost(request, response);
 		   boolean esito = (boolean) request.getAttribute("utenteCreato");
-		   assertTrue(esito);
+		   assertFalse(esito);
+
+	  }
+      
+    //azienda non loggata
+      @Test
+	  public void tc_gac_1_10() throws ServletException, IOException  {
+    	   
+    	   request.addParameter("nome","Mario");
+		   request.addParameter("cognome","Ambrosio");
+		   request.addParameter("telefono", "3332233444");
+		   request.addParameter("emaila", "ambrosiomario@hotmail.it");
+		   request.addParameter("passworda","bellaciao");
+		   request.addParameter("confermaPassword","bellaciao");
+		   servletCreaAccount.doPost(request, response);
+		   boolean esito = (boolean) request.getAttribute("utenteCreato");
+		   assertFalse(esito);
+
 	  }
       
 	}
