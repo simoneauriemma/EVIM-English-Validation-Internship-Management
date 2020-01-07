@@ -80,11 +80,8 @@
 					<h5 class="text-uppercase">Chi siamo?</h5>
 
 					<ul class="list-unstyled">
-						<li><a class="chiSiamo.jsp" href="chiSiamo.jsp"><i
-								class="fas fa-angle-double-right"></i> Team members</a></li>
-						<li><a class="chiSiamo.jsp" href="chiSiamo.jsp"><i
-								class="fas fa-angle-double-right"></i> Project Manager</a></li>
-
+						<li><a class="chiSiamo" href="chiSiamo.jsp"><i
+								class="fas fa-angle-double-right"></i> EVIM's team members</a></li>
 					</ul>
 
 

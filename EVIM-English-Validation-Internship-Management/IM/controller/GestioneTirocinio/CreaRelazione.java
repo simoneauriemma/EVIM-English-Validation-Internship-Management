@@ -34,16 +34,20 @@ public class CreaRelazione extends BaseServlet {
 		String nomeutente = (String) session.getAttribute("type");
 		String descrizione= (String) request.getParameter("descrizione");
 		String status="in approvazione";
+		//User studente = (User) session.getAttribute("studente"); //mi sa che nin va bene
+		
 		String emailstudente= (String) request.getParameter("emailstudente");
-		ArrayList<User> studenti = new ArrayList<User>();
+		//ArrayList<User> studenti = new ArrayList<User>();
+		
+		
 		boolean result=false;
 		TutorAziendale utente= (TutorAziendale) session.getAttribute("utenteLoggato");
 
-		//se l'utente loggato è il tutor aziendale
+		//se l'utente loggato ed è il tutor aziendale
 		if(nomeutente!=null&&nomeutente.contentEquals("tutoraziendale")) {
 			
 			//controllo se devo inviare la relazione o se devo reindirizzare alla giusta pagina per compilare la relazione
-			if(descrizione!=null&&emailstudente!=null) {
+			if(descrizione!=null||emailstudente!=null) {
 				
 				result=RelazioneDAO.insertRelezione(utente.getId(), emailstudente, descrizione, status);
 				request.setAttribute("resultrelazione", result);
@@ -51,9 +55,9 @@ public class CreaRelazione extends BaseServlet {
 				dispatcher.forward(request, response);
 			}
 			else { 			//reindirizzo a compila relazione
-				studenti=RelazioneDAO.doRetriveStudenti(utente.getId());
-				session.setAttribute("studenti", studenti);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/compilaRelazione.jsp");
+				//studenti=RelazioneDAO.doRetriveStudenti(utente.getId());
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("ListaTirocini");
 				dispatcher.forward(request, response);
 			}
 		}

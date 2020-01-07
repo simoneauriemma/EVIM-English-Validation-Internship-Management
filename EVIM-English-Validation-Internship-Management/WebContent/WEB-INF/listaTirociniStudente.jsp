@@ -133,7 +133,7 @@
 		</div>
 	</div>
 </div>
-<br>
+
 <jsp:include page="footer.jsp"></jsp:include>
 
 
