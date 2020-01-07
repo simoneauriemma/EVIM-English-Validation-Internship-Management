@@ -256,7 +256,7 @@ CREATE TABLE `questionario_t` (
   `Servizi` tinyint(4) NOT NULL,
   `Assistenza` tinyint(4) NOT NULL,
   `Collaborazione` tinyint(4) NOT NULL,
-  `Durata` tinyint(4) NOT NULL,
+  `Durata` tinyint(4)  NOT NULL,
   PRIMARY KEY (`ID_Questionario`),
   KEY `Email` (`Email`),
   KEY `ID_TutorAziendale` (`ID_TutorAziendale`),
