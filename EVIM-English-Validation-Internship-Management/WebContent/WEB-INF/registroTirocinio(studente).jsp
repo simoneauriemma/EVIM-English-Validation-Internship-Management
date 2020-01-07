@@ -24,7 +24,7 @@
 			<div class="col-lg-3">
 				<jsp:include page="menu.jsp"></jsp:include>
 			</div>
-			<!-- SE L'UTENTE LOGGATO E' UNO STUDENTE-->
+			<!-- SE L'UTENTE LOGGATO E' UNO STUDENTEe-->
 			<c:if test="${type == 'studente' }">
 				<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
 				<c:if
