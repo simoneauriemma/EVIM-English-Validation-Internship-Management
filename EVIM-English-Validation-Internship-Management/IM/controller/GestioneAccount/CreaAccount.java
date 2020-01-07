@@ -46,16 +46,16 @@ public class CreaAccount extends HttpServlet {
 				String nome = request.getParameter("nome");
 				String cognome = request.getParameter("cognome");
 				String telefono = request.getParameter("telefono");
+				String email=request.getParameter("email");
 				String password = request.getParameter("password");
 				String confermaPassword = request.getParameter("confermaPassword");
 
 				if (nome == null || cognome == null || password == null || confermaPassword == null
-						|| password.equals(confermaPassword)) {
+						|| !password.equals(confermaPassword) || email==null) {
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/error.jsp");
 					dispatcher.forward(request, response);
 				} else {
-					// ID_Azienda,Nome,Cognome,Email,Password,Telefono
-					String email = nome + "@tutor.unisa.it";
+					
 					int rs;
 					if ((rs = new TutorAziendaleDAO().doSave(azienda.getID_Azienda(), nome, cognome, email, password,
 							telefono)) == 1) {

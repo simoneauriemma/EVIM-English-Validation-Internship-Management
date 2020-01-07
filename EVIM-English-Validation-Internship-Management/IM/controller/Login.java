@@ -70,7 +70,7 @@ public class Login extends BaseServlet {
 
 			// controllo pdcd (fferrucci@unisa.it)
 
-			else if (email.contains("fferrucci@unisa.it")) {
+			else if (email.equals("fferrucci@unisa.it")) {
 				User pdcd = UserDAO.doRetrieveByLoginData(2, email, password);
 				if (pdcd != null) {
 					session.setAttribute("utenteLoggato", pdcd);
@@ -113,7 +113,7 @@ public class Login extends BaseServlet {
 
 			// controllo tutor aziendale (@tutor.unisa.it)
 
-			else if (email.contains("tutor")) {
+			/*else if (email.contains("tutor")) {
 				TutorAziendale tutoraz = TutorAziendaleDAO.doRetrieveByLoginData(email, password);
 				if (tutoraz != null) {
 					session.setAttribute("utenteLoggato", tutoraz);
@@ -126,7 +126,7 @@ public class Login extends BaseServlet {
 					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
 					rd.forward(request, response);
 				}
-			}
+			}*/
 			/*
 			 * controllo azienda (@azienda.it) qualsiasi sia il dominio della email, diverso
 			 * da studenti.unisa.it o unisa.it vuol dire che si tratta di un account
@@ -135,9 +135,17 @@ public class Login extends BaseServlet {
 
 			else {
 				Azienda az = AziendaDAO.doRetrieveByLoginData(email, password);
+				TutorAziendale tutoraz = TutorAziendaleDAO.doRetrieveByLoginData(email, password);
+				
 				if (az != null) {
 					session.setAttribute("utenteLoggato", az);
 					session.setAttribute("type", "azienda");
+					request.setAttribute("logged", true);
+					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
+					rd.forward(request, response);
+				} else if (tutoraz != null) {
+					session.setAttribute("utenteLoggato", tutoraz);
+					session.setAttribute("type", "tutoraziendale");
 					request.setAttribute("logged", true);
 					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
 					rd.forward(request, response);
