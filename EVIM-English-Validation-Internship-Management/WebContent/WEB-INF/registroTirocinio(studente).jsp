@@ -87,7 +87,6 @@
 										<td>Ora ingresso</td>
 										<td>Ora uscita</td>
 										<td>Ore tot.</td>
-										<td>Firma Tirocinante</td>
 										<td>Firma responsabile</td>
 									</tr>
 									<tr>
@@ -99,8 +98,8 @@
 										<td><c:out
 												value="${esterno.orarioUscita - esterno.orarioIngresso}" />
 										</td>
-										<td>#</td>
-										<td><c:out value="${esterno.firmaResponsabile}" /></td>
+										<td><a href="#"><i id="accettare"
+												class="fas fa-check-square"></i></a></td>
 									</tr>
 
 								</c:forEach>
@@ -119,7 +118,7 @@
 									</tr>
 									<tr>
 										<td></td>
-										<td><c:out value="${interno.attivita}" /></td>
+										<td><c:out value="${interno.descrizione}" /></td>
 										<td><c:out value="${interno.data}" /></td>
 										<td id="ingresso"><c:out
 												value="${interno.orarioIngresso}" /></td>
@@ -127,7 +126,8 @@
 										<td><c:out
 												value="${interno.orarioUscita - interno.orarioIngresso}" /></td>
 
-										<td><a href="#"><i id="accettare" class="fas fa-check-square"></i></a></td>
+										<td><a href="#"><i id="accettare"
+												class="fas fa-check-square"></i></a></td>
 									</tr>
 
 
