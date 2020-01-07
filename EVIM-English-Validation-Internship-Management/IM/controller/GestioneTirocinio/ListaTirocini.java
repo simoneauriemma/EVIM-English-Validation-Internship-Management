@@ -168,7 +168,23 @@ public class ListaTirocini extends BaseServlet {
 
 	// classe interna per la restituzione dell'oggetto per una specifica query
 	public static class RegistroQuery {
-		private int ID_Tirocinio, NumeroCFU, OreTotali, ID_Registro;
+		private int ID_Tirocinio, NumeroCFU, OreTotali, ID_Registro, ID_Questionario, ID_Relazione;
+		public int getID_Questionario() {
+			return ID_Questionario;
+		}
+
+		public void setID_Questionario(int iD_Questionario) {
+			ID_Questionario = iD_Questionario;
+		}
+
+		public int getID_Relazione() {
+			return ID_Relazione;
+		}
+
+		public void setID_Relazione(int iD_Relazione) {
+			ID_Relazione = iD_Relazione;
+		}
+
 		boolean FirmaResponsabile;
 		String status;
 
@@ -176,7 +192,7 @@ public class ListaTirocini extends BaseServlet {
 		}
 
 		public RegistroQuery(int iD_Tirocinio, int numeroCFU, int oreTotali, int iD_Registro, boolean firmaResponsabile,
-				String status) {
+				String status, int ID_Questionario,int ID_Relazione) {
 			super();
 			ID_Tirocinio = iD_Tirocinio;
 			NumeroCFU = numeroCFU;
@@ -184,6 +200,8 @@ public class ListaTirocini extends BaseServlet {
 			ID_Registro = iD_Registro;
 			FirmaResponsabile = firmaResponsabile;
 			this.status = status;
+			this.ID_Questionario=ID_Questionario;
+			this.ID_Relazione=ID_Relazione;
 		}
 
 		public int getID_Tirocinio() {

@@ -404,11 +404,11 @@ public class TirocinioEsternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro(String email) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			System.out.println("prequery");
-			PreparedStatement ps = con.prepareStatement(
-					"select TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,"
-							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro " + "from TirocinioEsterno, Registro "
-							+ "where TirocinioEsterno.ID_TirocinioEsterno = Registro.ID_Tirocinio AND "
-							+ "TirocinioEsterno.EMAIL = ? AND TirocinioEsterno.status='in svolgimento'");
+			PreparedStatement ps = con.prepareStatement( // questa query è ok
+					"select TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU, relazione.ID_Relazione, evim.questionario_s.ID_Questionario from tirocinioesterno\n" + 
+					"join registro on registro.ID_Tirocinio= tirocinioesterno.ID_TirocinioEsterno\n" + 
+					"join relazione on tirocinioesterno.ID_TutorAziendale= relazione.ID_TutorAziendale join questionario_s on tirocinioesterno.EMAIL= evim.questionario_s.Email\n" + 
+					"where tirocinioesterno.EMAIL=? and tirocinioesterno.status='in svolgimento';");
 			ps.setString(1, email);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
@@ -422,6 +422,8 @@ public class TirocinioEsternoDAO {
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
+				a.setID_Relazione(rs.getInt("ID_Relazione"));
+				a.setID_Questionario(rs.getInt("ID_Questionario"));
 				lista.add(a);
 			}
 			return lista;
