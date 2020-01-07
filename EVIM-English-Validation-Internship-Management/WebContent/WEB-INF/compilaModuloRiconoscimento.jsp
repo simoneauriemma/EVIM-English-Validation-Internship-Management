@@ -11,17 +11,6 @@
 
 <title>Compilazione modulo riconoscimento attività</title>
 
-<!-- <script>
-	$(function() {
-		$('[data-toggle="popover"]').popover()
-	})
-	
-	$(function () {
-  $('[data-toggle="popover"]').popover({
-    container: 'body'
-  })
-})
-</script> -->
 </head>
 
 <div class="container">
@@ -117,27 +106,18 @@
 								value="<c:out value="${studente.telefono}"/>" disabled>
 						</div>
 						<br>
-
-
+					
 						<!-- INIZIO gestione cfu -->
 						<h6 class="text-center">Inserisci i CFU da convalidare</h6>
-						<br>
+						<br> Hai da poter convalidare ancora: <b> # CFU</b>
 
-						<!-- 		<button type="button" class="btn btn-lg btn-danger" id="pop"
-							data-toggle="popover" title="Popover title"
-							data-content="And here's some amazing content. It's very engaging. Right?"> * </button> -->
-						<p>
-							Hai da poter convalidare ancora: <b> # CFU</b>
-							
-							<!-- popover  -->
-							<button type="button" id="asterisco"
-								data-container="body" data-toggle="popover"
-								data-placement="right"
-								data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-								<i class="fas fa-asterisk"></i></button>
-							<br> <br>
-							
-							
+						<!-- popover  -->
+						<a href="#" data-toggle="tooltip"
+							title="Agli studenti non possono essere riconosciuti più di 12 CFU tra laurea triennale e magistrale
+per certificazioni di competenze acquisite. Pertanto se uno studente ha ottenuto alla triennale il
+riconoscimento di 6 CFU per la lingua inglese e 6 CFU per tirocinio (sulla base del riconoscimento di
+attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla triennale né alla magistrale "><i
+							class="fas fa-question-circle"></i></a> <br> <br>
 						<div class="scelta-drop">
 							<div class="form-group">
 								<label for="sel2"><i class="fas fa-briefcase"></i> N°CFU
@@ -252,7 +232,15 @@
 						<br> <br> <br>
 
 						<!-- inserimento file -->
-						<h6 class="text-center">Inserisci i file PDF qui</h6>
+
+						<h6 class="text-center">
+							Inserisci i file PDF qui <a href="#" id="tt2"
+								data-toggle="tooltip"
+								title="Va allegata l' attestazione del responsabile aziendale su carta intestata dell'azienda con firma leggibile che descrive nel dettaglio le attività realizzate, copia del documento del responsabile e del contratto di lavoro. "><i
+								class="fas fa-question-circle"></i></a>
+						</h6>
+						<!-- popover  -->
+
 						<br>
 						<div class="row">
 							<div class="col-lg-4">

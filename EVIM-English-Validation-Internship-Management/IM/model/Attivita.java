@@ -1,11 +1,11 @@
 package model;
 
-public class Attività {
+public class Attivita {
 	int ID_Attivita, ID_Registro, OrarioIngresso, OrarioUscita;
 	String Descrizione;
 	boolean FirmaResponsabile;
 
-	public Attività(int iD_Attivitan, int iD_Registro, int orarioIngresso, int orarioUscita, String descrizione,
+	public Attivita(int iD_Attivitan, int iD_Registro, int orarioIngresso, int orarioUscita, String descrizione,
 			boolean firmaResponsabile) {
 		ID_Attivita = iD_Attivitan;
 		ID_Registro = iD_Registro;
@@ -15,7 +15,7 @@ public class Attività {
 		FirmaResponsabile = firmaResponsabile;
 	}
 
-	public Attività() {
+	public Attivita() {
 	}
 
 	public int getID_Attivita() {
