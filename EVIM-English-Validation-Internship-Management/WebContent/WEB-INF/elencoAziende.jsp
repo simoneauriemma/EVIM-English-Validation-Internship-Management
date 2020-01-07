@@ -26,11 +26,8 @@
 
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
-				<p id="titolo">Aziende Convenzionate</p>
-				<div class="input-group">
-					<span class="input-group-addon">Filtro</span><input id="filter"
-						type="text" class="form-control" placeholder="Cerca ...">
-				</div>
+				<p id="titolo"  class="text-center">Elenco aziende convenzionate</p>
+				<hr>
 				<br>
 
 				<%

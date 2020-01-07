@@ -25,7 +25,7 @@
 			</div>
 
 			<div class="col-lg-9" id="col-9">
-				<p id="titolo">Elenco Tutor accademici</p>
+				<p id="titolo" class="text-center">Elenco Tutor accademici</p>
 				<hr>
 				<div class="input-group">
 					<span class="input-group-addon">Filtro</span><input id="filter"

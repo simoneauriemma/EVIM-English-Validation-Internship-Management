@@ -41,7 +41,7 @@
 
 
 	<div id="side-menu" class="list-group" style="color: black">
-		<a class="item" class="active" href=".">Home</a> <a class="item"
+		<a class="item" class="active" href=".">Home <i class="fas fa-home"></i> </a> <a class="item"
 			style="background-color: #2C5278; color: white;">Interniship
 			Management</a>
 

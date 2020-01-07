@@ -124,7 +124,7 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 				}
 				
 			
-				if(enteAzienda.length()<=200 && enteAzienda.length()>=10 && indirizzoSede.length()<=200 && indirizzoSede.length()>=10 && profilo.length()<=200 && profilo.length()>=10 && oreSvolte<12 && oreSvolte>=0 && cfuTirocinioObbligatorio>=0 && cfuTirocinioEsterno>=0 && cfuAccompagnamento>=0) {
+				if(enteAzienda.length()<=200 && enteAzienda.length()>=5 && indirizzoSede.length()<=200 && indirizzoSede.length()>=10 && profilo.length()<=200 && profilo.length()>=10 && cfuTirocinioObbligatorio>=0 && cfuTirocinioEsterno>=0 && cfuAccompagnamento>=0) {
 				// prendo tutti i campi dal form e inserisco nei rispettivi campi nel Database
 					if(!RiconoscimentoDao.insertRiconoscimenot(emailStudente, enteAzienda, indirizzoSede, profilo, tipoContratto, periodo, oreSvolte, cfuTirocinioObbligatorio, cfuTirocinioEsterno, cfuAccompagnamento)) {
 						request.setAttribute("compilaModulo", false);

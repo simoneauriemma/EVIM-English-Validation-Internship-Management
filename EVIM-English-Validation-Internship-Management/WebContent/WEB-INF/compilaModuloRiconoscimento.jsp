@@ -106,7 +106,7 @@
 								value="<c:out value="${studente.telefono}"/>" disabled>
 						</div>
 						<br>
-					
+
 						<!-- INIZIO gestione cfu -->
 						<h6 class="text-center">Inserisci i CFU da convalidare</h6>
 						<br> Hai da poter convalidare ancora: <b> # CFU</b>
@@ -146,9 +146,9 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 
 						<div class="scelta-drop">
 							<div class="form-group">
-								<label for="sel3"><i class="fas fa-briefcase"></i> N°CFU
+								<label for="sel4"><i class="fas fa-briefcase"></i> N°CFU
 									accompagnamento al lavoro </label> <select class="form-control"
-									id="sel3" name="CFUAccompagnamento"
+									id="sel4" name="CFUAccompagnamento"
 									onchange="aggiornoCFUAccompagnamento(this.value)">
 									<option value="0" selected>0</option>
 									<option value="1">1</option>
@@ -162,7 +162,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 								<label for="sel1"><i class="fas fa-briefcase"></i> N°CFU
 									totali da riconoscere </label> <input type="text" class="form-control"
 									aria-label="Default"
-									aria-describedby="inputGroup-sizing-default" id="oreSvolte"
+									aria-describedby="inputGroup-sizing-default" id="cfuTotali"
 									name="oreSvolte" required disabled value=0>
 							</div>
 						</div>
@@ -181,7 +181,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 							</div>
 							<input type="text" class="form-control" aria-label="Default"
 								aria-describedby="inputGroup-sizing-default" name="enteAzienda"
-								required>
+								id="enteAzienda" required>
 						</div>
 						<br>
 						<div class="input-group mb-3">
@@ -190,7 +190,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 							</div>
 							<input type="text" class="form-control" aria-label="Default"
 								aria-describedby="inputGroup-sizing-default"
-								name="indirizzoSede" required>
+								name="indirizzoSede" id="indSede" required>
 						</div>
 						<br>
 						<div class="input-group mb-3">
@@ -199,7 +199,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 							</div>
 							<input type="text" class="form-control" aria-label="Default"
 								aria-describedby="inputGroup-sizing-default" name="profilo"
-								required>
+								id="prof" required>
 						</div>
 						<br>
 						<div class="input-group mb-3">
@@ -226,7 +226,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 							</div>
 							<input type="text" class="form-control" aria-label="Default"
 								aria-describedby="inputGroup-sizing-default" name="oreSvolte"
-								required>
+								id="oreSvolte" required>
 						</div>
 
 						<br> <br> <br>
@@ -252,7 +252,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 										I PDF</button>
 									<div class="image-upload-wrap1">
 										<input class="file-upload-input1" type='file' name="file1[]"
-											onchange="readURL1(this);" accept=".pdf" />
+											onchange="readURL1(this);" accept=".pdf" required />
 										<div class="drag-text1">
 											<h5>
 												<i class="fas fa-plus"></i>
@@ -280,7 +280,8 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 
 									<div class="image-upload-wrap2">
 										<input class="file-upload-input2" type='file' name="file2[]"
-											onchange="readURL2(this);" accept=".pdf" multiple="multiple" />
+											onchange="readURL2(this);" accept=".pdf" multiple="multiple"
+											required />
 										<div class="drag-text2">
 											<h5>
 												<i class="fas fa-plus"></i>
@@ -308,7 +309,8 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 
 									<div class="image-upload-wrap3">
 										<input class="file-upload-input3" type='file' name="file3[]"
-											onchange="readURL3(this);" accept=".pdf" multiple="multiple" />
+											onchange="readURL3(this);" accept=".pdf" multiple="multiple"
+											required />
 										<div class="drag-text3">
 											<h5>
 												<i class="fas fa-plus"></i>
@@ -332,7 +334,8 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 				<br>
 
 				<div class="text-center">
-					<button type="submit" class="btn btn-outline-secondary">APPROVA</button>
+					<button type="submit" id="bott-approva"
+						class="btn btn-outline-secondary">APPROVA</button>
 				</div>
 			</form>
 		</div>
@@ -345,15 +348,13 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 
 
 <script>
-	$('[data-toggle="popover"]').popover();
-
 	var cfuEsterno = 0;
 	var cfuObbligatorio = 0;
 	var cfuAccompagnamento = 0;
 	var totCFUdisponibili = 12;
-	6
+	
 	function aggiornoCFUObbligatorio(numeroCFU) {
-		var nodoCFU = document.getElementById("oreSvolte");
+		var nodoCFU = document.getElementById("cfuTotali");
 
 		var numeroCFUObbligatorio = parseInt(nodoCFU.value);
 		var numeroCFUTMP = parseInt(numeroCFU);
@@ -363,7 +364,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 	}
 
 	function aggiornoCFUEsterno(numeroCFU) {
-		var nodoCFU = document.getElementById("oreSvolte");
+		var nodoCFU = document.getElementById("cfuTotali");
 
 		var numeroCFUEsterno = parseInt(nodoCFU.value);
 		var numeroCFUTMP = parseInt(numeroCFU);
@@ -373,7 +374,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 	}
 
 	function aggiornoCFUAccompagnamento(numeroCFU) {
-		var nodoCFU = document.getElementById("oreSvolte");
+		var nodoCFU = document.getElementById("cfuTotali");
 
 		var numeroCFUOAccompagnamento = parseInt(nodoCFU.value);
 		var numeroCFUTMP = parseInt(numeroCFU);
@@ -382,6 +383,8 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 
 		cfuAccompagnamento = parseInt(numeroCFU);
 	}
+	
+	
 
 	/* upload file */
 	function readURL1(input) { //prima sezione per inserire il file
@@ -401,7 +404,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 			reader.readAsDataURL(input.files[0]);
 
 		} else {
-			removeUpload();
+			removeUpload1();
 		}
 	}
 
@@ -423,7 +426,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 			reader.readAsDataURL(input.files[0]);
 
 		} else {
-			removeUpload();
+			removeUpload2();
 		}
 
 	}
@@ -446,7 +449,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 			reader.readAsDataURL(input.files[0]);
 
 		} else {
-			removeUpload();
+			removeUpload3();
 		}
 
 	}
@@ -486,4 +489,29 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 	$('.image-upload-wrap3').bind('dragleave', function() {
 		$('.image-upload-wrap3').removeClass('image-dropping3');
 	});
+	
+	/* fine gestione file */
+	
+	
+	
+	
+	
+	/* espressioni regolari su campi da inserire in "dati azineda" */
+
+        var ente='^\w{5,200}$';
+        var indSede= '^\w{10,200}$';
+        var profilo= '^\w{10,200}$';
+        var totcfu= $("#cfuTotali").length;
+        
+        if(!(($("#enteAzienda").text().match(ente)) && ($("#indSede").text().match(indSede)) && ($("#profilo").text().match(profilo)) && (totcfu > 0))){
+        	$("#bott-approva").attr("disabled", true);
+
+        }
+        else if(($("#enteAzienda").text().match(ente)) && ($("#indSede").text().match(indSede)) && ($("#profilo").text().match(profilo)) && (totcfu > 0)){
+        	$("#bott-approva").attr("disabled", false);
+        }
+   
+	
+	
+	
 </script>
