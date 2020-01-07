@@ -2,11 +2,6 @@ package controller.GestioneRegistroTirocinio;
 
 import controller.BaseServlet;
 import model.AttivitaDAO;
-import model.Attività;
-import model.TirocinioEsterno;
-import model.TirocinioEsternoDAO;
-import model.TirocinioInterno;
-import model.TirocinioInternoDAO;
 import model.TutorAccademico;
 import model.TutorAziendale;
 import model.User;
@@ -51,7 +46,8 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 				// si tratta di uno studente
 				if (user.getCorso().equalsIgnoreCase("magistrale")) {
 					// solo esterno
-					ArrayList<Attività> listaTirociniEsterno = new AttivitaDAO().doRetriveAllEsterno(user.getEmail());
+					ArrayList<RegistroQuery> listaTirociniEsterno = new AttivitaDAO()
+							.doRetriveAllEsterno(user.getEmail());
 
 					request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("registroTirocinio(studente).jsp");
@@ -59,8 +55,10 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 				} else {
 					// studente triennale
 
-					ArrayList<Attività> listaTirociniEsterno = new AttivitaDAO().doRetriveAllEsterno(user.getEmail());
-					ArrayList<Attività> listaTirociniInterno = new AttivitaDAO().doRetriveAllInterno(user.getEmail());
+					ArrayList<RegistroQuery> listaTirociniEsterno = new AttivitaDAO()
+							.doRetriveAllEsterno(user.getEmail());
+					ArrayList<RegistroQuery> listaTirociniInterno = new AttivitaDAO()
+							.doRetriveAllInterno(user.getEmail());
 
 					request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
 					request.setAttribute("listaAttivitaInterno", listaTirociniInterno);
@@ -73,11 +71,11 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 		} else if (tipoUtente.equalsIgnoreCase("model.TutorAccademico")) {
 
 			TutorAccademico accademico = (TutorAccademico) session.getAttribute("utenteLoggato");
-
-			ArrayList<Attività> listaTirociniEsterno = new AttivitaDAO()
-					.doRetriveAllEsternoTutorAcc(accademico.getIdTutorAccademico());
-			ArrayList<Attività> listaTirociniInterno = new AttivitaDAO()
-					.doRetriveAllInternoTutorAcc(accademico.getIdTutorAccademico());
+			String EMAIL = request.getParameter("EMAIL");
+			ArrayList<RegistroQuery> listaTirociniEsterno = new AttivitaDAO().doRetriveAllEsternoTutorAcc(EMAIL,
+					accademico.getIdTutorAccademico());
+			ArrayList<RegistroQuery> listaTirociniInterno = new AttivitaDAO().doRetriveAllInternoTutorAcc(EMAIL,
+					accademico.getIdTutorAccademico());
 
 			request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
 			request.setAttribute("listaAttivitaInterno", listaTirociniInterno);
@@ -87,13 +85,19 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 
 		} else if (tipoUtente.equalsIgnoreCase("model.TutorAziendale")) {
 			TutorAziendale aziendale = (TutorAziendale) session.getAttribute("utenteLoggato");
-			ArrayList<Attività> listaTirociniEsterno = new AttivitaDAO().doRetriveAllEsternoTutorAzi(aziendale.getId());
+			String EMAIL = request.getParameter("EMAIL");
+			if (EMAIL != null) {
+				ArrayList<RegistroQuery> listaTirociniEsterno = new AttivitaDAO()
+						.doRetriveAllEsternoTutorAzi(aziendale.getId(), EMAIL);
 
-			request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
+				request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("registroTirocinio(tutor).jsp");
-			dispatcher.forward(request, response);
-
+				RequestDispatcher dispatcher = request.getRequestDispatcher("registroTirocinio(tutor).jsp");
+				dispatcher.forward(request, response);
+			} else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
+				dispatcher.forward(request, response);
+			}
 		} else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
 			dispatcher.forward(request, response);
@@ -103,6 +107,129 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
+	}
+
+	public static class RegistroQuery {
+		String descrizione, data, nomeAzienda, nomeStudente, cognomeStudente, nomeTutorAcc, cognomeTutorAcc;
+		int orarioIngresso, orarioUscita, oreRaggiunte, oreSvolte;
+		boolean firmaResponsabile;
+
+		public RegistroQuery() {
+		}
+
+		public RegistroQuery(String descrizione, String data, String nomeAzienda, String nomeStudente,
+				String cognomeStudente, String nomeTutorAcc, String cognomeTutorAcc, int orarioIngresso,
+				int orarioUscita, int oreRaggiunte, int oreSvolte, boolean firmaResponsabile) {
+			this.descrizione = descrizione;
+			this.data = data;
+			this.nomeAzienda = nomeAzienda;
+			this.nomeStudente = nomeStudente;
+			this.cognomeStudente = cognomeStudente;
+			this.nomeTutorAcc = nomeTutorAcc;
+			this.cognomeTutorAcc = cognomeTutorAcc;
+			this.orarioIngresso = orarioIngresso;
+			this.orarioUscita = orarioUscita;
+			this.oreRaggiunte = oreRaggiunte;
+			this.oreSvolte = oreSvolte;
+			this.firmaResponsabile = firmaResponsabile;
+		}
+
+		public String getDescrizione() {
+			return descrizione;
+		}
+
+		public void setDescrizione(String descrizione) {
+			this.descrizione = descrizione;
+		}
+
+		public String getData() {
+			return data;
+		}
+
+		public void setData(String data) {
+			this.data = data;
+		}
+
+		public String getNomeAzienda() {
+			return nomeAzienda;
+		}
+
+		public void setNomeAzienda(String nomeAzienda) {
+			this.nomeAzienda = nomeAzienda;
+		}
+
+		public String getNomeStudente() {
+			return nomeStudente;
+		}
+
+		public void setNomeStudente(String nomeStudente) {
+			this.nomeStudente = nomeStudente;
+		}
+
+		public String getCognomeStudente() {
+			return cognomeStudente;
+		}
+
+		public void setCognomeStudente(String cognomeStudente) {
+			this.cognomeStudente = cognomeStudente;
+		}
+
+		public String getNomeTutorAcc() {
+			return nomeTutorAcc;
+		}
+
+		public void setNomeTutorAcc(String nomeTutorAcc) {
+			this.nomeTutorAcc = nomeTutorAcc;
+		}
+
+		public String getCognomeTutorAcc() {
+			return cognomeTutorAcc;
+		}
+
+		public void setCognomeTutorAcc(String cognomeTutorAcc) {
+			this.cognomeTutorAcc = cognomeTutorAcc;
+		}
+
+		public int getOrarioIngresso() {
+			return orarioIngresso;
+		}
+
+		public void setOrarioIngresso(int orarioIngresso) {
+			this.orarioIngresso = orarioIngresso;
+		}
+
+		public int getOrarioUscita() {
+			return orarioUscita;
+		}
+
+		public void setOrarioUscita(int orarioUscita) {
+			this.orarioUscita = orarioUscita;
+		}
+
+		public int getOreRaggiunte() {
+			return oreRaggiunte;
+		}
+
+		public void setOreRaggiunte(int oreRaggiunte) {
+			this.oreRaggiunte = oreRaggiunte;
+		}
+
+		public int getOreSvolte() {
+			return oreSvolte;
+		}
+
+		public void setOreSvolte(int oreSvolte) {
+			this.oreSvolte = oreSvolte;
+		}
+
+		public boolean isFirmaResponsabile() {
+			return firmaResponsabile;
+		}
+
+		public void setFirmaResponsabile(boolean firmaResponsabile) {
+			this.firmaResponsabile = firmaResponsabile;
+		}
+
 	}
 
 }
