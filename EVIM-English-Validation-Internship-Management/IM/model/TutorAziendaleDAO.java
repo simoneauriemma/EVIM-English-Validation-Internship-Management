@@ -15,7 +15,7 @@ public class TutorAziendaleDAO {
 
 	public static TutorAziendale findbyID() {
 		try (Connection connection = DriverManagerConnectionPool.getConnection()) {
-			PreparedStatement ps = connection.prepareStatement("select * from EVIM.tutoraziendale");
+			PreparedStatement ps = connection.prepareStatement("select * from evim.tutoraziendale");
 
 			ResultSet risultato = ps.executeQuery();
 
@@ -111,7 +111,7 @@ public class TutorAziendaleDAO {
 	public static ArrayList<TutorAziendale> getElencoTutorAziendali(int idAzienda){
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select * from EVIM.tutoraziendale where ID_Azienda=?");
+					"select * from evim.tutoraziendale where ID_Azienda=?");
 			ps.setInt(1, idAzienda);
 			ArrayList<TutorAziendale> elencoTutorAziendali=new ArrayList<TutorAziendale>();
 
@@ -141,7 +141,7 @@ public class TutorAziendaleDAO {
 	public static TutorAziendale getInformationTutorAziendale(int idTutorAziendale) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select * from EVIM.tutoraziendale where ID_TutorAziendale=?");
+					"select * from evim.tutoraziendale where ID_TutorAziendale=?");
 			ps.setInt(1, idTutorAziendale);
 
 			ResultSet rs = ps.executeQuery();
@@ -167,14 +167,23 @@ public class TutorAziendaleDAO {
 	
 	public int doSave(int ID_Azienda, String nome, String cognome, String email, String password, String telefono) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
-			PreparedStatement ps = con.prepareStatement("insert into TutorAziendale(ID_Azienda,Nome,Cognome,Email,Password,Telefono) VALUES (?,?,?,?,?,?)");
-			ps.setInt(1, ID_Azienda);
-			ps.setString(2, nome);
-			ps.setString(3, cognome);
-			ps.setString(4, email);
-			ps.setString(5, password);
-			ps.setString(6, telefono);
-			return ps.executeUpdate();
+			PreparedStatement ps;
+			ps=con.prepareStatement("select * from evim.tutoraziendale where Email=?");
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+
+			if(rs.next())
+				return 0;
+			else {
+				ps = con.prepareStatement("insert into tutoraziendale(ID_Azienda,Nome,Cognome,Email,Password,Telefono) VALUES (?,?,?,?,?,?)");
+				ps.setInt(1, ID_Azienda);
+				ps.setString(2, nome);
+				ps.setString(3, cognome);
+				ps.setString(4, email);
+				ps.setString(5, password);
+				ps.setString(6, telefono);
+				return ps.executeUpdate();
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();

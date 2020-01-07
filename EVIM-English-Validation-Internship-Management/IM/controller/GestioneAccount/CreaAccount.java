@@ -33,6 +33,7 @@ public class CreaAccount extends HttpServlet {
 
 		if (sessione.getAttribute("utenteLoggato") == null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
+			request.setAttribute("utenteCreato", false);
 			dispatcher.forward(request, response);
 		} else {
 
@@ -46,13 +47,14 @@ public class CreaAccount extends HttpServlet {
 				String nome = request.getParameter("nome");
 				String cognome = request.getParameter("cognome");
 				String telefono = request.getParameter("telefono");
-				String email=request.getParameter("email");
-				String password = request.getParameter("password");
+				String email=request.getParameter("emaila");
+				String password = request.getParameter("passworda");
 				String confermaPassword = request.getParameter("confermaPassword");
 
 				if (nome == null || cognome == null || password == null || confermaPassword == null
-						|| !password.equals(confermaPassword) || email==null) {
+						|| !password.equals(confermaPassword) || email == null || telefono == null) {
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/error.jsp");
+					request.setAttribute("utenteCreato", false);
 					dispatcher.forward(request, response);
 				} else {
 					
@@ -60,14 +62,17 @@ public class CreaAccount extends HttpServlet {
 					if ((rs = new TutorAziendaleDAO().doSave(azienda.getID_Azienda(), nome, cognome, email, password,
 							telefono)) == 1) {
 						RequestDispatcher dispatcher = request.getRequestDispatcher("gestioneAccount.jsp");
+						request.setAttribute("utenteCreato", true);
 						dispatcher.forward(request, response);
 					} else {
 						RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/error.jsp");
+						request.setAttribute("utenteCreato", false);
 						dispatcher.forward(request, response);
 					}
 				}
 			} else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
+				request.setAttribute("utenteCreato", false);
 				dispatcher.forward(request, response);
 			}
 		}
