@@ -36,19 +36,22 @@
 					<p id="titolo" style="font-size: 30px; color: #595959;">
 						Registro di tirocinio</p>
 					<hr>
-
-					<div>
-						<p>
-							Studente:
-							<c:out value="${studente.name}" />
-							<c:out value="${studente.surname}" />
-						</p>
-						<p>Ore svolte: #</p>
-						<p>Numero attività svolte: #</p>
-					</div>
-
-
-
+					<c:if test="${listaAttivitaEsterno.size() > 0}">
+						<c:forEach items="${listaAttivitaEsterno}" var="esterno">
+							<div>
+								<p>
+									Studente:
+									<c:out value="${esterno.nomeStudente}" />
+									<c:out value="${esterno.cognomeStudente}" />
+								</p>
+								<p>
+									Ore svolte:
+									<c:out value="${esterno.oreSvolte}" />
+								</p>
+								<!-- <p>Numero attività svolte: #</p> -->
+							</div>
+						</c:forEach>
+					</c:if>
 					<br>
 
 					<table class="table table-striped" style="border: 1px solid #ddd;">
@@ -62,7 +65,6 @@
 										<td>Ora ingresso</td>
 										<td>Ora uscita</td>
 										<td>Ore tot.</td>
-										<td>Firma Tirocinante</td>
 										<td>Firma responsabile</td>
 									</tr>
 									<tr>
@@ -73,12 +75,12 @@
 										<td><c:out value="${esterno.orarioUscita}" /></td>
 										<td><c:out value="${esterno.orarioUscita}" /> - <c:out
 												value="${esterno.orarioIngresso}" /></td>
-										<td>#</td>
-										<td><select class="form-control" id="sel1" onchange=""
-											name="sel1">
-												<option value="approva" selected>Approva</option>
-												<option value="rifiuta">Rifiuta</option>
-										</select></td>
+										
+										<td><td><form action="" id="valutare">
+												<i class="fas fa-check-square"></i> <i
+													class="far fa-times-circle"></i>
+											</form></td></td>
+
 									</tr>
 
 								</c:forEach>
@@ -105,15 +107,22 @@
 						Registro di tirocinio</p>
 					<hr>
 
-					<div>
-						<p>
-							Studente:
-							<c:out value="${studente.name}" />
-							<c:out value="${studente.surname}" />
-						</p>
-						<p>Ore svolte:</p>
-						<!--<p>Numero attività svolte: #</p> -->
-					</div>
+					<c:if test="${listaAttivitaInterno.size() > 0}">
+						<c:forEach items="${listaAttivitaInterno}" var="interno">
+							<div>
+								<p>
+									Studente:
+									<c:out value="${interno.nomeStudente}" />
+									<c:out value="${interno.cognomeStudente}" />
+								</p>
+								<p>
+									Ore svolte:
+									<c:out value="${interno.oreSvolte}" />
+								</p>
+								<!-- <p>Numero attività svolte: #</p> -->
+							</div>
+						</c:forEach>
+					</c:if>
 
 
 
@@ -141,11 +150,10 @@
 										<td><c:out
 												value="${interno.orarioUscita - interno.orarioIngresso}" /></td>
 
-										<td><select class="form-control" id="sel1" onchange=""
-											name="sel1">
-												<option value="approva" selected>Approva</option>
-												<option value="rifiuta">Rifiuta</option>
-										</select></td>
+										<td><form action="" id="valutare">
+												<i class="fas fa-check-square"></i> <i
+													class="far fa-times-circle"></i>
+											</form></td>
 									</tr>
 
 								</c:forEach>
