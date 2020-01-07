@@ -27,7 +27,7 @@ public class Registrazione extends BaseServlet {
 	 * 
 	 * @author Nicola Sisti
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// regex utenti
 
@@ -88,7 +88,7 @@ public class Registrazione extends BaseServlet {
 		if (request.getParameter("utenteLoggato") == null && email != null) {
 // controllo se sono un docente
 			if (email.matches(regexDocente)) { // controllo del formato e lunghezza caratteri
-				// controllo la bontà dei dati
+				// controllo la bontï¿½ dei dati
 				if (password.equals(cpassword) 
 						&& nome.matches(regexNome)
 						&& cognome.matches(regexCognome)
@@ -104,7 +104,7 @@ public class Registrazione extends BaseServlet {
 			}
 // controllo se sono uno studente
 			else if (email.matches(regexStudente)) {
-				// controllo la bontà dei dati
+				// controllo la bontï¿½ dei dati
 				if (password.equals(cpassword) 
 						
 						
@@ -132,7 +132,7 @@ public class Registrazione extends BaseServlet {
 				}
 			}
 		}
-		// ! se l'operazione è andata buon fine invio un bool a true per dire che è
+		// ! se l'operazione ï¿½ andata buon fine invio un bool a true per dire che ï¿½
 		// andato a buon fine
 		if (result) {
 			request.setAttribute("result", true);
@@ -152,7 +152,7 @@ public class Registrazione extends BaseServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

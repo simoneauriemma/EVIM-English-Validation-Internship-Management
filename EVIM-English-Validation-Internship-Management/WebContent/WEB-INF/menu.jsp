@@ -33,18 +33,17 @@
 <body>
 
 	<div class="text-center" style="padding: 0 8px" id="foto">
-	<a href=".">
-		<img id="logoEvim" src="foto/icone/EVIM-LOGO.png"
+		<a href="."> <img id="logoEvim" src="foto/icone/EVIM-LOGO.png"
 			class="img-responsive lazy  hidden-xs" alt="Logo Evim"
 			style="display: inline;">
-	</a>
+		</a>
 	</div>
 
 
 	<div id="side-menu" class="list-group" style="color: black">
-
-		<a class="item" style="background-color: #2C5278; color: white;">Interniship
-			Management</a> <a class="item" class="active" href=".">Home</a>
+		<a class="item" class="active" href=".">Home</a> <a class="item"
+			style="background-color: #2C5278; color: white;">Interniship
+			Management</a>
 
 		<!-- nel caso in cui è l'utente ospite -->
 		<c:if
@@ -74,9 +73,9 @@
 							class="fas fa-angle-right "></i> Lista aziende convenzionate </a></li>
 					<li><a href="VisualizzaTutorAccademici"><i
 							class="fas fa-angle-right "></i> Elenco tutor accademici </a></li>
-					<li><a href="ListaTirocini"><i
-							class="fas fa-angle-right"></i> Elenco tirocini </a></li>
-							
+					<li><a href="ListaTirocini"><i class="fas fa-angle-right"></i>
+							Elenco tirocini </a></li>
+
 				</c:if>
 
 				<c:if test="${type == 'tutoraccademico'}">
@@ -93,11 +92,11 @@
 					<!-- Tutor aziendale -->
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
 							Elenco tirocini</a></li>
-					<li><a href="CreaRelazione"><i
-							class="fas fa-angle-right "></i> Compila relazione tirocinio </a></li>
+					<li><a href="CreaRelazione"><i class="fas fa-angle-right "></i>
+							Compila relazione tirocinio </a></li>
 
 				</c:if>
-				<c:if test="${type == 'azienda'}">
+				<c:if test="${type == 'azienda' || type=='pdcd'}">
 					<!-- Azienda -->
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
 							Elenco tirocini </a></li>
@@ -179,14 +178,14 @@
 					<li><a href="VisualizzaRichieste"><i
 							class="fas fa-angle-right "></i> Visualizza richieste tirocinio </a></li>
 				</c:if>
-				
+
 				<c:if
 					test="${type =='azienda' || type =='tutoraziendale' || type =='tutoraccademico'}">
 					<li><a href="progettoFormativo.jsp"><i
 							class="fas fa-angle-right "></i> Valuta progetto formativo </a></li>
 					<li><a href="VisualizzaRichieste"><i
 							class="fas fa-angle-right "></i> Visualizza richieste tirocinio </a></li>
-					
+
 				</c:if>
 			</ul>
 
@@ -195,7 +194,7 @@
 
 
 
-			
+
 
 
 
@@ -211,19 +210,19 @@
 
 				<ul id="collapse-1" class="collapse" aria-expanded="false"
 					style="height: 0px;">
-					
+
 					<c:if test="${type =='studente'}">
-						<li><a href="VisualizzaCompilaModuloRiconoscimento"><i class="fas fa-angle-right"></i>
-								Compila modulo riconoscimento </a></li>
-						<li><a href="VisualizzaElencoModuliRiconoscimento"><i class="fas fa-angle-right"></i>
-								Visualizza richieste riconoscimento </a></li>
-						<li><a href="#"><i class="fas fa-angle-right"></i>
-								Modifica modulo riconoscimento</a></li>
+						<li><a href="VisualizzaCompilaModuloRiconoscimento"><i
+								class="fas fa-angle-right"></i> Compila modulo riconoscimento </a></li>
+						<li><a href="VisualizzaElencoModuliRiconoscimento"><i
+								class="fas fa-angle-right"></i> Visualizza richieste
+								riconoscimento </a></li>
 					</c:if>
-					
+
 					<c:if test="${type=='pdcd'}">
-						<li><a href="VisualizzaElencoModuliRiconoscimento"><i class="fas fa-angle-right"></i>
-								Visualizza e valuta lista richieste riconoscimento </a></li>
+						<li><a href="VisualizzaElencoModuliRiconoscimento"><i
+								class="fas fa-angle-right"></i> Visualizza e valuta lista
+								richieste riconoscimento </a></li>
 					</c:if>
 				</ul>
 			</c:if>
@@ -252,8 +251,32 @@
 
 		<!-- english validation -->
 
-		<a class="item" style="background-color: #2C5278; color: white;">English
-			Validation</a>
+		<!-- english validation -->
+		<c:if
+			test="${type == 'studente'  || type=='pdcd' || type=='ufficiocarriere' }">
+			<a class="item" style="background-color: #2C5278; color: white;">English
+				Validation</a>
+
+			<c:if test="${type =='studente'}">
+				<a class="item" class="active" href="FirstForm">Compila modulo
+					riconoscimento</a>
+				<a class="item" class="active" href="ViewRequest">Visualizza
+					richieste riconoscimento</a>
+				<a class="item" class="active" href="UploadAttached" style="border-bottom: 1px solid #ddd;">Carica
+					Allegati</a>
+			</c:if>
+
+			<c:if test="${type =='pdcd'}">
+				<a class="item" class="active" href="ViewRequest">Visualizza
+					richieste riconoscimento</a>
+			</c:if>
+
+			<c:if test="${type =='segreteria'}">
+				<a class="item" class="active" href="ViewRequest">Visualizza
+					richieste riconoscimento</a>
+			</c:if>
+
+		</c:if>
 
 	</div>
 
