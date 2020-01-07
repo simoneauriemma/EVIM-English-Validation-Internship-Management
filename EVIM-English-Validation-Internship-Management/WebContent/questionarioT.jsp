@@ -14,6 +14,10 @@
 #tabella1, #tabella2, #tabella3 {
 	margin-left: 50px;
 }
+
+p {
+	font-weight: bold;
+}
 </style>
 <link rel="stylesheet" href="stiliCSS/stiliMenu.css">
 <link rel="stylesheet" href="stiliCSS/stiliPropostaTirocinio.css">
@@ -30,340 +34,377 @@
 
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
-				<p id="titolo" style="font-size: 30px; color: #595959;">Compila
-					questionario valutativo</p>
+				<p id="titolo" class="text-center"
+					style="font-size: 30px; color: #595959;">Compila questionario
+					valutativo</p>
 				<hr>
-				<h6>Clicca sul nome del Tirocinante per poter compilare il
-					questionario valutativo</h6>
+
 				<div id="accordion">
 
 
-
-					<div id="collapseDiv1" class="collapse-div" role="tablist">
-						<div class="collapse-header" id="heading1"
-							style="background-color: #2C5278">
-							<button data-toggle="collapse" data-target="#collapse1"
-								aria-expanded="true" aria-controls="collapse1" id="nome-tutor">
-								Nome e cognome(studente)</button>
-						</div>
-
-						<div id="collapse1" class="collapse" role="tabpanel"
-							aria-labelledby="heading1">
-							<div class="collapse-body">
-
-								<p>1. Valuta il progetto di tirocinio</p>
-								<table id="tabella1">
-									<tr>
-										<td>A) La durata del tirocinio è adeguata agli obiettivi
-											formativi:</td>
-										<td style="padding-left: 50px;">
-											<div>
-												<div class="row">
-													<div class="form-check form-check-inline">
-														<input name="gruppo1" type="radio" id="radio1" value="1" checked>
-														<label for="radio4">1</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo1" type="radio" id="radio2" value="2"> <label
-															for="radio5">2</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo1" type="radio" id="radio3" value="3"> <label
-															for="radio5">3</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo1" type="radio" id="radio4" value="4"> <label
-															for="radio5">4</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo1" type="radio" id="radio4" value="5"> <label
-															for="radio5">5</label>
-													</div>
-												</div>
-											</div>
-										</td>
-
-									</tr>
-
-									<tr>
-										<td>B) Gli obiettivi formativi previsti sono stati:</td>
-										<td style="padding-left: 50px;">
-											<div>
-												<div class="row">
-													<div class="form-check form-check-inline">
-														<input name="gruppo2" type="radio" id="radio1" value="1" checked>
-														<label for="radio4">1</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo2" type="radio" id="radio2" value="2"> <label
-															for="radio5">2</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo2" type="radio" id="radio3" value="3"> <label
-															for="radio5">3</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo2" type="radio" id="radio4" value="4"> <label
-															for="radio5">4</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo2" type="radio" id="radio4" value="5"> <label
-															for="radio5">5</label>
-													</div>
-												</div>
-											</div>
-										</td>
-									</tr>
-
-									<tr>
-										<td>C) La collaborazione con il tutor didattico è stata:</td>
-										<td style="padding-left: 50px;">
-											<div>
-												<div class="row">
-													<div class="form-check form-check-inline">
-														<input name="gruppo3" type="radio" id="radio1" value="1" checked>
-														<label for="radio4">1</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo3" type="radio" id="radio2" value="2"> <label
-															for="radio5">2</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo3" type="radio" id="radio3" value="3"> <label
-															for="radio5">3</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo3" type="radio" id="radio4" value="4"> <label
-															for="radio5">4</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo3" type="radio" id="radio4" value="5"> <label
-															for="radio5">5</label>
-													</div>
-												</div>
-											</div>
-										</td>
-									</tr>
-
-									<tr>
-										<td>D) Il tirocinio formativo è utile all'Ente Ospitante:</td>
-										<td style="padding-left: 50px;">
-											<div>
-												<div class="row">
-													<div class="form-check form-check-inline">
-														<input name="gruppo4" type="radio" id="radio1" value="1" checked>
-														<label for="radio4">1</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo4" type="radio" id="radio2" value="2"> <label
-															for="radio5">2</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo4" type="radio" id="radio3" value="3"> <label
-															for="radio5">3</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo4" type="radio" id="radio4" value="4"> <label
-															for="radio5">4</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo4" type="radio" id="radio4" value="5"> <label
-															for="radio5">5</label>
-													</div>
-												</div>
-											</div>
-										</td>
-									</tr>
-								</table>
-								<br> <br>
-								<p>2. Valuta il Tirocinante</p>
-								<table id="tabella2">
-									<tr>
-										<td>A) Competenze informatiche possedute in ingresso:</td>
-										<td style="padding-left: 50px;">
-											<div>
-												<div class="row">
-													<div class="form-check form-check-inline">
-														<input name="gruppo5" type="radio" id="radio1" value="1" checked>
-														<label for="radio4">1</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo5" type="radio" id="radio2" value="2"> <label
-															for="radio5">2</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo5" type="radio" id="radio3" value="3"> <label
-															for="radio5">3</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo5" type="radio" id="radio4" value="4"> <label
-															for="radio5">4</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo5" type="radio" id="radio4" value="5"> <label
-															for="radio5">5</label>
-													</div>
-												</div>
-											</div>
-										</td>
-
-									</tr>
-
-									<tr>
-										<td>B) Competenze acquisite al termine nella specifica
-											disciplina:</td>
-										<td style="padding-left: 50px;">
-											<div>
-												<div class="row">
-													<div class="form-check form-check-inline">
-														<input name="gruppo6" type="radio" id="radio1" value="1" checked>
-														<label for="radio4">1</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo6" type="radio" id="radio2" value="2"> <label
-															for="radio5">2</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo6" type="radio" id="radio3" value="3"> <label
-															for="radio5">3</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo6" type="radio" id="radio4" value="4"> <label
-															for="radio5">4</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo6" type="radio" id="radio4" value="5"> <label
-															for="radio5">5</label>
-													</div>
-												</div>
-											</div>
-										</td>
-									</tr>
-
-									<tr>
-										<td>C) non esite:</td>
-										<td style="padding-left: 50px;">
-											<div>
-												<div class="row">
-													<div class="form-check form-check-inline">
-														<input name="gruppo7" type="radio" id="radio1" value="1" checked>
-														<label for="radio4">1</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo7" type="radio" id="radio2" value="2"> <label
-															for="radio5">2</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo7" type="radio" id="radio3" value="3"> <label
-															for="radio5">3</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo7" type="radio" id="radio4" value="4"> <label
-															for="radio5">4</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo7" type="radio" id="radio4" value="5"> <label
-															for="radio5">5</label>
-													</div>
-												</div>
-											</div>
-										</td>
-									</tr>
-
-									<tr>
-										<td>D) Motivazione ed interesse:</td>
-										<td style="padding-left: 50px;">
-											<div>
-												<div class="row">
-													<div class="form-check form-check-inline">
-														<input name="gruppo8" type="radio" id="radio1" value="1" checked>
-														<label for="radio4">1</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo8" type="radio" id="radio2" value="2"> <label
-															for="radio5">2</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo8" type="radio" id="radio3" value="3"> <label
-															for="radio5">3</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo8" type="radio" id="radio4" value="4"> <label
-															for="radio5">4</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo8" type="radio" id="radio4" value="5"> <label
-															for="radio5">5</label>
-													</div>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>E) Capacità di rapporti personali:</td>
-										<td style="padding-left: 50px;">
-											<div>
-												<div class="row">
-													<div class="form-check form-check-inline">
-														<input name="gruppo9" type="radio" id="radio1" value="1" checked>
-														<label for="radio4">1</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo9" type="radio" id="radio2" value="2"> <label
-															for="radio5">2</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo9" type="radio" id="radio3" value="3"> <label
-															for="radio5">3</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo9" type="radio" id="radio4" value="4"> <label
-															for="radio5">4</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input name="gruppo9" type="radio" id="radio4" value="5"> <label
-															for="radio5">5</label>
-													</div>
-												</div>
-											</div>
-										</td>
-									</tr>
-								</table>
-								<br> <br> <span class="text-right"
-									style="margin-left: 350px;"><button type="submit"
-										class="btn btn-primary" data-toggle="modal"
-										data-target="#exampleModalCenter"
-										style="background-color: #2C5278;">CONFERMA</button> </span> <br> <br>
-
-								<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-									role="dialog" aria-labelledby="exampleModalCenterTitle"
-									aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-
-												<button type="button" class="close" data-dismiss="modal"
-													aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-											<div class="modal-body">Questionario effettuato con
-												successo!</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary"
-													data-dismiss="modal">Close</button>
-											</div>
+					<p>1. Valuta il progetto di tirocinio</p>
+					<table id="tabella1">
+						<tr>
+							<td>A) La durata del tirocinio è adeguata agli obiettivi
+								formativi:</td>
+							<td style="padding-left: 50px;">
+								<div>
+									<div class="row">
+										<div class="form-check form-check-inline">
+											<input name="gruppo1" type="radio" id="radio1" value="1"
+												checked> <label for="radio4">1</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo1" type="radio" id="radio2" value="2">
+											<label for="radio5">2</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo1" type="radio" id="radio3" value="3">
+											<label for="radio5">3</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo1" type="radio" id="radio4" value="4">
+											<label for="radio5">4</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo1" type="radio" id="radio5" value="5">
+											<label for="radio5">5</label>
 										</div>
 									</div>
 								</div>
+							</td>
 
-							</div>
-						</div>
+						</tr>
 
-					</div>
+						<tr>
+							<td>B) Gli obiettivi formativi previsti sono stati:</td>
+							<td style="padding-left: 50px;">
+								<div>
+									<div class="row">
+										<div class="form-check form-check-inline">
+											<input name="gruppo2" type="radio" id="radio1" value="1"
+												checked> <label for="radio4">1</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo2" type="radio" id="radio2" value="2">
+											<label for="radio5">2</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo2" type="radio" id="radio3" value="3">
+											<label for="radio5">3</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo2" type="radio" id="radio4" value="4">
+											<label for="radio5">4</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo2" type="radio" id="radio5" value="5">
+											<label for="radio5">5</label>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+
+						<tr>
+							<td>C) La collaborazione con il tutor didattico è stata:</td>
+							<td style="padding-left: 50px;">
+								<div>
+									<div class="row">
+										<div class="form-check form-check-inline">
+											<input name="gruppo3" type="radio" id="radio1" value="1"
+												checked> <label for="radio4">1</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo3" type="radio" id="radio2" value="2">
+											<label for="radio5">2</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo3" type="radio" id="radio3" value="3">
+											<label for="radio5">3</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo3" type="radio" id="radio4" value="4">
+											<label for="radio5">4</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo3" type="radio" id="radio5" value="5">
+											<label for="radio5">5</label>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+
+						<tr>
+							<td>D) Il tirocinio formativo è utile all'Ente Ospitante:</td>
+							<td style="padding-left: 50px;">
+								<div>
+									<div class="row">
+										<div class="form-check form-check-inline">
+											<input name="gruppo4" type="radio" id="radio1" value="1"
+												checked> <label for="radio4">1</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo4" type="radio" id="radio2" value="2">
+											<label for="radio5">2</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo4" type="radio" id="radio3" value="3">
+											<label for="radio5">3</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo4" type="radio" id="radio4" value="4">
+											<label for="radio5">4</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo4" type="radio" id="radio5" value="5">
+											<label for="radio5">5</label>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<br> <br>
+					<p>2. Valuta il Tirocinante</p>
+					<table id="tabella2">
+						<tr>
+							<td>A) Competenze informatiche possedute in ingresso:</td>
+							<td style="padding-left: 50px;">
+								<div>
+									<div class="row">
+										<div class="form-check form-check-inline">
+											<input name="gruppo5" type="radio" id="radio1" value="1"
+												checked> <label for="radio4">1</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo5" type="radio" id="radio2" value="2">
+											<label for="radio5">2</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo5" type="radio" id="radio3" value="3">
+											<label for="radio5">3</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo5" type="radio" id="radio4" value="4">
+											<label for="radio5">4</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo5" type="radio" id="radio5" value="5">
+											<label for="radio5">5</label>
+										</div>
+									</div>
+								</div>
+							</td>
+
+						</tr>
+
+						<tr>
+							<td>B) Competenze acquisite al termine nella specifica
+								disciplina:</td>
+							<td style="padding-left: 50px;">
+								<div>
+									<div class="row">
+										<div class="form-check form-check-inline">
+											<input name="gruppo6" type="radio" id="radio1" value="1"
+												checked> <label for="radio4">1</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo6" type="radio" id="radio2" value="2">
+											<label for="radio5">2</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo6" type="radio" id="radio3" value="3">
+											<label for="radio5">3</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo6" type="radio" id="radio4" value="4">
+											<label for="radio5">4</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo6" type="radio" id="radio5" value="5">
+											<label for="radio5">5</label>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+
+
+
+						<tr>
+							<td>C) Motivazione ed interesse:</td>
+							<td style="padding-left: 50px;">
+								<div>
+									<div class="row">
+										<div class="form-check form-check-inline">
+											<input name="gruppo8" type="radio" id="radio1" value="1"
+												checked> <label for="radio4">1</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo8" type="radio" id="radio2" value="2">
+											<label for="radio5">2</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo8" type="radio" id="radio3" value="3">
+											<label for="radio5">3</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo8" type="radio" id="radio4" value="4">
+											<label for="radio5">4</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo8" type="radio" id="radio5" value="5">
+											<label for="radio5">5</label>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>D) Capacità di rapporti personali:</td>
+							<td style="padding-left: 50px;">
+								<div>
+									<div class="row">
+										<div class="form-check form-check-inline">
+											<input name="gruppo9" type="radio" id="radio1" value="1"
+												checked> <label for="radio4">1</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo9" type="radio" id="radio2" value="2">
+											<label for="radio5">2</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo9" type="radio" id="radio3" value="3">
+											<label for="radio5">3</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo9" type="radio" id="radio4" value="4">
+											<label for="radio5">4</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo9" type="radio" id="radio5" value="5">
+											<label for="radio5">5</label>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+
+
+					</table>
+
+					<br> <br>
+					<p>3. Valuta le strutture universitarie addette alla gestione
+						dei Tirocini</p>
+					<table id="tabella3">
+						<tr>
+							<td>A) Hanno fornito informazioni chiare ed esaustive:</td>
+							<td style="padding-left: 50px;">
+								<div>
+									<div class="row">
+										<div class="form-check form-check-inline">
+											<input name="gruppo10" type="radio" id="radio1" value="1"
+												checked> <label for="radio4">1</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo10" type="radio" id="radio2" value="2">
+											<label for="radio5">2</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo10" type="radio" id="radio3" value="3">
+											<label for="radio5">3</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo10" type="radio" id="radio4" value="4">
+											<label for="radio5">4</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo10" type="radio" id="radio5" value="5">
+											<label for="radio5">5</label>
+										</div>
+									</div>
+								</div>
+							</td>
+
+						</tr>
+
+						<tr>
+							<td>B) Hanno fornito assistenza e disponibilità:</td>
+							<td style="padding-left: 50px;">
+								<div>
+									<div class="row">
+										<div class="form-check form-check-inline">
+											<input name="gruppo11" type="radio" id="radio1" value="1"
+												checked> <label for="radio4">1</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo11" type="radio" id="radio2" value="2">
+											<label for="radio5">2</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo11" type="radio" id="radio3" value="3">
+											<label for="radio5">3</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo11" type="radio" id="radio4" value="4">
+											<label for="radio5">4</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo11" type="radio" id="radio5" value="5">
+											<label for="radio5">5</label>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+
+
+
+						<tr>
+							<td>C) I servizi forniti via Web sono esaustivi(se
+								applicabile):</td>
+							<td style="padding-left: 50px;">
+								<div>
+									<div class="row">
+										<div class="form-check form-check-inline">
+											<input name="gruppo12" type="radio" id="radio1" value="1"
+												checked> <label for="radio4">1</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo12" type="radio" id="radio2" value="2">
+											<label for="radio5">2</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo12" type="radio" id="radio3" value="3">
+											<label for="radio5">3</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo12" type="radio" id="radio4" value="4">
+											<label for="radio5">4</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input name="gruppo12" type="radio" id="radio5" value="5">
+											<label for="radio5">5</label>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+
+					</table>
+					<br> <br> <span class="text-right"
+						style="margin-left: 350px;"><button type="submit"
+							class="btn btn-primary" data-toggle="modal"
+							data-target="#exampleModalCenter"
+							style="background-color: #2C5278;">CONFERMA</button> </span> <br> <br>
+
+
 
 				</div>
 			</div>
+
 		</div>
 
 	</div>

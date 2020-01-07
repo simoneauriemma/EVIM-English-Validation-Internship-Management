@@ -141,7 +141,9 @@
 
 								<!-- REGISTRO -->
 								<td class="form-inline text-center">
-									<form><a href="#">
+									<form action="VisualizzaRegistroTirocinio">
+									<input type="hidden" name="email" value="<c:out value="${studente.email}" />">
+									<a href="VisualizzaRegistroTirocinio">
 										<i id="registro" class="fas fa-book"></i>
 									</a></form>
 								
