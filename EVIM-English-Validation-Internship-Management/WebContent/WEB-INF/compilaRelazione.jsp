@@ -30,8 +30,7 @@
 					<p id="titolo" style="font-size: 30px; color: #595959;">Compila
 						relazione di tirocinio</p>
 					<hr>
-					<h6>Clicca sul nome del Tirocinante per poter compilare la
-						relazione di tirocinio</h6>
+					
 					<div id="accordion">
 
 					<!--	<c:set var="counter" value="${0}"></c:set> -->

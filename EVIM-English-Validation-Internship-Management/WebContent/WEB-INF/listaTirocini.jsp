@@ -64,7 +64,7 @@
 									<td>Esterno</td>
 									
 									<!-- REGISTRO -->
-									<td class="form-inline"><a href="#"> <i id="registro"
+									<td class="form-inline"><a href="VisualizzaRegistroTirocinio"> <i id="registro"
 											class="fas fa-book"></i>
 									</a> <a href="#"> <i id="accettare" class="fas fa-check-square"></i>
 									</a>

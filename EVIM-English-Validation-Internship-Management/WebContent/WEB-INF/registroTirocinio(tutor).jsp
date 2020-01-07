@@ -26,11 +26,9 @@
 				<jsp:include page="menu.jsp"></jsp:include>
 			</div>
 			<!-- SE L'UTENTE LOGGATO E' UN TUTOR AZIENDALE-->
-			<c:if
-				test="${type == 'tutoraziendale'}">
+			<c:if test="${type == 'tutoraziendale'}">
 				<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
-				<c:if
-					test="${listaAttivitaEsterno.size() == 0">
+				<c:if test="${listaAttivitaEsterno.size() == 0">
 					<p>Non è stato effettuato nessun Tirocinio!</p>
 				</c:if>
 				<div class="col-lg-9" id=""
@@ -40,7 +38,11 @@
 					<hr>
 
 					<div>
-						<p>Studente: <c:out value="${studente.name}" /><c:out value="${studente.surname}" /></p>
+						<p>
+							Studente:
+							<c:out value="${studente.name}" />
+							<c:out value="${studente.surname}" />
+						</p>
 						<p>Ore svolte: #</p>
 						<p>Numero attività svolte: #</p>
 					</div>
@@ -69,8 +71,8 @@
 										<td><c:out value="${esterno.data}" /></td>
 										<td><c:out value="${esterno.orarioIngresso}" /></td>
 										<td><c:out value="${esterno.orarioUscita}" /></td>
-										<td><c:out value="${esterno.orarioUscita}" />
-											- <c:out value="${esterno.orarioIngresso}" /></td>
+										<td><c:out value="${esterno.orarioUscita}" /> - <c:out
+												value="${esterno.orarioIngresso}" /></td>
 										<td>#</td>
 										<td><select class="form-control" id="sel1" onchange=""
 											name="sel1">
@@ -90,13 +92,11 @@
 					<br> <br>
 				</div>
 			</c:if>
-			
-				<!-- SE L'UTENTE LOGGATO E' UN TUTOR ACCADEMICO-->
-			<c:if
-				test="${type == 'tutoraccademico'}">
+
+			<!-- SE L'UTENTE LOGGATO E' UN TUTOR ACCADEMICO-->
+			<c:if test="${type == 'tutoraccademico'}">
 				<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
-				<c:if
-					test="${listaAttivitaInterno.size() == 0">
+				<c:if test="${listaAttivitaInterno.size() == 0">
 					<p>Non è stato effettuato nessun Tirocinio!</p>
 				</c:if>
 				<div class="col-lg-9" id=""
@@ -106,9 +106,13 @@
 					<hr>
 
 					<div>
-						<p>Studente: <c:out value="${studente.name}" /><c:out value="${studente.surname}" /></p>
-						<p>Ore svolte: #</p>
-						<p>Numero attività svolte: #</p>
+						<p>
+							Studente:
+							<c:out value="${studente.name}" />
+							<c:out value="${studente.surname}" />
+						</p>
+						<p>Ore svolte:</p>
+						<!--<p>Numero attività svolte: #</p> -->
 					</div>
 
 
@@ -126,7 +130,6 @@
 										<td>Ora ingresso</td>
 										<td>Ora uscita</td>
 										<td>Ore tot.</td>
-										<td>Firma Tirocinante</td>
 										<td>Firma responsabile</td>
 									</tr>
 									<tr>
@@ -135,9 +138,9 @@
 										<td><c:out value="${interno.data}" /></td>
 										<td><c:out value="${interno.orarioIngresso}" /></td>
 										<td><c:out value="${interno.orarioUscita}" /></td>
-										<td><c:out value="${interno.orarioUscita}" />
-											- <c:out value="${interno.orarioIngresso}" /></td>
-										<td>#</td>
+										<td><c:out
+												value="${interno.orarioUscita - interno.orarioIngresso}" /></td>
+
 										<td><select class="form-control" id="sel1" onchange=""
 											name="sel1">
 												<option value="approva" selected>Approva</option>
@@ -156,7 +159,7 @@
 					<br> <br>
 				</div>
 			</c:if>
-			
+
 		</div>
 	</div>
 	<br>

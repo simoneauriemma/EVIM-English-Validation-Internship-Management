@@ -41,22 +41,37 @@
 						int n = 0;
 					%>
 					<c:if test="${listaAttivitaEsterno.size() > 0}">
-						<div>
+						<c:forEach items="${listaAttivitaEsterno}" var="esterno">
+							<div>
 
-							<p>Tirocinio presso: #</p>
+								<p>
+									Tirocinio presso:
+									<c:out value="${esterno.nomeAzienda}" />
+								</p>
 
-							<p>Ore svolte: #</p>
-						</div>
-
+								<p>
+									Ore svolte:
+									<c:out value="${esterno.oreSvolte}" />
+								</p>
+							</div>
+						</c:forEach>
 					</c:if>
 
 					<c:if test="${listaAttivitaInterno.size() > 0}">
-						<div>
-							<p>Tutor ospitante: #</p>
+						<c:forEach items="${listaAttivitaInterno}" var="interno">
+							<div>
+								<p>
+									Tutor ospitante:
+									<c:out value="${interno.nomeTutorAcc}" />
+									<c:out value="${interno.cognomeTutorAcc}" />
+								</p>
 
-							<p>Ore svolte: #</p>
-						</div>
-
+								<p>
+									Ore svolte:
+									<c:out value="${interno.oreSvolte}" />
+								</p>
+							</div>
+						</c:forEach>
 					</c:if>
 					<br>
 
@@ -77,16 +92,15 @@
 									</tr>
 									<tr>
 										<td></td>
-										<td><c:out value="${esterno.attivita}" /></td>
+										<td><c:out value="${esterno.descrizione}" /></td>
 										<td><c:out value="${esterno.data}" /></td>
-										<td id="ingresso"><c:out
-												value="${esterno.orarioIngresso}" /></td>
-										<td id="uscita"><c:out value="${esterno.orarioUscita}" /></td>
-										<td><c:out value="${esterno.orarioUscita}" />
-											- <c:out value="${esterno.orarioIngresso}" /></td>
+										<td><c:out value="${esterno.orarioIngresso}" /></td>
+										<td><c:out value="${esterno.orarioUscita}" /></td>
+										<td><c:out
+												value="${esterno.orarioUscita - esterno.orarioIngresso}" />
+										</td>
 										<td>#</td>
-
-										<td>#</td>
+										<td><c:out value="${esterno.firmaResponsabile}" /></td>
 									</tr>
 
 								</c:forEach>
@@ -101,7 +115,6 @@
 										<td>Ora ingresso</td>
 										<td>Ora uscita</td>
 										<td>Ore tot.</td>
-										<td>Firma Tirocinante</td>
 										<td>Firma responsabile</td>
 									</tr>
 									<tr>
@@ -110,11 +123,11 @@
 										<td><c:out value="${interno.data}" /></td>
 										<td id="ingresso"><c:out
 												value="${interno.orarioIngresso}" /></td>
-										<td id="uscita"><c:out value="${interno.orarioUscita}" /></td>
-										<td id="tdOre"><c:out value="${interno.orarioUscita}" />
-											- <c:out value="${interno.orarioIngresso}" /></td>
-										<td>#</td>
-										<td>#</td>
+										<td><c:out value="${interno.orarioUscita}" /></td>
+										<td><c:out
+												value="${interno.orarioUscita - interno.orarioIngresso}" /></td>
+
+										<td><a href="#"><i id="accettare" class="fas fa-check-square"></i></a></td>
 									</tr>
 
 
@@ -187,18 +200,16 @@
 	function myFunction() {
 		alert("I am an alert box!");
 	}
-	
-	
-	
-	
-	
- <!-- function calculateHours() {
+
+	<!--
+	function calculateHours() {
 		var start = $('#ingresso').html();
 		var end = $('#uscita').html();
 		var total = end - start;
 		var result = $('#tdOre');
 		result.val(total);
-		
-	} -->
+
+	}
+	-->
 </script>
 </html>
