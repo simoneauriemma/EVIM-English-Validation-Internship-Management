@@ -241,7 +241,7 @@
 									</tr>
 
 									<tr>
-										<td>C) Competenze tecniche presenti:</td>
+										<td>C) non esite:</td>
 										<td style="padding-left: 50px;">
 											<div>
 												<div class="row">
