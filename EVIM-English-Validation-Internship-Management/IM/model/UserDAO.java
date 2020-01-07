@@ -55,7 +55,7 @@ public class UserDAO {
 	}
 
 	/**
-	 * prende un user a seconda del flag usertype, restituiesce null se non è
+	 * prende un user a seconda del flag usertype, restituiesce null se non ï¿½
 	 * presente nel db
 	 * 
 	 * @param usertype email password dell'USER
@@ -130,6 +130,45 @@ public class UserDAO {
 		return false;
 
 		
+	}
+	/**
+	 * @author Antonio Giano
+	 * @param email, per fare la ricerca univoca di uno studente
+	 * @return ritorna l'oggetto creato di user
+	 */
+	public static User getStudenteWithEmail(String email) {
+
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement("select * from EVIM.user where EMAIL= ?");
+			User utente = new User();
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+
+				utente.setEmail(rs.getString(1));
+				utente.setName(rs.getString(2));
+				utente.setSurname(rs.getString(3));
+				utente.setSex(rs.getString(4).charAt(0));
+				utente.setPassword(rs.getString(5));
+				utente.setUserType(rs.getInt(6));
+				utente.setCorso(rs.getString(7));
+				utente.setLuogoDiNascita(rs.getString(8));
+				utente.setDataDiNascita(rs.getString(9));
+				utente.setResidente(rs.getString(10));
+				utente.setVia(rs.getString(11));
+				utente.setTelefono(rs.getString(12));
+				utente.setMatricola(rs.getString(13));
+				
+				return utente;
+			} else
+				return null;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
 	}
 
 }

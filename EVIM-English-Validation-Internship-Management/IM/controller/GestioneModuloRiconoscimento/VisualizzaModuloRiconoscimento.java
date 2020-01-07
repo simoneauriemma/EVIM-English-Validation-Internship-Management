@@ -36,6 +36,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import model.Riconoscimento;
 import model.RiconoscimentoDao;
 import model.User;
+import model.UserDAO;
 
 /**
  * @author Antonio Giano
@@ -70,7 +71,7 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 				User studente=(User) sessione.getAttribute("utenteLoggato");
 				File fileRiconoscimento=null;
 				try {
-					 fileRiconoscimento=createModuloRiconoscimento(idRiconoscimento,studente);
+					 fileRiconoscimento=createModuloRiconoscimento(idRiconoscimento,studente,request);
 					
 				} catch (FileNotFoundException | DocumentException e) {
 					e.printStackTrace();
@@ -136,7 +137,7 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		
 	}
 
-	private File createModuloRiconoscimento(int idRiconoscimento,User studente) throws FileNotFoundException, DocumentException {
+	private File createModuloRiconoscimento(int idRiconoscimento,User utente,HttpServletRequest request) throws FileNotFoundException, DocumentException {
 		Document documento=new Document();
 		File fileRiconoscimento=new File("moduloRiconoscimento.pdf");
 		
@@ -146,7 +147,17 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		writer.setViewerPreferences(PdfWriter.DisplayDocTitle);
 		writer.createXmpMetadata();
 		System.out.println("path assoluta"+fileRiconoscimento.getAbsolutePath());
-		Riconoscimento moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(studente.getEmail());
+		Riconoscimento moduloRiconoscimento=null;
+		User studente=null;
+		if(utente.getUserType()==2) {
+			String email=request.getParameter("emailUser");
+			moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(email);
+			studente=UserDAO.getStudenteWithEmail(email);
+		}
+		else {
+			moduloRiconoscimento=RiconoscimentoDao.getModuloRiconoscimento(utente.getEmail());
+			studente=utente;
+		}
 		
 		documento.open();
 		
