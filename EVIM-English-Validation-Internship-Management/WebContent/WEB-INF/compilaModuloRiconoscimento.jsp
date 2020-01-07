@@ -108,8 +108,23 @@
 						<br>
 
 						<!-- INIZIO gestione cfu -->
+						<%int n=12; %>
 						<h6 class="text-center">Inserisci i CFU da convalidare</h6>
-						<br> Hai da poter convalidare ancora: <b> # CFU</b>
+
+
+						<!-- cfu rimanenti -->
+						<br> Hai ancora <b> <c:choose>
+								<c:when test="${CFUinglese != -1}"> 
+						12 CFU
+						</c:when>
+								<c:otherwise>
+									<%=n%> - <c:out value="${CFUinglese }" />
+								</c:otherwise>
+
+							</c:choose>
+						</b> da poter convalidare.
+
+
 
 						<!-- popover  -->
 						<a href="#" data-toggle="tooltip"
