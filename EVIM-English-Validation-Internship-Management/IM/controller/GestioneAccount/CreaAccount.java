@@ -26,7 +26,7 @@ public class CreaAccount extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		HttpSession sessione = request.getSession();
@@ -38,9 +38,9 @@ public class CreaAccount extends HttpServlet {
 
 			String tipoUtente = sessione.getAttribute("utenteLoggato").getClass().getName();
 
-			// in base all'oggetto nella sessione , controllo se l'utente è abilitat
+			// in base all'oggetto nella sessione , controllo se l'utente ï¿½ abilitat
 			if (tipoUtente.equalsIgnoreCase("model.Azienda")) {
-				// è loggato un tipo "azienda"
+				// ï¿½ loggato un tipo "azienda"
 				//
 				Azienda azienda = (Azienda) sessione.getAttribute("utenteLoggato");
 				String nome = request.getParameter("nome");
@@ -73,7 +73,7 @@ public class CreaAccount extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
 	}

@@ -26,7 +26,7 @@
 
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
-				<c:if test="${studenti.size() > 0}">
+			
 					<p id="titolo" style="font-size: 30px; color: #595959;">Compila
 						relazione di tirocinio</p>
 					<hr>
@@ -34,34 +34,34 @@
 						relazione di tirocinio</h6>
 					<div id="accordion">
 
-						<c:set var="counter" value="${0}"></c:set>
+					<!--	<c:set var="counter" value="${0}"></c:set> -->
 						<!-- <div class="card">
 						<div id="headingOne>" style="background-color: #2C5278"> -->
 
 
-						<c:forEach items="${studenti}" var="studente">
-							<c:set var="counter" value="${counter+1}"></c:set>
-							<div id="collapseDiv${counter}" class="collapse-div"
+					<!--	<c:forEach items="${studenti}" var="studente">  -->
+					<!--		<c:set var="counter" value="${counter+1}"></c:set> -->
+							<div id="collapseDiv1" class="collapse-div"
 								role="tablist">
-								<div class="collapse-header" id="heading${counter}"
+								<div class="collapse-header" id="heading1"
 									style="background-color: #2C5278">
 									<button data-toggle="collapse"
-										data-target="#collapse${counter}" aria-expanded="true"
-										aria-controls="collapse${counter}" id="nome-tutor">
+										data-target="#collapse1" aria-expanded="true"
+										aria-controls="collapse1" id="nome-tutor">
 										<c:out value="${studente.name} ${studente.surname}"></c:out>
 									</button>
 								</div>
 
-								<div id="collapse${counter}" class="collapse" role="tabpanel"
-									aria-labelledby="heading${counter}">
+								<div id="collapse1" class="collapse" role="tabpanel"
+									aria-labelledby="heading1">
 									<div class="collapse-body">
 
 										<form action="CreaRelazione">
 											<div class="form-group">
 												<input name="emailstudente" type="hidden"
-													value="${studente.email}">
+													value="1">
 												<textarea name="descrizione" class="form-control"
-													id="exampleFormControlTextarea${counter}"
+													id="exampleFormControlTextarea1"
 													placeholder="Compila verbale tirocinio..." rows="3"></textarea>
 
 											</div>
@@ -82,10 +82,10 @@
 							</div>
 
 
-						</c:forEach>
+					<!--	</c:forEach> -->
 					</div>
 
-				</c:if>
+			
 			</div>
 		</div>
 
