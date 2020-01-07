@@ -242,9 +242,6 @@
 					<c:if test="${type =='azienda'}">
 						<li><a href="gestioneAccount.jsp"><i
 								class="fas fa-angle-right"></i> Crea account tutor aziendale </a></li>
-						<li><a href="#"><i class="fas fa-angle-right"></i>
-								Modifica dati personali </a></li>
-
 					</c:if>
 				</ul>
 			</c:if>

@@ -27,22 +27,22 @@
 
 
 				<form method="POST" id="form" onsubmit="return validate()">
-					<input type="text" class="form-control" id="name"
+					<input type="text" class="form-control" id="name" name="nome"
 						placeholder="Nome" autocomplete="off"> <br>
 					<p></p>
-					<input type="text" class="form-control" id="surname"
+					<input type="text" class="form-control" id="surname" name="cognome"
 						placeholder="Cognome" autocomplete="off"> <br>
 					<p></p>
-					<input type="email" class="form-control" id="email"
+					<input type="email" class="form-control" id="email" name="email"
 						placeholder="Email" autocomplete="off">
 					<p id='resultRegexEmail'></p>
-					<br> <input type="tel" class="form-control" id="telefono"
+					<br> <input type="tel" class="form-control" id="telefono" name="telefono"
 						name="telefono" placeholder="Numero di telefono">
 					<p id="resultRegexTelefono"></p>
-					<br> <input type="password" class="form-control" id="password"
+					<br> <input type="password" class="form-control" id="password" name="password"
 						name="password" placeholder="Password">
 					<p id='resultRegexPass'></p>
-					<br> <input type="password" class="form-control"
+					<br> <input type="password" class="form-control" name="confermaPassword"
 						id="confermaPassword" name="confermaPassword"
 						placeholder="Conferma Password">
 					<p id='resultRegexCPass'></p>
