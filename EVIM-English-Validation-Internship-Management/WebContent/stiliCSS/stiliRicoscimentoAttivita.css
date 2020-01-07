@@ -30,6 +30,13 @@ li {
 	list-style: none;
 }
 
+#asterisco{
+	background-color: transparent;
+	border: none;
+	font-size: 10px;
+	color: red;	
+	vertical-align:middle;
+}
 /* pagina ELENCO RICONOSCIMENTI ATTIVITA'  */
 
 #titolo1{

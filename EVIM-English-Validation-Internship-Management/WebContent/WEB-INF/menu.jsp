@@ -217,8 +217,6 @@
 								Compila modulo riconoscimento </a></li>
 						<li><a href="VisualizzaElencoModuliRiconoscimento"><i class="fas fa-angle-right"></i>
 								Visualizza richieste riconoscimento </a></li>
-						<li><a href="#"><i class="fas fa-angle-right"></i>
-								Modifica modulo riconoscimento</a></li>
 					</c:if>
 					
 					<c:if test="${type=='pdcd'}">
