@@ -114,11 +114,11 @@
 
 						<!-- cfu rimanenti -->
 						<br> Hai ancora <b> <c:choose>
-								<c:when test="${CFUinglese != -1}"> 
+								<c:when test="${CFUInglese == -1}"> 
 						12 CFU
 						</c:when>
 								<c:otherwise>
-									<%=n%> - <c:out value="${CFUinglese }" />
+									<c:out value="${12-CFUInglese}" />
 								</c:otherwise>
 
 							</c:choose>
