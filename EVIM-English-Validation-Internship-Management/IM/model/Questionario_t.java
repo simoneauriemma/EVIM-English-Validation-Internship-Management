@@ -14,15 +14,18 @@ public class Questionario_t {
 	int servizi;
 	int assistenza;
 	int collaborazione;
+	int durata;
 	
-	
+
+
 	public Questionario_t() {
 		super();
 	}
 	
+
 	public Questionario_t(int id_questionario, String email, int id_tutor, int competenze_ingresso,
 			int competenze_acquisite, int utilita, int motivazione, int capacita, int informazioni, int obiettivi,
-			int servizi, int assistenza, int collaborazione) {
+			int servizi, int assistenza, int collaborazione, int durata) {
 		super();
 		this.id_questionario = id_questionario;
 		this.email = email;
@@ -37,7 +40,9 @@ public class Questionario_t {
 		this.servizi = servizi;
 		this.assistenza = assistenza;
 		this.collaborazione = collaborazione;
+		this.durata = durata;
 	}
+
 	public int getId_questionario() {
 		return id_questionario;
 	}
@@ -115,5 +120,14 @@ public class Questionario_t {
 	}
 	public void setCollaborazione(int collaborazione) {
 		this.collaborazione = collaborazione;
+	}
+	
+	
+	public int getDurata() {
+		return durata;
+	}
+
+	public void setDurata(int durata) {
+		this.durata = durata;
 	}
 }
