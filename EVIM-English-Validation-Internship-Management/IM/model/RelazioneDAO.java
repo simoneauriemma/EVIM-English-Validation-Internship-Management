@@ -70,5 +70,41 @@ public class RelazioneDAO {
 		}
 		return studenti;
 	}
+	
+	public static Relazione doRetriveRelazionefromId(int idRelazione) {
+		String query= "select * from relazione where relazione.ID_Relazione = ?";
+		Relazione r=new Relazione();
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement(query);
+			
+			
+			
+			ps.setInt(1, idRelazione);
+			
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				
+				r.setIdrelazione(rs.getInt(1));
+				r.setDescrizione(rs.getString(2));
+				r.setEmail(rs.getString(3));
+				r.setStatus(rs.getString(4));
+				r.setIdtutor(rs.getInt(5));
+			}
+			
+			
+			
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			throw new RuntimeException(e);
+			
+		}
+		return r;
+		
+	}
 
 }
