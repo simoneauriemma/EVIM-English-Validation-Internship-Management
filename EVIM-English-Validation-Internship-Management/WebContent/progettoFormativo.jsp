@@ -34,7 +34,7 @@
 							<h6 class="mb-0">
 								<button data-toggle="collapse" data-target="#collapseOne"
 									aria-expanded="true" aria-controls="collapseOne" id="id-prog">1.
-									ID Progetto formativo #</button>
+									Num. Progetto formativo #</button>
 							</h6>
 						</div>
 
