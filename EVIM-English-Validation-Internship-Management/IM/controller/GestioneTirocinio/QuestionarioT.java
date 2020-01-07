@@ -40,7 +40,8 @@ public class QuestionarioT extends HttpServlet {
 		Questionario_t quest = new Questionario_t();
 		String nomeUtente = (String) session.getAttribute("type");
 		TutorAziendale tutor= (TutorAziendale) session.getAttribute("utenteLoggato");
-		User studente = (User) session.getAttribute("studente");
+		//User studente = (User) session.getAttribute("studente"); //mi sa che nin va bene
+		String email = request.getParameter("email");
 		boolean result = false;
 		boolean compiled = true;
 
@@ -56,7 +57,7 @@ public class QuestionarioT extends HttpServlet {
 		if (compiled) {
 
 			if (tutor != null && nomeUtente.contentEquals("studente")) {
-				quest.setEmail(studente.getEmail());
+				quest.setEmail(email);
 				quest.setId_tutor(tutor.getId());
 				quest.setDurata(Integer.parseInt(request.getParameter("gruppo1")));
 				quest.setObiettivi(Integer.parseInt(request.getParameter("gruppo2")));
