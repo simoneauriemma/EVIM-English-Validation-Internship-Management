@@ -26,7 +26,7 @@
 
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
-				<c:if test="${studenti.size() > 0}">
+			
 					<p id="titolo" style="font-size: 30px; color: #595959;">Compila
 						relazione di tirocinio</p>
 					<hr>
@@ -85,7 +85,7 @@
 						</c:forEach>
 					</div>
 
-				</c:if>
+			
 			</div>
 		</div>
 
