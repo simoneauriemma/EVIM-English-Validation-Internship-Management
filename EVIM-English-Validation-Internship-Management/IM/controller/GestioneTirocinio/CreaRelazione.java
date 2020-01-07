@@ -34,9 +34,12 @@ public class CreaRelazione extends BaseServlet {
 		String nomeutente = (String) session.getAttribute("type");
 		String descrizione= (String) request.getParameter("descrizione");
 		String status="in approvazione";
-		User studente=(User) session.getAttribute("studente");
+		//User studente = (User) session.getAttribute("studente"); //mi sa che nin va bene
+		
 		String emailstudente= (String) request.getParameter("emailstudente");
 		//ArrayList<User> studenti = new ArrayList<User>();
+		
+		
 		boolean result=false;
 		TutorAziendale utente= (TutorAziendale) session.getAttribute("utenteLoggato");
 
@@ -53,8 +56,8 @@ public class CreaRelazione extends BaseServlet {
 			}
 			else { 			//reindirizzo a compila relazione
 				//studenti=RelazioneDAO.doRetriveStudenti(utente.getId());
-				session.setAttribute("studente", studente);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/compilaRelazione.jsp");
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("ListaTirocini");
 				dispatcher.forward(request, response);
 			}
 		}
