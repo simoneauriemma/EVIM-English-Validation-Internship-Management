@@ -87,12 +87,14 @@
 											<tr>
 												<td class="icon"><i class="fas fa-user"></i></td>
 												<td class="">Referente aziendale</td>
-												<td>#</td>
+												<td><c:out
+															value="${azienda.idReferente}" /></td>
 											</tr>
 											<tr>
 												<td class="icon"><i class="fas fa-mobile-alt"></i></td>
 												<td class="">Numero cellulare</td>
-												<td>#</td>
+												<td>+39 <c:out
+															value="${azienda.telefono}" /></td>
 											</tr>
 
 											<tr>
@@ -170,8 +172,7 @@
 			</div>
 		</div>
 	</div>
-	<br>
-	<br>
+
 </body>
 
 <jsp:include page="footer.jsp"></jsp:include>
