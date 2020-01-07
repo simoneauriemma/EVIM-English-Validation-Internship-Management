@@ -81,7 +81,7 @@
 			var confirm_password = $('#confermaPassword');
 
 			if (!regex_email.test(email.val())) {
-				resultRegexEmail.text(email.val() + "non rispetta il formato!");
+				resultRegexEmail.text(email.val() + " non rispetta il formato!");
 				resultRegexEmail.css("color", "red");
 				email.css("color", "red");
 				return false;
