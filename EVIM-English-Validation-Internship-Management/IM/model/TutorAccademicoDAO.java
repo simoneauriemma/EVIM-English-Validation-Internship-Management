@@ -89,7 +89,7 @@ public class TutorAccademicoDAO {
 	}
 	
 	public static boolean insertNewTutorAccademico(String nome, String cognome,String password,String sesso,String email) { 
-		String query= "INSERT INTO EVIM.tutoraccademico(`Nome`,`Cognome`,`Password`,`indirizzo`,`email`,`telefono`) VALUES(?,?,?,?,?,?)";
+		String query= "INSERT INTO EVIM.tutoraccademico(`Nome`,`Cognome`,`Password`,`sex`,`email`) VALUES(?,?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(query);
 			
