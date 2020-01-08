@@ -35,17 +35,17 @@ public class Registrazione extends BaseServlet {
 		String regexDocente = "[a-z0-9\\.]+@unisa\\.it";
 		
 		
-		String regexNome="^[A-Za-z]{1,50}";
-		String regexCognome="^[A-Za-z]{1,50}";
-		String regexPassword="^[A-Za-z0-9]{8,50}";
+		String regexNome="[A-Za-z]{1,50}";
+		String regexCognome="[A-Za-z]{1,50}";
+		String regexPassword="[A-Za-z0-9]{8,50}";
 		String regexData="([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))";
 		String regexLuogoNascita="^[A-Za-z]{1,46}";
-		String regexIndirizzo="^[a-z A-Z]+.[1-9]{1,100}";
-		String regexTelefono="^[0-9]{8,16}";
+		String regexIndirizzo="[a-z A-Z]+.[1-9]{1,100}";
+		String regexTelefono="[0-9]{8,16}";
 		String regexLuogoResidenza="^[A-Za-z]{1,46}";
-		String regexSesso="^[m f M F]";
+		String regexSesso="[m f M F]";
 		String regexCorso="magistrale|triennale";
-		String regexMatricola="^[0-9]{10,10}";
+		String regexMatricola="[0-9]{10,10}";
 		
 		// campi comuni
 		String email = request.getParameter("email");
@@ -67,21 +67,6 @@ public class Registrazione extends BaseServlet {
 		String provinciar = request.getParameter("provinciaR"); 
 		String regexProvincia= "^[A-Z]{2,2}";
 		
-		
-		System.out.println(corso);
-		System.out.println(data);
-		System.out.println(provinciar);
-		System.out.println(provincian);
-		System.out.println(luogonascita);
-		System.out.println(luogoresidenza);
-		System.out.println(nome);
-		System.out.println(cognome);
-		System.out.println(telefono);
-		System.out.println(sesso);
-		System.out.println(matricola);
-		System.out.println(email);
-		System.out.println(password);
-		System.out.println(indirizzo);
 		
 		boolean result = false;
 // se non sono loggato mi posso registrare altrimenti non ha senso
