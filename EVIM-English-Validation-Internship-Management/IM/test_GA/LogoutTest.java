@@ -5,8 +5,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import controller.Login;
-import controller.Logout;
+import controller.GestioneAutenticazione.Login;
+import controller.GestioneAutenticazione.Logout;
 
 	import java.io.IOException;
 	import javax.servlet.ServletException;

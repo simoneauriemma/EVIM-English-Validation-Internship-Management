@@ -4,7 +4,7 @@ package test_GA;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-	import controller.Login;
+	import controller.GestioneAutenticazione.Login;
 
 	import java.io.IOException;
 	import javax.servlet.ServletException;

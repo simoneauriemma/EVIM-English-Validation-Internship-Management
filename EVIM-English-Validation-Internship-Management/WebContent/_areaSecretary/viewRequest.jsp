@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1" import="controller.CheckSession"%>
 
-<%
-	String pageName = "viewRequest.jsp";
-	String pageFolder = "_areaSecretary";
-	CheckSession ck = new CheckSession(pageFolder, pageName, request.getSession());
-	if(!ck.isAllowed()){
-	  response.sendRedirect(request.getContextPath()+ck.getUrlRedirect());  
-	}
-%>
+
 
 <!DOCTYPE html>
 <html>
@@ -22,11 +15,6 @@
 		<!-- Preloader -->
 		<!--  <div class="preloader"></div> -->
 
-
-		<jsp:include page="/partials/header.jsp">
-			<jsp:param name="pageName" value="<%= pageName %>" />
-			<jsp:param name="pageFolder" value="<%= pageFolder %>" />
-		</jsp:include>
 
 
 		<div class="sidebar-page-container basePage viewRequestSecretary">

@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import controller.BaseServlet;
+import controller.GestioneAutenticazione.*;
+
 import model.TirocinioInternoDAO;
 import model.TutorAccademico;
 import model.TutorAziendale;

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import controller.GestioneProposta.VisualizzaProposte;
 import model.Proposta;
-import controller.Login;
+import controller.GestioneAutenticazione.Login;
 
 import java.io.IOException;
 import java.util.ArrayList;

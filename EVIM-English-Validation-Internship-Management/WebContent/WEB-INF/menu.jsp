@@ -219,14 +219,20 @@
 			<c:if test="${type =='studente'}">
 				<a class="item" class="active" href="FirstForm">Compila modulo
 					riconoscimento</a>
-				<a class="item" class="active" href="UploadAttached">Carica Allegati</a>
+				<a class="item" class="active" href="ViewRequest">Visualizza
+					richieste riconoscimento</a>
+				<a class="item" class="active" href="UploadAttached" style="border-bottom: 1px solid #ddd;">Carica
+					Allegati</a>
 			</c:if>
 
-			<c:if
-				test="${type =='pdcd' || type =='studente' || type =='segreteria'}">
-				<a class="item" class="active" href="ViewRequest"
-					style="border-bottom: 1px solid #ddd;">Visualizza richieste
-					riconoscimento</a>
+			<c:if test="${type =='pdcd'}">
+				<a class="item" class="active" href="ViewRequest">Visualizza
+					richieste riconoscimento</a>
+			</c:if>
+
+			<c:if test="${type =='segreteria'}">
+				<a class="item" class="active" href="ViewRequest">Visualizza
+					richieste riconoscimento</a>
 			</c:if>
 
 		</c:if>

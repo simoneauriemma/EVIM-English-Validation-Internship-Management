@@ -1,4 +1,4 @@
-var absolutePath = "/EnglishValidation";
+var absolutePath = "/EVIM-English-Validation-Internship-Management";
 
 // sendPostData(msg.redirect, { 'idRequest': msg.contenuto });
 function sendPostData(url, data) {
@@ -17,7 +17,7 @@ function sendPostData(url, data) {
 }
 
 function showAlert(flag, descrizione) {
-	toastr.options = {
+	/*toastr.options = {
 		"closeButton" : true,
 		"debug" : false,
 		"newestOnTop" : false,
@@ -33,12 +33,14 @@ function showAlert(flag, descrizione) {
 		"hideEasing" : "linear",
 		"showMethod" : "fadeIn",
 		"hideMethod" : "fadeOut"
-	}
+	}*/
 
 	if (flag == 0) { // Tutto OK
-		toastr.success(descrizione, "Operazione Effettuata");
+		alert(descrizione);
+		//toastr.success(descrizione, "Operazione Effettuata");
 	} else if (flag == 1) { // Errore
-		toastr.error(descrizione, "Operazione Fallita");
+		alert(descrizione);
+		//toastr.error(descrizione, "Operazione Fallita");
 	}
 }
 
