@@ -309,15 +309,17 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `registro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `registro` (
-  `ID_Registro` int(11) NOT NULL AUTO_INCREMENT,
-  `ID_Tirocinio` int(11) NOT NULL,
-  `Status` varchar(20) NOT NULL,
-  `FirmaResponsabile` tinyint(1) NOT NULL DEFAULT '0',
-  `FirmaTutorAccamico` tinyint(1) NOT NULL DEFAULT '0',
-  `Tipo` varchar(20) NOT NULL,
-  PRIMARY KEY (`ID_Registro`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+create table `registro`(
+ID_Registro int not null auto_increment,
+ID_Tirocinio int not null,
+Status varchar(20) not null,
+FirmaResponsabile boolean not null DEFAULT false,
+FirmaTutorAccamico boolean not null DEFAULT false,
+Tipo varchar(20) not null,
+OreRaggiunte int not null default 0,
+primary key(ID_Registro)
+)
+ ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
