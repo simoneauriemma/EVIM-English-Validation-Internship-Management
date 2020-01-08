@@ -106,5 +106,36 @@ public class RelazioneDAO {
 		return r;
 		
 	}
+	
+	public static boolean doAlterRelazione(boolean approva,int idrelazione) {
+		String query= "UPDATE `evim`.`relazione` SET `status` = ? WHERE (`ID_Relazione` = ?)";
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement(query);
+			
+			if(approva) {
+				ps.setString(1, "approvato");
+			}
+			else {
+				ps.setString(1, "rifiutato");
+			}
+			
+			ps.setInt(2, idrelazione);
+		
+			
+			
+			
+			if(ps.executeUpdate()==1) {
+				return true;
+			}
+			else
+				return false;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			throw new RuntimeException(e);
+			
+		}
+	}
 
 }
