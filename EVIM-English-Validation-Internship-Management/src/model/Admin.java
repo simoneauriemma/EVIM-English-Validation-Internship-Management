@@ -1,8 +1,8 @@
 package model;
 
-import interfacce.UserInterface;  
+import model.User;  
 
-public class Admin implements UserInterface {
+public class Admin extends User {
 
   /**
    * Variables.
@@ -137,7 +137,6 @@ public class Admin implements UserInterface {
   /**
    * Specifies if the user is allowed to see the page.
    */
-  @Override
   public boolean validate() {
     return new Stub().database.containsKey(getEmail())
         && new Stub().database.containsValue(getPassword());

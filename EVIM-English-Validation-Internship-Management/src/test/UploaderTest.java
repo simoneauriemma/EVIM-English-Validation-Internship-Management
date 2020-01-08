@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import controller.Uploader;
-import interfacce.UserInterface;
+import model.User;
 
 import java.io.IOException;
 import java.security.SecureRandom;

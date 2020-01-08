@@ -1,6 +1,6 @@
 package controller;
 
-import interfacce.UserInterface;
+import model.User;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -102,7 +102,7 @@ public class CheckSession implements Serializable {
    */
   public boolean isAllowed() {
     this.setAllowed(false);
-    UserInterface u = (UserInterface) this.session.getAttribute("user");
+    User u = (User) this.session.getAttribute("utenteLoggato");
     if (u != null) {
       int userType = u.getUserType();
 

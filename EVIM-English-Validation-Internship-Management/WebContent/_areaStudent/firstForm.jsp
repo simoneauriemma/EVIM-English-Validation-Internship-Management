@@ -1,54 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"
-	import="controller.CheckSession, model.SystemAttribute, java.text.SimpleDateFormat, java.time.*, controller.DbConnection, java.sql.Connection, java.sql.ResultSet, java.sql.Statement"%>
+	import="controller.CheckSession, model.SystemAttribute,java.text.SimpleDateFormat,java.time.*,controller.DbConnection, java.sql.Connection, java.sql.ResultSet, java.sql.Statement"%>
 
-<%
-	String pageName = "firstForm.jsp";
-	String pageFolder = "_areaStudent";
-	CheckSession ck = new CheckSession(pageFolder, pageName, request.getSession());
-	if(!ck.isAllowed()){
-	  response.sendRedirect(request.getContextPath()+ck.getUrlRedirect());  
-	}
-%>
+
 
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/partials/head.jsp" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="ISO-8859-1">
+
+<link rel="stylesheet" href="/stiliCSS/stiliMenu.css">
+<jsp:include page="/WEB-INF/navbarBlu.jsp"></jsp:include>
 </head>
 
 <body onLoad="">
-	<div class="page-wrapper">
 
-		<!-- Preloader -->
-		<!-- <div class="preloader"></div>  -->
+	<div class="container">
+	<br><br>
+		<div class="row">
 
-
-		<jsp:include page="/partials/header.jsp">
-			<jsp:param name="pageName" value="<%= pageName %>" />
-			<jsp:param name="pageFolder" value="<%= pageFolder %>" />
-		</jsp:include>
-
-
-		<div class="sidebar-page-container basePage firstFormPage">
-			<div class="auto-container">
-				<div class="row clearfix">
-					<div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="content">
-							<div class="news-block-seven">
-
-								<div
-									class="col-lg-6 col-md-6 col-sm-12 col-xs-12 firstForm-container">
-									<div class="panel">
+			<div class="col-lg-3">
+				<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
+			</div>
+			<div class="col-lg-9" id="" style="border: 1px solid #d7d7d7; background-color: white;">
+			<div class="panel">
 										<h2 class="text-center">Richiesta</h2>
 										<p class="text-center">Compila tutti i campi per
 											effettuare la richiesta</p>
-									</div>
+			</div>
 									<form id="firstForm">
 
 										<div class="form-group">
-											<label for="immatricolazione">Anno di
-												immatricolazione:</label> <select class="form-control"
+											<label for="immatricolazione">Anno di immatricolazione:</label> <select class="form-control"
 												id="immatricolazione" required>
 												<%
 											    	Integer range = Integer.parseInt(new SystemAttribute().getValueByKey("request-matriculation-year-range"));
@@ -139,21 +133,14 @@
 
 										<div class="clearfix"></div>
 									</form>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
-		<jsp:include page="/partials/footer.jsp" />
 	</div>
-	<!--End pagewrapper-->
-
-	<jsp:include page="/partials/includes.jsp" />
-	<script
-		src="<%= request.getContextPath() %>/js/pages/scripts_firstForm.js"></script>
+	
+	<script src="<%= request.getContextPath() %>/js/pages/scripts.js"></script>
+		
+	<script src="<%= request.getContextPath() %>/js/pages/scripts_firstForm.js"></script>
 
 </body>
+<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 </html>

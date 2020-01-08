@@ -1,6 +1,6 @@
 package model;
 
-import interfacce.UserInterface;
+import model.User;
 import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class Request {
   private List<Attached> attached = new ArrayList<>();
   State state;
   Ente ente;
-  UserInterface user;
+  User user;
   static SimpleDateFormat sdf = new SimpleDateFormat("yyyy - MM - dd");
 
   public Request() {}
@@ -31,7 +31,7 @@ public class Request {
 
   public Request(int idRequest, int requestCfu, String level, GregorianCalendar releaseDate,
       GregorianCalendar expireDate, int validatedCfu, int serial, Year year,
-      List<Attached> attached, State state, Ente ente, UserInterface user) {
+      List<Attached> attached, State state, Ente ente, User user) {
     this.idRequest = idRequest;
     this.requestCfu = requestCfu;
     this.level = level;
@@ -142,11 +142,11 @@ public class Request {
     this.ente = ente;
   }
 
-  public UserInterface getUser() {
+  public User getUser() {
     return user;
   }
 
-  public void setUser(UserInterface user) {
+  public void setUser(User user) {
     this.user = user;
   }
 

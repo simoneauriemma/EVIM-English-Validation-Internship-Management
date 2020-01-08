@@ -21,9 +21,9 @@ public class DbConnection {
    */
   public DbConnection() {
     this.conn = null;
-    this.databaseName = "englishvalidation";
+    this.databaseName = "evim";
     this.userName = "root";
-    this.password = "password";
+    this.password = "root";
     this.hostPort = 3306;
     this.hostName = "localhost";
 

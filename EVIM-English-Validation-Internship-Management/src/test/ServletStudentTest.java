@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import controller.ServletCommon;
 import controller.ServletStudent;
-import interfacce.UserInterface;
+import model.User;
 
 import java.io.IOException;
 import java.security.SecureRandom;
@@ -271,7 +271,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("serial", "512104365");
     request.addParameter("idEnte", "1");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     assertThrows(IllegalArgumentException.class, () -> {
       servlet.doPost(request, response);
@@ -289,7 +289,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("requestedCfu", "6");
     request.addParameter("idEnte", "1");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     assertThrows(IllegalArgumentException.class, () -> {
       servlet.doPost(request, response);
@@ -307,7 +307,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("requestedCfu", "6");
     request.addParameter("idEnte", "1");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     assertThrows(IllegalArgumentException.class, () -> {
       servlet.doPost(request, response);
@@ -325,7 +325,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("requestedCfu", "6");
     request.addParameter("idEnte", "1");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     assertThrows(IllegalArgumentException.class, () -> {
       servlet.doPost(request, response);
@@ -342,7 +342,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("level", "A2");
     request.addParameter("requestedCfu", "6");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     assertThrows(IllegalArgumentException.class, () -> {
       servlet.doPost(request, response);
@@ -360,7 +360,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("level", "A2");
     request.addParameter("requestedCfu", "6");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     assertThrows(IllegalArgumentException.class, () -> {
       servlet.doPost(request, response);
@@ -378,7 +378,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("level", "A2");
     request.addParameter("requestedCfu", "6");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     assertThrows(IllegalArgumentException.class, () -> {
       servlet.doPost(request, response);
@@ -396,7 +396,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("level", "A2");
     request.addParameter("requestedCfu", "6");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     assertThrows(IllegalArgumentException.class, () -> {
       servlet.doPost(request, response);
@@ -414,7 +414,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("level", "A");
     request.addParameter("requestedCfu", "6");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     assertThrows(IllegalArgumentException.class, () -> {
       servlet.doPost(request, response);
@@ -432,7 +432,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("level", "A1234");
     request.addParameter("requestedCfu", "6");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     assertThrows(IllegalArgumentException.class, () -> {
       servlet.doPost(request, response);
@@ -450,7 +450,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("level", "A1");
     request.addParameter("requestedCfu", "13");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     assertThrows(IllegalArgumentException.class, () -> {
       servlet.doPost(request, response);
@@ -468,7 +468,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("level", "A1");
     request.addParameter("requestedCfu", "6");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("a.prova@studenti.unisa.it", "Giuseppe", 
+    User user = new Student("a.prova@studenti.unisa.it", "Giuseppe", 
         "Cirino", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     servlet.doPost(request, response);
@@ -485,7 +485,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("level", "A1");
     request.addParameter("requestedCfu", "6");
     request.addParameter("flag", "2");
-    UserInterface user = new Student("l.l@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("l.l@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     servlet.doPost(request, response);
   }
@@ -501,7 +501,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("level", "A1");
     request.addParameter("requestedCfu", "6");
     request.addParameter("flag", "10");
-    UserInterface user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("b.b@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     servlet.doPost(request, response);
   }
@@ -513,7 +513,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("filenames[]", file);
     request.addParameter("idRequest", "1");
     request.getSession().setAttribute("idRequest", 1);
-    UserInterface user = new Student("prova00@unisa.it", "Paolo", "Beningno", 'M', "password", 0);
+    User user = new Student("prova00@unisa.it", "Paolo", "Beningno", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     request.addParameter("flag", "3");
     assertThrows(IllegalArgumentException.class, () -> {
@@ -529,7 +529,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("filenames[]", file);
     request.addParameter("idRequest", "1");
     request.getSession().setAttribute("idRequest", 1);
-    UserInterface user = new Student("prova00@unisa.it", "Paolo", "Beningno", 'M', "password", 0);
+    User user = new Student("prova00@unisa.it", "Paolo", "Beningno", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     request.addParameter("flag", "3");
     assertThrows(IllegalArgumentException.class, () -> {
@@ -545,7 +545,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("filenames[]", file);
     request.addParameter("idRequest", "1");
     request.getSession().setAttribute("idRequest", 1);
-    UserInterface user = new Student("prova00@unisa.it", "Paolo", "Beningno", 'M', "password", 0);
+    User user = new Student("prova00@unisa.it", "Paolo", "Beningno", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     request.addParameter("flag", "3");
     assertThrows(IllegalArgumentException.class, () -> {
@@ -561,7 +561,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("filenames[]", file);
     request.addParameter("idRequest", "8");
     request.getSession().setAttribute("idRequest", 8);
-    UserInterface user = new Student("a.prova@studenti.unisa.it", "Giuseppe", 
+    User user = new Student("a.prova@studenti.unisa.it", "Giuseppe", 
         "Cirino", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     request.addParameter("flag", "3");
@@ -577,7 +577,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("filenames[]", file);
     request.addParameter("idRequest", "10");
     request.getSession().setAttribute("idRequest", 10);
-    UserInterface user = new Student("g.cirinella2@studenti.unisa.it", "Giuseppe", 
+    User user = new Student("g.cirinella2@studenti.unisa.it", "Giuseppe", 
         "Cirino", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     request.addParameter("flag", "3");
@@ -593,7 +593,7 @@ public class ServletStudentTest extends Mockito {
     request.addParameter("filenames[]", file);
     request.addParameter("idRequest", "888");
     request.getSession().setAttribute("idRequest", 888);
-    UserInterface user = new Student("p.p@studenti.unisa.it", "Giuseppe", 
+    User user = new Student("p.p@studenti.unisa.it", "Giuseppe", 
         "Cirino", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     request.addParameter("flag", "3");
@@ -615,7 +615,7 @@ public class ServletStudentTest extends Mockito {
   
   @Test
   public void testViewRequest() throws ServletException, IOException  {
-    UserInterface user = new Student("g.prova@studenti.unisa.it", "Giacomo", "Lorenzin", 'M', "password", 0);
+    User user = new Student("g.prova@studenti.unisa.it", "Giacomo", "Lorenzin", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     request.addParameter("flag", "4");
     servlet.doGet(request, response);
@@ -624,7 +624,7 @@ public class ServletStudentTest extends Mockito {
   
   @Test
   public void testViewRequestFail() throws ServletException, IOException  {
-    UserInterface user = new Student("g.prova@studenti.unisa.it", "Giacomo", "Lorenzin", 'M', "password", 0);
+    User user = new Student("g.prova@studenti.unisa.it", "Giacomo", "Lorenzin", 'M', "password", 0);
     request.addParameter("flag", "4");
     servlet.doGet(request, response);
     assertEquals("json", response.getContentType());

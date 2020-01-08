@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import controller.Utils;
 
-import interfacce.UserInterface;
+import model.User;
 
 import java.time.Year;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ class UtilsTest {
   @Test
   void testGetRequestState() {
     Utils ut = new Utils();
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2017, 05, 25);
     GregorianCalendar ed = new GregorianCalendar(2018, 05, 25);
     Request req = new Request(1, 3, "A1", rd, ed, 6, 
@@ -41,7 +41,7 @@ class UtilsTest {
     Utils ut = new Utils();
     MockHttpServletRequest request = new MockHttpServletRequest();
     HttpSession session = request.getSession();
-    UserInterface user = new Student("x.x@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
+    User user = new Student("x.x@studenti.unisa.it", "fdg", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     assertEquals(Integer.valueOf(11), ut.getLastUserRequestPartiallyCompleted(session));
   }

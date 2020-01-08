@@ -1,6 +1,6 @@
 package controller;
 
-import interfacce.UserInterface;
+import model.User;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -77,88 +77,7 @@ public class ServletStudent extends HttpServlet {
 
     if (conn != null) {
 
-      if (flag == 1) { // registrazione nuovo utente
-        String name = request.getParameter("name");
-        if (name.length() == 0 || name.length() > 20 || name.matches(".*\\d+.*")) {
-          throw new IllegalArgumentException("Formato non corretto");
-        }
-        String surname = request.getParameter("surname");
-        if (surname.length() == 0 || surname.length() > 20 || surname.matches(".*\\d+.*")) {
-          throw new IllegalArgumentException("Formato non corretto");
-        }
-        String email = request.getParameter("email");
-        /*l'email � valida se la sua lunghezza � diversa da 0, 
-         * se non � presente nel DB e se rispetta il formato
-         * se finisce con @studenti.unisa.it
-        */
-        String prefix = "";
-        if (email.length() > 0) {
-          prefix = email.substring(0, email.indexOf("@"));
-        }
-        if (email.length() == 0 
-            || !email.endsWith("@studenti.unisa.it") 
-            || prefix.length() < 3 || prefix.indexOf(".") == -1) {
-          throw new IllegalArgumentException("Formato non corretto");
-        }
-        
-        char sex = request.getParameter("sex").charAt(0);
-        if (sex != 'M' && sex != 'F') {
-          throw new IllegalArgumentException("Valore non corretto");
-        }
-
-        //controlla la password prima di criptarla
-        String pass = request.getParameter("password");
-        if (pass.length() < 8) {
-          throw new IllegalArgumentException("Formato non corretto");
-        }
-        //qu� la password viene criptata per essere poi salvata nel db
-        String password = new Utils().generatePwd(pass);
-        int userType = 0;
-        UserInterface user = null;
-
-        try {
-          sql = " SELECT  email FROM user WHERE TRIM(LOWER(email)) = TRIM(?) ";
-          stmt = conn.prepareStatement(sql);
-          stmt.setString(1, email.toLowerCase());
-          ResultSet r = stmt.executeQuery();
-          if (r.wasNull()) {
-            error = "Errore nell'esecuzione della Query";
-          } else {
-            int count = r.last() ? r.getRow() : 0;
-            if (count == 0) {
-              sql = " INSERT INTO user " + " (email, name, surname, sex, password, user_type) "
-                  + " VALUES " + " (?, ?, ?, ?, ?, ?) ";
-              stmt = conn.prepareStatement(sql);
-              stmt.setString(1, email.toLowerCase());
-              stmt.setString(2, name);
-              stmt.setString(3, surname);
-              stmt.setString(4, String.valueOf(sex));
-              stmt.setString(5, password);
-              stmt.setInt(6, userType);
-              if (stmt.executeUpdate() > 0) {
-                redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
-                user = new Student(email, name, surname, sex, password, userType);
-                request.getSession().setAttribute("user", user);
-                content = "Registrazione effettuata correttamente.";
-                result = 1;
-              } else {
-                error = "Impossibile effettuare la registrazione.";
-              }
-            } else {
-              error = "Utente gi&agrave; registrato.";
-            }
-          }
-
-          if (result == 0) {
-            conn.rollback();
-          } else {
-            conn.commit();
-          }
-
-        } catch (Exception e) {
-          error += e.getMessage();
-        }
-      } else if (flag == 2) { // registrazione primo form in DB
+      if (flag == 2) { // registrazione primo form in DB
         
         String year = request.getParameter("year");
         if (year.length() == 0) {
@@ -197,8 +116,7 @@ public class ServletStudent extends HttpServlet {
           throw new IllegalArgumentException("Valore non corretto");
         }
         
-        
-        UserInterface user = (UserInterface) request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("utenteLoggato");
         int validatedCfu = 0;
         String idUser = user.getEmail();
         
@@ -235,12 +153,13 @@ public class ServletStudent extends HttpServlet {
               stmt.setString(11, certificateSerial);
               if (stmt.executeUpdate() > 0) {
                 content = "Richiesta parziale presentata con successo.";
-                redirect = request.getContextPath() + "/_areaStudent/uploadAttached.jsp";
+                redirect = request.getContextPath() + "/UploadAttached";
 
                 Integer idRequest = 0;
 
                 ResultSet rs = stmt.getGeneratedKeys();
                 if (rs.next()) {
+                	
                   idRequest = rs.getInt(1);
                 }
                 result = 1;
@@ -270,7 +189,7 @@ public class ServletStudent extends HttpServlet {
           throw new IllegalArgumentException("Valore non corretto");
         }
         Integer idRequest = (Integer) request.getSession().getAttribute("idRequest");
-        UserInterface user = (UserInterface) request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("utenteLoggato");
 
         result = 1;
         try {
@@ -298,7 +217,7 @@ public class ServletStudent extends HttpServlet {
             stmt.setInt(2, idRequest);
             if (stmt.executeUpdate() > 0) {
               result = 1;
-              redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
+              redirect = request.getContextPath() + "/ViewRequest";
               content = "Allegati inseriti con successo.";
             } else {
               error += " Impossibile cambiare stato alla richiesta.";
@@ -318,7 +237,7 @@ public class ServletStudent extends HttpServlet {
         }
 
       } else if (flag == 4) { // Preleva tutte le richieste dello studente
-        UserInterface currUser = (UserInterface) request.getSession().getAttribute("user"); 
+        User currUser = (User) request.getSession().getAttribute("utenteLoggato"); 
         if (currUser != null) {
           String email = currUser.getEmail();
           

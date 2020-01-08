@@ -1,8 +1,8 @@
 package model;
 
-import interfacce.UserInterface;
+import model.User;
 
-public class Secretary implements UserInterface {
+public class Secretary extends User {
 
   public String email;
   private String name;
@@ -87,7 +87,7 @@ public class Secretary implements UserInterface {
     this.userType = userType;
   }
 
-  @Override
+  
   public boolean validate() {
     return new Stub().database.containsKey(getEmail())
         && new Stub().database.containsValue(getPassword());
