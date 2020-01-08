@@ -108,7 +108,9 @@
 						<br>
 
 						<!-- INIZIO gestione cfu -->
-						<%int n=12; %>
+						<%
+							int n = 12;
+						%>
 						<h6 class="text-center">Inserisci i CFU da convalidare</h6>
 
 
@@ -190,6 +192,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 					<div class="col-lg-6">
 						<h6 class="text-center">Dati dell'azienda</h6>
 						<br>
+						
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text">Ente/Azienda</span>
@@ -198,6 +201,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 								aria-describedby="inputGroup-sizing-default" name="enteAzienda"
 								id="enteAzienda" required>
 						</div>
+						
 						<br>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
@@ -513,20 +517,22 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 	
 	/* espressioni regolari su campi da inserire in "dati azineda" */
 
-        var ente='^\w{5,200}$';
-        var indSede= '^\w{10,200}$';
-        var profilo= '^\w{10,200}$';
+/*	("#bott-approva").click(function(){
+	
+        var ente= $("#enteAzienda").length;
+        var sede= $("#indSede").length;
+        var profilo= $("#profilo").length;
         var totcfu= $("#cfuTotali").length;
         
-        if(!(($("#enteAzienda").text().match(ente)) && ($("#indSede").text().match(indSede)) && ($("#profilo").text().match(profilo)) && (totcfu > 0))){
-        	$("#bott-approva").attr("disabled", true);
+        if(ente<5 || ente >=200 && indSede < 5 || sede >=200 && profilo < 5 || profilo >=200 && totcfu>0){
+        	$("#bott-approva").attr("disabled",true);
+        
+        }
+        else 
+        	$("#bott-approva").attr("disabled",false);
+     */
+        
+        
 
-        }
-        else if(($("#enteAzienda").text().match(ente)) && ($("#indSede").text().match(indSede)) && ($("#profilo").text().match(profilo)) && (totcfu > 0)){
-        	$("#bott-approva").attr("disabled", false);
-        }
-   
-	
-	
 	
 </script>

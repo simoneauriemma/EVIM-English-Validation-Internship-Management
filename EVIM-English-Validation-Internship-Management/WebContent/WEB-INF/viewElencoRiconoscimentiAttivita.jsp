@@ -40,7 +40,7 @@
 								<th scope="col">Numero richiesta</th>
 								<th scope="col">Status</th>
 								<th scope="col">CFU totali</th>
-								<th scope="col">PDF</th>
+								<th scope="col">Allegati</th>
 								<!-- 	<th scope="col">Status</th> -->
 							</tr>
 						</thead>
@@ -73,7 +73,7 @@
 
 			<!--  inizio lista richieste riconoscimento da parte dello PDCD e UFF-CARR -->
 			<c:if test="${elencoRiconoscimento.size() > 0 }">
-				<c:if test="${type=='pdcd'}">
+				<c:if test="${type=='pdcd' || type=='segreteria'}">
 					<!-- da agiungere l'uff carr -->
 					<table class="table table-striped" id="tabella">
 						<thead>
@@ -94,11 +94,11 @@
 							<tbody>
 								<tr class="text-center">
 									<th><c:out value="${ricon.idRiconoscimento}" /></th>
-									<th><c:out
-											value="${ricon.nomeStudente} ${ricon.cognomeStudente}" /></th>
-									<th><c:out value="${ricon.matricolaStudente}"></c:out></th>
-									<th><i id="${conto.count}" class="far fa-circle"
-										title="<c:out value="${ricon.stato}"/>"></i></th>
+									<td><c:out
+											value="${ricon.nomeStudente} ${ricon.cognomeStudente}" /></td>
+									<td><c:out value="${ricon.matricolaStudente}"></c:out></td>
+									<td><i id="${conto.count}" class="far fa-circle"
+										title="<c:out value="${ricon.stato}"/>"></i></td>
 									<td><button onclick=visualizzaRiconoscimento(${ricon.idRiconoscimento},"${ricon.emailUser}")>
 											<i class="fas fa-file-pdf"></i>
 										</button></td>
@@ -117,7 +117,7 @@
 										</td>
 										<!--  se il la richiesta è stata approvata o rifiutata -->
 									</c:if>
-									<c:if test="${ricon.stato != 'V'}">
+									<c:if test="${ricon.stato == 'A' || ricon.stato== 'R'}">
 										<td>Richiesta valutata</td>
 									</c:if>
 

@@ -24,7 +24,8 @@
 
 		<!-- se l'utente è il tutor aziendale allora vede solo le richiete esterne -->
 		<div class="col-lg-9" id="col-9">
-			<p id="titolo" class="text-center">Elenco richieste di tirocinio </p>
+			<p id="titolo" class="text-center">Elenco richieste di tirocinio
+			</p>
 			<hr>
 			<%
 				int n = 0;
@@ -112,10 +113,10 @@
 												<td class="text-center"><c:out
 														value="${esterno.oreTotali}" /></td>
 											</tr>
-											
+
 											<!-- il tutor accademico quando vede la lista richieste non vede il suo nome -->
 											<c:if
-												test="${type== 'tutoraziendale' || type== 'pdcd' || type=='azienda'}">
+												test="${type== 'tutoraziendale' || type== 'pdcd' || type=='azienda' || type=='segreteria'}">
 												<tr>
 													<td class="icon"><i class="far fa-user"></i></td>
 													<td class="">Tutor Accademico</td>
@@ -124,22 +125,22 @@
 															value="${esterno.cognomeTutorAcc}" /></td>
 												</tr>
 											</c:if>
-											
+
 											<!-- il tutor aziendale quando vede la lista richieste non vede il suo nome -->
 											<c:if
-												test="${type=='tutoraccademico' || type== 'pdcd' || type=='azienda'}">
-											<tr>
-												<td class="icon"><i class="fas fa-user"></i></td>
-												<td class="">Tutor Aziendale</td>
-												<td class="text-center"><c:out
-														value="${esterno.nomeTutorAz}" /> <c:out
-														value="${esterno.cognomeTutorAz}" /></td>
-											</tr>
+												test="${type=='tutoraccademico' || type== 'pdcd' || type=='azienda' || type=='segreteria'}">
+												<tr>
+													<td class="icon"><i class="fas fa-user"></i></td>
+													<td class="">Tutor Aziendale</td>
+													<td class="text-center"><c:out
+															value="${esterno.nomeTutorAz}" /> <c:out
+															value="${esterno.cognomeTutorAz}" /></td>
+												</tr>
 											</c:if>
 
 											<!-- se è loggato il pdcd non vede questa riga -->
 											<c:if
-												test="${type== 'tutoraziendale' || type=='tutoraccademico' || type=='azienda'}">
+												test="${type== 'tutoraziendale' || type=='tutoraccademico' || type=='azienda' || type=='segreteria'}">
 												<tr>
 													<td class="icon"><i class="fas fa-file-signature"></i></td>
 													<td class="">Accettazione PdCD</td>
@@ -150,7 +151,7 @@
 
 											<!-- se è loggato l'azienda non vede questa riga -->
 											<c:if
-												test="${type== 'tutoraziendale' || type=='tutoraccademico' || type== 'pdcd'}">
+												test="${type== 'tutoraziendale' || type=='tutoraccademico' || type== 'pdcd' || type=='segreteria'}">
 												<tr>
 													<td class="icon"><i class="fas fa-file-signature"></i></td>
 													<td class="">Accettazione Azienda</td>
@@ -161,7 +162,7 @@
 
 											<!-- se è loggato il tutor aziendale non vede questa riga -->
 											<c:if
-												test="${type=='tutoraccademico' || type== 'pdcd' || type=='azienda'}">
+												test="${type=='tutoraccademico' || type== 'pdcd' || type=='azienda' || type=='segreteria'}">
 												<tr>
 													<td class="icon"><i class="fas fa-file-signature"></i></td>
 													<td class="">Accettazione Tutor Aziendale</td>
@@ -172,7 +173,7 @@
 
 											<!-- se è loggato il tutor accademico non vede questa riga -->
 											<c:if
-												test="${type== 'tutoraziendale' || type== 'pdcd' || type=='azienda'}">
+												test="${type== 'tutoraziendale' || type== 'pdcd' || type=='azienda' || type=='segreteria'}">
 												<tr>
 													<td class="icon"><i class="fas fa-file-signature"></i></td>
 													<td class="">Accettazione Tutor Accademico</td>
@@ -181,21 +182,30 @@
 												</tr>
 											</c:if>
 
+											<!-- tutti gli attori della pagina possono valuatre ma tranne uff carriere  -->
+											<c:if test="${type != 'segreteria' }">
+												<tr>
+													<td class="icon"><i class="fas fa-signature"></i></td>
+													<td class="">Valutazione richiesta</td>
+													<td class="text-center">
+														<button class="bottone"
+															onclick="ValuatareRichiesta?confermato=si&id=&azienda=azienda"
+															id="accetta">
+															<i class="fas fa-check-square"></i>
+														</button>
+														<button class="bottone"
+															onclick="ValuatareRichiesta?confermato=no&id=&azienda=azienda"
+															id="rifiuta">
+															<i class="far fa-times-circle"></i>
+														</button>
+													</td>
+												</tr>
+											</c:if>
 											<tr>
-												<td class="icon"><i class="fas fa-signature"></i></td>
-												<td class="">Valutazione richiesta</td>
-												<td class="text-center">
-													<button class="bottone"
-														onclick="ValuatareRichiesta?confermato=si&id=&azienda=azienda"
-														id="accetta">
-														<i class="fas fa-check-square"></i>
-													</button>
-													<button class="bottone"
-														onclick="ValuatareRichiesta?confermato=no&id=&azienda=azienda"
-														id="rifiuta">
-														<i class="far fa-times-circle"></i>
-													</button>
-												</td>
+												<td class="icon"><i class="fas fa-paperclip"></i></td>
+												<td><a href="#"><button id="progettoForm"
+															type="button">Progetto formativo</button></a></td>
+												<td></td>
 											</tr>
 
 										</tbody>
@@ -215,7 +225,8 @@
 
 
 			<!-- solo il presidente del consiglio didattico e il tutor accademico possono vedere le richieste di tirocnio interno -->
-			<c:if test="${type=='tutoraccademico' || type=='pdcd' }">
+			<c:if
+				test="${type=='tutoraccademico' || type=='pdcd' || type=='segreteria'}">
 				<c:forEach items="${arrayTirocinioInterno}" var="interno">
 
 					<!-- se l'array gli array sono vuoti informa l'utente -->
@@ -275,7 +286,7 @@
 												<td class="text-center"><c:out
 														value="${interno.oreTotali}" /></td>
 											</tr>
-											<c:if test="${type == 'pdcd' }">
+											<c:if test="${type == 'pdcd' || type=='segreteria'}">
 												<tr>
 													<td class="icon"><i class="fas fa-file-signature"></i></td>
 													<td class="">Firma Tutor Accademico</td>
@@ -283,7 +294,8 @@
 															value="${interno.firmaTutorAccademico}" /></td>
 												</tr>
 											</c:if>
-											<c:if test="${type == 'tutoraccademico' }">
+											<c:if
+												test="${type == 'tutoraccademico' || type=='segreteria'}">
 												<tr>
 													<td class="icon"><i class="fas fa-file-signature"></i></td>
 													<td class="">Firma PdCD</td>
@@ -291,23 +303,32 @@
 															value="${interno.firmaPdCD}" /></td>
 												</tr>
 											</c:if>
-											<tr>
-												<td class="icon"><i class="fas fa-signature"></i></td>
-												<td class="">Valutazione richiesta</td>
+											<c:if test="${type != 'segreteria' }">
+												<tr>
+													<td class="icon"><i class="fas fa-signature"></i></td>
+													<td class="">Valutazione richiesta</td>
 
-												<td class="text-center">
-													<button class="bottone"
-														onclick="ValuatareRichiesta?confermato=si&id=<>"
-														id="accetta">
-														<i class="fas fa-check-square"></i>
-													</button>
-													<button class="bottone"
-														onclick="ValuatareRichiesta?confermato=no&id=<>"
-														id="rifiuta">
-														<i class="far fa-times-circle"></i>
-													</button>
-												</td>
-											</tr>
+													<td class="text-center">
+														<button class="bottone"
+															onclick="ValuatareRichiesta?confermato=si&id=<>"
+															id="accetta">
+															<i class="fas fa-check-square"></i>
+														</button>
+														<button class="bottone"
+															onclick="ValuatareRichiesta?confermato=no&id=<>"
+															id="rifiuta">
+															<i class="far fa-times-circle"></i>
+														</button>
+													</td>
+											
+													<td class="icon"><i class="fas fa-paperclip"></i></td>
+													<td><a href="#"><button id="progettoForm"
+																type="button">Progetto formativo</button></a></td>
+													<td></td>
+												
+												</tr>
+
+											</c:if>
 										</tbody>
 									</table>
 								</div>
