@@ -41,23 +41,25 @@
 
 
 	<div id="side-menu" class="list-group" style="color: black">
-		<a class="item" class="active" href=".">Home <i class="fas fa-home"></i> </a> <a class="item"
-			style="background-color: #2C5278; color: white;">Interniship
+		<a class="item" class="active" href="."> <i class="fas fa-home"></i>
+			Home
+		</a> <a class="item" style="background-color: #2C5278; color: white;">Interniship
 			Management</a>
 
 		<!-- nel caso in cui è l'utente ospite -->
 		<c:if
-			test="${type!= 'studente' && type!= 'azienda' && type!='tutoraccademico' && type!='tutoraziendale' && type!='pdcd'}">
+			test="${type!= 'studente' && type!= 'azienda' && type!='tutoraccademico' && type!='tutoraziendale' && type!='pdcd' && type!='segreteria'}">
 			<a class="item" href="VisualizzaAziende"> Lista aziende
 				convenzionate </a>
-			<a class="item" href="VisualizzaTutorAccademici"> Elenco Tutor
-				accademici </a>
+			<a class="item" href="VisualizzaTutorAccademici"
+				style="border-bottom: 1px solid #ddd;"> Elenco Tutor accademici
+			</a>
 		</c:if>
 
 
 		<!-- il caso in cui NON è l'utente ospite -->
 		<c:if
-			test="${ type== 'studente' || type== 'azienda' || type=='tutoraccademico' || type=='tutoraziendale' || type=='pdcd'}">
+			test="${ type== 'studente' || type== 'azienda' || type=='tutoraccademico' || type=='tutoraziendale' || type=='pdcd' || type=='segreteria'}">
 
 			<!--INIZIO GESTIONE TIROCINIO -->
 
@@ -68,36 +70,13 @@
 
 			<ul id="collapse-3" class="collapse" aria-expanded="false"
 				style="height: 0px;">
-				<c:if test="${type == 'studente'}">
+
+				<c:if
+					test="${type == 'azienda' || type=='pdcd' || type=='segreteria' || type == 'tutoraccademico' || type == 'tutoraziendale' || type=='studente'}">
 					<li><a href="VisualizzaAziende"><i
 							class="fas fa-angle-right "></i> Lista aziende convenzionate </a></li>
 					<li><a href="VisualizzaTutorAccademici"><i
 							class="fas fa-angle-right "></i> Elenco tutor accademici </a></li>
-					<li><a href="ListaTirocini"><i class="fas fa-angle-right"></i>
-							Elenco tirocini </a></li>
-
-				</c:if>
-
-				<c:if test="${type == 'tutoraccademico'}">
-					<!-- Tutor accademico -->
-					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
-							Elenco tirocini </a></li>
-					<li><a href="valutaRelazione.jsp"><i
-							class="fas fa-angle-right "></i> Valuta relazione tirocinio </a></li>
-					<li><a href="#"><i class="fas fa-angle-right "></i>
-							Annulla svolgimento tirocinio (da vedere)</a></li>
-
-				</c:if>
-				<c:if test="${type == 'tutoraziendale'}">
-					<!-- Tutor aziendale -->
-					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
-							Elenco tirocini</a></li>
-					<li><a href="CreaRelazione"><i class="fas fa-angle-right "></i>
-							Compila relazione tirocinio </a></li>
-
-				</c:if>
-				<c:if test="${type == 'azienda' || type=='pdcd'}">
-					<!-- Azienda -->
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
 							Elenco tirocini </a></li>
 				</c:if>
@@ -115,7 +94,7 @@
 
 			<!-- INIZIO Gestione proposta tirocinio -->
 			<c:if
-				test="${type=='azienda' || type=='tutoraccademico' || type=='tutoraziendale' }">
+				test="${type=='azienda' || type=='tutoraccademico' || type=='tutoraziendale'}">
 				<a data-toggle="collapse" href="#collapse-2" class="item"
 					class="folder collapsed" aria-expanded="false">Gestione
 					proposta tirocinio <i id="icon-max"
@@ -126,24 +105,17 @@
 					style="height: 0px;">
 
 
-					<c:if test="${type=='tutoraziendale'}">
+					<c:if
+						test="${type=='tutoraziendale' || type=='tutoraccademico' || type=='azienda'}">
 						<li><a href="VisualizzaProposte"><i
 								class="fas fa-angle-right "></i> Visualizza proposte </a></li>
 					</c:if>
-					<c:if test="${type=='tutoraccademico'}">
+
+					<c:if test="${type=='azienda' || type=='tutoraccademico'}">
 						<li><a href="visualizzaCreaProposta"><i
-								class="fas fa-angle-right "></i> Crea proposta tirocinio interno
-						</a></li>
-						<li><a href="VisualizzaProposte"><i
-								class="fas fa-angle-right "></i> Visualizza proposte </a></li>
-					</c:if>
-					<c:if test="${type=='azienda'}">
-						<li><a href="visualizzaCreaProposta"><i
-								class="fas fa-angle-right "></i> Crea proposta tirocinio esterno
-						</a></li>
+								class="fas fa-angle-right "></i> Crea proposta tirocinio </a></li>
 
 					</c:if>
-
 
 				</ul>
 			</c:if>
@@ -159,9 +131,8 @@
 
 			<!-- INIZIO Gestione richiesta tirocinio -->
 			<a data-toggle="collapse" href="#collapse-0" class="item"
-				class="folder collapsed" aria-expanded="false">Gestione
-				richiesta tirocinio <i id="icon-max"
-				class="fa pull-right fa-plus-square"></i>
+				class="folder collapsed" aria-expanded="false">Gestione richiesta
+				tirocinio <i id="icon-max" class="fa pull-right fa-plus-square"></i>
 			</a>
 
 			<ul id="collapse-0" class="collapse" aria-expanded="false"
@@ -169,31 +140,22 @@
 				<c:if test="${type == 'studente'}">
 					<li><a href="creazioneRichiesta.jsp"><i
 							class="fas fa-angle-right "></i> Crea richiesta tirocinio </a></li>
-					<li><a href="VisualizzaRichieste"><i
-							class="fas fa-angle-right "></i> Visualizza richieste di
-							tirocinio </a></li>
-				</c:if>
-
-				<c:if test="${type == 'pdcd'}">
-					<li><a href="VisualizzaRichieste"><i
-							class="fas fa-angle-right "></i> Visualizza richieste tirocinio </a></li>
 				</c:if>
 
 				<c:if
-					test="${type =='azienda' || type =='tutoraziendale' || type =='tutoraccademico'}">
-					<li><a href="progettoFormativo.jsp"><i
-							class="fas fa-angle-right "></i> Valuta progetto formativo </a></li>
+					test="${type == 'pdcd' || type=='segreteria' ||  type =='tutoraziendale' || type =='tutoraccademico' || type=='azienda' || type=='studente'} ">
 					<li><a href="VisualizzaRichieste"><i
-							class="fas fa-angle-right "></i> Visualizza richieste tirocinio </a></li>
+							class="fas fa-angle-right "></i> Visualizza richieste di
+							tirocinio </a></li>
+
+					<!-- da inserire il link -->
+					<li><a href="#"><i class="fas fa-angle-right "></i>
+							Visualizza progetto formativo </a></li>
 
 				</c:if>
 			</ul>
 
-
-
-
-
-
+			<!-- FINE Gestione richiesta tirocinio -->
 
 
 
@@ -201,7 +163,8 @@
 
 
 			<!-- INIZIO Gestione riconoscimento attività -->
-			<c:if test="${type=='studente' || type=='pdcd' }">
+			<c:if
+				test="${type=='studente' || type=='pdcd' || type=='segreteria' }">
 				<a data-toggle="collapse" href="#collapse-1" class="item"
 					class="folder collapsed" aria-expanded="false">Gestione
 					riconoscimento attività <i id="icon-max"
@@ -210,20 +173,17 @@
 
 				<ul id="collapse-1" class="collapse" aria-expanded="false"
 					style="height: 0px;">
-
 					<c:if test="${type =='studente'}">
 						<li><a href="VisualizzaCompilaModuloRiconoscimento"><i
 								class="fas fa-angle-right"></i> Compila modulo riconoscimento </a></li>
+					</c:if>
+					<c:if
+						test="${type=='pdcd' || type=='segreteria' || type =='studente'}">
 						<li><a href="VisualizzaElencoModuliRiconoscimento"><i
-								class="fas fa-angle-right"></i> Visualizza richieste
+								class="fas fa-angle-right"></i> Visualizza lista richieste
 								riconoscimento </a></li>
 					</c:if>
 
-					<c:if test="${type=='pdcd'}">
-						<li><a href="VisualizzaElencoModuliRiconoscimento"><i
-								class="fas fa-angle-right"></i> Visualizza e valuta lista
-								richieste riconoscimento </a></li>
-					</c:if>
 				</ul>
 			</c:if>
 			<!-- FINE Gestione riconoscimeto attivtà -->
@@ -249,31 +209,24 @@
 
 
 
-		<!-- english validation -->
 
 		<!-- english validation -->
 		<c:if
-			test="${type == 'studente'  || type=='pdcd' || type=='ufficiocarriere' }">
+			test="${type == 'studente'  || type=='pdcd' || type=='segreteria' }">
 			<a class="item" style="background-color: #2C5278; color: white;">English
 				Validation</a>
 
 			<c:if test="${type =='studente'}">
 				<a class="item" class="active" href="FirstForm">Compila modulo
 					riconoscimento</a>
-				<a class="item" class="active" href="ViewRequest">Visualizza
-					richieste riconoscimento</a>
-				<a class="item" class="active" href="UploadAttached" style="border-bottom: 1px solid #ddd;">Carica
-					Allegati</a>
+				<a class="item" class="active" href="UploadAttached">Carica Allegati</a>
 			</c:if>
 
-			<c:if test="${type =='pdcd'}">
-				<a class="item" class="active" href="ViewRequest">Visualizza
-					richieste riconoscimento</a>
-			</c:if>
-
-			<c:if test="${type =='segreteria'}">
-				<a class="item" class="active" href="ViewRequest">Visualizza
-					richieste riconoscimento</a>
+			<c:if
+				test="${type =='pdcd' || type =='studente' || type =='segreteria'}">
+				<a class="item" class="active" href="ViewRequest"
+					style="border-bottom: 1px solid #ddd;">Visualizza richieste
+					riconoscimento</a>
 			</c:if>
 
 		</c:if>
