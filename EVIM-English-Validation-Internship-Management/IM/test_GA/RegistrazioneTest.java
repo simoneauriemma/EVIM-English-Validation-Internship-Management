@@ -369,7 +369,7 @@ import javax.servlet.ServletException;
 		   request.addParameter("data","1993-05-18");
 		   request.addParameter("comuneN","Avellino");
 		   request.addParameter("provinciaN","AV");
-		   request.addParameter("indirizzo","Via Vico dei sogni 35 £%");
+		   request.addParameter("indirizzo","Via Vico dei sogni £%");
 		   request.addParameter("telefono","3478356882");
 		   request.addParameter("comuneR","Avellino");
 		   request.addParameter("provinciaR","AV");

@@ -97,7 +97,7 @@ public class Registrazione extends BaseServlet {
 						&& sesso.matches(regexSesso)
 						&& email.length() < 51) {
 
-					result = TutorAccademicoDAO.insertNewTutorAccademico(nome, cognome, cpassword, sesso, email);
+					result = TutorAccademicoDAO.insertNewTutorAccademico(nome, cognome, password, sesso, email);
 
 				}
 
