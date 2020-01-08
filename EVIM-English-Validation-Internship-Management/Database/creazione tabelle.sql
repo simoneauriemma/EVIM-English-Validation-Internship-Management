@@ -168,10 +168,9 @@ create table TutorAccademico(
 ID_TutorAccademico int not null auto_increment,
 Nome varchar(20) not null,
 Cognome varchar(20) not null, 
-Password varchar(20),
-indirizzo varchar(40) not null,
+Password varchar(20) not null,
+sex char not null,
 email varchar(50) not null,
-Telefono varchar(30),
 primary key(ID_TutorAccademico)
 );
 
