@@ -211,7 +211,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
 		   assertTrue(esito);
 
 	  }
-      //tutor aziendale gia esiste
+      
+      //l'azienda prova a creare un nuovo account per un tutor aziendale gia esistente
       @Test
 	  public void tc_gac_1_9() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
@@ -236,7 +237,6 @@ import org.springframework.mock.web.MockHttpServletResponse;
     //azienda non loggata
       @Test
 	  public void tc_gac_1_10() throws ServletException, IOException  {
-    	   
     	   request.addParameter("nome","Mario");
 		   request.addParameter("cognome","Ambrosio");
 		   request.addParameter("telefono", "3332233444");
