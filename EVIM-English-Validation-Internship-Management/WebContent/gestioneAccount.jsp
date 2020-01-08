@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <jsp:include page="WEB-INF/navbarBlu.jsp"></jsp:include>
 <html>
@@ -21,13 +22,27 @@
 
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
+
+
 				<p id="titolo" style="font-size: 30px; color: #595959;">Crea
 					account Tutor Aziendale</p>
 
-<!-- FORM -->
 
+				<c:choose>
 
-				<form method="POST" id="form" action="CreaAccount" onsubmit="return validate()">
+					<c:when test="${empty result}">
+
+					</c:when>
+
+					<c:when test="${risultato == 1}">
+						<div class="alert alert-success" role="alert">Account creato
+							con successo</div>
+					</c:when>
+
+				</c:choose>
+				<!-- FORM -->
+				<form method="POST" id="form" action="CreaAccount"
+					onsubmit="return validate()">
 					<input type="text" class="form-control" id="name" name="nome"
 						placeholder="Nome" autocomplete="off"> <br>
 					<p></p>
@@ -37,15 +52,16 @@
 					<input type="email" class="form-control" id="emaila" name="emaila"
 						placeholder="Email" autocomplete="off">
 					<p id='resultRegexEmail'></p>
-					<br> <input type="tel" class="form-control" id="telefono" name="telefono"
-						name="telefono" placeholder="Numero di telefono">
+					<br> <input type="tel" class="form-control" id="telefono"
+						name="telefono" name="telefono" placeholder="Numero di telefono">
 					<p id="resultRegexTelefono"></p>
-					<br> <input type="password" class="form-control" id="passworda" name="passworda"
-						name="password" placeholder="Password">
+					<br> <input type="password" class="form-control"
+						id="passworda" name="passworda" name="password"
+						placeholder="Password">
 					<p id='resultRegexPass'></p>
-					<br> <input type="password" class="form-control" name="confermaPassword"
-						id="confermaPassword" name="confermaPassword"
-						placeholder="Conferma Password">
+					<br> <input type="password" class="form-control"
+						name="confermaPassword" id="confermaPassword"
+						name="confermaPassword" placeholder="Conferma Password">
 					<p id='resultRegexCPass'></p>
 					<br>
 
@@ -61,6 +77,8 @@
 	</div>
 	<br>
 	<br>
+
+
 	<jsp:include page="WEB-INF/footer.jsp"></jsp:include>
 
 	<script>
@@ -69,11 +87,11 @@
 			var pass = $('#passworda');
 			var email = $('#emaila');
 			var telefono = $('#telefono');
-			
+
 			var resultRegexPassword = $('#resultRegexPass');
 			var resultRegexEmail = $('#resultRegexEmail');
 			var resultRegexTelefono = $('#resultRegexTelefono');
-			
+
 			var regex_email = new RegExp(
 					'[A-z0-9\.\+_-]+@[A-z0-9\._-]+\.[A-z]{2,6}');
 			var regex_telefono = new RegExp('[0-9]{8,16}');
@@ -82,7 +100,8 @@
 			var confirm_password = $('#confermaPassword');
 
 			if (!regex_email.test(email.val())) {
-				resultRegexEmail.text(email.val() + " non rispetta il formato!");
+				resultRegexEmail
+						.text(email.val() + " non rispetta il formato!");
 				resultRegexEmail.css("color", "red");
 				email.css("color", "red");
 				return false;

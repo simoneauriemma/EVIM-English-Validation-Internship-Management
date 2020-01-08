@@ -26,8 +26,7 @@ public class CreaAccount extends HttpServlet {
 		super();
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession sessione = request.getSession();
 
@@ -47,24 +46,31 @@ public class CreaAccount extends HttpServlet {
 				String nome = request.getParameter("nome");
 				String cognome = request.getParameter("cognome");
 				String telefono = request.getParameter("telefono");
-				String email=request.getParameter("emaila");
+				String email = request.getParameter("emaila");
 				String password = request.getParameter("passworda");
 				String confermaPassword = request.getParameter("confermaPassword");
-
+				int rs;
 				if (nome == null || cognome == null || password == null || confermaPassword == null
 						|| !password.equals(confermaPassword) || email == null || telefono == null) {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/error.jsp");
+					rs = 3; /* rs=3 significa qualche campo sbagliato */
+					request.setAttribute("risultato", rs);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("gestioneAccount.jsp");
 					request.setAttribute("utenteCreato", false);
 					dispatcher.forward(request, response);
 				} else {
-					
-					int rs;
+
+					/* rs=1 significa account creato con successo */
 					if ((rs = new TutorAziendaleDAO().doSave(azienda.getID_Azienda(), nome, cognome, email, password,
 							telefono)) == 1) {
+						request.setAttribute("risultato", rs);
 						RequestDispatcher dispatcher = request.getRequestDispatcher("gestioneAccount.jsp");
 						request.setAttribute("utenteCreato", true);
 						dispatcher.forward(request, response);
-					} else {
+					} else
+					/* rs=0 significa account non creato */
+					{
+						rs = 0;
+						request.setAttribute("risultato", rs);
 						RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/error.jsp");
 						request.setAttribute("utenteCreato", false);
 						dispatcher.forward(request, response);
@@ -78,8 +84,7 @@ public class CreaAccount extends HttpServlet {
 		}
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 
