@@ -58,6 +58,12 @@
 					</c:otherwise>
 				</c:choose>
 				
+				<c:if test="${utenteCreato == true}">
+						<div class="alert alert-success" role="alert">
+						  Inserimento effettuato con successo
+						</div>
+					</c:if>
+				
 				<c:if test="${risultatoInserimentoProposta == true}">
 						<div class="alert alert-success" role="alert">
 						  Inserimento effettuato con successo

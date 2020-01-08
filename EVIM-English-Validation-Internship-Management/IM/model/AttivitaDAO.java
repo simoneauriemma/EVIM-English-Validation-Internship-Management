@@ -11,7 +11,7 @@ import controller.GestioneRegistroTirocinio.VisualizzareRegistroTirocinio.Regist
 public class AttivitaDAO {
 
 	/**
-	 * RegistroQuery Ë una classe interna di visualizzaRegistro
+	 * RegistroQuery √† una classe interna di visualizzaRegistro
 	 * 
 	 * @author Simone Auriemma
 	 * @param email
@@ -28,7 +28,7 @@ public class AttivitaDAO {
 							+ "JOIN Azienda ON TutorAziendale.ID_Azienda = Azienda.ID_Azienda "
 							+ "where TirocinioEsterno.EMAIL=?");
 			ps.setString(1, email);
-			ArrayList<RegistroQuery> listaAttivit‡ = new ArrayList<RegistroQuery>();
+			ArrayList<RegistroQuery> listaAttivit√† = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -42,9 +42,9 @@ public class AttivitaDAO {
 				a.setData(rs.getString(7));
 				a.setNomeAzienda(rs.getString(8));
 
-				listaAttivit‡.add(a);
+				listaAttivit√†.add(a);
 			}
-			return listaAttivit‡;
+			return listaAttivit√†;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -66,7 +66,7 @@ public class AttivitaDAO {
 							+ "JOIN tutoraccademico ON TirocinioInterno.ID_tutorAccademico=tutoraccademico.ID_TutorAccademico "
 							+ "WHERE tirociniointerno.EMAIL=?;");
 			ps.setString(1, email);
-			ArrayList<RegistroQuery> listaAttivit‡ = new ArrayList<RegistroQuery>();
+			ArrayList<RegistroQuery> listaAttivit√† = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -81,9 +81,9 @@ public class AttivitaDAO {
 				a.setNomeTutorAcc(rs.getString(8));
 				a.setCognomeTutorAcc(rs.getString(9));
 
-				listaAttivit‡.add(a);
+				listaAttivit√†.add(a);
 			}
-			return listaAttivit‡;
+			return listaAttivit√†;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -108,7 +108,7 @@ public class AttivitaDAO {
 							+ "where TirocinioEsterno.EMAIL=? AND TutorAziendale.ID_TutorAziendale=?");
 			ps.setString(1, eMAIL);
 			ps.setInt(2, iDTutorAziendaele);
-			ArrayList<RegistroQuery> listaAttivit‡ = new ArrayList<RegistroQuery>();
+			ArrayList<RegistroQuery> listaAttivit√† = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -121,10 +121,10 @@ public class AttivitaDAO {
 				a.setOreSvolte(rs.getInt(6));
 				a.setData(rs.getString(7));
 
-				listaAttivit‡.add(a);
+				listaAttivit√†.add(a);
 
 			}
-			return listaAttivit‡;
+			return listaAttivit√†;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -148,7 +148,7 @@ public class AttivitaDAO {
 							+ "where tutoraccademico.ID_TutorAccademico=? AND tirocinioesterno.EMAIL=?");
 			ps.setInt(1, i);
 			ps.setString(2, eMAIL);
-			ArrayList<RegistroQuery> listaAttivit‡ = new ArrayList<RegistroQuery>();
+			ArrayList<RegistroQuery> listaAttivit√† = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -163,9 +163,9 @@ public class AttivitaDAO {
 				a.setNomeStudente(rs.getString(8));
 				a.setCognomeStudente(rs.getString(9));
 
-				listaAttivit‡.add(a);
+				listaAttivit√†.add(a);
 			}
-			return listaAttivit‡;
+			return listaAttivit√†;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -189,7 +189,7 @@ public class AttivitaDAO {
 							+ "where tutoraccademico.ID_TutorAccademico=? AND tirocinioesterno.EMAIL=?");
 			ps.setInt(1, iDTutorAcc);
 			ps.setString(2, eMAIL);
-			ArrayList<RegistroQuery> listaAttivit‡ = new ArrayList<RegistroQuery>();
+			ArrayList<RegistroQuery> listaAttivit√† = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -204,9 +204,9 @@ public class AttivitaDAO {
 				a.setNomeStudente(rs.getString(8));
 				a.setCognomeStudente(rs.getString(9));
 
-				listaAttivit‡.add(a);
+				listaAttivit√†.add(a);
 			}
-			return listaAttivit‡;
+			return listaAttivit√†;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
