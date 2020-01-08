@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import controller.GestioneProposta.RimuoviProposta;
-import controller.Login;
+import controller.GestioneAutenticazione.Login;
 
 import java.io.IOException;
 

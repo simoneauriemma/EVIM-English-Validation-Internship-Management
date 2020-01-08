@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.BaseServlet;
+import controller.GestioneAutenticazione.*;
+
 import model.Azienda;
 import model.AziendaDAO;
 import model.Proposta;

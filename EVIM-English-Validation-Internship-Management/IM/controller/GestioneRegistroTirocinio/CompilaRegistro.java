@@ -1,6 +1,7 @@
 package controller.GestioneRegistroTirocinio;
 
-import controller.BaseServlet;
+import controller.GestioneAutenticazione.*;
+
 import model.AttivitaDAO;
 import model.User;
 

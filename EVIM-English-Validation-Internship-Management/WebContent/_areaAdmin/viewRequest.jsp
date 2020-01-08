@@ -1,16 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1" import="controller.CheckSession"%>
 <%@ page
-	import="java.util.*,model.Request,controller.DbConnection,controller.ServletAdmin,java.sql.ResultSet,java.sql.Statement"%>
+	import="java.util.*,model.Request,controller.ServletAdmin,java.sql.ResultSet,java.sql.Statement"%>
 
-<%
-	String pageName = "viewRequest.jsp";
-	String pageFolder = "_areaAdmin";
-	CheckSession ck = new CheckSession(pageFolder, pageName, request.getSession());
-	if(!ck.isAllowed()){
-	  response.sendRedirect(request.getContextPath()+ck.getUrlRedirect());  
-	}
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,11 +17,7 @@
 		<!--  <div class="preloader"></div> -->
 
 
-		<jsp:include page="/partials/header.jsp">
-			<jsp:param name="pageName" value="<%= pageName %>" />
-			<jsp:param name="pageFolder" value="<%= pageFolder %>" />
-		</jsp:include>
-
+		
 
 		<div class="sidebar-page-container basePage viewRequestAdmin">
 			<div class="auto-container">

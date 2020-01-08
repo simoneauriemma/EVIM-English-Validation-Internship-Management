@@ -8,6 +8,7 @@ $(document)
 									'#firstForm',
 									function(e) {
 										var year = $("#immatricolazione").val();
+										
 										var serial = $("#matricola").val();
 										var idEnte = $("#ente").val();
 										var releaseDate = $("#datarilascio")
@@ -19,6 +20,7 @@ $(document)
 										var level = $("#lvlcefr").val();
 										;
 										var requestedCfu = $("#cfu").val();
+										
 
 										if (year != undefined
 												&& certificateSerial != undefined
@@ -60,6 +62,7 @@ $(document)
 
 																setTimeout(
 																		function() {
+																			
 																			window.location.href = msg.redirect;
 																		}, 2000);
 															}
