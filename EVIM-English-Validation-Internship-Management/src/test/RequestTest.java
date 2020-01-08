@@ -3,7 +3,7 @@ package test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import interfacce.UserInterface;
+import model.User;
 
 import java.time.Year;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ class RequestTest {
 
   @Test
   void testGetIdRequest() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2001, 8, 01);
 
@@ -40,7 +40,7 @@ class RequestTest {
 
   @Test
   void testSetIdRequest() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2001, 8, 01);
 
@@ -52,7 +52,7 @@ class RequestTest {
 
   @Test
   void testGetRequestCfu() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2001, 8, 01);
 
@@ -63,7 +63,7 @@ class RequestTest {
 
   @Test
   void testSetRequestCfu() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2001, 8, 01);
 
@@ -75,7 +75,7 @@ class RequestTest {
 
   @Test
   void testGetLevel() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2001, 8, 01);
 
@@ -86,7 +86,7 @@ class RequestTest {
 
   @Test
   void testSetLevel() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2001, 8, 01);
 
@@ -98,7 +98,7 @@ class RequestTest {
 
   @Test
   void testGetReleaseDate() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2001, 8, 01);
 
@@ -109,7 +109,7 @@ class RequestTest {
 
   @Test
   void testSetReleaseDate() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2001, 8, 01);
 
@@ -121,7 +121,7 @@ class RequestTest {
 
   @Test
   void testGetExpireDate() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2001, 8, 9);
 
@@ -132,7 +132,7 @@ class RequestTest {
 
   @Test
   void testSetExpireDate() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
 
@@ -144,7 +144,7 @@ class RequestTest {
 
   @Test
   void testGetValidateCfu() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
 
@@ -155,7 +155,7 @@ class RequestTest {
 
   @Test
   void testSetValidateCfu() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
 
@@ -167,7 +167,7 @@ class RequestTest {
 
   @Test
   void testGetSerial() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
 
@@ -178,7 +178,7 @@ class RequestTest {
 
   @Test
   void testSetSerial() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
 
@@ -190,7 +190,7 @@ class RequestTest {
 
   @Test
   void testGetYear() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
 
@@ -201,7 +201,7 @@ class RequestTest {
 
   @Test
   void testSetYear() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
 
@@ -213,7 +213,7 @@ class RequestTest {
 
   @Test
   void testGetAttached() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
     Attached a = new Attached(01, "xxxxx");
@@ -237,7 +237,7 @@ class RequestTest {
     attached2.add(a2);
     Attached a3 = new Attached(3, "aasd");
     attached2.add(a3);
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
     Request req = new Request(1, 0, "", rd, ed, 0, 111, Year.of(0), attached, new State(0, ""),
@@ -248,7 +248,7 @@ class RequestTest {
 
   @Test
   void testGetState() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
     List<Attached> attached = new ArrayList<>();
@@ -261,7 +261,7 @@ class RequestTest {
 
   @Test
   void testSetState() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
     List<Attached> attached = new ArrayList<>();
@@ -275,7 +275,7 @@ class RequestTest {
 
   @Test
   void testGetEnte() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
     List<Attached> attached = new ArrayList<>();
@@ -287,7 +287,7 @@ class RequestTest {
 
   @Test
   void testSetEnte() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
     List<Attached> attached = new ArrayList<>();
@@ -301,7 +301,7 @@ class RequestTest {
 
   @Test
   void testGetUser() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
     List<Attached> attached = new ArrayList<>();
@@ -313,14 +313,14 @@ class RequestTest {
 
   @Test
   void testSetUser() {
-    UserInterface ui = new Student();
+    User ui = new Student();
     GregorianCalendar rd = new GregorianCalendar(2001, 00, 01);
     GregorianCalendar ed = new GregorianCalendar(2004, 8, 14);
     List<Attached> attached = new ArrayList<>();
     State state = new State(1, "xxx");
     Ente ente = new Ente(1, "abc", "def", "ghi");
     Request req = new Request(1, 0, "", rd, ed, 0, 111, Year.of(0), attached, state, ente, ui);
-    UserInterface ui2 = new Secretary();
+    User ui2 = new Secretary();
     req.setUser(ui2);
     assertEquals(ui2, req.getUser());
   }

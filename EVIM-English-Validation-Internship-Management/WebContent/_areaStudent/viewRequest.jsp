@@ -1,39 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1" import="controller.CheckSession"%>
-<%@ page import="java.util.*,model.Request"%>
-<%
-	String pageName = "viewRequest.jsp";
-	String pageFolder = "_areaStudent";
-	CheckSession ck = new CheckSession(pageFolder, pageName, request.getSession());
-	if(!ck.isAllowed()){
-	  response.sendRedirect(request.getContextPath()+ck.getUrlRedirect());  
-	}
-%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/partials/head.jsp" />
+<link rel="stylesheet" href="/stiliCSS/stiliMenu.css">
+<jsp:include page="/WEB-INF/navbarBlu.jsp"></jsp:include>
 </head>
 
 <body onLoad="showData()">
-	<div class="page-wrapper">
+	<div class="container">
+	<br><br>
+		<div class="row">
 
-		<!-- Preloader -->
-		<!--  <div class="preloader"></div> -->
-
-
-		<jsp:include page="/partials/header.jsp">
-			<jsp:param name="pageName" value="<%= pageName %>" />
-			<jsp:param name="pageFolder" value="<%= pageFolder %>" />
-		</jsp:include>
-
-
-		<div class="sidebar-page-container basePage viewRequestStudent">
-			<div class="auto-container">
-				<div class="row clearfix">
-					<div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="content">
-							<div class="news-block-seven">
+			<div class="col-lg-3">
+				<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
+			</div>
+			<div class="col-lg-9" id="" style="border: 1px solid #d7d7d7; background-color: white;">
+			
 								<table id="studentTable" class="display data-results table table-striped table-hover table-bordered">
 									<thead>
 										<tr align="center">
@@ -47,13 +32,8 @@
 									</tbody>
 								</table>
 
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
-		<jsp:include page="/partials/footer.jsp" />
+	</div>
 	</div>
 	<!--End pagewrapper-->
 

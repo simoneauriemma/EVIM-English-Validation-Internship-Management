@@ -1,3 +1,4 @@
+<%@page import="com.itextpdf.text.log.SysoCounter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"
 	import="controller.CheckSession, model.SystemAttribute, controller.Utils, controller.DbConnection, java.sql.Connection, java.sql.ResultSet, java.sql.Statement, java.text.SimpleDateFormat"%>
@@ -5,7 +6,6 @@
 <%
 	String pageName = "uploadAttached.jsp";
 	String pageFolder = "_areaStudent";
-	CheckSession ck = new CheckSession(pageFolder, pageName, request.getSession());	
 	Integer idRequest = (Integer) request.getSession().getAttribute("idRequest");
 	if(idRequest == null){
 	  idRequest = new Utils().getLastUserRequestPartiallyCompleted(request.getSession());
@@ -15,12 +15,9 @@
 	String requestAllowedExtensionUpload = new SystemAttribute().getValueByKey("request-allowed-extension-upload");
 	Integer requestState = new Utils().getRequestState(idRequest);
 	Integer shouldState = Integer.parseInt(new SystemAttribute().getValueByKey("request-partially-completed"));
-	if(!ck.isAllowed()) {
-	  response.sendRedirect(request.getContextPath()+ck.getUrlRedirect());  
-	}
-	else if( idRequest == 0 || requestState != shouldState){
-		response.sendRedirect(request.getContextPath()+"/_areaStudent/viewRequest.jsp");
-		
+	System.out.println(idRequest+" "+requestState);
+	if( idRequest == 0 || requestState != shouldState){
+		response.sendRedirect(request.getContextPath()+"/ViewRequest");
 	}
 	
   	String name = "";
@@ -71,7 +68,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/partials/head.jsp" />
+<link rel="stylesheet" href="stiliCSS/stiliMenu.css">
+<link rel="stylesheet" href="stiliCSS/stiliNavbar.css">
+<link rel="stylesheet" href="stiliCSS/stiliFooter.css">
+
+<%--<jsp:include page="/partials/head.jsp" /> da vedere pezzotto--%>
+
+<jsp:include page="/WEB-INF/navbarBlu.jsp"></jsp:include> 
 </head>
 
 <body>
@@ -84,18 +87,18 @@
 		<!-- Preloader -->
 		<!--  <div class="preloader"></div> -->
 
-
-		<jsp:include page="/partials/header.jsp">
-			<jsp:param name="pageName" value="<%= pageName %>" />
-			<jsp:param name="pageFolder" value="<%= pageFolder %>" />
-		</jsp:include>
-
-
-		<div class="sidebar-page-container basePage uploadAttachedPage">
+	<div class="container">
+		<br><br>
+			<div class="row">
+				<div class="col-lg-3">
+					<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
+				</div>
+				<div class="col-lg-9" id="" style="border: 1px solid #d7d7d7; background-color: white;">
+					<div class="sidebar-page-container basePage uploadAttachedPage">
 			<div class="auto-container">
 				<div class="row clearfix">
 					<div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="content">
+						<div class="content" style="text-align: center; padding-top: 20%;">
 							<div class="news-block-seven">
 								<div class="form-group">
 									<button type="button"
@@ -106,12 +109,9 @@
 								<h2>
 									Richiesta N.<%= idRequest %>
 									</h2>
-									<h2>
-										Trascina o premi sull'apposito riquadro per caricare un file
-										</h2>
-										<div action='<%= request.getContextPath() + "/Uploader" %>'
-											class='dropzoneUploader'></div>
-
+									
+							<div style="text-align: center; border-style: solid; border-color:#ddd; background-color: #ddd; " class="dropzoneUploader" action='<%= request.getContextPath() + "/Uploader" %>'> premi sull'apposito riquadro per caricare un file</div>
+				<br><br>
 										<div class="form-group">
 											<button type="submit" class="btn btn-primary btn-submit"
 												id='aggiungiAllegati'>Concludi</button>
@@ -132,12 +132,25 @@
 				value="<%= level %>" /> <input type="hidden" id="requestedCfu"
 				value="<%= requestedCfu %>" />
 		</div>
-		<jsp:include page="/partials/footer.jsp" />
+				</div>
+			</div>
+	</div>
+
+		
+			
+			
+
+			
+
+
+		
+		
+	 <%--	da conrollare--%> 
 	</div>
 	<!--End pagewrapper-->
 
 	<jsp:include page="/partials/includes.jsp" />
-
+	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 	<script>
 		function createPdf(){
 			
@@ -210,6 +223,6 @@
 	<script src="<%= request.getContextPath() %>/js/filesystem_dropzone.js"></script>
 	<script
 		src="<%= request.getContextPath() %>/js/pages/scripts_uploadAttached.js"></script>
-
+	
 </body>
 </html>

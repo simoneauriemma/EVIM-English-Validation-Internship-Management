@@ -1,8 +1,8 @@
 package model;
 
-import interfacce.UserInterface;
+import model.User;
 
-public class Student implements UserInterface {
+public class Student extends User {
   private String email;
   private String name;
   private String surname;
@@ -87,7 +87,7 @@ public class Student implements UserInterface {
     this.userType = userType;
   }
 
-  @Override
+  
   public boolean validate() {
     return new Stub().database.containsKey(getEmail()) 
         && new Stub().database.containsValue(getPassword());    

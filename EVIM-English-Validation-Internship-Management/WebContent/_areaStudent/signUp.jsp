@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1" import="controller.CheckSession"%>
 
-<%
-	String pageName = "signUp.jsp";
-	String pageFolder = "_areaStudent";
-%>
+
 
 <!DOCTYPE html>
 <html>
@@ -19,11 +16,7 @@
 		<!-- <div class="preloader"></div>  -->
 
 
-		<jsp:include page="/partials/header.jsp">
-			<jsp:param name="pageName" value="<%= pageName %>" />
-			<jsp:param name="pageFolder" value="<%= pageFolder %>" />
-		</jsp:include>
-
+		
 
 		<div class="sidebar-page-container basePage signUpPage">
 			<div class="auto-container">

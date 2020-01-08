@@ -4,7 +4,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import controller.CheckSession;
-import interfacce.UserInterface;
+import model.User;
 
 import javax.servlet.http.HttpSession;
 
@@ -99,7 +99,7 @@ public class CheckSessionTest {
   @Test
   void testIsAllowedStudent() {
     MockHttpServletRequest request = new MockHttpServletRequest();
-    UserInterface u = new Student("stu.session@unisa.it", "name", "surname", 'M', "password", 0);
+    User u = new Student("stu.session@unisa.it", "name", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", u);
     HttpSession session = request.getSession();
     CheckSession check = new CheckSession("_areaStudent","",session);
@@ -109,7 +109,7 @@ public class CheckSessionTest {
   @Test
   void testIsAllowedSecretary() {
     MockHttpServletRequest request = new MockHttpServletRequest();
-    UserInterface u = new Secretary("sec.session@unisa.it", "name", "surname", 'M', "password", 1);
+    User u = new Secretary("sec.session@unisa.it", "name", "surname", 'M', "password", 1);
     request.getSession().setAttribute("user", u);
     HttpSession session = request.getSession();
     CheckSession check = new CheckSession("_areaSecretary","",session);
@@ -119,7 +119,7 @@ public class CheckSessionTest {
   @Test
   void testIsAllowedAdmin() {
     MockHttpServletRequest request = new MockHttpServletRequest();
-    UserInterface u = new Secretary("adm.session@unisa.it", "name", "surname", 'M', "password", 2);
+    User u = new Secretary("adm.session@unisa.it", "name", "surname", 'M', "password", 2);
     request.getSession().setAttribute("user", u);
     HttpSession session = request.getSession();
     CheckSession check = new CheckSession("_areaAdmin","",session);
@@ -129,7 +129,7 @@ public class CheckSessionTest {
   @Test
   void testIsAllowedStudentFail() {
     MockHttpServletRequest request = new MockHttpServletRequest();
-    UserInterface u = new Student("stu.session@unisa.it", "name", "surname", 'M', "password", 0);
+    User u = new Student("stu.session@unisa.it", "name", "surname", 'M', "password", 0);
     request.getSession().setAttribute("user", u);
     HttpSession session = request.getSession();
     CheckSession check = new CheckSession("_areaStudenti","",session);
@@ -139,7 +139,7 @@ public class CheckSessionTest {
   @Test
   void testIsAllowedSecretaryFail() {
     MockHttpServletRequest request = new MockHttpServletRequest();
-    UserInterface u = new Secretary("sec.session@unisa.it", "name", "surname", 'M', "password", 1);
+    User u = new Secretary("sec.session@unisa.it", "name", "surname", 'M', "password", 1);
     request.getSession().setAttribute("user", u);
     HttpSession session = request.getSession();
     CheckSession check = new CheckSession("_areaSecretari","",session);
@@ -149,7 +149,7 @@ public class CheckSessionTest {
   @Test
   void testIsAllowedAdminFail() {
     MockHttpServletRequest request = new MockHttpServletRequest();
-    UserInterface u = new Secretary("adm.session@unisa.it", "name", "surname", 'M', "password", 2);
+    User u = new Secretary("adm.session@unisa.it", "name", "surname", 'M', "password", 2);
     request.getSession().setAttribute("user", u);
     HttpSession session = request.getSession();
     CheckSession check = new CheckSession("_areaAdmino","",session);
@@ -159,7 +159,7 @@ public class CheckSessionTest {
   @Test
   void testIsAllowedNull() {
     MockHttpServletRequest request = new MockHttpServletRequest();
-    UserInterface u = new Student("stu.session@unisa.it", "name", "surname", 'M', "password", 0);
+    User u = new Student("stu.session@unisa.it", "name", "surname", 'M', "password", 0);
     HttpSession session = request.getSession();
     CheckSession check = new CheckSession("_areaStudent","",session);
     assertEquals(false, check.isAllowed());

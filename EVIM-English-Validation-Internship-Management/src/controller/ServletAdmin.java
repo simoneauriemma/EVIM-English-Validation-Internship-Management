@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Request;
 import model.SystemAttribute;
 import org.json.simple.JSONObject;
-import interfacce.UserInterface;
+import model.User;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 
 /**
@@ -48,7 +48,7 @@ public class ServletAdmin<WritableWorkbook> extends HttpServlet {
       throws ServletException, IOException {
     int flag = Integer.parseInt(request.getParameter("flag"));
 
-    UserInterface user = (UserInterface) request.getSession().getAttribute("user");
+    User user = (User) request.getSession().getAttribute("utenteLoggato");
 
     if (flag == 5 || flag == 6) { // Genera Excel
       PrintWriter out = response.getWriter();

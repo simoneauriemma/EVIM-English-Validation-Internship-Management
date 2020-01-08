@@ -1,6 +1,6 @@
 package controller;
 
-import interfacce.UserInterface;
+import model.User;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -75,8 +75,8 @@ public class Utils {
     Connection conn = new DbConnection().getInstance().getConn();
     if (conn != null) {
       try {
-        UserInterface user = (UserInterface) s.getAttribute("user");
-
+        User user = (User) s.getAttribute("utenteLoggato");
+        
         PreparedStatement stmt = conn
             .prepareStatement("SELECT id_request FROM request WHERE fk_user = ? AND fk_state = ?");
         stmt.setString(1, user.getEmail());
@@ -88,6 +88,7 @@ public class Utils {
           idRequest = r.getInt("id_request");
         }
       } catch (Exception e) {
+    	  
         idRequest = 0;
       }
     }

@@ -1,6 +1,6 @@
 package controller;
 
-import interfacce.UserInterface;
+import model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -63,7 +63,7 @@ public class ServletCommon extends HttpServlet {
 
     if (conn != null) {
 
-      if (flag == 1) { // login
+      /*if (flag == 1) { // login
         String email = request.getParameter("email");
         String password = new Utils().generatePwd(request.getParameter("password"));
         try {
@@ -79,7 +79,7 @@ public class ServletCommon extends HttpServlet {
           } else {
             int count = r.last() ? r.getRow() : 0;
             if (count == 1) {
-              UserInterface user = null;
+              User user = null;
               String name = r.getString("name");
               String surname = r.getString("surname");
               char sex = r.getString("sex").charAt(0);
@@ -99,7 +99,7 @@ public class ServletCommon extends HttpServlet {
                 throw new NumberFormatException("utente non valido");
               }
 
-              request.getSession().setAttribute("user", user);
+              request.getSession().setAttribute("utenteLoggato", user);
 
               result = 1;
             } else {
@@ -117,7 +117,7 @@ public class ServletCommon extends HttpServlet {
         } catch (Exception e) {
           error += e.getMessage();
         }
-      } else if (flag == 2) { // Aggiornamento Nome
+      } else*/ if (flag == 2) { // Aggiornamento Nome
         String idUser = request.getParameter("idUser");
         String newName = request.getParameter("newName");
 

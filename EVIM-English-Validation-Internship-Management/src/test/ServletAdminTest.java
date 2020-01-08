@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import controller.DbConnection;
 import controller.ServletAdmin;
-import interfacce.UserInterface;
+import model.User;
 import model.Admin;
 import model.Student;
 
@@ -38,7 +38,7 @@ public class ServletAdminTest extends Mockito {
   
   @Test
   public void testGenerateExcel() throws ServletException, IOException {
-    UserInterface user = new Admin("fferrucci@unisa.it", "Luigi", "Melchionno", 'M', "password", 2);
+    User user = new Admin("fferrucci@unisa.it", "Luigi", "Melchionno", 'M', "password", 2);
     request.getSession().setAttribute("user", user);
     request.addParameter("flag", "5");
     servlet.doGet(request, response);
@@ -47,7 +47,7 @@ public class ServletAdminTest extends Mockito {
   
   @Test
   public void testGenerateExcel2() throws ServletException, IOException {
-    UserInterface user = new Admin("fferrucci@unisa.it", "Luigi", "Melchionno", 'M', "password", 2);
+    User user = new Admin("fferrucci@unisa.it", "Luigi", "Melchionno", 'M', "password", 2);
     request.getSession().setAttribute("user", user);
     request.addParameter("flag", "6");
     servlet.doGet(request, response);
@@ -56,7 +56,7 @@ public class ServletAdminTest extends Mockito {
   
   @Test
   public void testGenerateExcelFail() throws ServletException, IOException {
-    UserInterface user = new Admin("fferrucci@unisa.it", "Luigi", "Melchionno", 'M', "password", 2);
+    User user = new Admin("fferrucci@unisa.it", "Luigi", "Melchionno", 'M', "password", 2);
     request.getSession().setAttribute("user", user);
     request.addParameter("flag", "60");
     servlet.doGet(request, response);
@@ -65,7 +65,7 @@ public class ServletAdminTest extends Mockito {
   
   @Test
   public void testGenerateExcelFail2() throws ServletException, IOException {
-    UserInterface user = new Admin("fferrucci@unisa.it", "Luigi", "Melchionno", 'M', "password", 0);
+    User user = new Admin("fferrucci@unisa.it", "Luigi", "Melchionno", 'M', "password", 0);
     request.getSession().setAttribute("user", user);
     request.addParameter("flag", "5");
     servlet.doGet(request, response);
