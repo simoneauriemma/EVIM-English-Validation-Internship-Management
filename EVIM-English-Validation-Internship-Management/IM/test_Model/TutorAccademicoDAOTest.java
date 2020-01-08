@@ -40,10 +40,14 @@ class TutorAccademicoDAOTest {
 	@Test
 	void test2() {
 	 boolean crea=TutorAccademicoDAO.insertNewTutorAccademico("Michele", "Duraccio", "ciaociao", "M", "michele@unisa.it");
-		assertNotNull(crea);
+		assertTrue(crea);
 		
 	}
 	
-	
+	@Test
+	void test2_1() {
+	 boolean crea=TutorAccademicoDAO.insertNewTutorAccademico("Michele", "Duraccio", "ciaociao", "M", "michele@unisa.itmichele@unisa.itmichele@unisa.itmichele@unisa.itmichele@unisa.itmichele@unisa.it");
+	 assertFalse(crea);
+	}
 }
 
