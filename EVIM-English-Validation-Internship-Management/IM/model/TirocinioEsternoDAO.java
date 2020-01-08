@@ -434,18 +434,27 @@ public class TirocinioEsternoDAO {
 				ps = con.prepareStatement(query);
 				ps.setInt(1, idTir);
 				ps.setString(2, email);
-				rs = ps.executeQuery();
-				if(rs.next()) {
+				ResultSet rsdue=ps.executeQuery();
+				;
+				if(rsdue.next()) {
 					a.setID_Relazione(rs.getInt(1));
 				}
 				
+				String querydue="select Questionario_s.Questionario_s from questionario_s"
+						+ "where Questionario_s.ID_TirocinioEsterno=? and relazione.email=?";
+				ps = con.prepareStatement(querydue);
 				
-				
+				ps.setString(1, email);
+				ResultSet rstre=ps.executeQuery();
+				;
+				if(rstre.next()) {
+					a.setID_Questionario((rs.getInt(1)));
 				}
 				
 				
 				
-				
+				}
+
 				lista.add(a);
 			}
 			
