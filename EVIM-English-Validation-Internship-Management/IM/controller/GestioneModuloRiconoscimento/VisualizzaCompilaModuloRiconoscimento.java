@@ -48,7 +48,6 @@ public class VisualizzaCompilaModuloRiconoscimento extends HttpServlet {
 			else if(utente.getUserType()==0){
 				
 				int CFUInglese=getCFUinglese(utente.getEmail());
-				System.out.println("CFU inglese-->"+CFUInglese);
 				request.setAttribute("CFUInglese", CFUInglese);
 				request.setAttribute("studente", utente);
 				request.getRequestDispatcher("WEB-INF/compilaModuloRiconoscimento.jsp").forward(request, response);
@@ -67,7 +66,6 @@ public class VisualizzaCompilaModuloRiconoscimento extends HttpServlet {
 	
 	// metodo che stabilisce se lo studente in questione ha fatto qualche richieste di inglese. Se si, prende i tot CFU in merito al riconoscimento di inglese
 	private static int getCFUinglese(String emailUser){
-		System.out.println("Eseguo");
 		try(Connection con=DriverManagerConnectionPool.getConnection()){
 			PreparedStatement ps=(PreparedStatement) con.prepareStatement("select * \n" + 
 					"from evim.request \n" + 

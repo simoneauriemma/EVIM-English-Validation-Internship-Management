@@ -78,10 +78,10 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 				}
 				
 				String applicazionePath=request.getServletContext().getRealPath("");
-				System.out.println("applicazione path-->"+applicazionePath);
+				
 				String downloadFilePath=applicazionePath+"moduliRiconoscimenti"+File.separator+idRiconoscimento;
 				
-				System.out.println("Path assoluto del web application-->"+downloadFilePath);
+			
 				File directory= new File(downloadFilePath);
 				
 				// prendiamo tutti i file allegati, salvati nel momento in cui lo studente ha consengato tali file.
@@ -98,7 +98,7 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 				arrayFile.add(fileRiconoscimento);
 				
 				for(File file: arrayFile) {
-					System.out.println("file preso-->"+file.getAbsolutePath());
+					
 				}
 				
 		        response.setContentType("application/zip");
@@ -107,11 +107,11 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		        ServletOutputStream out=response.getOutputStream();
 		        ZipOutputStream zos=new ZipOutputStream(new BufferedOutputStream(out));
 		        for(int i=0;i<arrayFile.size();i++) {
-			        System.out.println("\n\nsetto\n\n");
+			        
 			        File downloadFile = arrayFile.get(i);
 			        
 			        
-			        System.out.println("aggiungiamo il file-->"+downloadFile.getName());
+			        
 			        zos.putNextEntry(new ZipEntry(downloadFile.getName()));
 			        
 			        FileInputStream inStream = new FileInputStream(downloadFile);
@@ -125,7 +125,7 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		        inBuff.close();
 		        
 		        zos.closeEntry();
-		        System.out.println("Finito il file-->"+downloadFile.getName());
+		        
 		        }  
 		        zos.close();
 			}
@@ -146,7 +146,7 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		writer.setTagged();
 		writer.setViewerPreferences(PdfWriter.DisplayDocTitle);
 		writer.createXmpMetadata();
-		System.out.println("path assoluta"+fileRiconoscimento.getAbsolutePath());
+		
 		Riconoscimento moduloRiconoscimento=null;
 		User studente=null;
 		if(utente.getUserType()==2) {
