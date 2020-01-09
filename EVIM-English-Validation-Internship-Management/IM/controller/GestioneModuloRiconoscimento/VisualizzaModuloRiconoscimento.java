@@ -80,6 +80,7 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 				String applicazionePath=request.getServletContext().getRealPath("");
 				
 				String downloadFilePath=applicazionePath+"moduliRiconoscimenti"+File.separator+idRiconoscimento;
+				System.out.println("path assoluto-->"+downloadFilePath);
 				
 			
 				File directory= new File(downloadFilePath);
@@ -128,6 +129,7 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		        
 		        }  
 		        zos.close();
+		     
 			}
 			else
 				request.getRequestDispatcher("permissionDenied.jsp").forward(request, response);
@@ -140,6 +142,8 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 	private File createModuloRiconoscimento(int idRiconoscimento,User utente,HttpServletRequest request) throws FileNotFoundException, DocumentException {
 		Document documento=new Document();
 		File fileRiconoscimento=new File("moduloRiconoscimento.pdf");
+		
+		System.out.println("path del file-->"+fileRiconoscimento.getAbsolutePath());
 		
 		PdfWriter writer=PdfWriter.getInstance(documento, new FileOutputStream(fileRiconoscimento));
 		writer.setPdfVersion(PdfWriter.PDF_VERSION_1_7);
@@ -200,7 +204,9 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		int CFUTirocinioObbligatorio=moduloRiconoscimento.getCFUTirocinioObbligatorio();
 		int CFUAccompagnamento=moduloRiconoscimento.getCFUAccompagnamentoLavoro();
 		
-		String stringaNTotaleCFU="ai fini del riconoscimento di N° "+CFUTirocinioEsterno+CFUTirocinioObbligatorio+" CFU relativi al tirocinio previsti"
+		int CFUTotale= CFUTirocinioEsterno+CFUTirocinioObbligatorio+CFUAccompagnamento;
+		
+		String stringaNTotaleCFU="ai fini del riconoscimento di N° "+CFUTotale+" CFU relativi al tirocinio previsti"
 				+ "nel mio piano di studi, di cui N° "+CFUTirocinioObbligatorio+" CFU di Tirocinio Obbligatorio e "+ CFUTirocinioEsterno+" CFU di tirocinio Esterno come scelta libera"
 						+ " e di "+ CFUAccompagnamento+" CFU di Accompagnamento al mondo del Lavoro, previsto nel mio piano di studi.";
 		
