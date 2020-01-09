@@ -151,8 +151,10 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 	private void uploadFile(HttpServletRequest request, HttpServletResponse response,int idRiconoscimento,ArrayList<filesNamesWithPart> files) throws IOException, ServletException {
 		// prendiamo il path solluto di tale web application
 		String applicazionePath=request.getServletContext().getRealPath("");
-		// costruiamo la directory la quale viene salvato il file
+		
 		String uploadFilePath=applicazionePath+File.separator+"moduliRiconoscimenti"+File.separator+idRiconoscimento;
+		
+		
 		
 		// creiamo la directory se non esiste
 		File directoryPadre=new File(uploadFilePath);
