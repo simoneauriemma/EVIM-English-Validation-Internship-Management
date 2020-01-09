@@ -141,7 +141,8 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 
 	private File createModuloRiconoscimento(int idRiconoscimento,User utente,HttpServletRequest request) throws FileNotFoundException, DocumentException {
 		Document documento=new Document();
-		File fileRiconoscimento=new File("moduloRiconoscimento.pdf");
+		String pathFileWebApp=request.getServletContext().getRealPath("");
+		File fileRiconoscimento=new File(pathFileWebApp+File.separator+"moduloRiconoscimento.pdf");
 		
 		System.out.println("path del file-->"+fileRiconoscimento.getAbsolutePath());
 		
