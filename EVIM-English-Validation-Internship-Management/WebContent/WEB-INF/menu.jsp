@@ -74,7 +74,7 @@
 				<c:if
 					test="${type == 'azienda' || type=='pdcd' || type=='segreteria' || type == 'tutoraccademico' || type == 'tutoraziendale' || type=='studente'}">
 					<li><a href="VisualizzaAziende"><i
-							class="fas fa-angle-right "></i> Lista aziende convenzionate </a></li>
+							class="fas fa-angle-right "></i> Elenco aziende convenzionate </a></li>
 					<li><a href="VisualizzaTutorAccademici"><i
 							class="fas fa-angle-right "></i> Elenco tutor accademici </a></li>
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
@@ -108,7 +108,7 @@
 					<c:if
 						test="${type=='tutoraziendale' || type=='tutoraccademico' || type=='azienda'}">
 						<li><a href="VisualizzaProposte"><i
-								class="fas fa-angle-right "></i> Visualizza proposte </a></li>
+								class="fas fa-angle-right "></i> Lista proposte </a></li>
 					</c:if>
 
 					<c:if test="${type=='azienda' || type=='tutoraccademico'}">
@@ -142,12 +142,11 @@
 							class="fas fa-angle-right "></i> Crea richiesta tirocinio </a></li>
 				</c:if>
 
-				<c:if
-					test="${type == 'pdcd' || type=='segreteria' ||  type =='tutoraziendale' || type =='tutoraccademico' || type=='azienda' || type=='studente'} ">
 					<li><a href="VisualizzaRichieste"><i
-							class="fas fa-angle-right "></i> Visualizza richieste di
+							class="fas fa-angle-right "></i> Lista richieste di
 							tirocinio </a></li>
-
+				
+				<c:if test="${type != 'segreteria' }">
 					<!-- da inserire il link -->
 					<li><a href="#"><i class="fas fa-angle-right "></i>
 							Visualizza progetto formativo </a></li>
@@ -180,7 +179,7 @@
 					<c:if
 						test="${type=='pdcd' || type=='segreteria' || type =='studente'}">
 						<li><a href="VisualizzaElencoModuliRiconoscimento"><i
-								class="fas fa-angle-right"></i> Visualizza lista richieste
+								class="fas fa-angle-right"></i>  Lista richieste
 								riconoscimento </a></li>
 					</c:if>
 
@@ -219,19 +218,19 @@
 			<c:if test="${type =='studente'}">
 				<a class="item" class="active" href="FirstForm">Compila modulo
 					riconoscimento</a>
-				<a class="item" class="active" href="ViewRequest">Visualizza
+				<a class="item" class="active" href="ViewRequest">Lista
 					richieste riconoscimento</a>
 				<a class="item" class="active" href="UploadAttached" style="border-bottom: 1px solid #ddd;">Carica
 					Allegati</a>
 			</c:if>
 
 			<c:if test="${type =='pdcd'}">
-				<a class="item" class="active" href="ViewRequest">Visualizza
+				<a class="item" class="active" href="ViewRequest">Lista
 					richieste riconoscimento</a>
 			</c:if>
 
 			<c:if test="${type =='segreteria'}">
-				<a class="item" class="active" href="ViewRequest">Visualizza
+				<a class="item" class="active" href="ViewRequest">Lista
 					richieste riconoscimento</a>
 			</c:if>
 
