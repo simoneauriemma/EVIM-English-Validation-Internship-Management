@@ -24,7 +24,7 @@ import model.TutorAziendale;
 @WebServlet("/ValutareRichieste")
 public class ValutareRichieste extends BaseServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		// vedo dalla sessione se ha i permessi
@@ -51,7 +51,7 @@ public class ValutareRichieste extends BaseServlet {
 				dispatcher.forward(request, response);
 			}
 
-			// per riconoscere se è interno o esterno
+			// per riconoscere se ï¿½ interno o esterno
 			String azienda = request.getParameter("azienda");
 
 			// verifico se sono stati manomessi dati
@@ -87,10 +87,10 @@ public class ValutareRichieste extends BaseServlet {
 				}
 			} else if (request.getParameter("azienda").equalsIgnoreCase("azienda")) {
 				// tirocinio esterno
-				// devo vedere chi è loggato
+				// devo vedere chi ï¿½ loggato
 
 				if (session.getAttribute("utenteLoggato").equals(TutorAccademico.class.getName())) {
-					// è loggato un tutor accademico
+					// ï¿½ loggato un tutor accademico
 					TutorAccademico tutor = (TutorAccademico) session.getAttribute("utenteLoggato");
 					risposta = new TirocinioEsternoDAO().updateFirmaTrueTutorAccademico(true, idTirocinio,
 							tutor.getIdTutorAccademico());
@@ -136,14 +136,14 @@ public class ValutareRichieste extends BaseServlet {
 			}
 
 		} else {
-			// è loggata una persona non autorizzarata
+			// ï¿½ loggata una persona non autorizzarata
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/permissionDenied.jsp");
 			dispatcher.forward(request, response);
 		}
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
