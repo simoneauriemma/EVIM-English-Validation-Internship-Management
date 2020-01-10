@@ -230,7 +230,7 @@
 			</c:if>
 
 			<c:if test="${type =='segreteria'}">
-				<a class="item" class="active" href="ViewRequest">Lista
+				<a class="item" class="active" href="ViewRequest" style="border-bottom: 1px solid #ddd;">Lista
 					richieste riconoscimento</a>
 			</c:if>
 

@@ -104,7 +104,7 @@ ON DELETE CASCADE
 );
 
 CREATE TABLE referente_aziendale (
-  `CF` varchar(17) NOT NULL,
+  `CF` varchar(16) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(20) NOT NULL,
   `luogo_nascita` varchar(50) NOT NULL,
@@ -126,6 +126,7 @@ Descizione varchar(500) not null,
 Numero_Dipendenti varchar(30) not null,
 Codice_Ateco varchar(10) not null,
 CF_Referente varchar(17) not null, 
+ID_Convenzione int(11) DEFAULT NULL,
 foreign key(CF_Referente) references referente_aziendale(CF)
 ON UPDATE cascade
 ON DELETE CASCADE,
@@ -308,4 +309,12 @@ ON DELETE cascade,
 foreign key(ID_TutorAziendale) references TutorAziendale(ID_TutorAziendale)
 ON UPDATE cascade
 ON DELETE cascade
+);
+
+CREATE TABLE Convenzione (
+  ID int(11) NOT NULL AUTO_INCREMENT,
+  DataConvezione varchar(40) NOT NULL,
+  Repertorio varchar(20) NOT NULL,
+  DurataConvezione varchar(50) NOT NULL,
+  PRIMARY KEY (ID)
 );

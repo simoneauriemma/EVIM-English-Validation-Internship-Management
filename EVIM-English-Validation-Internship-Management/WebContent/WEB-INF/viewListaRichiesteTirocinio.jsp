@@ -189,12 +189,12 @@
 													<td class="">Valutazione richiesta</td>
 													<td class="text-center">
 														<button class="bottone"
-															onclick="ValuatareRichiesta?confermato=si&id=&azienda=azienda"
+															onclick="window.location.href='ValutareRichieste?confermato=si&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
 															id="accetta">
 															<i class="fas fa-check-square"></i>
 														</button>
 														<button class="bottone"
-															onclick="ValuatareRichiesta?confermato=no&id=&azienda=azienda"
+															onclick="ValutareRichiesta?confermato=no&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda"
 															id="rifiuta">
 															<i class="far fa-times-circle"></i>
 														</button>
@@ -310,12 +310,12 @@
 
 													<td class="text-center">
 														<button class="bottone"
-															onclick="ValuatareRichiesta?confermato=si&id=<>"
+															onclick="ValutareRichiesta?confermato=si&id=<c:out value="${esterno.ID_TirocinioInterno}"/>"
 															id="accetta">
 															<i class="fas fa-check-square"></i>
 														</button>
 														<button class="bottone"
-															onclick="ValuatareRichiesta?confermato=no&id=<>"
+															onclick="ValutareRichiesta?confermato=no&id=<c:out value="${esterno.ID_TirocinioInterno}"/>"
 															id="rifiuta">
 															<i class="far fa-times-circle"></i>
 														</button>
