@@ -61,8 +61,7 @@ public class ServletAdmin<WritableWorkbook> extends HttpServlet {
         if (conn != null) {
 
           if (flag == 5) { // Richieste Accettate
-            Integer requestWorkingEducationAdvice1 = Integer.parseInt(
-                new SystemAttribute().getValueByKey("request-working-educational-advice-1"));
+            Integer requestWorkingEducationAdvice1 = Integer.parseInt(  new SystemAttribute().getValueByKey("request-working-educational-advice-1"));
 
             try {
               stmtSelect = conn.createStatement();

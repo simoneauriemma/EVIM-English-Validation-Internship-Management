@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
 public class CreaRichiestaTirocinio extends BaseServlet {
 	User user;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Controllo se l'utente è loggato e ha i permessi per la pagina
 		HttpSession sessione = request.getSession();
@@ -108,7 +108,7 @@ public class CreaRichiestaTirocinio extends BaseServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

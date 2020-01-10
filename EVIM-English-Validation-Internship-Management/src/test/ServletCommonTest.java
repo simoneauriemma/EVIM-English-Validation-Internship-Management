@@ -27,7 +27,7 @@ public class ServletCommonTest extends Mockito {
     response = new MockHttpServletResponse();
   }
 
-  @Test
+  /*@Test
   public void testLoginAdmin() throws ServletException, IOException {
     request.addParameter("email", "fferrucci@unisa.it");
     request.addParameter("password", "password");
@@ -36,7 +36,7 @@ public class ServletCommonTest extends Mockito {
     
     assertEquals("json", response.getContentType());
   }
-  
+  */
   @Test
   public void testUpdateName() throws ServletException, IOException {
     request.addParameter("idUser", "fferrucci@unisa.it");
@@ -82,7 +82,7 @@ public class ServletCommonTest extends Mockito {
     assertEquals("json", response.getContentType());
   }
   
-  @Test
+  /*@Test
   public void testLoginStudent() throws ServletException, IOException {
     request.addParameter("email", "a.prova@studenti.unisa.it");
     request.addParameter("password", "password");
@@ -116,7 +116,7 @@ public class ServletCommonTest extends Mockito {
     request.addParameter("flag", "1");
     servlet.doPost(request, response);
     assertEquals("json", response.getContentType());
-  }
+  }*/
 
   @Test
   public void testLoginErrorFlag() throws ServletException, IOException {

@@ -24,13 +24,14 @@ import model.TutorAziendaleDAO;
 public class VisualizzaModificaProposta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession sessione=request.getSession();
 		int idProposta=Integer.parseInt(request.getParameter("idProposta"));
 		// controllo se è loggato l'utente altrimenti reindirizzo alla pagina login
 		if (sessione.getAttribute("utenteLoggato") == null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			request.setAttribute("Autorizzato", false);
 			dispatcher.forward(request, response);
 		}
 		else {
@@ -38,6 +39,7 @@ public class VisualizzaModificaProposta extends HttpServlet {
 			// non adatto per lo studente,pdcd,ufficio carriere
 			if(tipoUtente.equalsIgnoreCase("model.User")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/permissiondenied.jsp");
+				request.setAttribute("Autorizzato", false);
 				dispatcher.forward(request, response);
 			}
 			// tirocinio interno
@@ -48,6 +50,7 @@ public class VisualizzaModificaProposta extends HttpServlet {
 				request.setAttribute("type", "tutoraccademico");
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/modificaProposta.jsp");
+				request.setAttribute("Autorizzato", true);
 				dispatcher.forward(request, response);
 				
 			}
@@ -68,16 +71,18 @@ public class VisualizzaModificaProposta extends HttpServlet {
 				request.setAttribute("type", "azienda");
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/modificaProposta.jsp");
+				request.setAttribute("Autorizzato", true);
 				dispatcher.forward(request, response);
 				
-			}
+			}else
+				request.setAttribute("Autorizzato", false);
 		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

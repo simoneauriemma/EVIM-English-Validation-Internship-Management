@@ -24,7 +24,7 @@
 
 		<!-- se l'utente è il tutor aziendale allora vede solo le richiete esterne -->
 		<div class="col-lg-9" id="col-9">
-			<p id="titolo" class="text-center">Elenco richieste di tirocinio
+			<p id="titolo" class="text-center">Richieste di tirocinio curriculare
 			</p>
 			<hr>
 			<%
@@ -33,22 +33,23 @@
 			%>
 
 			<!-- tutor accademico, tutor aziendale, azieda e presidente del consiglio didattico possono vedere le proprie richieste di tirocinio esterno -->
-			<c:if
-				test="${type== 'tutoraziendale' || type=='tutoraccademico' || type== 'pdcd' || type=='azienda'}">
+			
+		<c:if
+				test="${type=='tutoraccademico' || type=='tutoraziendale' || type=='pdcd' || type=='segreteria'}">
+			<c:forEach items="${arrayTirocinioEsterno}" var="esterno">
 
-				<c:forEach items="${arrayTirocinioEsterno}" var="esterno">
-
-					<!-- se l'array di tirocini esterno è vuoto allora informa l'uetnte che non ci sono richieste -->
-					<c:if test="${arrayTirocinioEsterno.size()==0 }">
-						<p>Non ci sono richieste di tirocinio</p>
-					</c:if>
-					<%
+				<!-- se l'array di tirocini esterno è vuoto allora informa l'uetnte che non ci sono richieste -->
+				<c:if test="${arrayTirocinioEsterno.size()==0 }">
+					<p>Non ci sono richieste di tirocinio</p>
+				</c:if>
+				<%
 						n = n + 1;
 					%>
 
-					<div class="accordion">
-						<div class="card">
+				<div class="accordion">
+					<div class="card">
 
+						<c:if test="${arrayTirocinioEsterno.size()>0 }">
 							<div id="heading<%=n%>" style="background-color: #2C5278">
 								<h6 class="mb-0">
 									<button data-toggle="collapse" id="nome-studente"
@@ -194,7 +195,7 @@
 															<i class="fas fa-check-square"></i>
 														</button>
 														<button class="bottone"
-															onclick="ValutareRichiesta?confermato=no&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda"
+															onclick="window.location.href='ValutareRichieste?confermato=no&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
 															id="rifiuta">
 															<i class="far fa-times-circle"></i>
 														</button>
@@ -213,15 +214,20 @@
 
 								</div>
 							</div>
-						</div>
+						</c:if>
 					</div>
-				</c:forEach>
-			</c:if>
-
+				</div>
+			</c:forEach>
+		</c:if>
 
 
 			<!-- INTERNO! -->
-
+			<c:if test="${type=='pdcd'}">
+					<c:if
+						test="${arrayTirocinioInterno.size()==0 && arrayTirocinioEsterno.size()==0 }">
+						<p>Non ci sono richieste di tirocinio</p>
+					</c:if>
+			</c:if>
 
 
 			<!-- solo il presidente del consiglio didattico e il tutor accademico possono vedere le richieste di tirocnio interno -->
@@ -310,22 +316,23 @@
 
 													<td class="text-center">
 														<button class="bottone"
-															onclick="ValutareRichiesta?confermato=si&id=<c:out value="${esterno.ID_TirocinioInterno}"/>"
+															onclick="window.location.href='ValutareRichiesta?confermato=si&id=<c:out value="${esterno.ID_TirocinioInterno}"/>' "
 															id="accetta">
 															<i class="fas fa-check-square"></i>
 														</button>
 														<button class="bottone"
-															onclick="ValutareRichiesta?confermato=no&id=<c:out value="${esterno.ID_TirocinioInterno}"/>"
+															onclick="window.location.href='ValutareRichiesta?confermato=no&id=<c:out value="${esterno.ID_TirocinioInterno}"/>' "
 															id="rifiuta">
 															<i class="far fa-times-circle"></i>
 														</button>
 													</td>
-											
+
+												</tr>
+												<tr>
 													<td class="icon"><i class="fas fa-paperclip"></i></td>
 													<td><a href="#"><button id="progettoForm"
 																type="button">Progetto formativo</button></a></td>
 													<td></td>
-												
 												</tr>
 
 											</c:if>
