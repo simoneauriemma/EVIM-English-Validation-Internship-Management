@@ -54,7 +54,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 			User utente =(User) sessione.getAttribute("utenteLoggato");
 			String corsoUtente=utente.getCorso();
 			
-			int id= (int) request.getAttribute("id");
+			int id= Integer.parseInt((String) request.getAttribute("id"));
 			
 			String tirocinio=(String) request.getAttribute("tirocinio");
 			
