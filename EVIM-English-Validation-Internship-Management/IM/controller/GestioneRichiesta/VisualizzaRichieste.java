@@ -94,11 +94,24 @@ public class VisualizzaRichieste extends BaseServlet {
 
 					request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 					request.setAttribute("arrayTirocinioInterno", tirocinioInterno);
-
 					RequestDispatcher dispatcher = request
-							.getRequestDispatcher("WEB-INF/viewRichiestaTiricinioStudente.jsp");
+							.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
+					dispatcher.forward(request, response);
+				} else if (studente.getUserType() == 1) {
+					
+					//loggato l'ufficio carriere
+					ArrayList<TirocinioInterno> tirocinioInterno = new TirocinioInternoDAO()
+							.doRetriveAllValutazionePdCD();
+					ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO()
+							.doRetriveAllValutazionePdCD();
+
+					request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
+					request.setAttribute("arrayTirocinioInterno", tirocinioInterno);
+					RequestDispatcher dispatcher = request
+							.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
 					dispatcher.forward(request, response);
 				}
+
 			} else if (tipoUtente.equalsIgnoreCase("model.tutoraccademico")) {
 				// viewListaRichiesteTirocinioInterno
 				// 2 arraylist

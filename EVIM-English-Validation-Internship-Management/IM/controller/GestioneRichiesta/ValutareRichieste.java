@@ -24,8 +24,7 @@ import model.TutorAziendale;
 @WebServlet("/ValutareRichieste")
 public class ValutareRichieste extends BaseServlet {
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// vedo dalla sessione se ha i permessi
 		HttpSession session = request.getSession();
@@ -36,115 +35,131 @@ public class ValutareRichieste extends BaseServlet {
 		 * tirocinio ESTERNO) ValuatareRichiesta?confermato=no&id=&azienda=azienda
 		 * ValuatareRichiesta?confermato=no&id=
 		 */
+		System.out.println(TutorAccademico.class.getName());
+		System.out.println(TutorAziendale.class.getName());
+		System.out.println(session.getAttribute("utenteLoggato"));
 
-		if (session.getAttribute("utenteLoggato").equals(TutorAccademico.class.getName())
-				|| session.getAttribute("utenteLoggato").equals(TutorAccademico.class.getName())) {
-			// prendo i dati in input
-			String conferma = request.getParameter("confermato");
-			int idTirocinio = 0;
-			if (request.getParameter("id") != null) {
-				// dato corretto
-				idTirocinio = Integer.parseInt(request.getParameter("id"));
-			} else {
-				// dato errato
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/permissionDenied.jsp");
-				dispatcher.forward(request, response);
-			}
+		if (session.getAttribute("utenteLoggato") == null) {
+			request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
+		} else {
 
-			// per riconoscere se � interno o esterno
-			String azienda = request.getParameter("azienda");
+			if (session.getAttribute("utenteLoggato").getClass().getName()
+					.equalsIgnoreCase(TutorAccademico.class.getName())
+					|| session.getAttribute("utenteLoggato").getClass().getName()
+							.equalsIgnoreCase(TutorAziendale.class.getName())) {
+				// prendo i dati in input
+				String conferma = request.getParameter("confermato");
+				System.out.println("conferma->" + conferma);
+				int idTirocinio = 0;
+				if (request.getParameter("id") != null) {
+					// dato corretto
+					idTirocinio = Integer.parseInt(request.getParameter("id"));
+					System.out.println("idTirocinio->" + idTirocinio);
+				}
+				// per riconoscere se � interno o esterno
+				String azienda = request.getParameter("azienda");
+				System.out.println("Parametro azienda->" + azienda);
+				// verifico se sono stati manomessi dati
+				/*
+				 * if (!(conferma.equalsIgnoreCase("si")) || !(conferma.equalsIgnoreCase("no")))
+				 * { System.out.println("Sto nell'IF della conferma"); RequestDispatcher
+				 * dispatcher = request.getRequestDispatcher("WEB-INF/permissionDenied.jsp");
+				 * dispatcher.forward(request, response); }
+				 */
 
-			// verifico se sono stati manomessi dati
-			if (!(conferma.equalsIgnoreCase("si") || conferma.equalsIgnoreCase("no"))) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/permissionDenied.jsp");
-				dispatcher.forward(request, response);
-			}
+				// indica se l'update ha avuto successo
+				// 1 si 0 altrimenti
+				int risposta;
 
-			// indica se l'update ha avuto successo
-			// 1 si 0 altrimenti
-			int risposta;
-			if (request.getParameter("azienda") == null) {
-				// tirocinio interno
-				if (conferma.equalsIgnoreCase("si")) {
+				if (azienda == null) {
+					System.out.println("Sto nel getParameter di azienda riga 75");
 					// tirocinio interno
 					TutorAccademico tutor = (TutorAccademico) session.getAttribute("utenteLoggato");
-					risposta = new TirocinioInternoDAO().updateFirmaTrue(true, idTirocinio,
-							tutor.getIdTutorAccademico());
-					request.setAttribute("esito", risposta);
-					RequestDispatcher dispatcher = request
-							.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
-					dispatcher.forward(request, response);
+					if (conferma.equalsIgnoreCase("si")) {
+						// tirocinio interno
+						risposta = new TirocinioInternoDAO().updateFirmaTrue(true, idTirocinio,
+								tutor.getIdTutorAccademico());
+						request.setAttribute("esito", risposta);
+						RequestDispatcher dispatcher = request
+								.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
+						dispatcher.forward(request, response);
 
-				} else if (conferma.equalsIgnoreCase("no")) {
-					// cambia status in rifiutato
-					TutorAccademico tutor = (TutorAccademico) session.getAttribute("utenteLoggato");
-					risposta = new TirocinioInternoDAO().updateFirmaFalse(false, idTirocinio,
-							tutor.getIdTutorAccademico());
-					request.setAttribute("esito", risposta);
-					RequestDispatcher dispatcher = request
-							.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
+					} else if (conferma.equalsIgnoreCase("no")) {
+						// cambia status in rifiutato
+						risposta = new TirocinioInternoDAO().updateFirmaFalse(false, idTirocinio,
+								tutor.getIdTutorAccademico());
+						request.setAttribute("esito", risposta);
+						RequestDispatcher dispatcher = request
+								.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
+						dispatcher.forward(request, response);
+					}
+				} else if (azienda.equalsIgnoreCase("azienda")) {
+					// tirocinio esterno
+					// devo vedere chi e' loggato
+					System.out.println("Sto nell'if dell'azienda nel tirocinio esterno-> 100");
+					if (session.getAttribute("utenteLoggato").getClass().getName()
+							.equals(TutorAccademico.class.getName())) {
+						// � loggato un tutor accademico
+						System.out.println("If nel tutor accademico,prima della query");
+						TutorAccademico tutor = (TutorAccademico) session.getAttribute("utenteLoggato");
+
+						if (conferma.equalsIgnoreCase("si")) {
+							risposta = new TirocinioEsternoDAO().updateFirmaTrueTutorAccademico(true, idTirocinio,
+									tutor.getIdTutorAccademico());
+							System.out.println("risposta->" + risposta);
+							request.setAttribute("esito", risposta);
+							RequestDispatcher dispatcher = request
+									.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
+							dispatcher.forward(request, response);
+
+						} else if (conferma.equalsIgnoreCase("no")) {
+							risposta = new TirocinioEsternoDAO().updateFirmaFalseTutorAccademico(false, idTirocinio,
+									tutor.getIdTutorAccademico());
+							request.setAttribute("esito", risposta);
+							RequestDispatcher dispatcher = request
+									.getRequestDispatcher("WEB-INF/viewRichiesteTirocinio.jsp");
+							dispatcher.forward(request, response);
+						}
+
+					} else if (session.getAttribute("utenteLoggato").getClass().getName()
+							.equals(TutorAziendale.class.getName())) {
+						// loggato un tutor aziendale
+						TutorAziendale tutor = (TutorAziendale) session.getAttribute("utenteLoggato");
+						if (conferma.equalsIgnoreCase("si")) {
+							risposta = new TirocinioEsternoDAO().updateFirmaTrueAziendale(true, idTirocinio,
+									tutor.getId());
+							request.setAttribute("esito", risposta);
+							RequestDispatcher dispatcher = request
+									.getRequestDispatcher("WEB-INF/viewRichiesteTirocinio.jsp");
+							dispatcher.forward(request, response);
+						} else if (conferma.equalsIgnoreCase("no")) {
+							// cambia status in rifiutato
+							risposta = new TirocinioEsternoDAO().updateFirmaFalseAziendale(false, idTirocinio,
+									tutor.getId());
+							request.setAttribute("esito", risposta);
+							RequestDispatcher dispatcher = request
+									.getRequestDispatcher("WEB-INF/viewRichiesteTirocinioEsterno.jsp");
+							dispatcher.forward(request, response);
+
+						}
+
+					} else {
+						// parametri compromessi
+						RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/permissionDenied.jsp");
+						dispatcher.forward(request, response);
+					}
+
+				} else {
+					// e' loggata una persona non autorizzarata
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/permissionDenied.jsp");
 					dispatcher.forward(request, response);
 				}
-			} else if (request.getParameter("azienda").equalsIgnoreCase("azienda")) {
-				// tirocinio esterno
-				// devo vedere chi � loggato
 
-				if (session.getAttribute("utenteLoggato").equals(TutorAccademico.class.getName())) {
-					// � loggato un tutor accademico
-					TutorAccademico tutor = (TutorAccademico) session.getAttribute("utenteLoggato");
-					risposta = new TirocinioEsternoDAO().updateFirmaTrueTutorAccademico(true, idTirocinio,
-							tutor.getIdTutorAccademico());
-					request.setAttribute("esito", risposta);
-					RequestDispatcher dispatcher = request
-							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinio.jsp");
-					dispatcher.forward(request, response);
-
-				} else if (conferma.equalsIgnoreCase("no")) {
-					// cambia status in rifiutato
-					TutorAccademico tutor = (TutorAccademico) session.getAttribute("utenteLoggato");
-					risposta = new TirocinioEsternoDAO().updateFirmaFalseTutorAccademico(false, idTirocinio,
-							tutor.getIdTutorAccademico());
-					request.setAttribute("esito", risposta);
-					RequestDispatcher dispatcher = request
-							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinio.jsp");
-					dispatcher.forward(request, response);
-
-				} else if (session.getAttribute("utenteLoggato").equals(TutorAziendale.class.getName())) {
-					// loggato un tutor aziendale
-					TutorAziendale tutor = (TutorAziendale) session.getAttribute("utenteLoggato");
-					risposta = new TirocinioEsternoDAO().updateFirmaTrueAziendale(true, idTirocinio, tutor.getId());
-					request.setAttribute("esito", risposta);
-					RequestDispatcher dispatcher = request
-							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinio.jsp");
-					dispatcher.forward(request, response);
-
-				} else if (conferma.equalsIgnoreCase("no")) {
-					// cambia status in rifiutato
-					TutorAziendale tutor = (TutorAziendale) session.getAttribute("utenteLoggato");
-					risposta = new TirocinioEsternoDAO().updateFirmaFalseAziendale(false, idTirocinio, tutor.getId());
-					request.setAttribute("esito", risposta);
-					RequestDispatcher dispatcher = request
-							.getRequestDispatcher("WEB-INF/viewRichiesteTirocinioEsterno.jsp");
-					dispatcher.forward(request, response);
-
-				}
-
-			} else {
-				// parametri compromessi
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/permissionDenied.jsp");
-				dispatcher.forward(request, response);
 			}
-
-		} else {
-			// � loggata una persona non autorizzarata
-			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/permissionDenied.jsp");
-			dispatcher.forward(request, response);
 		}
-
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 
