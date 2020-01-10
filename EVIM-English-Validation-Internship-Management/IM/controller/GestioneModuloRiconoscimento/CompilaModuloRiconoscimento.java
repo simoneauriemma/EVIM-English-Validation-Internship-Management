@@ -33,19 +33,20 @@ import model.User;
 public class CompilaModuloRiconoscimento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		getServletContext().getRequestDispatcher("/permissionDenied.jsp").forward(request, response);
 		
 	}
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sessione=request.getSession();
 		// controllo se è loggato l'utente altrimenti reindirizzo alla pagina login
 		if (sessione.getAttribute("utenteLoggato") == null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
 			dispatcher.forward(request, response);
 		}
+		
 		else {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
 			User utente=(User) sessione.getAttribute("utenteLoggato");

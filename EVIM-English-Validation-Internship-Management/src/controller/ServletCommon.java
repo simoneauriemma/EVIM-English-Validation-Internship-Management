@@ -63,61 +63,7 @@ public class ServletCommon extends HttpServlet {
 
     if (conn != null) {
 
-      /*if (flag == 1) { // login
-        String email = request.getParameter("email");
-        String password = new Utils().generatePwd(request.getParameter("password"));
-        try {
-          sql =
-              " SELECT  name, surname, sex, user_type FROM user "
-              + "WHERE TRIM(LOWER(email)) = TRIM(?) AND TRIM(password) = TRIM(?)";
-          stmt = conn.prepareStatement(sql);
-          stmt.setString(1, email.toLowerCase());
-          stmt.setString(2, password);
-          ResultSet r = stmt.executeQuery();
-          if (r.wasNull()) {
-            error = "Errore nell'esecuzione della Query";
-          } else {
-            int count = r.last() ? r.getRow() : 0;
-            if (count == 1) {
-              User user = null;
-              String name = r.getString("name");
-              String surname = r.getString("surname");
-              char sex = r.getString("sex").charAt(0);
-
-              int userType = r.getInt("user_type");
-              if (userType == 0) { // Profilo Student
-                redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
-                user = new Student(email, name, surname, sex, password, userType);
-              } else if (userType == 1) { // Profilo Secretary
-                redirect = request.getContextPath() + "/_areaSecretary/viewRequest.jsp";
-                user = new Secretary(email, name, surname, sex, password, userType);
-              } else if (userType == 2) { // Profilo Admin
-                redirect = request.getContextPath() + "/_areaAdmin/viewRequest.jsp";
-                user = new Admin(email, name, surname, sex, password, userType);
-              }
-              else {
-                throw new NumberFormatException("utente non valido");
-              }
-
-              request.getSession().setAttribute("utenteLoggato", user);
-
-              result = 1;
-            } else {
-              error = "Username o Password errati.";
-            }
-          }
-
-
-          if (result == 0) {
-            conn.rollback();
-          } else {
-            conn.commit();
-          }
-
-        } catch (Exception e) {
-          error += e.getMessage();
-        }
-      } else*/ if (flag == 2) { // Aggiornamento Nome
+      if (flag == 2) { // Aggiornamento Nome
         String idUser = request.getParameter("idUser");
         String newName = request.getParameter("newName");
 

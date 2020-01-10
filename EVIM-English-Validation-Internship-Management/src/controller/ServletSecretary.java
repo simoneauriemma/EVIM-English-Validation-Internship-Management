@@ -63,8 +63,7 @@ public class ServletSecretary extends HttpServlet {
     String sql = "";
 
     if (conn != null) {
-      Integer requestWorkingSecretary = Integer
-          .parseInt(new SystemAttribute().getValueByKey("request-working-secretary"));
+      Integer requestWorkingSecretary = Integer.parseInt(new SystemAttribute().getValueByKey("request-working-secretary"));
 
       if (flag == 1) { // Preleva tutte le richieste
         try {
