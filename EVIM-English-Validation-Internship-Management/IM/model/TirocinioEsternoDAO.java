@@ -156,7 +156,7 @@ public class TirocinioEsternoDAO {
 
 			while (rs.next()) {
 				TirocinioEsterno a = new TirocinioEsterno();
-				a.setID_TirocinioEsterno(rs.getInt("ID_tirocinioInterno"));
+				a.setID_TirocinioEsterno(rs.getInt("ID_tirocinioEsterno"));
 				a.setID_TutorAccademico(rs.getInt("ID_tutorAccademico"));
 				a.setData(rs.getString("Data"));
 				a.setStatus(rs.getString("status"));

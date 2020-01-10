@@ -531,7 +531,12 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
         else 
         	$("#bott-approva").attr("disabled",false);
      */
-        
+       
+   //  var ente = $('#enteAzienda').val().length;
+     if(!($('#enteAzienda').val().length > 5)) {
+    	 
+    	 $("#bott-approva").attr("disabled",true);
+     }
         
 
 	

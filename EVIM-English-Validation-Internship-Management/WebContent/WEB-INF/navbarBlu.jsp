@@ -31,9 +31,13 @@
 			<div class="float-sm-left text-white align-middle"
 				style="margin-top: 10px;">
 				<c:choose>
+					<c:when test="${type eq 'segreteria'}">
+					<i class="fas fa-user-circle"></i>
+						Welcome <c:out value="${utenteLoggato.name}"></c:out>! (Segreteria)
+					</c:when>
 					<c:when test="${type eq 'studente'}">
 					 <i class="fas fa-user-circle"></i>
-						Welcome <c:out value="${utenteLoggato.name}"></c:out>! 
+						Welcome <c:out value="${utenteLoggato.name}"></c:out> (Studente)! 
 					</c:when>
 					<c:when test="${type eq 'pdcd'}">
 					<i class="fas fa-user-circle"></i>
@@ -51,8 +55,9 @@
 					<i class="fas fa-user-circle"></i>
 						Welcome <c:out value="${utenteLoggato.nome}"></c:out>! (Aziende)
 					</c:when>
+					
 					<c:otherwise>
-						Welcome! (utente ospite)
+						Welcome! (Utente ospite)
 					</c:otherwise>
 				</c:choose>
 			</div>

@@ -27,7 +27,8 @@
 
 			<hr>
 			<c:if test="${elencoRiconoscimento.size() == 0 }">
-				<p style="text-align: center;">Non ci sono richieste di riconoscimento attività!</p>
+				<p class="text-center">Non ci sono richieste di
+					riconoscimento attività!</p>
 			</c:if>
 
 
@@ -81,7 +82,9 @@
 								<th scope="col">Numero richiesta</th>
 								<th scope="col">Studente</th>
 								<th scope="col">Matricola</th>
-								<th scope="col">Status</th>
+								<c:if test="${type != 'segreteria' }">
+									<th scope="col">Status</th>
+								</c:if>
 								<!--<th scope="col">CFU totali</th> -->
 								<th scope="col">Allegati</th>
 								<!-- 		<th scope="col">Info richiesta</th> -->
@@ -99,22 +102,30 @@
 									<td><c:out value="${ricon.matricolaStudente}"></c:out></td>
 									<td><i id="${conto.count}" class="far fa-circle"
 										title="<c:out value="${ricon.stato}"/>"></i></td>
-									<td><button onclick=visualizzaRiconoscimento(${ricon.idRiconoscimento},"${ricon.emailUser}")>
+
+									<td><button
+											onclick=visualizzaRiconoscimento(${ricon.idRiconoscimento},
+											"${ricon.emailUser}")>
 											<i class="fas fa-file-pdf"></i>
 										</button></td>
 
 									<!-- il bottone è visibile solo se lo status è il valutazione -->
-									<c:if test="${ricon.stato eq 'V'}">
+									<c:if test="${type != 'segreteria' }">
+										<c:if test="${ricon.stato eq 'V'}">
+											<td>
+												<button class="bottone" onclick=approvaModulo(
+													<c:out value="${ricon.idRiconoscimento}"/>,<c:out value="${conto.count}"/>
+													) id="accetta">
+													<i class="fas fa-check-square"></i>
+												</button>
 
-										<td>
-											<button class="bottone" onclick=approvaModulo(<c:out value="${ricon.idRiconoscimento}"/>,<c:out value="${conto.count}"/>) id="accetta">
-												<i class="fas fa-check-square"></i>
-											</button>
-
-											<button class="bottone" onclick=rifiutaModulo(<c:out value="${ricon.idRiconoscimento}"/>,<c:out value="${conto.count}"/>) id="rifiuta">
-												<i class="far fa-times-circle"></i>
-											</button>
-										</td>
+												<button class="bottone" onclick=rifiutaModulo(
+													<c:out value="${ricon.idRiconoscimento}"/>,<c:out value="${conto.count}"/>
+													) id="rifiuta">
+													<i class="far fa-times-circle"></i>
+												</button>
+											</td>
+										</c:if>
 										<!--  se il la richiesta è stata approvata o rifiutata -->
 									</c:if>
 									<c:if test="${ricon.stato == 'A' || ricon.stato== 'R'}">
