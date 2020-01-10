@@ -81,4 +81,9 @@ a{
 	background-color: #f2f2f2;
 }
 
+/* english validation*/
+#ev1, #ev2, #ev3, #ev4, #ev5{
+	border-bottom: 1px solid #ddd;
+}
+
 

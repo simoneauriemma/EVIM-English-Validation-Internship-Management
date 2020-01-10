@@ -64,7 +64,7 @@
 			<!--INIZIO GESTIONE TIROCINIO -->
 
 			<a data-toggle="collapse" href="#collapse-3" class="item"
-				class="folder collapsed" aria-expanded="false">Gestione
+				class="folder collapsed" aria-expanded="false" style="border-bottom: 1px solid #ddd;">Gestione
 				tirocinio <i id="icon-max" class="fa pull-right fa-plus-square"></i>
 			</a>
 
@@ -96,7 +96,7 @@
 			<c:if
 				test="${type=='azienda' || type=='tutoraccademico' || type=='tutoraziendale'}">
 				<a data-toggle="collapse" href="#collapse-2" class="item"
-					class="folder collapsed" aria-expanded="false">Gestione
+					class="folder collapsed" aria-expanded="false" style="border-bottom: 1px solid #ddd;">Gestione
 					proposta tirocinio <i id="icon-max"
 					class="fa pull-right fa-plus-square"></i>
 				</a>
@@ -126,8 +126,9 @@
 
 
 			<!-- INIZIO Gestione richiesta tirocinio -->
+		
 			<a data-toggle="collapse" href="#collapse-0" class="item"
-				class="folder collapsed" aria-expanded="false">Gestione richiesta
+				class="folder collapsed" aria-expanded="false" style="border-bottom: 1px solid #ddd;">Gestione richiesta
 				tirocinio <i id="icon-max" class="fa pull-right fa-plus-square"></i>
 			</a>
 
@@ -204,21 +205,21 @@
 				Validation</a>
 
 			<c:if test="${type =='studente'}">
-				<a class="item" class="active" href="FirstForm">Compila modulo
+				<a class="item" class="active" id="ev1" href="FirstForm">Compila modulo
 					riconoscimento</a>
-				<a class="item" class="active" href="ViewRequest">Lista
+				<a class="item" class="active" id="ev2" href="ViewRequest">Lista
 					richieste riconoscimento</a>
-				<a class="item" class="active" href="UploadAttached" style="border-bottom: 1px solid #ddd;">Carica
+				<a class="item" class="active" id="ev3" href="UploadAttached" style="border-bottom: 1px solid #ddd;">Carica
 					Allegati</a>
 			</c:if>
 
 			<c:if test="${type =='pdcd'}">
-				<a class="item" class="active" href="ViewRequest">Lista
+				<a class="item" class="active" id="ev4" href="ViewRequest">Lista
 					richieste riconoscimento</a>
 			</c:if>
 
 			<c:if test="${type =='segreteria'}">
-				<a class="item" class="active" href="ViewRequest" style="border-bottom: 1px solid #ddd;">Lista
+				<a class="item" class="active" id="ev5" href="ViewRequest" style="border-bottom: 1px solid #ddd;">Lista
 					richieste riconoscimento</a>
 			</c:if>
 
