@@ -227,8 +227,10 @@
 											<!-- tutti gli attori della pagina possono valuatre ma tranne uff carriere  -->
 											<c:if test="${type != 'segreteria' }">
 												<tr>
-													<td class="icon"><i class="fas fa-signature"></i></td>
-													<td class="">Valutazione richiesta</td>
+													<td class="icon"><i class="fas fa-paperclip"></i></td>
+													<!-- <td class="">Valutazione richiesta</td>-->
+													<td><a href="VisualizzaProgettoFormativo"><button id="progettoForm"
+															type="button">Progetto formativo</button></a></td>
 													<td class="text-center">
 														<button class="bottone"
 															onclick="window.location.href='ValutareRichieste?confermato=si&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
@@ -243,12 +245,7 @@
 													</td>
 												</tr>
 											</c:if>
-											<tr>
-												<td class="icon"><i class="fas fa-paperclip"></i></td>
-												<td><a href="progettoFormativo.jsp"><button id="progettoForm"
-															type="button">Progetto formativo</button></a></td>
-												<td></td>
-											</tr>
+											
 
 										</tbody>
 									</table>
@@ -369,29 +366,25 @@
 												</tr>
 											</c:if>
 											<c:if test="${type != 'segreteria' }">
-												<tr>
-													<td class="icon"><i class="fas fa-signature"></i></td>
-													<td class="">Valutazione richiesta</td>
-
+													<tr>
+													<td class="icon"><i class="fas fa-paperclip"></i></td>
+													<!-- <td class="">Valutazione richiesta</td>-->
+													<td><a href="VisualizzaProgettoFormativo"><button id="progettoForm"
+															type="button">Progetto formativo</button></a></td>
 													<td class="text-center">
-														<button class="bottone"
-															onclick="window.location.href='ValutareRichiesta?confermato=si&id=<c:out value="${esterno.ID_TirocinioInterno}"/>' "
+														 <button class="bottone"
+															onclick="window.location.href='ValutareRichieste?confermato=si&id=<c:out value="${interno.ID_TirocinioInterno}"/>'"
 															id="accetta">
 															<i class="fas fa-check-square"></i>
 														</button>
 														<button class="bottone"
-															onclick="window.location.href='ValutareRichiesta?confermato=no&id=<c:out value="${esterno.ID_TirocinioInterno}"/>' "
+															onclick="window.location.href='ValutareRichieste?confermato=no&id=<c:out value="${interno.ID_TirocinioInterno}"/>'"
 															id="rifiuta">
 															<i class="far fa-times-circle"></i>
 														</button>
+													
+														
 													</td>
-
-												</tr>
-												<tr>
-													<td class="icon"><i class="fas fa-paperclip"></i></td>
-													<td><a href="#"><button id="progettoForm"
-																type="button">Progetto formativo</button></a></td>
-													<td></td>
 												</tr>
 
 											</c:if>
