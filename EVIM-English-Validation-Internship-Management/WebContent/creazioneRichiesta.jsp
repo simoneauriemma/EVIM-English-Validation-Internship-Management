@@ -26,12 +26,12 @@
 						<div class="scelte">
 							<div class="scelta-drop">
 								<i class="fas fa-edit"></i> Selezionare il numero di CFU <br>
-								<br> <input name="cfu" type="radio" id="radio1" value="6"> 
+								<br> <input onclick="changeAzienda()" name="cfu" type="radio" id="radio1" value="6"> 
 								<label id="radio1" for="radio1">6 CFU</label>
-								<br> <input name="cfu" type="radio" id="radio2" value="11" checked>
-								<label for="radio2" id="radio2">11 CFU</label> <br> <input
+								<br> <input  name="cfu" type="radio" id="radio2" value="11" checked>
+								<label for="radio2" id="radio2">11 CFU</label> <br> <input onclick="changeAzienda()"
 									name="cfu" type="radio" id="radio3" value="17"> <label
-									for="radio3" id="radio3">17 CFU</label> <br> <input
+									for="radio3" id="radio3">17 CFU</label> <br> <input onclick="changeAzienda()"
 									name="cfu" type="radio" id="radio4" value="23"> <label
 									for="radio4" id="radio4">23 CFU</label>
 							</div>
@@ -175,6 +175,7 @@
 		});
 	});
 
+	// per aggiornare rispettivamente i campi presenti  appena si accede a tale pagina
 	var xmlHttp = new XMLHttpRequest();
 	xmlHttp.responseType = "json";
 	var idTirocinio = document.getElementById("sel1");
@@ -493,4 +494,55 @@
 		}
 
 	}
+	
+	function changeAzienda(){
+		var campoTirocinio=document.getElementById("sel1");
+		var valoreTirocinio=campoTirocinio.options[campoTirocinio.selectedIndex].value;
+		if(valoreTirocinio == "tirocinio2")
+		{
+			xmlHttp.onreadystatechange = function() {
+				if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+					var lista = xmlHttp.response;
+
+					var nodoTutorAziendale = document.getElementById("sel2");
+
+					var figlioOptionDefaultSel2 = document
+							.createElement("option");
+					var attrDisabled = document.createAttribute("disabled");
+					figlioOptionDefaultSel2.setAttributeNode(attrDisabled);
+
+					var attrSelect = document.createAttribute("selected");
+					figlioOptionDefaultSel2.setAttributeNode(attrSelect);
+
+					var attrValue = document.createAttribute("value");
+					figlioOptionDefaultSel2.setAttributeNode(attrValue);
+
+					var textOptionDefaultSel2 = document
+							.createTextNode("Seleziona un'opzione");
+					figlioOptionDefaultSel2.appendChild(textOptionDefaultSel2);
+
+					nodoTutorAziendale.appendChild(figlioOptionDefaultSel2);
+					
+					for (var z = 0; z < lista[0].TutorAziendali.length; z++) {
+
+						var figlioOption = document.createElement("option");
+
+						var attrValue = document.createAttribute("value");
+						attrValue.value = lista[0].TutorAziendali[z].ID;
+						figlioOption.setAttributeNode(attrValue);
+
+						var textOption = document
+								.createTextNode(lista[0].TutorAziendali[z].Nome);
+						figlioOption.appendChild(textOption);
+						nodoTutorAziendale.appendChild(figlioOption);
+					}
+					
+				}
+			}
+
+			xmlHttp.open("GET", "RicercaTutor?tirocinio=tirocinio1", true);
+			xmlHttp.send();
+		}
+	}
+	
 </script>
