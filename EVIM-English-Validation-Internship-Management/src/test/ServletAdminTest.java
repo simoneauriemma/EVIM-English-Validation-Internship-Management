@@ -39,7 +39,7 @@ public class ServletAdminTest extends Mockito {
   @Test
   public void testGenerateExcel() throws ServletException, IOException {
     User user = new Admin("fferrucci@unisa.it", "Luigi", "Melchionno", 'M', "password", 2);
-    request.getSession().setAttribute("user", user);
+    request.getSession().setAttribute("utenteLoggato", user);
     request.addParameter("flag", "5");
     servlet.doGet(request, response);
     assertEquals("application/vnd.ms-excel", response.getContentType());
@@ -48,7 +48,7 @@ public class ServletAdminTest extends Mockito {
   @Test
   public void testGenerateExcel2() throws ServletException, IOException {
     User user = new Admin("fferrucci@unisa.it", "Luigi", "Melchionno", 'M', "password", 2);
-    request.getSession().setAttribute("user", user);
+    request.getSession().setAttribute("utenteLoggato", user);
     request.addParameter("flag", "6");
     servlet.doGet(request, response);
     assertEquals("application/vnd.ms-excel", response.getContentType());
@@ -57,7 +57,7 @@ public class ServletAdminTest extends Mockito {
   @Test
   public void testGenerateExcelFail() throws ServletException, IOException {
     User user = new Admin("fferrucci@unisa.it", "Luigi", "Melchionno", 'M', "password", 2);
-    request.getSession().setAttribute("user", user);
+    request.getSession().setAttribute("utenteLoggato", user);
     request.addParameter("flag", "60");
     servlet.doGet(request, response);
     assertEquals("json", response.getContentType());
@@ -66,7 +66,7 @@ public class ServletAdminTest extends Mockito {
   @Test
   public void testGenerateExcelFail2() throws ServletException, IOException {
     User user = new Admin("fferrucci@unisa.it", "Luigi", "Melchionno", 'M', "password", 0);
-    request.getSession().setAttribute("user", user);
+    request.getSession().setAttribute("utenteLoggato", user);
     request.addParameter("flag", "5");
     servlet.doGet(request, response);
     assertNull(null, response.getContentType());

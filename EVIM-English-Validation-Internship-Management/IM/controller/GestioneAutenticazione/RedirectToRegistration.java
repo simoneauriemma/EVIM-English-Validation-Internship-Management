@@ -33,10 +33,10 @@ public class RedirectToRegistration extends BaseServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session= request.getSession();
 		
-		if(session.getAttribute("UtenteLoggato")==null) {
+		if(session.getAttribute("utenteLoggato")==null) {
 		
 		JSONObject objjson;
 		JSONArray json= new JSONArray(JSONarray);
@@ -54,6 +54,7 @@ public class RedirectToRegistration extends BaseServlet {
 		}
 		else {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
+			request.setAttribute("Autorizzato", false);
 			rd.forward(request, response);
 		}
 		
@@ -64,7 +65,7 @@ public class RedirectToRegistration extends BaseServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
