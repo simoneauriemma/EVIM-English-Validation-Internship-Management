@@ -144,9 +144,22 @@
 												test="${type== 'tutoraziendale' || type=='tutoraccademico' || type=='azienda' || type=='segreteria'}">
 												<tr>
 													<td class="icon"><i class="fas fa-file-signature"></i></td>
-													<td class="">Accettazione PdCD</td>
-													<td class="text-center"><c:out
-															value="${esterno.firmaPdCD}" /></td>
+													<td class="">Firma PdCD</td>
+													<td class="text-center">
+													<!--<c:out
+															value="${esterno.firmaPdCD}" /> -->
+															<c:if test="${esterno.firmaPdCD==true}">
+															<i class="fas fa-check" id="firma1"></i>
+															
+															</c:if>
+															
+															<c:if test="${esterno.firmaPdCD==false}">
+															<i class="fas fa-times" id="firma"></i>
+															
+															</c:if>
+															
+															
+															</td>
 												</tr>
 											</c:if>
 
@@ -155,9 +168,19 @@
 												test="${type== 'tutoraziendale' || type=='tutoraccademico' || type== 'pdcd' || type=='segreteria'}">
 												<tr>
 													<td class="icon"><i class="fas fa-file-signature"></i></td>
-													<td class="">Accettazione Azienda</td>
-													<td class="text-center"><c:out
-															value="${esterno.firmaAzienda}" /></td>
+													<td class="">Firma Azienda</td>
+													<td class="text-center">
+													<!--<c:out
+															value="${esterno.firmaAzienda}" /> -->
+															<c:if test="${esterno.firmaAzienda==true}">
+															<i class="fas fa-check" id="firma1"></i>
+															
+															</c:if>
+															
+															<c:if test="${esterno.firmaAzienda==false}">
+															<i class="fas fa-times" id="firma"></i>
+															
+															</c:if></td>
 												</tr>
 											</c:if>
 
@@ -166,9 +189,18 @@
 												test="${type=='tutoraccademico' || type== 'pdcd' || type=='azienda' || type=='segreteria'}">
 												<tr>
 													<td class="icon"><i class="fas fa-file-signature"></i></td>
-													<td class="">Accettazione Tutor Aziendale</td>
-													<td class="text-center"><c:out
-															value="${esterno.firmaTutorAziendale}" /></td>
+													<td class="">Firma Tutor Aziendale</td>
+													<td class="text-center"><!--<c:out
+															value="${esterno.firmaTutorAziendale}" /> -->
+															<c:if test="${esterno.firmaTutorAziendale==true}">
+															<i class="fas fa-check" id="firma1"></i>
+															
+															</c:if>
+															
+															<c:if test="${esterno.firmaTutorAziendale==false}">
+															<i class="fas fa-times" id="firma"></i>
+															
+															</c:if></td>
 												</tr>
 											</c:if>
 
@@ -177,9 +209,18 @@
 												test="${type== 'tutoraziendale' || type== 'pdcd' || type=='azienda' || type=='segreteria'}">
 												<tr>
 													<td class="icon"><i class="fas fa-file-signature"></i></td>
-													<td class="">Accettazione Tutor Accademico</td>
-													<td class="text-center"><c:out
-															value="${esterno.firmaTutorAccademico}" /></td>
+													<td class="">Firma Tutor Accademico</td>
+													<td class="text-center"><!--<c:out
+															value="${esterno.firmaTutorAccademico}" /> -->
+															<c:if test="${esterno.firmaTutorAccademico==true}">
+															<i class="fas fa-check" id="firma1"></i>
+															
+															</c:if>
+															
+															<c:if test="${esterno.firmaTutorAccademico==false}">
+															<i class="fas fa-times" id="firma"></i>
+															
+															</c:if></td>
 												</tr>
 											</c:if>
 
@@ -204,7 +245,7 @@
 											</c:if>
 											<tr>
 												<td class="icon"><i class="fas fa-paperclip"></i></td>
-												<td><a href="#"><button id="progettoForm"
+												<td><a href="progettoFormativo.jsp"><button id="progettoForm"
 															type="button">Progetto formativo</button></a></td>
 												<td></td>
 											</tr>
@@ -296,8 +337,17 @@
 												<tr>
 													<td class="icon"><i class="fas fa-file-signature"></i></td>
 													<td class="">Firma Tutor Accademico</td>
-													<td class="text-center"><c:out
-															value="${interno.firmaTutorAccademico}" /></td>
+													<td class="text-center"><!--<c:out
+															value="${esterno.firmaTutorAccademico}" /> -->
+															<c:if test="${interno.firmaTutorAccademico==true}">
+															<i class="fas fa-check"></i>
+															
+															</c:if>
+															
+															<c:if test="${interno.firmaTutorAccademico==false}">
+															<i class="fas fa-times"></i>
+															
+															</c:if></td>
 												</tr>
 											</c:if>
 											<c:if
@@ -305,8 +355,17 @@
 												<tr>
 													<td class="icon"><i class="fas fa-file-signature"></i></td>
 													<td class="">Firma PdCD</td>
-													<td class="text-center"><c:out
-															value="${interno.firmaPdCD}" /></td>
+													<td class="text-center"><!--<c:out
+															value="${esterno.firmaPdCD}" /> -->
+															<c:if test="${interno.firmaPdCD==true}">
+															<i class="fas fa-check"></i>
+															
+															</c:if>
+															
+															<c:if test="${interno.firmaPdCD==false}">
+															<i class="fas fa-times"></i>
+															
+															</c:if></td>
 												</tr>
 											</c:if>
 											<c:if test="${type != 'segreteria' }">

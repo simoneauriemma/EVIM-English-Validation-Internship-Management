@@ -22,9 +22,9 @@
 
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
-				<p id="titolo" style="font-size: 30px; color: #595959;">Crea
+				<p id="titolo" style="font-size: 30px; color: #595959; text-align: center;">Crea
 					account Tutor Aziendale</p>
-					
+					<hr>
 					<c:if test="${utenteCreato == true}">
 						<div class="alert alert-success" role="alert">
 						  Account creato con successo

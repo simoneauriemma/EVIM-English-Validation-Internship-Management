@@ -27,7 +27,7 @@
 
 			<hr>
 			<c:if test="${elencoRiconoscimento.size() == 0 }">
-				<p>Non ci sono richieste di riconoscimento attività!</p>
+				<p style="text-align: center;">Non ci sono richieste di riconoscimento attività!</p>
 			</c:if>
 
 
