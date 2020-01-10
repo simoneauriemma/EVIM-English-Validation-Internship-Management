@@ -62,7 +62,7 @@ public class SystemAttributeTest {
     expected.put("request-number-max-upload", "2");
     expected.put("request-partially-completed", "1");
     expected.put("request-refused", "7");
-    expected.put("request-upload-path", "C:\\Users\\Kugga\\Documents\\EV_EnglishValidation\\uploads");
+    expected.put("request-upload-path", "C:\\Users\\Michele\\Desktop\\eclipse\\workspace\\EVIM-English-Validation-Internship-Management\\EVIM-English-Validation-Internship-Management");
     expected.put("request-working-admin", "3");
     expected.put("request-working-educational-advice-1", "4");
     expected.put("request-working-educational-advice-2", "5");
@@ -83,7 +83,7 @@ public class SystemAttributeTest {
     assertEquals("2", sa.getValueByKey("request-number-max-upload"));
     assertEquals("1", sa.getValueByKey("request-partially-completed"));
     assertEquals("7", sa.getValueByKey("request-refused"));
-    assertEquals("C:\\Users\\Kugga\\Documents\\EV_EnglishValidation\\uploads", sa.getValueByKey("request-upload-path"));
+    assertEquals("C:\\Users\\Michele\\Desktop\\eclipse\\workspace\\EVIM-English-Validation-Internship-Management\\EVIM-English-Validation-Internship-Management", sa.getValueByKey("request-upload-path"));
     assertEquals("3", sa.getValueByKey("request-working-admin"));
     assertEquals("4", sa.getValueByKey("request-working-educational-advice-1"));
     assertEquals("5", sa.getValueByKey("request-working-educational-advice-2"));

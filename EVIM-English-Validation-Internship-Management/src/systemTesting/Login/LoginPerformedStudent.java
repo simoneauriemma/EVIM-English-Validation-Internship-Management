@@ -35,7 +35,7 @@ public class LoginPerformedStudent {
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.id("email")).click();
     driver.findElement(By.id("email")).clear();
-    driver.findElement(By.id("email")).sendKeys("a.prova@studenti.unisa.it");
+    driver.findElement(By.id("email")).sendKeys("prova@studenti.unisa.it");
     driver.findElement(By.id("password")).click();
     driver.findElement(By.id("password")).clear();
     driver.findElement(By.id("password")).sendKeys("password");

@@ -25,11 +25,10 @@ import java.net.URL;
 public class SystemCreaProposta {
   private WebDriver driver;
   private Map<String, Object> vars;
-  JavascriptExecutor js;
+  private String baseUrl;
   @Before
   public void setUp() {
     driver = new ChromeDriver();
-    js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
   @After
@@ -45,11 +44,7 @@ public class SystemCreaProposta {
     driver.findElement(By.id("username")).sendKeys("microsoftofficial@tiscali.it");
     driver.findElement(By.id("password")).click();
     driver.findElement(By.id("password")).sendKeys("Xboxthebest");
-    driver.findElement(By.cssSelector(".btn")).click();
-    driver.findElement(By.cssSelector(".item:nth-child(5)")).click();
-    driver.findElement(By.cssSelector("#collapse-2 > li")).click();
-    driver.findElement(By.linkText("Crea proposta tirocinio esterno")).click();
-    driver.findElement(By.id("exampleFormControlTextarea1")).click();
+    driver.findElement(By.cssSelector("#collapse-2:nth-child(2)")).click();
     driver.findElement(By.id("tutoraziendale")).click();
     {
       WebElement dropdown = driver.findElement(By.id("tutoraziendale"));
@@ -65,5 +60,6 @@ public class SystemCreaProposta {
     driver.findElement(By.id("exampleFormControlTextarea4")).click();
     driver.findElement(By.id("exampleFormControlTextarea4")).sendKeys("si svolgerà due volte a settimana per 3 ore");
     driver.findElement(By.id("button")).click();
+   assertEquals("It should redirect to home page", "Home", driver.findElement(By.tagName("title")).getText());
   }
 }
