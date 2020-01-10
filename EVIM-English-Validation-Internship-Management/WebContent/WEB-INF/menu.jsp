@@ -41,7 +41,7 @@
 
 
 	<div id="side-menu" class="list-group" style="color: black">
-		<a class="item" class="active" href="."> <i class="fas fa-home"></i>
+		<a class="item" class="active" href=".">
 			Home
 		</a> <a class="item" style="background-color: #2C5278; color: white;">Interniship
 			Management</a>
@@ -125,10 +125,6 @@
 
 
 
-
-
-
-
 			<!-- INIZIO Gestione richiesta tirocinio -->
 			<a data-toggle="collapse" href="#collapse-0" class="item"
 				class="folder collapsed" aria-expanded="false">Gestione richiesta
@@ -146,17 +142,9 @@
 							class="fas fa-angle-right "></i> Lista richieste di
 							tirocinio </a></li>
 				
-				<c:if test="${type != 'segreteria' }">
-					<!-- da inserire il link -->
-					<li><a href="#"><i class="fas fa-angle-right "></i>
-							Visualizza progetto formativo </a></li>
-
-				</c:if>
 			</ul>
 
 			<!-- FINE Gestione richiesta tirocinio -->
-
-
 
 
 
