@@ -111,9 +111,9 @@ margin-right: 5px;
 													placeholder="Email" autocomplete="off">
 													<p id='resultRegexEmail'></p></td>
 												<td><div style="margin-left: 29px;">
-														Sesso : <input name="sesso" type="radio" id="radio1" value="m"
+														Sesso : <input name="sesso" type="radio" id="radiom" value="m"
 															checked> <label for="radio1">M</label> <input
-															name="sesso" type="radio" value="f" id="radio2"> <label
+															name="sesso" type="radio" value="f" id="radiof"> <label
 															for="radio2">F</label>
 
 													</div></td>
@@ -182,7 +182,7 @@ margin-right: 5px;
 
 													<div class="form-group">
 														<input type="text" class="form-control"
-													id="comune" name="comuneN"
+													id="comuneN" name="comuneN"
 													placeholder="Inserisci comune" autocomplete="off">
 															
 													</div>
@@ -209,7 +209,7 @@ margin-right: 5px;
 												<td>
 													<div class="form-group">
 														<input type="text" class="form-control"
-													id="comune" name="comuneR"
+													id="comuneR" name="comuneR"
 													placeholder="Inserisci comune" autocomplete="off">
 													</div>
 												</td>
@@ -234,7 +234,7 @@ margin-right: 5px;
 
 												<td><p style="margin-right: 50px; margin-left: 30px;">Indirizzo
 													</p> <input type="text" class="form-control" id="indirizzo"
-													name="indirizzo" placeholder="Via, n° civico"
+													name="indirizzo" placeholder="Via n°. civico"
 													autocomplete="off"><p id="resultRegexIndirizzo"></p></td>
 												<td><p style="margin-right: 50px; margin-left: 30px;">Numero
 														di telefono</p> <input type="tel" class="form-control"
@@ -300,7 +300,7 @@ margin-right: 5px;
 			
 			var matricola= $('#matricola');
 			var resultRegexMatricola = $('#resultRegexMatricola');
-			var regex_matricola = new RegExp('^[0-9]{10,10}');
+			var regex_matricola = new RegExp('[0-9]{10,10}');
 			
 			//telefono
 			var telefono =$('#telefono');
