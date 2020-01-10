@@ -43,7 +43,7 @@
 	<div id="side-menu" class="list-group" style="color: black">
 		<a class="item" class="active" href=".">
 			Home
-		</a> <a class="item" style="background-color: #2C5278; color: white;">Interniship
+		</a> <a class="item" style="background-color: #2C5278; color: white;">Internship
 			Management</a>
 
 		<!-- nel caso in cui è l'utente ospite -->
