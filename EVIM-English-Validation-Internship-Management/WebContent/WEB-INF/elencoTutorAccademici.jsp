@@ -56,9 +56,6 @@
 								aria-labelledby="heading<%=n%>" data-parent="#accordion">
 								<div class="card-body">
 									<div class="text-left">
-										<h4>
-											<c:out value="${tutor.nome}" />
-										</h4>
 										<h6>
 											ID Tutor accademico:
 											<c:out value="${tutor.idTutorAccademico}" />
