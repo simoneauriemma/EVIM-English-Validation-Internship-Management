@@ -226,32 +226,73 @@ public class TirocinioEsternoDAO {
 	public static PDFProgettoFormativo getProgettoFormativoEsterno(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,TutorAccademico.Nome as NomeTutor,TutorAccademico.Cognome as CognomeTutor,TutorAccademico.email as EmailTutor,TutorAziendale.nome as NomeTutorAz,TutorAziendale.cognome as CognomeAz,TutorAziendale.email as EmailTutorAz,Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita,Proposta.Competenze as Competenze,TirocinioEsterno.OreTotali as Oretotal,TirocinioEsterno.CFU as CFU \n"
-							+ "from TirocinioEsterno join evim.USER on TirocinioEsterno.EMAIL=USER.EMAIL\n"
-							+ "join Proposta on TirocinioEsterno.ID_Proposta=Proposta.ID_Proposta\n"
-							+ "join TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioEsterno.ID_tutorAccademico\n"
-							+ "join TutorAziendale on TutorAziendale.ID_TutorAziendale=TirocinioEsterno.ID_TirocinioEsterno\n"
-							+ "where ID_TirocinioEsterno=?;");
+					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL \n" + 
+					"as EmailStudente,USER.tipoCorso as CorsoStudente,USER.Telefono as TelefonoStudente,USER.Data_Nascita as DataNascitaStudente,\n" + 
+					"USER.Luogo_Nascita as LuogoNascitaStudente,USER.Residente as ResidenteStudente,TutorAccademico.Nome as NomeTutor,\n" + 
+					"TutorAccademico.cognome as CognomeTut,TutorAziendale.nome as NomeTutorAz,\n" + 
+					"TutorAziendale.cognome as CognomeAz,TutorAziendale.email as EmailTutorAz,TutorAziendale.Telefono as TelefonoTutAz,\n" + 
+					"Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita,Proposta.Competenze as Competenze,\n" + 
+					"TirocinioEsterno.OreTotali as Oretotal,TirocinioEsterno.CFU as CFU,Azienda.nome as NomeAzienda, Azienda.Indirizzo as IndirizzoAzienda,\n" + 
+					"Azienda.CF as CodiceFiscaleAzienda,referente_aziendale.nome as NomeReferente,referente_aziendale.cognome as CognomeReferente,\n" + 
+					"referente_aziendale.ruolo as RuoloReferente,referente_aziendale.luogo_nascita as LuogoNascitaReferente,\n" + 
+					"referente_aziendale.data_nascita as DataNascitaReferente,Azienda.codice_ateco as CodiceAtecoAzienda,\n" + 
+					"Azienda.numero_dipendenti as NumeroDipendentiAzienda,Azienda.email as EmailAzienda\n" + 
+					"from TirocinioEsterno join evim.USER on TirocinioEsterno.EMAIL=USER.EMAIL\n" + 
+					"join Proposta on TirocinioEsterno.ID_Proposta=Proposta.ID_Proposta\n" + 
+					"join TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioEsterno.ID_tutorAccademico\n" + 
+					"join TutorAziendale on TutorAziendale.ID_TutorAziendale=TirocinioEsterno.ID_TirocinioEsterno\n" + 
+					"join Azienda on Azienda.ID_Azienda=TutorAziendale.ID_Azienda\n" + 
+					"join referente_aziendale on referente_aziendale.CF=Azienda.ID_Referente\n" + 
+					"where ID_TirocinioEsterno=?;");
+			
 			ps.setInt(1, id);
 			PDFProgettoFormativo pdf = null;
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				pdf = new PDFProgettoFormativo();
+				//dati studente
 				pdf.setNomeStudente(rs.getString(1));
 				pdf.setCognomeStudente(rs.getString(2));
 				pdf.setEmailStudente(rs.getString(3));
-				pdf.setNomeTutorAccademico(rs.getString(4));
-				pdf.setCognomeTutorAccademico(rs.getString(5));
-				pdf.setEmailTutorAccademico(rs.getString(6));
-				pdf.setNomeTutorAziendale(rs.getString(7));
-				pdf.setCognomeTutorAziendale(rs.getNString(8));
-				pdf.setEmailTutorAziendale(rs.getString(9));
-				pdf.setObiettivi(rs.getString(10));
-				pdf.setAttivita(rs.getString(11));
-				pdf.setModalita(rs.getString(12));
-				pdf.setCompetenze(rs.getString(13));
-				pdf.setTotOre(rs.getInt(14));
-				pdf.setTotCFU(rs.getInt(15));
+				pdf.setCorsoLaurea(rs.getString(4));
+				pdf.setTelefonoStudente(rs.getString(5));
+				pdf.setDataNascitaStudente(rs.getString(6));
+				pdf.setLuogoNascitaStudente(rs.getString(7));
+				pdf.setResidenteStudente(rs.getString(8));
+				
+				//dati Tutor Accademico
+				pdf.setNomeTutorAccademico(rs.getString(9));
+				pdf.setCognomeTutorAccademico(rs.getString(10));
+				
+				//dati Tutor Aziendale
+				pdf.setNomeTutorAziendale(rs.getString(11));
+				pdf.setCognomeTutorAziendale(rs.getNString(12));
+				pdf.setEmailTutorAziendale(rs.getString(13));
+				pdf.setTelefonoAziendale(rs.getString(14));
+				
+				//dati progetto formativo
+				pdf.setObiettivi(rs.getString(15));
+				pdf.setAttivita(rs.getString(16));
+				pdf.setModalita(rs.getString(17));
+				pdf.setCompetenze(rs.getString(18));
+				
+				pdf.setTotOre(rs.getInt(19));
+				
+				pdf.setTotCFU(rs.getInt(20));
+				
+				//dati azienda e referente aziendale
+				pdf.setNomeDenominazione(rs.getString(21));
+				pdf.setSedeLegale(rs.getString(22));
+				pdf.setCodiceFiscale(rs.getString(23));
+				pdf.setNomeReferenteAziendale(rs.getString(24));
+				pdf.setCognomeReferenteAziendale(rs.getString(25));
+				pdf.setRuoloReferenteAziendale(rs.getString(26));
+				pdf.setNatoReferenteAziendale(rs.getString(27));
+				pdf.setDataReferenteAziendale(rs.getString(28));
+				pdf.setCodiceATECO(rs.getString(29));
+				pdf.setNumeroDipendenti(rs.getString(30));
+				pdf.setIndirizzoEmail(rs.getString(31));
+				
 			}
 
 			return pdf;
@@ -408,7 +449,7 @@ public class TirocinioEsternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro(String email) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			
-			PreparedStatement ps = con.prepareStatement( // questa query è ok
+			PreparedStatement ps = con.prepareStatement( // questa query ï¿½ ok
 					"select  tutoraziendale.Nome,tutoraziendale.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, " +
 					"TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "+
 					 "TirocinioEsterno.CFU from tirocinioesterno \n" +

@@ -141,33 +141,44 @@ public class TirocinioInternoDAO {
 	public static PDFProgettoFormativo getProgettoFormativoInterno(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,TutorAccademico.Nome as NomeTutor,TutorAccademico.Cognome as CognomeTutor,TutorAccademico.email as EmailTutor, Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita, USER.tipoCorso as corsoLaurea, TirocinioInterno.NumeroCFU as NumeroCFU\r\n"
-							+ "from TirocinioInterno join evim.USER on TirocinioInterno.EMAIL=USER.EMAIL\r\n"
-							+ "join Proposta on TirocinioInterno.ID_Proposta=Proposta.ID_Proposta\r\n"
-							+ "join TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioInterno.ID_tutorAccademico\r\n"
-							+ "where ID_TirocinioInterno=?");
+					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,USER.tipoCorso as CorsoStudente,USER.Telefono as TelefonoStudente,USER.Data_Nascita as DataNascitaStudente,USER.Luogo_Nascita as LuogoNascitaStudente,USER.Residente as ResidenteStudente,TutorAccademico.Nome as NomeTutor,TutorAccademico.Cognome as CognomeTutor, Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita,Proposta.Competenze as Competenze ,TirocinioInterno.NumeroCFU as NumeroCFU,TirocinioInterno.OreTotali as OreTotali\n" + 
+					"from TirocinioInterno join evim.USER on TirocinioInterno.EMAIL=USER.EMAIL \n" + 
+					"join Proposta on TirocinioInterno.ID_Proposta=Proposta.ID_Proposta\n" + 
+					"join TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioInterno.ID_tutorAccademico\n" + 
+					"where ID_TirocinioInterno=?");
 			ps.setInt(1, id);
 			PDFProgettoFormativo pdf = null;
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				System.out.println("okay");
 				pdf = new PDFProgettoFormativo();
+				
+				//dati studenti
 				pdf.setNomeStudente(rs.getString(1));
-				System.out.println("rs.getString(1)-->" + rs.getString(1));
 				pdf.setCognomeStudente(rs.getString(2));
 				pdf.setEmailStudente(rs.getString(3));
-				pdf.setNomeTutorAccademico(rs.getString(4));
-				pdf.setCognomeTutorAccademico(rs.getString(5));
-				pdf.setEmailTutorAccademico(rs.getString(6));
-				pdf.setObiettivi(rs.getString(7));
-				pdf.setAttivita(rs.getString(8));
-				pdf.setModalita(rs.getString(9));
-				pdf.setCorsoLaurea(rs.getString(10));
-				pdf.setTotCFU(rs.getInt(11));
+				pdf.setCorsoLaurea(rs.getString(4));
+				pdf.setTelefonoStudente(rs.getString(5));
+				pdf.setDataNascitaStudente(rs.getString(6));
+				pdf.setLuogoNascitaStudente(rs.getString(7));
+				pdf.setResidenteStudente(rs.getString(8));
+				
+				//dati Tutor Accademico
+				pdf.setNomeTutorAccademico(rs.getString(9));
+				pdf.setCognomeTutorAccademico(rs.getString(10));
+				
+				//dati del progetto formativo
+				pdf.setObiettivi(rs.getString(11));
+				pdf.setAttivita(rs.getString(12));
+				pdf.setModalita(rs.getString(13));
+				pdf.setCompetenze(rs.getString(14));
+				
+				pdf.setTotCFU(rs.getInt(15));
+				
+				pdf.setTotOre(rs.getInt(16));
 			}
-			System.out.println("Nome-->" + pdf.getNomeStudente());
-			System.out.println("Cognome-->" + pdf.getCognomeStudente());
+			
 			return pdf;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
