@@ -77,14 +77,14 @@ public class QuestionarioS extends BaseServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
 				rd.forward(request, response);
 			} else {
-				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/questionarioS");
+				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/questionarioS.jsp");
 				rd.forward(request, response);
 			}
 
 		}
 		
 		else {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/questionarioS");
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/questionarioS.jsp");
 			rd.forward(request, response);
 		}
 	}
