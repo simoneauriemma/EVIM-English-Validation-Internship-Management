@@ -19,7 +19,7 @@ class RelazioneDAOTest {
 	
 	@Test
 	void test1 (){
-	boolean inserire=RelazioneDAO.insertRelezione(1, "edoardo93av@studenti.unisa.it", "la descrrizione dipende da diverse attivita svolte all'interno del tirocinio", "approvato");
+	boolean inserire=RelazioneDAO.insertRelezione(1, "edoardo93@studenti.unisa.it", "la descrrizione dipende da diverse attivita svolte all'interno del tirocinio", "approvato");
 	assertTrue(inserire);
 }
 	/*@Test

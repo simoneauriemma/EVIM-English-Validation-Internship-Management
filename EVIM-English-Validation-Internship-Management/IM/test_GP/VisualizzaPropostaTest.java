@@ -65,7 +65,7 @@ public class VisualizzaPropostaTest extends Mockito{
 	@Test
 	public void tc_gp1_3() throws ServletException, IOException  {
 		request.addParameter("email","microsoftofficial@tiscali.it");
-		request.addParameter("password", "Xboxthebest"); 
+		request.addParameter("password", "microsoft1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
@@ -90,8 +90,8 @@ public class VisualizzaPropostaTest extends Mockito{
 	}
 	@Test
 	public void tc_gp1_5() throws ServletException, IOException  {
-		request.addParameter("email","edoardo93av@studenti.unisa.it");
-		request.addParameter("password", "edoardo93@"); 
+		request.addParameter("email","edoardo93@studenti.unisa.it");
+		request.addParameter("password", "edoardo93"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
