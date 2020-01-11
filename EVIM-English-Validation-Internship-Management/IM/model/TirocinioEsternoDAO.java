@@ -406,10 +406,11 @@ public class TirocinioEsternoDAO {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			
 			PreparedStatement ps = con.prepareStatement( // questa query è ok
-					"select TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, " +
+					"select  tutoraziendale.Nome,tutoraziendale.Cognome  TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, " +
 					"TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "+
 					 "TirocinioEsterno.CFU from tirocinioesterno\n" +
-					"join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n" + 
+					"join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n" + "join tutoraziendale"
+							+ "on tutoraziendale.ID_TutorAziendale= TirocinioEsterno.ID_TutorAziendale"+
 					 
 					"where tirocinioesterno.EMAIL=? and tirocinioesterno.status='in svolgimento' and registro.tipo='esterno';");
 			ps.setString(1, email);
@@ -430,6 +431,8 @@ public class TirocinioEsternoDAO {
 				a.setOreTotali(oretotali);
 				a.setID_Registro(rs.getInt("ID_Registro"));
 				a.setOreRaggiunte(oreraggiunte);
+				a.setNome_responsabile(rs.getString("tutoraziendale.Nome"));
+				a.setCognome_responsabile(rs.getString("tutoraziendale.Cognome"));
 			
 				if(oreraggiunte>=oretotali) {
 				String query="select relazione.ID_Relazione from relazione join TirocinioEsterno on TirocinioEsterno.ID_TutorAziendale= relazione.ID_TutorAziendale "
