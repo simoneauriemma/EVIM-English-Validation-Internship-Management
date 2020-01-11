@@ -168,8 +168,16 @@ public class ListaTirocini extends BaseServlet {
 	// classe interna per la restituzione dell'oggetto per una specifica query
 	public static class RegistroQuery {
 		private int ID_Tirocinio, NumeroCFU, OreTotali, ID_Registro, ID_Questionario, ID_Relazione,OreRaggiunte;
-		private String nome_responsabile,cognome_responsabile;
+		private String nome_responsabile,cognome_responsabile,registro_status;
 		
+		public String getRegistro_status() {
+			return registro_status;
+		}
+
+		public void setRegistro_status(String registro_status) {
+			this.registro_status = registro_status;
+		}
+
 		public String getNome_responsabile() {
 			return nome_responsabile;
 		}
