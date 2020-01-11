@@ -36,7 +36,7 @@ public class CreaPropostaTest extends Mockito{
 	@Test
 	public void tc_gp1_1() throws ServletException, IOException  {
 		request.addParameter("email","microsoftofficial@tiscali.it");
-		request.addParameter("password", "Xboxthebest"); 
+		request.addParameter("password", "microsoft1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
@@ -55,7 +55,7 @@ public class CreaPropostaTest extends Mockito{
 	@Test
 	public void tc_gp1_2() throws ServletException, IOException  {
 		request.addParameter("email","microsoftofficial@tiscali.it");
-		request.addParameter("password", "Xboxthebest"); 
+		request.addParameter("password", "microsoft1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
@@ -74,7 +74,7 @@ public class CreaPropostaTest extends Mockito{
 	@Test
 	public void tc_gp1_3() throws ServletException, IOException  {
 		request.addParameter("email","microsoftofficial@tiscali.it");
-		request.addParameter("password", "Xboxthebest"); 
+		request.addParameter("password", "microsoft1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
@@ -92,7 +92,7 @@ public class CreaPropostaTest extends Mockito{
 	@Test
 	public void tc_gp1_4() throws ServletException, IOException  {
 		request.addParameter("email","microsoftofficial@tiscali.it");
-		request.addParameter("password", "Xboxthebest"); 
+		request.addParameter("password", "microsoft1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
@@ -110,15 +110,15 @@ public class CreaPropostaTest extends Mockito{
 	@Test
 	public void tc_gp1_5() throws ServletException, IOException  {
 		request.addParameter("email","microsoftofficial@tiscali.it");
-		request.addParameter("password", "Xboxthebest"); 
+		request.addParameter("password", "microsoft1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("azienda", type);
 		request.addParameter("tutorAziendale","1");
-		request.addParameter("competenze","ifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibs");
-		request.addParameter("attivita", "ifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibsifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibs");
+		request.addParameter("competenze","ifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibs");
+		request.addParameter("attivita", "ifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibsifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibs");
 		request.addParameter("obiettivo", "");
 		request.addParameter("modalita", "");
 		servletProposta.doPost(request, response);
@@ -128,14 +128,14 @@ public class CreaPropostaTest extends Mockito{
 	@Test
 	public void tc_gp1_6() throws ServletException, IOException  {
 		request.addParameter("email","microsoftofficial@tiscali.it");
-		request.addParameter("password", "Xboxthebest"); 
+		request.addParameter("password", "microsoft1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("azienda", type);
 		request.addParameter("tutorAziendale","1");
-		request.addParameter("competenze","ifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibs");
+		request.addParameter("competenze","ifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibs");
 		request.addParameter("attivita", "");
 		request.addParameter("obiettivo", "");
 		request.addParameter("modalita", "");
@@ -146,14 +146,14 @@ public class CreaPropostaTest extends Mockito{
 	@Test
 	public void tc_gp1_7() throws ServletException, IOException  {
 		request.addParameter("email","microsoftofficial@tiscali.it");
-		request.addParameter("password", "Xboxthebest"); 
+		request.addParameter("password", "microsoft1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("azienda", type);
 		request.addParameter("tutorAziendale","1");
-		request.addParameter("competenze","ifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibs");
+		request.addParameter("competenze","ifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibs");
 		request.addParameter("attivita", "lsgjisgvuosjbiosrnpi");
 		request.addParameter("obiettivo", "lsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpilsgjisgvuosjbiosrnpi");
 		request.addParameter("modalita", "");
@@ -164,14 +164,14 @@ public class CreaPropostaTest extends Mockito{
 	@Test
 	public void tc_gp1_8() throws ServletException, IOException  {
 		request.addParameter("email","microsoftofficial@tiscali.it");
-		request.addParameter("password", "Xboxthebest"); 
+		request.addParameter("password", "microsoft1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("azienda", type);
 		request.addParameter("tutorAziendale","1");
-		request.addParameter("competenze","ifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibs");
+		request.addParameter("competenze","ifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibs");
 		request.addParameter("attivita", "lsgjisgvuosjbiosrnpi");
 		request.addParameter("obiettivo", "");
 		request.addParameter("modalita", "");
@@ -182,17 +182,17 @@ public class CreaPropostaTest extends Mockito{
 	@Test
 	public void tc_gp1_9() throws ServletException, IOException  {
 		request.addParameter("email","microsoftofficial@tiscali.it");
-		request.addParameter("password", "Xboxthebest"); 
+		request.addParameter("password", "microsoft1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("azienda", type);
 		request.addParameter("tutorAziendale","1");
-		request.addParameter("competenze","ifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibs");
+		request.addParameter("competenze","ifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibs");
 		request.addParameter("attivita", "lsgjisgvuosjbiosrnpi");
-		request.addParameter("obiettivo", "òvnbkdnbldsbnlsbndsp");
-		request.addParameter("modalita", "òvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndspòvnbkdnbldsbnlsbndsp");
+		request.addParameter("obiettivo", "ï¿½vnbkdnbldsbnlsbndsp");
+		request.addParameter("modalita", "ï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndspï¿½vnbkdnbldsbnlsbndsp");
 		servletProposta.doPost(request, response);
 		boolean esito=(boolean) request.getAttribute("risultatoInserimentoProposta");
 		assertFalse(esito);
@@ -200,16 +200,16 @@ public class CreaPropostaTest extends Mockito{
 	@Test
 	public void tc_gp1_10() throws ServletException, IOException  {
 		request.addParameter("email","microsoftofficial@tiscali.it");
-		request.addParameter("password", "Xboxthebest"); 
+		request.addParameter("password", "microsoft1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("azienda", type);
 		request.addParameter("tutorAziendale","1");
-		request.addParameter("competenze","ifjbpsnbpsjviksnvsaènvpsfvbsùònsifbsnibs");
+		request.addParameter("competenze","ifjbpsnbpsjviksnvsaï¿½nvpsfvbsï¿½ï¿½nsifbsnibs");
 		request.addParameter("attivita", "lsgjisgvuosjbiosrnpi");
-		request.addParameter("obiettivo", "òvnbkdnbldsbnlsbndsp");
+		request.addParameter("obiettivo", "ï¿½vnbkdnbldsbnlsbndsp");
 		request.addParameter("modalita", "");
 		servletProposta.doPost(request, response);
 		boolean esito=(boolean) request.getAttribute("risultatoInserimentoProposta");

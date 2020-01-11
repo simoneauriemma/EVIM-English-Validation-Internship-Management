@@ -79,7 +79,7 @@ public class VisualizzaCreaPropostaTest extends Mockito{
 	@Test
 	public void tc_gp4_4() throws ServletException, IOException  {
 		request.addParameter("email","microsoftofficial@tiscali.it");
-		request.addParameter("password", "Xboxthebest"); 
+		request.addParameter("password", "microsoft1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  

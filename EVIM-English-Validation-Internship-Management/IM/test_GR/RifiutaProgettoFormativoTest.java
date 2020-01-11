@@ -45,8 +45,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
 	//il PdCD intende rifiutare un PF
       @Test
 	  public void tc_gr_7_1() throws ServletException, IOException  {
-    	   request.addParameter("email","alberto@unisa.it");
-    	   request.addParameter("password", "architettura"); 
+    	   request.addParameter("email","mariogiorgio@unisa.it");
+    	   request.addParameter("password", "umpalumpa2"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  

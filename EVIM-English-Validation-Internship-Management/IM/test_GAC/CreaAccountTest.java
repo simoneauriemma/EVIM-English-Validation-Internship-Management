@@ -46,7 +46,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
       @Test
 	  public void tc_gac_1_1() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
-    	   request.addParameter("password", "Xboxthebest"); 
+    	   request.addParameter("password", "microsoft1"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
@@ -67,7 +67,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
       @Test
 	  public void tc_gac_1_2() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
-    	   request.addParameter("password", "Xboxthebest"); 
+    	   request.addParameter("password", "microsoft1"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
@@ -88,7 +88,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
       @Test
 	  public void tc_gac_1_3() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
-    	   request.addParameter("password", "Xboxthebest"); 
+    	   request.addParameter("password", "microsoft1"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
@@ -109,7 +109,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
       @Test
 	  public void tc_gac_1_4() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
-    	   request.addParameter("password", "Xboxthebest"); 
+    	   request.addParameter("password", "microsoft1"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
@@ -130,7 +130,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
       @Test
 	  public void tc_gac_1_5() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
-    	   request.addParameter("password", "Xboxthebest"); 
+    	   request.addParameter("password", "microsoft1"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
@@ -151,7 +151,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
       @Test
 	  public void tc_gac_1_6() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
-    	   request.addParameter("password", "Xboxthebest"); 
+    	   request.addParameter("password", "microsoft1"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
@@ -172,7 +172,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
       @Test
 	  public void tc_gac_1_7() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
-    	   request.addParameter("password", "Xboxthebest"); 
+    	   request.addParameter("password", "microsoft1"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
@@ -194,7 +194,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
       @Test
 	  public void tc_gac_1_8() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
-    	   request.addParameter("password", "Xboxthebest"); 
+    	   request.addParameter("password", "microsoft1"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
@@ -216,7 +216,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
       @Test
 	  public void tc_gac_1_9() throws ServletException, IOException  {
     	   request.addParameter("email","microsoftofficial@tiscali.it");
-    	   request.addParameter("password", "Xboxthebest"); 
+    	   request.addParameter("password", "microsoft1"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
