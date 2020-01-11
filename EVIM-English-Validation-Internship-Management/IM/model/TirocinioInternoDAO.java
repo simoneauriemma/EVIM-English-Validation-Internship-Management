@@ -334,7 +334,7 @@ public class TirocinioInternoDAO {
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioInterno"));
-				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
+				//a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
 				a.setStatus(rs.getString("status"));
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
@@ -363,7 +363,7 @@ public class TirocinioInternoDAO {
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioEsterno"));
-				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
+				//a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
 				a.setStatus(rs.getString("status"));
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));

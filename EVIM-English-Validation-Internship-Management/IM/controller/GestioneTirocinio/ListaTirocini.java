@@ -58,6 +58,7 @@ public class ListaTirocini extends BaseServlet {
 				
 				System.out.println(interno);
 				System.out.println(esterno);
+				System.out.println(esterno.get(0).getNumeroCFU());
 
 				
 					
