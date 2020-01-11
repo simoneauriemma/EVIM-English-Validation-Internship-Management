@@ -22,8 +22,7 @@
 		</div>
 		<div class="col-lg-9" id="col-9">
 
-			<p id="titolo" class="text-center">Lista
-				tirocini</p>
+			<p id="titolo" class="text-center">Lista tirocini</p>
 			<hr>
 
 			<!-- se entrambi gli array di tirocini sono vuoti esce che non c'è nulla -->
@@ -57,50 +56,95 @@
 							<tbody>
 								<tr>
 									<th scope="row"><c:out value="${esterno.ID_Tirocinio}" /></th>
-									<td>#</td>
+									<td id="responsabile"><c:out
+											value="${esterno.nome_responsabile}" /> <c:out
+											value="${esterno.cognome_responsabile}" /></td>
 									<td><c:out value="${esterno.status}" /></td>
 									<td><c:out value="${esterno.NumeroCFU}" /></td>
 									<td><c:out value="${esterno.OreTotali}" /></td>
 									<td>Esterno</td>
-									
+
 									<!-- REGISTRO -->
-									<td class="form-inline"><a href="VisualizzaRegistroTirocinio"> <i id="registro"
+									<td class="form-inline"><a
+										href="VisualizzaRegistroTirocinio"> <i id="registro"
 											class="fas fa-book"></i>
-									</a> <a href="#"> <i id="accettare" class="fas fa-check-square"></i>
-									</a>
-									</td>
+									</a> <a href="VisualizzaRegistroTirocinio"> <i id="accettare"
+											class="fas fa-check-square"></i>
+									</a></td>
 									<!-- ...... -->
-									
-									
+
+
 									<!-- OPERAZIONI -->
-									<td>
-										<div class="form-group">
-											<select class="form-control" id="select"
-												onchange="getTutors(this.value)" name="sel1">
-												<option selected>--select an option--</option>
-												
-												<c:if test="${type=='tutoraziendale' }">
-													<option value="#">Visualizza progetto</option>
-													<option value="#">Compila
-														relazione</option>
-													<option value="#">Visualizza
-														relazione</option>
-													<option value="questionarioT.jsp">Compila
-														questionario</option>
-													<option value="#">Approva registro</option>
-												</c:if>
-												
-												
-												<c:if test="${type=='tutoraccademico' || type=='pdcd'}">
-													<option value="#">Visualizza progetto</option>
-													<option value="#">Compila
-														relazione</option>
-												</c:if>
-											</select>
-										</div>
-									</td>
+									<td><c:if test="${type=='tutoraziendale' }">
+
+											<div class="panel-group">
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														<h6 class="panel-title">
+															<a data-toggle="collapse" href="#collapse1">Scegli
+																un'operazione </a>
+														</h6>
+													</div>
+													<div id="collapse1" class="panel-collapse collapse">
+														<ul class="list-group">
+															<li class="list-group-item"><a class="list-item"
+																href="CreaRelazione">Compila relazione</a></li>
+															<li class="list-group-item"><a class="list-item"
+																href="VisualizzaRelazione">Visualizza relazione</a></li>
+															<li class="list-group-item"><a class="list-item"
+																href="QuestionarioT">Compila questionario</a></li>
+														</ul>
+
+													</div>
+												</div>
+											</div>
+
+										</c:if> <c:if test="${type=='tutoraccademico'}">
+
+											<div class="panel-group">
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														<h6 class="panel-title">
+															<a data-toggle="collapse" href="#collapse1">Scegli
+																un'operazione </a>
+														</h6>
+													</div>
+													<div id="collapse1" class="panel-collapse collapse">
+														<ul class="list-group">
+															<li class="list-group-item"><a class="list-item"
+																href="CreaRelazione">Compila relazione</a></li>
+
+														</ul>
+
+													</div>
+												</div>
+											</div>
+
+
+
+										</c:if> <c:if test="${type=='pdcd'}">
+
+											<div class="panel-group">
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														<h6 class="panel-title">
+															<a data-toggle="collapse" href="#collapse1">Scegli
+																un'operazione </a>
+														</h6>
+													</div>
+													<div id="collapse1" class="panel-collapse collapse">
+														<ul class="list-group">
+															<li class="list-group-item"><a class="list-item"
+																href="">Approva registro</a></li>
+
+														</ul>
+
+													</div>
+												</div>
+											</div>
+										</c:if></td>
 									<!-- ...... -->
-									
+
 								</tr>
 							</tbody>
 						</table>
@@ -133,7 +177,9 @@
 						<tbody>
 							<tr>
 								<th scope="row"><c:out value="${interno.ID_Tirocinio}" /></th>
-								<td>#</td>
+								<td id="responsabile"><c:out
+										value="${interno.nome_responsabile}" /> <c:out
+										value="${interno.cognome_responsabile}" /></td>
 								<td><c:out value="${interno.status}" /></td>
 								<td><c:out value="${interno.NumeroCFU}" /></td>
 								<td><c:out value="${interno.OreTotali}" /></td>
@@ -142,11 +188,13 @@
 								<!-- REGISTRO -->
 								<td class="form-inline text-center">
 									<form action="VisualizzaRegistroTirocinio">
-									<input type="hidden" name="email" value="<c:out value="${studente.email}" />">
-									<a href="VisualizzaRegistroTirocinio">
-										<i id="registro" class="fas fa-book"></i>
-									</a></form>
-								
+										<input type="hidden" name="email"
+											value="<c:out value="${studente.email}" />"> <a
+											href="VisualizzaRegistroTirocinio"> <i id="registro"
+											class="fas fa-book"></i>
+										</a>
+									</form>
+
 									<form id="accettare">
 										<i class="fas fa-check-square"></i>
 									</form>
