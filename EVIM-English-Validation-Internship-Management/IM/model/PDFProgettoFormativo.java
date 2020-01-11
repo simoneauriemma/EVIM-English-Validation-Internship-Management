@@ -41,12 +41,7 @@ public String getNomeStudente() {
 	public void setCognomeTutorAccademico(String cognomeTutorAccademico) {
 		this.cognomeTutorAccademico = cognomeTutorAccademico;
 	}
-	public String getEmailTutorAccademico() {
-		return emailTutorAccademico;
-	}
-	public void setEmailTutorAccademico(String emailTutorAccademico) {
-		this.emailTutorAccademico = emailTutorAccademico;
-	}
+	
 	public String getObiettivi() {
 		return obiettivi;
 	}
@@ -126,21 +121,6 @@ public String getNomeStudente() {
 		this.totOre = totOre;
 	}
 
-
-
-	public String getData() {
-		return data;
-	}
-
-
-
-	public void setData(String data) {
-		this.data = data;
-	}
-	
-	
-
-
 	public String getCorsoLaurea() {
 		return corsoLaurea;
 	}
@@ -151,24 +131,247 @@ public String getNomeStudente() {
 		this.corsoLaurea = corsoLaurea;
 	}
 
+	public String getTelefonoStudente() {
+		return telefonoStudente;
+	}
 
 
 
+	public void setTelefonoStudente(String telefonoStudente) {
+		this.telefonoStudente = telefonoStudente;
+	}
+
+
+
+	public String getNomeDenominazione() {
+		return nomeDenominazione;
+	}
+
+
+
+	public void setNomeDenominazione(String nomeDenominazione) {
+		this.nomeDenominazione = nomeDenominazione;
+	}
+
+
+
+	public String getSedeLegale() {
+		return sedeLegale;
+	}
+
+
+
+	public void setSedeLegale(String sedeLegale) {
+		this.sedeLegale = sedeLegale;
+	}
+
+
+
+	public String getIndirizzoEmail() {
+		return indirizzoEmail;
+	}
+
+
+
+	public void setIndirizzoEmail(String indirizzoEmail) {
+		this.indirizzoEmail = indirizzoEmail;
+	}
+
+
+
+	public String getCodiceFiscale() {
+		return codiceFiscale;
+	}
+
+
+
+	public void setCodiceFiscale(String codiceFiscale) {
+		this.codiceFiscale = codiceFiscale;
+	}
+
+
+
+	public String getNomeReferenteAziendale() {
+		return nomeReferenteAziendale;
+	}
+
+
+
+	public void setNomeReferenteAziendale(String nomeReferenteAziendale) {
+		this.nomeReferenteAziendale = nomeReferenteAziendale;
+	}
+
+
+
+	public String getCognomeReferenteAziendale() {
+		return cognomeReferenteAziendale;
+	}
+
+
+
+	public void setCognomeReferenteAziendale(String cognomeReferenteAziendale) {
+		this.cognomeReferenteAziendale = cognomeReferenteAziendale;
+	}
+
+
+
+	public String getRuoloReferenteAziendale() {
+		return ruoloReferenteAziendale;
+	}
+
+
+
+	public void setRuoloReferenteAziendale(String ruoloReferenteAziendale) {
+		this.ruoloReferenteAziendale = ruoloReferenteAziendale;
+	}
+
+
+
+	public String getNatoReferenteAziendale() {
+		return natoReferenteAziendale;
+	}
+
+
+
+	public void setNatoReferenteAziendale(String natoReferenteAziendale) {
+		this.natoReferenteAziendale = natoReferenteAziendale;
+	}
+
+
+
+	public String getDataReferenteAziendale() {
+		return dataReferenteAziendale;
+	}
+
+
+
+	public void setDataReferenteAziendale(String dataReferenteAziendale) {
+		this.dataReferenteAziendale = dataReferenteAziendale;
+	}
+
+
+
+	public String getCodiceATECO() {
+		return codiceATECO;
+	}
+
+
+
+	public void setCodiceATECO(String codiceATECO) {
+		this.codiceATECO = codiceATECO;
+	}
+
+
+
+
+
+	public String getNumeroDipendenti() {
+		return numeroDipendenti;
+	}
+
+
+
+	public void setNumeroDipendenti(String numeroDipendenti) {
+		this.numeroDipendenti = numeroDipendenti;
+	}
+
+
+
+	public String getTelefonoAziendale() {
+		return telefonoAziendale;
+	}
+
+
+
+	public void setTelefonoAziendale(String telefonoAziendale) {
+		this.telefonoAziendale = telefonoAziendale;
+	}
+	
+	public String getDataNascitaStudente() {
+		return dataNascitaStudente;
+	}
+
+
+
+	public void setDataNascitaStudente(String dataNascitaStudente) {
+		this.dataNascitaStudente = dataNascitaStudente;
+	}
+
+
+
+	public String getLuogoNascitaStudente() {
+		return luogoNascitaStudente;
+	}
+
+
+
+	public void setLuogoNascitaStudente(String luogoNascitaStudente) {
+		this.luogoNascitaStudente = luogoNascitaStudente;
+	}
+
+	public String getResidenteStudente() {
+		return residenteStudente;
+	}
+
+
+
+	public void setResidenteStudente(String residenteStudente) {
+		this.residenteStudente = residenteStudente;
+	}
+
+
+
+
+//Tirocinante
 private String nomeStudente;
 private String cognomeStudente;
 private String emailStudente;
+private String corsoLaurea;
+private String telefonoStudente;
+private String dataNascitaStudente;
+private String luogoNascitaStudente;
+private String residenteStudente;
+
+//Azienda
+private String nomeDenominazione;
+private String sedeLegale;
+private String indirizzoEmail;
+private String codiceFiscale;
+private String nomeReferenteAziendale;
+private String cognomeReferenteAziendale;
+private String ruoloReferenteAziendale;
+private String natoReferenteAziendale;
+private String dataReferenteAziendale;
+private String codiceATECO;
+private String numeroDipendenti;
+
+//Tutor Accademico
 private String nomeTutorAccademico;
 private String cognomeTutorAccademico;
-private String emailTutorAccademico;
+
+// Tutor Aziendale
 private String nomeTutorAziendale;
 private String cognomeTutorAziendale;
 private String emailTutorAziendale;
-private String competenze;
-private String obiettivi;
-private String attivita;
-private String modalita;
-private String corsoLaurea;
+private String telefonoAziendale;
+
+//Crediti previsti per l'attività di tirocinio
 private int totCFU;
+
+//Indicazione degli obiettivi
+private String obiettivi;
+
+//Indicazione le competenze da aquisire
+private String competenze;
+
+//Indicazione delle attività previste
+private String attivita;
+
+//Indicazione delle modalità di svolgimento del tirocinio
+private String modalita;
+
+//Durata del tirocinio
 private int totOre;
-private String data;
+
+
 }
