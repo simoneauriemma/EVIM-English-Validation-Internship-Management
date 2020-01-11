@@ -405,11 +405,12 @@ public class TirocinioEsternoDAO {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			
 			PreparedStatement ps = con.prepareStatement( // questa query è ok
-					"select TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU from tirocinioesterno\n" +
-					"TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte"+
-					"join registro on registro.ID_Tirocinio= tirocinioesterno.ID_TirocinioEsterno\n" + 
+					"select TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, " +
+					"TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "+
+					 "TirocinioEsterno.CFU from tirocinioesterno\n" +
+					"join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n" + 
 					 
-					"where tirocinioesterno.EMAIL=? and tirocinioesterno.status='in svolgimento';");
+					"where tirocinioesterno.EMAIL=? and tirocinioesterno.status='in svolgimento' and registro.tipo='esterno';");
 			ps.setString(1, email);
 			
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
@@ -419,14 +420,15 @@ public class TirocinioEsternoDAO {
 				RegistroQuery a = new RegistroQuery();
 				int idTir=rs.getInt("ID_TirocinioEsterno");
 				a.setID_Tirocinio(idTir);
-				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
+				a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
 				a.setStatus(rs.getString("status"));
-				a.setNumeroCFU(rs.getInt("CFU"));
+				a.setNumeroCFU(rs.getInt("NumeroCFU"));
+				a.setFirmaTutorAccamico(rs.getInt("FirmaTutorAccamico"));
 				int oretotali=rs.getInt("OreTotali");
-				int oreraggiunte=rs.getInt("OreTotali");
+				int oreraggiunte=rs.getInt("OreRaggiunte");
 				a.setOreTotali(oretotali);
-				a.setID_Registro(oreraggiunte);
-				a.setOreRaggiunte(rs.getInt("OreRaggiunte"));
+				a.setID_Registro(rs.getInt("ID_Registro"));
+				a.setOreRaggiunte(oreraggiunte);
 			
 				if(oreraggiunte>=oretotali) {
 				String query="select relazione.ID_Relazione from relazione join TirocinioEsterno on TirocinioEsterno.ID_TutorAziendale= relazione.ID_TutorAziendale "

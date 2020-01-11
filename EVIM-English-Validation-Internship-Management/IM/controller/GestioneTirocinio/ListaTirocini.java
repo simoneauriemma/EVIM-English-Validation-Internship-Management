@@ -194,13 +194,21 @@ public class ListaTirocini extends BaseServlet {
 			ID_Relazione = iD_Relazione;
 		}
 
-		boolean FirmaResponsabile;
+		int FirmaResponsabile,FirmaTutorAccamico;
+		public int getFirmaTutorAccamico() {
+			return FirmaTutorAccamico;
+		}
+
+		public void setFirmaTutorAccamico(int firmaTutorAccamico) {
+			FirmaTutorAccamico = firmaTutorAccamico;
+		}
+
 		String status;
 
 		public RegistroQuery() {
 		}
 
-		public RegistroQuery(int iD_Tirocinio, int numeroCFU, int oreTotali, int iD_Registro, boolean firmaResponsabile,
+		public RegistroQuery(int iD_Tirocinio, int numeroCFU, int oreTotali, int iD_Registro, int firmaResponsabile,
 				String status) {
 			super();
 			ID_Tirocinio = iD_Tirocinio;
@@ -244,11 +252,11 @@ public class ListaTirocini extends BaseServlet {
 			ID_Registro = iD_Registro;
 		}
 
-		public boolean isFirmaResponsabile() {
+		public int isFirmaResponsabile() {
 			return FirmaResponsabile;
 		}
 
-		public void setFirmaResponsabile(boolean firmaResponsabile) {
+		public void setFirmaResponsabile(int firmaResponsabile) {
 			FirmaResponsabile = firmaResponsabile;
 		}
 
