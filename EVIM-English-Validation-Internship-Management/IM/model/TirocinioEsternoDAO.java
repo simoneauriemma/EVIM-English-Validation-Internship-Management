@@ -411,9 +411,9 @@ public class TirocinioEsternoDAO {
 			PreparedStatement ps = con.prepareStatement( // questa query è ok
 					"select  tutoraziendale.Nome,tutoraziendale.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, " +
 					"TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "+
-					 "TirocinioEsterno.CFU from tirocinioesterno\n" +
-					"join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n" + "join tutoraziendale"
-							+ "on tutoraziendale.ID_TutorAziendale= TirocinioEsterno.ID_TutorAziendale"+
+					 "TirocinioEsterno.CFU from tirocinioesterno \n" +
+					"join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n " + "join tutoraziendale "
+							+ "on tutoraziendale.ID_TutorAziendale = TirocinioEsterno.ID_TutorAziendale "+
 					 
 					"where tirocinioesterno.EMAIL=? and tirocinioesterno.status='in svolgimento' and registro.tipo='esterno';");
 			ps.setString(1, email);

@@ -55,7 +55,7 @@
 								<tr>
 									<th scope="row" id="id"><c:out
 											value="${esterno.ID_Tirocinio}" /></th>
-									<td id="responsabile">#</td>
+									<td id="responsabile"><c:out value="${esterno.nome_responsabile}" /> <c:out value="${esterno.cognome_responsabile}" /></td>
 									<td id="status"><c:out value="${esterno.status}" /></td>
 									<td id="cfu"><c:out value="${esterno.numeroCFU}" /></td>
 									<td id="ore"><c:out value="${esterno.oreTotali}" /></td>
