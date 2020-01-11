@@ -98,8 +98,8 @@ public class VisualizzaRichieste extends BaseServlet {
 							.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
 					dispatcher.forward(request, response);
 				} else if (studente.getUserType() == 1) {
-					
-					//loggato l'ufficio carriere
+
+					// loggato l'ufficio carriere
 					ArrayList<TirocinioInterno> tirocinioInterno = new TirocinioInternoDAO()
 							.doRetriveAllValutazionePdCD();
 					ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO()
