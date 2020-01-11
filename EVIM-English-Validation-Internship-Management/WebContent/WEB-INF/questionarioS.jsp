@@ -38,8 +38,6 @@ p {
 					valutativo</p>
 				<hr>
 				
-				
-				
 				<p>1. Valuta le attività di tirocinio svolte</p>
 				<form action="QuestionarioS">
 					<table id="tabella1">
@@ -445,12 +443,6 @@ p {
 	<br>
 	<jsp:include page="footer.jsp"></jsp:include>
 	
-	<script>
-	window.setTimeout(function() {
-	    $(".alert").fadeTo(500, 0).slideUp(500, function(){
-	        $(this).remove(); 
-	    });
-	}, 2000);
-	</script>
+	
 </body>
 </html>
