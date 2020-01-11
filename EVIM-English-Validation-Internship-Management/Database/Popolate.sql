@@ -109,8 +109,8 @@ VALUES('simonagrieco@studenti.unisa.it',1,1,'23/05/2019',150,'in approvazione',6
 #Inserimenti TIROCINIO INTERNO
 
 select * from TirocinioInterno;
-#INSERT INTO `TirocinioInterno`(`EMAIL`,`ID_TutorAccademico`,`Data`,`OreTotali`,`status`,`NumeroCFU`,`FirmaTutorAccademico`,`FirmaPdCD` ,`ID_Proposta` )
-#VALUES('simone@studenti.unisa.it',1,'23/05/2019',150,'in approvazione',6,false, false, 6);
+INSERT INTO `TirocinioInterno`(`EMAIL`,`ID_TutorAccademico`,`Data`,`OreTotali`,`status`,`NumeroCFU`,`FirmaTutorAccademico`,`FirmaPdCD` ,`ID_Proposta` )
+VALUES('simone@studenti.unisa.it',1,'23/05/2019',150,'in approvazione',6,false, false, 6);
 
 #Inserimento Convezioni
 INSERT INTO `convenzione` 
