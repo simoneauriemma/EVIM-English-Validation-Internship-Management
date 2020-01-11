@@ -123,7 +123,7 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 				}
 				
 			
-				
+				// assicuro che tutti i campi rientriano nel range
 				if(enteAzienda.length()<=200 && enteAzienda.length()>=5 && indirizzoSede.length()<=200 && indirizzoSede.length()>=5 && profilo.length()<=200 && profilo.length()>=5 && cfuTirocinioObbligatorio>=0 && cfuTirocinioEsterno>=0 && cfuAccompagnamento>=0) {
 				// prendo tutti i campi dal form e inserisco nei rispettivi campi nel Database
 					if(!RiconoscimentoDao.insertRiconoscimenot(emailStudente, enteAzienda, indirizzoSede, profilo, tipoContratto, periodo, oreSvolte, cfuTirocinioObbligatorio, cfuTirocinioEsterno, cfuAccompagnamento)) {
@@ -139,8 +139,9 @@ public class CompilaModuloRiconoscimento extends HttpServlet {
 					}
 				}
 				else {
-					throw new IllegalArgumentException("Campi fuori dal range della lunghezza");
-				}
+					RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+					dispatcher.forward(request, response);
+				}	
 			}
 		}	
 	}
