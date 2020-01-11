@@ -180,7 +180,7 @@
 			<!-- INIZIO gestione account tutor -->
 			<c:if test="${type == 'azienda' }">
 				<a data-toggle="collapse" href="#collapse-7" class="item"
-					class="folder collapsed" aria-expanded="false">Gestione account
+					class="folder collapsed" aria-expanded="false" style="border-bottom: 1px solid #ddd;">Gestione account
 					tutor <i id="icon-max" class="fa pull-right fa-plus-square"></i>
 				</a>
 
