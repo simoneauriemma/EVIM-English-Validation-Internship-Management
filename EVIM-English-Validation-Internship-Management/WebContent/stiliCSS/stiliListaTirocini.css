@@ -22,7 +22,9 @@
 
 #registro, #accettare{
 	font-size: 16px;
-	margin-left:20px;
+	margin-left:40px;
+	color: black;
+
 }
 
 
@@ -31,3 +33,10 @@
 }
 
 
+#id,#responsabile,#status,#cfu,#ore,#tirocinio,#registro,#registro1,#operazioni{
+	text-align: center;
+}
+
+#op{
+	color: black;
+}
