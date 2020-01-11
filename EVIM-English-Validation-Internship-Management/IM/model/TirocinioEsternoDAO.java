@@ -63,7 +63,7 @@ public class TirocinioEsternoDAO {
 					"from TirocinioEsterno AS tiro "+
 					"JOIN TutorAccademico as tutorAcc ON tiro.ID_tutorAccademico = tutorAcc.ID_TutorAccademico "+
 					"JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale "+
-					"where tiro.EMAIL=? AND (status=? OR status=? OR status=?");
+					"where tiro.EMAIL=? AND (status=? OR status=? OR status=?)");
 			ps.setString(1, EMAIL);
 			ps.setString(2, inValutazione);
 			ps.setString(3, inSvolgimento);
