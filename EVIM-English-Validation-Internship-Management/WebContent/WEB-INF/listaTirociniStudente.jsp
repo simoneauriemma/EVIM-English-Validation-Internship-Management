@@ -9,7 +9,7 @@
 <meta charset="ISO-8859-1">
 
 <script src="jquery-3.4.1.min.js"></script>
-<title>Lista tirocini </title>
+<title>Lista tirocini</title>
 </head>
 
 <div class="container">
@@ -22,8 +22,7 @@
 		</div>
 		<div class="col-lg-9" id="col-9">
 
-			<p id="titolo" class="text-center">Lista
-				tirocini</p>
+			<p id="titolo" class="text-center">Lista tirocini</p>
 			<hr>
 			<br> <br>
 
@@ -37,7 +36,7 @@
 
 
 				<table class="table table-striped" id="tabella">
-				<!-- Lista tirocini ESTERNI -->
+					<!-- Lista tirocini ESTERNI -->
 					<c:if test="${registroQueryEsterno.size() > 0}">
 						<c:forEach items="${registroQueryEsterno}" var="esterno">
 							<thead>
@@ -49,35 +48,30 @@
 									<th scope="col">Ore Max</th>
 									<th scope="col">Tipo tirocinio</th>
 									<th scope="col">Registro tirocinio</th>
-									<th scope="col">Operazioni</th>
+									<th scope="col">Operazione</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<th scope="row"><c:out value="${esterno.ID_Tirocinio}" /></th>
-									<td>#</td>
-									<td><c:out value="${esterno.status}" /></td>
-									<td><c:out value="${esterno.numeroCFU}" /></td>
-									<td><c:out value="${esterno.oreTotali}" /></td>
-									<td>Esterno</td>
+									<th scope="row" id="id"><c:out
+											value="${esterno.ID_Tirocinio}" /></th>
+									<td id="responsabile">#</td>
+									<td id="status"><c:out value="${esterno.status}" /></td>
+									<td id="cfu"><c:out value="${esterno.numeroCFU}" /></td>
+									<td id="ore"><c:out value="${esterno.oreTotali}" /></td>
+									<td id="tirocinio">Esterno</td>
 
 									<!-- REGISTRO -->
-									<td class="form-inline"><a href="#"> <i id="registro"
+									<td class="form-inline" id="registro1"><a href="VisualizzaRegistroTirocinio"> <i id="registro"
 											class="fas fa-book"></i>
-									</a> <a href="#"> <i id="accettare" class="fas fa-check-square"></i>
-									</a></td>
+									</a> 
+									<!-- <a href="#"> <i id="accettare" class="fas fa-check-square"></i>
+									</a> -->
+									</td>
 
 									<!-- OPERAZIONI -->
-									<td>
-										<div class="form-group">
-											<select class="form-control" id="select"
-												onchange="getTutors(this.value)" name="sel1">
-												<option selected>--select an option--</option>
-												<option value="#">Visualizza progetto</option>
-												<option value="questionarioS.jsp">Compila
-													questionario</option>
-											</select>
-										</div>
+									<td id="operazioni">
+									<a href="QuestionarioS" id="op">Compila questionario</a>
 									</td>
 								</tr>
 							</tbody>
