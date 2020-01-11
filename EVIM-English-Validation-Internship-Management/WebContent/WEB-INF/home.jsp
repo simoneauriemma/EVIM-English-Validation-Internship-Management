@@ -58,6 +58,11 @@
 					</c:otherwise>
 				</c:choose>
 				
+				<c:if test="${resultqs == true}">
+						<div class="alert alert-success" role="alert">
+						  Questionario creato con successo
+						</div>
+					</c:if>
 				<c:if test="${utenteCreato == true}">
 						<div class="alert alert-success" role="alert">
 						  Inserimento effettuato con successo

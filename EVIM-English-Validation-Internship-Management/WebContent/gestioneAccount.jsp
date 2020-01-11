@@ -122,7 +122,7 @@
 
 			if (confirm_password.val() != pass.val()) {
 				resultRegexCPass
-						.text("Conferma password Ë diverso dal campo 'Password'");
+						.text("Conferma password è diverso dal campo 'Password'");
 				resultRegexCPass.css("color", "red");
 				confirm_password.css("color", "red");
 

@@ -30,14 +30,16 @@ p {
 			<div class="col-lg-3">
 				<jsp:include page="menu.jsp"></jsp:include>
 			</div>
-
+			
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
 				<p id="titolo" class="text-center"
 					style="font-size: 30px; color: #595959;">Compila questionario
 					valutativo</p>
 				<hr>
-
+				
+				
+				
 				<p>1. Valuta le attività di tirocinio svolte</p>
 				<form action="QuestionarioS">
 					<table id="tabella1">
@@ -442,5 +444,13 @@ p {
 	<br>
 	<br>
 	<jsp:include page="footer.jsp"></jsp:include>
+	
+	<script>
+	window.setTimeout(function() {
+	    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+	        $(this).remove(); 
+	    });
+	}, 2000);
+	</script>
 </body>
 </html>
