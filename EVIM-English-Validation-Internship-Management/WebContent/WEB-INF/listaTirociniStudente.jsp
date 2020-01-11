@@ -71,7 +71,9 @@
 
 									<!-- OPERAZIONI -->
 									<td id="operazioni">
+								<c:if test="${esterno.ID_Questionario==null}">
 									<a href="QuestionarioS" id="op">Compila questionario</a>
+									</c:if>
 									</td>
 								</tr>
 							</tbody>
@@ -113,8 +115,11 @@
 												onchange="getTutors(this.value)" name="sel1">
 												<option selected>--select an option--</option>
 												<option value="#">Visualizza progetto</option>
+												
+											
 												<option value="questionarioS.jsp">Compila
 													questionario</option>
+													
 											</select>
 										</div>
 									</td>

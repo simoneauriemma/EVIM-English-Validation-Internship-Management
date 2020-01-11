@@ -441,18 +441,18 @@ public class TirocinioEsternoDAO {
 			
 				if(status_registro.contentEquals("completato")) {
 				String query="select relazione.ID_Relazione from relazione join TirocinioEsterno on TirocinioEsterno.ID_TutorAziendale= relazione.ID_TutorAziendale "
-						+ "where TirocinioEsterno.ID_TirocinioEsterno=? and relazione.email=?";
+						+ "where TirocinioEsterno.ID_TirocinioEsterno=? and relazione.email=?"; //aggiustare
 				ps = con.prepareStatement(query);
 				ps.setInt(1, idTir);
 				ps.setString(2, email);
 				ResultSet rsdue=ps.executeQuery();
-				;
+				
 				if(rsdue.next()) {
 					a.setID_Relazione(rs.getInt(1));
 				}
 				
 				String querydue="select Questionario_s.Questionario_s from questionario_s"
-						+ "where Questionario_s.ID_TirocinioEsterno=? and relazione.email=?";
+						+ "where questionario_s.email=?";
 				ps = con.prepareStatement(querydue);
 				
 				ps.setString(1, email);
