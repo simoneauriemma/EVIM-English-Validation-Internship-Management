@@ -72,6 +72,7 @@ public class QuestionarioS extends BaseServlet {
 				quest.setLogistica(Integer.parseInt(request.getParameter("gruppo13")));
 				result = QuestionariDAO.insertQuestionarioS(quest);
 				session.setAttribute("resultqs", result);
+				
 			}
 
 			if (result) {
