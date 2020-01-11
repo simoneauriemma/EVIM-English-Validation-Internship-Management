@@ -113,15 +113,11 @@
 									<c:if test="${type != 'segreteria' }">
 										<c:if test="${ricon.stato eq 'V'}">
 											<td>
-												<button class="bottone" onclick=approvaModulo(
-													<c:out value="${ricon.idRiconoscimento}"/>,<c:out value="${conto.count}"/>
-													) id="accetta">
+												<button class="bottone" onclick="approvaModulo(${ricon.idRiconoscimento},${conto.count})" id="accetta">
 													<i class="fas fa-check-square"></i>
 												</button>
 
-												<button class="bottone" onclick=rifiutaModulo(
-													<c:out value="${ricon.idRiconoscimento}"/>,<c:out value="${conto.count}"/>
-													) id="rifiuta">
+												<button class="bottone" onclick="rifiutaModulo(${ricon.idRiconoscimento},${conto.count})" id="rifiuta">
 													<i class="far fa-times-circle"></i>
 												</button>
 											</td>
