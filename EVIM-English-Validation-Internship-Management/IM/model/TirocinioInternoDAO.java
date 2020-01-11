@@ -54,8 +54,8 @@ public class TirocinioInternoDAO {
 			// query per la visualizzazione della pagina da parte dello studente
 			// query per visualizzare le richieste in valutazione
 			String inValutazione = "in approvazione";
-			PreparedStatement ps = con
-					.prepareStatement("select ID_TirocinioInterno,tiro.EMAIL, tutor.Nome,tutor.Cognome, Data, OreTotali, status, NumeroCFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta from TirocinioInterno AS tiro JOIN TutorAccademico as tutor ON tiro.ID_tutorAccademico = tutor.ID_TutorAccademico where tiro.EMAIL=? AND status=?");
+			PreparedStatement ps = con.prepareStatement(
+					"select ID_TirocinioInterno,tiro.EMAIL, tutor.Nome,tutor.Cognome, Data, OreTotali, status, NumeroCFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta from TirocinioInterno AS tiro JOIN TutorAccademico as tutor ON tiro.ID_tutorAccademico = tutor.ID_TutorAccademico where tiro.EMAIL=? AND status=?");
 			ps.setString(1, EMAIL);
 			ps.setString(2, inValutazione);
 			ArrayList<TirocinioQueryInternoStudente> richieste = new ArrayList<TirocinioQueryInternoStudente>();
@@ -95,9 +95,11 @@ public class TirocinioInternoDAO {
 			// query per la visualizzazione della pagina da parte dello studente
 			// query per visualizzare le richieste in valutazione
 			String inValutazione = "in approvazione";
-			PreparedStatement ps = con.prepareStatement("select ID_TirocinioEsterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud, Data, OreTotali, status, CFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta from TirocinioEsterno AS tiro " + 
-					"JOIN User ON tiro.EMAIL = User.EMAIL JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale " + 
-					"where status=? AND tiro.ID_TutorAccademico=?");
+			PreparedStatement ps = con.prepareStatement(
+					"select ID_TirocinioInterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud, Data, OreTotali, status, NumeroCFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta from tirociniointerno AS tiro "
+							+ "JOIN User ON tiro.EMAIL = User.EMAIL "
+							+ "JOIN tutoraccademico on tutoraccademico.ID_TutorAccademico=tiro.ID_tutorAccademico "
+							+ "where status=? AND tiro.ID_TutorAccademico=?");
 			ps.setString(1, inValutazione);
 			ps.setInt(2, IDTutor);
 			ArrayList<TirocinioQueryInternoTutorAcc> richieste = new ArrayList<TirocinioQueryInternoTutorAcc>();
@@ -146,7 +148,7 @@ public class TirocinioInternoDAO {
 				System.out.println("okay");
 				pdf = new PDFProgettoFormativo();
 				pdf.setNomeStudente(rs.getString(1));
-				System.out.println("rs.getString(1)-->"+rs.getString(1));
+				System.out.println("rs.getString(1)-->" + rs.getString(1));
 				pdf.setCognomeStudente(rs.getString(2));
 				pdf.setEmailStudente(rs.getString(3));
 				pdf.setNomeTutorAccademico(rs.getString(4));
@@ -157,8 +159,8 @@ public class TirocinioInternoDAO {
 				pdf.setModalita(rs.getString(9));
 				pdf.setCorsoLaurea(rs.getString(10));
 			}
-			System.out.println("Nome-->"+pdf.getNomeStudente());
-			System.out.println("Cognome-->"+pdf.getCognomeStudente());
+			System.out.println("Nome-->" + pdf.getNomeStudente());
+			System.out.println("Cognome-->" + pdf.getCognomeStudente());
 			return pdf;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -288,9 +290,9 @@ public class TirocinioInternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro(String email) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.CFU from TirocinioInterno\n" + 
-							"join registro on registro.ID_Tirocinio= TirocinioInterno.ID_TirocinioInterno\n" + 
-							"where tirociniointerno.EMAIL=? and tirociniointerno.status='in svolgimento';" ); //controllare
+					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.CFU from TirocinioInterno\n"
+							+ "join registro on registro.ID_Tirocinio= TirocinioInterno.ID_TirocinioInterno\n"
+							+ "where tirociniointerno.EMAIL=? and tirociniointerno.status='in svolgimento';"); // controllare
 			ps.setString(1, email);
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
@@ -312,7 +314,7 @@ public class TirocinioInternoDAO {
 		}
 
 	}
-	
+
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAccRegistro(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
@@ -320,7 +322,7 @@ public class TirocinioInternoDAO {
 							+ "TirocinioInterno.OreTotali, Registro.ID_Registro "
 							+ "from TirocinioInterno, Registro, tutoraccademico "
 							+ "where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio AND "
-							+ "TirocinioInterno.ID_tutorAccademico = ? AND tirociniointerno.status='in svolgimento'" );
+							+ "TirocinioInterno.ID_tutorAccademico = ? AND tirociniointerno.status='in svolgimento'");
 			ps.setInt(1, id);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
@@ -343,16 +345,14 @@ public class TirocinioInternoDAO {
 		}
 
 	}
-	
-	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoPdcdRegistro() { 
+
+	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoPdcdRegistro() {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
 					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,"
-							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro "
-							+ "from TirocinioInterno, Registro"
+							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro " + "from TirocinioInterno, Registro"
 							+ "where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio"
-							+ "AND TirocinioInterno.status='in svolgimento'" );
-			
+							+ "AND TirocinioInterno.status='in svolgimento'");
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
@@ -374,6 +374,5 @@ public class TirocinioInternoDAO {
 		}
 
 	}
-	
-	
+
 }
