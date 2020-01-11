@@ -40,7 +40,6 @@ public class ListaTirocini extends BaseServlet {
 			dispatcher.forward(request, response);
 		} else {
 			
-			System.out.println("sto nella servlet");
 
 			ArrayList<RegistroQuery> interno = new ArrayList<RegistroQuery>();
 			ArrayList<RegistroQuery> esterno = new ArrayList<RegistroQuery>();
@@ -56,9 +55,7 @@ public class ListaTirocini extends BaseServlet {
 				esterno = new TirocinioEsternoDAO()
 						.doRetriveTirocinioInSvolgimentoStudenteRegistro(studente.getEmail());
 				
-				System.out.println(interno);
-				System.out.println(esterno);
-				System.out.println(esterno.get(0).getNumeroCFU());
+				
 
 				
 					
@@ -171,6 +168,28 @@ public class ListaTirocini extends BaseServlet {
 	// classe interna per la restituzione dell'oggetto per una specifica query
 	public static class RegistroQuery {
 		private int ID_Tirocinio, NumeroCFU, OreTotali, ID_Registro, ID_Questionario, ID_Relazione,OreRaggiunte;
+		private String nome_responsabile,cognome_responsabile;
+		
+		public String getNome_responsabile() {
+			return nome_responsabile;
+		}
+
+		public void setNome_responsabile(String nome_responsabile) {
+			this.nome_responsabile = nome_responsabile;
+		}
+
+		public int getFirmaResponsabile() {
+			return FirmaResponsabile;
+		}
+
+		public String getCognome_responsabile() {
+			return cognome_responsabile;
+		}
+
+		public void setCognome_responsabile(String cognome_responsabile) {
+			this.cognome_responsabile = cognome_responsabile;
+		}
+
 		public int getOreRaggiunte() {
 			return OreRaggiunte;
 		}
