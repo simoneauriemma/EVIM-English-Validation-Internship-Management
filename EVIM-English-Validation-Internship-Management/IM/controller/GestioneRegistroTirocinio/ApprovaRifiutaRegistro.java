@@ -1,4 +1,4 @@
-package controller.GestioneModuloRiconoscimento;
+package controller.GestioneRegistroTirocinio;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,17 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.RiconoscimentoDao;
+import model.RegistroDao;
 import model.User;
 
 /**
  * @author Antonio Giano
- * Questa servlet modifica lo stato di un modulo di riconoscimento di attività lavorativa in base al parametro ricevuto
+ * Questa servlet permette di gestire l'approvazione o il rifiuto di un registro cambiando definitivamente lo stato di tale registro sul database
  */
-@WebServlet("/ApprovaRifiutaModuloRiconoscimento")
-public class ApprovaRifiutaModuloRiconoscimento extends HttpServlet {
+@WebServlet("/ApprovaRifiutaRegistro")
+public class ApprovaRifiutaRegistro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sessione=request.getSession();
@@ -37,13 +36,13 @@ public class ApprovaRifiutaModuloRiconoscimento extends HttpServlet {
 					request.getRequestDispatcher("permissionDenied.jsp").forward(request, response);
 				}
 				else {
-					int idRiconoscimento=Integer.parseInt(request.getParameter("idRiconoscimento"));
+					int idRegistro=Integer.parseInt(request.getParameter("idRegistro"));
 					String modifica=request.getParameter("modifica");
 					if(modifica.equalsIgnoreCase("rifiuta")) {
-						RiconoscimentoDao.changeStatoModulo(idRiconoscimento,"R"); // R sta per rifiutato
+						RegistroDao.changeStatoRegistro(idRegistro,"Rifiutato");
 					}
 					else if(modifica.equalsIgnoreCase("approva")) {
-						RiconoscimentoDao.changeStatoModulo(idRiconoscimento,"A"); // A sta per approvato
+						RegistroDao.changeStatoRegistro(idRegistro,"Approvato");
 					}
 				}
 			}
@@ -51,7 +50,7 @@ public class ApprovaRifiutaModuloRiconoscimento extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 
