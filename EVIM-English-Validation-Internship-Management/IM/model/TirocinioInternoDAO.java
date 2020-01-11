@@ -55,11 +55,14 @@ public class TirocinioInternoDAO {
 			// query per visualizzare le richieste in valutazione
 			String inValutazione = "in approvazione";
 			String inSvolgimento="in svolgimento";
+			String rifiutato="non approvato";
 			PreparedStatement ps = con.prepareStatement(
-					"select ID_TirocinioInterno,tiro.EMAIL, tutor.Nome,tutor.Cognome, Data, OreTotali, status, NumeroCFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta from TirocinioInterno AS tiro JOIN TutorAccademico as tutor ON tiro.ID_tutorAccademico = tutor.ID_TutorAccademico where tiro.EMAIL=? AND (status=? OR status=?)");
+					"select ID_TirocinioInterno,tiro.EMAIL, tutor.Nome,tutor.Cognome, Data, OreTotali, status, NumeroCFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta from TirocinioInterno AS tiro JOIN TutorAccademico as tutor ON tiro.ID_tutorAccademico = tutor.ID_TutorAccademico where tiro.EMAIL=? AND (status=? OR status=? OR status=?)");
 			ps.setString(1, EMAIL);
 			ps.setString(2, inValutazione);
 			ps.setString(3, inSvolgimento);
+			ps.setString(4, rifiutato);
+			
 			ArrayList<TirocinioQueryInternoStudente> richieste = new ArrayList<TirocinioQueryInternoStudente>();
 			ResultSet rs = ps.executeQuery();
 
