@@ -114,7 +114,7 @@ public class TirocinioInternoDAO {
 				a.setData(rs.getString("Data"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setStatus(rs.getString("status"));
-				a.setNumeroCFU(rs.getInt("CFU"));
+				a.setNumeroCFU(rs.getInt("NumeroCFU"));
 				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
 				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
 				a.setID_Proposta(rs.getInt("ID_Proposta"));

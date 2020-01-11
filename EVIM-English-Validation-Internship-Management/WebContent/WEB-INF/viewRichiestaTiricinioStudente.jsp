@@ -20,7 +20,7 @@
 		<div class="col-lg-9"
 			style="border: 1px solid #d7d7d7; background-color: white;">
 			<p id="titolo" class="text-center">Richieste di tirocinio
-				curriculare </p>
+				curriculare</p>
 			<hr>
 
 			<c:if
@@ -50,21 +50,39 @@
 								<td class="">Tutor accademico</td>
 								<td class="text-center"><c:out
 										value="${esterno.nomeTutorAcc}" /> <c:out
-										value="${esterno.cognomeTutorAcc}"/></td>
+										value="${esterno.cognomeTutorAcc}" /></td>
 							</tr>
 							<tr>
 								<td class="icon"><i class="fa fa-user"></i></td>
 								<td class="">Tutor aziendale</td>
 								<td class="text-center"><c:out
 										value="${esterno.nomeTutorAz}" /> <c:out
-										value="${esterno.cognomeTutorAz}"/></td>
+										value="${esterno.cognomeTutorAz}" /></td>
 							</tr>
+							<!-- gestione status esterno -->
 							<tr>
 								<td class="icon"><i class="fas fa-toggle-on"></i></td>
 								<td class="">Status</td>
-								<td class="text-center"><i id="status"
-									class="far fa-circle"
-									title="<c:out value="${esterno.status}"/>"></i></td>
+
+								<c:if test="${esterno.status == 'in approvazione'}">
+									<td class="text-center"><i id="status"
+										class="far fa-circle"
+										style="background-color: yellow; border-color: black; border-radius: 22px;"
+										title="<c:out value="${esterno.status}"/>"></i></td>
+								</c:if>
+								<c:if test="${esterno.status == 'in svolgimento'}">
+									<td class="text-center"><i id="status"
+										class="far fa-circle"
+										style="background-color: green; border-color: black; border-radius: 22px;"
+										title="<c:out value="${esterno.status}"/>"></i></td>
+								</c:if>
+								<c:if test="${esterno.status == 'non approvato'}">
+									<td class="text-center"><i id="status"
+										class="far fa-circle"
+										style="background-color: red; border-color: black; border-radius: 22px;"
+										title="<c:out value="${esterno.status}"/>"></i></td>
+								</c:if>
+
 							</tr>
 							<tr>
 								<td class="icon"><i class="fas fa-circle"></i></td>
@@ -111,20 +129,38 @@
 								<td class="icon"><i class="fa fa-user"></i></td>
 								<td class="">Tutor accademico</td>
 								<td class="text-center"><c:out
-										value="${interno.nomeTutorAcc}"/> <c:out
-										value="${interno.cognomeTutorAcc}"/></td>
+										value="${interno.nomeTutorAcc}" /> <c:out
+										value="${interno.cognomeTutorAcc}" /></td>
 							</tr>
+							<!-- gestione status esterno -->
 							<tr>
 								<td class="icon"><i class="fas fa-toggle-on"></i></td>
 								<td class="">Status</td>
-								<td class="text-center"><i id="status1"
-									class="far fa-circle"
-									title="<c:out value="${interno.status}"/>"></i></td>
+
+								<c:if test="${interno.status == 'in approvazione'}">
+									<td class="text-center"><i id="status"
+										class="far fa-circle"
+										style="background-color: yellow; border-color: black; border-radius: 22px;"
+										title="<c:out value="${interno.status}"/>"></i></td>
+								</c:if>
+								<c:if test="${interno.status == 'in svolgimento'}">
+									<td class="text-center"><i id="status"
+										class="far fa-circle"
+										style="background-color: green; border-color: black; border-radius: 22px;"
+										title="<c:out value="${interno.status}"/>"></i></td>
+								</c:if>
+								<c:if test="${interno.status == 'non approvato'}">
+									<td class="text-center"><i id="status"
+										class="far fa-circle"
+										style="background-color: red; border-color: black; border-radius: 22px;"
+										title="<c:out value="${interno.status}"/>"></i></td>
+								</c:if>
+
 							</tr>
 							<tr>
 								<td class="icon"><i class="fas fa-circle"></i></td>
 								<td class="">Numero CFU</td>
-								<td class="text-center"><c:out value="${interno.numeroCFU}"/></td>
+								<td class="text-center"><c:out value="${interno.numeroCFU}" /></td>
 							</tr>
 							<tr>
 								<td class="icon"><i class="fas fa-clock"></i></td>
@@ -154,7 +190,7 @@
 <script>
 	/* status: riferito allo status di tirocinio esterno
 	   status1: riferito allo status di tirocinio interno */
-	$(document).ready(function() {
+<!--	$(document).ready(function() {
 		if ($('i:contains(in approvazione)')) {
 			$("#status, #status1").css("background-color", "yellow");
 			$("#status, #status1").css("color", "black");
@@ -173,5 +209,5 @@
 			$("#status, #status1").css("border-radius", "22px");
 		}
 
-	});
+	}); -->
 </script>
