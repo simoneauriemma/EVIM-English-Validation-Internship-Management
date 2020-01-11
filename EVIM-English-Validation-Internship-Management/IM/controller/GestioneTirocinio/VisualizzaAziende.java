@@ -16,6 +16,7 @@ import model.Azienda;
 import model.AziendaDAO;
 import model.Proposta;
 import model.PropostaDAO;
+import model.ReferenteAziendale;
 
 /**
  * Servlet implementation class VisualizzaAziende * @author Nicola Sisti la
@@ -33,8 +34,11 @@ public class VisualizzaAziende extends BaseServlet {
 		ArrayList<Azienda> aziende = AziendaDAO.doRetriveAll();
 
 		for (Azienda az : aziende) {
+			System.out.println("\n\n id"+az.getID_Azienda());
 			az.setProposte(PropostaDAO.findByIdAzienda(az.getID_Azienda()));
+			az.setReferente(AziendaDAO.getReferenteAziendale(az.getID_Azienda()));
 		}
+
 
 		request.setAttribute("aziende", aziende);
 

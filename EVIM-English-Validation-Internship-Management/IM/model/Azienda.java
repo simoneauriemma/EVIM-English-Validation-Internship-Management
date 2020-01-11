@@ -17,10 +17,23 @@ import java.util.ArrayList;
 public class Azienda {
 	int ID_Azienda;
 	String CF, Telefono, Nome, Password, Email, SitoWeb, Indirizzo, Descrizione, numeroDipendenti, codiceAteco, idReferente,idConvenzione;
-	ArrayList<Proposta> proposte; // inserito questa variabile così che posso inserire ad ogni azienda le proprie
+	ArrayList<Proposta> proposte; // inserito questa variabile cosï¿½ che posso inserire ad ogni azienda le proprie
 									// proposte di tirocinio da servlet
+	ReferenteAziendale referente;
 	
 	
+	public ReferenteAziendale getReferente() {
+		return referente;
+	}
+
+	public void setReferente(ReferenteAziendale referente) {
+		this.referente = referente;
+	}
+
+	public void setID_Azienda(int iD_Azienda) {
+		ID_Azienda = iD_Azienda;
+	}
+
 	public ArrayList<Proposta> getProposte() {
 		return proposte;
 	}
