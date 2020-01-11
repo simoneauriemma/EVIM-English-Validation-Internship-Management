@@ -11,7 +11,7 @@ VALUES ('mconcetta@studenti.unisa.it','Maria Concetta','Schiavone','F','mconcett
 INSERT INTO `user` (`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`,`Luogo_Nascita`,`Data_Nascita`,`Residente`,`Via`,`Telefono`,`Matricola`) 
 VALUES ('simonagrieco@studenti.unisa.it','Simona','Grieco','F','grieco1998',0,'triennale','Avellino','24/11/1998','Avellino','Via Lampo, 11','3216767098','0512105002');
 INSERT INTO `user` (`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`,`Luogo_Nascita`,`Data_Nascita`,`Residente`,`Via`,`Telefono`,`Matricola`) 
-VALUES ('simoneauriemma@studenti.unisa.it','Simone','Auriemma','M','simone1',0,'triennale','Napoli','26/10/1998','Napoli','Via Marlo, 34','3216767098','0512105003');
+VALUES ('simone@studenti.unisa.it','Simone','Auriemma','M','simone1998',0,'triennale','Napoli','26/10/1998','Napoli','Via Marlo, 34','3216767098','0512105003');
 INSERT INTO `user` (`EMAIL`,`NAME`,`SURNAME`,`SEX`,`PASSWORD`,`USER_TYPE`,`tipoCorso`,`Luogo_Nascita`,`Data_Nascita`,`Residente`,`Via`,`Telefono`,`Matricola`) 
 VALUES ('nicolasisti@studenti.unisa.it','Nicola','Sisti','M','nicola1',0,'triennale','Potenza','12/02/1994','Matera','Via Giallo, 5','3216123098','0512105004');
 
@@ -79,38 +79,38 @@ select * from TutorAccademico;
 
 #tutor aziendali
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
-VALUES ('Sviluppare nuove metodologie. Integrare metodologie esistenti.','Laboratorio di Verifica di Correttezza e Sintesi Automatica di Sistemi Digitali','Verifica automatica di correttezza dei programmi',' Per avere idea dell area di riferimento consultare il materiale del corso di Tecniche Automatiche per La Correttezza del Software (http://www.di- srv.unisa.it/professori/latorre/didattica/TACS/)', 1 ,1);
+VALUES ('Sviluppare nuove metodologie. Integrare metodologie esistenti.','Laboratorio di Verifica di Correttezza e Sintesi Automatica di Sistemi Digitali','Verifica automatica di correttezza dei programmi',' Per avere idea dell area di riferimento consultare il materiale del corso di Tecniche Automatiche per La Correttezza del Software', 1 ,1);
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
 VALUES ('Sviluppo di servizi di intelligenza territoriale','Laboratorio di Sistemi Informativi Geografici','Sistemi Informativi Geografici e applicazioni per Mobile GIS','http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807',2,3);
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
 VALUES ('Realizzazione di un ecosistema digitale di rappresentazione e gestione della conoscenza territoriale','Laboratorio di Sistemi Informativi Geografici','Sistemi Informativi Geografici e applicazioni per Mobile GIS','http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807',3,5);
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
-VALUES ('Realizzazione di sistemi domotici (IOT)','Reti di calcolaroei','Sistemi Informativi Geografici e applicazioni IOT', 'stringaAcasoPoiSiVede', 4, 7);
+VALUES ('Realizzazione di sistemi domotici (IOT)','Reti di calcolatori','Sistemi Informativi Geografici e applicazioni IOT', 'http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807', 4, 7);
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
 VALUES ('Sviluppare nuove metodologie. Integrare metodologie esistenti.','Laboratorio di Verifica di Correttezza e Sintesi Automatica di Sistemi Digitali','Verifica automatica di correttezza dei programmi',' Per avere idea dell area di riferimento consultare il materiale del corso di Tecniche Automatiche per La Correttezza del Software ', 5 ,9);
 
 
 # tutor accademici
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
-VALUES ('Sviluppare nuove metodologie. Integrare metodologie esistenti.','Laboratorio di Verifica di Correttezza e Sintesi Automatica di Sistemi Digitali','Verifica automatica di correttezza dei programmi',' Per avere idea dell area di riferimento consultare il materiale del corso di Tecniche Automatiche per La Correttezza del Software ', null ,1);
+VALUES ('Sviluppare nuove metodologie. Integrare metodologie esistenti.','Laboratorio di Verifica di Correttezza e Sintesi Automatica di Sistemi Digitali','Verifica automatica di correttezza dei programmi',' Per avere idea dell area di riferimento consultare il materiale del corso di Tecniche Automatiche per La Correttezza del Software', null ,1);
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
 VALUES ('Sviluppo di servizi di intelligenza territoriale','Laboratorio di Sistemi Informativi Geografici','Sistemi Informativi Geografici e applicazioni per Mobile GIS','http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807',null,2);
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
 VALUES ('Realizzazione di un ecosistema digitale di rappresentazione e gestione della conoscenza territoriale','Laboratorio di Sistemi Informativi Geografici','Sistemi Informativi Geografici e applicazioni per Mobile GIS','http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807',null ,3);
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
-VALUES ('Realizzazione di sistemi domotici (IOT)','Reti di calcolaroei','Sistemi Informativi Geografici e applicazioni IOT', 'stringaAcasoPoiSiVede', null, 4);
+VALUES ('Realizzazione di sistemi domotici (IOT)','Reti di calcolatori','Sistemi Informativi Geografici e applicazioni IOT', 'http://docenti.unisa.it/004827/risorse?categoria=337&risorsa=807', null, 4);
 
 
 #Inserimenti TIROCINI ESTERNI
-INSERT INTO `TirocinioEsterno` (`EMAIL`,`ID_TutorAccademico`,`ID_TutorAziendale`,`data`,`OreTotali`,`status`,`CFU`,`FirmaAzienda`,`FirmaTutorAccademico`,`FirmaTutorAziendale`,`FirmaPdCD`,`ID_Proposta`)
-VALUES ('simonagrieco@studenti.unisa.it','1','1','24/11/2019',150,"in approvazione",6, false, false, false, false,1);
 
-
+select * from TirocinioEsterno;
+INSERT INTO `TirocinioEsterno`(`EMAIL`,`ID_TutorAccademico` ,`ID_TutorAziendale` ,`Data`,`OreTotali`,`status`,`CFU` ,`FirmaAzienda`,`FirmaTutorAziendale`,`FirmaTutorAccademico`,`FirmaPdCD` ,`ID_Proposta` )
+VALUES('simonagrieco@studenti.unisa.it',1,1,'23/05/2019',150,'in approvazione',6, false, false, false, false, 1);
 #Inserimenti TIROCINIO INTERNO
-INSERT INTO `TirocinioInterno` (`EMAIL`,`ID_tutorAccademico`,`Data`,`OreTotali`,`status`,`numeroCFU`,`FirmaTutorAccademico`,`FirmaPdCD`,`ID_Proposta`)
-VALUES ('mconcetta@studenti.unisa.it','2','02/04/2019',150,"in approvazione",6, false, false,4);
-INSERT INTO `TirocinioInterno` (`EMAIL`,`ID_tutorAccademico`,`Data`,`OreTotali`,`status`,`numeroCFU`,`FirmaTutorAccademico`,`FirmaPdCD`,`ID_Proposta`)
-VALUES ('simonagrieco@studenti.unisa.it','1','08/04/2019',150,"in approvazione",6, false, false,4);
+
+select * from TirocinioInterno;
+#INSERT INTO `TirocinioInterno`(`EMAIL`,`ID_TutorAccademico`,`Data`,`OreTotali`,`status`,`NumeroCFU`,`FirmaTutorAccademico`,`FirmaPdCD` ,`ID_Proposta` )
+#VALUES('simone@studenti.unisa.it',1,'23/05/2019',150,'in approvazione',6,false, false, 6);
 
 #Inserimento Convezioni
 INSERT INTO `convenzione` 
