@@ -222,7 +222,7 @@
 					$("#"+idStatus).css("border-radius", "22px");
   				}
   		}
-  		xmlHttp.open("GET","ApprovaRifiutaModuloRiconoscimento?modifica=approva&idRiconoscimento="+id,true);
+  		xmlHttp.open("GET","ApprovaRifiutaModuloRiconoscimento?modifica=rifiuta&idRiconoscimento="+id,true);
   		xmlHttp.send();
 	}
 	

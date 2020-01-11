@@ -48,12 +48,12 @@ public class PropostaDAO {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement("select * from EVIM.proposta where ID_Azienda=?");
 			ps.setInt(1, id_azienda);
-
+			System.out.println("lo setto");
 			ArrayList<Proposta> proposte = new ArrayList<Proposta>();
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Proposta prop = new Proposta();
+				Proposta prop = new Proposta(); 
 				prop.setID_Proposta(rs.getInt(1));
 				prop.setObiettivi(rs.getString(2));
 				prop.setCompetenze(rs.getString(3));
