@@ -52,12 +52,9 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 			dispatcher.forward(request, response);
 			}
 		else {
-			//int id= Integer.parseInt((String) request.getAttribute("id"));
+			int id= Integer.parseInt((String) request.getAttribute("id"));
 			
-			//String tirocinio=(String) request.getAttribute("tirocinio");
-			
-			int id=1;
-			String tirocinio="interno";
+			String tirocinio=(String) request.getAttribute("tirocinio");
 			
 			response.setContentType("application/pdf");
 			try {
@@ -114,12 +111,10 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		stringaProgetto.add(new Chunk("PROGETTO FORMATIVO E DI ORIENTAMENTO LAUREA TRIENNALE / LAUREA MAGISTRALE\n",campiTitoli));
 		
 		Phrase stringaConvenzione=new Phrase();
-		stringaConvenzione.add(new Chunk("Relativo alla Convenzione per tirocinio di formazione ed orientamento (curriculare) stipulata con",campiStatiche));
-		stringaConvenzione.add(new Chunk("___",campiCompilati));
-		stringaConvenzione.add(new Chunk(" in data",campiStatiche));
-		stringaConvenzione.add(new Chunk("__",campiCompilati));
+		stringaConvenzione.add(new Chunk("Relativo alla Convenzione per tirocinio di formazione ed orientamento (curriculare) stipulata in data ",campiStatiche));
+		stringaConvenzione.add(new Chunk(pdfProgetto.getDataConvenzione(),campiCompilati));
 		stringaConvenzione.add(new Chunk(", Repertorio N. ",campiStatiche));
-		stringaConvenzione.add(new Chunk("__",campiCompilati));
+		stringaConvenzione.add(new Chunk(pdfProgetto.getReportorioConvenzione(),campiCompilati));
 		
 		Phrase stringaPromotore=new Phrase();
 		stringaPromotore.add(new Chunk("\nSOGGETTO PROMOTORE",campiTitoli));
@@ -234,7 +229,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		Phrase stringaPolizze= new Phrase();
 		stringaPolizze.add(new Chunk("\nPOLIZZE ASSICURATIVE",campiTitoli));
 		stringaPolizze.add(new Chunk("\nAi sensi dell’art.5 della convenzione",campiStatiche));
-		stringaPolizze.add(new Chunk("_______",campiCompilati));
+		stringaPolizze.add(new Chunk(pdfProgetto.getReportorioConvenzione(),campiCompilati));
 		stringaPolizze.add(new Chunk(", a cui fa riferimento il presente progetto formativo, il Soggetto ospitante, in caso di infortunio del tirocinante durante lo svolgimento del tirocinio, si impegna a segnalare tempestivamente l’evento al Dipartimento di Informatica e al Responsabile dell’Ufficio Stato Giuridico e Formazione dell’Università, al fine di consentire a quest’ultimo di trasmettere la denuncia di infortunio all'INAIL in via telematica entro i tempi previsti dalla normativa vigente (48 ore).\n"+ 
 				"Il Responsabile pro tempore dell’Ufficio Stato Giuridico e Formazione dell’Ateneo è il dott. Pasquale Talarico, di cui si indicano di seguito il recapito telefonico e gli indirizzi e-mail a cui far pervenire la segnalazione dell’infortunio con copia della convenzione e del progetto formativo.\n" + 
 				"Inoltre all’Ufficio Stato Giuridico e Formazione vanno trasmessi, a cura del tirocinante, una copia del certificato medico di infortunio lavorativo e una relazione scritta sulle modalità in cui è avvenuto l’infortunio (orario dell’infortunio, data e ora di abbandono del posto del di lavoro, attività svolta in occasione dell’infortunio e cause dello stesso). Tale documentazione deve essere trasmessa con la massima tempestività per le vie brevi oppure tramite e-mail.",campiStatiche));
@@ -400,12 +395,10 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		stringaProgetto.add(new Chunk("PROGETTO FORMATIVO E DI ORIENTAMENTO LAUREA TRIENNALE / LAUREA MAGISTRALE\n",campiTitoli));
 		
 		Phrase stringaConvenzione=new Phrase();
-		stringaConvenzione.add(new Chunk("Relativo alla Convenzione per tirocinio di formazione ed orientamento (curriculare) stipulata con",campiStatiche));
-		stringaConvenzione.add(new Chunk("___",campiCompilati));
-		stringaConvenzione.add(new Chunk(" in data",campiStatiche));
-		stringaConvenzione.add(new Chunk("__",campiCompilati));
+		stringaConvenzione.add(new Chunk("Relativo alla Convenzione per tirocinio di formazione ed orientamento (curriculare) stipulata in data ",campiStatiche));
+		stringaConvenzione.add(new Chunk(pdfProgetto.getDataConvenzione(),campiCompilati));
 		stringaConvenzione.add(new Chunk(", Repertorio N. ",campiStatiche));
-		stringaConvenzione.add(new Chunk("__",campiCompilati));
+		stringaConvenzione.add(new Chunk(pdfProgetto.getReportorioConvenzione(),campiCompilati));
 		
 		Phrase stringaPromotore=new Phrase();
 		stringaPromotore.add(new Chunk("\nSOGGETTO PROMOTORE",campiTitoli));
@@ -565,7 +558,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		Phrase stringaPolizze= new Phrase();
 		stringaPolizze.add(new Chunk("\nPOLIZZE ASSICURATIVE",campiTitoli));
 		stringaPolizze.add(new Chunk("\nAi sensi dell’art.5 della convenzione",campiStatiche));
-		stringaPolizze.add(new Chunk("_______",campiCompilati));
+		stringaPolizze.add(new Chunk(pdfProgetto.getReportorioConvenzione(),campiCompilati));
 		stringaPolizze.add(new Chunk(", a cui fa riferimento il presente progetto formativo, il Soggetto ospitante, in caso di infortunio del tirocinante durante lo svolgimento del tirocinio, si impegna a segnalare tempestivamente l’evento al Dipartimento di Informatica e al Responsabile dell’Ufficio Stato Giuridico e Formazione dell’Università, al fine di consentire a quest’ultimo di trasmettere la denuncia di infortunio all'INAIL in via telematica entro i tempi previsti dalla normativa vigente (48 ore).\n"+ 
 				"Il Responsabile pro tempore dell’Ufficio Stato Giuridico e Formazione dell’Ateneo è il dott. Pasquale Talarico, di cui si indicano di seguito il recapito telefonico e gli indirizzi e-mail a cui far pervenire la segnalazione dell’infortunio con copia della convenzione e del progetto formativo.\n" + 
 				"Inoltre all’Ufficio Stato Giuridico e Formazione vanno trasmessi, a cura del tirocinante, una copia del certificato medico di infortunio lavorativo e una relazione scritta sulle modalità in cui è avvenuto l’infortunio (orario dell’infortunio, data e ora di abbandono del posto del di lavoro, attività svolta in occasione dell’infortunio e cause dello stesso). Tale documentazione deve essere trasmessa con la massima tempestività per le vie brevi oppure tramite e-mail.",campiStatiche));

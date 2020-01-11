@@ -318,6 +318,30 @@ public String getNomeStudente() {
 	public void setResidenteStudente(String residenteStudente) {
 		this.residenteStudente = residenteStudente;
 	}
+	
+	public String getDataConvenzione() {
+		return dataConvenzione;
+	}
+
+
+
+	public void setDataConvenzione(String dataConvenzione) {
+		this.dataConvenzione = dataConvenzione;
+	}
+
+
+
+	public String getReportorioConvenzione() {
+		return reportorioConvenzione;
+	}
+
+
+
+	public void setReportorioConvenzione(String reportorioConvenzione) {
+		this.reportorioConvenzione = reportorioConvenzione;
+	}
+
+
 
 
 
@@ -372,6 +396,10 @@ private String modalita;
 
 //Durata del tirocinio
 private int totOre;
+
+//dati convenzione
+private String dataConvenzione;
+private String reportorioConvenzione;
 
 
 }
