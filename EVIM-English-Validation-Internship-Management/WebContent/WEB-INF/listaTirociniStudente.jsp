@@ -57,8 +57,8 @@
 									<th scope="row"><c:out value="${esterno.ID_Tirocinio}" /></th>
 									<td>#</td>
 									<td><c:out value="${esterno.status}" /></td>
-									<td><c:out value="${esterno.NumeroCFU}" /></td>
-									<td><c:out value="${esterno.OreTotali}" /></td>
+									<td><c:out value="${esterno.numeroCFU}" /></td>
+									<td><c:out value="${esterno.oreTotali}" /></td>
 									<td>Esterno</td>
 
 									<!-- REGISTRO -->
@@ -105,8 +105,8 @@
 									<th scope="row"><c:out value="${interno.ID_Tirocinio}" /></th>
 									<td>#</td>
 									<td><c:out value="${interno.status}" /></td>
-									<td><c:out value="${interno.NumeroCFU}" /></td>
-									<td><c:out value="${interno.OreTotali}" /></td>
+									<td><c:out value="${interno.numeroCFU}" /></td>
+									<td><c:out value="${interno.oreTotali}" /></td>
 									<td>Interno</td>
 									<td class="form-inline"><a href="#"> <i id="registro"
 											class="fas fa-book"></i>
