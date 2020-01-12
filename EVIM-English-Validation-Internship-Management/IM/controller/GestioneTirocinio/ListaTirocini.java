@@ -92,7 +92,7 @@ public class ListaTirocini extends BaseServlet {
 			
 		
 					request.setAttribute("registroQueryInterno", interno);
-					System.out.println("prima del disp");
+					
 		
 					//esterno
 				
