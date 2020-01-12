@@ -20,7 +20,7 @@
 	background-color: #2C5278;
 }
 
-#registro, #accettare{
+#registro{
 	font-size: 16px;
 	margin-left:50px;
 	color: black;
@@ -39,4 +39,20 @@
 
 #op{
 	color: black;
+}
+
+#registroI{
+	margin-left: 15px;
+	color:black;
+}
+#statusI{
+	margin-left: 20px;
+}
+#thStatus,#thTirocinio,#thResponsabile,#thOre,#statusI,#idI,#responsabileI,#cfuI,#oreI,#tirocinioI{
+	text-align: center;
+}
+
+#accettare{
+	color:black;
+	margin-left: 20px;
 }
