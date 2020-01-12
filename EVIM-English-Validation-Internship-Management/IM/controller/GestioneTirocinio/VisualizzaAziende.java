@@ -34,7 +34,6 @@ public class VisualizzaAziende extends BaseServlet {
 		ArrayList<Azienda> aziende = AziendaDAO.doRetriveAll();
 
 		for (Azienda az : aziende) {
-			System.out.println("\n\n id"+az.getID_Azienda());
 			az.setProposte(PropostaDAO.findByIdAzienda(az.getID_Azienda()));
 			az.setReferente(AziendaDAO.getReferenteAziendale(az.getID_Azienda()));
 		}

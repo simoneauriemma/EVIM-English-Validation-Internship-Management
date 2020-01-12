@@ -130,7 +130,7 @@ public class AziendaDAO {
 	public static ReferenteAziendale getReferenteAziendale(int idAzienda) {
 		try(Connection con=DriverManagerConnectionPool.getConnection()){
 			PreparedStatement ps=con.prepareStatement("select referente_aziendale.nome,referente_aziendale.cognome,referente_aziendale.luogo_nascita,referente_aziendale.data_nascita,referente_aziendale.ruolo\n" + 
-					"from evim.Azienda join referente_aziendale on Azienda.ID_Referente=referente_aziendale.CF\n" + 
+					"from evim.Azienda join referente_aziendale on Azienda.CF_Referente=referente_aziendale.CF\n" + 
 					"where Azienda.ID_Azienda=?");
 			ps.setInt(1, idAzienda);
 			ReferenteAziendale referente=new ReferenteAziendale();
