@@ -172,10 +172,10 @@
 															<!--<c:out
 															value="${esterno.firmaPdCD}" /> --> <c:if
 																test="${esterno.firmaPdCD==true}">
-																<i class="fas fa-check" id="firma1"></i>
+																<i class="fas fa-check" title="${esterno.firmaPdCD}"></i>
 
 															</c:if> <c:if test="${esterno.firmaPdCD==false}">
-																<i class="fas fa-times" id="firma"></i>
+																<i class="fas fa-times" title="${esterno.firmaPdCD}"></i>
 
 															</c:if>
 
@@ -194,10 +194,10 @@
 															<!--<c:out
 															value="${esterno.firmaAzienda}" /> --> <c:if
 																test="${esterno.firmaAzienda==true}">
-																<i class="fas fa-check" id="firma1"></i>
+																<i class="fas fa-check" title="${esterno.firmaAzienda}"></i>
 
 															</c:if> <c:if test="${esterno.firmaAzienda==false}">
-																<i class="fas fa-times" id="firma"></i>
+																<i class="fas fa-times" title="${esterno.firmaAzienda}"></i>
 
 															</c:if>
 														</td>
@@ -214,10 +214,12 @@
 															<!--<c:out
 															value="${esterno.firmaTutorAziendale}" /> --> <c:if
 																test="${esterno.firmaTutorAziendale==true}">
-																<i class="fas fa-check" id="firma1"></i>
+																<i class="fas fa-check"
+																	title="${esterno.firmaTutorAziendale}"></i>
 
 															</c:if> <c:if test="${esterno.firmaTutorAziendale==false}">
-																<i class="fas fa-times" id="firma"></i>
+																<i class="fas fa-times"
+																	title="${esterno.firmaTutorAziendale}"></i>
 
 															</c:if>
 														</td>
@@ -234,10 +236,12 @@
 															<!--<c:out
 															value="${esterno.firmaTutorAccademico}" /> --> <c:if
 																test="${esterno.firmaTutorAccademico==true}">
-																<i class="fas fa-check" id="firma1"></i>
+																<i class="fas fa-check"
+																	title="${esterno.firmaTutorAccademico}"></i>
 
 															</c:if> <c:if test="${esterno.firmaTutorAccademico==false}">
-																<i class="fas fa-times" id="firma"></i>
+																<i class="fas fa-times"
+																	title="${esterno.firmaTutorAccademico}"></i>
 
 															</c:if>
 														</td>
@@ -252,18 +256,28 @@
 														<td><a href="VisualizzaProgettoFormativo"><button
 																	id="progettoForm" type="button">Progetto
 																	formativo</button></a></td>
-														<td class="text-center">
-															<button class="bottone"
-																onclick="window.location.href='ValutareRichieste?confermato=si&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
-																id="accetta">
-																<i class="fas fa-check-square"></i>
-															</button>
-															<button class="bottone"
-																onclick="window.location.href='ValutareRichieste?confermato=no&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
-																id="rifiuta">
-																<i class="far fa-times-circle"></i>
-															</button>
-														</td>
+														<c:choose>
+															<c:when test="${esito != 1 && esito != 0}">
+																<!-- richiesta ancora non valutata -->
+																<td class="text-center">
+																	<button class="bottone"
+																		onclick="window.location.href='ValutareRichieste?confermato=si&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
+																		id="accetta">
+																		<i class="fas fa-check-square"></i>
+																	</button>
+																	<button class="bottone"
+																		onclick="window.location.href='ValutareRichieste?confermato=no&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
+																		id="rifiuta">
+																		<i class="far fa-times-circle"></i>
+																	</button>
+																</td>
+															</c:when>
+															<c:when test="${esito == 1}">
+																<!-- richiesta già valutata -->
+																<td class="text-center">Richiesta valutata</td>
+															</c:when>
+
+														</c:choose>
 													</tr>
 												</c:if>
 
@@ -368,10 +382,12 @@
 													<td class="">Firma Tutor Accademico</td>
 													<td class="text-center"><c:if
 															test="${interno.firmaTutorAccademico==true}">
-															<i class="fas fa-check"></i>
+															<i class="fas fa-check"
+																title="${interno.firmaTutorAccademico}"></i>
 
 														</c:if> <c:if test="${interno.firmaTutorAccademico==false}">
-															<i class="fas fa-times"></i>
+															<i class="fas fa-times"
+																title="${interno.firmaTutorAccademico}"></i>
 
 														</c:if></td>
 												</tr>
@@ -383,10 +399,10 @@
 													<td class="">Firma PdCD</td>
 													<td class="text-center"><c:if
 															test="${interno.firmaPdCD==true}">
-															<i class="fas fa-check"></i>
+															<i class="fas fa-check" title="${interno.firmaPdCD}"></i>
 
 														</c:if> <c:if test="${interno.firmaPdCD==false}">
-															<i class="fas fa-times"></i>
+															<i class="fas fa-times" title="${interno.firmaPdCD}"></i>
 
 														</c:if></td>
 												</tr>
@@ -399,7 +415,8 @@
 																id="progettoForm" type="button">Progetto
 																formativo</button></a></td>
 													<c:choose>
-														<c:when test="${esito != 1 && esito != 0}"> <!-- richiesta ancora non valutata -->
+														<c:when test="${esito != 1 && esito != 0}">
+															<!-- richiesta ancora non valutata -->
 															<td class="text-center">
 																<button class="bottone"
 																	onclick="window.location.href='ValutareRichieste?confermato=si&id=<c:out value="${interno.ID_TirocinioInterno}"/>'"
@@ -413,8 +430,9 @@
 																</button>
 															</td>
 														</c:when>
-														
-														<c:when test="${esito == 1}"> <!-- richiesta già valutata -->
+
+														<c:when test="${esito == 1}">
+															<!-- richiesta già valutata -->
 															<td class="text-center">Richiesta valutata</td>
 														</c:when>
 													</c:choose>

@@ -187,7 +187,7 @@ public class TirocinioEsternoDAO {
 			// query per visualizzare le richieste in valutazione
 			String inValutazione = "in approvazione";
 			PreparedStatement ps = con.prepareStatement(
-					"select ID_TirocinioEsterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud,tutorAz.Nome as nomeTutorAz,tutorAz.Cognome as cognomeTutorAz, Data, OreTotali, status, CFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta from TirocinioEsterno AS tiro JOIN User ON tiro.EMAIL = User.EMAIL JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale where status=? AND tiro.ID_TutorAccademico=?");
+					"select ID_TirocinioEsterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud,tutorAz.Nome as nomeTutorAz,tutorAz.Cognome as cognomeTutorAz, Data, OreTotali, status, CFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta, FirmaAzienda, FirmaTutorAziendale from TirocinioEsterno AS tiro JOIN User ON tiro.EMAIL = User.EMAIL JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale where status=? AND tiro.ID_TutorAccademico=?");
 			ps.setString(1, inValutazione);
 			ps.setInt(2, IDTutor);
 			ArrayList<TirocinioQueryEsternoTutorAcc> richieste = new ArrayList<TirocinioQueryEsternoTutorAcc>();
@@ -208,6 +208,8 @@ public class TirocinioEsternoDAO {
 				a.setFirmaPdCD(rs.getBoolean(11));
 				a.setFirmaTutorAccademico(rs.getBoolean(12));
 				a.setID_Proposta(rs.getInt(13));
+				a.setFirmaAzienda(rs.getBoolean(14));
+				a.setFirmaTutorAziendale(rs.getBoolean(15));
 				richieste.add(a);
 			}
 			return richieste;
@@ -636,7 +638,7 @@ public class TirocinioEsternoDAO {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			String inValutazione = "in approvazione";
 			PreparedStatement ps = con.prepareStatement(
-					"select ID_TirocinioEsterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud,TutorAccademico.Nome as nomeTutorAcc,TutorAccademico.Cognome as cognomeTutorAcc, Data, OreTotali, status, CFU, FirmaPdCD, FirmaTutorAccademico, FirmaTutorAccademico, ID_Proposta "
+					"select ID_TirocinioEsterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud,TutorAccademico.Nome as nomeTutorAcc,TutorAccademico.Cognome as cognomeTutorAcc, Data, OreTotali, status, CFU, FirmaPdCD, FirmaTutorAccademico, FirmaTutorAccademico, ID_Proposta, FirmaAzienda "
 							+ "from TirocinioEsterno AS tiro " + "JOIN User ON tiro.EMAIL = User.EMAIL "
 							+ "JOIN TutorAccademico on tiro.ID_TutorAccademico=TutorAccademico.ID_TutorAccademico "
 							+ "JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale "
@@ -664,6 +666,7 @@ public class TirocinioEsternoDAO {
 				a.setFirmaTutorAccademico(rs.getBoolean(12));
 				a.setFirmaTutorAziendale(rs.getBoolean(13));
 				a.setID_Proposta(rs.getInt(14));
+				a.setFirmaAzienda(rs.getBoolean(15));
 				richieste.add(a);
 			}
 			return richieste;
