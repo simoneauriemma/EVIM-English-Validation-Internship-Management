@@ -463,7 +463,6 @@ public class TirocinioEsternoDAO {
 					 "TirocinioEsterno.CFU from tirocinioesterno \n" +
 					"join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n " + "join tutoraziendale "
 							+ "on tutoraziendale.ID_TutorAziendale = TirocinioEsterno.ID_TutorAziendale "+
-					 
 					"where tirocinioesterno.EMAIL=? and tirocinioesterno.status='in svolgimento' and registro.tipo='esterno';");
 			ps.setString(1, email);
 			
@@ -523,18 +522,7 @@ public class TirocinioEsternoDAO {
 				lista.add(a);
 			}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+	
 			return lista;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -546,11 +534,12 @@ public class TirocinioEsternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAccRegistro(int id) { // corregere query
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,"
-							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro "
-							+ "from TirocinioEsterno, Registro, tutoraccademico "
-							+ "where TirocinioEsterno.ID_TirocinioEsterno = Registro.ID_Tirocinio AND "
-							+ "TirocinioEsterno.ID_TutorAccademico = ? AND TirocinioEsterno.status='in svolgimento'");
+					"select  tutoraziendale.Nome,tutoraziendale.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, " +
+							"TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "+
+							 "TirocinioEsterno.CFU from tirocinioesterno \n" +
+							"join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n " + "join tutoraziendale "
+									+ "on tutoraziendale.ID_TutorAziendale = TirocinioEsterno.ID_TutorAziendale "+
+							"where tutoraziendale.ID_TutorAziendale = ? and tirocinioesterno.status='in svolgimento' and registro.tipo='esterno';");
 			ps.setInt(1, id);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
@@ -559,11 +548,12 @@ public class TirocinioEsternoDAO {
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioEsterno"));
-				//a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
-				a.setStatus(rs.getString("status"));
+				a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
+				a.setStatus(rs.getString("TirocinioEsterno.status"));
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
+				a.setRegistro_status(rs.getString("registro.Status"));
 				lista.add(a);
 			}
 			return lista;
