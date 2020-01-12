@@ -52,7 +52,9 @@ public class ValutareRichieste extends BaseServlet {
 			if (session.getAttribute("utenteLoggato").getClass().getName()
 					.equalsIgnoreCase(TutorAccademico.class.getName())
 					|| session.getAttribute("utenteLoggato").getClass().getName()
-							.equalsIgnoreCase(TutorAziendale.class.getName())) {
+							.equalsIgnoreCase(TutorAziendale.class.getName())
+					|| session.getAttribute("utenteLoggato").getClass().getName()
+							.equalsIgnoreCase(Azienda.class.getName())) {
 				// prendo i dati in input
 				String conferma = request.getParameter("confermato");
 				System.out.println("conferma->" + conferma);
@@ -195,42 +197,42 @@ public class ValutareRichieste extends BaseServlet {
 							dispatcher.forward(request, response);
 
 						}
-						// azienda
-						else if (session.getAttribute("utenteLoggato").getClass().getName()
-								.equals(Azienda.class.getName())) {
-							// loggato azienda
-							Azienda az = (Azienda) session.getAttribute("utenteLoggato");
-							if (conferma.equalsIgnoreCase("si")) {
+					} // azienda
+					else if (session.getAttribute("utenteLoggato").getClass().getName()
+							.equals(Azienda.class.getName())) {
+						// loggato azienda
+						Azienda az = (Azienda) session.getAttribute("utenteLoggato");
+						System.out.println("ID AZIENDA->" + az.getID_Azienda());
+						if (conferma.equalsIgnoreCase("si")) {
 
-								risposta = new TirocinioEsternoDAO().updateFirmaTrueAzienda(true, idTirocinio,
-										az.getID_Azienda());
+							risposta = new TirocinioEsternoDAO().updateFirmaTrueAzienda(true, idTirocinio,
+									az.getID_Azienda());
 
-								request.setAttribute("esito", risposta);
+							request.setAttribute("esito", risposta);
 
-								ArrayList<TirocinioQueryEsternoTutorAz> tirocinioEsterno = new TirocinioEsternoDAO()
-										.doRetriveAllByTutorAz(az.getID_Azienda());
-								request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
+							ArrayList<TirocinioQueryEsternoTutorAz> tirocinioEsterno = new TirocinioEsternoDAO()
+									.doRetriveAllByTutorAz(az.getID_Azienda());
+							request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 
-								RequestDispatcher dispatcher = request
-										.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
-								dispatcher.forward(request, response);
-								
-							} else if (conferma.equalsIgnoreCase("no")) {
-								// cambia status in rifiutato
-								risposta = new TirocinioEsternoDAO().updateFirmaFalseAzienda(false, idTirocinio,
-										az.getID_Azienda());
-								request.setAttribute("esito", risposta);
+							RequestDispatcher dispatcher = request
+									.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
+							dispatcher.forward(request, response);
 
-								ArrayList<TirocinioQueryEsternoTutorAz> tirocinioEsterno = new TirocinioEsternoDAO()
-										.doRetriveAllByTutorAz(az.getID_Azienda());
+						} else if (conferma.equalsIgnoreCase("no")) {
+							// cambia status in rifiutato
+							risposta = new TirocinioEsternoDAO().updateFirmaFalseAzienda(false, idTirocinio,
+									az.getID_Azienda());
+							request.setAttribute("esito", risposta);
 
-								request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
+							ArrayList<TirocinioQueryEsternoTutorAz> tirocinioEsterno = new TirocinioEsternoDAO()
+									.doRetriveAllByTutorAz(az.getID_Azienda());
 
-								RequestDispatcher dispatcher = request
-										.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinioEsterno.jsp");
-								dispatcher.forward(request, response);
+							request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 
-							}
+							RequestDispatcher dispatcher = request
+									.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinioEsterno.jsp");
+							dispatcher.forward(request, response);
+
 						}
 					}
 
@@ -247,6 +249,7 @@ public class ValutareRichieste extends BaseServlet {
 				}
 
 			}
+
 		}
 	}
 
