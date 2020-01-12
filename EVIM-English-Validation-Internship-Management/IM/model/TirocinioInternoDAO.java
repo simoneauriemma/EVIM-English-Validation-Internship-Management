@@ -317,8 +317,9 @@ public class TirocinioInternoDAO {
 			PreparedStatement ps = con.prepareStatement(
 					"select tutoraccademico.nome,tutoraccademico.cognome, TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.NumeroCFU,"
 							+ "TirocinioInterno.OreTotali, Registro.ID_Registro "
-							+ "from TirocinioInterno, Registro, tutoraccademico "
-							+ "where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio AND "
+							+ "from TirocinioInterno join Registro on registro.ID_Tirocinio= TirocinioInterno.ID_TirocinioInterno join"
+							+ " tutoraccademico on tutoraccademico.ID_tutorAccademico= TirocinioInterno.ID_tutorAccademico "
+							+ "where "
 							+ "TirocinioInterno.ID_tutorAccademico = ? AND tirociniointerno.status='in svolgimento'");
 			ps.setInt(1, id);
 
