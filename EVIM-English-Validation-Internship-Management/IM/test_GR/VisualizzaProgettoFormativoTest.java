@@ -48,8 +48,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
 	//uno studente della triennale intende visualizzare il PF relativo a un tirocinio interno senza loggarsi
       @Test
 	  public void tc_gr_5_1() throws ServletException, IOException  {
-    	   request.setAttribute("id", "2");
-    	   request.setAttribute("tirocinio", "interno");
+    	   request.addParameter("idTirocinio", "2");
+    	   request.addParameter("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
 	
@@ -63,8 +63,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "2");
-    	   request.setAttribute("tirocinio", "interno");
+    	   request.addParameter("idTirocinio", "2");
+    	   request.addParameter("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -79,8 +79,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "7");
-    	   request.setAttribute("tirocinio", "interno");
+    	   request.addParameter("idTirocinio", "7");
+    	   request.addParameter("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -94,8 +94,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "4");
-    	   request.setAttribute("tirocinio", "interno");
+    	   request.addParameter("idTirocinio", "4");
+    	   request.addParameter("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -109,8 +109,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "3");
-    	   request.setAttribute("tirocinio", "interno");
+    	   request.addParameter("idTirocinio", "3");
+    	   request.addParameter("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -124,8 +124,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "3");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.addParameter("idTirocinio", "3");
+    	   request.addParameter("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -139,8 +139,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "2");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.addParameter("idTirocinio", "2");
+    	   request.addParameter("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
 	  }
      
@@ -155,8 +155,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "5");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.addParameter("idTirocinio", "5");
+    	   request.addParameter("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -170,8 +170,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "1");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.addParameter("idTirocinio", "1");
+    	   request.addParameter("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -185,8 +185,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "6");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.addParameter("idTirocinio", "6");
+    	   request.addParameter("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -200,8 +200,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "7");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.addParameter("idTirocinio", "7");
+    	   request.addParameter("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -215,8 +215,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "7");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.addParameter("idTirocinio", "7");
+    	   request.addParameter("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -232,8 +232,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "3");
-    	   request.setAttribute("tirocinio", "interno");
+    	   request.addParameter("idTirocinio", "3");
+    	   request.addParameter("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -247,8 +247,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "4");
-    	   request.setAttribute("tirocinio", "interno");
+    	   request.addParameter("idTirocinio", "4");
+    	   request.addParameter("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -262,8 +262,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "4");
-    	   request.setAttribute("tirocinio", "interno");
+    	   request.addParameter("idTirocinio", "4");
+    	   request.addParameter("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -277,8 +277,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "3");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.addParameter("idTirocinio", "3");
+    	   request.addParameter("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -292,8 +292,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "5");
-    	   request.setAttribute("tirocinio", "interno");
+    	   request.addParameter("idTirocinio", "5");
+    	   request.addParameter("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -307,8 +307,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "6");
-    	   request.setAttribute("tirocinio", "interno");
+    	   request.addParameter("idTirocinio", "6");
+    	   request.addParameter("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -322,8 +322,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "4");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.addParameter("idTirocinio", "4");
+    	   request.addParameter("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -337,8 +337,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "5");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.addParameter("idTirocinio", "5");
+    	   request.addParameter("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
@@ -352,8 +352,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "6");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.addParameter("idTirocinio", "6");
+    	   request.addParameter("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
       }*/
     

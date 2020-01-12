@@ -118,8 +118,6 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   request.addParameter("azienda", "azienda");
     	   request.addParameter("confermato", "si");
     	   servletValuta.doPost(request, response);
-    	   boolean log = (boolean) request.getAttribute("login");  
-    	   assertFalse(log);
 	  }
       
     //si trova loggato uno studente
@@ -135,9 +133,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   request.addParameter("id", "2");
     	   request.addParameter("azienda", "azienda");
     	   request.addParameter("confermato", "si");
-    	   servletValuta.doPost(request, response);
-    	   boolean log1 = (boolean) request.getAttribute("login");  
-    	   assertFalse(log1);
+    	   servletValuta.doPost(request, response);  
 	  }
       
     //un tutor aziendale intende approvare una richiesta (dato azienda passato come errato)
@@ -153,9 +149,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   request.addParameter("id", "2");
     	   request.addParameter("azienda", "zienda");
     	   request.addParameter("confermato", "si");
-    	   servletValuta.doPost(request, response);
-    	   boolean log1 = (boolean) request.getAttribute("login");  
-    	   assertFalse(log1);
+    	   servletValuta.doPost(request, response);   	   
 	  }
       
     //un tutor aziendale intende approvare una richiesta (dato azienda passato come errato)
