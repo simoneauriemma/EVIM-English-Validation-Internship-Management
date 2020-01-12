@@ -24,7 +24,7 @@ public class RimuoviPropostaTest extends Mockito{
 	private Login servletLogin;
 	private MockHttpServletRequest request; 
 	private MockHttpServletResponse response;
-
+      
 	/**
 	 * Before.
 	 */
