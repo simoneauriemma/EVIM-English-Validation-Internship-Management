@@ -90,7 +90,7 @@ public class ModificaPropostaTest extends Mockito{
 	@Test 
 	public void tc_gp2_4() throws ServletException, IOException  {
 		request.addParameter("email","edoardo93@studenti.unisa.it");
-		request.addParameter("password", "edoardo93@"); 
+		request.addParameter("password", "edoardo93"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  

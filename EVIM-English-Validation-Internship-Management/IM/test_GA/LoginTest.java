@@ -78,7 +78,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 	  @Test
 	  public void tc_ga1_5() throws ServletException, IOException  {
 		   request.addParameter("email","microsoftofficial@tiscali.it");
-		   request.addParameter("password", "Xboxthebest");
+		   request.addParameter("password", "microsoft1");
 		   servlet.doPost(request, response);
 		   String type=request.getSession().getAttribute("type").toString();
 		   boolean log=(boolean) request.getAttribute("logged");
@@ -89,7 +89,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 	  @Test
 	  public void tc_ga1_6() throws ServletException, IOException  {
 		   request.addParameter("email","segreteria@unisa.it");
-		   request.addParameter("password", "Segreteria");
+		   request.addParameter("password", "segreteria1");
 		   servlet.doPost(request, response);
 		   String type=request.getSession().getAttribute("type").toString();
 		   boolean log=(boolean) request.getAttribute("logged");

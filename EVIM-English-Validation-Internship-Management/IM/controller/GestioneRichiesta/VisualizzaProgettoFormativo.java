@@ -51,6 +51,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
 			dispatcher.forward(request, response);
 			}
+		
 		else {
 			int id= Integer.parseInt((String) request.getAttribute("id"));
 			
@@ -63,7 +64,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 					PDFProgettoFormativo pdfProgetto=TirocinioInternoDAO.getProgettoFormativoInterno(id);
 					createProgettoFormativoInterno(request, response, pdfProgetto);
 				}
-				else if(tirocinio.equalsIgnoreCase("esterno")) {
+				if(tirocinio.equalsIgnoreCase("esterno")) {
 					PDFProgettoFormativo pdfProgetto=TirocinioEsternoDAO.getProgettoFormativoEsterno(id);
 					createProgettoFormativoEsterno(request, response, pdfProgetto);
 				}
@@ -179,18 +180,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 					numeroTitleTotCFU.add(new Chunk("\n6 CFU provienenti da tirocinio esterno (2) a scelta",campiCompilati));
 			}
 		}
-		else if(pdfProgetto.getCorsoLaurea().equalsIgnoreCase("magistrale")) {
-			switch(totCFU) {
-				case 6:
-					numeroTitleTotCFU.add(new Chunk("\n6 CFU provienenti da tirocinio esterno (1) a scelta",campiCompilati));
-					break;
-				case 12:
-					numeroTitleTotCFU.add(new Chunk("\n6 CFU provienenti da tirocinio esterno (1) a scelta",campiCompilati));
-					numeroTitleTotCFU.add(new Chunk("\n6 CFU provienenti da tirocinio esterno (2) a scelta",campiCompilati));
-					break;
-				
-			}
-		}
+		
 		// fine sezione n.totale di crediti
 		
 		// inizio sezione Proposta

@@ -45,7 +45,7 @@ public class SystemCreaAccount {
     driver.manage().window().setSize(new Dimension(1280, 736));
     driver.findElement(By.id("bott")).click();
     driver.findElement(By.id("username")).click();
-    driver.findElement(By.id("password")).sendKeys("Xboxthebest");
+    driver.findElement(By.id("password")).sendKeys("microsoft1");
     driver.findElement(By.id("username")).sendKeys("microsoftofficial@tiscali.it");
     driver.findElement(By.cssSelector(".btn")).click();
     driver.findElement(By.cssSelector(".item:nth-child(9)")).click();
