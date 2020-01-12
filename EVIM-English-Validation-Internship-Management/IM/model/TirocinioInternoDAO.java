@@ -296,6 +296,8 @@ public class TirocinioInternoDAO {
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioInterno"));
 				a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
 				a.setFirmaResponsabile(rs.getInt("FirmaTutorAccamico"));
+				a.setNome_responsabile(rs.getString("tutoraziendale.Nome"));
+				a.setCognome_responsabile(rs.getString("tutoraziendale.Cognome"));
 				a.setStatus(rs.getString("status"));
 				a.setNumeroCFU(rs.getInt("numeroCFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
@@ -313,7 +315,7 @@ public class TirocinioInternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAccRegistro(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.NumeroCFU,"
+					"select tutoraccademico.nome,tutoraccademico.cognome, TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.NumeroCFU,"
 							+ "TirocinioInterno.OreTotali, Registro.ID_Registro "
 							+ "from TirocinioInterno, Registro, tutoraccademico "
 							+ "where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio AND "
@@ -326,7 +328,9 @@ public class TirocinioInternoDAO {
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("TirocinioInterno.ID_TirocinioInterno"));
-				a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
+				//a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
+				a.setNome_responsabile(rs.getString("tutoraccademico.Nome"));
+				a.setCognome_responsabile(rs.getString("tutoraccademico.Cognome"));
 				a.setStatus(rs.getString("status"));
 				a.setNumeroCFU(rs.getInt("NumeroCFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));

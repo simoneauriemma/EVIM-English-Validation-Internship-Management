@@ -27,7 +27,7 @@
 
 			<!-- se entrambi gli array di tirocini sono vuoti esce che non c'è nulla -->
 			<c:if
-				test="${registroQueryEsterno.size()==0 || registroQueryInterno.size()==0}">
+				test="${registroQueryEsterno.size()==0 && registroQueryInterno.size()==0}">
 				<p style="text-align: center;">Nessun tirocinio in corso!</p>
 			</c:if>
 
@@ -55,17 +55,17 @@
 							</thead>
 							<tbody>
 								<tr>
-									<th scope="row"><c:out value="${esterno.ID_Tirocinio}" /></th>
+									<th scope="row" id="id"><c:out value="${esterno.ID_Tirocinio}" /></th>
 									<td id="responsabile"><c:out
 											value="${esterno.nome_responsabile}" /> <c:out
 											value="${esterno.cognome_responsabile}" /></td>
-									<td><c:out value="${esterno.status}" /></td>
-									<td><c:out value="${esterno.NumeroCFU}" /></td>
-									<td><c:out value="${esterno.OreTotali}" /></td>
-									<td>Esterno</td>
+									<td id="status"><c:out value="${esterno.status}" /></td>
+									<td id="cfu"><c:out value="${esterno.numeroCFU}" /></td>
+									<td id="ore"><c:out value="${esterno.oreTotali}" /></td>
+									<td id="tirocinio">Esterno</td>
 
 									<!-- REGISTRO -->
-									<td class="form-inline text-center">
+									<td class="form-inline text-center" id="registro1">
 										<form action="VisualizzaRegistroTirocinio">
 											<input type="hidden" name="EMAIL"
 												value="<c:out value="${studente.email}" />"> <a
@@ -108,24 +108,7 @@
 
 										</c:if> <c:if test="${type=='tutoraccademico'}">
 
-											<div class="panel-group">
-												<div class="panel panel-default">
-													<div class="panel-heading">
-														<h6 class="panel-title">
-															<a data-toggle="collapse" href="#collapse1">Scegli
-																un'operazione </a>
-														</h6>
-													</div>
-													<div id="collapse1" class="panel-collapse collapse">
-														<ul class="list-group">
-															<li class="list-group-item"><a class="list-item"
-																href="CreaRelazione">Compila relazione</a></li>
-
-														</ul>
-
-													</div>
-												</div>
-											</div>
+											<a href="ValutaRelazione" id="rel">Valuta relazione</a>
 
 
 
@@ -164,19 +147,19 @@
 								<th scope="col">Ore Max</th>
 								<th scope="col">Tipo tirocinio</th>
 								<th scope="col">Registro tirocinio</th>
-								<th scope="col">Operazioni</th>
+								
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<th scope="row"><c:out value="${interno.ID_Tirocinio}" /></th>
+								<th scope="row" id="id"><c:out value="${interno.ID_Tirocinio}" /></th>
 								<td id="responsabile"><c:out
 										value="${interno.nome_responsabile}" /> <c:out
 										value="${interno.cognome_responsabile}" /></td>
-								<td><c:out value="${interno.status}" /></td>
-								<td><c:out value="${interno.NumeroCFU}" /></td>
-								<td><c:out value="${interno.OreTotali}" /></td>
-								<td>Interno</td>
+								<td id="status"><c:out value="${interno.status}" /></td>
+								<td id="cfu"><c:out value="${interno.numeroCFU}" /></td>
+								<td id="ore"><c:out value="${interno.oreTotali}" /></td>
+								<td id="tirocinio">Interno</td>
 
 								<!-- REGISTRO -->
 								<td class="form-inline text-center">
