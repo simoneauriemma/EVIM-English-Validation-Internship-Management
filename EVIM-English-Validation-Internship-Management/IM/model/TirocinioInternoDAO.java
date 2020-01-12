@@ -328,7 +328,7 @@ public class TirocinioInternoDAO {
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioInterno"));
 				a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
 				a.setStatus(rs.getString("status"));
-				a.setNumeroCFU(rs.getInt("CFU"));
+				a.setNumeroCFU(rs.getInt("NumeroCFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
 				lista.add(a);
