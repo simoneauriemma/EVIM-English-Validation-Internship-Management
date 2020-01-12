@@ -64,10 +64,16 @@
 									<td id="tirocinio">Esterno</td>
 
 									<!-- REGISTRO -->
-									<td class="form-inline" id="registro1"><a
+									<td class="form-inline text-center" id="registro1">
+									<form action="CompilaRegistro">
+									<input type="hidden" name="IDRegistro" value="<c:out value="${esterno.ID_Registro}" />">
+									<a
 										href="CompilaRegistro"> <i id="registro"
 											class="fas fa-book"></i>
-									</a> <!-- <a href="#"> <i id="accettare" class="fas fa-check-square"></i>
+									</a>
+									</form>
+									
+									 <!-- <a href="#"> <i id="accettare" class="fas fa-check-square"></i>
 									</a> --></td>
 
 									<!-- OPERAZIONI -->
@@ -105,16 +111,17 @@
 									<td id="cfu"><c:out value="${interno.numeroCFU}" /></td>
 									<td id="ore"><c:out value="${interno.oreTotali}" /></td>
 									<td id="tirocinio">Interno</td>
-									<td class="form-inline" id="registro1"><a href="CompilaRegistro"> <i id="registro"
+									<td class="form-inline text-center" id="registro1">
+									<form action="CompilaRegistro">
+									<input type="hidden" name="IDRegistro" value="<c:out value="${interno.ID_Registro}" />">
+									<a
+										href="CompilaRegistro"> <i id="registro"
 											class="fas fa-book"></i>
-									</a> 
+									</a>
+									</form>
 									
-									<!-- <a href="CompilaRegistro"> 
-									
-									<i id="accettare"
-											class="fas fa-check-square"></i>
-									</a>-->
-									</td>
+									 <!-- <a href="#"> <i id="accettare" class="fas fa-check-square"></i>
+									</a> --></td>
 									
 								</tr>
 							</tbody>
