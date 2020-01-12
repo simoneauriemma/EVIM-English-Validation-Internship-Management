@@ -92,20 +92,20 @@
 									<th scope="col">Ore Max</th>
 									<th scope="col">Tipo tirocinio</th>
 									<th scope="col">Registro tirocinio</th>
-									<th scope="col">Operazioni</th>
+								
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<th scope="row"><c:out value="${interno.ID_Tirocinio}" /></th>
+									<th scope="row" id="id"><c:out value="${interno.ID_Tirocinio}" /></th>
 									<td id="responsabile"><c:out
 											value="${interno.nome_responsabile}" /> <c:out
 											value="${interno.cognome_responsabile}" /></td>
-									<td><c:out value="${interno.status}" /></td>
-									<td><c:out value="${interno.numeroCFU}" /></td>
-									<td><c:out value="${interno.oreTotali}" /></td>
-									<td>Interno</td>
-									<td class="form-inline"><a href="CompilaRegistro"> <i id="registro"
+									<td id="status"><c:out value="${interno.status}" /></td>
+									<td id="cfu"><c:out value="${interno.numeroCFU}" /></td>
+									<td id="ore"><c:out value="${interno.oreTotali}" /></td>
+									<td id="tirocinio">Interno</td>
+									<td class="form-inline" id="registro1"><a href="CompilaRegistro"> <i id="registro"
 											class="fas fa-book"></i>
 									</a> 
 									
@@ -115,10 +115,7 @@
 											class="fas fa-check-square"></i>
 									</a>-->
 									</td>
-									<td id="operazioni"><c:if
-											test="${interno.ID_Questionario==null}">
-											<a href="QuestionarioS" id="op">Compila questionario</a>
-										</c:if></td>
+									
 								</tr>
 							</tbody>
 						</c:forEach>
