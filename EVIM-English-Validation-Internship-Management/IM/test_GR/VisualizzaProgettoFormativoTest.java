@@ -114,23 +114,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   servletVisualizza.doPost(request, response);
 	  }
       
-    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio esterno da 23
-      @Test
-	  public void tc_gr_5_6() throws ServletException, IOException  {
-    	   request.addParameter("email","simonagrieco@studenti.unisa.it");
-    	   request.addParameter("password", "grieco1998"); 
-    	   servletLogin.doPost(request, response);
-    	   String type = request.getSession().getAttribute("type").toString();
-    	   boolean log = (boolean) request.getAttribute("logged");  
-    	   assertTrue(log);
-    	   assertEquals("studente", type);
-    	   request.setAttribute("id", "3");
-    	   request.setAttribute("tirocinio", "esterno");
-    	   servletVisualizza.doPost(request, response);
-	  }
-     
-      /*
-    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio da 6
+    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio esterno da 6
       @Test
 	  public void tc_gr_5_6() throws ServletException, IOException  {
     	   request.addParameter("email","edoardo93@studenti.unisa.it");
@@ -141,7 +125,98 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   assertTrue(log);
     	   assertEquals("studente", type);
     	   request.setAttribute("id", "3");
-    	   request.setAttribute("tirocinio", "interno");
+    	   request.setAttribute("tirocinio", "esterno");
+    	   servletVisualizza.doPost(request, response);
+	  }
+      
+    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio esterno da 12
+      @Test
+	  public void tc_gr_5_7() throws ServletException, IOException  {
+    	   request.addParameter("email","attiliodellag1@studenti.unisa.it");
+    	   request.addParameter("password", "attilio1"); 
+    	   servletLogin.doPost(request, response);
+    	   String type = request.getSession().getAttribute("type").toString();
+    	   boolean log = (boolean) request.getAttribute("logged");  
+    	   assertTrue(log);
+    	   assertEquals("studente", type);
+    	   request.setAttribute("id", "2");
+    	   request.setAttribute("tirocinio", "esterno");
+    	   servletVisualizza.doPost(request, response);
+	  }
+     
+      
+    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio da 6
+      @Test
+	  public void tc_gr_5_8() throws ServletException, IOException  {
+    	   request.addParameter("email","simonagrieco@studenti.unisa.it");
+    	   request.addParameter("password", "grieco1998"); 
+    	   servletLogin.doPost(request, response);
+    	   String type = request.getSession().getAttribute("type").toString();
+    	   boolean log = (boolean) request.getAttribute("logged");  
+    	   assertTrue(log);
+    	   assertEquals("studente", type);
+    	   request.setAttribute("id", "5");
+    	   request.setAttribute("tirocinio", "esterno");
+    	   servletVisualizza.doPost(request, response);
+	  }
+      
+    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio da 6
+      @Test
+	  public void tc_gr_5_9() throws ServletException, IOException  {
+    	   request.addParameter("email","simonagrieco@studenti.unisa.it");
+    	   request.addParameter("password", "grieco1998"); 
+    	   servletLogin.doPost(request, response);
+    	   String type = request.getSession().getAttribute("type").toString();
+    	   boolean log = (boolean) request.getAttribute("logged");  
+    	   assertTrue(log);
+    	   assertEquals("studente", type);
+    	   request.setAttribute("id", "1");
+    	   request.setAttribute("tirocinio", "esterno");
+    	   servletVisualizza.doPost(request, response);
+	  }
+      
+    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio da 6
+      @Test
+	  public void tc_gr_5_10() throws ServletException, IOException  {
+    	   request.addParameter("email","simonagrieco@studenti.unisa.it");
+    	   request.addParameter("password", "grieco1998"); 
+    	   servletLogin.doPost(request, response);
+    	   String type = request.getSession().getAttribute("type").toString();
+    	   boolean log = (boolean) request.getAttribute("logged");  
+    	   assertTrue(log);
+    	   assertEquals("studente", type);
+    	   request.setAttribute("id", "6");
+    	   request.setAttribute("tirocinio", "esterno");
+    	   servletVisualizza.doPost(request, response);
+	  }
+      
+    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio da 6
+      @Test
+	  public void tc_gr_5_11() throws ServletException, IOException  {
+    	   request.addParameter("email","simonagrieco@studenti.unisa.it");
+    	   request.addParameter("password", "grieco1998"); 
+    	   servletLogin.doPost(request, response);
+    	   String type = request.getSession().getAttribute("type").toString();
+    	   boolean log = (boolean) request.getAttribute("logged");  
+    	   assertTrue(log);
+    	   assertEquals("studente", type);
+    	   request.setAttribute("id", "7");
+    	   request.setAttribute("tirocinio", "esterno");
+    	   servletVisualizza.doPost(request, response);
+	  }
+      
+    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio da 6
+      @Test
+	  public void tc_gr_5_12() throws ServletException, IOException  {
+    	   request.addParameter("email","attiliodellag1@studenti.unisa.it");
+    	   request.addParameter("password", "attilio1"); 
+    	   servletLogin.doPost(request, response);
+    	   String type = request.getSession().getAttribute("type").toString();
+    	   boolean log = (boolean) request.getAttribute("logged");  
+    	   assertTrue(log);
+    	   assertEquals("studente", type);
+    	   request.setAttribute("id", "7");
+    	   request.setAttribute("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
