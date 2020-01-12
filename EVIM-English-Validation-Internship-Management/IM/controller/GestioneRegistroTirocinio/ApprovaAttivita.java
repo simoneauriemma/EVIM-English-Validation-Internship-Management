@@ -1,6 +1,7 @@
 package controller.GestioneRegistroTirocinio;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,15 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.RegistroDao;
-import model.User;
-
+import model.AttivitaDAO;
 /**
  * @author Antonio Giano
  * Questa servlet permette di gestire l'approvazione o il rifiuto di un registro cambiando definitivamente lo stato di tale registro sul database
  */
-@WebServlet("/ApprovaRifiutaRegistro")
-public class ApprovaRifiutaRegistro extends HttpServlet {
+@WebServlet("/ApprovaAttivita")
+public class ApprovaAttivita extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,25 +25,17 @@ public class ApprovaRifiutaRegistro extends HttpServlet {
 		}
 		else {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
-			if(!tipoUtente.equalsIgnoreCase("model.User")) {
-				request.getRequestDispatcher("permissionDenied.jsp").forward(request, response);
+			// solo il tutor aziendale e il tutor accademico possono approvare l'attivita
+			if(tipoUtente.equalsIgnoreCase("model.tutoraccademico") || tipoUtente.equalsIgnoreCase("model.tutoraziendale")) {
+				int idAttivita=Integer.parseInt(request.getParameter("idAttivita"));
+				String modifica=request.getParameter("modifica");
+				if(modifica.equalsIgnoreCase("approva")) 
+					if(!AttivitaDAO.changeFirmaResponsabile(idAttivita,1)) // 1= attivita approvata
+						throw new IllegalAccessError("Errore nell'approvare l'attivita");
 			}
+			//tutti gli altri utenti gli sono stati negati per l'approvazione di una attivita
 			else {
-				User utente=(User) sessione.getAttribute("utenteLoggato");
-				//Controlli di sicurezza. Lo studente e l'Ufficio Carriera non deve aver a che fare con tale pagina. 
-				if(!(utente.getUserType()==2)) {
-					request.getRequestDispatcher("permissionDenied.jsp").forward(request, response);
-				}
-				else {
-					int idRegistro=Integer.parseInt(request.getParameter("idRegistro"));
-					String modifica=request.getParameter("modifica");
-					if(modifica.equalsIgnoreCase("rifiuta")) {
-						RegistroDao.changeStatoRegistro(idRegistro,"Rifiutato");
-					}
-					else if(modifica.equalsIgnoreCase("approva")) {
-						RegistroDao.changeStatoRegistro(idRegistro,"Approvato");
-					}
-				}
+				request.getRequestDispatcher("permissionDenied.jsp").forward(request, response);	
 			}
 		}
 	}

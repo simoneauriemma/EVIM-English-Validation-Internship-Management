@@ -85,7 +85,7 @@ public class ListaTirocini extends BaseServlet {
 				
 				
 				esterno = new TirocinioEsternoDAO().doRetriveTirocinioInSvolgimentoTutorAccRegistro(tutora.getIdTutorAccademico());
-								
+				System.out.println("sono un tutor accademico");				
 				System.out.println(interno.toString());
 				System.out.println(esterno.toString());
 
@@ -94,7 +94,7 @@ public class ListaTirocini extends BaseServlet {
 					request.setAttribute("registroQueryInterno", interno);
 					
 		
-					//esterno
+					
 				
 					request.setAttribute("registroQueryEsterno", esterno);
 

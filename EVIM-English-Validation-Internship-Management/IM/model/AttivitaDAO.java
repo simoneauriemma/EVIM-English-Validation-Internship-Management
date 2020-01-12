@@ -236,4 +236,21 @@ public class AttivitaDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public static boolean changeFirmaResponsabile(int idAttivita,int firma) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement(
+					"update EVIM.Attivita SET FirmaTutorAccademico=? where Attivita.ID_Attivita=?");
+			ps.setInt(1, firma);
+			ps.setInt(2,idAttivita);
+			if(ps.executeUpdate()>0)
+				return true;
+			else 
+				return false;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 }

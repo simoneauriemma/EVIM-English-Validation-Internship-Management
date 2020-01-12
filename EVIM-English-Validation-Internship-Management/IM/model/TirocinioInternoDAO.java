@@ -325,7 +325,7 @@ public class TirocinioInternoDAO {
 
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
-				a.setID_Tirocinio(rs.getInt("ID_TirocinioInterno"));
+				a.setID_Tirocinio(rs.getInt("TirocinioInterno.ID_TirocinioInterno"));
 				a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
 				a.setStatus(rs.getString("status"));
 				a.setNumeroCFU(rs.getInt("NumeroCFU"));

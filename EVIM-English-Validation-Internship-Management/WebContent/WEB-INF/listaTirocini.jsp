@@ -66,18 +66,18 @@
 
 									<!-- REGISTRO -->
 									<td class="form-inline text-center">
-									<form action="VisualizzaRegistroTirocinio">
-										<input type="hidden" name="EMAIL"
-											value="<c:out value="${studente.email}" />"> <a
-											href="VisualizzaRegistroTirocinio"> <i id="registro"
-											class="fas fa-book"></i>
-										</a>
-									</form>
+										<form action="VisualizzaRegistroTirocinio">
+											<input type="hidden" name="EMAIL"
+												value="<c:out value="${studente.email}" />"> <a
+												href="VisualizzaRegistroTirocinio"> <i id="registro"
+												class="fas fa-book"></i>
+											</a>
+										</form>
 
-									<form id="accettare">
-										<i class="fas fa-check-square"></i>
-									</form>
-								</td>
+										<form id="accettare">
+											<i class="fas fa-check-square"></i>
+										</form>
+									</td>
 									<!-- ...... -->
 
 
@@ -152,7 +152,7 @@
 			<!-- inizio TIROCINIO INTERNO -->
 			<!-- SE L'UTENTE LOGGATO E' UNO TUTOR ACCADEMICO O IL PDCD  -->
 			<c:if test="${type == 'tutoraccademico' || type == 'pdcd'}">
-				<c:forEach items="registroQueryInterno" var="interno">
+				<c:forEach items="${registroQueryInterno}" var="interno">
 
 					<table class="table table-striped" id="tabella">
 						<thead>
