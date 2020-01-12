@@ -38,28 +38,31 @@ public class VisualizzaCompilaModuloRiconoscimento extends HttpServlet {
 		}
 		else {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
-			User utente=(User) sessione.getAttribute("utenteLoggato");
+			
 			// servlet non adatta per i tutor accademici, per le aziende e per i tutor aziendali
 			if(!tipoUtente.equalsIgnoreCase("model.User")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
 				dispatcher.forward(request, response);
 			}
+			else {
 			// studente--> in questo modo nel momento in cui lo studente compila il modulo, troverò i dati anagrafici già precompilati
-			else if(utente.getUserType()==0){
-				
-				int CFUInglese=getCFUinglese(utente.getEmail());
-				request.setAttribute("CFUInglese", CFUInglese);
-				request.setAttribute("studente", utente);
-				request.getRequestDispatcher("WEB-INF/compilaModuloRiconoscimento.jsp").forward(request, response);
+				User utente=(User) sessione.getAttribute("utenteLoggato");
+				if(utente.getUserType()==0){
+					
+					int CFUInglese=getCFUinglese(utente.getEmail());
+					request.setAttribute("CFUInglese", CFUInglese);
+					request.setAttribute("studente", utente);
+					request.getRequestDispatcher("WEB-INF/compilaModuloRiconoscimento.jsp").forward(request, response);
+				}
+				//non adatto ufficio carriera e PdCD
+				if(utente.getUserType()==1 || utente.getUserType()==2) {
+					request.getRequestDispatcher("permissionDenied.jsp").forward(request, response);
+	 			}		
 			}
-			//non adatto ufficio carriera e PdCD
-			else if(utente.getUserType()==1 || utente.getUserType()==2) {
-				request.getRequestDispatcher("permissionDenied.jsp").forward(request, response);
- 			}		
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 	
