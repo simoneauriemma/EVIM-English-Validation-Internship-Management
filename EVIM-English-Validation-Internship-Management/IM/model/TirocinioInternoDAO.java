@@ -312,8 +312,8 @@ public class TirocinioInternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro(String email) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select registro.ID_Registro,TirocinioInterno.FirmaTutorAccademico, TirocinioInterno.ID_TirocinioInterno,TirocinioInterno.OreTotali,  Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.numeroCFU from TirocinioInterno\n"
-							+ "join registro on registro.ID_Tirocinio= TirocinioInterno.ID_TirocinioInterno\n"
+					"select tutoraccademico.nome,tutoraccademico.cognome, registro.ID_Registro,TirocinioInterno.FirmaTutorAccademico, TirocinioInterno.ID_TirocinioInterno,TirocinioInterno.OreTotali,  Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.numeroCFU from TirocinioInterno\n"
+							+ "join registro on registro.ID_Tirocinio= TirocinioInterno.ID_TirocinioInterno\n join tutoraccademico on tutoraccademico.ID_TutorAccademico=tirociniointerno.ID_tutorAccademico "
 							+ "where tirociniointerno.EMAIL=? and tirociniointerno.status='in svolgimento' and registro.tipo='interno';"); // controllare
 			ps.setString(1, email);
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
@@ -328,6 +328,8 @@ public class TirocinioInternoDAO {
 				a.setNumeroCFU(rs.getInt("numeroCFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
+				a.setNome_responsabile(rs.getString("tutoraccademico.nome"));
+				a.setCognome_responsabile(rs.getString("tutoraccademico.cognome"));
 				lista.add(a);
 			}
 			return lista;
