@@ -665,5 +665,51 @@ public class TirocinioEsternoDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public ArrayList<TirocinioQueryEsternoTutorAz> doRetriveAllByAzienda(int id) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			String inValutazione = "in approvazione";
+			String inSvolgimento= "in svolgimento";
+			
+			PreparedStatement ps = con.prepareStatement(
+					"select ID_TirocinioEsterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud,TutorAccademico.Nome as nomeTutorAcc,TutorAccademico.Cognome as cognomeTutorAcc, Data, OreTotali, status, CFU, FirmaPdCD, FirmaTutorAccademico, FirmaTutorAccademico, ID_Proposta, firmaAzienda " + 
+					"from TirocinioEsterno AS tiro JOIN User ON tiro.EMAIL = User.EMAIL " + 
+					"JOIN TutorAccademico on tiro.ID_TutorAccademico=TutorAccademico.ID_TutorAccademico " + 
+					"JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale " + 
+					"JOIN Azienda ON Azienda.ID_Azienda = tutorAz.ID_Azienda " + 
+					"where (status=? OR status=?) AND Azienda.ID_Azienda=?");
+
+			ps.setString(1, inValutazione);
+			ps.setString(2, inSvolgimento);
+			ps.setInt(3, id);
+
+			ArrayList<TirocinioQueryEsternoTutorAz> richieste = new ArrayList<TirocinioQueryEsternoTutorAz>();
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				TirocinioQueryEsternoTutorAz a = new TirocinioQueryEsternoTutorAz();
+				a.setID_TirocinioEsterno(rs.getInt(1));
+				a.setEmail(rs.getString(2));
+				a.setNomeStudente(rs.getString(3));
+				a.setCognomeStudente(rs.getString(4));
+				a.setNomeTutorAcc(rs.getString(5));
+				a.setCognomeTutorAcc(rs.getString(6));
+				a.setData(rs.getString(7));
+				a.setOreTotali(rs.getInt(8));
+				a.setStatus(rs.getString(9));
+				a.setCFU(rs.getInt(10));
+				a.setFirmaPdCD(rs.getBoolean(11));
+				a.setFirmaTutorAccademico(rs.getBoolean(12));
+				a.setFirmaTutorAziendale(rs.getBoolean(13));
+				a.setID_Proposta(rs.getInt(14));
+				a.setFirmaAzienda(rs.getBoolean(15));
+				richieste.add(a);
+			}
+			return richieste;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 
 }

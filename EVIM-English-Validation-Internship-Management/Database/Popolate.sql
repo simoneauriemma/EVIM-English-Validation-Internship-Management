@@ -27,7 +27,7 @@ VALUES('003RTU67T56DIHGG','Angela','Giordano','Benevento','11/04/1989','Amminist
 INSERT INTO `referente_aziendale` (`CF`,`nome`,`cognome`,`luogo_nascita`,`data_nascita`,`ruolo`)
 VALUES('004RTU67T56DIHGG','Paola','Lucca','Salerno','07/11/1989','Amministratore delegato');
 INSERT INTO `referente_aziendale` (`CF`,`nome`,`cognome`,`luogo_nascita`,`data_nascita`,`ruolo`)
-VALUES('005RTU67T56DIHGG','Maria','Paolillo','Caserta','07/11/1989','Amministratore delegato');
+VALUES('005RTU67T56DIHGG','Raffaele','Doti','Caserta','07/11/1989','Amministratore delegato');
 
 #Inserimento aziende
 INSERT INTO `azienda` (`CF`,`Telefono`,`Nome`,`Password`,`Email`,`SitoWeb`,`Indirizzo`,`Descizione`,`Numero_Dipendenti`,`Codice_Ateco`,`CF_Referente`,`ID_Convenzione`) 
