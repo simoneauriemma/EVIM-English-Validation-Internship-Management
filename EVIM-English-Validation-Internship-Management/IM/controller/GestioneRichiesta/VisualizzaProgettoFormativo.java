@@ -85,7 +85,6 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 	
@@ -111,11 +110,6 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		Phrase stringaProgetto=new Phrase();
 		stringaProgetto.add(new Chunk("PROGETTO FORMATIVO E DI ORIENTAMENTO LAUREA TRIENNALE / LAUREA MAGISTRALE\n",campiTitoli));
 		
-		Phrase stringaConvenzione=new Phrase();
-		stringaConvenzione.add(new Chunk("Relativo alla Convenzione per tirocinio di formazione ed orientamento (curriculare) stipulata in data ",campiStatiche));
-		stringaConvenzione.add(new Chunk(pdfProgetto.getDataConvenzione(),campiCompilati));
-		stringaConvenzione.add(new Chunk(", Repertorio N. ",campiStatiche));
-		stringaConvenzione.add(new Chunk(pdfProgetto.getReportorioConvenzione(),campiCompilati));
 		
 		Phrase stringaPromotore=new Phrase();
 		stringaPromotore.add(new Chunk("\nSOGGETTO PROMOTORE",campiTitoli));
@@ -151,7 +145,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		
 		//inizio sezione tutor designato dal dipartimento
 		Phrase stringaTutorDesignatoAccademico=new Phrase();
-		stringaTutorDesignatoAccademico.add(new Chunk("TUTOR DESIGNATO DAL DIPARTIMENTO: ",campiTitoli));
+		stringaTutorDesignatoAccademico.add(new Chunk("\nTUTOR DESIGNATO DAL DIPARTIMENTO: ",campiTitoli));
 		stringaTutorDesignatoAccademico.add(new Chunk(pdfProgetto.getNomeTutorAccademico()+" "+pdfProgetto.getCognomeTutorAccademico(),campiCompilati));
 		//fine sezione tutor designato dal soggetto ospitante
 
@@ -219,7 +213,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		Phrase stringaPolizze= new Phrase();
 		stringaPolizze.add(new Chunk("\nPOLIZZE ASSICURATIVE",campiTitoli));
 		stringaPolizze.add(new Chunk("\nAi sensi dell’art.5 della convenzione",campiStatiche));
-		stringaPolizze.add(new Chunk(pdfProgetto.getReportorioConvenzione(),campiCompilati));
+		stringaPolizze.add(new Chunk(" -",campiCompilati));
 		stringaPolizze.add(new Chunk(", a cui fa riferimento il presente progetto formativo, il Soggetto ospitante, in caso di infortunio del tirocinante durante lo svolgimento del tirocinio, si impegna a segnalare tempestivamente l’evento al Dipartimento di Informatica e al Responsabile dell’Ufficio Stato Giuridico e Formazione dell’Università, al fine di consentire a quest’ultimo di trasmettere la denuncia di infortunio all'INAIL in via telematica entro i tempi previsti dalla normativa vigente (48 ore).\n"+ 
 				"Il Responsabile pro tempore dell’Ufficio Stato Giuridico e Formazione dell’Ateneo è il dott. Pasquale Talarico, di cui si indicano di seguito il recapito telefonico e gli indirizzi e-mail a cui far pervenire la segnalazione dell’infortunio con copia della convenzione e del progetto formativo.\n" + 
 				"Inoltre all’Ufficio Stato Giuridico e Formazione vanno trasmessi, a cura del tirocinante, una copia del certificato medico di infortunio lavorativo e una relazione scritta sulle modalità in cui è avvenuto l’infortunio (orario dell’infortunio, data e ora di abbandono del posto del di lavoro, attività svolta in occasione dell’infortunio e cause dello stesso). Tale documentazione deve essere trasmessa con la massima tempestività per le vie brevi oppure tramite e-mail.",campiStatiche));
@@ -248,8 +242,6 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 				"Agli effetti delle vigenti leggi e nella consapevolezza delle conseguenze penali connesse a dichiarazioni mendaci, si dichiara che tutti i dati sopra riportati sono veri.",campiStatiche));
 		// fine sessione autorizzazione al trattamento
 		
-		
-		Paragraph paragrafoTitleConvenzione=new Paragraph(stringaConvenzione);
 		
 		Paragraph paragrafoUniversita = new Paragraph(stringaUniversita);
 		
@@ -304,7 +296,6 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		
 		listeParagrafi.add(paragrafoUniversita);
 		listeParagrafi.add(paragrafoProgetto);
-		listeParagrafi.add(paragrafoTitleConvenzione);
 		listeParagrafi.add(paragrafoPromotore);
 		
 
@@ -348,7 +339,6 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		listeParagrafi.add(paragrafoTitleAutorizzazione);
 		// fine sezione autorizzazione
 		
-		paragrafoTitleConvenzione.setAlignment(Element.ALIGN_CENTER);
 		paragrafoUfficio.setAlignment(Paragraph.ALIGN_CENTER);
 		paragrafoUniversita.setAlignment(Element.ALIGN_CENTER);
 		paragrafoProgetto.setAlignment(Element.ALIGN_CENTER);
@@ -404,7 +394,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		
 		// inizio sezione soggetto ospitante
 		
-		String stringaTitleSoggettoOspitante="SOGGETTO OSPITANTE\n";
+		String stringaTitleSoggettoOspitante="\nSOGGETTO OSPITANTE\n";
 		
 		Phrase sezioneSoggettoOspitante=new Phrase();
 		sezioneSoggettoOspitante.add(new Chunk("Denominazione ",campiStatiche));
@@ -459,7 +449,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		
 		//inizio sezione tutor designato dal dipartimento
 		Phrase stringaTutorDesignatoAccademico=new Phrase();
-		stringaTutorDesignatoAccademico.add(new Chunk("TUTOR DESIGNATO DAL DIPARTIMENTO: ",campiTitoli));
+		stringaTutorDesignatoAccademico.add(new Chunk("\nTUTOR DESIGNATO DAL DIPARTIMENTO: ",campiTitoli));
 		stringaTutorDesignatoAccademico.add(new Chunk(pdfProgetto.getNomeTutorAccademico()+" "+pdfProgetto.getCognomeTutorAccademico(),campiCompilati));
 		//fine sezione tutor designato dal soggetto ospitante
 		
