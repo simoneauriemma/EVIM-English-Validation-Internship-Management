@@ -42,11 +42,11 @@ import org.springframework.mock.web.MockHttpServletResponse;
 	    response = new MockHttpServletResponse();
 	  }
 	  
-	//il PdCD intende approvare un PF
+	//si intende approvare un PF
       @Test
 	  public void tc_gr_6_1() throws ServletException, IOException  {
-    	   request.addParameter("email","alberto@unisa.it");
-    	   request.addParameter("password", "architettura"); 
+    	   request.addParameter("email","mariogiorgio@unisa.it");
+    	   request.addParameter("password", "umpalumpa2"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
@@ -56,6 +56,6 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   servletVisualizza.doPost(request, response);
 		   boolean esito = (boolean) request.getAttribute("risposta");
 		   assertTrue(esito);
-	  }   
+	  }
       
 	}

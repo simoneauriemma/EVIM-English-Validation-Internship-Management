@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import controller.GestioneAutenticazione.*;
-import model.Azienda;
 import model.TirocinioEsterno;
 import model.TirocinioEsternoDAO;
 import model.TirocinioInterno;
@@ -140,19 +139,6 @@ public class VisualizzaRichieste extends BaseServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
 				dispatcher.forward(request, response);
 			}
-			
-			else if (tipoUtente.equalsIgnoreCase("model.azienda")) {
-				// viewListaRichiesteTirocinioEsterno
-				// solo 1 arraylist
-				Azienda azienda = (Azienda) sessione.getAttribute("utenteLoggato");
-				
-				ArrayList<TirocinioQueryEsternoTutorAz> tirocinioEsterno = new TirocinioEsternoDAO()
-						.doRetriveAllByAzienda(azienda.getID_Azienda());
-				
-				request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
-				dispatcher.forward(request, response);
-			} 
 
 		}
 

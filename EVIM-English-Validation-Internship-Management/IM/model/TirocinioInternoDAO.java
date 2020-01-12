@@ -312,9 +312,9 @@ public class TirocinioInternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro(String email) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select tutoraccademico.nome,tutoraccademico.cognome, registro.ID_Registro,TirocinioInterno.FirmaTutorAccademico, TirocinioInterno.ID_TirocinioInterno,TirocinioInterno.OreTotali,  Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.numeroCFU from TirocinioInterno\n"
-							+ "join registro on registro.ID_Tirocinio= TirocinioInterno.ID_TirocinioInterno\n join tutoraccademico on tutoraccademico.ID_TutorAccademico=tirociniointerno.ID_tutorAccademico "
-							+ "where tirociniointerno.EMAIL=? and tirociniointerno.status='in svolgimento' and registro.tipo='interno';"); // controllare
+					"select TirocinioInterno.ID_TirocinioInterno,TirocinioInterno.OreTotali,  Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.numeroCFU from TirocinioInterno\n"
+							+ "join registro on registro.ID_Tirocinio= TirocinioInterno.ID_TirocinioInterno\n"
+							+ "where tirociniointerno.EMAIL=? and tirociniointerno.status='in svolgimento';"); // controllare
 			ps.setString(1, email);
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
@@ -323,13 +323,11 @@ public class TirocinioInternoDAO {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioInterno"));
 				a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
-				a.setFirmaTutorAccamico(rs.getInt("FirmaTutorAccademico"));
+				a.setFirmaResponsabile(rs.getInt("FirmaTutorAccamico"));
 				a.setStatus(rs.getString("status"));
 				a.setNumeroCFU(rs.getInt("numeroCFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
-				a.setNome_responsabile(rs.getString("tutoraccademico.nome"));
-				a.setCognome_responsabile(rs.getString("tutoraccademico.cognome"));
 				lista.add(a);
 			}
 			return lista;
@@ -343,11 +341,11 @@ public class TirocinioInternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAccRegistro(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select TirocinioInterno.ID_TirocinioInterno, tutoraccademico.nome,tutoraccademico.cognome ,Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.NumeroCFU,"
-							+ "TirocinioInterno.OreTotali, Registro.ID_Registro, registro.status "
-							+ "from TirocinioInterno join Registro on TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio "
-							+ "join tutoraccademico on  "
-							+ "where TirocinioInterno.ID_tutorAccademico = ? AND tirociniointerno.status='in svolgimento'");
+					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.NumeroCFU,"
+							+ "TirocinioInterno.OreTotali, Registro.ID_Registro "
+							+ "from TirocinioInterno, Registro, tutoraccademico "
+							+ "where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio AND "
+							+ "TirocinioInterno.ID_tutorAccademico = ? AND tirociniointerno.status='in svolgimento'");
 			ps.setInt(1, id);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
@@ -356,16 +354,11 @@ public class TirocinioInternoDAO {
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioInterno"));
-				a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
+				// a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
 				a.setStatus(rs.getString("status"));
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
-				a.setRegistro_status(rs.getString("registro.status"));
-				a.setNome_responsabile(rs.getString("tutoraccademico.nome"));
-				a.setCognome_responsabile(rs.getString("tutoraccademico.cognome"));
-				
-				
 				lista.add(a);
 			}
 			return lista;
