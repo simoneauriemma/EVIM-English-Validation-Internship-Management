@@ -128,29 +128,24 @@ public class AziendaDAO {
 	}
 	
 	public static ReferenteAziendale getReferenteAziendale(int idAzienda) {
-		try (Connection con = DriverManagerConnectionPool.getConnection()) {
-			PreparedStatement ps = con.prepareStatement(
-					"select referente_aziendale.CF,referente_aziendale.nome,referente_aziendale.cognome,referente_aziendale.luogo_nascita,referente_aziendale.data_nascita,referente_aziendale.ruolo\n" + 
-					"from evim.Azienda join evim.referente_aziendale on Azienda.ID_Referente=referente_aziendale.CF\n" + 
-					"where ID_Azienda=?");
-			ReferenteAziendale referente= new ReferenteAziendale();
-			System.out.println("idAzienda"+idAzienda);
-			ps.setInt(idAzienda, 1);
-			System.out.println("eseguo");
-			ResultSet rs = ps.executeQuery();
-
-			if (rs.next()) {
-				referente.setCodiceFiscale(rs.getString(1));
-				referente.setNome(rs.getString(2));
-				referente.setCognome(rs.getString(3));
-				referente.setLuogoNascita(rs.getString(4));
-				referente.setDataNascita(rs.getString(5));
-				referente.setRuolo(rs.getString(6));
-				return referente;
-			} else
-				return null;
-
+		try(Connection con=DriverManagerConnectionPool.getConnection()){
+			PreparedStatement ps=con.prepareStatement("select referente_aziendale.nome,referente_aziendale.cognome,referente_aziendale.luogo_nascita,referente_aziendale.data_nascita,referente_aziendale.ruolo\n" + 
+					"from evim.Azienda join referente_aziendale on Azienda.ID_Referente=referente_aziendale.CF\n" + 
+					"where Azienda.ID_Azienda=?");
+			ps.setInt(1, idAzienda);
+			ReferenteAziendale referente=new ReferenteAziendale();
+			ResultSet rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				referente.setNome(rs.getString(1));
+				referente.setCognome(rs.getString(2));
+				referente.setLuogoNascita(rs.getString(3));
+				referente.setDataNascita(rs.getString(4));
+				referente.setRuolo(rs.getString(5));
+			}
+			return referente;
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}

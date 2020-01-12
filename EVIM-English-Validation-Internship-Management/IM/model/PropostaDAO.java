@@ -48,7 +48,6 @@ public class PropostaDAO {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement("select * from EVIM.proposta where ID_Azienda=?");
 			ps.setInt(1, id_azienda);
-			System.out.println("lo setto");
 			ArrayList<Proposta> proposte = new ArrayList<Proposta>();
 			ResultSet rs = ps.executeQuery();
 
@@ -107,7 +106,8 @@ public class PropostaDAO {
 
 	/**
 	 * @author Antonio Giano
-	 * @author Nicola Sisti Metodo che prende tutte le proposte relative ad un tutor accademico
+	 * @author Nicola Sisti 
+	 * Metodo che prende tutte le proposte relative ad un tutor accademico
 	 *         specifico
 	 * @param idTutor
 	 * @return Arralist<Proposta>
