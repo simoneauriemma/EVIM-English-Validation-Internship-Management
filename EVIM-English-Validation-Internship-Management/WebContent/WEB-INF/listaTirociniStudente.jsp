@@ -24,14 +24,14 @@
 
 			<p id="titolo" class="text-center">Lista tirocini</p>
 			<hr>
-			<br> <br>
+			<br>
 
 			<!-- SE L'UTENTE LOGGATO E' UNO STUDENTE-->
 			<c:if test="${type == 'studente' }">
 				<!-- Se la lista di tirocini esterni è vuota esce che non c'è nulla -->
 				<c:if
 					test="${registroQueryEsterno.size() == 0 && registroQueryInterno.size() == 0}">
-					<p>Nessun tirocinio in corso!</p>
+					<p style="text-align: center;">Nessun tirocinio in corso!</p>
 				</c:if>
 
 
@@ -55,26 +55,26 @@
 								<tr>
 									<th scope="row" id="id"><c:out
 											value="${esterno.ID_Tirocinio}" /></th>
-									<td id="responsabile"><c:out value="${esterno.nome_responsabile}" /> <c:out value="${esterno.cognome_responsabile}" /></td>
+									<td id="responsabile"><c:out
+											value="${esterno.nome_responsabile}" /> <c:out
+											value="${esterno.cognome_responsabile}" /></td>
 									<td id="status"><c:out value="${esterno.status}" /></td>
 									<td id="cfu"><c:out value="${esterno.numeroCFU}" /></td>
 									<td id="ore"><c:out value="${esterno.oreTotali}" /></td>
 									<td id="tirocinio">Esterno</td>
 
 									<!-- REGISTRO -->
-									<td class="form-inline" id="registro1"><a href="VisualizzaRegistroTirocinio"> <i id="registro"
+									<td class="form-inline" id="registro1"><a
+										href="CompilaRegistro"> <i id="registro"
 											class="fas fa-book"></i>
-									</a> 
-									<!-- <a href="#"> <i id="accettare" class="fas fa-check-square"></i>
-									</a> -->
-									</td>
+									</a> <!-- <a href="#"> <i id="accettare" class="fas fa-check-square"></i>
+									</a> --></td>
 
 									<!-- OPERAZIONI -->
-									<td id="operazioni">
-								<c:if test="${esterno.ID_Questionario == 0 && esterno.registro_status == 'completato'}">
-									<a href="QuestionarioS" id="op">Compila questionario</a>
-									</c:if>
-									</td>
+									<td id="operazioni"><c:if
+											test="${esterno.ID_Questionario==null}">
+											<a href="QuestionarioS" id="op">Compila questionario</a>
+										</c:if></td>
 								</tr>
 							</tbody>
 						</c:forEach>
@@ -99,30 +99,27 @@
 							<tbody>
 								<tr>
 									<th scope="row"><c:out value="${interno.ID_Tirocinio}" /></th>
-									<td>#</td>
+									<td id="responsabile"><c:out
+											value="${interno.nome_responsabile}" /> <c:out
+											value="${interno.cognome_responsabile}" /></td>
 									<td><c:out value="${interno.status}" /></td>
 									<td><c:out value="${interno.numeroCFU}" /></td>
 									<td><c:out value="${interno.oreTotali}" /></td>
 									<td>Interno</td>
-									<td class="form-inline"><a href="#"> <i id="registro"
+									<td class="form-inline"><a href="CompilaRegistro"> <i id="registro"
 											class="fas fa-book"></i>
-									</a> <a href="#"> <i id="accettare" class="fas fa-check-square"></i>
-									</a></td>
-
-									<td>
-										<div class="form-group">
-											<select class="form-control" id="select"
-												onchange="getTutors(this.value)" name="sel1">
-												<option selected>--select an option--</option>
-												<option value="#">Visualizza progetto</option>
-												
-											
-												<option value="questionarioS.jsp">Compila
-													questionario</option>
-													
-											</select>
-										</div>
+									</a> 
+									
+									<!-- <a href="CompilaRegistro"> 
+									
+									<i id="accettare"
+											class="fas fa-check-square"></i>
+									</a>-->
 									</td>
+									<td id="operazioni"><c:if
+											test="${interno.ID_Questionario==null}">
+											<a href="QuestionarioS" id="op">Compila questionario</a>
+										</c:if></td>
 								</tr>
 							</tbody>
 						</c:forEach>
@@ -149,4 +146,5 @@
 		});
 	});
 </script> -->
+
 

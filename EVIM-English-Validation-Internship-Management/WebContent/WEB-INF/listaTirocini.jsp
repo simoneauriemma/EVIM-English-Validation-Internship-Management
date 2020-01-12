@@ -124,24 +124,10 @@
 
 										</c:if> <c:if test="${type=='pdcd'}">
 
-											<div class="panel-group">
-												<div class="panel panel-default">
-													<div class="panel-heading">
-														<h6 class="panel-title">
-															<a data-toggle="collapse" href="#collapse1">Scegli
-																un'operazione </a>
-														</h6>
-													</div>
-													<div id="collapse1" class="panel-collapse collapse">
-														<ul class="list-group">
-															<li class="list-group-item"><a class="list-item"
-																href="">Approva registro</a></li>
+											<a href="">Approva registro</a>
 
-														</ul>
 
-													</div>
-												</div>
-											</div>
+
 										</c:if></td>
 									<!-- ...... -->
 
@@ -199,20 +185,7 @@
 										<i class="fas fa-check-square"></i>
 									</form>
 								</td>
-								<!-- ...... -->
 
-								<!-- OPERAZIONI -->
-								<td>
-									<div class="form-group">
-										<select class="form-control" id="select"
-											onchange="getTutors(this.value)" name="sel1">
-											<option selected>--select an option--</option>
-											<option value="">Visualizza progetto</option>
-											<option value="questionarioT.jsp">Compila
-												questionario</option>
-										</select>
-									</div>
-								</td>
 								<!-- fine TIROCINIO INTERNO -->
 
 							</tr>
