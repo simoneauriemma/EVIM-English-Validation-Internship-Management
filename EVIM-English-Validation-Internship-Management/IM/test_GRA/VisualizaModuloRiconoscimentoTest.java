@@ -78,7 +78,7 @@ class VisualizaModuloRiconoscimentoTest {
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
 		boolean log=(boolean) request.getAttribute("logged");  
-		assertTrue(log);
+		assertTrue(log); 
 		visualizaMR.doPost(request, response);
 	}
 	

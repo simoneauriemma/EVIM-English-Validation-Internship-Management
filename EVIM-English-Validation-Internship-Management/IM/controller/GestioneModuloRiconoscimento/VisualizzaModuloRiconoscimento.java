@@ -47,7 +47,7 @@ import model.UserDAO;
 public class VisualizzaModuloRiconoscimento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
+    /** 
      * @see HttpServlet#HttpServlet()
      */
     public VisualizzaModuloRiconoscimento() {
