@@ -320,7 +320,7 @@ public class TirocinioInternoDAO {
 							+ "from TirocinioInterno join Registro on registro.ID_Tirocinio= TirocinioInterno.ID_TirocinioInterno join"
 							+ " tutoraccademico on tutoraccademico.ID_tutorAccademico= TirocinioInterno.ID_tutorAccademico "
 							+ "where "
-							+ "TirocinioInterno.ID_tutorAccademico = ? AND tirociniointerno.status='in svolgimento'");
+							+ "TirocinioInterno.ID_tutorAccademico = ? AND tirociniointerno.status='in svolgimento' and registro.Tipo='interno'");
 			ps.setInt(1, id);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
