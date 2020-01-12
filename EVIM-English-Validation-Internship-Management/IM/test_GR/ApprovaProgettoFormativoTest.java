@@ -56,6 +56,6 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   servletVisualizza.doPost(request, response);
 		   boolean esito = (boolean) request.getAttribute("risposta");
 		   assertTrue(esito);
-	  }
+	  }   
       
 	}
