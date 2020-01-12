@@ -619,7 +619,7 @@ public class TirocinioEsternoDAO {
 					}
 
 				}
-
+//
 				lista.add(a);
 			}
 
