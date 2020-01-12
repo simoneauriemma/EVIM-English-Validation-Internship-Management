@@ -236,13 +236,15 @@ public class TirocinioEsternoDAO {
 					"Azienda.CF as CodiceFiscaleAzienda,referente_aziendale.nome as NomeReferente,referente_aziendale.cognome as CognomeReferente,\n" + 
 					"referente_aziendale.ruolo as RuoloReferente,referente_aziendale.luogo_nascita as LuogoNascitaReferente,\n" + 
 					"referente_aziendale.data_nascita as DataNascitaReferente,Azienda.codice_ateco as CodiceAtecoAzienda,\n" + 
-					"Azienda.numero_dipendenti as NumeroDipendentiAzienda,Azienda.email as EmailAzienda\n" + 
+					"Azienda.numero_dipendenti as NumeroDipendentiAzienda,Azienda.email as EmailAzienda,\n" + 
+					"convenzione.DataConvenzione as DataConvenzione, convenzione.Repertorio as RepertorioConvezione\n" + 
 					"from TirocinioEsterno join evim.USER on TirocinioEsterno.EMAIL=USER.EMAIL\n" + 
 					"join Proposta on TirocinioEsterno.ID_Proposta=Proposta.ID_Proposta\n" + 
 					"join TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioEsterno.ID_tutorAccademico\n" + 
 					"join TutorAziendale on TutorAziendale.ID_TutorAziendale=TirocinioEsterno.ID_TirocinioEsterno\n" + 
 					"join Azienda on Azienda.ID_Azienda=TutorAziendale.ID_Azienda\n" + 
 					"join referente_aziendale on referente_aziendale.CF=Azienda.ID_Referente\n" + 
+					"join convenzione on Azienda.ID_Convenzione=convenzione.ID\n" + 
 					"where ID_TirocinioEsterno=?;");
 			
 			ps.setInt(1, id);
@@ -292,6 +294,10 @@ public class TirocinioEsternoDAO {
 				pdf.setCodiceATECO(rs.getString(29));
 				pdf.setNumeroDipendenti(rs.getString(30));
 				pdf.setIndirizzoEmail(rs.getString(31));
+				
+				//dati convenzione
+				pdf.setDataConvenzione(rs.getString(32));
+				pdf.setReportorioConvenzione(rs.getString(33));
 				
 			}
 
