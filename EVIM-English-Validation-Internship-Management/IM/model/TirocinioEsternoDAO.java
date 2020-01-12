@@ -553,7 +553,7 @@ public class TirocinioEsternoDAO {
 				a.setNome_responsabile(rs.getString("tutoraccademico.Nome"));
 				a.setCognome_responsabile(rs.getString("tutoraccademico.Cognome"));
 				String status_registro = rs.getString("registro.Status");
-				a.setRegistro_status(rs.getString(status_registro));
+				a.setRegistro_status(status_registro);
 				if (status_registro.contentEquals("completato")) {
 					String query = "select relazione.ID_Relazione from relazione join TirocinioEsterno on TirocinioEsterno.ID_TutorAccademico= relazione.ID_TutorAccademico "
 							+ "where TirocinioEsterno.ID_TirocinioEsterno=? and TirocinioEsterno.ID_TutorAccademico=?"; // aggiustare
