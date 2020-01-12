@@ -74,9 +74,9 @@
 											</a>
 										</form>
 
-										<form id="accettare">
-											<i class="fas fa-check-square"></i>
-										</form>
+										<form action="ApprovaAttivita" id="accettare">
+										<a href="ApprovaAttivita"><i class="fas fa-check-square" id="accettare"></i></a>
+									</form>
 									</td>
 									<!-- ...... -->
 
@@ -107,14 +107,18 @@
 											</div>
 
 										</c:if> <c:if test="${type=='tutoraccademico'}">
-
-											<a href="ValutaRelazione" id="rel">Valuta relazione</a>
+											<form action="ValutaRelazione" id="valutaRel">
+										<a href="ValutaRelazione"><i class="fas fa-check-square" id="accettare"></i></a>
+									</form>
+											
 
 
 
 										</c:if> <c:if test="${type=='pdcd'}">
-
-											<a href="">Approva registro</a>
+										<form action="ApprovaAttivita" id="accettare">
+										<a href="ApprovaAttivita"><i class="fas fa-check-square" id="accettare"></i></a>
+									</form>
+											
 
 
 
@@ -141,38 +145,38 @@
 						<thead>
 							<tr id="colonne">
 								<th scope="col">ID Tirocinio</th>
-								<th scope="col">Responsabile</th>
-								<th scope="col">Status</th>
+								<th scope="col" id="thResponsabile">Responsabile</th>
+								<th scope="col" id="thStatus">Status</th>
 								<th scope="col">CFU</th>
-								<th scope="col">Ore Max</th>
-								<th scope="col">Tipo tirocinio</th>
+								<th scope="col" id="thOre">Ore Max</th>
+								<th scope="col" id="thTirocinio">Tipo tirocinio</th>
 								<th scope="col">Registro tirocinio</th>
 								
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<th scope="row" id="id"><c:out value="${interno.ID_Tirocinio}" /></th>
-								<td id="responsabile"><c:out
+								<th scope="row" id="idI"><c:out value="${interno.ID_Tirocinio}" /></th>
+								<td id="responsabileI"><c:out
 										value="${interno.nome_responsabile}" /> <c:out
 										value="${interno.cognome_responsabile}" /></td>
-								<td id="status"><c:out value="${interno.status}" /></td>
-								<td id="cfu"><c:out value="${interno.numeroCFU}" /></td>
-								<td id="ore"><c:out value="${interno.oreTotali}" /></td>
-								<td id="tirocinio">Interno</td>
+								<td id="statusI"><c:out value="${interno.status}" /></td>
+								<td id="cfuI"><c:out value="${interno.numeroCFU}" /></td>
+								<td id="oreI"><c:out value="${interno.oreTotali}" /></td>
+								<td id="tirocinioI">Interno</td>
 
 								<!-- REGISTRO -->
 								<td class="form-inline text-center">
 									<form action="VisualizzaRegistroTirocinio">
 										<input type="hidden" name="EMAIL"
 											value="<c:out value="${studente.email}" />"> <a
-											href="VisualizzaRegistroTirocinio"> <i id="registro"
+											href="VisualizzaRegistroTirocinio"> <i id="registroI"
 											class="fas fa-book"></i>
 										</a>
 									</form>
 
-									<form id="accettare">
-										<i class="fas fa-check-square"></i>
+									<form action="ApprovaAttivita" id="accettare">
+										<a href="ApprovaAttivita"><i class="fas fa-check-square" id="accettare"></i></a>
 									</form>
 								</td>
 
