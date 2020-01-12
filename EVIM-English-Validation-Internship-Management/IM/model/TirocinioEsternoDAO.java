@@ -455,7 +455,7 @@ public class TirocinioEsternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro(String email) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			
-			PreparedStatement ps = con.prepareStatement( // questa query ï¿½ ok
+			PreparedStatement ps = con.prepareStatement( // questa query è ok
 					"select  tutoraziendale.Nome,tutoraziendale.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, " +
 					"TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "+
 					 "TirocinioEsterno.CFU from tirocinioesterno \n" +
@@ -467,13 +467,13 @@ public class TirocinioEsternoDAO {
 			
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
-			System.out.println("querty lista tirocini studente eseguita--> esterno");
+			
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
 				int idTir=rs.getInt("ID_TirocinioEsterno");
 				a.setID_Tirocinio(idTir);
 				a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
-				a.setStatus(rs.getString("status"));
+				a.setStatus(rs.getString("TirocinioEsterno.status"));
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setFirmaTutorAccamico(rs.getInt("FirmaTutorAccamico"));
 				int oretotali=rs.getInt("OreTotali");
@@ -495,10 +495,11 @@ public class TirocinioEsternoDAO {
 				ResultSet rsdue=ps.executeQuery();
 				
 				if(rsdue.next()) {
-					a.setID_Relazione(rs.getInt(1));
+					a.setID_Relazione(rsdue.getInt(1));
 				}
 				
-				String querydue="select Questionario_s.Questionario_s from questionario_s"
+				
+				String querydue="select Questionario_s.ID_Questionario from questionario_s "
 						+ "where questionario_s.email=?";
 				ps = con.prepareStatement(querydue);
 				
@@ -506,8 +507,12 @@ public class TirocinioEsternoDAO {
 				ResultSet rstre=ps.executeQuery();
 				;
 				if(rstre.next()) {
-					a.setID_Questionario((rs.getInt(1)));
+					int idq=rstre.getInt(1);
+					a.setID_Questionario(idq);
+					System.out.println(idq);
 				}
+				
+			
 				
 				
 				

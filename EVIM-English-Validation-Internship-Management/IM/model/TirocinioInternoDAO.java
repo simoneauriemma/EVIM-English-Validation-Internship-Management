@@ -314,7 +314,7 @@ public class TirocinioInternoDAO {
 			PreparedStatement ps = con.prepareStatement(
 					"select TirocinioInterno.ID_TirocinioInterno,TirocinioInterno.OreTotali,  Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.numeroCFU from TirocinioInterno\n"
 							+ "join registro on registro.ID_Tirocinio= TirocinioInterno.ID_TirocinioInterno\n"
-							+ "where tirociniointerno.EMAIL=? and tirociniointerno.status='in svolgimento';"); // controllare
+							+ "where tirociniointerno.EMAIL=? and tirociniointerno.status='in svolgimento' and TirocinioInterno.tipo='interno';"); // controllare
 			ps.setString(1, email);
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
