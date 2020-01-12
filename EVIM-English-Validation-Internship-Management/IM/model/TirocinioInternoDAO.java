@@ -141,17 +141,12 @@ public class TirocinioInternoDAO {
 	public static PDFProgettoFormativo getProgettoFormativoInterno(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,USER.tipoCorso "+
-					"as CorsoStudente,USER.Telefono as TelefonoStudente,USER.Data_Nascita as DataNascitaStudente,"+
-					"USER.Luogo_Nascita as LuogoNascitaStudente,USER.Residente as ResidenteStudente,TutorAccademico.Nome as NomeTutor,"+
-					"TutorAccademico.Cognome as CognomeTutor, Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,"+
-					"Proposta.Modalita as Modalita,Proposta.Competenze as Competenze ,TirocinioInterno.NumeroCFU as NumeroCFU,"+
-					"TirocinioInterno.OreTotali as OreTotali,convenzione.DataConvenzione as DataConvenzione, convenzione.Repertorio as RepertorioConvezione\n" + 
-					"from TirocinioInterno join evim.USER on TirocinioInterno.EMAIL=USER.EMAIL \n" + 
-					"join Proposta on TirocinioInterno.ID_Proposta=Proposta.ID_Proposta\n" + 
-					"join TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioInterno.ID_tutorAccademico\n" + 
-					"join convenzione on Azienda.ID_Convenzione=convenzione.ID\n"+
+					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,USER.tipoCorso as CorsoStudente,USER.Telefono as TelefonoStudente,USER.Data_Nascita as DataNascitaStudente,USER.Luogo_Nascita as LuogoNascitaStudente,USER.Residente as ResidenteStudente,TutorAccademico.Nome as NomeTutor,TutorAccademico.Cognome as CognomeTutor, Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita,Proposta.Competenze as Competenze ,TirocinioInterno.NumeroCFU as NumeroCFU,TirocinioInterno.OreTotali as OreTotali\n" + 
+					"from evim.TirocinioInterno join evim.USER on TirocinioInterno.EMAIL=USER.EMAIL \n" + 
+					"join evim.Proposta on TirocinioInterno.ID_Proposta=Proposta.ID_Proposta\n" + 
+					"join evim.TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioInterno.ID_tutorAccademico\n"+
 					"where ID_TirocinioInterno=?");
+			
 			ps.setInt(1, id);
 			PDFProgettoFormativo pdf = null;
 			ResultSet rs = ps.executeQuery();
@@ -183,8 +178,8 @@ public class TirocinioInternoDAO {
 				pdf.setTotOre(rs.getInt(16));
 				
 				//dati convenzione
-				pdf.setDataConvenzione(rs.getString(17));
-				pdf.setReportorioConvenzione(rs.getString(18));
+				pdf.setDataConvenzione("");
+				pdf.setReportorioConvenzione("");
 			}
 			
 			return pdf;

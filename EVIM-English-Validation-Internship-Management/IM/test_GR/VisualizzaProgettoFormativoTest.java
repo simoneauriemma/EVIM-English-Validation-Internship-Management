@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import controller.GestioneRichiesta.VisualizzaProgettoFormativo;
 import controller.GestioneAutenticazione.Login;
+import model.PDFProgettoFormativo;
 import model.DriverManagerConnectionPool;
 
 import java.io.IOException;
@@ -28,6 +29,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 	
 	  private VisualizzaProgettoFormativo servletVisualizza;
 	  private Login servletLogin;
+	  private PDFProgettoFormativo servletPDF;
 	  private MockHttpServletRequest request;
 	  private MockHttpServletResponse response;
 
@@ -38,6 +40,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 	  public void setUp() {
 		servletVisualizza = new VisualizzaProgettoFormativo();
 	    servletLogin = new Login();
+	    servletPDF = new PDFProgettoFormativo();
 	    request = new MockHttpServletRequest();
 	    response = new MockHttpServletResponse();
 	  }
@@ -49,8 +52,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   request.setAttribute("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
-	  
-	//uno studente della triennale intende visualizzare il PF relativo a un tirocinio interno
+	
+	//uno studente della triennale intende visualizzare il PF relativo a un tirocinio interno da 6
       @Test
 	  public void tc_gr_5_2() throws ServletException, IOException  {
     	   request.addParameter("email","simonagrieco@studenti.unisa.it");
@@ -65,7 +68,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   servletVisualizza.doPost(request, response);
 	  }
       
-    //uno studente della triennale intende visualizzare il PF relativo a un tirocinio esterno
+      
+    //uno studente della triennale intende visualizzare il PF relativo a un tirocinio interno da 11
       @Test
 	  public void tc_gr_5_3() throws ServletException, IOException  {
     	   request.addParameter("email","simonagrieco@studenti.unisa.it");
@@ -75,31 +79,46 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "1");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.setAttribute("id", "7");
+    	   request.setAttribute("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
-    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio esterno da 12
+    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio esterno da 17
       @Test
 	  public void tc_gr_5_4() throws ServletException, IOException  {
-    	   request.addParameter("email","attiliodellag1@studenti.unisa.it");
-    	   request.addParameter("password", "attilio1"); 
+    	   request.addParameter("email","simonagrieco@studenti.unisa.it");
+    	   request.addParameter("password", "grieco1998"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "2");
-    	   request.setAttribute("tirocinio", "esterno");
+    	   request.setAttribute("id", "4");
+    	   request.setAttribute("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
-    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio esterno da 6
+    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio esterno da 23
       @Test
 	  public void tc_gr_5_5() throws ServletException, IOException  {
-    	   request.addParameter("email","edoardo93@studenti.unisa.it");
-    	   request.addParameter("password", "edoardo93"); 
+    	   request.addParameter("email","simonagrieco@studenti.unisa.it");
+    	   request.addParameter("password", "grieco1998"); 
+    	   servletLogin.doPost(request, response);
+    	   String type = request.getSession().getAttribute("type").toString();
+    	   boolean log = (boolean) request.getAttribute("logged");  
+    	   assertTrue(log);
+    	   assertEquals("studente", type);
+    	   request.setAttribute("id", "3");
+    	   request.setAttribute("tirocinio", "interno");
+    	   servletVisualizza.doPost(request, response);
+	  }
+      
+    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio esterno da 23
+      @Test
+	  public void tc_gr_5_6() throws ServletException, IOException  {
+    	   request.addParameter("email","simonagrieco@studenti.unisa.it");
+    	   request.addParameter("password", "grieco1998"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
@@ -109,21 +128,24 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   request.setAttribute("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
 	  }
-      
-    //uno studente della triennale intende visualizzare il PF relativo a un tirocinio interno da 23
+     
+      /*
+    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio da 6
       @Test
 	  public void tc_gr_5_6() throws ServletException, IOException  {
-    	   request.addParameter("email","mconcetta@studenti.unisa.it");
-    	   request.addParameter("password", "mconcetta1998"); 
+    	   request.addParameter("email","edoardo93@studenti.unisa.it");
+    	   request.addParameter("password", "edoardo93"); 
     	   servletLogin.doPost(request, response);
     	   String type = request.getSession().getAttribute("type").toString();
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.setAttribute("id", "1");
+    	   request.setAttribute("id", "3");
     	   request.setAttribute("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
+      
+      /*
       
     //uno studente della triennale intende visualizzare il PF relativo a un tirocinio interno da 6
       @Test
@@ -258,7 +280,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   request.setAttribute("id", "6");
     	   request.setAttribute("tirocinio", "esterno");
     	   servletVisualizza.doPost(request, response);
-      }
+      }*/
     
       
       /* utente loggato e non

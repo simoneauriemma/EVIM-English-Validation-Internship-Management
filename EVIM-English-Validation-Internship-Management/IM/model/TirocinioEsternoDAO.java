@@ -237,14 +237,14 @@ public class TirocinioEsternoDAO {
 					"referente_aziendale.ruolo as RuoloReferente,referente_aziendale.luogo_nascita as LuogoNascitaReferente,\n" + 
 					"referente_aziendale.data_nascita as DataNascitaReferente,Azienda.codice_ateco as CodiceAtecoAzienda,\n" + 
 					"Azienda.numero_dipendenti as NumeroDipendentiAzienda,Azienda.email as EmailAzienda,\n" + 
-					"convenzione.DataConvenzione as DataConvenzione, convenzione.Repertorio as RepertorioConvezione\n" + 
+					"convenzione.DataConvezione as DataConvenzione, convenzione.Repertorio as RepertorioConvezione\n" + 
 					"from TirocinioEsterno join evim.USER on TirocinioEsterno.EMAIL=USER.EMAIL\n" + 
-					"join Proposta on TirocinioEsterno.ID_Proposta=Proposta.ID_Proposta\n" + 
-					"join TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioEsterno.ID_tutorAccademico\n" + 
-					"join TutorAziendale on TutorAziendale.ID_TutorAziendale=TirocinioEsterno.ID_TirocinioEsterno\n" + 
-					"join Azienda on Azienda.ID_Azienda=TutorAziendale.ID_Azienda\n" + 
-					"join referente_aziendale on referente_aziendale.CF=Azienda.ID_Referente\n" + 
-					"join convenzione on Azienda.ID_Convenzione=convenzione.ID\n" + 
+					"join evim.Proposta on TirocinioEsterno.ID_Proposta=Proposta.ID_Proposta\n" + 
+					"join evim.TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioEsterno.ID_tutorAccademico\n" + 
+					"join evim.TutorAziendale on TutorAziendale.ID_TutorAziendale=TirocinioEsterno.ID_TirocinioEsterno\n" + 
+					"join evim.Azienda on Azienda.ID_Azienda=TutorAziendale.ID_Azienda\n" + 
+					"join evim.referente_aziendale on referente_aziendale.CF=Azienda.CF_Referente\n" + 
+					"join evim.convenzione on Azienda.ID_Convenzione=convenzione.ID\n" + 
 					"where ID_TirocinioEsterno=?;");
 			
 			ps.setInt(1, id);
