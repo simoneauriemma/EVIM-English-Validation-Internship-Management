@@ -535,7 +535,7 @@ public class TirocinioEsternoDAO {
 							+ "join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n "
 							+ "join tutoraccademico "
 							+ "on tutoraccademico.ID_TutorAccademico = TirocinioEsterno.ID_TutorAccademico "
-							+ "where tutoraccademico.ID_Tutoraccademico = ? and tirocinioesterno.status='in svolgimento' and registro.tipo='esterno';");
+							+ "where TirocinioEsterno.ID_Tutoraccademico = ? and tirocinioesterno.status='in svolgimento' and registro.tipo='esterno';");
 			ps.setInt(1, id);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
