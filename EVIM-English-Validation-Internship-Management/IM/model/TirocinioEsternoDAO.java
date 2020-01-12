@@ -219,6 +219,58 @@ public class TirocinioEsternoDAO {
 		}
 
 	}
+	
+	/**
+	 * @author Simona Grieco
+	 */
+	//valutazione Azienda
+	public int updateFirmaTrueAzienda(boolean b, int idTirocinio, int idAzienda) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+
+			PreparedStatement ps = con.prepareStatement(
+					"update EVIM.TirocinioEsterno " + 
+					"JOIN TutorAziendale on TirocinioEsterno.ID_TutorAziendale=tutoraziendale.ID_TutorAziendale " + 
+					"JOIN Azienda ON TutorAziendale.ID_Azienda=Azienda.ID_Azienda " + 
+					"SET FirmaAzienda=? " + 
+					"where Azienda.ID_Azienda=? AND TirocinioEsterno.ID_TirocinioEsterno=? ");
+			ps.setBoolean(1, b);
+			ps.setInt(2, idAzienda);
+			ps.setInt(3, idTirocinio);
+			int rs= ps.executeUpdate();
+			return rs;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * @author Simona Grieco
+	 */
+	public int updateFirmaFalseAzienda(boolean b, int idTirocinio, int id) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement(
+					"update EVIM.TirocinioEsterno " + 
+					"JOIN TutorAziendale on TirocinioEsterno.ID_TutorAziendale=tutoraziendale.ID_TutorAziendale " + 
+					"JOIN Azienda ON TutorAziendale.ID_Azienda=Azienda.ID_Azienda " + 
+					"SET FirmaAzienda=?, status=? " + 
+					"where Azienda.ID_Azienda=?  AND TirocinioEsterno.ID_TirocinioEsterno=? ");
+			ps.setBoolean(1, b);
+			ps.setString(2, "rifiutato");
+			ps.setInt(2, id);
+			ps.setInt(3, idTirocinio);
+			int rs= ps.executeUpdate();
+			
+			return rs;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
+	}
+	//fine valutazione azienda
 
 	/**
 	 * @author Antonio Giano

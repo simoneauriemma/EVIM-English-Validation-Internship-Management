@@ -13,6 +13,7 @@ import controller.GestioneAutenticazione.*;
 import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryEsternoTutorAcc;
 import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryEsternoTutorAz;
 import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryInternoTutorAcc;
+import model.Azienda;
 import model.TirocinioEsternoDAO;
 import model.TirocinioInternoDAO;
 import model.TutorAccademico;
@@ -174,7 +175,6 @@ public class ValutareRichieste extends BaseServlet {
 							ArrayList<TirocinioQueryEsternoTutorAz> tirocinioEsterno = new TirocinioEsternoDAO()
 									.doRetriveAllByTutorAz(tutor.getId());
 							request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
-							
 
 							RequestDispatcher dispatcher = request
 									.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
@@ -195,8 +195,46 @@ public class ValutareRichieste extends BaseServlet {
 							dispatcher.forward(request, response);
 
 						}
+						// azienda
+						else if (session.getAttribute("utenteLoggato").getClass().getName()
+								.equals(Azienda.class.getName())) {
+							// loggato azienda
+							Azienda az = (Azienda) session.getAttribute("utenteLoggato");
+							if (conferma.equalsIgnoreCase("si")) {
 
-					} else {
+								risposta = new TirocinioEsternoDAO().updateFirmaTrueAzienda(true, idTirocinio,
+										az.getID_Azienda());
+
+								request.setAttribute("esito", risposta);
+
+								ArrayList<TirocinioQueryEsternoTutorAz> tirocinioEsterno = new TirocinioEsternoDAO()
+										.doRetriveAllByTutorAz(az.getID_Azienda());
+								request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
+
+								RequestDispatcher dispatcher = request
+										.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
+								dispatcher.forward(request, response);
+								
+							} else if (conferma.equalsIgnoreCase("no")) {
+								// cambia status in rifiutato
+								risposta = new TirocinioEsternoDAO().updateFirmaFalseAzienda(false, idTirocinio,
+										az.getID_Azienda());
+								request.setAttribute("esito", risposta);
+
+								ArrayList<TirocinioQueryEsternoTutorAz> tirocinioEsterno = new TirocinioEsternoDAO()
+										.doRetriveAllByTutorAz(az.getID_Azienda());
+
+								request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
+
+								RequestDispatcher dispatcher = request
+										.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinioEsterno.jsp");
+								dispatcher.forward(request, response);
+
+							}
+						}
+					}
+
+					else {
 						// parametri compromessi
 						RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/permissionDenied.jsp");
 						dispatcher.forward(request, response);
