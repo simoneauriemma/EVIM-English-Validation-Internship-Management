@@ -483,8 +483,8 @@ public class TirocinioEsternoDAO {
 				a.setOreTotali(oretotali);
 				a.setID_Registro(rs.getInt("ID_Registro"));
 				a.setOreRaggiunte(oreraggiunte);
-				a.setNome_responsabile(rs.getString("tutoraziendale.Nome"));
-				a.setCognome_responsabile(rs.getString("tutoraziendale.Cognome"));
+				a.setNome_responsabile(rs.getString("tutoraccademico.Nome"));
+				a.setCognome_responsabile(rs.getString("tutoraccademico.Cognome"));
 				String status_registro = rs.getString("registro.Status");
 				a.setRegistro_status(status_registro);
 
@@ -529,7 +529,7 @@ public class TirocinioEsternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAccRegistro(int id) { // corregere query
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select  tutoraccademico.Nome,tutoraccademico.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, "
+					"select distinct tutoraccademico.Nome,tutoraccademico.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, "
 							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "
 							+ "TirocinioEsterno.CFU from tirocinioesterno \n"
 							+ "join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n "
@@ -550,6 +550,8 @@ public class TirocinioEsternoDAO {
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
+				a.setNome_responsabile(rs.getString("tutoraccademico.Nome"));
+				a.setCognome_responsabile(rs.getString("tutoraccademico.Cognome"));
 				String status_registro = rs.getString("registro.Status");
 				a.setRegistro_status(rs.getString(status_registro));
 				if (status_registro.contentEquals("completato")) {
