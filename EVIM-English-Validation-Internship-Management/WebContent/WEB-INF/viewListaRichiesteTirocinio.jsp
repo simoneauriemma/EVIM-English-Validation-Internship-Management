@@ -42,7 +42,7 @@
 
 			<!-- tutor accademico, tutor aziendale, azieda e presidente del consiglio didattico possono vedere le proprie richieste di tirocinio esterno -->
 			<c:if
-				test="${type=='tutoraccademico' || type=='tutoraziendale' || type=='pdcd' || type=='segreteria'}">
+				test="${type=='tutoraccademico' || type=='tutoraziendale' || type=='pdcd' || type=='segreteria' || type=='azienda'}">
 				<c:forEach items="${arrayTirocinioEsterno}" var="esterno">
 
 
@@ -152,7 +152,7 @@
 
 												<!-- il tutor aziendale quando vede la lista richieste non vede il suo nome -->
 												<c:if
-													test="${type=='tutoraccademico' || type== 'pdcd' || type=='azienda' || type=='segreteria'}">
+													test="${type=='tutoraccademico' || type== 'pdcd' || type=='segreteria'}">
 													<tr>
 														<td class="icon"><i class="fas fa-user"></i></td>
 														<td class="">Tutor Aziendale</td>

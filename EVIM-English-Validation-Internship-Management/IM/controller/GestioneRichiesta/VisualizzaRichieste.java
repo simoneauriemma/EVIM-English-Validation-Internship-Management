@@ -141,16 +141,18 @@ public class VisualizzaRichieste extends BaseServlet {
 				dispatcher.forward(request, response);
 			}
 			
-		/*	else if (tipoUtente.equalsIgnoreCase("model.azienda")) {
+			else if (tipoUtente.equalsIgnoreCase("model.azienda")) {
 				// viewListaRichiesteTirocinioEsterno
 				// solo 1 arraylist
 				Azienda azienda = (Azienda) sessione.getAttribute("utenteLoggato");
+				
 				ArrayList<TirocinioQueryEsternoTutorAz> tirocinioEsterno = new TirocinioEsternoDAO()
-						.doRetriveAllByTutorAz(azienda.getID_Azienda());
+						.doRetriveAllByAzienda(azienda.getID_Azienda());
+				
 				request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
 				dispatcher.forward(request, response);
-			} */
+			} 
 
 		}
 
