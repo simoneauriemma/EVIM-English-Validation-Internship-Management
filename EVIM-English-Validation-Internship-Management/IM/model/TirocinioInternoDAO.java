@@ -308,7 +308,7 @@ public class TirocinioInternoDAO {
 		}
 
 	}
-
+//mi serve
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro(String email) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
