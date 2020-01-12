@@ -181,7 +181,12 @@
 									</table>
 									<div id="button-container1">
 										<br> <br>
-										<button type="submit" class="btn btn-secondary" id="button1">APPROVA</button>
+										<form action="VisualizzaRegistroTirocinio">
+										<button type="submit" class="btn btn-secondary" id="button1"  name="approva"
+										onclick="location.href='VisualizzaRegistroTirocinio'">APPROVA</button>
+										
+										</form>
+										
 									</div>
 								</div>
 							</div>
