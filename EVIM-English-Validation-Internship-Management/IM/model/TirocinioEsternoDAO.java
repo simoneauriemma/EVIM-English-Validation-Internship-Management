@@ -456,73 +456,68 @@ public class TirocinioEsternoDAO {
 
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro(String email) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
-			
+
 			PreparedStatement ps = con.prepareStatement( // questa query è ok
-					"select  tutoraziendale.Nome,tutoraziendale.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, " +
-					"TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "+
-					 "TirocinioEsterno.CFU from tirocinioesterno \n" +
-					"join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n " + "join tutoraziendale "
-							+ "on tutoraziendale.ID_TutorAziendale = TirocinioEsterno.ID_TutorAziendale "+
-					"where tirocinioesterno.EMAIL=? and tirocinioesterno.status='in svolgimento' and registro.tipo='esterno';");
+					"select  tutoraziendale.Nome,tutoraziendale.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, "
+							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "
+							+ "TirocinioEsterno.CFU from tirocinioesterno \n"
+							+ "join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n "
+							+ "join tutoraziendale "
+							+ "on tutoraziendale.ID_TutorAziendale = TirocinioEsterno.ID_TutorAziendale "
+							+ "where tirocinioesterno.EMAIL=? and tirocinioesterno.status='in svolgimento' and registro.tipo='esterno';");
 			ps.setString(1, email);
-			
+
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
-			
+
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
-				int idTir=rs.getInt("ID_TirocinioEsterno");
+				int idTir = rs.getInt("ID_TirocinioEsterno");
 				a.setID_Tirocinio(idTir);
 				a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
 				a.setStatus(rs.getString("TirocinioEsterno.status"));
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setFirmaTutorAccamico(rs.getInt("FirmaTutorAccamico"));
-				int oretotali=rs.getInt("OreTotali");
-				int oreraggiunte=rs.getInt("OreRaggiunte");
+				int oretotali = rs.getInt("OreTotali");
+				int oreraggiunte = rs.getInt("OreRaggiunte");
 				a.setOreTotali(oretotali);
 				a.setID_Registro(rs.getInt("ID_Registro"));
 				a.setOreRaggiunte(oreraggiunte);
 				a.setNome_responsabile(rs.getString("tutoraziendale.Nome"));
 				a.setCognome_responsabile(rs.getString("tutoraziendale.Cognome"));
-				String status_registro=rs.getString("registro.Status");
+				String status_registro = rs.getString("registro.Status");
 				a.setRegistro_status(status_registro);
-			
-				if(status_registro.contentEquals("completato")) {
-				String query="select relazione.ID_Relazione from relazione join TirocinioEsterno on TirocinioEsterno.ID_TutorAziendale= relazione.ID_TutorAziendale "
-						+ "where TirocinioEsterno.ID_TirocinioEsterno=? and relazione.email=?"; //aggiustare
-				ps = con.prepareStatement(query);
-				ps.setInt(1, idTir);
-				ps.setString(2, email);
-				ResultSet rsdue=ps.executeQuery();
-				
-				if(rsdue.next()) {
-					a.setID_Relazione(rsdue.getInt(1));
-				}
-				
-				
-				String querydue="select Questionario_s.ID_Questionario from questionario_s "
-						+ "where questionario_s.email=?";
-				ps = con.prepareStatement(querydue);
-				
-				ps.setString(1, email);
-				ResultSet rstre=ps.executeQuery();
-				;
-				if(rstre.next()) {
-					int idq=rstre.getInt(1);
-					a.setID_Questionario(idq);
-					System.out.println(idq);
-				}
-				
-			
-				
-				
-				
+
+				if (status_registro.contentEquals("completato")) {
+					String query = "select relazione.ID_Relazione from relazione join TirocinioEsterno on TirocinioEsterno.ID_TutorAziendale= relazione.ID_TutorAziendale "
+							+ "where TirocinioEsterno.ID_TirocinioEsterno=? and relazione.email=?"; // aggiustare
+					ps = con.prepareStatement(query);
+					ps.setInt(1, idTir);
+					ps.setString(2, email);
+					ResultSet rsdue = ps.executeQuery();
+
+					if (rsdue.next()) {
+						a.setID_Relazione(rsdue.getInt(1));
+					}
+
+					String querydue = "select Questionario_s.ID_Questionario from questionario_s "
+							+ "where questionario_s.email=?";
+					ps = con.prepareStatement(querydue);
+
+					ps.setString(1, email);
+					ResultSet rstre = ps.executeQuery();
+					;
+					if (rstre.next()) {
+						int idq = rstre.getInt(1);
+						a.setID_Questionario(idq);
+						System.out.println(idq);
+					}
+
 				}
 
 				lista.add(a);
 			}
-			
-	
+
 			return lista;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -534,12 +529,13 @@ public class TirocinioEsternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAccRegistro(int id) { // corregere query
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select  tutoraziendale.Nome,tutoraziendale.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, " +
-							"TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "+
-							 "TirocinioEsterno.CFU from tirocinioesterno \n" +
-							"join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n " + "join tutoraziendale "
-									+ "on tutoraziendale.ID_TutorAziendale = TirocinioEsterno.ID_TutorAziendale "+
-							"where tutoraziendale.ID_TutorAziendale = ? and tirocinioesterno.status='in svolgimento' and registro.tipo='esterno';");
+					"select  tutoraccademico.Nome,tutoraccademico.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, "
+							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "
+							+ "TirocinioEsterno.CFU from tirocinioesterno \n"
+							+ "join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n "
+							+ "join tutoraccademico "
+							+ "on tutoraccademico.ID_TutorAccademico = TirocinioEsterno.ID_TutorAccademico "
+							+ "where tutoraccademico.ID_Tutoraccademico = ? and tirocinioesterno.status='in svolgimento' and registro.tipo='esterno';");
 			ps.setInt(1, id);
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
@@ -547,21 +543,38 @@ public class TirocinioEsternoDAO {
 
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
-				a.setID_Tirocinio(rs.getInt("ID_TirocinioEsterno"));
+				int idTir = rs.getInt("ID_TirocinioEsterno");
+				a.setID_Tirocinio(idTir);
 				a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
 				a.setStatus(rs.getString("TirocinioEsterno.status"));
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
-				a.setRegistro_status(rs.getString("registro.Status"));
+				String status_registro = rs.getString("registro.Status");
+				a.setRegistro_status(rs.getString(status_registro));
+				if (status_registro.contentEquals("completato")) {
+					String query = "select relazione.ID_Relazione from relazione join TirocinioEsterno on TirocinioEsterno.ID_TutorAccademico= relazione.ID_TutorAccademico "
+							+ "where TirocinioEsterno.ID_TirocinioEsterno=? and TirocinioEsterno.ID_TutorAccademico=?"; // aggiustare
+					ps = con.prepareStatement(query);
+					ps.setInt(1, idTir);
+					ps.setInt(2, id);
+					ResultSet rsdue = ps.executeQuery();
+
+					if (rsdue.next()) {
+						a.setID_Relazione(rsdue.getInt(1));
+					}
+
+				}
+
 				lista.add(a);
 			}
+
 			return lista;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-
+//
 	}
 
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAzRegistro(int id) {
