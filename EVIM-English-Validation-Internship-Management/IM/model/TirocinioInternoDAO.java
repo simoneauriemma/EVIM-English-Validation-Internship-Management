@@ -325,7 +325,7 @@ public class TirocinioInternoDAO {
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
-
+//ww
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("TirocinioInterno.ID_TirocinioInterno"));
