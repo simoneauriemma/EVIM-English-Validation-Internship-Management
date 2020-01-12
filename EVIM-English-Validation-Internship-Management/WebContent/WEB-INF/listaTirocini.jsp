@@ -65,12 +65,19 @@
 									<td>Esterno</td>
 
 									<!-- REGISTRO -->
-									<td class="form-inline"><a
-										href="VisualizzaRegistroTirocinio"> <i id="registro"
+									<td class="form-inline text-center">
+									<form action="VisualizzaRegistroTirocinio">
+										<input type="hidden" name="EMAIL"
+											value="<c:out value="${studente.email}" />"> <a
+											href="VisualizzaRegistroTirocinio"> <i id="registro"
 											class="fas fa-book"></i>
-									</a> <a href="VisualizzaRegistroTirocinio"> <i id="accettare"
-											class="fas fa-check-square"></i>
-									</a></td>
+										</a>
+									</form>
+
+									<form id="accettare">
+										<i class="fas fa-check-square"></i>
+									</form>
+								</td>
 									<!-- ...... -->
 
 
@@ -174,7 +181,7 @@
 								<!-- REGISTRO -->
 								<td class="form-inline text-center">
 									<form action="VisualizzaRegistroTirocinio">
-										<input type="hidden" name="email"
+										<input type="hidden" name="EMAIL"
 											value="<c:out value="${studente.email}" />"> <a
 											href="VisualizzaRegistroTirocinio"> <i id="registro"
 											class="fas fa-book"></i>
