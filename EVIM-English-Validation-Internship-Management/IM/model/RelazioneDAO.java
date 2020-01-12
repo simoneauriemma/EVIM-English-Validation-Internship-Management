@@ -70,7 +70,7 @@ public class RelazioneDAO {
 		}
 		return studenti;
 	}
-	
+	//
 	public static Relazione doRetriveRelazionefromId(int idRelazione) {
 		String query= "select * from relazione where relazione.ID_Relazione = ? status= 'in approvazione'";
 		Relazione r=new Relazione();
