@@ -53,9 +53,9 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 			}
 		
 		else {
-			int id= Integer.parseInt((String) request.getAttribute("id"));
+			int id= Integer.parseInt((String) request.getParameter("idTirocinio"));
 			
-			String tirocinio=(String) request.getAttribute("tirocinio");
+			String tirocinio=(String) request.getParameter("tirocinio");
 			
 			response.setContentType("application/pdf");
 			try {

@@ -96,7 +96,7 @@
 							</tr>
 							<tr style="border-bottom: 4px solid #ddd;">
 								<td class="icon"><i class="fas fa-paperclip"></i></td>
-								<td><a href="#"><button type="button">Progetto
+								<td><a href="VisualizzaProgettoFormativo?idTirocinio=${esterno.ID_TirocinioEsterno}&tirocinio=esterno"><button type="button">Progetto
 											formativo</button></a></td>
 								<td></td>
 							</tr>
@@ -170,7 +170,7 @@
 
 							<tr>
 								<td class="icon"><i class="fas fa-paperclip"></i></td>
-								<td><a href="#"><button id="progettoForm" type="button">Progetto
+								<td><a href="VisualizzaProgettoFormativo?idTirocinio=${interno.ID_TirocinioInterno}&tirocinio=interno"><button id="progettoForm" type="button">Progetto
 											formativo</button></a></td>
 								<td></td>
 							</tr>
