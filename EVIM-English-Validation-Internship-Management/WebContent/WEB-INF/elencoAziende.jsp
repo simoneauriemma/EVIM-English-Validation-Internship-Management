@@ -85,7 +85,7 @@
 												<td class="icon"><i class="fas fa-user"></i></td>
 												<td class="">Referente aziendale</td>
 												<td><c:out
-															value="${azienda.idReferente}" /></td>
+															value="${azienda.referente.nome} ${azienda.referente.cognome} " /></td>
 											</tr>
 											<tr>
 												<td class="icon"><i class="fas fa-mobile-alt"></i></td>
