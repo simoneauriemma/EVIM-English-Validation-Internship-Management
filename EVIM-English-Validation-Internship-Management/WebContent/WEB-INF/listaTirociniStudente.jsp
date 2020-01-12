@@ -71,7 +71,7 @@
 
 									<!-- OPERAZIONI -->
 									<td id="operazioni">
-								<c:if test="${esterno.ID_Questionario==null}">
+								<c:if test="${esterno.ID_Questionario == 0 && esterno.registro_status == 'completato'}">
 									<a href="QuestionarioS" id="op">Compila questionario</a>
 									</c:if>
 									</td>
