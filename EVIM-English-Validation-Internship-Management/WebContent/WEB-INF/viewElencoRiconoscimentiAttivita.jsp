@@ -104,8 +104,7 @@
 										title="<c:out value="${ricon.stato}"/>"></i></td>
 
 									<td><button
-											onclick=visualizzaRiconoscimento(${ricon.idRiconoscimento},
-											"${ricon.emailUser}")>
+											onclick=visualizzaRiconoscimento(${ricon.idRiconoscimento},"${ricon.emailUser}")>
 											<i class="fas fa-file-pdf"></i>
 										</button></td>
 
