@@ -30,7 +30,7 @@ public class CreaRelazione extends BaseServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session= request.getSession();
 		String nomeutente = (String) session.getAttribute("type");
 		String descrizione= (String) request.getParameter("descrizione");
@@ -42,13 +42,13 @@ public class CreaRelazione extends BaseServlet {
 		
 		
 		boolean result=false;
-		TutorAziendale utente= (TutorAziendale) session.getAttribute("utenteLoggato");
-
+		
 		//se l'utente loggato ed è il tutor aziendale
-		if(nomeutente!=null&&nomeutente.contentEquals("tutoraziendale")) {
-			
+		if(nomeutente!=null && nomeutente.contentEquals("tutoraziendale")) {
+			TutorAziendale utente= (TutorAziendale) session.getAttribute("utenteLoggato");
+
 			//controllo se devo inviare la relazione o se devo reindirizzare alla giusta pagina per compilare la relazione
-			if(descrizione!=null||emailstudente!=null) {
+			if(descrizione!=null && emailstudente!=null) {
 				
 				result=RelazioneDAO.insertRelezione(utente.getId(), emailstudente, descrizione, status);
 				request.setAttribute("resultrelazione", result);
@@ -59,11 +59,13 @@ public class CreaRelazione extends BaseServlet {
 				//studenti=RelazioneDAO.doRetriveStudenti(utente.getId());
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("ListaTirocini");
+				request.setAttribute("resultrelazione", false);
 				dispatcher.forward(request, response);
 			}
 		}
 		else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
+			request.setAttribute("resultrelazione", false);
 			dispatcher.forward(request, response);
 		}
 		
@@ -77,7 +79,7 @@ public class CreaRelazione extends BaseServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
