@@ -27,7 +27,10 @@
 
 }
 
-
+#registroE{
+	margin-left: 15px;
+	color:black;
+}
 #select{
 	font-size: 15px;
 }

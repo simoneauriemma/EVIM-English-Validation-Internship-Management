@@ -50,12 +50,13 @@
 									<th scope="col">Ore Max</th>
 									<th scope="col">Tipo tirocinio</th>
 									<th scope="col">Registro tirocinio</th>
-									<th scope="col">Operazioni</th>
+									<th scope="col">Operazione</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<th scope="row" id="id"><c:out value="${esterno.ID_Tirocinio}" /></th>
+									<th scope="row" id="id"><c:out
+											value="${esterno.ID_Tirocinio}" /></th>
 									<td id="responsabile"><c:out
 											value="${esterno.nome_responsabile}" /> <c:out
 											value="${esterno.cognome_responsabile}" /></td>
@@ -69,14 +70,15 @@
 										<form action="VisualizzaRegistroTirocinio">
 											<input type="hidden" name="EMAIL"
 												value="<c:out value="${studente.email}" />"> <a
-												href="VisualizzaRegistroTirocinio"> <i id="registro"
+												href="VisualizzaRegistroTirocinio"> <i id="registroE"
 												class="fas fa-book"></i>
 											</a>
 										</form>
 
 										<form action="ApprovaAttivita" id="accettare">
-										<a href="ApprovaAttivita"><i class="fas fa-check-square" id="accettare"></i></a>
-									</form>
+											<a href="ApprovaAttivita"><i class="fas fa-check-square"
+												id="accettare"></i></a>
+										</form>
 									</td>
 									<!-- ...... -->
 
@@ -106,19 +108,49 @@
 												</div>
 											</div>
 
-										</c:if> <c:if test="${type=='tutoraccademico'}">
-											<form action="ValutaRelazione" id="valutaRel">
-										<a href="ValutaRelazione"><i class="fas fa-check-square" id="accettare"></i></a>
-									</form>
-											
+										</c:if> <c:if
+											test="${type=='tutoraccademico' && esterno.ID_Relazione==0 && esterno.registro_status=='completato'}">
+
+											<!-- Button trigger modal -->
+											<button type="button" class="btn btn-primary"
+												data-toggle="modal" data-target="#exampleModalCenter">
+												Visualizza relazione</button>
+
+											<!-- Modal -->
+											<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+												role="dialog" aria-labelledby="exampleModalCenterTitle"
+												aria-hidden="true">
+												<div class="modal-dialog modal-dialog-centered"
+													role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLongTitle">
+																Approva relazione</h5>
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<!-- aggiungere la relazione che ha compilato il tutor aziendale -->
 
 
-
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary"
+																data-dismiss="modal">Approva</button>
+															<button type="button" class="btn btn-secondary"
+																data-dismiss="modal">Rifiuta</button>
+														</div>
+													</div>
+												</div>
+											</div>
 										</c:if> <c:if test="${type=='pdcd'}">
-										<form action="ApprovaAttivita" id="accettare">
-										<a href="ApprovaAttivita"><i class="fas fa-check-square" id="accettare"></i></a>
-									</form>
-											
+											<form action="ApprovaAttivita" id="accettare">
+												<a href="ApprovaAttivita"><i class="fas fa-check-square"
+													id="accettare"></i></a>
+											</form>
+
 
 
 
@@ -151,12 +183,13 @@
 								<th scope="col" id="thOre">Ore Max</th>
 								<th scope="col" id="thTirocinio">Tipo tirocinio</th>
 								<th scope="col">Registro tirocinio</th>
-								
+
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<th scope="row" id="idI"><c:out value="${interno.ID_Tirocinio}" /></th>
+								<th scope="row" id="idI"><c:out
+										value="${interno.ID_Tirocinio}" /></th>
 								<td id="responsabileI"><c:out
 										value="${interno.nome_responsabile}" /> <c:out
 										value="${interno.cognome_responsabile}" /></td>
@@ -176,7 +209,8 @@
 									</form>
 
 									<form action="ApprovaAttivita" id="accettare">
-										<a href="ApprovaAttivita"><i class="fas fa-check-square" id="accettare"></i></a>
+										<a href="ApprovaAttivita"><i class="fas fa-check-square"
+											id="accettare"></i></a>
 									</form>
 								</td>
 
