@@ -87,11 +87,11 @@ public class VisualizzaRichieste extends BaseServlet {
 
 				} else if (studente.getUserType() == 2) {
 					// è loggato il PdCD
-					ArrayList<TirocinioInterno> tirocinioInterno = new TirocinioInternoDAO()
+					ArrayList<TirocinioQueryPdCD> tirocinioInterno = new TirocinioInternoDAO()
 							.doRetriveAllValutazionePdCD();
-					ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO()
+					ArrayList<TirocinioQueryPdCD> tirocinioEsterno = new TirocinioEsternoDAO()
 							.doRetriveAllValutazionePdCD();
-					
+
 					request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 					request.setAttribute("arrayTirocinioInterno", tirocinioInterno);
 					RequestDispatcher dispatcher = request
@@ -100,9 +100,9 @@ public class VisualizzaRichieste extends BaseServlet {
 				} else if (studente.getUserType() == 1) {
 
 					// loggato l'ufficio carriere
-					ArrayList<TirocinioInterno> tirocinioInterno = new TirocinioInternoDAO()
+					ArrayList<TirocinioQueryPdCD> tirocinioInterno = new TirocinioInternoDAO()
 							.doRetriveAllValutazionePdCD();
-					ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO()
+					ArrayList<TirocinioQueryPdCD> tirocinioEsterno = new TirocinioEsternoDAO()
 							.doRetriveAllValutazionePdCD();
 
 					request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
@@ -844,5 +844,197 @@ public class VisualizzaRichieste extends BaseServlet {
 		public void setFirmaTutorAccademico(boolean firmaTutorAccademico) {
 			this.firmaTutorAccademico = firmaTutorAccademico;
 		}
+	}
+
+	public static class TirocinioQueryPdCD {
+		int ID_TirocinioEsterno, ID_TirocinioInterno, oreTotali, CFU, ID_Proposta;
+		String nomeTutorAcc, cognomeTutorAcc, nomeStudente, cognomeStudente, nomeTutorAziedale, cognomeTutorAziendale,
+				data, status, email;
+		boolean firmaAzienda, firmaTutorAziendale, firmaTutorAccademico, firmaPdCD;
+
+		public TirocinioQueryPdCD() {
+
+		}
+
+		public TirocinioQueryPdCD(int iD_TirocinioEsterno, int oreTotali, int cFU, int iD_Proposta, String nomeTutorAcc,
+				String cognomeTutorAcc, String nomeStudente, String cognomeStudente, String nomeTutorAziedale,
+				String cognomeTutorAziendale, String data, String status, String email, boolean firmaAzienda,
+				boolean firmaTutorAziendale, boolean firmaTutorAccademico, boolean firmaPdCD) {
+			super();
+			ID_TirocinioEsterno = iD_TirocinioEsterno;
+			this.oreTotali = oreTotali;
+			CFU = cFU;
+			ID_Proposta = iD_Proposta;
+			this.nomeTutorAcc = nomeTutorAcc;
+			this.cognomeTutorAcc = cognomeTutorAcc;
+			this.nomeStudente = nomeStudente;
+			this.cognomeStudente = cognomeStudente;
+			this.nomeTutorAziedale = nomeTutorAziedale;
+			this.cognomeTutorAziendale = cognomeTutorAziendale;
+			this.data = data;
+			this.status = status;
+			this.email = email;
+			this.firmaAzienda = firmaAzienda;
+			this.firmaTutorAziendale = firmaTutorAziendale;
+			this.firmaTutorAccademico = firmaTutorAccademico;
+			this.firmaPdCD = firmaPdCD;
+		}
+
+		public int getID_TirocinioEsterno() {
+			return ID_TirocinioEsterno;
+		}
+
+		public void setID_TirocinioEsterno(int iD_TirocinioEsterno) {
+			ID_TirocinioEsterno = iD_TirocinioEsterno;
+		}
+
+		public int getOreTotali() {
+			return oreTotali;
+		}
+
+		public void setOreTotali(int oreTotali) {
+			this.oreTotali = oreTotali;
+		}
+
+		public int getCFU() {
+			return CFU;
+		}
+
+		public void setCFU(int cFU) {
+			CFU = cFU;
+		}
+
+		public int getID_Proposta() {
+			return ID_Proposta;
+		}
+
+		public void setID_Proposta(int iD_Proposta) {
+			ID_Proposta = iD_Proposta;
+		}
+
+		public String getNomeTutorAcc() {
+			return nomeTutorAcc;
+		}
+
+		public void setNomeTutorAcc(String nomeTutorAcc) {
+			this.nomeTutorAcc = nomeTutorAcc;
+		}
+
+		public String getCognomeTutorAcc() {
+			return cognomeTutorAcc;
+		}
+
+		public void setCognomeTutorAcc(String cognomeTutorAcc) {
+			this.cognomeTutorAcc = cognomeTutorAcc;
+		}
+
+		public String getNomeStudente() {
+			return nomeStudente;
+		}
+
+		public void setNomeStudente(String nomeStudente) {
+			this.nomeStudente = nomeStudente;
+		}
+
+		public String getCognomeStudente() {
+			return cognomeStudente;
+		}
+
+		public void setCognomeStudente(String cognomeStudente) {
+			this.cognomeStudente = cognomeStudente;
+		}
+
+		public String getNomeTutorAziedale() {
+			return nomeTutorAziedale;
+		}
+
+		public void setNomeTutorAziedale(String nomeTutorAziedale) {
+			this.nomeTutorAziedale = nomeTutorAziedale;
+		}
+
+		public String getCognomeTutorAziendale() {
+			return cognomeTutorAziendale;
+		}
+
+		public void setCognomeTutorAziendale(String cognomeTutorAziendale) {
+			this.cognomeTutorAziendale = cognomeTutorAziendale;
+		}
+
+		public String getData() {
+			return data;
+		}
+
+		public void setData(String data) {
+			this.data = data;
+		}
+
+		public String getStatus() {
+			return status;
+		}
+
+		public void setStatus(String status) {
+			this.status = status;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public boolean isFirmaAzienda() {
+			return firmaAzienda;
+		}
+
+		public void setFirmaAzienda(boolean firmaAzienda) {
+			this.firmaAzienda = firmaAzienda;
+		}
+
+		public boolean isFirmaTutorAziendale() {
+			return firmaTutorAziendale;
+		}
+
+		public void setFirmaTutorAziendale(boolean firmaTutorAziendale) {
+			this.firmaTutorAziendale = firmaTutorAziendale;
+		}
+
+		public boolean isFirmaTutorAccademico() {
+			return firmaTutorAccademico;
+		}
+
+		public void setFirmaTutorAccademico(boolean firmaTutorAccademico) {
+			this.firmaTutorAccademico = firmaTutorAccademico;
+		}
+
+		public boolean isFirmaPdCD() {
+			return firmaPdCD;
+		}
+
+		public void setFirmaPdCD(boolean firmaPdCD) {
+			this.firmaPdCD = firmaPdCD;
+		}
+
+		public int getID_TirocinioInterno() {
+			return ID_TirocinioInterno;
+		}
+
+		public void setID_TirocinioInterno(int iD_TirocinioInterno) {
+			ID_TirocinioInterno = iD_TirocinioInterno;
+		}
+
+		@Override
+		public String toString() {
+			return "TirocinioQueryPdCD [ID_TirocinioEsterno=" + ID_TirocinioEsterno + ", ID_TirocinioInterno="
+					+ ID_TirocinioInterno + ", oreTotali=" + oreTotali + ", CFU=" + CFU + ", ID_Proposta=" + ID_Proposta
+					+ ", nomeTutorAcc=" + nomeTutorAcc + ", cognomeTutorAcc=" + cognomeTutorAcc + ", nomeStudente="
+					+ nomeStudente + ", cognomeStudente=" + cognomeStudente + ", nomeTutorAziedale=" + nomeTutorAziedale
+					+ ", cognomeTutorAziendale=" + cognomeTutorAziendale + ", data=" + data + ", status=" + status
+					+ ", email=" + email + ", firmaAzienda=" + firmaAzienda + ", firmaTutorAziendale="
+					+ firmaTutorAziendale + ", firmaTutorAccademico=" + firmaTutorAccademico + ", firmaPdCD="
+					+ firmaPdCD + "]";
+		}
+
 	}
 }

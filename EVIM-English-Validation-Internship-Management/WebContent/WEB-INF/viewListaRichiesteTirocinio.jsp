@@ -157,8 +157,8 @@
 														<td class="icon"><i class="fas fa-user"></i></td>
 														<td class="">Tutor Aziendale</td>
 														<td class="text-center"><c:out
-																value="${esterno.nomeTutorAz}" /> <c:out
-																value="${esterno.cognomeTutorAz}" /></td>
+																value="${esterno.nomeTutorAziedale}" /> <c:out
+																value="${esterno.cognomeTutorAziendale}" /></td>
 													</tr>
 												</c:if>
 
@@ -320,7 +320,7 @@
 									<button data-toggle="collapse" id="nome-studente"
 										data-target="#collapse<%=y%>" aria-expanded="true"
 										aria-controls="collapse<%=y%>" style="color: white;">
-										<c:out value="${interno.EMAIL}" />
+										<c:out value="${interno.email}" />
 									</button>
 								</h6>
 							</div>
@@ -368,7 +368,7 @@
 												<td class="icon"><i class="fas fa-circle"></i></td>
 												<td class="">Num. CFU</td>
 												<td class="text-center"><c:out
-														value="${interno.numeroCFU}" /></td>
+														value="${interno.CFU}" /></td>
 											</tr>
 											<tr>
 												<td class="icon"><i class="fas fa-clock"></i></td>
