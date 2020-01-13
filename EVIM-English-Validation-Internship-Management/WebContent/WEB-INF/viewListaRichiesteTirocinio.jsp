@@ -7,8 +7,6 @@
 <head>
 <link rel="stylesheet" href="stiliCSS/stiliRichiesteTirocinio.css">
 <meta charset="ISO-8859-1">
-
-<script src="jquery-3.4.1.min.js"></script>
 <title>Visualizza richieste tirocinio</title>
 </head>
 
@@ -253,11 +251,13 @@
 													<tr>
 														<td class="icon"><i class="fas fa-paperclip"></i></td>
 														<!-- <td class="">Valutazione richiesta</td>-->
-														<td><a href="VisualizzaProgettoFormativo?idTirocinio=${esterno.ID_TirocinioEsterno}&tirocinio=esterno"><button
+														<td><a
+															href="VisualizzaProgettoFormativo?idTirocinio=${esterno.ID_TirocinioEsterno}&tirocinio=esterno"><button
 																	id="progettoForm" type="button">Progetto
 																	formativo</button></a></td>
 														<c:choose>
-															<c:when test="${esito != 1 && esito != 0}">
+															<c:when
+																test="${type=='tutoraccademico' && esterno.firmaTutorAccademico==false }">
 																<!-- richiesta ancora non valutata -->
 																<td class="text-center">
 																	<button class="bottone"
@@ -272,11 +272,58 @@
 																	</button>
 																</td>
 															</c:when>
-															<c:when test="${esito == 1}">
-																<!-- richiesta già valutata -->
-																<td class="text-center">Richiesta accettata con successo</td>
-															</c:when>
 
+															<c:when
+																test="${type=='tutoraziendale' && esterno.firmaTutorAziendale==false }">
+																<!-- richiesta ancora non valutata -->
+																<td class="text-center">
+																	<button class="bottone"
+																		onclick="window.location.href='ValutareRichieste?confermato=si&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
+																		id="accetta">
+																		<i class="fas fa-check-square"></i>
+																	</button>
+																	<button class="bottone"
+																		onclick="window.location.href='ValutareRichieste?confermato=no&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
+																		id="rifiuta">
+																		<i class="far fa-times-circle"></i>
+																	</button>
+																</td>
+															</c:when>
+															<c:when
+																test="${type=='azienda' && esterno.firmaAzienda==false }">
+																<!-- richiesta ancora non valutata -->
+																<td class="text-center">
+																	<button class="bottone"
+																		onclick="window.location.href='ValutareRichieste?confermato=si&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
+																		id="accetta">
+																		<i class="fas fa-check-square"></i>
+																	</button>
+																	<button class="bottone"
+																		onclick="window.location.href='ValutareRichieste?confermato=no&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
+																		id="rifiuta">
+																		<i class="far fa-times-circle"></i>
+																	</button>
+																</td>
+															</c:when>
+															<c:when
+																test="${type=='pdcd' && esterno.firmaPdCD==false }">
+																<!-- richiesta ancora non valutata -->
+																<td class="text-center">
+																	<button class="bottone"
+																		onclick="window.location.href='ValutareRichieste?confermato=si&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
+																		id="accetta">
+																		<i class="fas fa-check-square"></i>
+																	</button>
+																	<button class="bottone"
+																		onclick="window.location.href='ValutareRichieste?confermato=no&id=<c:out value="${esterno.ID_TirocinioEsterno}"/>&azienda=azienda' "
+																		id="rifiuta">
+																		<i class="far fa-times-circle"></i>
+																	</button>
+																</td>
+															</c:when>
+															<c:otherwise>
+																<td>Richiesta valutata con successo!</td>
+															</c:otherwise>
 														</c:choose>
 													</tr>
 												</c:if>
@@ -367,8 +414,7 @@
 											<tr>
 												<td class="icon"><i class="fas fa-circle"></i></td>
 												<td class="">Num. CFU</td>
-												<td class="text-center"><c:out
-														value="${interno.CFU}" /></td>
+												<td class="text-center"><c:out value="${interno.CFU}" /></td>
 											</tr>
 											<tr>
 												<td class="icon"><i class="fas fa-clock"></i></td>
@@ -411,11 +457,30 @@
 												<tr>
 													<td class="icon"><i class="fas fa-paperclip"></i></td>
 													<!-- <td class="">Valutazione richiesta</td>-->
-													<td><a href="VisualizzaProgettoFormativo?idTirocinio=${interno.ID_TirocinioInterno}&tirocinio=interno"><button
+													<td><a
+														href="VisualizzaProgettoFormativo?idTirocinio=${interno.ID_TirocinioInterno}&tirocinio=interno"><button
 																id="progettoForm" type="button">Progetto
 																formativo</button></a></td>
 													<c:choose>
-														<c:when test="${esito != 1 && esito != 0}">
+														<c:when
+															test="${type=='pdcd' && interno.firmaPdCD==false }">
+															<!-- richiesta ancora non valutata -->
+															<td class="text-center">
+																	<button class="bottone"
+																	onclick="window.location.href='ValutareRichieste?confermato=si&id=<c:out value="${interno.ID_TirocinioInterno}"/>'"
+																	id="accetta">
+																	<i class="fas fa-check-square"></i>
+																</button>
+																<button class="bottone"
+																	onclick="window.location.href='ValutareRichieste?confermato=no&id=<c:out value="${interno.ID_TirocinioInterno}"/>'"
+																	id="rifiuta">
+																	<i class="far fa-times-circle"></i>
+																</button>
+															</td>
+														</c:when>
+
+														<c:when
+															test="${type=='tutoraccademico' && interno.firmaTutorAccademico==false }">
 															<!-- richiesta ancora non valutata -->
 															<td class="text-center">
 																<button class="bottone"
@@ -430,11 +495,9 @@
 																</button>
 															</td>
 														</c:when>
-
-														<c:when test="${esito == 1}">
-															<!-- richiesta già valutata -->
-															<td class="text-center">Richiesta valutata</td>
-														</c:when>
+														<c:otherwise>
+															<td>Richiesta valutata con successo!</td>
+														</c:otherwise>
 													</c:choose>
 												</tr>
 

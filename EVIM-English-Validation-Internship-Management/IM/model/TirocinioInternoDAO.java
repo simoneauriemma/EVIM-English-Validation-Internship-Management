@@ -203,7 +203,7 @@ public class TirocinioInternoDAO {
 					"select ID_TirocinioInterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud,TutorAccademico.Nome as nomeTutorAcc,TutorAccademico.Cognome as cognomeTutorAcc, Data, OreTotali, status, NumeroCFU, FirmaPdCD, FirmaTutorAccademico, FirmaTutorAccademico, ID_Proposta " + 
 					"from TirocinioInterno AS tiro JOIN User ON tiro.EMAIL = User.EMAIL " + 
 					"JOIN TutorAccademico on tiro.ID_TutorAccademico=TutorAccademico.ID_TutorAccademico "
-					+ "WHERE status=?");
+					+ "WHERE status=? AND firmaTutorAccademico=true");
 			ps.setString(1, inValutazione);
 			ArrayList<TirocinioQueryPdCD> richieste = new ArrayList<TirocinioQueryPdCD>();
 			ResultSet rs = ps.executeQuery();
