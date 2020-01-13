@@ -102,13 +102,13 @@ VALUES ('Realizzazione di sistemi domotici (IOT)','Reti di calcolatori','Sistemi
 
 
 #Inserimenti TIROCINI ESTERNI
-
-select * from TirocinioEsterno;
-
+INSERT INTO `TirocinioEsterno` (`EMAIL`,`ID_tutorAccademico`,`ID_tutorAziendale`,`Data`,`OreTotali`,`status`,`CFU`,`FirmaAzienda`,`FirmaTutorAziendale`,`FirmaTutorAccademico`,`FirmaPdCD`,`ID_Proposta`) 
+VALUES ('simone@studenti.unisa.it','1','1','23/11/2019',150,'in approvazione',6, 1, 1, 1, 1, 6);
+select * from tirociniEsterno;
 #Inserimenti TIROCINIO INTERNO
-
 select * from TirocinioInterno;
-
+INSERT INTO `TirocinioInterno` (`EMAIL`,`ID_tutorAccademico`,`Data`,`OreTotali`,`status`,`NumeroCFU`,`FirmaPdCD`,`FirmaTutorAccademico`,`ID_Proposta`) 
+VALUES ('simone@studenti.unisa.it','1','23/11/2019',150,'in approvazione',6, 1, 1, 1);
 
 #Inserimento Convezioni
 INSERT INTO `convenzione` 
