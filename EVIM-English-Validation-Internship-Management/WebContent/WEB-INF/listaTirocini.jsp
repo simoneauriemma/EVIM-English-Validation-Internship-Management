@@ -38,21 +38,25 @@
 
 				<c:if test="${registroQueryEsterno.size() > 0}">
 
-					<c:forEach items="${registroQueryEsterno}" var="esterno">
 
-						<table class="table table-striped" id="tabella">
-							<thead>
-								<tr id="colonne" class="text-center">
-									<th scope="col">ID Tirocinio</th>
-									<th scope="col">Responsabile</th>
-									<th scope="col">Status</th>
-									<th scope="col">CFU</th>
-									<th scope="col">Ore Max</th>
-									<th scope="col">Tipo tirocinio</th>
-									<th scope="col">Registro tirocinio</th>
+
+					<table class="table table-striped" id="tabella">
+						<thead>
+							<tr id="colonne" class="text-center">
+								<th scope="col">ID Tirocinio</th>
+								<th scope="col">Responsabile</th>
+								<th scope="col">Status</th>
+								<th scope="col">CFU</th>
+								<th scope="col">Ore Max</th>
+								<th scope="col">Tipo tirocinio</th>
+								<th scope="col">Registro tirocinio</th>
+
+								<c:if test="${type!='pdcd'}">
 									<th scope="col">Operazione</th>
-								</tr>
-							</thead>
+								</c:if>
+							</tr>
+						</thead>
+						<c:forEach items="${registroQueryEsterno}" var="esterno">
 							<tbody>
 								<tr>
 									<th scope="row" id="id"><c:out
@@ -75,17 +79,18 @@
 											</a>
 										</form>
 
-										<form action="ApprovaAttivita" id="accettare">
-											<a href="ApprovaAttivita"><i class="fas fa-check-square"
-												id="accettare"></i></a>
+										<form action="" id="accettare">
+											<a href=""><i class="fas fa-check-square" id="accettare"></i></a>
 										</form>
 									</td>
 									<!-- ...... -->
 
 
 									<!-- OPERAZIONI -->
-									<td><c:if test="${type=='tutoraziendale' }">
 
+
+									<c:if test="${type=='tutoraziendale'}">
+										<td>
 											<div class="panel-group">
 												<div class="panel panel-default">
 													<div class="panel-heading">
@@ -107,60 +112,59 @@
 													</div>
 												</div>
 											</div>
-
-										</c:if> <c:if
-											test="${type=='tutoraccademico' && esterno.ID_Relazione==0 && esterno.registro_status=='completato'}">
-
-											<!-- Button trigger modal -->
-											<button type="button" class="btn btn-primary"
-												data-toggle="modal" data-target="#exampleModalCenter">
-												Visualizza relazione</button>
-
-											<!-- Modal -->
-											<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-												role="dialog" aria-labelledby="exampleModalCenterTitle"
-												aria-hidden="true">
-												<div class="modal-dialog modal-dialog-centered"
-													role="document">
-													<div class="modal-content">
-														<div class="modal-header">
-															<h5 class="modal-title" id="exampleModalLongTitle">
-																Approva relazione</h5>
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-														</div>
-														<div class="modal-body">
-															<!-- aggiungere la relazione che ha compilato il tutor aziendale -->
+										</td>
+									</c:if>
 
 
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-secondary"
-																data-dismiss="modal">Approva</button>
-															<button type="button" class="btn btn-secondary"
-																data-dismiss="modal">Rifiuta</button>
-														</div>
+									<c:if
+										test="${type=='tutoraccademico' && esterno.ID_Relazione==0 && esterno.registro_status=='completato'}">
+
+										<!-- Button trigger modal -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#exampleModalCenter">
+											Visualizza relazione</button>
+
+										<!-- Modal -->
+										<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalCenterTitle"
+											aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered"
+												role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLongTitle">
+															Approva relazione</h5>
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+														<!-- aggiungere la relazione che ha compilato il tutor aziendale -->
+
+
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Approva</button>
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Rifiuta</button>
 													</div>
 												</div>
 											</div>
-										</c:if> <c:if test="${type=='pdcd'}">
-											<form action="ApprovaAttivita" id="accettare">
-												<a href="ApprovaAttivita"><i class="fas fa-check-square"
-													id="accettare"></i></a>
-											</form>
+										</div>
+
+									</c:if>
 
 
 
 
-										</c:if></td>
 									<!-- ...... -->
 
 								</tr>
 							</tbody>
-						</table>
-					</c:forEach>
+						</c:forEach>
+					</table>
 				</c:if>
 			</c:if>
 			<!-- fine TIROCINIO ESTERNO -->
