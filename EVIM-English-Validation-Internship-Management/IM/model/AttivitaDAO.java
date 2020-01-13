@@ -201,7 +201,7 @@ public class AttivitaDAO {
 	 * @param i     (id del tutor accademico)
 	 * @return
 	 */
-	public ArrayList<RegistroQuery> doRetriveAllInternoTutorAcc(String eMAIL, int i) {
+	public ArrayList<RegistroQuery> doRetriveAllInternoTutorAcc(String EMAIL, int i) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
 					"select Descrizione, OrarioIngresso, OrarioUscita, attivita.FirmaResponsabile, Registro.OreRaggiunte, attivita.OreSvolte, attivita.data, user.Name as nomeStudente, user.surname as cognomeStudente "
@@ -209,9 +209,9 @@ public class AttivitaDAO {
 							+ "JOIN TirocinioInterno ON TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio "
 							+ "JOIN tutoraccademico ON TirocinioInterno.ID_tutorAccademico=tutoraccademico.ID_TutorAccademico "
 							+ "JOIN User ON TirocinioInterno.EMAIL=user.EMAIL "
-							+ "where tutoraccademico.ID_TutorAccademico=? AND tirocinioesterno.EMAIL=?");
+							+ "where tutoraccademico.ID_TutorAccademico=? AND tirociniointerno.EMAIL=?");
 			ps.setInt(1, i);
-			ps.setString(2, eMAIL);
+			ps.setString(2, EMAIL);
 			ArrayList<RegistroQuery> listaAttivita = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
 
@@ -226,7 +226,7 @@ public class AttivitaDAO {
 				a.setData(rs.getString(7));
 				a.setNomeStudente(rs.getString(8));
 				a.setCognomeStudente(rs.getString(9));
-
+			
 				listaAttivita.add(a);
 			}
 			return listaAttivita;
@@ -242,7 +242,7 @@ public class AttivitaDAO {
 	 * @param i
 	 * @return ArrayList<RegistroQuery>
 	 */
-	public ArrayList<RegistroQuery> doRetriveAllEsternoTutorAcc(String eMAIL, int iDTutorAcc) {
+	public ArrayList<RegistroQuery> doRetriveAllEsternoTutorAcc(String EMAIL, int iDTutorAcc) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
 					"select Descrizione, OrarioIngresso, OrarioUscita, attivita.FirmaResponsabile, Registro.OreRaggiunte, attivita.OreSvolte, attivita.data, user.Name as nomeStudente, user.surname as cognomeStudente "
@@ -251,9 +251,11 @@ public class AttivitaDAO {
 							+ "JOIN tutoraccademico ON tirocinioesterno.ID_TutorAccademico=tutoraccademico.ID_TutorAccademico "
 							+ "JOIN User ON tirocinioesterno.EMAIL=user.EMAIL "
 							+ "where tutoraccademico.ID_TutorAccademico=? AND tirocinioesterno.EMAIL=?");
+			
 			ps.setInt(1, iDTutorAcc);
-			ps.setString(2, eMAIL);
+			ps.setString(2, EMAIL);
 			ArrayList<RegistroQuery> listaAttivita = new ArrayList<RegistroQuery>();
+
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
