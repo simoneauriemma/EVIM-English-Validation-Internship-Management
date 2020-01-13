@@ -92,6 +92,8 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 			request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
 			request.setAttribute("listaAttivitaInterno", listaTirociniInterno);
 
+			// INSERIRE LISTA ATTIVITA
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/registroTirocinio(tutor).jsp");
 			dispatcher.forward(request, response);
 

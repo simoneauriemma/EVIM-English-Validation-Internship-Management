@@ -7,7 +7,12 @@
 <head>
 <link rel="stylesheet" href="stiliCSS/stiliListaTirocini.css">
 <meta charset="ISO-8859-1">
-
+<style>
+body {
+	padding-right: 0px !important;
+	padding: 0px !important;
+}
+</style>
 <script src="jquery-3.4.1.min.js"></script>
 <title>Lista Tirocini</title>
 </head>
@@ -71,10 +76,10 @@
 
 									<!-- REGISTRO -->
 									<td class="form-inline text-center" id="registro1">
-										<form action="VisualizzaRegistroTirocinio">
+										<form action="VisualizzaRegistroTirocinio" method="POST">
 											<input type="hidden" name="EMAIL"
-												value="<c:out value="${studente.email}" />"> <a
-												href="VisualizzaRegistroTirocinio"> <i id="registroE"
+												value="<c:out value="${esterno.emailStudente}" />">
+											<a href="VisualizzaRegistroTirocinio"> <i id="registroE"
 												class="fas fa-book"></i>
 											</a>
 										</form>
@@ -89,8 +94,8 @@
 									<!-- OPERAZIONI -->
 
 
-									<c:if test="${type=='tutoraziendale'}">
-										<td>
+
+									<td><c:if test="${type=='tutoraziendale'}">
 											<div class="panel-group">
 												<div class="panel panel-default">
 													<div class="panel-heading">
@@ -112,50 +117,53 @@
 													</div>
 												</div>
 											</div>
-										</td>
-									</c:if>
+										</c:if> <!-- inizio tutor accademico operazioni --> <c:choose>
+											<c:when
+												test="${type=='tutoraccademico' && (esterno.ID_Relazione==0 && esterno.registro_status=='completato')}">
+
+												<!-- Button trigger modal -->
+												<button type="button" class="btn btn-primary"
+													data-toggle="modal" data-target="#exampleModalCenter">
+													Visualizza relazione</button>
+
+												<!-- Modal -->
+												<div class="modal fade" id="exampleModalCenter"
+													tabindex="-1" role="dialog"
+													aria-labelledby="exampleModalCenterTitle"
+													aria-hidden="true">
+													<div class="modal-dialog modal-dialog-centered"
+														role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="exampleModalLongTitle">
+																	Approva relazione</h5>
+																<button type="button" class="close" data-dismiss="modal"
+																	aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+																</button>
+															</div>
+															<div class="modal-body">
+																<!-- aggiungere la relazione che ha compilato il tutor aziendale -->
 
 
-									<c:if
-										test="${type=='tutoraccademico' && esterno.ID_Relazione==0 && esterno.registro_status=='completato'}">
-
-										<!-- Button trigger modal -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#exampleModalCenter">
-											Visualizza relazione</button>
-
-										<!-- Modal -->
-										<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalCenterTitle"
-											aria-hidden="true">
-											<div class="modal-dialog modal-dialog-centered"
-												role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLongTitle">
-															Approva relazione</h5>
-														<button type="button" class="close" data-dismiss="modal"
-															aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-													</div>
-													<div class="modal-body">
-														<!-- aggiungere la relazione che ha compilato il tutor aziendale -->
-
-
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary"
-															data-dismiss="modal">Approva</button>
-														<button type="button" class="btn btn-secondary"
-															data-dismiss="modal">Rifiuta</button>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary"
+																	data-dismiss="modal">Approva</button>
+																<button type="button" class="btn btn-secondary"
+																	data-dismiss="modal">Rifiuta</button>
+															</div>
+														</div>
 													</div>
 												</div>
-											</div>
-										</div>
 
-									</c:if>
+											</c:when>
+											<c:when
+												test="${type=='tutoraccademico' && esterno.ID_Relazione!=0 && esterno.registro_status!='completato'}">
+												<p>Nessuna operazione da effettuare</p>
 
+											</c:when>
+										</c:choose></td>
 
 
 
@@ -204,9 +212,9 @@
 
 								<!-- REGISTRO -->
 								<td class="form-inline text-center">
-									<form action="VisualizzaRegistroTirocinio">
+									<form action="VisualizzaRegistroTirocinio" method="get">
 										<input type="hidden" name="EMAIL"
-											value="<c:out value="${studente.email}" />"> <a
+											value="<c:out value="${interno.emailStudente}" />"> <a
 											href="VisualizzaRegistroTirocinio"> <i id="registroI"
 											class="fas fa-book"></i>
 										</a>

@@ -26,16 +26,23 @@
 				<jsp:include page="menu.jsp"></jsp:include>
 			</div>
 			<!-- SE L'UTENTE LOGGATO E' UN TUTOR AZIENDALEe-->
-			<c:if test="${type == 'tutoraziendale'}">
-				<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
-				<c:if test="${listaAttivitaEsterno.size() == 0">
-					<p>Non è stato effettuato nessun Tirocinio!</p>
+
+			<div class="col-lg-9"
+				style="border: 1px solid #d7d7d7; background-color: white;">
+				<p id="titolo" style="font-size: 30px; color: #595959;"
+					class="text-center">Registro di tirocinio</p>
+				<hr>
+
+				<c:if test="${type=='tutoraccademico'}">
+					<c:if
+						test="${listaAttivitaEsterno.size() == 0 && listaAttivitaInterno.size()==0}">
+						<p>Non è stato effettuato nessun Tirocinio!</p>
+					</c:if>
 				</c:if>
-				<div class="col-lg-9" id=""
-					style="border: 1px solid #d7d7d7; background-color: white;">
-					<p id="titolo" style="font-size: 30px; color: #595959;">
-						Registro di tirocinio</p>
-					<hr>
+
+				<c:if test="${type == 'tutoraziendale' || type=='tutoraccademico'}">
+					<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
+
 					<c:if test="${listaAttivitaEsterno.size() > 0}">
 						<c:forEach items="${listaAttivitaEsterno}" var="esterno">
 							<div>
@@ -48,16 +55,13 @@
 									Ore svolte:
 									<c:out value="${esterno.oreSvolte}" />
 								</p>
-								<!-- <p>Numero attività svolte: #</p> -->
 							</div>
-						</c:forEach>
-					</c:if>
-					<br>
 
-					<table class="table table-striped" style="border: 1px solid #ddd;">
-						<tbody>
-							<c:if test="${listaAttivitaEsterno.size() > 0}">
-								<c:forEach items="${listaAttivitaEsterno}" var="esterno">
+							<br>
+
+							<table class="table table-striped"
+								style="border: 1px solid #ddd;">
+								<tbody>
 									<tr style="background-color: #2C5278; color: white;">
 										<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
 										<td class="">Attività svolta</td>
@@ -65,66 +69,52 @@
 										<td>Ora ingresso</td>
 										<td>Ora uscita</td>
 										<td>Ore tot.</td>
-										<td>Firma responsabile</td>
 									</tr>
 									<tr>
 										<td></td>
-										<td><c:out value="${esterno.attivita}" /></td>
+										<td><c:out value="${esterno.descrizione}" /></td>
 										<td><c:out value="${esterno.data}" /></td>
 										<td><c:out value="${esterno.orarioIngresso}" /></td>
 										<td><c:out value="${esterno.orarioUscita}" /></td>
 										<td><c:out value="${esterno.orarioUscita}" /> - <c:out
 												value="${esterno.orarioIngresso}" /></td>
-										
-										<td><td><form action="" id="valutare">
-												<i class="fas fa-check-square"></i> <i
-													class="far fa-times-circle"></i>
-											</form></td></td>
 
 									</tr>
 
-								</c:forEach>
-
-							</c:if>
-
-
-
-						</tbody>
-					</table>
-					<br> <br>
-				</div>
-			</c:if>
-
-			<!-- SE L'UTENTE LOGGATO E' UN TUTOR ACCADEMICO-->
-			<c:if test="${type == 'tutoraccademico'}">
-				<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
-				<c:if test="${listaAttivitaInterno.size() == 0">
-					<p>Non è stato effettuato nessun Tirocinio!</p>
+								</tbody>
+							</table>
+						</c:forEach>
+					</c:if>
+					<br>
+					<br>
 				</c:if>
-				<div class="col-lg-9" id=""
-					style="border: 1px solid #d7d7d7; background-color: white;">
-					<p id="titolo" style="font-size: 30px; color: #595959;">
-						Registro di tirocinio</p>
-					<hr>
+
+
+
+				<!-- SE L'UTENTE LOGGATO E' UN TUTOR ACCADEMICO-->
+				<c:if test="${type == 'tutoraccademico'}">
+					<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
+					<c:if
+						test="${listaAttivitaInterno.size() == 0 && listaAttivitaEsterno.size()==0}">
+						<p>Non è stato effettuato nessun Tirocinio!</p>
+					</c:if>
 
 					<c:if test="${listaAttivitaInterno.size() > 0}">
 						<c:forEach items="${listaAttivitaInterno}" var="interno">
 							<div>
 								<p>
-									Studente:
+									<b>Studente:</b>
 									<c:out value="${interno.nomeStudente}" />
 									<c:out value="${interno.cognomeStudente}" />
 								</p>
 								<p>
-									Ore svolte:
+									<b>Ore svolte:</b>
 									<c:out value="${interno.oreSvolte}" />
 								</p>
-								<!-- <p>Numero attività svolte: #</p> -->
+
 							</div>
 						</c:forEach>
 					</c:if>
-
-
 
 					<br>
 
@@ -133,27 +123,28 @@
 							<c:if test="${listaAttivitaInterno.size() > 0}">
 								<c:forEach items="${listaAttivitaInterno}" var="interno">
 									<tr style="background-color: #2C5278; color: white;">
-										<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
-										<td class="">Attività svolta</td>
-										<td>Data</td>
-										<td>Ora ingresso</td>
-										<td>Ora uscita</td>
-										<td>Ore tot.</td>
-										<td>Firma responsabile</td>
+										<th class="text-center" class="icon"><i class="fas fa-sort-amount-down"></i></th>
+										<th class="text-center">Attività svolta</th>
+										<th class="text-center">Data</th>
+										<th class="text-center">Ora ingresso</th>
+										<th class="text-center">Ora uscita</th>
+										<th class="text-center">Ore tot.</th>
+										<th class="text-center">Firma responsabile</th>
 									</tr>
 									<tr>
 										<td></td>
-										<td><c:out value="${interno.attivita}" /></td>
-										<td><c:out value="${interno.data}" /></td>
-										<td><c:out value="${interno.orarioIngresso}" /></td>
-										<td><c:out value="${interno.orarioUscita}" /></td>
-										<td><c:out
+										<td class="text-center"><c:out value="${interno.descrizione}" /></td>
+										<td class="text-center"><c:out value="${interno.data}" /></td>
+										<td class="text-center"><c:out value="${interno.orarioIngresso}" /></td>
+										<td class="text-center"><c:out value="${interno.orarioUscita}" /></td>
+										<td class="text-center"><c:out
 												value="${interno.orarioUscita - interno.orarioIngresso}" /></td>
 
-										<td><form action="" id="valutare">
+										<td class="text-center">
+										<form action="" id="valutare">
 												<i class="fas fa-check-square"></i> <i
 													class="far fa-times-circle"></i>
-											</form></td>
+										</form></td>
 									</tr>
 
 								</c:forEach>
@@ -164,10 +155,10 @@
 
 						</tbody>
 					</table>
-					<br> <br>
-				</div>
-			</c:if>
-
+					<br>
+					<br>
+				</c:if>
+			</div>
 		</div>
 	</div>
 	<br>
