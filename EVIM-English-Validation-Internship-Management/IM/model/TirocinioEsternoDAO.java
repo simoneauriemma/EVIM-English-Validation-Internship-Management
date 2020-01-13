@@ -215,8 +215,8 @@ public class TirocinioEsternoDAO {
 				a.setEmail(rs.getString(2));
 				a.setNomeStudente(rs.getString(3));
 				a.setCognomeStudente(rs.getString(4));
-				a.setNomeTutorAz(rs.getString(5));
-				a.setCognomeTutorAz(rs.getString(6));
+				a.setNomeTutorAziendale(rs.getString(5));
+				a.setCognomeTutorAziendale(rs.getString(6));
 				a.setData(rs.getString(7));
 				a.setOreTotali(rs.getInt(8));
 				a.setStatus(rs.getString(9));

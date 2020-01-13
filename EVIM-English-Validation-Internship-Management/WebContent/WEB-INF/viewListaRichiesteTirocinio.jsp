@@ -157,7 +157,7 @@
 														<td class="icon"><i class="fas fa-user"></i></td>
 														<td class="">Tutor Aziendale</td>
 														<td class="text-center"><c:out
-																value="${esterno.nomeTutorAziedale}" /> <c:out
+																value="${esterno.nomeTutorAziendale}" /> <c:out
 																value="${esterno.cognomeTutorAziendale}" /></td>
 													</tr>
 												</c:if>
