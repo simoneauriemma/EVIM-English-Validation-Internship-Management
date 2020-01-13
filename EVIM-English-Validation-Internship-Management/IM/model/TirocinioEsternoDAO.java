@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryEsternoStudente;
 import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryEsternoTutorAcc;
 import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryEsternoTutorAz;
+import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryPdCD;
 import controller.GestioneTirocinio.ListaTirocini.RegistroQuery;
 
 public class TirocinioEsternoDAO {
@@ -149,23 +150,38 @@ public class TirocinioEsternoDAO {
 	 * @author Simone Auriemma
 	 * @return ArryList<TirocinioEsterno>
 	 */
-	public ArrayList<TirocinioEsterno> doRetriveAllValutazionePdCD() {
+	public ArrayList<TirocinioQueryPdCD> doRetriveAllValutazionePdCD() {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			String inValutazione = "in approvazione";
 			PreparedStatement ps = con.prepareStatement(
-					" select * from EVIM.TirocinioEsterno where status=? AND FirmaTutorAccademico=true AND FirmaAzienda=true AND FirmaTutorAziendale=true");
-			ps.setString(1, inValutazione);
-			ArrayList<TirocinioEsterno> richieste = new ArrayList<TirocinioEsterno>();
+					"select ID_TirocinioEsterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud,TutorAccademico.Nome as nomeTutorAcc,TutorAccademico.Cognome as cognomeTutorAcc, Data, OreTotali, status, CFU, FirmaPdCD, FirmaTutorAccademico, FirmaTutorAccademico, ID_Proposta, firmaAzienda, tutorAz.Nome as nomeTutorAz, tutorAz.Cognome as cognomeTutorAz "
+							+ "from TirocinioEsterno AS tiro JOIN User ON tiro.EMAIL = User.EMAIL "
+							+ "JOIN TutorAccademico on tiro.ID_TutorAccademico=TutorAccademico.ID_TutorAccademico "
+							+ "JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale "
+							+ "JOIN Azienda ON Azienda.ID_Azienda = tutorAz.ID_Azienda "
+							+ "WHERE status='in approvazione'");
+			ArrayList<TirocinioQueryPdCD> richieste = new ArrayList<TirocinioQueryPdCD>();
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				TirocinioEsterno a = new TirocinioEsterno();
-				a.setID_TirocinioEsterno(rs.getInt("ID_tirocinioEsterno"));
-				a.setID_TutorAccademico(rs.getInt("ID_tutorAccademico"));
-				a.setData(rs.getString("Data"));
-				a.setStatus(rs.getString("status"));
-				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
-				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
+				TirocinioQueryPdCD a = new TirocinioQueryPdCD();
+				a.setID_TirocinioEsterno(rs.getInt(1));
+				a.setEmail(rs.getString(2));
+				a.setNomeStudente(rs.getString(3));
+				a.setCognomeStudente(rs.getString(4));
+				a.setNomeTutorAcc(rs.getString(5));
+				a.setCognomeTutorAcc(rs.getString(6));
+				a.setData(rs.getString(7));
+				a.setOreTotali(rs.getInt(8));
+				a.setStatus(rs.getString(9));
+				a.setCFU(rs.getInt(10));
+				a.setFirmaPdCD(rs.getBoolean(11));
+				a.setFirmaTutorAccademico(rs.getBoolean(12));
+				a.setFirmaTutorAziendale(rs.getBoolean(13));
+				a.setID_Proposta(rs.getInt(14));
+				a.setFirmaAzienda(rs.getBoolean(15));
+				a.setNomeTutorAziedale(rs.getString(16));
+				a.setCognomeTutorAziendale(rs.getString(17));
 				richieste.add(a);
 			}
 			return richieste;
@@ -699,11 +715,11 @@ public class TirocinioEsternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoPdcdRegistro() {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,TirocinioEsterno.OreTotali, Registro.ID_Registro, tutoraziendale.Nome as nomeTutorAz, tutoraziendale.Cognome as cognomeTutorAz " + 
-					"from TirocinioEsterno " + 
-					"JOIN Registro on tirocinioesterno.ID_TirocinioEsterno=registro.ID_Tirocinio " + 
-					"JOIN TutorAziendale on tirocinioesterno.ID_TutorAziendale=tutoraziendale.ID_TutorAziendale " + 
-					"where TirocinioEsterno.status='in svolgimento'");
+					"select TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,TirocinioEsterno.OreTotali, Registro.ID_Registro, tutoraziendale.Nome as nomeTutorAz, tutoraziendale.Cognome as cognomeTutorAz "
+							+ "from TirocinioEsterno "
+							+ "JOIN Registro on tirocinioesterno.ID_TirocinioEsterno=registro.ID_Tirocinio "
+							+ "JOIN TutorAziendale on tirocinioesterno.ID_TutorAziendale=tutoraziendale.ID_TutorAziendale "
+							+ "where TirocinioEsterno.status='in svolgimento'");
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();

@@ -13,6 +13,7 @@ import controller.GestioneAutenticazione.*;
 import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryEsternoTutorAcc;
 import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryEsternoTutorAz;
 import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryInternoTutorAcc;
+import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryPdCD;
 import model.Azienda;
 import model.RegistroDAO;
 import model.TirocinioEsterno;
@@ -127,9 +128,9 @@ public class ValutareRichieste extends BaseServlet {
 									new RegistroDAO().doSave(idTirocinio, "in svolgimento", "interno");
 								}
 
-								ArrayList<TirocinioInterno> tirocinioInterno = new TirocinioInternoDAO()
+								ArrayList<TirocinioQueryPdCD> tirocinioInterno = new TirocinioInternoDAO()
 										.doRetriveAllValutazionePdCD();
-								ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO()
+								ArrayList<TirocinioQueryPdCD> tirocinioEsterno = new TirocinioEsternoDAO()
 										.doRetriveAllValutazionePdCD();
 
 								request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
@@ -144,9 +145,9 @@ public class ValutareRichieste extends BaseServlet {
 								risposta = new TirocinioInternoDAO().updateFirmaPdCDFalse(false, idTirocinio);
 								request.setAttribute("esito", risposta);
 
-								ArrayList<TirocinioInterno> tirocinioInterno = new TirocinioInternoDAO()
+								ArrayList<TirocinioQueryPdCD> tirocinioInterno = new TirocinioInternoDAO()
 										.doRetriveAllValutazionePdCD();
-								ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO()
+								ArrayList<TirocinioQueryPdCD> tirocinioEsterno = new TirocinioEsternoDAO()
 										.doRetriveAllValutazionePdCD();
 
 								request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
@@ -293,9 +294,9 @@ public class ValutareRichieste extends BaseServlet {
 									new RegistroDAO().doSave(idTirocinio, "in svolgimento", "esterno");
 								}
 
-								ArrayList<TirocinioInterno> tirocinioInterno = new TirocinioInternoDAO()
+								ArrayList<TirocinioQueryPdCD> tirocinioInterno = new TirocinioInternoDAO()
 										.doRetriveAllValutazionePdCD();
-								ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO()
+								ArrayList<TirocinioQueryPdCD> tirocinioEsterno = new TirocinioEsternoDAO()
 										.doRetriveAllValutazionePdCD();
 
 								request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
@@ -309,9 +310,9 @@ public class ValutareRichieste extends BaseServlet {
 								risposta = new TirocinioEsternoDAO().updateFirmaPdCDFalse(false, idTirocinio);
 								request.setAttribute("esito", risposta);
 
-								ArrayList<TirocinioInterno> tirocinioInterno = new TirocinioInternoDAO()
+								ArrayList<TirocinioQueryPdCD> tirocinioInterno = new TirocinioInternoDAO()
 										.doRetriveAllValutazionePdCD();
-								ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO()
+								ArrayList<TirocinioQueryPdCD> tirocinioEsterno = new TirocinioEsternoDAO()
 										.doRetriveAllValutazionePdCD();
 
 								request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);

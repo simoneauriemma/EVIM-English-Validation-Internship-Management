@@ -6,8 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryEsternoTutorAz;
 import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryInternoStudente;
 import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryInternoTutorAcc;
+import controller.GestioneRichiesta.VisualizzaRichieste.TirocinioQueryPdCD;
 import controller.GestioneTirocinio.ListaTirocini.RegistroQuery;
 
 public class TirocinioInternoDAO {
@@ -194,23 +196,34 @@ public class TirocinioInternoDAO {
 	 * @author Simone Auriemma
 	 * @return
 	 */
-	public ArrayList<TirocinioInterno> doRetriveAllValutazionePdCD() {
+	public ArrayList<TirocinioQueryPdCD> doRetriveAllValutazionePdCD() {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			String inValutazione = "in approvazione";
 			PreparedStatement ps = con.prepareStatement(
-					"select * from EVIM.TirocinioInterno where status=? AND FirmaTutorAccademico=true");
+					"select ID_TirocinioInterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud,TutorAccademico.Nome as nomeTutorAcc,TutorAccademico.Cognome as cognomeTutorAcc, Data, OreTotali, status, NumeroCFU, FirmaPdCD, FirmaTutorAccademico, FirmaTutorAccademico, ID_Proposta " + 
+					"from TirocinioInterno AS tiro JOIN User ON tiro.EMAIL = User.EMAIL " + 
+					"JOIN TutorAccademico on tiro.ID_TutorAccademico=TutorAccademico.ID_TutorAccademico "
+					+ "WHERE status=?");
 			ps.setString(1, inValutazione);
-			ArrayList<TirocinioInterno> richieste = new ArrayList<TirocinioInterno>();
+			ArrayList<TirocinioQueryPdCD> richieste = new ArrayList<TirocinioQueryPdCD>();
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				TirocinioInterno a = new TirocinioInterno();
-				a.setID_TirocinioInterno(rs.getInt("ID_tirocinioInterno"));
-				a.setID_tutorAccademico(rs.getInt("ID_tutorAccademico"));
-				a.setData(rs.getString("Data"));
-				a.setStatus(rs.getString("status"));
-				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccademico"));
-				a.setFirmaPdCD(rs.getBoolean("FirmaPdCD"));
+				TirocinioQueryPdCD a = new TirocinioQueryPdCD();
+				a.setID_TirocinioInterno(rs.getInt(1));
+				a.setEmail(rs.getString(2));
+				a.setNomeStudente(rs.getString(3));
+				a.setCognomeStudente(rs.getString(4));
+				a.setNomeTutorAcc(rs.getString(5));
+				a.setCognomeTutorAcc(rs.getString(6));
+				a.setData(rs.getString(7));
+				a.setOreTotali(rs.getInt(8));
+				a.setStatus(rs.getString(9));
+				a.setCFU(rs.getInt(10));
+				a.setFirmaPdCD(rs.getBoolean(11));
+				a.setFirmaTutorAccademico(rs.getBoolean(12));
+				a.setFirmaTutorAziendale(rs.getBoolean(13));
+				a.setID_Proposta(rs.getInt(14));
 				richieste.add(a);
 			}
 			return richieste;
