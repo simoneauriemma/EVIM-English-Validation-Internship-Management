@@ -716,8 +716,8 @@ public class TirocinioEsternoDAO {
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
-				a.setNome_responsabile("nomeTutorAz");
-				a.setCognome_responsabile("cognomeTutorAz");
+				a.setNome_responsabile(rs.getString("nomeTutorAz"));
+				a.setCognome_responsabile(rs.getString("cognomeTutorAz"));
 				lista.add(a);
 			}
 			return lista;

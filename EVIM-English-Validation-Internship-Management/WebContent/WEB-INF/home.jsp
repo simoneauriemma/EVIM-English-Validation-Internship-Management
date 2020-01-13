@@ -58,38 +58,52 @@
 					</c:otherwise>
 				</c:choose>
 				
+				<!-- Pop-up questionario -->
 				<c:if test="${resultqs == true}">
 						<div class="alert alert-success" role="alert">
 						  Questionario creato con successo
 						</div>
 					</c:if>
+					
+				<!-- Pop-up registro -->
+					<c:if test="${idAttività == 1}">
+						<div class="alert alert-success" role="alert">
+						  Registro approvato con successo
+						</div>
+					</c:if>
+					
+				<!-- Pop-up account tutor -->
 				<c:if test="${utenteCreato == true}">
 						<div class="alert alert-success" role="alert">
 						  Inserimento effettuato con successo
 						</div>
 					</c:if>
 				
+				<!-- Pop-up proposta(positivo) -->
 				<c:if test="${risultatoInserimentoProposta == true}">
 						<div class="alert alert-success" role="alert">
 						  Inserimento effettuato con successo
 						</div>
 					</c:if>
 					
+					<!-- pop-up proposta(negativo) -->
 					<c:if test="${risultatoInserimentoProposta == false}">
 						<div class="alert alert-danger" role="alert">
 						  Inserimento non effettuato con successo
 						</div>
 					</c:if>
 					
+					<!-- pop-up modifica(positivo) -->
 				<c:if test="${modifica==true}">
 				 <div class="alert alert-success" role="alert">
-						  Modifica effettuato con successo
+						  Modifica effettuata con successo
 						</div>
 				</c:if>
 				
+				<!-- pop-up modifica(negativo) -->
 				<c:if test="${modifica == false}">
 						<div class="alert alert-danger" role="alert">
-						  Modifica non effettuato con successo
+						  Modifica non effettuata con successo
 						</div>
 					</c:if>
 					
@@ -105,12 +119,14 @@
 						</div>
 				</c:if>
 				
+				<!-- pop-up modulo(positivo) -->
 				<c:if test="${compilaModulo==true}">
 					<div class="alert alert-success" role="alert">
-						  Mandato con successo
+						 Modulo mandato con successo
 						</div>
 				</c:if>
 				
+				<!-- pop-up modulo(negativo) -->
 				<c:if test="${compilaModulo==false}">
 					<div class="alert alert-success" role="alert">
 						  Errore nel mandare la richiesta.
