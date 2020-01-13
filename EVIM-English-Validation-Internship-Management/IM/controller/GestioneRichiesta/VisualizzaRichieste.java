@@ -429,7 +429,7 @@ public class VisualizzaRichieste extends BaseServlet {
 	public static class TirocinioQueryEsternoTutorAcc {
 
 		int ID_TirocinioEsterno, oreTotali, CFU, ID_Proposta;
-		String nomeTutorAz, cognomeTutorAz, nomeStudente, cognomeStudente, data, status, email;
+		String nomeTutorAziendale, cognomeTutorAziendale, nomeStudente, cognomeStudente, data, status, email;
 		boolean firmaAzienda, firmaTutorAziendale, firmaTutorAccademico, firmaPdCD;
 
 		public TirocinioQueryEsternoTutorAcc() {
@@ -444,8 +444,8 @@ public class VisualizzaRichieste extends BaseServlet {
 			this.oreTotali = oreTotali;
 			CFU = cFU;
 			ID_Proposta = iD_Proposta;
-			this.nomeTutorAz = nomeTutorAz;
-			this.cognomeTutorAz = cognomeTutorAz;
+			this.nomeTutorAziendale = nomeTutorAz;
+			this.cognomeTutorAziendale = cognomeTutorAz;
 			this.nomeStudente = nomeStudente;
 			this.cognomeStudente = cognomeStudente;
 			this.data = data;
@@ -481,20 +481,20 @@ public class VisualizzaRichieste extends BaseServlet {
 			CFU = cFU;
 		}
 
-		public String getNomeTutorAz() {
-			return nomeTutorAz;
+		public String getNomeTutorAziendale() {
+			return nomeTutorAziendale;
 		}
 
-		public void setNomeTutorAz(String nomeTutorAz) {
-			this.nomeTutorAz = nomeTutorAz;
+		public void setNomeTutorAziendale(String nomeTutorAz) {
+			this.nomeTutorAziendale = nomeTutorAz;
 		}
 
-		public String getCognomeTutorAz() {
-			return cognomeTutorAz;
+		public String getCognomeTutorAziendale() {
+			return cognomeTutorAziendale;
 		}
 
-		public void setCognomeTutorAz(String cognomeTutorAz) {
-			this.cognomeTutorAz = cognomeTutorAz;
+		public void setCognomeTutorAziendale(String cognomeTutorAz) {
+			this.cognomeTutorAziendale = cognomeTutorAz;
 		}
 
 		public String getNomeStudente() {
@@ -733,8 +733,8 @@ public class VisualizzaRichieste extends BaseServlet {
 	}
 
 	public static class TirocinioQueryInternoTutorAcc {
-		int ID_TirocinioInterno, oreTotali, numeroCFU, ID_Proposta;
-		String EMAIL, nomeStud, cognomeStud, data, status;
+		int ID_TirocinioInterno, oreTotali, numeroCFU, ID_Proposta, CFU;
+		String email, nomeStud, cognomeStud, data, status;
 		boolean firmaPdCD, firmaTutorAccademico;
 
 		public TirocinioQueryInternoTutorAcc(int iD_TirocinioInterno, int oreTotali, int numeroCFU, int iD_Proposta,
@@ -745,7 +745,7 @@ public class VisualizzaRichieste extends BaseServlet {
 			this.oreTotali = oreTotali;
 			this.numeroCFU = numeroCFU;
 			ID_Proposta = iD_Proposta;
-			EMAIL = eMAIL;
+			email = eMAIL;
 			this.nomeStud = nomeStud;
 			this.cognomeStud = cognomeStud;
 			this.data = data;
@@ -789,12 +789,12 @@ public class VisualizzaRichieste extends BaseServlet {
 			ID_Proposta = iD_Proposta;
 		}
 
-		public String getEMAIL() {
-			return EMAIL;
+		public String getEmail() {
+			return email;
 		}
 
-		public void setEMAIL(String eMAIL) {
-			EMAIL = eMAIL;
+		public void setEmail(String eMAIL) {
+			email = eMAIL;
 		}
 
 		public String getNomeStud() {
@@ -843,6 +843,14 @@ public class VisualizzaRichieste extends BaseServlet {
 
 		public void setFirmaTutorAccademico(boolean firmaTutorAccademico) {
 			this.firmaTutorAccademico = firmaTutorAccademico;
+		}
+
+		public int getCFU() {
+			return CFU;
+		}
+
+		public void setCFU(int cFU) {
+			CFU = cFU;
 		}
 	}
 

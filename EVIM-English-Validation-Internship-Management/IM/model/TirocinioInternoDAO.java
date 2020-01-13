@@ -115,7 +115,7 @@ public class TirocinioInternoDAO {
 			while (rs.next()) {
 				TirocinioQueryInternoTutorAcc a = new TirocinioQueryInternoTutorAcc();
 				a.setID_TirocinioInterno(rs.getInt(1));
-				a.setEMAIL(rs.getString("EMAIL"));
+				a.setEmail(rs.getString("EMAIL"));
 				a.setNomeStud(rs.getString(3));
 				a.setCognomeStud(rs.getString(4));
 				a.setData(rs.getString("Data"));
