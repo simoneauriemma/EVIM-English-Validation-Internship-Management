@@ -159,7 +159,7 @@ public class TirocinioEsternoDAO {
 							+ "JOIN TutorAccademico on tiro.ID_TutorAccademico=TutorAccademico.ID_TutorAccademico "
 							+ "JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale "
 							+ "JOIN Azienda ON Azienda.ID_Azienda = tutorAz.ID_Azienda "
-							+ "WHERE status='in approvazione'");
+							+ "WHERE status='in approvazione' AND firmaTutorAziendale=true AND firmaTutorAccademico=true AND firmaAzienda=true");
 			ArrayList<TirocinioQueryPdCD> richieste = new ArrayList<TirocinioQueryPdCD>();
 			ResultSet rs = ps.executeQuery();
 
@@ -180,7 +180,7 @@ public class TirocinioEsternoDAO {
 				a.setFirmaTutorAziendale(rs.getBoolean(13));
 				a.setID_Proposta(rs.getInt(14));
 				a.setFirmaAzienda(rs.getBoolean(15));
-				a.setNomeTutorAziedale(rs.getString(16));
+				a.setNomeTutorAziendale(rs.getString(16));
 				a.setCognomeTutorAziendale(rs.getString(17));
 				richieste.add(a);
 			}
@@ -748,7 +748,7 @@ public class TirocinioEsternoDAO {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			String inValutazione = "in approvazione";
 			PreparedStatement ps = con.prepareStatement(
-					"select ID_TirocinioEsterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud,TutorAccademico.Nome as nomeTutorAcc,TutorAccademico.Cognome as cognomeTutorAcc, Data, OreTotali, status, CFU, FirmaPdCD, FirmaTutorAccademico, FirmaTutorAccademico, ID_Proposta, FirmaAzienda "
+					"select ID_TirocinioEsterno,tiro.EMAIL, User.NAME as nomeStud,User.SURNAME as cognomeStud,TutorAccademico.Nome as nomeTutorAcc,TutorAccademico.Cognome as cognomeTutorAcc, Data, OreTotali, status, CFU, FirmaPdCD, FirmaTutorAccademico, FirmaTutorAziendale, ID_Proposta, FirmaAzienda "
 							+ "from TirocinioEsterno AS tiro " + "JOIN User ON tiro.EMAIL = User.EMAIL "
 							+ "JOIN TutorAccademico on tiro.ID_TutorAccademico=TutorAccademico.ID_TutorAccademico "
 							+ "JOIN TutorAziendale as tutorAz ON tiro.ID_TutorAziendale = tutorAz.ID_TutorAziendale "

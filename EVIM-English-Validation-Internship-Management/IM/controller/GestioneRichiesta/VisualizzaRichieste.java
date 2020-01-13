@@ -135,6 +135,9 @@ public class VisualizzaRichieste extends BaseServlet {
 				TutorAziendale aziendale = (TutorAziendale) sessione.getAttribute("utenteLoggato");
 				ArrayList<TirocinioQueryEsternoTutorAz> tirocinioEsterno = new TirocinioEsternoDAO()
 						.doRetriveAllByTutorAz(aziendale.getId());
+				
+				System.out.println(tirocinioEsterno.get(0).isFirmaTutorAziendale());
+				
 				request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
 				dispatcher.forward(request, response);
@@ -856,7 +859,7 @@ public class VisualizzaRichieste extends BaseServlet {
 
 	public static class TirocinioQueryPdCD {
 		int ID_TirocinioEsterno, ID_TirocinioInterno, oreTotali, CFU, ID_Proposta;
-		String nomeTutorAcc, cognomeTutorAcc, nomeStudente, cognomeStudente, nomeTutorAziedale, cognomeTutorAziendale,
+		String nomeTutorAcc, cognomeTutorAcc, nomeStudente, cognomeStudente, nomeTutorAziendale, cognomeTutorAziendale,
 				data, status, email;
 		boolean firmaAzienda, firmaTutorAziendale, firmaTutorAccademico, firmaPdCD;
 
@@ -877,7 +880,7 @@ public class VisualizzaRichieste extends BaseServlet {
 			this.cognomeTutorAcc = cognomeTutorAcc;
 			this.nomeStudente = nomeStudente;
 			this.cognomeStudente = cognomeStudente;
-			this.nomeTutorAziedale = nomeTutorAziedale;
+			this.nomeTutorAziendale = nomeTutorAziedale;
 			this.cognomeTutorAziendale = cognomeTutorAziendale;
 			this.data = data;
 			this.status = status;
@@ -952,12 +955,12 @@ public class VisualizzaRichieste extends BaseServlet {
 			this.cognomeStudente = cognomeStudente;
 		}
 
-		public String getNomeTutorAziedale() {
-			return nomeTutorAziedale;
+		public String getNomeTutorAziendale() {
+			return nomeTutorAziendale;
 		}
 
-		public void setNomeTutorAziedale(String nomeTutorAziedale) {
-			this.nomeTutorAziedale = nomeTutorAziedale;
+		public void setNomeTutorAziendale(String nomeTutorAziedale) {
+			this.nomeTutorAziendale = nomeTutorAziedale;
 		}
 
 		public String getCognomeTutorAziendale() {
@@ -1037,7 +1040,7 @@ public class VisualizzaRichieste extends BaseServlet {
 			return "TirocinioQueryPdCD [ID_TirocinioEsterno=" + ID_TirocinioEsterno + ", ID_TirocinioInterno="
 					+ ID_TirocinioInterno + ", oreTotali=" + oreTotali + ", CFU=" + CFU + ", ID_Proposta=" + ID_Proposta
 					+ ", nomeTutorAcc=" + nomeTutorAcc + ", cognomeTutorAcc=" + cognomeTutorAcc + ", nomeStudente="
-					+ nomeStudente + ", cognomeStudente=" + cognomeStudente + ", nomeTutorAziedale=" + nomeTutorAziedale
+					+ nomeStudente + ", cognomeStudente=" + cognomeStudente + ", nomeTutorAziedale=" + nomeTutorAziendale
 					+ ", cognomeTutorAziendale=" + cognomeTutorAziendale + ", data=" + data + ", status=" + status
 					+ ", email=" + email + ", firmaAzienda=" + firmaAzienda + ", firmaTutorAziendale="
 					+ firmaTutorAziendale + ", firmaTutorAccademico=" + firmaTutorAccademico + ", firmaPdCD="
