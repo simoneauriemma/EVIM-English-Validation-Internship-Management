@@ -51,6 +51,38 @@ public class AttivitaDAO {
 		}
 
 	}
+	
+	public ArrayList<RegistroQuery> doRetriveAllEsternoPdCD() {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement(
+					"select Descrizione, OrarioIngresso, OrarioUscita, attivita.FirmaResponsabile, Registro.OreRaggiunte, attivita.OreSvolte, attivita.data, azienda.Nome as nomeAzienda "
+							+ "from attivita " + "JOIN Registro ON Registro.ID_Registro = Attivita.ID_Registro "
+							+ "JOIN TirocinioEsterno ON TirocinioEsterno.ID_TirocinioEsterno = Registro.ID_Tirocinio "
+							+ "JOIN TutorAziendale ON TirocinioEsterno.ID_TutorAziendale = TutorAziendale.ID_TutorAziendale "
+							+ "JOIN Azienda ON TutorAziendale.ID_Azienda = Azienda.ID_Azienda ");
+			ArrayList<RegistroQuery> listaAttivita = new ArrayList<RegistroQuery>();
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				RegistroQuery a = new RegistroQuery();
+				a.setDescrizione(rs.getString(1));
+				a.setOrarioIngresso(rs.getInt(2));
+				a.setOrarioUscita(rs.getInt(3));
+				a.setFirmaResponsabile(rs.getBoolean(4));
+				a.setOreRaggiunte(rs.getInt(5));
+				a.setOreSvolte(rs.getInt(6));
+				a.setData(rs.getString(7));
+				a.setNomeAzienda(rs.getString(8));
+
+				listaAttivita.add(a);
+			}
+			return listaAttivita;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
+	}
 
 	/**
 	 * @author Simone Auriemma
@@ -66,6 +98,38 @@ public class AttivitaDAO {
 							+ "JOIN tutoraccademico ON TirocinioInterno.ID_tutorAccademico=tutoraccademico.ID_TutorAccademico "
 							+ "WHERE tirociniointerno.EMAIL=?;");
 			ps.setString(1, email);
+			ArrayList<RegistroQuery> listaAttivita = new ArrayList<RegistroQuery>();
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				RegistroQuery a = new RegistroQuery();
+				a.setDescrizione(rs.getString(1));
+				a.setOrarioIngresso(rs.getInt(2));
+				a.setOrarioUscita(rs.getInt(3));
+				a.setFirmaResponsabile(rs.getBoolean(4));
+				a.setOreRaggiunte(rs.getInt(5));
+				a.setOreSvolte(rs.getInt(6));
+				a.setData(rs.getString(7));
+				a.setNomeTutorAcc(rs.getString(8));
+				a.setCognomeTutorAcc(rs.getString(9));
+
+				listaAttivita.add(a);
+			}
+			return listaAttivita;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
+	}
+	
+	public ArrayList<RegistroQuery> doRetriveAllInternoPdCD() {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			PreparedStatement ps = con.prepareStatement(
+					"select Descrizione, OrarioIngresso, OrarioUscita, attivita.FirmaResponsabile, Registro.OreRaggiunte, attivita.OreSvolte, attivita.data, tutoraccademico.Nome as nomeTutorAcc, tutoraccademico.Cognome as cognomeTutorAcc "
+							+ "from attivita " + "JOIN Registro ON Registro.ID_Registro = Attivita.ID_Registro "
+							+ "JOIN TirocinioInterno ON TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio "
+							+ "JOIN tutoraccademico ON TirocinioInterno.ID_tutorAccademico=tutoraccademico.ID_TutorAccademico");
 			ArrayList<RegistroQuery> listaAttivita = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
 

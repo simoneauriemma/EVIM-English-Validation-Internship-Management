@@ -52,14 +52,14 @@ public class CreaRichiestaTirocinio extends BaseServlet {
 
 					// Get IDProposta
 					int idProp = Integer.parseInt(request.getParameter("sel3"));
-
+					System.out.println("idProp -->"+idProp);
 					// get idTutAcc
 					int idTutAcc = Integer.parseInt(request.getParameter("sel4"));
-
+					System.out.println("idTutor acc-->"+idTutAcc);
 					// Si tratta di tirocinio esterno
 					System.out.println(request.getParameter("sel1"));
-					if (request.getParameter("sel1").equals("tirocinio1")) {
-						
+					String sel1 = request.getParameter("sel1");
+					if ( sel1==null || sel1.equals("tirocinio1")) {
 						
 						cfu=Integer.parseInt(request.getParameter("cfu"));
 						// per ogni cfu vanno effettuate 25 ore di tirocinio

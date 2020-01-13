@@ -87,12 +87,11 @@ public class VisualizzaRichieste extends BaseServlet {
 
 				} else if (studente.getUserType() == 2) {
 					// è loggato il PdCD
-
 					ArrayList<TirocinioInterno> tirocinioInterno = new TirocinioInternoDAO()
 							.doRetriveAllValutazionePdCD();
 					ArrayList<TirocinioEsterno> tirocinioEsterno = new TirocinioEsternoDAO()
 							.doRetriveAllValutazionePdCD();
-
+					
 					request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 					request.setAttribute("arrayTirocinioInterno", tirocinioInterno);
 					RequestDispatcher dispatcher = request
@@ -139,7 +138,7 @@ public class VisualizzaRichieste extends BaseServlet {
 				request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
 				dispatcher.forward(request, response);
-				
+
 			} else if (tipoUtente.equalsIgnoreCase("model.azienda")) {
 				// viewListaRichiesteTirocinioEsterno
 				// solo 1 arraylist
@@ -151,7 +150,7 @@ public class VisualizzaRichieste extends BaseServlet {
 				request.setAttribute("arrayTirocinioEsterno", tirocinioEsterno);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/viewListaRichiesteTirocinio.jsp");
 				dispatcher.forward(request, response);
-			} 
+			}
 
 		}
 
