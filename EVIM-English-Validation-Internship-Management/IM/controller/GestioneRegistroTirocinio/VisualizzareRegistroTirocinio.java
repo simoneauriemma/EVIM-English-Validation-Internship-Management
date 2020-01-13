@@ -50,7 +50,7 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 							.doRetriveAllEsterno(user.getEmail());
 
 					request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
-					RequestDispatcher dispatcher = request.getRequestDispatcher("registroTirocinio(studente).jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/registroTirocinio(studente).jsp");
 					dispatcher.forward(request, response);
 				} else {
 					// studente triennale
@@ -63,11 +63,23 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 					request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
 					request.setAttribute("listaAttivitaInterno", listaTirociniInterno);
 
-					RequestDispatcher dispatcher = request.getRequestDispatcher("registroTirocinio(studente).jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/registroTirocinio(studente).jsp");
 					dispatcher.forward(request, response);
 
 				}
+			} else if (user.getUserType() == 2) {
+
+				ArrayList<RegistroQuery> listaTirociniEsterno = new AttivitaDAO().doRetriveAllEsternoPdCD();
+				ArrayList<RegistroQuery> listaTirociniInterno = new AttivitaDAO().doRetriveAllInternoPdCD();
+
+				request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
+				request.setAttribute("listaAttivitaInterno", listaTirociniInterno);
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/registroTirocinio(tutor).jsp");
+				dispatcher.forward(request, response);
+
 			}
+
 		} else if (tipoUtente.equalsIgnoreCase("model.TutorAccademico")) {
 
 			TutorAccademico accademico = (TutorAccademico) session.getAttribute("utenteLoggato");
@@ -80,7 +92,7 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 			request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
 			request.setAttribute("listaAttivitaInterno", listaTirociniInterno);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("registroTirocinio(tutor).jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/registroTirocinio(tutor).jsp");
 			dispatcher.forward(request, response);
 
 		} else if (tipoUtente.equalsIgnoreCase("model.TutorAziendale")) {
@@ -92,7 +104,7 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 
 				request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
 
-				RequestDispatcher dispatcher = request.getRequestDispatcher("registroTirocinio(tutor).jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/registroTirocinio(tutor).jsp");
 				dispatcher.forward(request, response);
 			} else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");

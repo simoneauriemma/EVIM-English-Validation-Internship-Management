@@ -274,7 +274,7 @@
 															</c:when>
 															<c:when test="${esito == 1}">
 																<!-- richiesta già valutata -->
-																<td class="text-center">Richiesta valutata</td>
+																<td class="text-center">Richiesta accettata con successo</td>
 															</c:when>
 
 														</c:choose>

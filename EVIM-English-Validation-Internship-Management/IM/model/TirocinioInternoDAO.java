@@ -54,15 +54,15 @@ public class TirocinioInternoDAO {
 			// query per la visualizzazione della pagina da parte dello studente
 			// query per visualizzare le richieste in valutazione
 			String inValutazione = "in approvazione";
-			String inSvolgimento="in svolgimento";
-			String rifiutato="non approvato";
+			String inSvolgimento = "in svolgimento";
+			String rifiutato = "non approvato";
 			PreparedStatement ps = con.prepareStatement(
 					"select ID_TirocinioInterno,tiro.EMAIL, tutor.Nome,tutor.Cognome, Data, OreTotali, status, NumeroCFU, FirmaPdCD, FirmaTutorAccademico, ID_Proposta from TirocinioInterno AS tiro JOIN TutorAccademico as tutor ON tiro.ID_tutorAccademico = tutor.ID_TutorAccademico where tiro.EMAIL=? AND (status=? OR status=? OR status=?)");
 			ps.setString(1, EMAIL);
 			ps.setString(2, inValutazione);
 			ps.setString(3, inSvolgimento);
 			ps.setString(4, rifiutato);
-			
+
 			ArrayList<TirocinioQueryInternoStudente> richieste = new ArrayList<TirocinioQueryInternoStudente>();
 			ResultSet rs = ps.executeQuery();
 
@@ -141,19 +141,19 @@ public class TirocinioInternoDAO {
 	public static PDFProgettoFormativo getProgettoFormativoInterno(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,USER.tipoCorso as CorsoStudente,USER.Telefono as TelefonoStudente,USER.Data_Nascita as DataNascitaStudente,USER.Luogo_Nascita as LuogoNascitaStudente,USER.Residente as ResidenteStudente,TutorAccademico.Nome as NomeTutor,TutorAccademico.Cognome as CognomeTutor, Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita,Proposta.Competenze as Competenze ,TirocinioInterno.NumeroCFU as NumeroCFU,TirocinioInterno.OreTotali as OreTotali\n" + 
-					"from evim.TirocinioInterno join evim.USER on TirocinioInterno.EMAIL=USER.EMAIL \n" + 
-					"join evim.Proposta on TirocinioInterno.ID_Proposta=Proposta.ID_Proposta\n" + 
-					"join evim.TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioInterno.ID_tutorAccademico\n"+
-					"where ID_TirocinioInterno=?");
-			
+					"select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,USER.tipoCorso as CorsoStudente,USER.Telefono as TelefonoStudente,USER.Data_Nascita as DataNascitaStudente,USER.Luogo_Nascita as LuogoNascitaStudente,USER.Residente as ResidenteStudente,TutorAccademico.Nome as NomeTutor,TutorAccademico.Cognome as CognomeTutor, Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita,Proposta.Competenze as Competenze ,TirocinioInterno.NumeroCFU as NumeroCFU,TirocinioInterno.OreTotali as OreTotali\n"
+							+ "from evim.TirocinioInterno join evim.USER on TirocinioInterno.EMAIL=USER.EMAIL \n"
+							+ "join evim.Proposta on TirocinioInterno.ID_Proposta=Proposta.ID_Proposta\n"
+							+ "join evim.TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioInterno.ID_tutorAccademico\n"
+							+ "where ID_TirocinioInterno=?");
+
 			ps.setInt(1, id);
 			PDFProgettoFormativo pdf = null;
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				pdf = new PDFProgettoFormativo();
-				
-				//dati studenti
+
+				// dati studenti
 				pdf.setNomeStudente(rs.getString(1));
 				pdf.setCognomeStudente(rs.getString(2));
 				pdf.setEmailStudente(rs.getString(3));
@@ -162,28 +162,28 @@ public class TirocinioInternoDAO {
 				pdf.setDataNascitaStudente(rs.getString(6));
 				pdf.setLuogoNascitaStudente(rs.getString(7));
 				pdf.setResidenteStudente(rs.getString(8));
-				
-				//dati Tutor Accademico
+
+				// dati Tutor Accademico
 				pdf.setNomeTutorAccademico(rs.getString(9));
 				pdf.setCognomeTutorAccademico(rs.getString(10));
-				
-				//dati del progetto formativo
+
+				// dati del progetto formativo
 				pdf.setObiettivi(rs.getString(11));
 				pdf.setAttivita(rs.getString(12));
 				pdf.setModalita(rs.getString(13));
 				pdf.setCompetenze(rs.getString(14));
-				
+
 				pdf.setTotCFU(rs.getInt(15));
-				
+
 				pdf.setTotOre(rs.getInt(16));
-				
-				//dati convenzione
+
+				// dati convenzione
 				pdf.setDataConvenzione("");
 				pdf.setReportorioConvenzione("");
 			}
-			
+
 			return pdf;
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -198,7 +198,7 @@ public class TirocinioInternoDAO {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			String inValutazione = "in approvazione";
 			PreparedStatement ps = con.prepareStatement(
-					" select * from EVIM.TirocinioInterno where status=? AND FirmaTutorAccademico=true");
+					"select * from EVIM.TirocinioInterno where status=? AND FirmaTutorAccademico=true");
 			ps.setString(1, inValutazione);
 			ArrayList<TirocinioInterno> richieste = new ArrayList<TirocinioInterno>();
 			ResultSet rs = ps.executeQuery();
@@ -279,14 +279,12 @@ public class TirocinioInternoDAO {
 		}
 	}
 
-
-
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoStudenteRegistro(String email) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
 					"select distinct TirocinioInterno.ID_TirocinioInterno,TirocinioInterno.OreTotali,  Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.numeroCFU from TirocinioInterno\n"
 							+ "join registro on registro.ID_Tirocinio= TirocinioInterno.ID_TirocinioInterno\n"
-							+ "where tirociniointerno.EMAIL=? and tirociniointerno.status='in svolgimento';"); // controllare
+							+ "where tirociniointerno.EMAIL=? and tirociniointerno.status='in svolgimento'"); // controllare
 			ps.setString(1, email);
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
@@ -294,10 +292,8 @@ public class TirocinioInternoDAO {
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioInterno"));
-				a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
-				a.setFirmaResponsabile(rs.getInt("FirmaTutorAccamico"));
-				a.setNome_responsabile(rs.getString("tutoraziendale.Nome"));
-				a.setCognome_responsabile(rs.getString("tutoraziendale.Cognome"));
+				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
+				a.setFirmaResponsabile(rs.getBoolean("FirmaTutorAccamico"));
 				a.setStatus(rs.getString("status"));
 				a.setNumeroCFU(rs.getInt("numeroCFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
@@ -310,6 +306,44 @@ public class TirocinioInternoDAO {
 			throw new RuntimeException(e);
 		}
 
+	}
+
+	/**
+	 * @author Simone Auriemma
+	 * @param firma
+	 * @param idTirocinio
+	 * @return
+	 */
+	public int updateFirmaPdCDTrue(boolean firma, int idTirocinio) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			String inSvolgimento = "in svolgimento";
+			PreparedStatement ps = con.prepareStatement("update EVIM.TirocinioInterno " + "SET FirmaPdCD=?, status=?"
+					+ "where FirmaTutorAccademico=true AND tirocinioInterno.ID_TirocinioInterno=?");
+			ps.setBoolean(1, firma);
+			ps.setString(2, inSvolgimento);
+			ps.setInt(3, idTirocinio);
+			int rs = ps.executeUpdate();
+			return rs;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	public int updateFirmaPdCDFalse(boolean firma, int idTirocinio) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			String inSvolgimento = "rifiutato";
+			PreparedStatement ps = con.prepareStatement("update EVIM.TirocinioInterno " + "SET FirmaPdCD=?, status=?"
+					+ "where FirmaTutorAccademico=true AND tirocinioesterno.ID_TirocinioEsterno=?");
+			ps.setBoolean(1, firma);
+			ps.setString(2, inSvolgimento);
+			ps.setInt(3, idTirocinio);
+			int rs = ps.executeUpdate();
+			return rs;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAccRegistro(int id) {
@@ -329,7 +363,7 @@ public class TirocinioInternoDAO {
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("TirocinioInterno.ID_TirocinioInterno"));
-				//a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
+				// a.setFirmaResponsabile(rs.getInt("FirmaResponsabile"));
 				a.setNome_responsabile(rs.getString("tutoraccademico.Nome"));
 				a.setCognome_responsabile(rs.getString("tutoraccademico.Cognome"));
 				a.setStatus(rs.getString("status"));
@@ -347,24 +381,29 @@ public class TirocinioInternoDAO {
 	}
 
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoPdcdRegistro() {
+		
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			String inSvolgimento="in svolgimento";
 			PreparedStatement ps = con.prepareStatement(
-					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,"
-							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro " + "from TirocinioInterno, Registro"
-							+ "where TirocinioInterno.ID_TirocinioInterno = Registro.ID_Tirocinio"
-							+ "AND TirocinioInterno.status='in svolgimento'");
-
+					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, tirociniointerno.status, tirociniointerno.NumeroCFU ,tirociniointerno.OreTotali, Registro.ID_Registro, tutoraccademico.Nome as nomeTutorAcc, tutoraccademico.Cognome as cognomeTutorAcc " + 
+					"from tirociniointerno " + 
+					"JOIN Registro on registro.ID_Registro=tirocinioInterno.ID_TirocinioInterno " + 
+					"JOIN TutorAccademico on tirociniointerno.ID_tutorAccademico=tutoraccademico.ID_TutorAccademico " + 
+					"where TirocinioInterno.status=?");
+			ps.setString(1, inSvolgimento);
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
-				a.setID_Tirocinio(rs.getInt("ID_TirocinioEsterno"));
-				// a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
+				a.setID_Tirocinio(rs.getInt("ID_TirocinioInterno"));
+				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
 				a.setStatus(rs.getString("status"));
-				a.setNumeroCFU(rs.getInt("CFU"));
+				a.setNumeroCFU(rs.getInt("NumeroCFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
+				a.setNome_responsabile(rs.getString("nomeTutorAcc"));
+				a.setCognome_responsabile(rs.getString("cognomeTutorAcc"));
 				lista.add(a);
 			}
 			return lista;
