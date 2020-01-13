@@ -48,14 +48,14 @@ public class ApprovaRegistro extends BaseServlet {
 			
 			//caso di tirocinio interno --> firmo come responsabile e come tutor
 			if(tipotirocinio.equals("interno")) {
-				//tirocinio interno approva e cambio lo status del registro e del tirocinio
+				//approvo e cambio lo status del registro in completo
 				
 				result = RegistroDAO.doAlterFirmaTutorInterno(idregistro);
 			
 			
 			}
 			else { // caso di tirocinio esterno firmo solo come tutor accademico
-				result = RegistroDAO.doAlterFirmaTutor(idregistro);
+				result = RegistroDAO.doAlterFirmaTutorAc(idregistro);
 			}
 			
 			
@@ -66,10 +66,22 @@ public class ApprovaRegistro extends BaseServlet {
 		else if (name.contentEquals("pdcd")) { // pdcd firma come responsabile per il tirocinio esterno
 			
 			int idtirocinio = Integer.parseInt((String) request.getParameter("idtirocinio"));
-			
-			result = RegistroDAO.doAlterFirmaResponsabile(idregistro,idtirocinio);
+			if(tipotirocinio.equals("esterno")) {
+				result = RegistroDAO.doAlterFirmaPdcdEsterno(idtirocinio);
+			}
+			else if(tipotirocinio.equals("interno")) {
+				result = RegistroDAO.doAlterFirmaPdcdInterno(idtirocinio);
+			}
 
 		}
+		
+		//tutoraziendale
+		else if(name.contentEquals("tutoraziendale")) {
+			
+			result=RegistroDAO.doAlterFirmaTutorAz(idregistro);
+			
+		}
+		
 		request.setAttribute("resultapprovaregistro", result);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
 		dispatcher.forward(request, response);
