@@ -322,7 +322,7 @@
 																</td>
 															</c:when>
 															<c:otherwise>
-																<td>Richiesta valutata con successo!</td>
+																<td class="text-center" style="font-weight: bold; color: green;">Richiesta valutata con successo!</td>
 															</c:otherwise>
 														</c:choose>
 													</tr>
@@ -496,7 +496,7 @@
 															</td>
 														</c:when>
 														<c:otherwise>
-															<td>Richiesta valutata con successo!</td>
+															<td class="text-center" style="font-weight: bold; color: green;">Richiesta valutata con successo!</td>
 														</c:otherwise>
 													</c:choose>
 												</tr>
