@@ -35,9 +35,13 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 		// verifico il tipo di utente loggato dalla sessione
 		HttpSession session = request.getSession();
 
+		if(session.getAttribute("utenteLoggato")==null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
+			dispatcher.forward(request, response);
+		}
 		String tipoUtente = session.getAttribute("utenteLoggato").getClass().getName();
 
-		if (tipoUtente.equalsIgnoreCase("model.user")) {
+		if (tipoUtente.equalsIgnoreCase("model.User")) {
 			// loggato un USER, a causa dell'user type, può esssere il PdCD, uno studente o
 			// l'ufficio carriere
 			User user = (User) session.getAttribute("utenteLoggato");
@@ -50,6 +54,7 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 							.doRetriveAllEsterno(user.getEmail());
 
 					request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
+					//VERIFICARE
 					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/registroTirocinio(studente).jsp");
 					dispatcher.forward(request, response);
 				} else {
@@ -86,6 +91,7 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 			String EMAIL = request.getParameter("EMAIL");
 			ArrayList<RegistroQuery> listaTirociniEsterno = new AttivitaDAO().doRetriveAllEsternoTutorAcc(EMAIL,
 					accademico.getIdTutorAccademico());
+			
 			ArrayList<RegistroQuery> listaTirociniInterno = new AttivitaDAO().doRetriveAllInternoTutorAcc(EMAIL,
 					accademico.getIdTutorAccademico());
 
@@ -125,7 +131,7 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 
 	public static class RegistroQuery {
 		String descrizione, data, nomeAzienda, nomeStudente, cognomeStudente, nomeTutorAcc, cognomeTutorAcc;
-		int orarioIngresso, orarioUscita, oreRaggiunte, oreSvolte;
+		int orarioIngresso, orarioUscita, oreRaggiunte, oreSvolte, idRegistro, idAttivita;
 		boolean firmaResponsabile;
 
 		public RegistroQuery() {
@@ -151,7 +157,24 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 		public String getDescrizione() {
 			return descrizione;
 		}
+		
+		
 
+		public int getIdAttivita() {
+			return idAttivita;
+		}
+
+		public void setIdAttivita(int idAttivita) {
+			this.idAttivita = idAttivita;
+		}
+
+		public int getIdRegistro() {
+			return idRegistro;
+		}
+		
+		public void setIdRegistro(int id) {
+			idRegistro=id;
+		}
 		public void setDescrizione(String descrizione) {
 			this.descrizione = descrizione;
 		}

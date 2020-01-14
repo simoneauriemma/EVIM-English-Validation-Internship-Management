@@ -41,34 +41,34 @@ body {
 			<c:if
 				test="${type == 'tutoraziendale' || type== 'tutoraccademico' || type=='azienda' || type=='pdcd'}">
 
-				<c:if test="${registroQueryEsterno.size() > 0}">
 
 
+				<table class="table table-striped" id="tabella">
+					<thead>
+						<tr id="colonne" class="text-center">
+							<th scope="col">ID Tirocinio</th>
+							<th scope="col">Tirocinante</th>
+							<th scope="col">Status</th>
+							<th scope="col">CFU</th>
+							<th scope="col">Ore Max</th>
+							<th scope="col">Tipo tirocinio</th>
+							<th scope="col">Registro tirocinio</th>
 
-					<table class="table table-striped" id="tabella">
-						<thead>
-							<tr id="colonne" class="text-center">
-								<th scope="col">ID Tirocinio</th>
-								<th scope="col">Responsabile</th>
-								<th scope="col">Status</th>
-								<th scope="col">CFU</th>
-								<th scope="col">Ore Max</th>
-								<th scope="col">Tipo tirocinio</th>
-								<th scope="col">Registro tirocinio</th>
+							<c:if test="${type!='pdcd'}">
+								<th scope="col">Operazione</th>
+							</c:if>
+						</tr>
+					</thead>
 
-								<c:if test="${type!='pdcd'}">
-									<th scope="col">Operazione</th>
-								</c:if>
-							</tr>
-						</thead>
-						<c:forEach items="${registroQueryEsterno}" var="esterno">
-							<tbody>
+					<tbody>
+						<c:if test="${registroQueryEsterno.size() > 0}">
+							<c:forEach items="${registroQueryEsterno}" var="esterno">
 								<tr>
 									<th scope="row" id="id"><c:out
 											value="${esterno.ID_Tirocinio}" /></th>
 									<td id="responsabile"><c:out
-											value="${esterno.nome_responsabile}" /> <c:out
-											value="${esterno.cognome_responsabile}" /></td>
+											value="${esterno.nomeStudente}" /> <c:out
+											value="${esterno.cognomeStudente}" /></td>
 									<td id="status"><c:out value="${esterno.status}" /></td>
 									<td id="cfu"><c:out value="${esterno.numeroCFU}" /></td>
 									<td id="ore"><c:out value="${esterno.oreTotali}" /></td>
@@ -76,12 +76,12 @@ body {
 
 									<!-- REGISTRO -->
 									<td class="form-inline text-center" id="registro1">
-										<form action="VisualizzaRegistroTirocinio" method="POST">
+										<form action="VisualizzaRegistroTirocinio" method="get">
 											<input type="hidden" name="EMAIL"
 												value="<c:out value="${esterno.emailStudente}" />">
-											<a href="VisualizzaRegistroTirocinio"> <i id="registroE"
-												class="fas fa-book"></i>
-											</a>
+											<button id="registroI" class="fas fa-book"
+												style="border: none; background-color: transparent;"></button>
+
 										</form>
 
 										<form action="" id="accettare">
@@ -95,19 +95,20 @@ body {
 
 
 
-									<td><c:if test="${type=='tutoraziendale'}">
-											<div class="panel-group">
+									<td class="text-center"><c:if
+											test="${type=='tutoraziendale'}">
+											<div class="panel-group" style="width: 120px;">
 												<div class="panel panel-default">
-													<div class="panel-heading">
+													<div class="panel-heading" class="text-center">
 														<h6 class="panel-title">
-															<a data-toggle="collapse" href="#collapse1">Scegli
-																un'operazione </a>
+															<a data-toggle="collapse" href="#collapse1"> Scegli </a>
 														</h6>
 													</div>
 													<div id="collapse1" class="panel-collapse collapse">
 														<ul class="list-group">
 															<li class="list-group-item"><a class="list-item"
-																href="CreaRelazione">Compila relazione</a></li>
+																data-toggle="modal" data-target="#ciaoo" style="color:#007bff;">Compila
+																	relazione</a></li>
 															<li class="list-group-item"><a class="list-item"
 																href="VisualizzaRelazione">Visualizza relazione</a></li>
 															<li class="list-group-item"><a class="list-item"
@@ -170,41 +171,16 @@ body {
 									<!-- ...... -->
 
 								</tr>
-							</tbody>
-						</c:forEach>
-					</table>
-				</c:if>
-			</c:if>
-			<!-- fine TIROCINIO ESTERNO -->
-
-
-
-
-			<!-- inizio TIROCINIO INTERNO -->
-			<!-- SE L'UTENTE LOGGATO E' UNO TUTOR ACCADEMICO O IL PDCD  -->
-			<c:if test="${type == 'tutoraccademico' || type == 'pdcd'}">
-				<c:forEach items="${registroQueryInterno}" var="interno">
-
-					<table class="table table-striped" id="tabella">
-						<thead>
-							<tr id="colonne">
-								<th scope="col">ID Tirocinio</th>
-								<th scope="col" id="thResponsabile">Responsabile</th>
-								<th scope="col" id="thStatus">Status</th>
-								<th scope="col">CFU</th>
-								<th scope="col" id="thOre">Ore Max</th>
-								<th scope="col" id="thTirocinio">Tipo tirocinio</th>
-								<th scope="col">Registro tirocinio</th>
-
-							</tr>
-						</thead>
-						<tbody>
+							</c:forEach>
+							<!-- INTEGRAZIONE PROVVISORIA -->
+						</c:if>
+						<c:forEach items="${registroQueryInterno}" var="interno">
 							<tr>
 								<th scope="row" id="idI"><c:out
 										value="${interno.ID_Tirocinio}" /></th>
 								<td id="responsabileI"><c:out
-										value="${interno.nome_responsabile}" /> <c:out
-										value="${interno.cognome_responsabile}" /></td>
+										value="${interno.nomeStudente}" /> <c:out
+										value="${interno.cognomeStudente}" /></td>
 								<td id="statusI"><c:out value="${interno.status}" /></td>
 								<td id="cfuI"><c:out value="${interno.numeroCFU}" /></td>
 								<td id="oreI"><c:out value="${interno.oreTotali}" /></td>
@@ -214,10 +190,9 @@ body {
 								<td class="form-inline text-center">
 									<form action="VisualizzaRegistroTirocinio" method="get">
 										<input type="hidden" name="EMAIL"
-											value="<c:out value="${interno.emailStudente}" />"> <a
-											href="VisualizzaRegistroTirocinio"> <i id="registroI"
-											class="fas fa-book"></i>
-										</a>
+											value=<c:out value="${interno.emailStudente}" />>
+										<button id="registroI" class="fas fa-book"></button>
+
 									</form>
 
 									<form action="ApprovaAttivita" id="accettare">
@@ -225,15 +200,52 @@ body {
 											id="accettare"></i></a>
 									</form>
 								</td>
+								<td>-</td>
 
-								<!-- fine TIROCINIO INTERNO -->
+
 
 							</tr>
+						</c:forEach>
 
-						</tbody>
-					</table>
-				</c:forEach>
+					</tbody>
+
+				</table>
+
+				<!-- modalllllllllllllllllllll FF MERDA -->
+				<div class="modal fade" id="ciaoo" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Compila
+									relazione</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<textarea name="descrizione" class="form-control"
+									id="exampleFormControlTextarea1"
+									placeholder="Compila verbale tirocinio..." rows="3"></textarea>
+
+
+
+							</div>
+							<div class="modal-footer">
+
+								<button type="button" class="btn btn-primary">INVIA</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
 			</c:if>
+			<!-- fine TIROCINIO ESTERNO -->
+
+
 		</div>
 
 	</div>
