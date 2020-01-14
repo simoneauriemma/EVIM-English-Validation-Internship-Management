@@ -235,7 +235,7 @@ public class CreaPropostaTest extends Mockito{
 		assertFalse(esito);
 	}
 
-	@Test
+	/*@Test
 	public void tc_gp1_12() throws ServletException, IOException  {
 		request.addParameter("email","aaster@tutor.unisa.it");
 		request.addParameter("password", "ciaociao1");
@@ -252,7 +252,7 @@ public class CreaPropostaTest extends Mockito{
 		servletProposta.doPost(request, response);
 		boolean esito=(boolean) request.getAttribute("risultatoInserimentoProposta");
 		assertFalse(esito);
-	}
+	}*/
 @Test
 	public void tc_gp1_13() throws ServletException, IOException  {
 		request.addParameter("email","mariogiorgio@unisa.it");
@@ -421,4 +421,24 @@ public class CreaPropostaTest extends Mockito{
 		request.addParameter("modalita", "<knvanvapvpavnpiav");
 		servletProposta.doPost(request, response);
 	}
+	
+	@Test
+	public void tc_gp1_23() throws ServletException, IOException  {
+		request.addParameter("email","microsoftofficial@tiscali.it");
+		request.addParameter("password", "microsoft1"); 
+		servletLogin.doPost(request, response);
+		String type=request.getSession().getAttribute("type").toString();
+		boolean log=(boolean) request.getAttribute("logged");  
+		assertTrue(log);
+		assertEquals("azienda", type);
+		request.addParameter("tutorAziendale","2");
+		request.addParameter("competenze","gksglskgnskgisgjsighj");
+		request.addParameter("attivita", "Il numero di caratteri è molto importante per Twitter, Facebook o un semplice testo ad un collaboratore o funzionario commerciale. Quello che dite può non essere così importante come il modo in cui lo dite. E quanti caratteri usate.");
+		request.addParameter("obiettivo", "La Bigjspgkjogogjfdj");
+		request.addParameter("modalita", "La Biblioteca Centrale ddkgshjsjgiosn");
+		servletProposta.doPost(request, response);
+		boolean esito=(boolean) request.getAttribute("risultatoInserimentoProposta");
+		assertFalse(esito);
+	}
+	
 }

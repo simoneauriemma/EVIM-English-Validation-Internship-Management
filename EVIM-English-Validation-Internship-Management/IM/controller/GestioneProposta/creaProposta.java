@@ -55,7 +55,7 @@ public class creaProposta extends HttpServlet {
 				
 				
 				if((competenze.length()<=200 && competenze.length()>=10) && (attivita.length()<=200 && attivita.length()>=10) && (obiettivo.length()<=200 && obiettivo.length() >=10)  &&  (modalita.length()<=200 && modalita.length()>=10))  {
-					if(PropostaDAO.insertPropostaInterno(obiettivo, competenze, attivita, modalita, tutor.getIdTutorAccademico())) {
+					PropostaDAO.insertPropostaInterno(obiettivo, competenze, attivita, modalita, tutor.getIdTutorAccademico());
 						request.setAttribute("risultatoInserimentoProposta",true);
 						RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
 						dispatcher.forward(request, response);
@@ -66,12 +66,12 @@ public class creaProposta extends HttpServlet {
 						dispatcher.forward(request, response);
 
 					}
-				}else
+				/*else
 				{
 					RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
 					request.setAttribute("risultatoInserimentoProposta",false);
 					dispatcher.forward(request, response);
-				}
+				}*/
 
 			}
 			//tirocinio esterno
@@ -87,7 +87,7 @@ public class creaProposta extends HttpServlet {
 
 
 				if(idTutorAziendale>=0 && (competenze.length()<=200 && competenze.length()>=10) && (attivita.length()<=200 && attivita.length()>=10) && (obiettivo.length()<=200 && obiettivo.length() >=10)  &&  (modalita.length()<=200 && modalita.length()>=10))  {
-					if(PropostaDAO.insertPropostaEsterno(obiettivo, competenze, attivita, modalita, tutor.getID_Azienda(),idTutorAziendale)) {
+					PropostaDAO.insertPropostaEsterno(obiettivo, competenze, attivita, modalita, tutor.getID_Azienda(),idTutorAziendale);
 						request.setAttribute("risultatoInserimentoProposta",true);
 						RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
 						dispatcher.forward(request, response);
@@ -98,7 +98,7 @@ public class creaProposta extends HttpServlet {
 						dispatcher.forward(request, response);
 
 					} 
-				}else
+				/*}else
 				{
 					RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
 					request.setAttribute("risultatoInserimentoProposta",false);
@@ -108,7 +108,7 @@ public class creaProposta extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/home.jsp");
 				request.setAttribute("risultatoInserimentoProposta",false);
 				dispatcher.forward(request, response);
-			}
+			*/}
 
 		}
 	}

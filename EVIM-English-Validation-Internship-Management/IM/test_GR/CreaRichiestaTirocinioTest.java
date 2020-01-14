@@ -35,7 +35,7 @@ public class CreaRichiestaTirocinioTest extends Mockito{
 		response = new MockHttpServletResponse();
 	}
 	@Test //tirocinio esterno
-	public void tc_grt_1() throws ServletException, IOException  {
+	public void tc_gr_1_1() throws ServletException, IOException  {
 		request.addParameter("email","simonagrieco@studenti.unisa.it");
 		request.addParameter("password", "grieco1998"); 
 		servletLogin.doPost(request, response);
@@ -45,16 +45,15 @@ public class CreaRichiestaTirocinioTest extends Mockito{
 		assertEquals("studente", type);
 		request.addParameter("sel3", ""+7);
 		request.addParameter("sel4", ""+2);
-		request.addParameter("cfu","11");
+		request.addParameter("cfu", "11");
 		request.addParameter("sel1","tirocinio1");
-		
 		servletCrea.doPost(request, response);
-			}
+	}
 	
 	
 	
 	@Test //Campi email e password vuoti
-	public void tc_grt1_3() throws ServletException, IOException  {
+	public void tc_gr_1_2() throws ServletException, IOException  {
 		request.addParameter("email");
 		request.addParameter("password", "");
 		servletLogin.doPost(request, response);
@@ -69,7 +68,7 @@ public class CreaRichiestaTirocinioTest extends Mockito{
 		servletCrea.doPost(request, response);
 	}
 	@Test //utente diverso da studente
-	public void tc_grt_4() throws ServletException, IOException  {
+	public void tc_gr_1_3() throws ServletException, IOException  {
 		request.addParameter("email","mariogiorgio@unisa.it");
 		request.addParameter("password", "umpalumpa2"); 
 		servletLogin.doPost(request, response);
@@ -86,7 +85,7 @@ public class CreaRichiestaTirocinioTest extends Mockito{
 		
 	}
 	@Test //Tirocinio Interno
-	public void tc_grt_5() throws ServletException, IOException  {
+	public void tc_gr_1_4() throws ServletException, IOException  {
 		request.addParameter("email","simonagrieco@studenti.unisa.it");
 		request.addParameter("password", "grieco1998"); 
 		servletLogin.doPost(request, response);
@@ -104,7 +103,7 @@ public class CreaRichiestaTirocinioTest extends Mockito{
 	}
 	
 	@Test //campo tirocinio non selezionato
-	public void tc_grt_6() throws ServletException, IOException  {
+	public void tc_gr_1_5() throws ServletException, IOException  {
 		request.addParameter("email","simonagrieco@studenti.unisa.it");
 		request.addParameter("password", "grieco1998"); 
 		servletLogin.doPost(request, response);
@@ -121,7 +120,7 @@ public class CreaRichiestaTirocinioTest extends Mockito{
 
 	}
 	@Test //accedo come presidente del consiglio
-	public void tc_grt_7() throws ServletException, IOException  {
+	public void tc_gr_1_6() throws ServletException, IOException  {
 		request.addParameter("email","fferrucci@unisa.it");
 		request.addParameter("password", "Ferrucci11"); 
 		servletLogin.doPost(request, response);

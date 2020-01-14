@@ -45,7 +45,7 @@ public class RimuoviPropostaTest extends Mockito{
 		request.getSession().setAttribute("utenteLoggato", null);
 		assertFalse(log);
 		assertEquals("tutoraccademico","tutoraccademico");
-		request.addParameter("idProposta","2");
+		request.addParameter("idProposta","26");
 		servletRProposta.doPost(request, response);
 	}
 	@Test  //CONTROLLARE ID PROPOSTA NEL DB
@@ -57,7 +57,7 @@ public class RimuoviPropostaTest extends Mockito{
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("azienda", type);
-		request.addParameter("idProposta","2");
+		request.addParameter("idProposta","27");
 		servletRProposta.doPost(request, response);
 		boolean esito=(boolean) request.getAttribute("rimuovi");
 		assertTrue(esito);
@@ -71,7 +71,7 @@ public class RimuoviPropostaTest extends Mockito{
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("tutoraccademico", type);
-		request.addParameter("idProposta","3");
+		request.addParameter("idProposta","28");
 		servletRProposta.doPost(request, response);
 		boolean esito=(boolean) request.getAttribute("rimuovi");
 		assertTrue(esito);
@@ -85,7 +85,7 @@ public class RimuoviPropostaTest extends Mockito{
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("tutoraccademico", type);
-		request.addParameter("idProposta","3");
+		request.addParameter("idProposta","29");
 		servletRProposta.doPost(request, response);
 		boolean esito=(boolean) request.getAttribute("rimuovi");
 		assertFalse(esito);
@@ -99,7 +99,7 @@ public class RimuoviPropostaTest extends Mockito{
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("studente", type);
-		request.addParameter("idProposta","3");
+		request.addParameter("idProposta","30");
 		servletRProposta.doPost(request, response);
 		
 	}

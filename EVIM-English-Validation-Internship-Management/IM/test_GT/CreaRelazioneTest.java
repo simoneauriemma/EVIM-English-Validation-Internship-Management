@@ -33,7 +33,7 @@ class CreaRelazioneTest {
 
 	@Test //testcrearelazione
 	void tc_gt2_1() throws ServletException, IOException {
-		request.addParameter("email","uughi@tutor.unisa.it");
+		request.addParameter("email","amartino@tutor.unisa.it");
 		request.addParameter("password", "ciaociao1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
@@ -65,7 +65,7 @@ class CreaRelazioneTest {
 	}
 	@Test
 	void tc_gt2_3() throws ServletException, IOException {
-		request.addParameter("email","uughi@tutor.unisa.it");
+		request.addParameter("email","amartino@tutor.unisa.it");
 		request.addParameter("password", "ciaociao1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
@@ -91,7 +91,7 @@ class CreaRelazioneTest {
 	
 	@Test
 	void tc_gt2_5() throws ServletException, IOException {
-		request.addParameter("email","uughi@tutor.unisa.it");
+		request.addParameter("email","amartino@tutor.unisa.it");
 		request.addParameter("password", "ciaociao1"); 
 		servletLogin.doPost(request, response);
 		String type=request.getSession().getAttribute("type").toString();
