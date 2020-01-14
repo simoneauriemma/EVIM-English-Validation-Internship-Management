@@ -10,7 +10,16 @@
 <link rel="stylesheet" href="stiliCSS/stiliRicoscimentoAttivita.css">
 
 <title>Compilazione modulo riconoscimento attività</title>
+<style>
 
+input.er{
+	border:1px solid red;
+	}
+	
+.error{
+	color:red;
+}
+</style>
 </head>
 
 <div class="container">
@@ -24,7 +33,7 @@
 			<p id="titolo" class="text-center">Modulo domanda di
 				riconoscimento dei crediti formativi previsti per il tirocinio</p>
 			<hr>
-			<form action="CompilaModuloRiconoscimento" method="post"
+			<form id="formCompilaModuloRiconoscimento" action="CompilaModuloRiconoscimento" method="post"
 				enctype="multipart/form-data">
 
 				<div class="row">
@@ -113,7 +122,7 @@
 						%>
 						<h6 class="text-center">Inserisci i CFU da convalidare</h6>
 
-
+					<span id="errore7" class=error>CFU superati</span>
 						<!-- cfu rimanenti -->
 						<br> Hai ancora <b> <c:choose>
 								<c:when test="${CFUInglese == -1}"> 
@@ -180,7 +189,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 									totali da riconoscere </label> <input type="text" class="form-control"
 									aria-label="Default"
 									aria-describedby="inputGroup-sizing-default" id="cfuTotali"
-									name="oreSvolte" required disabled value=0>
+									name="oreSvolte"  disabled value=0>
 							</div>
 						</div>
 						<!-- FINE gestione cfu -->
@@ -193,6 +202,8 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 						<h6 class="text-center">Dati dell'azienda</h6>
 						<br>
 						
+						<span id="errore1" class="error">Ente/Azienda deve essere compreso tra 5 e 200 caratteri</span>
+							<br>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text">Ente/Azienda</span>
@@ -203,46 +214,66 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 						</div>
 						
 						<br>
+						
+						<span id="errore2" class="error">Indirizzo sede deve essere compreso tra 5 e 200 caratteri</span>
+							<br>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text">Indirizzo sede</span>
 							</div>
+							
 							<input type="text" class="form-control" aria-label="Default"
 								aria-describedby="inputGroup-sizing-default"
 								name="indirizzoSede" id="indSede" required>
 						</div>
 						<br>
+						
+						<span id="errore3" class="error">Profilo deve essere compreso tra 5 e 200 caratteri</span>
+							<br>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text">Profilo</span>
 							</div>
+							
 							<input type="text" class="form-control" aria-label="Default"
 								aria-describedby="inputGroup-sizing-default" name="profilo"
-								id="prof" required>
+								id="profilo" required>
 						</div>
 						<br>
+						
+						<span id="errore4" class="error">Tipo contratto deve essere compreso tra 5 e 200 caratteri</span>
+							<br>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text">Tipo Contratto</span>
 							</div>
+							
 							<input type="text" class="form-control" aria-label="Default"
 								aria-describedby="inputGroup-sizing-default"
-								name="tipoContratto" required>
-						</div>
+								name="tipoContratto" id="tipoContratto" required>
+						</div> 
 						<br>
+						
+						<span id="errore5" class="error">Periodo deve essere compreso tra 5 e 200 caratteri</span>
+							<br>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text">Periodo</span>
 							</div>
+							
 							<input type="text" class="form-control" aria-label="Default"
-								aria-describedby="inputGroup-sizing-default" name="periodo"
+								aria-describedby="inputGroup-sizing-default" name="periodo" id="periodo"
 								required>
 						</div>
 						<br>
+						
+						<span id="errore6" class="error">Ore svolte deve avere un numero positivo e maggiore di 0</span>
+							<br>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text">Ore svolte</span>
 							</div>
+							
 							<input type="text" class="form-control" aria-label="Default"
 								aria-describedby="inputGroup-sizing-default" name="oreSvolte"
 								id="oreSvolte" required>
@@ -271,7 +302,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 										I PDF</button>
 									<div class="image-upload-wrap1">
 										<input class="file-upload-input1" type='file' name="file1[]"
-											onchange="readURL1(this);" accept=".pdf" required />
+											onchange="readURL1(this);" accept=".pdf"  required/>
 										<div class="drag-text1">
 											<h5>
 												<i class="fas fa-plus"></i>
@@ -300,7 +331,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 									<div class="image-upload-wrap2">
 										<input class="file-upload-input2" type='file' name="file2[]"
 											onchange="readURL2(this);" accept=".pdf" multiple="multiple"
-											required />
+											 required/>
 										<div class="drag-text2">
 											<h5>
 												<i class="fas fa-plus"></i>
@@ -329,7 +360,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 									<div class="image-upload-wrap3">
 										<input class="file-upload-input3" type='file' name="file3[]"
 											onchange="readURL3(this);" accept=".pdf" multiple="multiple"
-											required />
+											 required/>
 										<div class="drag-text3">
 											<h5>
 												<i class="fas fa-plus"></i>
@@ -353,8 +384,8 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 				<br>
 
 				<div class="text-center">
-					<button type="submit" id="bott-approva"
-						class="btn btn-outline-secondary">APPROVA</button>
+					<input type="submit" id="bott-approva"
+						class="btn btn-outline-secondary" value="Approva"/>
 				</div>
 			</form>
 		</div>
@@ -515,28 +546,111 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 	
 	
 	
-	/* espressioni regolari su campi da inserire in "dati azineda" */
 
-/*	("#bott-approva").click(function(){
-	
-        var ente= $("#enteAzienda").length;
+	$(".error").hide();	
+
+	$("#formCompilaModuloRiconoscimento").submit(function(){
+		var res=true;
+		/*
+        var ente= $("#enteAzienda")
         var sede= $("#indSede").length;
         var profilo= $("#profilo").length;
-        var totcfu= $("#cfuTotali").length;
-        
-        if(ente<5 || ente >=200 && indSede < 5 || sede >=200 && profilo < 5 || profilo >=200 && totcfu>0){
-        	$("#bott-approva").attr("disabled",true);
-        
+        var totcfu= $("#cfuTotali").length;*/
+      
+        if(!validate("enteAzienda")){
+        	$("#enteAzienda").addClass("er");
+        	$("#errore1").show();
+        	res=false;
         }
-        else 
-        	$("#bott-approva").attr("disabled",false);
-     
-       
-   //  var ente = $('#enteAzienda').val().length;
-     if(!($('#enteAzienda').val().length > 5)) {
-    	 
-    	 $("#bott-approva").attr("disabled",true);
-     }*/
+        else if($("#enteAzienda").hasClass("er")){
+        	$("#enteAzienda").removeClass("er");
+        	$("#errore1").hide();
+        }
+        
+        if(!validate("indSede")){
+        	$("#indSede").addClass("er");
+        	$("#errore2").show();
+        	res=false;
+        }
+        else if($("#indSede").hasClass("er")){
+        	$("#indSede").removeClass("er");
+        	$("#errore2").hide();
+        }
+        
+        if(!validate("profilo")){
+        	$("#profilo").addClass("er");
+        	$("#errore3").show();
+        	res=false;
+        }
+        else if($("#profilo").hasClass("er")){
+        	$("#profilo").removeClass("er");
+        	$("#errore3").hide();
+        }
+        
+        if(!validate("tipoContratto")){
+        	$("#tipoContratto").addClass("er");
+        	$("#errore4").show();
+        	res=false;
+        }
+        else if($("#tipoContratto").hasClass("er")){
+        	$("#tipoContratto").removeClass("er");
+        	$("#errore4").hide();
+        }
+        
+        if(!validate("periodo")){
+        	$("#periodo").addClass("er");
+        	$("#errore5").show();
+        	res=false;
+        }
+        else if($("#periodo").hasClass("er")){
+        	$("#periodo").removeClass("er");
+        	$("#errore5").hide();
+        }
+        
+        if(!validateOre("oreSvolte")){
+        	$("#oreSvolte").addClass("er");
+        	$("#errore6").show();
+        	res=false;
+        }
+        else if($("#oreSvolte").hasClass("er")){
+        	$("#oreSvolte").removeClass("er");
+        	$("#errore6").hide();
+        }
+        
+        if(!validateCFU("cfuTotali")){
+        	$("#cfuTotali").addClass("er");
+        	$("#errore7").show();
+        	res=false;
+        }
+        else if($("#cfuTotali").hasClass("er")){
+        	$("#cfuTotali").removeClass("er");
+        	$("#errore7").hide();
+        }
+        
+       return res; 
+	});
+
+	
+	function validate(fieldID){
+		var lunghezzaStringa=document.getElementById(fieldID).value.length;
+		if(lunghezzaStringa<5 || lunghezzaStringa>200)
+			return false;
+		return true;
+	}
+	
+	function validateOre(fieldID){
+		var oreSvolte=parseInt(document.getElementById(fieldID).value);
+		if(oreSvolte > 0)
+			return true;
+		return false;
+	}
+	
+	function validateCFU(fieldID){
+		var cfuTotali=parseInt(document.getElementById(fieldID).value)
+			if(cfuTotali>12 || cfuTotali==0)
+				return false
+			return true;
+	}
         
 
 	
