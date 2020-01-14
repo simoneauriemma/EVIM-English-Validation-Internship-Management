@@ -34,53 +34,75 @@
 
 				<div class="col-lg-9"
 					style="border: 1px solid #d7d7d7; background-color: white;">
+
 					<p id="titolo" style="font-size: 30px; color: #595959;">
 						Registro di tirocinio</p>
 					<hr>
 					<%
 						int n = 0;
 					%>
+					<c:set var="count" value="0" scope="session" />
+					<c:set var="sumOreE" value="0" scope="session" />
+
 					<c:if test="${listaAttivitaEsterno.size() > 0}">
 						<c:forEach items="${listaAttivitaEsterno}" var="esterno">
+							<c:set var="count" value="${count + 1}" scope="session" />
 							<div>
-
-								<p>
-									Tirocinio presso:
-									<c:out value="${esterno.nomeAzienda}" />
-								</p>
-
-								<p>
-									Ore svolte:
-									<c:out value="${esterno.oreSvolte}" />
-								</p>
+								<c:if test="${count == 1}">
+									<span style="visibility: hidden;" id="idRegEst"><c:out
+											value="${esterno.idRegistro}" /></span>
+									<p>
+										Tirocinio presso:
+										<c:out value="${esterno.nomeAzienda}" />
+									</p>
+								</c:if>
 							</div>
+							<c:if test="${esterno.firmaResponsabile == true}">
+								<c:set var="sumOreE" value="${sumOreE + esterno.oreSvolte}"
+									scope="session" />
+							</c:if>
 						</c:forEach>
+						<p>
+							Ore svolte convalidate:
+							<c:out value="${sumOreE}" />
+						</p>
 					</c:if>
 
+
+					<c:set var="count" value="0" scope="session" />
+					<c:set var="sumOre" value="0" scope="session" />
 					<c:if test="${listaAttivitaInterno.size() > 0}">
 						<c:forEach items="${listaAttivitaInterno}" var="interno">
-							<div>
-								<p>
-									Tutor ospitante:
-									<c:out value="${interno.nomeTutorAcc}" />
-									<c:out value="${interno.cognomeTutorAcc}" />
-								</p>
-
-								<p>
-									Ore svolte:
-									<c:out value="${interno.oreSvolte}" />
-								</p>
-							</div>
+							<c:set var="count" value="${count + 1}" scope="session" />
+							<c:if test="${count == 1}">
+								<div>
+									<span style="visibility: hidden;" id="idRegInt"><c:out
+											value="${interno.idRegistro}" /></span>
+									<p>
+										Tutor ospitante:
+										<c:out value="${interno.nomeTutorAcc}" />
+										<c:out value="${interno.cognomeTutorAcc}" />
+									</p>
+								</div>
+							</c:if>
+							<c:if test="${interno.firmaResponsabile == true}">
+								<c:set var="sumOre" value="${sumOre + interno.oreSvolte}"
+									scope="session" />
+							</c:if>
 						</c:forEach>
+						<p>
+							Ore svolte convalidate:
+							<c:out value="${sumOre}" />
+						</p>
+
+						<c:set var="count" value="0" scope="session" />
 					</c:if>
 					<br>
 
 					<table class="table table-striped" style="border: 1px solid #ddd;">
+					
 						<tbody>
-							<c:if test="${listaAttivitaEsterno.size() > 0}">
-								<c:forEach items="${listaAttivitaEsterno}" var="esterno">
-
-									<tr style="background-color: #2C5278; color: white;">
+						<tr style="background-color: #2C5278; color: white;">
 										<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
 										<td class="">Attività svolta</td>
 										<td>Data</td>
@@ -89,46 +111,54 @@
 										<td>Ore tot.</td>
 										<td>Firma responsabile</td>
 									</tr>
+							<c:if test="${listaAttivitaEsterno.size() > 0}">
+								<c:forEach items="${listaAttivitaEsterno}" var="esterno">
+
+									
 									<tr>
 										<td></td>
 										<td><c:out value="${esterno.descrizione}" /></td>
 										<td><c:out value="${esterno.data}" /></td>
-										<td><c:out value="${esterno.orarioIngresso}" /></td>
-										<td><c:out value="${esterno.orarioUscita}" /></td>
+										<td><c:out value="${esterno.orarioIngresso}" />:00</td>
+										<td><c:out value="${esterno.orarioUscita}" />:00</td>
 										<td><c:out
-												value="${esterno.orarioUscita - esterno.orarioIngresso}" />
-										</td>
-										<td><a href="#"><i id="accettare"
-												class="fas fa-check-square"></i></a></td>
+												value="${esterno.orarioUscita - esterno.orarioIngresso}" /></td>
+										<td><c:if test="${esterno.firmaResponsabile == true}">
+												<i id="accettare" class="fas fa-check-square"
+													style="color: green;"></i>
+											</c:if> <c:if test="${esterno.firmaResponsabile == false}">
+												In Valutazione
+											</c:if></td>
 									</tr>
 
 								</c:forEach>
 
 							</c:if>
 							<c:if test="${listaAttivitaInterno.size() > 0}">
+
 								<c:forEach items="${listaAttivitaInterno}" var="interno">
-									<tr style="background-color: #2C5278; color: white;">
-										<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
-										<td class="">Attività svolta</td>
-										<td>Data</td>
-										<td>Ora ingresso</td>
-										<td>Ora uscita</td>
-										<td>Ore tot.</td>
-										<td>Firma responsabile</td>
-									</tr>
 									<tr>
 										<td></td>
 										<td><c:out value="${interno.descrizione}" /></td>
 										<td><c:out value="${interno.data}" /></td>
 										<td id="ingresso"><c:out
-												value="${interno.orarioIngresso}" /></td>
-										<td><c:out value="${interno.orarioUscita}" /></td>
+												value="${interno.orarioIngresso}" />:00</td>
+										<td><c:out value="${interno.orarioUscita}" />:00</td>
 										<td><c:out
 												value="${interno.orarioUscita - interno.orarioIngresso}" /></td>
 
-										<td><a href="#"><i id="accettare"
-												class="fas fa-check-square"></i></a></td>
+										<td><c:if test="${interno.firmaResponsabile == true}">
+												<i id="accettare" class="fas fa-check-square"
+													style="color: green;"></i>
+
+											</c:if>
+										
+										<c:if test="${interno.firmaResponsabile == false}">
+												In Valutazione
+											</c:if></td>
+
 									</tr>
+
 
 
 								</c:forEach>
@@ -157,37 +187,37 @@
 									</button>
 								</div>
 								<div class="modal-body">
-									<table>
-										<tr>
-											<td>Attività svolta:</td>
-											<td><textarea rows="1" cols="30"></textarea></td>
-										</tr>
-										<tr>
-											<td>Data:</td>
-											<td><input type="date"></td>
-										</tr>
-										<tr>
-											<td>Ora ingresso:</td>
-											<td><input type="time"></td>
-										</tr>
-										<tr>
-											<td>Ora uscita:</td>
-											<td><input type="time"></td>
-										</tr>
-										<tr>
-											<td>Ore totali:</td>
-											<td><input type="number" style="width: 77px;"></td>
-										</tr>
-									</table>
-									<div id="button-container1">
-										<br> <br>
-										<form action="VisualizzaRegistroTirocinio">
-										<button type="submit" class="btn btn-secondary" id="button1"  name="approva"
-										onclick="location.href='VisualizzaRegistroTirocinio'">APPROVA</button>
-										
-										</form>
-										
-									</div>
+									<form action="CompilaRegistro" method="post">
+										<input type="hidden" id="IDRegistro" name="IDRegistro"
+											value="">
+										<table>
+											<tr>
+												<td>Attività svolta:</td>
+												<td><textarea name="attivita" rows="4" cols="45"
+														required></textarea></td>
+											</tr>
+											<tr>
+												<td>Data:</td>
+												<td><input type="date" name="data" required></td>
+											</tr>
+											<tr>
+												<td>Ora ingresso:</td>
+												<td><input type="number" id="oraIngresso"
+													name="orarioIngresso" min="9" max="18" step=1 required></td>
+											</tr>
+											<tr>
+												<td>Ora uscita:</td>
+												<td><input type="number" id="oraUscita"
+													name="orarioUscita" min="9" max="18" step=1 required></td>
+											</tr>
+										</table>
+										<div id="button-container1">
+											<br> <br>
+											<!-- location.href='VisualizzaRegistroTirocinio' -->
+											<button type="submit" class="btn btn-secondary" id="button1"
+												name="approva" onclick="">APPROVA</button>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -205,6 +235,13 @@
 	function myFunction() {
 		alert("I am an alert box!");
 	}
+
+	if (document.getElementById("idRegInt") == null)
+		document.getElementById("IDRegistro").value = document.getElementById("idRegEst").innerHTML;
+	else
+		document.getElementById("IDRegistro").value = document.getElementById("idRegInt").innerHTML;
+
+
 
 	<!--
 	function calculateHours() {

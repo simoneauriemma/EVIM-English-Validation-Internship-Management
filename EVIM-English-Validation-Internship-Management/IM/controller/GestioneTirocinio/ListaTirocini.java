@@ -89,7 +89,7 @@ public class ListaTirocini extends BaseServlet {
 			}
 
 			// Tutor Aziendale
-			else if (session.getAttribute("type").equals("tutoraaziendale")) {
+			else if (session.getAttribute("type").equals("tutoraziendale")) {
 
 				TutorAziendale tutoraz = (TutorAziendale) session.getAttribute("utenteLoggato");
 
@@ -139,7 +139,7 @@ public class ListaTirocini extends BaseServlet {
 	// classe interna per la restituzione dell'oggetto per una specifica query
 	public static class RegistroQuery {
 		private int ID_Tirocinio, NumeroCFU, OreTotali, ID_Registro, OreRaggiunte;
-		private String nome_responsabile, cognome_responsabile, registro_status, status,emailStudente;
+		private String nome_responsabile, cognome_responsabile, registro_status, status,emailStudente, nomeStudente, cognomeStudente;
 		private boolean firmaResponsabile,firmaTutorAccademico;
 		int ID_Questionario = 0;
 		int ID_Relazione = 0;
@@ -169,6 +169,23 @@ public class ListaTirocini extends BaseServlet {
 			return emailStudente;
 		}
 		
+		
+		public String getNomeStudente() {
+			return nomeStudente;
+		}
+
+		public void setNomeStudente(String nomeStudente) {
+			this.nomeStudente = nomeStudente;
+		}
+
+		public String getCognomeStudente() {
+			return cognomeStudente;
+		}
+
+		public void setCognomeStudente(String cognomeStudente) {
+			this.cognomeStudente = cognomeStudente;
+		}
+
 		public void setEmailStudente(String emailStudente) {
 			this.emailStudente=emailStudente;
 		}

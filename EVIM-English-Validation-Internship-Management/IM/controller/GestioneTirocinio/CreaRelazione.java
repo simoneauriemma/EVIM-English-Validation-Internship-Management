@@ -58,7 +58,7 @@ public class CreaRelazione extends BaseServlet {
 			else { 			//reindirizzo a compila relazione
 				//studenti=RelazioneDAO.doRetriveStudenti(utente.getId());
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("ListaTirocini");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/compilaRelazione.jsp");
 				request.setAttribute("resultrelazione", false);
 				dispatcher.forward(request, response);
 			}

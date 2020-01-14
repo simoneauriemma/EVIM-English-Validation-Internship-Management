@@ -52,22 +52,23 @@ public class CompilaRegistro extends BaseServlet {
 					int ID_Registro = Integer.parseInt(request.getParameter("IDRegistro"));
 
 					// errore nei prarametri
-					if (descrizione == null || ID_Registro == 0 || orarioIngresso == 0 || orarioUscita == 0) {
+					if (descrizione == null || ID_Registro == 0 || orarioIngresso == 0 || orarioUscita == 0  || data.length()==0) {
 						RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+						request.setAttribute("errore", 1);
 						dispatcher.forward(request, response);
 					} else {
 						// inserimento nel db
-						if (new AttivitaDAO().doInsert(ID_Registro, descrizione, orarioIngresso, orarioUscita) == 1) {
+						if (new AttivitaDAO().doInsert(ID_Registro, descrizione, orarioIngresso, orarioUscita, data) == 1) {
 							// query andata bene
 							request.setAttribute("errore", 0);
 							RequestDispatcher dispatcher = request
-									.getRequestDispatcher("registroTirocinio(studente).jsp");
+									.getRequestDispatcher("WEB-INF/registroTirocinio(studente).jsp");
 							dispatcher.forward(request, response);
 						} else {
 							// qualcosa andata male
 							request.setAttribute("errore", 1);
 							RequestDispatcher dispatcher = request
-									.getRequestDispatcher("registroTirocinio(studente).jsp");
+									.getRequestDispatcher("WEB-INF/registroTirocinio(studente).jsp");
 							dispatcher.forward(request, response);
 						}
 					}
