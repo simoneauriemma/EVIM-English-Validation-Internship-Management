@@ -27,8 +27,8 @@
 
 			<hr>
 			<c:if test="${elencoRiconoscimento.size() == 0 }">
-				<p class="text-center">Non ci sono richieste di
-					riconoscimento attività!</p>
+				<p class="text-center">Non ci sono richieste di riconoscimento
+					attività!</p>
 			</c:if>
 
 
@@ -104,7 +104,8 @@
 										title="<c:out value="${ricon.stato}"/>"></i></td>
 
 									<td><button
-											onclick=visualizzaRiconoscimento(${ricon.idRiconoscimento},"${ricon.emailUser}")>
+											onclick=visualizzaRiconoscimento(${ricon.idRiconoscimento},
+											"${ricon.emailUser}")>
 											<i class="fas fa-file-pdf"></i>
 										</button></td>
 
@@ -112,11 +113,15 @@
 									<c:if test="${type != 'segreteria' }">
 										<c:if test="${ricon.stato eq 'V'}">
 											<td>
-												<button class="bottone" onclick="approvaModulo(${ricon.idRiconoscimento},${conto.count})" id="accetta">
+												<button class="bottone"
+													onclick="approvaModulo(${ricon.idRiconoscimento},${conto.count})"
+													id="accetta">
 													<i class="fas fa-check-square"></i>
 												</button>
 
-												<button class="bottone" onclick="rifiutaModulo(${ricon.idRiconoscimento},${conto.count})" id="rifiuta">
+												<button class="bottone"
+													onclick="rifiutaModulo(${ricon.idRiconoscimento},${conto.count})"
+													id="rifiuta">
 													<i class="far fa-times-circle"></i>
 												</button>
 											</td>
@@ -124,7 +129,8 @@
 										<!--  se il la richiesta è stata approvata o rifiutata -->
 									</c:if>
 									<c:if test="${ricon.stato == 'A' || ricon.stato== 'R'}">
-										<td>Richiesta valutata</td>
+										<td style="font-weight: bold; color: green;">Richiesta
+											valutata con successo!</td>
 									</c:if>
 
 								</tr>
