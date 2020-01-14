@@ -130,7 +130,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.addParameter("id", "2");
+    	   request.addParameter("id", "7");
     	   request.addParameter("azienda", "azienda");
     	   request.addParameter("confermato", "si");
     	   servletValuta.doPost(request, response);  
@@ -186,6 +186,78 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   servletValuta.doPost(request, response);
     	   int esito = (int) request.getAttribute("esito");
 		   assertNotEquals(1, esito);
+	  }
+      
+    //pdcd intende rifiutare una richiesta
+      @Test
+	  public void tc_gr_4_10() throws ServletException, IOException  {
+    	   request.addParameter("email","fferrucci@unisa.it");
+    	   request.addParameter("password", "Ferrucci11"); 
+    	   servletLogin.doPost(request, response);
+    	   String type = request.getSession().getAttribute("type").toString();
+    	   boolean log = (boolean) request.getAttribute("logged");  
+    	   assertTrue(log);
+    	   assertEquals("pdcd", type);
+    	   request.addParameter("id", "8");
+    	   request.addParameter("azienda", "azienda");
+    	   request.addParameter("confermato", "no");
+    	   servletValuta.doPost(request, response);
+		   int esito = (int) request.getAttribute("esito");
+		   assertEquals(1, esito);
+	  }
+      
+    //pdcd intende approvare una richiesta
+      @Test
+	  public void tc_gr_4_11() throws ServletException, IOException  {
+    	   request.addParameter("email","fferrucci@unisa.it");
+    	   request.addParameter("password", "Ferrucci11"); 
+    	   servletLogin.doPost(request, response);
+    	   String type = request.getSession().getAttribute("type").toString();
+    	   boolean log = (boolean) request.getAttribute("logged");  
+    	   assertTrue(log);
+    	   assertEquals("pdcd", type);
+    	   request.addParameter("id", "9");
+    	   request.addParameter("azienda", "azienda");
+    	   request.addParameter("confermato", "si");
+    	   servletValuta.doPost(request, response);
+		   int esito = (int) request.getAttribute("esito");
+		   assertEquals(1, esito);
+	  }
+      
+    //azienda intende rifiutare una richiesta
+      @Test
+	  public void tc_gr_4_12() throws ServletException, IOException  {
+    	   request.addParameter("email","microsoftofficial@tiscali.it");
+    	   request.addParameter("password", "microsoft1"); 
+    	   servletLogin.doPost(request, response);
+    	   String type = request.getSession().getAttribute("type").toString();
+    	   boolean log = (boolean) request.getAttribute("logged");  
+    	   assertTrue(log);
+    	   assertEquals("azienda", type);
+    	   request.addParameter("id", "10");
+    	   request.addParameter("azienda", "azienda");
+    	   request.addParameter("confermato", "no");
+    	   servletValuta.doPost(request, response);
+		   int esito = (int) request.getAttribute("esito");
+		   assertEquals(1, esito);
+	  }
+     
+    //azienda intende approvare una richiesta
+      @Test
+	  public void tc_gr_4_13() throws ServletException, IOException  {
+    	   request.addParameter("email","microsoftofficial@tiscali.it");
+    	   request.addParameter("password", "microsoft1"); 
+    	   servletLogin.doPost(request, response);
+    	   String type = request.getSession().getAttribute("type").toString();
+    	   boolean log = (boolean) request.getAttribute("logged");  
+    	   assertTrue(log);
+    	   assertEquals("azienda", type);
+    	   request.addParameter("id", "11");
+    	   request.addParameter("azienda", "azienda");
+    	   request.addParameter("confermato", "si");
+    	   servletValuta.doPost(request, response);
+		   int esito = (int) request.getAttribute("esito");
+		   assertEquals(1, esito);
 	  }
       
 	}

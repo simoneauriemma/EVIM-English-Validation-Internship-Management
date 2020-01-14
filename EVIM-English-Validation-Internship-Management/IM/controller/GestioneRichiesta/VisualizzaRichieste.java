@@ -33,9 +33,9 @@ import model.User;
 public class VisualizzaRichieste extends BaseServlet {
 	User user;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// vedo prima se l'utente è loggato e se ha i permessi per visualizzare la
+		// vedo prima se l'utente ï¿½ loggato e se ha i permessi per visualizzare la
 		// pagina
 
 		HttpSession sessione = request.getSession();
@@ -50,15 +50,15 @@ public class VisualizzaRichieste extends BaseServlet {
 			String tipoUtente = sessione.getAttribute("utenteLoggato").getClass().getName();
 
 			// l'utente visualizza una pagina differente dal tutor accademico ed aziendale,
-			// quindi in base all'oggetto nella sessione , controllo se l'utente è abilitato
+			// quindi in base all'oggetto nella sessione , controllo se l'utente ï¿½ abilitato
 			if (tipoUtente.equalsIgnoreCase("model.User")) {
-				// è loggato un tipo "user"
-				// a causa dello usertype, devo verificare se è loggato esattamente uno studente
+				// ï¿½ loggato un tipo "user"
+				// a causa dello usertype, devo verificare se ï¿½ loggato esattamente uno studente
 				User studente = (User) sessione.getAttribute("utenteLoggato");
-				// è loggato un utente
+				// ï¿½ loggato un utente
 				if (studente.getUserType() == 0) {
 
-					// verifico se l'utente è magistrale o triennale, in quanto per gli studenti
+					// verifico se l'utente ï¿½ magistrale o triennale, in quanto per gli studenti
 					// magistrali i tirocini possono essere solamente esterni
 					if (studente.getCorso().equalsIgnoreCase("magistrale")) {
 						ArrayList<TirocinioQueryEsternoStudente> tirocinioEsterno = new TirocinioEsternoDAO()
@@ -86,7 +86,7 @@ public class VisualizzaRichieste extends BaseServlet {
 					}
 
 				} else if (studente.getUserType() == 2) {
-					// è loggato il PdCD
+					// ï¿½ loggato il PdCD
 					ArrayList<TirocinioQueryPdCD> tirocinioInterno = new TirocinioInternoDAO()
 							.doRetriveAllValutazionePdCD();
 					ArrayList<TirocinioQueryPdCD> tirocinioEsterno = new TirocinioEsternoDAO()
@@ -159,7 +159,7 @@ public class VisualizzaRichieste extends BaseServlet {
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
 	}

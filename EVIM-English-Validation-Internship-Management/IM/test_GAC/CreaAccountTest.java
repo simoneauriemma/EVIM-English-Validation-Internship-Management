@@ -231,12 +231,34 @@ import org.springframework.mock.web.MockHttpServletResponse;
 		   servletCreaAccount.doPost(request, response);
 		   boolean esito = (boolean) request.getAttribute("utenteCreato");
 		   assertFalse(esito);
+		   
+      }
 
+		 //utente non autorizzato
+		      @Test
+			  public void tc_gac_1_10() throws ServletException, IOException  {
+		    	   request.addParameter("email","fferrucci@unisa.it");
+		    	   request.addParameter("password", "Ferrucci11"); 
+		    	   servletLogin.doPost(request, response);
+		    	   String type = request.getSession().getAttribute("type").toString();
+		    	   boolean log = (boolean) request.getAttribute("logged");  
+		    	   assertTrue(log);
+		    	   assertEquals("pdcd", type);
+		    	   request.addParameter("nome","Mario");
+				   request.addParameter("cognome","Ambrosio");
+				   request.addParameter("telefono", "3332233444");
+				   request.addParameter("emaila", "ambrosiomario@hotmail.it");
+				   request.addParameter("passworda","bellaciao");
+				   request.addParameter("confermaPassword","bellaciao");
+				   servletCreaAccount.doPost(request, response);
+				   boolean esito = (boolean) request.getAttribute("utenteCreato");
+				   assertFalse(esito);
+		   
 	  }
       
     //azienda non loggata
       @Test
-	  public void tc_gac_1_10() throws ServletException, IOException  {
+	  public void tc_gac_1_11() throws ServletException, IOException  {
     	   request.addParameter("nome","Mario");
 		   request.addParameter("cognome","Ambrosio");
 		   request.addParameter("telefono", "3332233444");

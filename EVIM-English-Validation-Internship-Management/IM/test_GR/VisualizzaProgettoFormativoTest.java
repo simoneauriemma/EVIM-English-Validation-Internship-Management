@@ -63,7 +63,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.addParameter("idTirocinio", "2");
+    	   request.addParameter("idTirocinio", "7");
     	   request.addParameter("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
@@ -79,12 +79,12 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   boolean log = (boolean) request.getAttribute("logged");  
     	   assertTrue(log);
     	   assertEquals("studente", type);
-    	   request.addParameter("idTirocinio", "7");
+    	   request.addParameter("idTirocinio", "2");
     	   request.addParameter("tirocinio", "interno");
     	   servletVisualizza.doPost(request, response);
 	  }
       
-    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio esterno da 17
+    //uno studente della triennale intende visualizzare il PF relativo a un tirocinio esterno da 17
       @Test
 	  public void tc_gr_5_4() throws ServletException, IOException  {
     	   request.addParameter("email","simonagrieco@studenti.unisa.it");
@@ -99,7 +99,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
     	   servletVisualizza.doPost(request, response);
 	  }
       
-    //uno studente della magistrale intende visualizzare il PF relativo a un tirocinio esterno da 23
+    //uno studente della triennale intende visualizzare il PF relativo a un tirocinio esterno da 23
       @Test
 	  public void tc_gr_5_5() throws ServletException, IOException  {
     	   request.addParameter("email","simonagrieco@studenti.unisa.it");

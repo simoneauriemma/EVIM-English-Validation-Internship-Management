@@ -118,8 +118,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 	  
 	  @Test
 	  public void tc_ga1_9() throws ServletException, IOException  {
-		   request.addParameter("email","afferrucci@unisa.it");
-		   request.addParameter("password", "Ferrucci11");
+		   request.addParameter("email","fferrucci@unisa.it");
+		   request.addParameter("password", "Ferrucci1");
 		   servlet.doPost(request, response);
 		   boolean type=(boolean) request.getAttribute("logged");
 		   assertFalse(type);

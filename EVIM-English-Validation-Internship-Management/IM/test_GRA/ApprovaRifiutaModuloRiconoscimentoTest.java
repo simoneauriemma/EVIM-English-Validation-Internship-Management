@@ -41,7 +41,7 @@ class ApprovaRifiutaModuloRiconoscimentoTest {
 		assertTrue(log);
 		assertEquals("pdcd", type);
 		request.addParameter("modifica", "approva");
-		request.addParameter("idRiconoscimento", "1");
+		request.addParameter("idRiconoscimento", "10");
 		servletApprova.doPost(request, response);
 	}
 	
@@ -56,7 +56,7 @@ class ApprovaRifiutaModuloRiconoscimentoTest {
 		assertTrue(log);
 		assertEquals("pdcd", type);
 		request.addParameter("modifica", "rifiuta");
-		request.addParameter("idRiconoscimento", "1");
+		request.addParameter("idRiconoscimento", "11");
 		servletApprova.doPost(request, response);
 	}
 	

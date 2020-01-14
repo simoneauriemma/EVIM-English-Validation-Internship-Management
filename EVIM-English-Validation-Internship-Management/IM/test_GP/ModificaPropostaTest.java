@@ -43,8 +43,8 @@ public class ModificaPropostaTest extends Mockito{
 		request.getSession().setAttribute("utenteLoggato", null);
 		assertFalse(log);
 		assertEquals("tutoraccademico","tutoraccademico");
-		request.addParameter("idProposta","1");
-		request.addParameter("obbettivo","lvnspbpsjvpsbpsbpsbpjs");
+		request.addParameter("idProposta","25");
+		request.addParameter("obiettivo","lvnspbpsjvpsbpsbpsbpjs");
 		request.addParameter("competenze", "lvnspbpsjvpsbpsbpsbpjs");
 		request.addParameter("attivita", "lvnspbpsjvpsbpsbpsbpjs");
 		request.addParameter("modalita", "<knvanvapvpavnpiav");
@@ -60,7 +60,7 @@ public class ModificaPropostaTest extends Mockito{
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("tutoraccademico", type);
-		request.addParameter("idProposta","1");
+		request.addParameter("idProposta","25");
 		request.addParameter("obiettivo","gksglskgnskgisgjsighj");
 		request.addParameter("competenze", "La iafosgisrjgosgoj");
 		request.addParameter("attivita", "La Bigjspgkjogogjfdj");
@@ -96,7 +96,7 @@ public class ModificaPropostaTest extends Mockito{
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("studente", type);
-		request.addParameter("idProposta","1");
+		request.addParameter("idProposta","25");
 		request.addParameter("obiettivo","gksglskgnskgisgjsighj");
 		request.addParameter("competenze", "La iafosgisrjgosgoj");
 		request.addParameter("attivita", "La Bigjspgkjogogjfdj");
@@ -114,7 +114,7 @@ public class ModificaPropostaTest extends Mockito{
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("azienda", type);
-		request.addParameter("idProposta","1");
+		request.addParameter("idProposta","25");
 		request.addParameter("obiettivo","gksglskgnskgisgjsighj");
 		request.addParameter("competenze", "La iafosgisrjgosgoj");
 		request.addParameter("attivita", "La Bigjspgkjogogjfdj");

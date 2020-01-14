@@ -45,7 +45,7 @@ public class VisualizzaModificaPropostaTest extends Mockito{
 		boolean log=(boolean) request.getAttribute("loggedTest");
 		request.getSession().setAttribute("utenteLoggato", null);
 		assertFalse(log);
-		request.setParameter("idProposta", ""+1);
+		request.setParameter("idProposta", ""+33);
 		servletMCProposta.doPost(request, response);
 		assertFalse((boolean)request.getAttribute("Autorizzato"));
 	}
@@ -59,7 +59,7 @@ public class VisualizzaModificaPropostaTest extends Mockito{
 		boolean log=(boolean) request.getAttribute("logged");
 		assertTrue(log);
 		assertEquals("pdcd",type);
-		request.setParameter("idProposta", ""+1);
+		request.setParameter("idProposta", ""+33);
 		servletMCProposta.doPost(request, response);
 		assertFalse((boolean)request.getAttribute("Autorizzato"));
 	}
@@ -73,7 +73,7 @@ public class VisualizzaModificaPropostaTest extends Mockito{
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("tutoraccademico", type);
-		request.setParameter("idProposta", ""+1);
+		request.setParameter("idProposta", ""+33);
 		servletMCProposta.doGet(request, response);
 		assertTrue((boolean)request.getAttribute("Autorizzato"));
 	}
@@ -87,7 +87,7 @@ public class VisualizzaModificaPropostaTest extends Mockito{
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("azienda", type);
-		request.setParameter("idProposta", ""+1);
+		request.setParameter("idProposta", ""+33);
 		servletMCProposta.doGet(request, response);
 		assertTrue((boolean)request.getAttribute("Autorizzato"));
 	
@@ -102,7 +102,7 @@ public class VisualizzaModificaPropostaTest extends Mockito{
 		boolean log=(boolean) request.getAttribute("logged");  
 		assertTrue(log);
 		assertEquals("tutoraziendale", type);
-		request.setParameter("idProposta", ""+1);
+		request.setParameter("idProposta", ""+33);
 		servletMCProposta.doGet(request, response);
 		assertFalse((boolean)request.getAttribute("Autorizzato"));
 	
