@@ -135,7 +135,7 @@
 			<ul id="collapse-0" class="collapse" aria-expanded="false"
 				style="height: 0px;">
 				<c:if test="${type == 'studente'}">
-					<li><a href="creazioneRichiesta.jsp"><i
+					<li><a href="VisualizzaCreaRichiesta"><i
 							class="fas fa-angle-right "></i> Crea richiesta tirocinio </a></li>
 				</c:if>
 

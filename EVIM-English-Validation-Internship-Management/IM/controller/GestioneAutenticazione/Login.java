@@ -103,12 +103,10 @@ public class Login extends BaseServlet {
 					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
 					rd.forward(request, response);
 				}else{
-					
 					request.setAttribute("logged", false);
 					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login.jsp");
 					rd.forward(request, response);
 				}
-
 			}
 
 			// controllo tutor aziendale (@tutor.unisa.it)
