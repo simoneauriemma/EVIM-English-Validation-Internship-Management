@@ -62,7 +62,9 @@ body {
 
 					<tbody>
 						<c:if test="${registroQueryEsterno.size() > 0}">
+							<c:set var="count" value="0" scope="session" />
 							<c:forEach items="${registroQueryEsterno}" var="esterno">
+								<c:set var="count" value="${count + 1}" scope="session" />
 								<tr>
 									<th scope="row" id="id"><c:out
 											value="${esterno.ID_Tirocinio}" /></th>
@@ -78,6 +80,7 @@ body {
 									<td class="form-inline text-center" id="registro1">
 										<form action="VisualizzaRegistroTirocinio" method="get">
 											<input type="hidden" name="EMAIL"
+												id="emailStudenteEsterno${count}"
 												value="<c:out value="${esterno.emailStudente}" />">
 											<button id="registroI" class="fas fa-book"
 												style="border: none; background-color: transparent;"></button>
@@ -107,7 +110,8 @@ body {
 													<div id="collapse1" class="panel-collapse collapse">
 														<ul class="list-group">
 															<li class="list-group-item"><a class="list-item"
-																data-toggle="modal" data-target="#ciaoo" style="color:#007bff;">Compila
+																data-toggle="modal" data-target="#ciaoo"
+																onclick='setEmail(${count})' style="color: #007bff;">Compila
 																	relazione</a></li>
 															<li class="list-group-item"><a class="list-item"
 																href="VisualizzaRelazione">Visualizza relazione</a></li>
@@ -120,22 +124,24 @@ body {
 											</div>
 										</c:if> <!-- inizio tutor accademico operazioni --> <c:choose>
 											<c:when
-												test="${type=='tutoraccademico' && (esterno.ID_Relazione==0 && esterno.registro_status=='completato')}">
+												test="${type=='tutoraccademico' && (esterno.ID_Relazione!=0 && esterno.registro_status=='completato')}">
 
 												<!-- Button trigger modal -->
 												<button type="button" class="btn btn-primary"
-													data-toggle="modal" data-target="#exampleModalCenter">
+													data-toggle="modal" data-target="#exampleModalCenter" onclick="vediRelazione('${esterno.ID_Relazione}')">
 													Visualizza relazione</button>
 
 												<!-- Modal -->
+												<form action="ValutaRelazione">
 												<div class="modal fade" id="exampleModalCenter"
 													tabindex="-1" role="dialog"
 													aria-labelledby="exampleModalCenterTitle"
 													aria-hidden="true">
 													<div class="modal-dialog modal-dialog-centered"
-														role="document">
+														role="document" >
 														<div class="modal-content">
 															<div class="modal-header">
+																<input id="hiddenid" type="hidden" name="idrelazione"></input>
 																<h5 class="modal-title" id="exampleModalLongTitle">
 																	Approva relazione</h5>
 																<button type="button" class="close" data-dismiss="modal"
@@ -143,21 +149,21 @@ body {
 																	<span aria-hidden="true">&times;</span>
 																</button>
 															</div>
-															<div class="modal-body">
+															<div class="modal-body" id="descrizioneVisualizza">
 																<!-- aggiungere la relazione che ha compilato il tutor aziendale -->
 
 
 															</div>
 															<div class="modal-footer">
+																<button type="submit" class="btn btn-secondary"
+																	data-dismiss="modal" value="1" name="approva">Approva</button>
 																<button type="button" class="btn btn-secondary"
-																	data-dismiss="modal">Approva</button>
-																<button type="button" class="btn btn-secondary"
-																	data-dismiss="modal">Rifiuta</button>
+																	data-dismiss="modal" value="0" name="approva">Rifiuta</button>
 															</div>
 														</div>
 													</div>
 												</div>
-
+												</form>
 											</c:when>
 											<c:when
 												test="${type=='tutoraccademico' && esterno.ID_Relazione!=0 && esterno.registro_status!='completato'}">
@@ -211,7 +217,7 @@ body {
 
 				</table>
 
-				<!-- modalllllllllllllllllllll FF MERDA -->
+
 				<div class="modal fade" id="ciaoo" tabindex="-1" role="dialog"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
@@ -224,18 +230,22 @@ body {
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<div class="modal-body">
-								<textarea name="descrizione" class="form-control"
-									id="exampleFormControlTextarea1"
-									placeholder="Compila verbale tirocinio..." rows="3"></textarea>
+							<form action="CreaRelazione" method="post">
+								<div class="modal-body">
+
+									<input type="hidden" id="emailS" name="emailstudente" value="">
+									<textarea name="descrizione" class="form-control"
+										id="descrizione"
+										placeholder="Compila verbale tirocinio..." rows="3"></textarea>
+								
 
 
-
-							</div>
-							<div class="modal-footer">
-
-								<button type="button" class="btn btn-primary">INVIA</button>
-							</div>
+								</div>
+								
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-primary">INVIA</button>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -252,9 +262,25 @@ body {
 </div>
 
 <jsp:include page="footer.jsp"></jsp:include>
+<script>
+function setEmail(i){
+	alert(document.getElementById("emailStudenteEsterno"+i).value);
+	document.getElementById("emailS").value=document.getElementById("emailStudenteEsterno"+i).value;
+}
 
-
-
+function vediRelazione(idr){
+	$.get( "VisualizzaRelazione?idrelazione="+idr, function( data ) {
+		var relazione= jQuery.parseJSON(data);
+		var hiddenid= $("#hiddenid");
+		var descrizione= $("#descrizioneVisualizza");
+		
+		hiddenid.val(data.id);
+		
+	  $( "#descrizione" ).html(data.descrizione);
+	  alert( "Load was performed." );
+	});
+}
+</script>
 <!-- <script>
 	$(document).ready(function() {
 		$("#accetta").click(function() {

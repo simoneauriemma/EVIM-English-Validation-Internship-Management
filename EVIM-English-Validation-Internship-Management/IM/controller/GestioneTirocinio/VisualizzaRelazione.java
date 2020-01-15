@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import model.Relazione;
 import model.RelazioneDAO;
+import model.TutorAccademico;
 import model.TutorAziendale;
 import model.User;
 
@@ -36,19 +37,20 @@ public class VisualizzaRelazione extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session= request.getSession();
 		
-		TutorAziendale u= (TutorAziendale) session.getAttribute("utenteLoggato");
+		TutorAccademico u= (TutorAccademico) session.getAttribute("utenteLoggato");
+		int  idrelazione= Integer.parseInt(request.getParameter("idrelazione"));
 		
 		
 		if(request.getAttribute("utenteLoggato")!=null) {
 			
-			Relazione r= RelazioneDAO.doRetriveRelazionefromId(u.getId());
+			Relazione r= RelazioneDAO.doRetriveRelazionefromId(idrelazione);
 			JSONObject relazione= new JSONObject();
 			relazione.put("id",r.getIdrelazione() );
 			relazione.put("descrizione", r.getDescrizione());
 			relazione.put("email",r.getEmail());
 			relazione.put("status", r.getStatus());
 			relazione.put("idtutor", r.getIdtutor());
-			
+			System.out.println(relazione.toString());
 			response.getWriter().append(relazione.toString());
 			
 		}
