@@ -43,8 +43,9 @@ public class RiconoscimentoDao {
 			ps.setInt(9, CFUTirocinioEsterno);
 			ps.setInt(10,CFUAccompagnmento);
 			
-			if(ps.executeUpdate()!=1) 
+			if(ps.executeUpdate()!=1) {
 				return false;
+			}
 			return true;
 			
 		} catch (SQLException e) {
@@ -67,7 +68,6 @@ public class RiconoscimentoDao {
 			ps.setString(1, emailUser);
 			ResultSet rs=ps.executeQuery();
 			rs.next();
-			System.out.println("email-->"+emailUser);
 			Riconoscimento moduloRiconoscimento=new Riconoscimento();
 			moduloRiconoscimento.setIdRiconoscimento(rs.getInt(1));
 			moduloRiconoscimento.setEmailUser(rs.getString(2));
@@ -164,19 +164,48 @@ public class RiconoscimentoDao {
 		}
 	}
 
+	
+	/**
+	 * @author Antonio Giano
+	 * @param idRiconoscimento
+	 * @param modifica 
+	 * @return true se la modifica è avvenuta con successo altrimente false 
+	 */
 	public static boolean changeStatoModulo(int idRiconoscimento, String modifica) {
 		try(Connection con=DriverManagerConnectionPool.getConnection()){
 			PreparedStatement ps=con.prepareStatement("UPDATE `evim`.`riconoscimento` SET `Stato` = ? WHERE (`ID_Riconoscimento` = ?)");
 			ps.setString(1, modifica);
 			ps.setInt(2, idRiconoscimento);
 			
-			if(ps.executeUpdate() > 0) 
+			if(ps.executeUpdate() > 0) {
 				return true;
+			}
 			return false;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 		
+	}
+	
+	public static  int getSumCFUStudente(String email)  {
+		try(Connection con=DriverManagerConnectionPool.getConnection()){
+			PreparedStatement ps=con.prepareStatement("select sum(CFU_TirocinioObbligatorio+CFU_TirocinioEsterno+CFU_AccompagnamentoLavoro) as CFUTotale\n" + 
+					"from evim.Riconoscimento \n" + 
+					"where Email_user=?\n" + 
+					"group by Email_User;");
+			ps.setString(1, email);
+			
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt("CFUTotale");
+			}
+			else {
+				return -1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 }

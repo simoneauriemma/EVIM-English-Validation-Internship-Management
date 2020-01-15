@@ -63,7 +63,8 @@ public class ServletSecretary extends HttpServlet {
     String sql = "";
 
     if (conn != null) {
-      Integer requestWorkingSecretary = Integer.parseInt(new SystemAttribute().getValueByKey("request-working-secretary"));
+      Integer requestWorkingSecretary = Integer
+          .parseInt(new SystemAttribute().getValueByKey("request-working-secretary"));
 
       if (flag == 1) { // Preleva tutte le richieste
         try {
@@ -127,13 +128,13 @@ public class ServletSecretary extends HttpServlet {
                 
                 content += "<td class='text-center'>" + r.getString("name");
                 content +=
-                    "  <button class=\"btn btn-primary btn-action changeName\" data-iduser=\""
+                    "  <button id=\"changeName\" class=\"btn btn-primary btn-action changeName\" data-iduser=\""
                         + r.getString("user_email") + "\" data-name=\"" + r.getString("name")
                         + "\" title=\"Modifica Nome\"><i class=\"fa fa-edit\"></i></button>";
                 content += "</td>";
                 content += "<td class='text-center'>" + r.getString("surname");
                 content +=
-                    "  <button class=\"btn btn-primary btn-action changeSurname\" data-iduser=\""
+                    "  <button id=\"changeSurname\" class=\"btn btn-primary btn-action changeSurname\" data-iduser=\""
                         + r.getString("user_email") + "\" data-surname=\""
                         + r.getString("surname")
                         + "\" title=\"Modifica Cognome\"><i class=\"fa fa-edit\"></i></button>";

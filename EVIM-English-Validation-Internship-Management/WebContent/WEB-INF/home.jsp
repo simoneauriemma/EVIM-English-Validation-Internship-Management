@@ -139,6 +139,12 @@
 						</div>
 				</c:if>
 				
+				<c:if test="${cfuSuperati==true}">
+					<div class="alert alert-warning" role="alert">
+						  Hai superato i CFU disponibili per il riconoscimento di attivita' lavorativa
+						</div>
+				</c:if>
+				
 				
 				
 				<div id="carouselExampleControls" class="carousel slide"
