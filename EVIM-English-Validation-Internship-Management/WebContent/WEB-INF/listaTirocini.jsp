@@ -109,6 +109,16 @@ body {
 											test="${esterno.firmaTutorAccademico == true && type == 'tutoraccademico'}">
 											<i class="fas fa-check-square" style="color: green;"></i>
 										</c:if>
+										
+											<c:if
+											test="${(esterno.firmaTutorAccademico == true && esterno.firmaResponsabile == true && esterno.status== 'in svolgimento') && type == 'pdcd'}">
+											<a
+												href="ApprovaRegistro?idregistro=${esterno.ID_Registro}&tipotirocinio=esterno&idtirocinio=${esterno.ID_Tirocinio}"><i
+												class="fas fa-check-square" id="accettare"></i></a>
+										</c:if> <c:if
+											test="${(esterno.firmaTutorAccademico == false || esterno.firmaResponsabile == false || esterno.status== 'completato') && type == 'pdcd'}">
+											<i class="fas fa-check-square" style="color: green;"></i>
+										</c:if>
 
 
 
@@ -234,9 +244,26 @@ body {
 
 											<i class="fas fa-check-square" id="accettare"></i>
 										</a>
-									</c:if> <c:if test="${interno.firmaResponsabile == true}">
+									</c:if> <c:if test="${interno.firmaResponsabile == true && interno.firmaTutorAccademico==true}">
 										<i class="fas fa-check-square" style="color: green;"></i>
 									</c:if>
+									
+									
+									
+									 <c:if test="${interno.firmaResponsabile == true && interno.status == 'in svolgimento' }">
+										<a
+											href="ApprovaRegistro?idregistro=${interno.ID_Registro}&tipotirocinio=interno&idtirocinio=${interno.ID_Tirocinio}">
+
+											<i class="fas fa-check-square" id="accettare"></i>
+										</a>
+									</c:if>
+									
+										<c:if test="${interno.firmaResponsabile == true && interno.status == 'approvato'}">
+										<i class="fas fa-check-square" style="color: green;"></i>
+									</c:if>
+									
+									
+									
 
 								</td>
 								<td>-</td>
