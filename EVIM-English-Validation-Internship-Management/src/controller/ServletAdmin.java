@@ -61,7 +61,8 @@ public class ServletAdmin<WritableWorkbook> extends HttpServlet {
         if (conn != null) {
 
           if (flag == 5) { // Richieste Accettate
-            Integer requestWorkingEducationAdvice1 = Integer.parseInt(  new SystemAttribute().getValueByKey("request-working-educational-advice-1"));
+            Integer requestWorkingEducationAdvice1 = Integer.parseInt(
+                new SystemAttribute().getValueByKey("request-working-educational-advice-1"));
 
             try {
               stmtSelect = conn.createStatement();
@@ -265,13 +266,13 @@ public class ServletAdmin<WritableWorkbook> extends HttpServlet {
                 if (r.getInt("id_state") == requestWorkingAdmin) { // Se è in lavorazione dall'admin
                   content += "<td class='text-center'>" + r.getString("name");
                   content +=
-                      "  <button class=\"btn btn-primary btn-action changeName\" data-iduser=\""
+                      "  <button id=\"changeName\" class=\"btn btn-primary btn-action changeName\" data-iduser=\""
                           + r.getString("user_email") + "\" data-name=\"" + r.getString("name")
                           + "\" title=\"Modifica Nome\"><i class=\"fa fa-edit\"></i></button>";
                   content += "</td>";
                   content += "<td class='text-center'>" + r.getString("surname");
                   content +=
-                      "  <button class=\"btn btn-primary btn-action changeSurname\" data-iduser=\""
+                      "  <button id=\"changeSurname\" class=\"btn btn-primary btn-action changeSurname\" data-iduser=\""
                           + r.getString("user_email") + "\" data-surname=\""
                           + r.getString("surname")
                           + "\" title=\"Modifica Cognome\"><i class=\"fa fa-edit\"></i></button>";

@@ -631,7 +631,7 @@ public class TirocinioEsternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAccRegistro(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select distinct user.Name as n,user.Surname as c, tutoraccademico.Nome,tutoraccademico.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, "
+					"select distinct registro.FirmaTutorAccamico,user.Name as n,user.Surname as c, tutoraccademico.Nome,tutoraccademico.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, "
 							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "
 							+ "TirocinioEsterno.CFU from tirocinioesterno \n"
 							+ "join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n "
@@ -649,6 +649,7 @@ public class TirocinioEsternoDAO {
 				int idTir = rs.getInt("ID_TirocinioEsterno");
 				a.setID_Tirocinio(idTir);
 				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccamico"));
 				a.setStatus(rs.getString("TirocinioEsterno.status"));
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
@@ -685,9 +686,9 @@ public class TirocinioEsternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAzRegistro(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select distinct  user.Name as n,user.Surname as c,tutoraccademico.Nome,tutoraccademico.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, "
-							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "
-							+ "TirocinioEsterno.CFU from tirocinioesterno \n"
+					"select distinct  registro.FirmaTutorAccamico,user.Name as n,user.Surname as c,tutoraccademico.Nome,tutoraccademico.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, "
+							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, user.EMAIL, "
+							+ "TirocinioEsterno.CFU from tirocinioesterno\n"
 							+ "join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n "
 							+ "join tutoraccademico "
 							+ "on tutoraccademico.ID_TutorAccademico = TirocinioEsterno.ID_TutorAccademico "
@@ -702,10 +703,14 @@ public class TirocinioEsternoDAO {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioEsterno"));
 				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccamico"));
 				a.setStatus(rs.getString("status"));
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
+				a.setNomeStudente(rs.getString("n"));
+				a.setCognomeStudente(rs.getString("c"));
+				a.setEmailStudente(rs.getString("user.EMAIL"));
 				lista.add(a);
 			}
 			return lista;
@@ -719,11 +724,12 @@ public class TirocinioEsternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoPdcdRegistro() {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,TirocinioEsterno.OreTotali, Registro.ID_Registro, tutoraziendale.Nome as nomeTutorAz, tutoraziendale.Cognome as cognomeTutorAz "
+					"select distinct User.name as n,User.surname as s,registro.FirmaTutorAccamico,TirocinioEsterno.ID_TirocinioEsterno, Registro.FirmaResponsabile, TirocinioEsterno.status, TirocinioEsterno.CFU,TirocinioEsterno.OreTotali, Registro.ID_Registro, tutoraziendale.Nome as nomeTutorAz, tutoraziendale.Cognome as cognomeTutorAz "
 							+ "from TirocinioEsterno "
 							+ "JOIN Registro on tirocinioesterno.ID_TirocinioEsterno=registro.ID_Tirocinio "
+							+ "JOIN User on User.EMAIL=tirocinioesterno.email "
 							+ "JOIN TutorAziendale on tirocinioesterno.ID_TutorAziendale=tutoraziendale.ID_TutorAziendale "
-							+ "where TirocinioEsterno.status='in svolgimento'");
+							+ "where registro.tipo='esterno'");
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
@@ -731,7 +737,10 @@ public class TirocinioEsternoDAO {
 			while (rs.next()) {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioEsterno"));
+				a.setNomeStudente(rs.getString("n"));
+				a.setCognomeStudente(rs.getString("s"));
 				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccamico"));
 				a.setStatus(rs.getString("status"));
 				a.setNumeroCFU(rs.getInt("CFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));

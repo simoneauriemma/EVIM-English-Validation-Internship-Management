@@ -190,52 +190,56 @@ $(document)
 										}
 									});
 
+					/* New surname updater start */
 					$(document)
-							.on(
-									"click",
-									".changeSurname",
-									function() {
-										var idUser = $(this).data("iduser");
-										var surname = $(this).data("surname");
-										var title = '';
-										var text = '';
-										var footer = '';
-
-										if (idUser != undefined
-												&& idUser.length > 0
-												&& surname != undefined
-												&& surname.length > 0) {
-											$(".preloader").show();
-
-											title = 'Cambia Cognome';
-
-											text += '<div class="form-group">';
-											text += '	<label for="name">Inserire il nuovo Cognome:</label>';
-											text += '	<input type="text" class="form-control" id="surname" placeholder="Cognome" minlength="1" maxlength="20" value="'
-													+ surname + '" required>';
-											text += '</div>';
-
-											footer += '<button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>';
-											footer += '<button type="submit" class="btn btn-default btn-success confirm" data-iduser="'
-													+ idUser
-													+ '" >Salva</button>';
-
-											$("#defaultModal form").attr("id",
-													"saveSurname");
-											$("#defaultModal .modal-title")
-													.html(title);
-											$("#defaultModal .modal-body")
-													.html(text);
-											$("#defaultModal .modal-footer")
-													.html(footer);
-
-											$("#defaultModal").modal("show");
-
-											$(".preloader").hide();
-										} else {
-											showAlert(1, "Errore parametri.");
+					.on(
+						"click",
+						"#changeSurname",
+						function() {
+							let idUser = $(this).data("iduser");
+							let oldSurname = $(this).data("surname");
+							let newSurname = prompt("Immetti il nuovo cognnome: ",	oldSurname);
+								if (newSurname) {
+									$.ajax({
+										url : absolutePath
+										+ "/ServletCommon",
+										type : "POST",
+										dataType : 'JSON',
+										async : false,
+										data : {
+											"idUser" : idUser,
+											"newSurname" : newSurname,
+											"flag" : 3
+										},
+										success : function(msg) {
+											if (!msg.result) {
+												showAlert(
+														1,
+														msg.error);
+											} else {
+												showAlert(
+														0,
+														msg.content);
+												$(
+														"#defaultModal")
+														.modal(
+																"hide");
+												setTimeout(
+														function() {
+															showData();
+														}, 2000);
+											}
+										},
+										error : function(msg) {
+											showAlert(1,
+													"Impossibile Recuperare i dati.");
 										}
 									});
+								} else {
+									console.error("U0JBR0xJLCBGRVJSVUNDSSBUUk9JQQ==");
+								}
+							});
+					/* New surname updater end */
 
 					$(document)
 							.on(
@@ -294,52 +298,57 @@ $(document)
 										}
 									});
 
+					
+					/* New name updater start */
 					$(document)
-							.on(
-									"click",
-									".changeName",
-									function() {
-										var idUser = $(this).data("iduser");
-										var name = $(this).data("name");
-										var title = '';
-										var text = '';
-										var footer = '';
-
-										if (idUser != undefined
-												&& idUser.length > 0
-												&& name != undefined
-												&& name.length > 0) {
-											$(".preloader").show();
-
-											title = 'Cambia Nome';
-
-											text += '<div class="form-group">';
-											text += '	<label for="name">Inserire il nuovo Nome:</label>';
-											text += '	<input type="text" class="form-control" id="name" placeholder="Nome" minlength="1" maxlength="20" value="'
-													+ name + '" required>';
-											text += '</div>';
-
-											footer += '<button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>';
-											footer += '<button type="submit" class="btn btn-default btn-success confirm" data-iduser="'
-													+ idUser
-													+ '" >Salva</button>';
-
-											$("#defaultModal form").attr("id",
-													"saveName");
-											$("#defaultModal .modal-title")
-													.html(title);
-											$("#defaultModal .modal-body")
-													.html(text);
-											$("#defaultModal .modal-footer")
-													.html(footer);
-
-											$("#defaultModal").modal("show");
-
-											$(".preloader").hide();
-										} else {
-											showAlert(1, "Errore parametri.");
+					.on(
+						"click",
+						"#changeName",
+						function() {
+							let idUser = $(this).data("iduser");
+							let oldName = $(this).data("name");
+							let newName = prompt("Immetti il nuovo nome: ",	oldName);
+								if (newName) {
+									$.ajax({
+										url : absolutePath
+										+ "/ServletCommon",
+										type : "POST",
+										dataType : 'JSON',
+										async : false,
+										data : {
+											"idUser" : idUser,
+											"newName" : newName,
+											"flag" : 2
+										},
+										success : function(msg) {
+											if (!msg.result) {
+												showAlert(
+														1,
+														msg.error);
+											} else {
+												showAlert(
+														0,
+														msg.content);
+												$(
+														"#defaultModal")
+														.modal(
+																"hide");
+												setTimeout(
+														function() {
+															showData();
+														}, 2000);
+											}
+										},
+										error : function(msg) {
+											showAlert(1,
+													"Impossibile Recuperare i dati.");
 										}
 									});
+								} else {
+									console.error("U0JBR0xJLCBGRVJSVUNDSSBUUk9JQQ==");
+								}
+							});
+					/* New name updater end */
 
 					$(document)
 							.on(

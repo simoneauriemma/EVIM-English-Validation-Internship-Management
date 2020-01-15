@@ -25,7 +25,7 @@
 			<div class="col-lg-3">
 				<jsp:include page="menu.jsp"></jsp:include>
 			</div>
-			<!-- SE L'UTENTE LOGGATO E' UN TUTOR AZIENDALEe-->
+			<!-- SE L'UTENTE LOGGATO E' UN TUTOR AZIENDALEee-->
 
 			<div class="col-lg-9"
 				style="border: 1px solid #d7d7d7; background-color: white;">
@@ -192,7 +192,8 @@
 												</form>
 											</c:if> <c:if test="${interno.firmaResponsabile == true}">
 												<i class="fas fa-check-square" style="color: green;"></i>
-											</c:if></td>
+											</c:if>
+											</td>
 									</tr>
 									<c:set var="count" value="${count + 1}" scope="session" />
 								</c:forEach>

@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1" import="controller.CheckSession"%>
 <%@ page
-	import="java.util.*,model.Request,controller.ServletAdmin,java.sql.ResultSet,java.sql.Statement"%>
+	import="java.util.*,model.Request,controller.DbConnection,controller.ServletAdmin,java.sql.ResultSet,java.sql.Statement"%>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/partials/head.jsp" />
+<jsp:include page="/WEB-INF/navbarBlu.jsp"></jsp:include>
 </head>
 
 <body onLoad="showData()">
@@ -15,9 +15,17 @@
 
 		<!-- Preloader -->
 		<!--  <div class="preloader"></div> -->
-
-
 		
+		<div class="container">
+	<br><br>
+		<div class="row">
+
+			<div class="col-lg-3">
+				<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
+			</div>
+			<div class="col-lg-9" id="" style="border: 1px solid #d7d7d7; background-color: white;">
+
+
 
 		<div class="sidebar-page-container basePage viewRequestAdmin">
 			<div class="auto-container">
@@ -25,7 +33,8 @@
 					<div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="content ">
 							<div class="news-block-seven">
-								<table id="adminTable" class="display data-results table table-striped table-hover table-bordered">
+								<table id="adminTable" class="display data-results table table-striped table-hover table-bordered" style="overflow-x: scroll;
+    display: block;">
 									<thead>
 										<tr>
 											<th class="text-center">ID</th>
@@ -63,7 +72,11 @@
 				</div>
 			</div>
 		</div>
-
+		
+			</div>
+	</div>
+	</div>
+		<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 		<jsp:include page="/partials/footer.jsp" />
 	</div>
 	<!--End pagewrapper-->
