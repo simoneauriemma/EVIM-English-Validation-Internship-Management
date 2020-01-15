@@ -729,7 +729,7 @@ public class TirocinioEsternoDAO {
 							+ "JOIN Registro on tirocinioesterno.ID_TirocinioEsterno=registro.ID_Tirocinio "
 							+ "JOIN User on User.EMAIL=tirocinioesterno.email "
 							+ "JOIN TutorAziendale on tirocinioesterno.ID_TutorAziendale=tutoraziendale.ID_TutorAziendale "
-							+ "");
+							+ "where registro.tipo='esterno'");
 
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
