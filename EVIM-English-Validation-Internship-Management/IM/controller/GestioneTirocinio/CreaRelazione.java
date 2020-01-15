@@ -49,7 +49,6 @@ public class CreaRelazione extends BaseServlet {
 
 			//controllo se devo inviare la relazione o se devo reindirizzare alla giusta pagina per compilare la relazione
 			if(descrizione!=null && emailstudente!=null) {
-				
 				result=RelazioneDAO.insertRelezione(utente.getId(), emailstudente, descrizione, status);
 				request.setAttribute("resultrelazione", result);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/home.jsp");

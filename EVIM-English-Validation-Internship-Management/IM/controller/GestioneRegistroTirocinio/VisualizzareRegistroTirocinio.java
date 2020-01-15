@@ -130,7 +130,7 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 	}
 
 	public static class RegistroQuery {
-		String descrizione, data, nomeAzienda, nomeStudente, cognomeStudente, nomeTutorAcc, cognomeTutorAcc;
+		String descrizione, data, nomeAzienda, nomeStudente, cognomeStudente, nomeTutorAcc, cognomeTutorAcc, emailStudente;
 		int orarioIngresso, orarioUscita, oreRaggiunte, oreSvolte, idRegistro, idAttivita;
 		boolean firmaResponsabile;
 
@@ -159,6 +159,14 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 		}
 		
 		
+
+		public String getEmailStudente() {
+			return emailStudente;
+		}
+
+		public void setEmailStudente(String emailStudente) {
+			this.emailStudente = emailStudente;
+		}
 
 		public int getIdAttivita() {
 			return idAttivita;

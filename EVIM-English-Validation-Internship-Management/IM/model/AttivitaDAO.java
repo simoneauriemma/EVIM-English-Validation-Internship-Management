@@ -11,7 +11,7 @@ import controller.GestioneRegistroTirocinio.VisualizzareRegistroTirocinio.Regist
 public class AttivitaDAO {
 
 	/**
-	 * RegistroQuery Ã  una classe interna di visualizzaRegistro
+	 * RegistroQuery Ã  una classe interna di visualizzaRegistro
 	 * 
 	 * @author Simone Auriemma
 	 * @param email
@@ -167,7 +167,7 @@ public class AttivitaDAO {
 	public ArrayList<RegistroQuery> doRetriveAllEsternoTutorAzi(int iDTutorAziendaele, String eMAIL) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select Descrizione, OrarioIngresso, OrarioUscita, attivita.FirmaResponsabile, Registro.OreRaggiunte, attivita.OreSvolte, attivita.data, user.NAME as nomeStudente, user.SURNAME as cognomeStudente,  attivita.OreSvolte "
+					"select Descrizione, OrarioIngresso, OrarioUscita, attivita.FirmaResponsabile, Registro.OreRaggiunte, attivita.OreSvolte, attivita.data, user.NAME as nomeStudente, user.SURNAME as cognomeStudente,  attivita.OreSvolte, user.EMAIL "
 							+ "from attivita JOIN Registro ON Registro.ID_Registro = Attivita.ID_Registro "
 							+ "JOIN tirocinioesterno ON tirocinioesterno.ID_TirocinioEsterno = Registro.ID_Tirocinio "
 							+ "JOIN tutoraziendale ON tirocinioesterno.ID_TutorAccademico=tutoraziendale.ID_TutorAziendale "
@@ -190,7 +190,7 @@ public class AttivitaDAO {
 				a.setCognomeStudente(rs.getString(9));
 				a.setNomeStudente(rs.getString(8));
 				a.setOreSvolte(rs.getInt(10));
-
+				a.setEmailStudente(rs.getString(11));
 				listaAttivita.add(a);
 
 			}
