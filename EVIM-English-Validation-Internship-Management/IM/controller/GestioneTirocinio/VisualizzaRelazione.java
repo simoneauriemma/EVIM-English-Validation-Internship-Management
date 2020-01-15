@@ -52,6 +52,7 @@ public class VisualizzaRelazione extends HttpServlet {
 			relazione.put("idtutor", r.getIdtutor());
 	
 			response.getWriter().append(relazione.toString());
+			System.out.println(relazione.toString());
 			
 		}
 		

@@ -658,7 +658,7 @@ public class TirocinioEsternoDAO {
 				a.setRegistro_status(status_registro);
 				if (status_registro.contentEquals("completato")) {
 					String query = "select relazione.ID_Relazione from relazione join TirocinioEsterno on TirocinioEsterno.ID_TutorAziendale= relazione.ID_TutorAziendale "
-							+ "where TirocinioEsterno.ID_TirocinioEsterno=? and TirocinioEsterno.ID_TutorAccademico=?"; // aggiustare
+							+ "where TirocinioEsterno.ID_TirocinioEsterno=? and TirocinioEsterno.ID_TutorAccademico=? and relazione.status='in approvazione'"; // aggiustare
 					ps = con.prepareStatement(query);
 					ps.setInt(1, idTir);
 					ps.setInt(2, id);
