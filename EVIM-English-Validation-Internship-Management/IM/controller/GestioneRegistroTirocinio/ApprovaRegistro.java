@@ -67,10 +67,10 @@ public class ApprovaRegistro extends BaseServlet {
 			
 			int idtirocinio = Integer.parseInt((String) request.getParameter("idtirocinio"));
 			if(tipotirocinio.equals("esterno")) {
-				result = RegistroDAO.doAlterFirmaPdcdEsterno(idtirocinio);
+				result = RegistroDAO.doAlterFirmaPdcdEsterno(idtirocinio,idtirocinio);
 			}
 			else if(tipotirocinio.equals("interno")) {
-				result = RegistroDAO.doAlterFirmaPdcdInterno(idtirocinio);
+				result = RegistroDAO.doAlterFirmaPdcdInterno(idregistro,idtirocinio);
 			}
 
 		}
