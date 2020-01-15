@@ -834,5 +834,30 @@ public class TirocinioEsternoDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	/**
+	 * @author Antonio Giano
+	 * @param email, chiave primaria dello studente. 
+	 * @return un true se lo studente in questione ha fatto una richiesta di tirocinio altriment false
+	 */
+	public static boolean getStatusTirocinioEsterno(String email) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+
+			PreparedStatement ps = con.prepareStatement(
+					"select * \n" + 
+					"from evim.TirocinioEsterno\n" + 
+					"where status='in approvazione' or status='in svolgimento' and EMAIL=?;");
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+
+			if(rs.next()) {
+				return true;
+			}
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 
 }

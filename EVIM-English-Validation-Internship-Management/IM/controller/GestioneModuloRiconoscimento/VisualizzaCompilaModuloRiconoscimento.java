@@ -78,7 +78,7 @@ public class VisualizzaCompilaModuloRiconoscimento extends HttpServlet {
 			ResultSet rs=ps.executeQuery();
 			int CFU=-1;
 			if(rs.next())
-					CFU=rs.getInt("VALIDATED_CFU");
+				CFU=rs.getInt("VALIDATED_CFU");
 			return CFU;
 		
 		}catch(SQLException e){

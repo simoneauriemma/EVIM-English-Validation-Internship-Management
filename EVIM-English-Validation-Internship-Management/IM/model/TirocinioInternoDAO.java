@@ -432,4 +432,30 @@ public class TirocinioInternoDAO {
 
 	}
 
+	
+	/**
+	 * @author Antonio Giano
+	 * @param email
+	 * @return
+	 */
+	public static boolean getStatusTirocinioInterno(String email) {
+		try (Connection con = DriverManagerConnectionPool.getConnection()) {
+			String inValutazione = "in approvazione";
+			PreparedStatement ps = con.prepareStatement(
+					"select * \n" + 
+					"from evim.TirocinioInterno\n" + 
+					"where status='in approvazione' or status='in svolgimento' and EMAIL=?;");
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+
+			if(rs.next()) {
+				return true;
+			}
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
 }

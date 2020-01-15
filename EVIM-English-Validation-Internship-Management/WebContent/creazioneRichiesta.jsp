@@ -7,10 +7,20 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="stiliCSS/stiliCreazioneRichiesta.css">
 <title>Creazione richiesta</title>
+
+<style type="text/css">
+select.er{
+	border:1px solid red;
+	}
+	
+.error{
+	color:red;
+}
+</style>
 </head>
 
 <div class="container">
-	<form action="CreaRichiestaTirocinio" method="post">
+	<form action="CreaRichiestaTirocinio" method="post" id="formCreaRichiesta">
 		<div class="row">
 			<div class="col-lg-3">
 				<jsp:include page="WEB-INF/menu.jsp"></jsp:include>
@@ -52,6 +62,7 @@
 						</div>
 
 						<div class="scelta-drop">
+						<span class="error" id="errore1">Seleziona un'opzione</span>
 							<div class="form-group">
 								<label for="sel2"><i class="fas fa-building"></i>
 									Seleziona azienda</label> <select class="form-control" id="sel2"
@@ -63,6 +74,7 @@
 						</div>
 						
 						<div class="scelta-drop">
+						<span class="error" id="errore2">Seleziona un'opzione</span>
 							<div class="form-group">
 								<label for="sel4"><i class="fas fa-user"></i> Seleziona
 									Tutor Accademico</label> <select class="form-control" id="sel4"
@@ -75,6 +87,7 @@
 							</div>
 						</div>
 						<div class="scelta-drop">
+						<span class="error" id="errore3">Seleziona un'opzione</span>
 							<div class="form-group">
 								<label for="sel3"><i class="fas fa-edit"></i> Seleziona
 									proposta </label> <select class="form-control" id="sel3" name="sel3">
@@ -89,11 +102,11 @@
 					<br>
 				</div>
 				<span class="text-right" style="margin-left: 350px;"><button
-						type="submit" class="btn btn-primary" data-toggle="modal"
+						type="submit"   class="btn btn-primary" data-toggle="modal"
 						data-target="#exampleModalCenter"
 						style="background-color: #2C5278;">CONFERMA</button></span> <br> <br>
 
-				<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+				<!--<div class="modal fade" id="exampleModalCenter" tabindex="-1"
 					role="dialog" aria-labelledby="exampleModalCenterTitle"
 					aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered" role="document">
@@ -105,14 +118,15 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<div class="modal-body">Richiesta effettuata con successo!</div>
+							
+							<!--  <div class="modal-body">Richiesta effettuata con successo!</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
+								<button type="button"  class="btn btn-secondary"
 									data-dismiss="modal">Close</button>
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>-->
 			</div>
 
 		</div>
@@ -544,5 +558,66 @@
 			xmlHttp.send();
 		}
 	}
+	
+	$(".error").hide();
+	
+	$("#formCreaRichiesta").submit(function(){
+		var res=true;
+		var tirocinio=$("#sel1").val();
+		
+		if(tirocinio=="tirocinio1")
+		{
+			$("#formCreaRichiesta").find("select").each(function(){
+				var idStringa=($(this).attr("id"));
+				if(!validateTirocinioEsterno(idStringa)){
+					$(this).addClass("er");
+					res=false;
+				}
+				else if($(this).hasClass("er")){
+					$(this).removeClass("er");
+				}
+			});
+		}
+		else{
+			$("#formCreaRichiesta").find("select").each(function(){
+				var idStringa=($(this).attr("id"));
+				if(!validateTirocinioInterno(idStringa)){
+					$(this).addClass("er");
+					res=false;
+				}
+				else if($(this).hasClass("er")){
+					$(this).removeClass("er");
+				}
+			});
+		}
+		return res;
+	});
+	
+	function validateTirocinioEsterno(idCampo){
+		if(idCampo!="sel3"){
+			var campo=document.getElementById(""+idCampo);
+			var valore=campo.options[campo.selectedIndex].text;
+			if(valore=="Seleziona un'opzione")
+				return false;
+			return true;
+		}
+	return true;
+	}
+	
+	function validateTirocinioInterno(idCampo){
+		
+		
+		if(idCampo!="sel3" && idCampo!="sel2"){
+			var campo=document.getElementById(""+idCampo);
+			var valore=campo.options[campo.selectedIndex].text;
+			if(valore=="Seleziona un'opzione")
+				return false;
+			return true;
+		}
+	return true;
+	}
+	
+	
+	
 	
 </script>
