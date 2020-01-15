@@ -124,7 +124,7 @@
 
 				<!-- SE L'UTENTE LOGGATO E' UN TUTOR ACCADEMICO-->
 				<c:if test="${type == 'tutoraccademico'}">
-					<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
+					
 					
 					<c:set var="count" value="0" scope="session" />
 					<c:set var="sumOre" value="0" scope="session" />
