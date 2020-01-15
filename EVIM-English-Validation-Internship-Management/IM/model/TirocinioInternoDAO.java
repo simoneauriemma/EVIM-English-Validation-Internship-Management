@@ -404,7 +404,7 @@ public class TirocinioInternoDAO {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			String inSvolgimento="in svolgimento";
 			PreparedStatement ps = con.prepareStatement(
-					"select registro.FirmaTutorAccamico,TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, tirociniointerno.status, tirociniointerno.NumeroCFU ,tirociniointerno.OreTotali, Registro.ID_Registro, tutoraccademico.Nome as nomeTutorAcc, tutoraccademico.Cognome as cognomeTutorAcc " + 
+					"select user.name as n,user.surname as s,registro.FirmaTutorAccamico,TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, tirociniointerno.status, tirociniointerno.NumeroCFU ,tirociniointerno.OreTotali, Registro.ID_Registro, tutoraccademico.Nome as nomeTutorAcc, tutoraccademico.Cognome as cognomeTutorAcc " + 
 					"from tirociniointerno " + 
 					"JOIN Registro on registro.ID_Registro=tirocinioInterno.ID_TirocinioInterno " + 
 					"JOIN TutorAccademico on tirociniointerno.ID_tutorAccademico=tutoraccademico.ID_TutorAccademico " + 
@@ -417,6 +417,8 @@ public class TirocinioInternoDAO {
 				RegistroQuery a = new RegistroQuery();
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioInterno"));
 				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
+				a.setCognomeStudente(rs.getString("s"));
+				a.setNomeStudente(rs.getString("n"));
 				a.setStatus(rs.getString("status"));
 				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccamico"));
 				a.setNumeroCFU(rs.getInt("NumeroCFU"));
