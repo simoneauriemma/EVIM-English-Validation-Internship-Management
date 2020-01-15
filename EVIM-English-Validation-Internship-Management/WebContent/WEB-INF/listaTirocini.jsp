@@ -85,7 +85,7 @@ body {
 											<input type="hidden" name="EMAIL"
 												id="emailStudenteEsterno${count}"
 												value="<c:out value="${esterno.emailStudente}" />">
-											<button id="registroI" class="fas fa-book"
+											<button id="registroI" class="fas fa-book" type="submit"
 												style="border: none; background-color: transparent;"></button>
 
 										</form> <a

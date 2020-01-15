@@ -110,6 +110,7 @@ public class VisualizzareRegistroTirocinio extends BaseServlet {
 				ArrayList<RegistroQuery> listaTirociniEsterno = new AttivitaDAO()
 						.doRetriveAllEsternoTutorAzi(aziendale.getId(), EMAIL);
 
+				
 				request.setAttribute("listaAttivitaEsterno", listaTirociniEsterno);
 
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/registroTirocinio(tutor).jsp");
