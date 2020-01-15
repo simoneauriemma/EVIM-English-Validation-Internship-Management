@@ -197,7 +197,7 @@ body {
 									<form action="VisualizzaRegistroTirocinio" method="get">
 										<input type="hidden" name="EMAIL"
 											value=<c:out value="${interno.emailStudente}" />>
-										<button id="registroI" class="fas fa-book"></button>
+										<button id="registroI" class="fas fa-book" style="border:none; background-color: transparent;"></button>
 
 									</form>
 
