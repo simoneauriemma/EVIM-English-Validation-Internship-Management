@@ -153,7 +153,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		// inizio sezione n.totale di crediti
 		int totCFU=pdfProgetto.getTotCFU();
 		Phrase numeroTitleTotCFU=new Phrase();
-		numeroTitleTotCFU.add(new Chunk("\nN.TOTALE DI CREDITI FORMATIVI PREVISTI PER L'ATTIVITA DI TIROCINIO ",campiTitoli));
+		numeroTitleTotCFU.add(new Chunk("\nN.TOTALE DI CREDITI FORMATIVI PREVISTI PER L'ATTIVITA' DI TIROCINIO ",campiTitoli));
 		numeroTitleTotCFU.add(new Chunk(""+totCFU,campiCompilati));
 		numeroTitleTotCFU.add(new Chunk(" di cui:",campiTitoli));
 		if(pdfProgetto.getCorsoLaurea().equalsIgnoreCase("triennale")) {
@@ -227,7 +227,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		Phrase stringaObbligo=new Phrase();
 		stringaObbligo.add(new Chunk("OBBLIGHI DEL TIROCINANTE",campiTitoli));
 		stringaObbligo.add(new Chunk("\n"
-				+ "- Svolgere le attività previste dal presente progetto formativo e di orientamento, rispettando l’ambiente di lavoro;\n" + 
+				+ "- Svolgere le attivita' previste dal presente progetto formativo e di orientamento, rispettando l’ambiente di lavoro;\n" + 
 				"- seguire le indicazioni dei tutori e fare riferimento ad essi per qualsiasi esigenza di tipo organizzativo o altre evenienze;\n" + 
 				"- rispettare gli orari e le regole di comportamento concordati nel presente progetto;\n" + 
 				"- rispettare i regolamenti interni e le norme disciplinari in uso presso il soggetto ospitante;\n" + 
@@ -467,7 +467,7 @@ public class VisualizzaProgettoFormativo extends HttpServlet {
 		// inizio sezione n.totale di crediti
 		int totCFU=pdfProgetto.getTotCFU();
 		Phrase numeroTitleTotCFU=new Phrase();
-		numeroTitleTotCFU.add(new Chunk("\nN.TOTALE DI CREDITI FORMATIVI PREVISTI PER L'ATTIVITA DI TIROCINIO ",campiTitoli));
+		numeroTitleTotCFU.add(new Chunk("\nN.TOTALE DI CREDITI FORMATIVI PREVISTI PER L'ATTIVITA' DI TIROCINIO ",campiTitoli));
 		numeroTitleTotCFU.add(new Chunk(""+totCFU,campiCompilati));
 		numeroTitleTotCFU.add(new Chunk(" di cui:",campiTitoli));
 		if(pdfProgetto.getCorsoLaurea().equalsIgnoreCase("triennale")) {

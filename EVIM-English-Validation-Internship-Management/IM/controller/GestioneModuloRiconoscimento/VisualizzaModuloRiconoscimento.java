@@ -219,7 +219,7 @@ public class VisualizzaModuloRiconoscimento extends HttpServlet {
 		
 		Phrase stringaValutata= new Phrase(new Chunk("Che venga valutata l’esperienza professionale da me maturata e così caratterizzata:",campiStatiche));
 		
-		Phrase stringaPrimaEnteAzienda=new Phrase(new Chunk("ENTE/AZIENDA\nPresso cui è stata svolta l'attività",campiStatiche));
+		Phrase stringaPrimaEnteAzienda=new Phrase(new Chunk("ENTE/AZIENDA\nPresso cui è stata svolta l'attivita'",campiStatiche));
 		
 		Phrase stringaCampoEnteAzienda= new Phrase(new Chunk(moduloRiconoscimento.getEnteAzienda(),campiCompilati));
 		
