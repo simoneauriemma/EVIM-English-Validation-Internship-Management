@@ -72,7 +72,7 @@ public class RelazioneDAO {
 	}
 	//
 	public static Relazione doRetriveRelazionefromId(int idRelazione) {
-		String query= "select * from relazione where relazione.ID_Relazione = ? status= 'in approvazione'";
+		String query= "select * from relazione where relazione.ID_Relazione = ? and status= 'in approvazione'";
 		Relazione r=new Relazione();
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(query);

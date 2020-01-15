@@ -132,7 +132,7 @@ body {
 													Visualizza relazione</button>
 
 												<!-- Modal -->
-												<form action="ValutaRelazione">
+												<form action="ValutaRelazione" id="formapprova">
 												<div class="modal fade" id="exampleModalCenter"
 													tabindex="-1" role="dialog"
 													aria-labelledby="exampleModalCenterTitle"
@@ -155,10 +155,10 @@ body {
 
 															</div>
 															<div class="modal-footer">
-																<button type="submit" class="btn btn-secondary"
-																	data-dismiss="modal" value="1" name="approva">Approva</button>
-																<button type="button" class="btn btn-secondary"
-																	data-dismiss="modal" value="0" name="approva">Rifiuta</button>
+																<button type="submit" class="btn btn-secondary" form="formapprova"
+																	 value="1" name="approva">Approva</button>
+																<button type="submit" class="btn btn-secondary" form="formapprova"
+																	 value="0" name="approva">Rifiuta</button>
 															</div>
 														</div>
 													</div>
@@ -269,15 +269,16 @@ function setEmail(i){
 }
 
 function vediRelazione(idr){
-	$.get( "VisualizzaRelazione?idrelazione="+idr, function( data ) {
-		var relazione= jQuery.parseJSON(data);
+	$.get( "VisualizzaRelazione?idrelazione="+idr , function( data ) {
+		
+		var relazione= JSON.parse(data);
 		var hiddenid= $("#hiddenid");
 		var descrizione= $("#descrizioneVisualizza");
 		
-		hiddenid.val(data.id);
+		hiddenid.val(relazione.id);
 		
-	  $( "#descrizione" ).html(data.descrizione);
-	  alert( "Load was performed." );
+	 	descrizione.html(relazione.descrizione);
+
 	});
 }
 </script>

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import model.DriverManagerConnectionPool;
 import model.RelazioneDAO;
+import model.TutorAccademico;
 import model.TutorAziendale;
 
 /**
@@ -37,12 +38,14 @@ public class ValutaRelazione extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session= request.getSession();
-		TutorAziendale tutor= (TutorAziendale) session.getAttribute("utenteLoggato");
+		TutorAccademico tutor= (TutorAccademico) session.getAttribute("utenteLoggato");
 		String nome= (String) session.getAttribute("type");
 		String approva= request.getParameter("approva");
 		boolean result=false;
 		int idrelazione= Integer.parseInt( request.getParameter("idrelazione"));
-		if(tutor!=null && nome.contentEquals("tutoraziendale")) {
+		
+		System.out.println("approva:"+approva);
+		if(tutor!=null && nome.contentEquals("tutoraccademico")) {
 			if(approva.contentEquals("1")) {
 				result=RelazioneDAO.doAlterRelazione(true, idrelazione);
 			}
