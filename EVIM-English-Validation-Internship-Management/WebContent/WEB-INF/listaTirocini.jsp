@@ -111,12 +111,12 @@ body {
 										</c:if>
 										
 											<c:if
-											test="${(esterno.firmaTutorAccademico == true && esterno.firmaResponsabile == true && esterno.status== 'in svolgimento') && type == 'pdcd'}">
+											test="${esterno.status== 'in svolgimento' && type == 'pdcd'}">
 											<a
 												href="ApprovaRegistro?idregistro=${esterno.ID_Registro}&tipotirocinio=esterno&idtirocinio=${esterno.ID_Tirocinio}"><i
 												class="fas fa-check-square" id="accettare"></i></a>
 										</c:if> <c:if
-											test="${(esterno.firmaTutorAccademico == false || esterno.firmaResponsabile == false || esterno.status== 'completato') && type == 'pdcd'}">
+											test="${esterno.status== 'completato' && type == 'pdcd'}">
 											<i class="fas fa-check-square" style="color: green;"></i>
 										</c:if>
 
@@ -238,19 +238,19 @@ body {
 										<button id="registroI" class="fas fa-book"
 											style="border: none; background-color: transparent;"></button>
 
-									</form> <c:if test="${interno.firmaResponsabile == false}">
+									</form> <c:if test="${interno.firmaResponsabile == false && type == 'tutoraccademico'}">
 										<a
 											href="ApprovaRegistro?idregistro=${interno.ID_Registro}&tipotirocinio=interno&idtirocinio=${interno.ID_Tirocinio}">
 
 											<i class="fas fa-check-square" id="accettare"></i>
 										</a>
-									</c:if> <c:if test="${interno.firmaResponsabile == true && interno.firmaTutorAccademico==true}">
+									</c:if> <c:if test="${interno.firmaResponsabile == true && interno.firmaTutorAccademico==true && type == 'tutoraccademico'}">
 										<i class="fas fa-check-square" style="color: green;"></i>
 									</c:if>
 									
 									
 									
-									 <c:if test="${interno.firmaResponsabile == true && interno.status == 'in svolgimento' }">
+									 <c:if test="${interno.status == 'in svolgimento'  }">
 										<a
 											href="ApprovaRegistro?idregistro=${interno.ID_Registro}&tipotirocinio=interno&idtirocinio=${interno.ID_Tirocinio}">
 
@@ -258,7 +258,7 @@ body {
 										</a>
 									</c:if>
 									
-										<c:if test="${interno.firmaResponsabile == true && interno.status == 'approvato'}">
+										<c:if test="${interno.status == 'approvato'}">
 										<i class="fas fa-check-square" style="color: green;"></i>
 									</c:if>
 									

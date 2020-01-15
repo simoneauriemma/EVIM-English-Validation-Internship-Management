@@ -404,12 +404,13 @@ public class TirocinioInternoDAO {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			String inSvolgimento="in svolgimento";
 			PreparedStatement ps = con.prepareStatement(
-					"select user.name as n,user.surname as s,registro.FirmaTutorAccamico,TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, tirociniointerno.status, tirociniointerno.NumeroCFU ,tirociniointerno.OreTotali, Registro.ID_Registro, tutoraccademico.Nome as nomeTutorAcc, tutoraccademico.Cognome as cognomeTutorAcc " + 
+					"select user.NAME as n,user.SURNAME as s,registro.FirmaTutorAccamico,TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, tirociniointerno.status, tirociniointerno.NumeroCFU ,tirociniointerno.OreTotali, Registro.ID_Registro, tutoraccademico.Nome as nomeTutorAcc, tutoraccademico.Cognome as cognomeTutorAcc " + 
 					"from tirociniointerno " + 
-					"JOIN Registro on registro.ID_Registro=tirocinioInterno.ID_TirocinioInterno " + 
-					"JOIN TutorAccademico on tirociniointerno.ID_tutorAccademico=tutoraccademico.ID_TutorAccademico " + 
-					"where TirocinioInterno.status=?");
-			ps.setString(1, inSvolgimento);
+					"JOIN Registro on registro.ID_Tirocinio=tirocinioInterno.ID_TirocinioInterno " + 
+					"JOIN TutorAccademico on tirociniointerno.ID_tutorAccademico=tutoraccademico.ID_TutorAccademico "
+					+ "JOIN user on user.EMAIL=tirociniointerno.email " + 
+					"where registro.tipo='interno'");
+			
 			ArrayList<RegistroQuery> lista = new ArrayList<RegistroQuery>();
 			ResultSet rs = ps.executeQuery();
 
