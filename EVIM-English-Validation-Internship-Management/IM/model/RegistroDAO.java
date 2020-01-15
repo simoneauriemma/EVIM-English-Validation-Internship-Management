@@ -75,6 +75,10 @@ public class RegistroDAO {
 																	// firma
 
 	    ps.setInt(1, idregistro);
+	    
+	    if (ps.executeUpdate() == 1) {
+	    	result= true;
+	    }
 
 
 	    
