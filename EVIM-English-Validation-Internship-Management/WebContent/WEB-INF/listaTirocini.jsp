@@ -25,6 +25,9 @@ body {
 			<jsp:include page="menu.jsp"></jsp:include>
 
 		</div>
+		<%
+			int n = 0;
+		%>
 		<div class="col-lg-9" id="col-9">
 
 			<p id="titolo" class="text-center">Lista tirocini</p>
@@ -85,11 +88,10 @@ body {
 											<button id="registroI" class="fas fa-book"
 												style="border: none; background-color: transparent;"></button>
 
-										</form>
+										</form> <a
+										href="ApprovaRegistro?idregistro=${esterno.ID_Registro}&tipotirocinio=esterno&idtirocinio=${esterno.ID_Tirocinio}"><i
+											class="fas fa-check-square" id="accettare"></i></a>
 
-										
-											<a href="ApprovaRegistro?idregistro=${esterno.ID_Registro}&tipotirocinio=esterno&idtirocinio=${esterno.ID_Tirocinio}"><i class="fas fa-check-square" id="accettare"></i></a>
-										
 									</td>
 									<!-- ...... -->
 
@@ -100,14 +102,18 @@ body {
 
 									<td class="text-center"><c:if
 											test="${type=='tutoraziendale'}">
+											<%
+												n = n + 1;
+											%>
 											<div class="panel-group" style="width: 120px;">
 												<div class="panel panel-default">
 													<div class="panel-heading" class="text-center">
 														<h6 class="panel-title">
-															<a data-toggle="collapse" href="#collapse1"> Scegli </a>
+															<a data-toggle="collapse" href="#collapse<%=n%>">
+																Scegli </a>
 														</h6>
 													</div>
-													<div id="collapse1" class="panel-collapse collapse">
+													<div id="collapse<%=n%>" class="panel-collapse collapse">
 														<ul class="list-group">
 															<li class="list-group-item"><a class="list-item"
 																data-toggle="modal" data-target="#ciaoo"
@@ -128,41 +134,42 @@ body {
 
 												<!-- Button trigger modal -->
 												<button type="button" class="btn btn-primary"
-													data-toggle="modal" data-target="#exampleModalCenter" onclick="vediRelazione('${esterno.ID_Relazione}')">
+													data-toggle="modal" data-target="#exampleModalCenter"
+													onclick="vediRelazione('${esterno.ID_Relazione}')">
 													Visualizza relazione</button>
 
 												<!-- Modal -->
 												<form action="ValutaRelazione" id="formapprova">
-												<div class="modal fade" id="exampleModalCenter"
-													tabindex="-1" role="dialog"
-													aria-labelledby="exampleModalCenterTitle"
-													aria-hidden="true">
-													<div class="modal-dialog modal-dialog-centered"
-														role="document" >
-														<div class="modal-content">
-															<div class="modal-header">
-																<input id="hiddenid" type="hidden" name="idrelazione"></input>
-																<h5 class="modal-title" id="exampleModalLongTitle">
-																	Approva relazione</h5>
-																<button type="button" class="close" data-dismiss="modal"
-																	aria-label="Close">
-																	<span aria-hidden="true">&times;</span>
-																</button>
-															</div>
-															<div class="modal-body" id="descrizioneVisualizza">
-																<!-- aggiungere la relazione che ha compilato il tutor aziendale -->
+													<div class="modal fade" id="exampleModalCenter"
+														tabindex="-1" role="dialog"
+														aria-labelledby="exampleModalCenterTitle"
+														aria-hidden="true">
+														<div class="modal-dialog modal-dialog-centered"
+															role="document">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<input id="hiddenid" type="hidden" name="idrelazione"></input>
+																	<h5 class="modal-title" id="exampleModalLongTitle">
+																		Approva relazione</h5>
+																	<button type="button" class="close"
+																		data-dismiss="modal" aria-label="Close">
+																		<span aria-hidden="true">&times;</span>
+																	</button>
+																</div>
+																<div class="modal-body" id="descrizioneVisualizza">
+																	<!-- aggiungere la relazione che ha compilato il tutor aziendale -->
 
 
-															</div>
-															<div class="modal-footer">
-																<button type="submit" class="btn btn-secondary" form="formapprova"
-																	 value="1" name="approva">Approva</button>
-																<button type="submit" class="btn btn-secondary" form="formapprova"
-																	 value="0" name="approva">Rifiuta</button>
+																</div>
+																<div class="modal-footer">
+																	<button type="submit" class="btn btn-secondary"
+																		form="formapprova" value="1" name="approva">Approva</button>
+																	<button type="submit" class="btn btn-secondary"
+																		form="formapprova" value="0" name="approva">Rifiuta</button>
+																</div>
 															</div>
 														</div>
 													</div>
-												</div>
 												</form>
 											</c:when>
 											<c:when
@@ -197,7 +204,8 @@ body {
 									<form action="VisualizzaRegistroTirocinio" method="get">
 										<input type="hidden" name="EMAIL"
 											value=<c:out value="${interno.emailStudente}" />>
-										<button id="registroI" class="fas fa-book" style="border:none; background-color: transparent;"></button>
+										<button id="registroI" class="fas fa-book"
+											style="border: none; background-color: transparent;"></button>
 
 									</form>
 
@@ -235,13 +243,13 @@ body {
 
 									<input type="hidden" id="emailS" name="emailstudente" value="">
 									<textarea name="descrizione" class="form-control"
-										id="descrizione"
-										placeholder="Compila verbale tirocinio..." rows="3"></textarea>
-								
+										id="descrizione" placeholder="Compila verbale tirocinio..."
+										rows="3"></textarea>
+
 
 
 								</div>
-								
+
 								<div class="modal-footer">
 									<button type="submit" class="btn btn-primary">INVIA</button>
 								</div>
