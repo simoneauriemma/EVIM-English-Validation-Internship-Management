@@ -80,7 +80,7 @@ p {
 							class="fab fa-linkedin"></i></a>
 					</p>
 					<p>
-						<img src="foto/team/vicenzo.jpg" alt="Vincenzo Colacicco"
+						<img src="foto/team/vincenzo.jpg" alt="Vincenzo Colacicco"
 							class="img-thumbnail"> Vincenzo Colacicco | <a
 							href="https://www.linkedin.com/in/vincenzo-colacicco-4a3566123/"
 							style=""><i class="fab fa-linkedin"></i></a>
