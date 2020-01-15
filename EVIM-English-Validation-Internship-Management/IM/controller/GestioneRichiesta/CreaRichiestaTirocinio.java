@@ -30,7 +30,7 @@ public class CreaRichiestaTirocinio extends BaseServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Controllo se l'utente è loggato e ha i permessi per la pagina
+		// Controllo se l'utente ï¿½ loggato e ha i permessi per la pagina
 		HttpSession sessione = request.getSession();
 		if (sessione.getAttribute("utenteLoggato") == null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
@@ -73,6 +73,7 @@ public class CreaRichiestaTirocinio extends BaseServlet {
 						if (TirocinioEsternoDAO.doInsert(idTutAcc, idTutAz, ore, cfu, idProp, studente.getEmail(), data,
 								"in approvazione")) {
 							System.out.println("Query successfully executed");
+							request.setAttribute("creaRichiesta", true);
 							RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/home.jsp");
 							dispatcher.forward(request, response);
 
@@ -84,6 +85,7 @@ public class CreaRichiestaTirocinio extends BaseServlet {
 					} else/* Si tratta di tirocinio Interno */ {
 						if (TirocinioInternoDAO.doInsert(studente.getEmail(), idTutAcc, data, (11 * 25),
 								"in approvazione", 11, idProp)) {
+							request.setAttribute("creaRichiesta", true);
 							RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/home.jsp");
 							dispatcher.forward(request, response);
 						} else {
