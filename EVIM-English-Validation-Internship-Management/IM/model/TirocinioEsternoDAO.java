@@ -292,26 +292,25 @@ public class TirocinioEsternoDAO {
 	public static PDFProgettoFormativo getProgettoFormativoEsterno(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con
-					.prepareStatement("select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL \n"
-							+ "as EmailStudente,USER.tipoCorso as CorsoStudente,USER.Telefono as TelefonoStudente,USER.Data_Nascita as DataNascitaStudente,\n"
-							+ "USER.Luogo_Nascita as LuogoNascitaStudente,USER.Residente as ResidenteStudente,TutorAccademico.Nome as NomeTutor,\n"
-							+ "TutorAccademico.cognome as CognomeTut,TutorAziendale.nome as NomeTutorAz,\n"
-							+ "TutorAziendale.cognome as CognomeAz,TutorAziendale.email as EmailTutorAz,TutorAziendale.Telefono as TelefonoTutAz,\n"
-							+ "Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita,Proposta.Competenze as Competenze,\n"
-							+ "TirocinioEsterno.OreTotali as Oretotal,TirocinioEsterno.CFU as CFU,Azienda.nome as NomeAzienda, Azienda.Indirizzo as IndirizzoAzienda,\n"
-							+ "Azienda.CF as CodiceFiscaleAzienda,referente_aziendale.nome as NomeReferente,referente_aziendale.cognome as CognomeReferente,\n"
-							+ "referente_aziendale.ruolo as RuoloReferente,referente_aziendale.luogo_nascita as LuogoNascitaReferente,\n"
-							+ "referente_aziendale.data_nascita as DataNascitaReferente,Azienda.codice_ateco as CodiceAtecoAzienda,\n"
-							+ "Azienda.numero_dipendenti as NumeroDipendentiAzienda,Azienda.email as EmailAzienda,\n"
-							+ "convenzione.DataConvezione as DataConvenzione, convenzione.Repertorio as RepertorioConvezione\n"
-							+ "from TirocinioEsterno join evim.USER on TirocinioEsterno.EMAIL=USER.EMAIL\n"
-							+ "join evim.Proposta on TirocinioEsterno.ID_Proposta=Proposta.ID_Proposta\n"
-							+ "join evim.TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioEsterno.ID_tutorAccademico\n"
-							+ "join evim.TutorAziendale on TutorAziendale.ID_TutorAziendale=TirocinioEsterno.ID_TirocinioEsterno\n"
-							+ "join evim.Azienda on Azienda.ID_Azienda=TutorAziendale.ID_Azienda\n"
-							+ "join evim.referente_aziendale on referente_aziendale.CF=Azienda.CF_Referente\n"
-							+ "join evim.convenzione on Azienda.ID_Convenzione=convenzione.ID\n"
-							+ "where ID_TirocinioEsterno=?;");
+					.prepareStatement("select USER.NAME as NomeStudente,USER.SURNAME as CognomeStudente,USER.EMAIL as EmailStudente,USER.tipoCorso as CorsoStudente,USER.Telefono as TelefonoStudente,USER.Data_Nascita as DataNascitaStudente,\n" + 
+							"USER.Luogo_Nascita as LuogoNascitaStudente,USER.Residente as ResidenteStudente,TutorAccademico.Nome as NomeTutor,\n" + 
+							"TutorAccademico.cognome as CognomeTut,TutorAziendale.nome as NomeTutorAz,\n" + 
+							"TutorAziendale.cognome as CognomeAz,TutorAziendale.email as EmailTutorAz,TutorAziendale.Telefono as TelefonoTutAz,\n" + 
+							"Proposta.Obiettivi as Obiettivi,Proposta.Attivita as Attivita,Proposta.Modalita as Modalita,Proposta.Competenze as Competenze,\n" + 
+							"TirocinioEsterno.OreTotali as Oretotal,TirocinioEsterno.CFU as CFU,Azienda.nome as NomeAzienda, Azienda.Indirizzo as IndirizzoAzienda,\n" + 
+							"Azienda.CF as CodiceFiscaleAzienda,referente_aziendale.nome as NomeReferente,referente_aziendale.cognome as CognomeReferente,\n" + 
+							"referente_aziendale.ruolo as RuoloReferente,referente_aziendale.luogo_nascita as LuogoNascitaReferente,\n" + 
+							"referente_aziendale.data_nascita as DataNascitaReferente,Azienda.codice_ateco as CodiceAtecoAzienda,\n" + 
+							"Azienda.numero_dipendenti as NumeroDipendentiAzienda,Azienda.email as EmailAzienda,\n" + 
+							"convenzione.DataConvezione as DataConvenzione, convenzione.Repertorio as RepertorioConvezione\n" + 
+							"from evim.TirocinioEsterno join evim.USER on TirocinioEsterno.EMAIL=USER.EMAIL\n" + 
+							"join evim.Proposta on TirocinioEsterno.ID_Proposta=Proposta.ID_Proposta\n" + 
+							"join evim.TutorAccademico on TutorAccademico.ID_TutorAccademico=TirocinioEsterno.ID_tutorAccademico\n" + 
+							"join evim.TutorAziendale on TutorAziendale.ID_TutorAziendale=TirocinioEsterno.ID_TutorAziendale\n" + 
+							"join evim.Azienda on Azienda.ID_Azienda=TutorAziendale.ID_Azienda\n" + 
+							"join evim.referente_aziendale on referente_aziendale.CF=Azienda.CF_Referente\n" + 
+							"join evim.convenzione on Azienda.ID_Convenzione=convenzione.ID\n" + 
+							"where TirocinioEsterno.ID_TirocinioEsterno=?;");
 
 			ps.setInt(1, id);
 			PDFProgettoFormativo pdf = null;
