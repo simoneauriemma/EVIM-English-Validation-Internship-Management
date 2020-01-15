@@ -192,7 +192,8 @@
 												</form>
 											</c:if> <c:if test="${interno.firmaResponsabile == true}">
 												<i class="fas fa-check-square" style="color: green;"></i>
-											</c:if></td>
+											</c:if>
+											</td>
 									</tr>
 									<c:set var="count" value="${count + 1}" scope="session" />
 								</c:forEach>

@@ -83,7 +83,7 @@ public class ApprovaRegistro extends BaseServlet {
 		}
 		
 		request.setAttribute("resultapprovaregistro", result);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaTirocini.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ListaTirocini");
 		dispatcher.forward(request, response);
 		
 

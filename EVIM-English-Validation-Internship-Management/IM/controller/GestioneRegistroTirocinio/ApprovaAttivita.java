@@ -32,7 +32,7 @@ public class ApprovaAttivita extends HttpServlet {
 				if(modifica.equalsIgnoreCase("approva")) {
 					if(!AttivitaDAO.changeFirmaResponsabile(idAttivita,true)) // 1= attivita approvata
 						throw new IllegalAccessError("Errore nell'approvare l'attivita");
-					else request.getRequestDispatcher("WEB-INF/registroTirocinio(tutor).jsp").forward(request, response);
+					else request.getRequestDispatcher("ListaTirocini").forward(request, response);
 				}
 			}
 			//tutti gli altri utenti gli sono stati negati per l'approvazione di una attivita

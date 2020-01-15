@@ -88,9 +88,30 @@ body {
 											<button id="registroI" class="fas fa-book" type="submit"
 												style="border: none; background-color: transparent;"></button>
 
-										</form> <a
-										href="ApprovaRegistro?idregistro=${esterno.ID_Registro}&tipotirocinio=esterno&idtirocinio=${esterno.ID_Tirocinio}"><i
-											class="fas fa-check-square" id="accettare"></i></a>
+										</form> <c:if
+											test="${esterno.firmaResponsabile == false && type == 'tutoraziendale'}">
+											<a
+												href="ApprovaRegistro?idregistro=${esterno.ID_Registro}&tipotirocinio=esterno&idtirocinio=${esterno.ID_Tirocinio}"><i
+												class="fas fa-check-square" id="accettare"></i></a>
+										</c:if> <c:if
+											test="${esterno.firmaResponsabile == true && type == 'tutoraziendale'}">
+											<i class="fas fa-check-square" style="color: green;"></i>
+										</c:if> 
+										
+										
+										
+										<c:if
+											test="${esterno.firmaResponsabile == false && type == 'tutoraccademico'}">
+											<a
+												href="ApprovaRegistro?idregistro=${esterno.ID_Registro}&tipotirocinio=esterno&idtirocinio=${esterno.ID_Tirocinio}"><i
+												class="fas fa-check-square" id="accettare"></i></a>
+										</c:if> <c:if
+											test="${ type == 'tutoraccademico'}">
+											<i class="fas fa-check-square" style="color: green;"></i>
+										</c:if>
+
+
+
 
 									</td>
 									<!-- ...... -->
@@ -207,12 +228,16 @@ body {
 										<button id="registroI" class="fas fa-book"
 											style="border: none; background-color: transparent;"></button>
 
-									</form>
+									</form> <c:if test="${interno.firmaResponsabile == false}">
+										<a
+											href="ApprovaRegistro?idregistro=${interno.ID_Registro}&tipotirocinio=interno&idtirocinio=${interno.ID_Tirocinio}">
 
-									<form action="ApprovaAttivita" id="accettare">
-										<a href="ApprovaAttivita"><i class="fas fa-check-square"
-											id="accettare"></i></a>
-									</form>
+											<i class="fas fa-check-square" id="accettare"></i>
+										</a>
+									</c:if> <c:if test="${interno.firmaResponsabile == true}">
+										<i class="fas fa-check-square" style="color: green;"></i>
+									</c:if>
+
 								</td>
 								<td>-</td>
 
