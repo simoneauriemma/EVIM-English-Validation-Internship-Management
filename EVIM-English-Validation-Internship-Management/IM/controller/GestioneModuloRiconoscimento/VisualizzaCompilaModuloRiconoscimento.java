@@ -19,6 +19,7 @@ import java.sql.SQLException;
 
 
 import model.DriverManagerConnectionPool;
+import model.RiconoscimentoDao;
 import model.User;
 
 /**
@@ -38,21 +39,29 @@ public class VisualizzaCompilaModuloRiconoscimento extends HttpServlet {
 		}
 		else {
 			String tipoUtente=sessione.getAttribute("utenteLoggato").getClass().getName();
-			
+			User utente=(User) sessione.getAttribute("utenteLoggato");
 			// servlet non adatta per i tutor accademici, per le aziende e per i tutor aziendali
 			if(!tipoUtente.equalsIgnoreCase("model.User")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("permissionDenied.jsp");
 				dispatcher.forward(request, response);
 			}
+			
+			
 			else {
-			// studente--> in questo modo nel momento in cui lo studente compila il modulo, troverò i dati anagrafici già precompilati
-				User utente=(User) sessione.getAttribute("utenteLoggato");
+				//studente--> in questo modo nel momento in cui lo studente compila il modulo, troverò i dati anagrafici già precompilati
+				
 				if(utente.getUserType()==0){
-					
-					int CFUInglese=getCFUinglese(utente.getEmail());
-					request.setAttribute("CFUInglese", CFUInglese);
-					request.setAttribute("studente", utente);
-					request.getRequestDispatcher("WEB-INF/compilaModuloRiconoscimento.jsp").forward(request, response);
+					if(RiconoscimentoDao.getSumCFUStudente(utente.getEmail())>=12) {
+						request.setAttribute("cfuSuperati", true);
+						RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/home.jsp");
+						dispatcher.forward(request, response);
+					}
+					else {
+						int cfuInglese=getCFUinglese(utente.getEmail());
+						request.setAttribute("CFUInglese",cfuInglese);
+						request.setAttribute("studente", utente);
+						request.getRequestDispatcher("WEB-INF/compilaModuloRiconoscimento.jsp").forward(request, response);
+					}
 				}
 				//non adatto ufficio carriera e PdCD
 				if(utente.getUserType()==1 || utente.getUserType()==2) {
@@ -76,10 +85,11 @@ public class VisualizzaCompilaModuloRiconoscimento extends HttpServlet {
 					"where state.ID_STATE=6 and request.FK_USER=?");
 			ps.setString(1, emailUser);
 			ResultSet rs=ps.executeQuery();
-			int CFU=-1;
-			if(rs.next())
-				CFU=rs.getInt("VALIDATED_CFU");
-			return CFU;
+			int cfu=-1;
+			if(rs.next()) {
+				cfu=rs.getInt("VALIDATED_CFU");
+			}
+			return cfu;
 		
 		}catch(SQLException e){
 			e.printStackTrace();
