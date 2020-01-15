@@ -145,6 +145,12 @@
 						</div>
 				</c:if>
 				
+				<c:if test="${creaRichiesta==true}">
+					<div class="alert alert-success" role="alert">
+						  Richiesta di tirocinio creata con successo
+						</div>
+				</c:if>
+				
 				
 				
 				<div id="carouselExampleControls" class="carousel slide"
