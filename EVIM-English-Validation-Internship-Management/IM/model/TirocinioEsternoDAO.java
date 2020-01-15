@@ -560,12 +560,12 @@ public class TirocinioEsternoDAO {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 
 			PreparedStatement ps = con.prepareStatement( // questa query � ok
-					"select  tutoraziendale.Nome,tutoraziendale.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, "
+					"select  tutoraccademico.Nome,tutoraccademico.Cognome,registro.Status,TirocinioEsterno.ID_TirocinioEsterno,Registro.FirmaTutorAccamico ,Registro.FirmaResponsabile, TirocinioEsterno.status, "
 							+ "TirocinioEsterno.OreTotali, Registro.ID_Registro, Registro.OreRaggiunte, "
 							+ "TirocinioEsterno.CFU from tirocinioesterno \n"
 							+ "join Registro on registro.ID_Tirocinio= TirocinioEsterno.ID_TirocinioEsterno\n "
-							+ "join tutoraziendale "
-							+ "on tutoraziendale.ID_TutorAziendale = TirocinioEsterno.ID_TutorAziendale "
+							+ "join tutoraccademico "
+							+ "on tutoraccademico.ID_TutorAccademico = TirocinioEsterno.ID_TutorAccademico "
 							+ "where tirocinioesterno.EMAIL=? and tirocinioesterno.status='in svolgimento' and registro.tipo='esterno';");
 			ps.setString(1, email);
 
