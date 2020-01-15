@@ -87,9 +87,9 @@ body {
 
 										</form>
 
-										<form action="" id="accettare">
-											<a href=""><i class="fas fa-check-square" id="accettare"></i></a>
-										</form>
+										
+											<a href="ApprovaRegistro?idregistro=${esterno.ID_Registro}&tipotirocinio=esterno&idtirocinio=${esterno.ID_Tirocinio}"><i class="fas fa-check-square" id="accettare"></i></a>
+										
 									</td>
 									<!-- ...... -->
 
