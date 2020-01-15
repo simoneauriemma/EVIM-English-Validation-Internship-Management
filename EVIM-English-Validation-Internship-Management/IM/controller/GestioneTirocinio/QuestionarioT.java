@@ -45,9 +45,12 @@ public class QuestionarioT extends HttpServlet {
 		boolean result = false;
 		boolean compiled = true;
 
-		for (int i = 1; i < 14; i++) {
+		for (int i = 1; i < 13; i++) {
 
 			if (request.getParameter("gruppo" + i) == null) {
+			    if(i==7) {
+				continue;
+			    }
 				compiled = false;
 				break;
 			}
