@@ -54,11 +54,11 @@ public class ValutaRelazione extends HttpServlet {
 			}
 			
 			if(result) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ListaTirocini");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("ListaTirocini");
 				dispatcher.forward(request, response);
 			}
 			else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ListaTirocini");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("ListaTirocini");
 				dispatcher.forward(request, response);
 			}
 	
