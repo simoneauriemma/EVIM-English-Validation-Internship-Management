@@ -41,7 +41,7 @@ public class VisualizzaRelazione extends HttpServlet {
 		int  idrelazione= Integer.parseInt(request.getParameter("idrelazione"));
 		
 		
-		if(request.getAttribute("utenteLoggato")!=null) {
+		if(session.getAttribute("utenteLoggato")!=null) {
 			
 			Relazione r= RelazioneDAO.doRetriveRelazionefromId(idrelazione);
 			JSONObject relazione= new JSONObject();
@@ -50,12 +50,13 @@ public class VisualizzaRelazione extends HttpServlet {
 			relazione.put("email",r.getEmail());
 			relazione.put("status", r.getStatus());
 			relazione.put("idtutor", r.getIdtutor());
-			System.out.println(relazione.toString());
+	
 			response.getWriter().append(relazione.toString());
 			
 		}
 		
 		else {
+			
 			response.getWriter().append("");
 		}
 		
