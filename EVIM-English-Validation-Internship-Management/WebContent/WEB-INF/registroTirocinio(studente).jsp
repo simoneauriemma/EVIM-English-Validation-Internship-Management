@@ -12,6 +12,11 @@
 #button-container, #button-container1 {
 	text-align: center;
 }
+
+body{
+	padding-right: 0px !important;
+	padding: 0px !important;
+}
 </style>
 <jsp:include page="navbarBlu.jsp"></jsp:include>
 <meta charset="ISO-8859-1">
@@ -24,18 +29,15 @@
 			<div class="col-lg-3">
 				<jsp:include page="menu.jsp"></jsp:include>
 			</div>
+
 			<!-- SE L'UTENTE LOGGATO E' UNO STUDENTEe-->
 			<c:if test="${type == 'studente' }">
 				<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
-				<c:if
-					test="${listaAttivitaEsterno.size() == 0 && listaAttivitaInterno.size()==0}">
-					<p>Non è stato effettuato nessun Tirocinio!</p>
-				</c:if>
 
 				<div class="col-lg-9"
 					style="border: 1px solid #d7d7d7; background-color: white;">
 
-					<p id="titolo" style="font-size: 30px; color: #595959;">
+					<p id="titolo" style="font-size: 30px; color: #595959;" class="text-center">
 						Registro di tirocinio</p>
 					<hr>
 					<%
@@ -100,21 +102,21 @@
 					<br>
 
 					<table class="table table-striped" style="border: 1px solid #ddd;">
-					
+
 						<tbody>
-						<tr style="background-color: #2C5278; color: white;">
-										<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
-										<td class="">Attività svolta</td>
-										<td>Data</td>
-										<td>Ora ingresso</td>
-										<td>Ora uscita</td>
-										<td>Ore tot.</td>
-										<td>Firma responsabile</td>
-									</tr>
 							<c:if test="${listaAttivitaEsterno.size() > 0}">
+								<tr style="background-color: #2C5278; color: white;">
+									<td class="icon"><i class="fas fa-sort-amount-down"></i></td>
+									<td class="">Attività svolta</td>
+									<td>Data</td>
+									<td>Ora ingresso</td>
+									<td>Ora uscita</td>
+									<td>Ore tot.</td>
+									<td>Firma responsabile</td>
+								</tr>
 								<c:forEach items="${listaAttivitaEsterno}" var="esterno">
 
-									
+
 									<tr>
 										<td></td>
 										<td><c:out value="${esterno.descrizione}" /></td>
@@ -151,9 +153,7 @@
 												<i id="accettare" class="fas fa-check-square"
 													style="color: green;"></i>
 
-											</c:if>
-										
-										<c:if test="${interno.firmaResponsabile == false}">
+											</c:if> <c:if test="${interno.firmaResponsabile == false}">
 												In Valutazione
 											</c:if></td>
 
@@ -179,7 +179,7 @@
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLongTitle">Nuova
+									<h5 class="modal-title" id="exampleModalLongTitle">Aggiungi nuova
 										attività</h5>
 									<button type="button" class="close" data-dismiss="modal"
 										id="chiudere" aria-label="Close">
@@ -192,21 +192,21 @@
 											value="">
 										<table>
 											<tr>
-												<td>Attività svolta:</td>
+												<td class="text-right">Attività svolta </td>
 												<td><textarea name="attivita" rows="4" cols="45"
 														required></textarea></td>
 											</tr>
 											<tr>
-												<td>Data:</td>
+												<td class="text-right">Data </td>
 												<td><input type="date" name="data" required></td>
 											</tr>
 											<tr>
-												<td>Ora ingresso:</td>
+												<td class="text-right">Ora ingresso </td>
 												<td><input type="number" id="oraIngresso"
 													name="orarioIngresso" min="9" max="18" step=1 required></td>
 											</tr>
 											<tr>
-												<td>Ora uscita:</td>
+												<td class="text-right">Ora uscita </td>
 												<td><input type="number" id="oraUscita"
 													name="orarioUscita" min="9" max="18" step=1 required></td>
 											</tr>
@@ -215,7 +215,7 @@
 											<br> <br>
 											<!-- location.href='VisualizzaRegistroTirocinio' -->
 											<button type="submit" class="btn btn-secondary" id="button1"
-												name="approva" onclick="">APPROVA</button>
+												name="approva" onclick="">Approva attività</button>
 										</div>
 									</form>
 								</div>
@@ -237,11 +237,11 @@
 	}
 
 	if (document.getElementById("idRegInt") == null)
-		document.getElementById("IDRegistro").value = document.getElementById("idRegEst").innerHTML;
+		document.getElementById("IDRegistro").value = document
+				.getElementById("idRegEst").innerHTML;
 	else
-		document.getElementById("IDRegistro").value = document.getElementById("idRegInt").innerHTML;
-
-
+		document.getElementById("IDRegistro").value = document
+				.getElementById("idRegInt").innerHTML;
 
 	<!--
 	function calculateHours() {

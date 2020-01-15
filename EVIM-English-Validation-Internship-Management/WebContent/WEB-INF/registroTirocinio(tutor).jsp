@@ -37,7 +37,8 @@
 					<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
 					<c:if
 						test="${listaAttivitaEsterno.size() == 0 && listaAttivitaInterno.size()==0}">
-						<p>Non è stato effettuato nessun Tirocinio!</p>
+						<br>
+						<p class="text-center">Non è stato effettuato nessun tirocinio!</p>
 					</c:if>
 				</c:if>
 
@@ -124,11 +125,7 @@
 				<!-- SE L'UTENTE LOGGATO E' UN TUTOR ACCADEMICO-->
 				<c:if test="${type == 'tutoraccademico'}">
 					<!-- Se la lista di attività esterne e interne è vuota esce che non c'è nulla -->
-					<c:if
-						test="${listaAttivitaInterno.size() == 0 && listaAttivitaEsterno.size()==0}">
-						<p>Non è stato effettuato nessun Tirocinio!</p>
-					</c:if>
-
+					
 					<c:set var="count" value="0" scope="session" />
 					<c:set var="sumOre" value="0" scope="session" />
 					<c:if test="${listaAttivitaInterno.size() > 0}">
