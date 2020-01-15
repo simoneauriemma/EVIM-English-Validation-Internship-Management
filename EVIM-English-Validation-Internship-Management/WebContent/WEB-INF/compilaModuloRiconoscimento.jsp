@@ -125,7 +125,7 @@ input.er{
 					<span id="errore7" class=error>CFU superati</span>
 						<!-- cfu rimanenti -->
 						<br> Hai ancora <b> <c:choose>
-								<c:when test="${CFUInglese == -1}"> 
+								<c:when test="${CFUInglese == 0}"> 
 						12 CFU
 						</c:when>
 								<c:otherwise>
@@ -401,7 +401,7 @@ attività lavorativa), non potrà ottenere ulteriori riconoscimenti né alla trienn
 	var cfuEsterno = 0;
 	var cfuObbligatorio = 0;
 	var cfuAccompagnamento = 0;
-	var totCFUdisponibili = 12;
+
 	
 	function aggiornoCFUObbligatorio(numeroCFU) {
 		var nodoCFU = document.getElementById("cfuTotali");

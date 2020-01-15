@@ -51,13 +51,16 @@ public class VisualizzaCompilaModuloRiconoscimento extends HttpServlet {
 				//studente--> in questo modo nel momento in cui lo studente compila il modulo, troverò i dati anagrafici già precompilati
 				
 				if(utente.getUserType()==0){
-					if(RiconoscimentoDao.getSumCFUStudente(utente.getEmail())>=12) {
+					int cfuInglese=getCFUinglese(utente.getEmail());
+					int totCFU=RiconoscimentoDao.getSumCFUStudente(utente.getEmail());
+					int totCFUWithEnglish=cfuInglese+totCFU;
+					if(totCFUWithEnglish>=12) {
 						request.setAttribute("cfuSuperati", true);
 						RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/home.jsp");
 						dispatcher.forward(request, response);
 					}
 					else {
-						int cfuInglese=getCFUinglese(utente.getEmail());
+						
 						request.setAttribute("CFUInglese",cfuInglese);
 						request.setAttribute("studente", utente);
 						request.getRequestDispatcher("WEB-INF/compilaModuloRiconoscimento.jsp").forward(request, response);
@@ -85,7 +88,7 @@ public class VisualizzaCompilaModuloRiconoscimento extends HttpServlet {
 					"where state.ID_STATE=6 and request.FK_USER=?");
 			ps.setString(1, emailUser);
 			ResultSet rs=ps.executeQuery();
-			int cfu=-1;
+			int cfu=0;
 			if(rs.next()) {
 				cfu=rs.getInt("VALIDATED_CFU");
 			}
