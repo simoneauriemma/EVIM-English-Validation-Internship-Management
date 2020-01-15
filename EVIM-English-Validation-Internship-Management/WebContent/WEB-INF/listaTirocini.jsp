@@ -101,12 +101,12 @@ body {
 										
 										
 										<c:if
-											test="${esterno.firmaResponsabile == false && type == 'tutoraccademico'}">
+											test="${esterno.firmaTutorAccademico == false && type == 'tutoraccademico'}">
 											<a
 												href="ApprovaRegistro?idregistro=${esterno.ID_Registro}&tipotirocinio=esterno&idtirocinio=${esterno.ID_Tirocinio}"><i
 												class="fas fa-check-square" id="accettare"></i></a>
 										</c:if> <c:if
-											test="${ type == 'tutoraccademico'}">
+											test="${esterno.firmaTutorAccademico == true && type == 'tutoraccademico'}">
 											<i class="fas fa-check-square" style="color: green;"></i>
 										</c:if>
 

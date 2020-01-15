@@ -364,7 +364,7 @@ public class TirocinioInternoDAO {
 	public ArrayList<RegistroQuery> doRetriveTirocinioInSvolgimentoTutorAccRegistro(int id) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select distinct user.NAME, user.SURNAME, TirocinioInterno.ID_TirocinioInterno,tutoraccademico.nome,tutoraccademico.cognome, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.NumeroCFU,"
+					"select distinct registro.FirmaTutorAccamico,user.NAME, user.SURNAME, TirocinioInterno.ID_TirocinioInterno,tutoraccademico.nome,tutoraccademico.cognome, Registro.FirmaResponsabile, TirocinioInterno.status, TirocinioInterno.NumeroCFU,"
 							+ "TirocinioInterno.OreTotali, Registro.ID_Registro ,TirocinioInterno.EMAIL "
 							+ "from TirocinioInterno join Registro on registro.ID_Tirocinio= TirocinioInterno.ID_TirocinioInterno join"
 							+ " tutoraccademico on tutoraccademico.ID_tutorAccademico= TirocinioInterno.ID_tutorAccademico join User on user.EMAIL=TirocinioInterno.EMAIL "
@@ -382,6 +382,7 @@ public class TirocinioInternoDAO {
 				a.setNome_responsabile(rs.getString("tutoraccademico.Nome"));
 				a.setCognome_responsabile(rs.getString("tutoraccademico.Cognome"));
 				a.setStatus(rs.getString("status"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccamico"));
 				a.setNumeroCFU(rs.getInt("NumeroCFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
@@ -403,7 +404,7 @@ public class TirocinioInternoDAO {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			String inSvolgimento="in svolgimento";
 			PreparedStatement ps = con.prepareStatement(
-					"select TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, tirociniointerno.status, tirociniointerno.NumeroCFU ,tirociniointerno.OreTotali, Registro.ID_Registro, tutoraccademico.Nome as nomeTutorAcc, tutoraccademico.Cognome as cognomeTutorAcc " + 
+					"select registro.FirmaTutorAccamico,TirocinioInterno.ID_TirocinioInterno, Registro.FirmaResponsabile, tirociniointerno.status, tirociniointerno.NumeroCFU ,tirociniointerno.OreTotali, Registro.ID_Registro, tutoraccademico.Nome as nomeTutorAcc, tutoraccademico.Cognome as cognomeTutorAcc " + 
 					"from tirociniointerno " + 
 					"JOIN Registro on registro.ID_Registro=tirocinioInterno.ID_TirocinioInterno " + 
 					"JOIN TutorAccademico on tirociniointerno.ID_tutorAccademico=tutoraccademico.ID_TutorAccademico " + 
@@ -417,6 +418,7 @@ public class TirocinioInternoDAO {
 				a.setID_Tirocinio(rs.getInt("ID_TirocinioInterno"));
 				a.setFirmaResponsabile(rs.getBoolean("FirmaResponsabile"));
 				a.setStatus(rs.getString("status"));
+				a.setFirmaTutorAccademico(rs.getBoolean("FirmaTutorAccamico"));
 				a.setNumeroCFU(rs.getInt("NumeroCFU"));
 				a.setOreTotali(rs.getInt("OreTotali"));
 				a.setID_Registro(rs.getInt("ID_Registro"));
