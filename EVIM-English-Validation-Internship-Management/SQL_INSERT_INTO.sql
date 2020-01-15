@@ -1,9 +1,4 @@
-USE englishvalidation;
-INSERT INTO user
-VALUES('segreteria@unisa.it','Segreteria','Studenti','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b','1'); 
-
-INSERT INTO user
-VALUES('fferrucci@unisa.it','Filomena','Ferrucci','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b','2');
+USE evim;
 
 INSERT INTO STATE 
 VALUES (1,'Parzialmente Completata');
