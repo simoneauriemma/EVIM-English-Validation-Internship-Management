@@ -167,7 +167,7 @@ public class AttivitaDAO {
 	public ArrayList<RegistroQuery> doRetriveAllEsternoTutorAzi(int iDTutorAziendaele, String eMAIL) {
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(
-					"select Descrizione, OrarioIngresso, OrarioUscita, attivita.FirmaResponsabile, Registro.OreRaggiunte, attivita.OreSvolte, attivita.data, user.NAME as nomeStudente, user.SURNAME as cognomeStudente,  attivita.OreSvolte, user.EMAIL "
+					"select Descrizione, OrarioIngresso, OrarioUscita, attivita.FirmaResponsabile, Registro.OreRaggiunte, attivita.OreSvolte, attivita.data, user.NAME as nomeStudente, user.SURNAME as cognomeStudente,  attivita.OreSvolte, user.EMAIL, ID_Attivita "
 							+ "from attivita JOIN Registro ON Registro.ID_Registro = Attivita.ID_Registro "
 							+ "JOIN tirocinioesterno ON tirocinioesterno.ID_TirocinioEsterno = Registro.ID_Tirocinio "
 							+ "JOIN tutoraziendale ON tirocinioesterno.ID_TutorAccademico=tutoraziendale.ID_TutorAziendale "
@@ -191,6 +191,7 @@ public class AttivitaDAO {
 				a.setNomeStudente(rs.getString(8));
 				a.setOreSvolte(rs.getInt(10));
 				a.setEmailStudente(rs.getString(11));
+				a.setIdAttivita(rs.getInt(12));
 				listaAttivita.add(a);
 
 			}
