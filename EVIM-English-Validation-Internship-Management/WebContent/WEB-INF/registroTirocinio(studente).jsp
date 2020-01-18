@@ -46,13 +46,16 @@ body{
 					<c:set var="count" value="0" scope="session" />
 					<c:set var="sumOreE" value="0" scope="session" />
 
+					<c:if test="${listaAttivitaEsterno.size()==0}">
+						<span style="visibility: hidden;" id="idRegEst">1</span>
+					</c:if>
 					<c:if test="${listaAttivitaEsterno.size() > 0}">
 						<c:forEach items="${listaAttivitaEsterno}" var="esterno">
 							<c:set var="count" value="${count + 1}" scope="session" />
 							<div>
 								<c:if test="${count == 1}">
 									<span style="visibility: hidden;" id="idRegEst"><c:out
-											value="${esterno.idRegistro}" /></span>
+											value="${esterno.idRegistro}" />1</span>
 									<p>
 										Tirocinio presso:
 										<c:out value="${esterno.nomeAzienda}" />
@@ -70,7 +73,9 @@ body{
 						</p>
 					</c:if>
 
-
+					<c:if test="${listaAttivitaInterno.size()==0}">
+						<span style="visibility: hidden;" id="idRegInt">1</span>
+					</c:if>
 					<c:set var="count" value="0" scope="session" />
 					<c:set var="sumOre" value="0" scope="session" />
 					<c:if test="${listaAttivitaInterno.size() > 0}">
@@ -79,7 +84,7 @@ body{
 							<c:if test="${count == 1}">
 								<div>
 									<span style="visibility: hidden;" id="idRegInt"><c:out
-											value="${interno.idRegistro}" /></span>
+											value="${interno.idRegistro}" />1</span>
 									<p>
 										Tutor ospitante:
 										<c:out value="${interno.nomeTutorAcc}" />

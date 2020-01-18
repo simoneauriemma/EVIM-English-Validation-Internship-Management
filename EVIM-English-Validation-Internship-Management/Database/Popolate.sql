@@ -76,8 +76,6 @@ VALUES ('Giorgia','Sacco','giorgia1','F','giorgiasacco@unisa.it');
 select * from TutorAccademico;
 
 #Inserimento proposte
-
-#tutor aziendali
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
 VALUES ('Sviluppare nuove metodologie. Integrare metodologie esistenti.','Laboratorio di Verifica di Correttezza e Sintesi Automatica di Sistemi Digitali','Verifica automatica di correttezza dei programmi',' Per avere idea dell area di riferimento consultare il materiale del corso di Tecniche Automatiche per La Correttezza del Software', 1 ,1);
 INSERT INTO `proposta` (`Obiettivi`,`Competenze`,`Attivita`,`Modalita`,`ID_Azienda`,`ID_Tutor`) 
@@ -102,13 +100,13 @@ VALUES ('Realizzazione di sistemi domotici (IOT)','Reti di calcolatori','Sistemi
 
 
 #Inserimenti TIROCINI ESTERNI
-INSERT INTO `TirocinioEsterno` (`EMAIL`,`ID_tutorAccademico`,`ID_tutorAziendale`,`Data`,`OreTotali`,`status`,`CFU`,`FirmaAzienda`,`FirmaTutorAziendale`,`FirmaTutorAccademico`,`FirmaPdCD`,`ID_Proposta`) 
-VALUES ('simone@studenti.unisa.it','1','1','23/11/2019',150,'in approvazione',6, 1, 1, 1, 1, 6);
-select * from tirociniEsterno;
+#INSERT INTO `TirocinioEsterno` (`EMAIL`,`ID_tutorAccademico`,`ID_tutorAziendale`,`Data`,`OreTotali`,`status`,`CFU`,`FirmaAzienda`,`FirmaTutorAziendale`,`FirmaTutorAccademico`,`FirmaPdCD`,`ID_Proposta`) 
+#VALUES ('simone@studenti.unisa.it','1','1','23/11/2019',150,'in approvazione',6, 1, 1, 1, 1, 6);
+select * from TirocinioEsterno;
 #Inserimenti TIROCINIO INTERNO
 select * from TirocinioInterno;
-INSERT INTO `TirocinioInterno` (`EMAIL`,`ID_tutorAccademico`,`Data`,`OreTotali`,`status`,`NumeroCFU`,`FirmaPdCD`,`FirmaTutorAccademico`,`ID_Proposta`) 
-VALUES ('simone@studenti.unisa.it','1','23/11/2019',150,'in approvazione',6, 1, 1, 1);
+#INSERT INTO `TirocinioInterno` (`EMAIL`,`ID_tutorAccademico`,`Data`,`OreTotali`,`status`,`NumeroCFU`,`FirmaPdCD`,`FirmaTutorAccademico`,`ID_Proposta`) 
+#VALUES ('simone@studenti.unisa.it','1','23/11/2019',150,'in approvazione',6, 1, 1, 1);
 
 #Inserimento Convezioni
 INSERT INTO `convenzione` 

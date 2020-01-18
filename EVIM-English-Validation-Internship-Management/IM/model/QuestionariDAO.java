@@ -44,7 +44,7 @@ public class QuestionariDAO {
 	}
 	
 	public static boolean insertQuestionarioT(Questionario_t quest) {
-		String query= "INSERT INTO `evim`.`questionario_t` (`Email`, `ID_TutorAziendale`, `ComptenzeIngresso`, `CompetenzeAcquisite`, `Utilita`, `Motivazione`, `Capacita`, `Informazioni`, `Obiettivi`, `Servizi`, `Assistenza`, `Collaborazione`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String query= "INSERT INTO `evim`.`questionario_t` (`Email`, `ID_TutorAziendale`, `ComptenzeIngresso`, `CompetenzeAcquisite`, `Utilita`, `Motivazione`, `Capacita`, `Informazioni`, `Obiettivi`, `Servizi`, `Assistenza`, `Collaborazione`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 		try (Connection con = DriverManagerConnectionPool.getConnection()) {
 			PreparedStatement ps = con.prepareStatement(query);
 			

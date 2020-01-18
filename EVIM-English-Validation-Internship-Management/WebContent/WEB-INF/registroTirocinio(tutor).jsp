@@ -53,7 +53,7 @@
 							<c:if test="${count == 1}">
 								<div>
 									<span style="visibility: hidden;" id="idRegEst"><c:out
-											value="${esterno.idRegistro}" /></span>
+											value="${esterno.idRegistro}" />1</span>
 									<p>
 										Studente:
 										<c:out value="${esterno.nomeStudente}" />
@@ -133,6 +133,8 @@
 							<c:set var="count" value="${count + 1}" scope="session" />
 							<c:if test="${count == 1}">
 								<div>
+								<span style="visibility: hidden;" id="idRegInt"><c:out
+											value="${interno.idRegistro}" /></span>
 									<p>
 										<b>Studente:</b>
 										<c:out value="${interno.nomeStudente}" />

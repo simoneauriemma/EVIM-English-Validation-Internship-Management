@@ -37,9 +37,7 @@
 				<table class="table table-striped" id="tabella">
 					<!-- Lista tirocini ESTERNI -->
 					<tbody>
-						<c:if test="${registroQueryEsterno.size() > 0}">
-						
-							<thead>
+						<thead>
 								<tr id="colonne" class="text-center">
 									<th scope="col">ID Tirocinio</th>
 									<th scope="col">Status</th>
@@ -50,8 +48,8 @@
 									<th scope="col">Operazione</th>
 								</tr>
 							</thead>
-
-
+						<c:if test="${registroQueryEsterno.size() > 0}">
+						
 							<c:forEach items="${registroQueryEsterno}" var="esterno">
 								<tr>
 									<th scope="row" id="id"><c:out

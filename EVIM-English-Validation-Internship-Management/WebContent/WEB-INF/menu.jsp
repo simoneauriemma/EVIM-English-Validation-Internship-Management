@@ -72,11 +72,14 @@
 				style="height: 0px;">
 
 				<c:if
-					test="${type == 'azienda' || type=='pdcd' || type=='segreteria' || type == 'tutoraccademico' || type == 'tutoraziendale'}">
+					test="${type == 'azienda' || type=='pdcd' || type=='segreteria' || type == 'tutoraccademico' || type == 'tutoraziendale' || type=='studente'}">
 					<li><a href="VisualizzaAziende"><i
 							class="fas fa-angle-right "></i> Elenco aziende convenzionate </a></li>
 					<li><a href="VisualizzaTutorAccademici"><i
 							class="fas fa-angle-right "></i> Elenco tutor accademici </a></li>
+				</c:if>
+				<c:if
+					test="${type == 'azienda' || type=='pdcd' || type=='segreteria' || type == 'tutoraccademico' || type == 'tutoraziendale'}">
 					<li><a href="ListaTirocini"><i class="fas fa-angle-right "></i>
 							Elenco tirocini </a></li>
 				</c:if>
