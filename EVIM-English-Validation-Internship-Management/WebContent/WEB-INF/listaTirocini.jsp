@@ -45,23 +45,24 @@ body {
 				test="${type == 'tutoraziendale' || type== 'tutoraccademico' || type=='azienda' || type=='pdcd'}">
 
 				<table class="table table-striped" id="tabella">
+					<thead>
+						<tr id="colonne" class="text-center">
+							<th scope="col">ID Tirocinio</th>
+							<th scope="col">Tirocinante</th>
+							<th scope="col">Status</th>
+							<th scope="col">CFU</th>
+							<th scope="col">Ore Max</th>
+							<th scope="col">Tipo tirocinio</th>
+							<th scope="col">Registro tirocinio</th>
+
+							<c:if test="${type!='pdcd'}">
+								<th scope="col">Operazione</th>
+							</c:if>
+						</tr>
+					</thead>
+
 					<tbody>
 						<c:if test="${registroQueryEsterno.size() > 0}">
-							<thead>
-								<tr id="colonne" class="text-center">
-									<th scope="col">ID Tirocinio</th>
-									<th scope="col">Tirocinante</th>
-									<th scope="col">Status</th>
-									<th scope="col">CFU</th>
-									<th scope="col">Ore Max</th>
-									<th scope="col">Tipo tirocinio</th>
-									<th scope="col">Registro tirocinio</th>
-
-									<c:if test="${type!='pdcd'}">
-										<th scope="col">Operazione</th>
-									</c:if>
-								</tr>
-							</thead>
 							<c:set var="count" value="0" scope="session" />
 							<c:forEach items="${registroQueryEsterno}" var="esterno">
 								<c:set var="count" value="${count + 1}" scope="session" />
@@ -139,8 +140,8 @@ body {
 														<ul class="list-group">
 															<li class="list-group-item"><a class="list-item"
 																data-toggle="modal" data-target="#ciaoo"
-																onclick='setEmail(${count})' style="color: #007bff;">Compila
-																	relazione</a></li>
+																style="color: #007bff;" onclick='setEmail(${count})'>
+																	Compila relazione</a></li>
 															<li class="list-group-item"><a class="list-item"
 																href="VisualizzaRelazione">Visualizza relazione</a></li>
 															<li class="list-group-item"><a class="list-item"
@@ -229,31 +230,38 @@ body {
 										<button id="registroI" class="fas fa-book"
 											style="border: none; background-color: transparent;"></button>
 
-									</form> <c:if
+									</form> 
+									 <c:choose>
+									<c:when
 										test="${interno.firmaResponsabile == false && type == 'tutoraccademico'}">
 										<a
 											href="ApprovaRegistro?idregistro=${interno.ID_Registro}&tipotirocinio=interno&idtirocinio=${interno.ID_Tirocinio}">
 
 											<i class="fas fa-check-square" id="accettare"></i>
 										</a>
-									</c:if> <c:if
-										test="${interno.firmaResponsabile == true && interno.firmaTutorAccademico==true && type == 'tutoraccademico'}">
-										<i class="fas fa-check-square" style="color: green;"></i>
-									</c:if> <c:if test="${interno.status == 'in svolgimento'  }">
-										<a
-											href="ApprovaRegistro?idregistro=${interno.ID_Registro}&tipotirocinio=interno&idtirocinio=${interno.ID_Tirocinio}">
+									</c:when>
+										<c:when
+											test="${interno.firmaResponsabile == true && interno.firmaTutorAccademico==true && type == 'tutoraccademico'}">
+											<i class="fas fa-check-square" style="color: green;"></i>
+										</c:when>
 
-											<i class="fas fa-check-square" id="accettare"></i>
-										</a>
-									</c:if> <c:if test="${interno.status == 'approvato'}">
-										<i class="fas fa-check-square" style="color: green;"></i>
-									</c:if>
+										<c:when test="${interno.status == 'in svolgimento'  }">
+											<a
+												href="ApprovaRegistro?idregistro=${interno.ID_Registro}&tipotirocinio=interno&idtirocinio=${interno.ID_Tirocinio}">
 
+												<i class="fas fa-check-square" id="accettare"></i>
+											</a>
+										</c:when>
 
+										<c:when test="${interno.status == 'approvato'}">
+											<i class="fas fa-check-square" style="color: green;"></i>
+										</c:when>
+
+									</c:choose>
 
 
 								</td>
-								<td>-</td>
+								<td class="text-center" style="font-weight: bold; font-size: 20px;">-</td>
 
 
 
